@@ -80,7 +80,7 @@ const LoginPage = () => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     if(value !== "" &&  (/^[0-9]{10}$/.test(value) || emailRegex.test(value))){
       setIsSubmitting(true);
-      await axios.post(`${process.env.NEXT_PUBLIC_APIURL}/auth/signup`, {
+      await axios.post(`${process.env.REACT_APP_APIURL}/auth/signup`, {
         username: value,
     })
     .then((response) => {
@@ -105,7 +105,7 @@ const LoginPage = () => {
   const handleVerifyOTP = async() =>{
     if(otp && /^[0-9]{6}$/.test(otp)){
       setIsSubmitting(true);
-      await axios.post(`${process.env.NEXT_PUBLIC_APIURL}/auth/signup-verify`, {
+      await axios.post(`${process.env.REACT_APP_APIURL}/auth/signup-verify`, {
         username: value,
         otp
     })

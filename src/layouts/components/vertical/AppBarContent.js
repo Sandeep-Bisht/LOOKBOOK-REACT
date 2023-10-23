@@ -19,8 +19,8 @@ const AppBarContent = props => {
   const { hidden, settings, saveSettings, toggleNavVisibility } = props
 
   // ** Hook
-  // const hiddenSm = useMediaQuery(theme => theme.breakpoints.down('sm'))
-  const hiddenSm = true;
+  const hiddenSm = useMediaQuery(theme => theme.breakpoints.down('sm'))
+  // const hiddenSm = true;
 
   return (
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
@@ -50,7 +50,7 @@ const AppBarContent = props => {
         />
       </Box> */}
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
-        {hiddenSm ? null : (
+        {/* {hiddenSm ? null : (
           <Box
             component='a'
             target='_blank'
@@ -64,7 +64,7 @@ const AppBarContent = props => {
               src='https://img.shields.io/github/stars/themeselection/materio-mui-react-nextjs-admin-template-free?style=social'
             />
           </Box>
-        )}
+        )} */}
         <ModeToggler settings={settings} saveSettings={saveSettings} />
         <NotificationDropdown />
         <UserDropdown />
