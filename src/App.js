@@ -1,11 +1,24 @@
-import './App.css';
+import React from "react";
+import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
+import ThemeComponent from '@core/theme/ThemeComponent'
+import ApplicationRoutes from "routes";
 
-function App() {
+// ** React Perfect Scrollbar Style
+import 'react-perfect-scrollbar/dist/css/styles.css'
+
+const App = () => {
+  
   return (
-    <div className="App">
-     <h2>LOOKBOOK</h2>
-    </div>
-  );
+    <SettingsProvider>
+        <SettingsConsumer>
+          {({ settings }) => {
+            return <ThemeComponent settings={settings}>
+                <ApplicationRoutes/>
+            </ThemeComponent>
+          }}
+        </SettingsConsumer>
+      </SettingsProvider>
+  )
 }
 
-export default App;
+export default App
