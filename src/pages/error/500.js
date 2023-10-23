@@ -1,5 +1,3 @@
-// ** Next Import
-import Link from 'next/link'
 
 // ** MUI Components
 import Button from '@mui/material/Button'
@@ -8,10 +6,11 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 
 // ** Layout Import
-import BlankLayout from 'src/@core/layouts/BlankLayout'
+import BlankLayout from '@core/layouts/BlankLayout'
 
 // ** Demo Imports
-import FooterIllustrations from 'src/views/pages/misc/FooterIllustrations'
+import FooterIllustrations from 'views/pages/misc/FooterIllustrations'
+import { Link } from 'react-router-dom'
 
 // ** Styled Components
 const BoxWrapper = styled(Box)(({ theme }) => ({
@@ -45,6 +44,7 @@ const TreeIllustration = styled('img')(({ theme }) => ({
 
 const Error500 = () => {
   return (
+    <BlankLayout>
     <Box className='content-center'>
       <Box sx={{ p: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
         <BoxWrapper>
@@ -55,7 +55,7 @@ const Error500 = () => {
           <Typography variant='body2'>Oops, something went wrong!</Typography>
         </BoxWrapper>
         <Img height='487' alt='error-illustration' src='/images/pages/500.png' />
-        <Link passHref href='/'>
+        <Link to='/'>
           <Button component='a' variant='contained' sx={{ px: 5.5 }}>
             Back to Home
           </Button>
@@ -63,8 +63,8 @@ const Error500 = () => {
       </Box>
       <FooterIllustrations image={<TreeIllustration alt='tree' src='/images/pages/tree-3.png' />} />
     </Box>
+    </BlankLayout>
   )
 }
-Error500.getLayout = page => <BlankLayout>{page}</BlankLayout>
 
 export default Error500

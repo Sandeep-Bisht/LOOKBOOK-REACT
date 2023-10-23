@@ -43,6 +43,7 @@ const TreeIllustration = styled('img')(({ theme }) => ({
 
 const Error404 = () => {
   return (
+    <BlankLayout>
     <Box className='content-center'>
       <Box sx={{ p: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
         <BoxWrapper>
@@ -61,8 +62,8 @@ const Error404 = () => {
       </Box>
       <FooterIllustrations image={<TreeIllustration alt='tree' src='/images/pages/tree.png' />} />
     </Box>
+    </BlankLayout>
   )
 }
-Error404.getLayout = page => <BlankLayout>{page}</BlankLayout>
 
 export default Error404
