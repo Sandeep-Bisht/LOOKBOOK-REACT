@@ -28,6 +28,6 @@ const App = () => {
         </SettingsConsumer>
       </SettingsProvider>
   )
-}
 
+        }
 export default App
