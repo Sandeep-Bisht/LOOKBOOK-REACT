@@ -9,6 +9,7 @@ import LoginPage from 'pages/login'
 import MUITable from 'pages/tables'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import Profile from 'views/profile/profile'
 
 const ApplicationRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const ApplicationRoutes = () => {
         <Route path="/management/cards" element={<CardBasic/>}/> 
         <Route path="/management/tables" element={<MUITable/>}/> 
         <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
+        <Route path='/management/create-profile' element={<Profile />} />
       </Route>
       <Route path='/*' element={<Error404/>}/>
     </Routes>

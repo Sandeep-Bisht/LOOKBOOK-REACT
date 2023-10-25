@@ -34,6 +34,12 @@ const navigation = () => {
       openInNewTab: true
     },
     {
+      title: 'Create Profile',
+      icon: AccountPlusOutline,
+      path: '/management/create-profile',
+      openInNewTab: true
+    },
+    {
       sectionTitle: 'User Interface'
     },
     {

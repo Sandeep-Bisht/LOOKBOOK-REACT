@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import MultiStep from "react-multistep";
 import FirstForm from "./FirstForm";
+import SecondForm from "SecondForm";
+import ThirdForm from "./ThirdForm"
+import FourthForm from "./FourthForm";
+import FifthForm from "FifthForm";
 
 const WizardForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -9,7 +13,25 @@ const WizardForm = ({ onSubmit }) => {
     email: "",
     phoneNumber: "",
     address: "",
+    currentLocation:{}
   });
+
+  const nextButtonStyle = {    
+    color : "#fff",
+    backgroundColor : "#8C6A54",
+    border: "none",
+    padding : "5px 10px "
+
+  }
+
+  const backButtonStyle = {
+    color : "#fff",
+    backgroundColor : "#8C6A54",
+    border: "none",
+    margin : "5px 5px",
+    padding : "5px 10px" 
+  }
+
 
   const steps = [
     {
@@ -18,9 +40,17 @@ const WizardForm = ({ onSubmit }) => {
     },
     {
       name: "Step 2",
-      component: <Step2 formData={formData} setFormData={setFormData} />,
+      component: <SecondForm formData={formData} setFormData={setFormData} />,
     },
-    { name: "Step 3", component: <Step3 formData={formData} /> },
+    { name: "Step 3",
+     component: <ThirdForm formData={formData} setFormData={setFormData} />
+     },
+     { name: "Step 4",
+     component: <FourthForm formData={formData} setFormData={setFormData} />
+     },
+     { name: "Step 5",
+     component: <FifthForm formData={formData} setFormData={setFormData} />
+     },
   ];
 
   return (
@@ -28,7 +58,12 @@ const WizardForm = ({ onSubmit }) => {
       <div className="container">
         <div className="row">
           <div className="col-md-12 mx-auto">
-            <MultiStep steps={steps} onSubmit={onSubmit} />
+            <MultiStep 
+            activeStep={2} 
+            prevButton={{title: 'Back',style:backButtonStyle}}
+            nextButton={{title: 'Next',style:nextButtonStyle}}
+            steps={steps} onSubmit={onSubmit} 
+            />
           </div>
         </div>
       </div>
@@ -36,63 +71,6 @@ const WizardForm = ({ onSubmit }) => {
   );
 };
 
-// const Step1 = ({ formData, setFormData }) => {
-//   const handleChange = (e) => {
-//     setFormData({ ...formData, name: e.target.value });
-//   };
 
-//   return (
-//     <div>
-//       <h2>Step 1: Personal Information</h2>
-//       <input
-//         type="text"
-//         placeholder="Name"
-//         name="name"
-//         value={formData.name}
-//         onChange={handleChange}
-//       />
-//     </div>
-//   );
-// };
-
-const Step2 = ({ formData, setFormData }) => {
-  const handleChange = (e) => {
-    setFormData({ ...formData, email: e.target.value });
-  };
-
-  return (
-    <div>
-      <h2>Step 2: Artist Information</h2>
-      <input
-        type="email"
-        placeholder="Email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-      />
-      <input
-        type="tel"
-        placeholder="Phone Number"
-        name="phoneNumber"
-        value={formData.phoneNumber}
-        onChange={handleChange}
-      />
-    </div>
-  );
-};
-
-const Step3 = ({ formData }) => {
-  return (
-    <div>
-      <h2>Step 3: Detail Information</h2>
-      <textarea
-        placeholder="Address"
-        name="address"
-        value={formData.address}
-        readOnly
-      />
-    </div>
-  );
-};
 
 export default WizardForm;
