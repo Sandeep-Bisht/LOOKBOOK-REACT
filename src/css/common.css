@@ -1,0 +1,61 @@
+/* -----------------------common styling---------------- */
+@font-face {
+    font-family:Metropolis-Regular;
+    src: url('../custom-font/Metropolis-Regular.otf');
+  }
+  @font-face {
+    font-family:Metropolis-Medium;
+    src: url('../custom-font/Metropolis-Medium.otf');
+  }
+  @font-face {
+    font-family:Metropolis-Bold;
+    src: url('../custom-font/Metropolis-Bold.otf');
+  }
+  
+  @font-face {
+    font-family:Metropolis-Light;
+    src: url('../custom-font/Metropolis-Light.ttf');
+  }
+  
+  
+  @font-face {
+    font-family:Forum-regular;
+    src: url('../custom-font/Forum-Regular.ttf');
+  }
+  
+  
+  
+  :focus-visible 
+  {
+    outline: none;
+  }
+  
+  .common-heading
+  {
+    font-family:Forum-regular;
+    font-size: 60px;
+    line-height: 60px;
+    color:rgb(109,93,76);
+      
+  }
+  .common-para
+  {
+     
+    font-family: Metropolis-Light;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 1);
+    margin: 12px 0 8px 0;
+      
+  }
+  
+  body{
+    min-height: 100vh;
+    
+  }
+  
+  .artist-area
+  {
+    padding: 50px 0;
+    background: #fcf7f2;
+  }
+  

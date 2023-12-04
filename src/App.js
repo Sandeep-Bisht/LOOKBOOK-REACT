@@ -3,6 +3,7 @@ import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContex
 import ThemeComponent from '@core/theme/ThemeComponent'
 import ApplicationRoutes from "routes";
 
+
 // ** React Perfect Scrollbar Style
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import { useLocation } from "react-router-dom";
