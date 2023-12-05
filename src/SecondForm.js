@@ -1,11 +1,34 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 
 const SecondForm = ({ formData, setFormData }) => {
-  const { handleSubmit, control, errors } = useForm();
+
+  useEffect(()=>{
+    getProfileData();
+  }, [])
+
+  const getProfileData = async () => {
+    try {
+      let url = `${process.env.REACT_APP_APIURL}/profile/getUserProfileData`
+      let response = await axios.get(url);
+      if(response){
+        console.log("response is this ", response);
+      }      
+    } catch (error) {
+      console.log(`Error message is ${error}`)
+    }
+   
+  } 
 
   const handleChange = (e) => {
-    setFormData({ ...formData, email: e.target.value });
+    if(e.target.name === "name"){
+      setFormData({ ...formData, name: e.target.value})
+    }else if(e.target.name === "email"){
+      setFormData({ ...formData, email: e.target.value})
+    }else if(e.target.name === "phoneNumber"){
+    setFormData({ ...formData, phoneNumber : e.target.value });
+    }
   };
   return (
     <>

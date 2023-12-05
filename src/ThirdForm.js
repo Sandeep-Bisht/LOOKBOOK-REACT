@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import "styles/thirdForm.css";
 
 const ThirdForm =  ({ formData, setFormData }) => {
+
+  const [artistArray] = useState([])
+
+  const handleChange = (proffesion) => {
+    console.log("value", proffesion)
+    const index = artistArray.indexOf(proffesion);
+    if (index !== -1) {
+      // Element found, remove it using splice
+      artistArray.splice(index, 1);
+    } else {
+      artistArray.push(proffesion)
+    }
+   
+    console.log(artistArray,"check array")
+    setFormData({...formData, proffesion : artistArray})
+  };
+
+  
+
   return (
     <section className="thirdform-wrapper">
       <div className="container">
@@ -17,29 +36,29 @@ const ThirdForm =  ({ formData, setFormData }) => {
           <div className="col-md-7 mx-auto">
             <div className="row">
               <div className="col-md-4">
-                <div className="artist-card">
+                <div className="artist-card"  onClick={(e)=> handleChange("Hair")}>
                   <div>
                     <AiOutlineHome />
                   </div>
-                  <div>
+                  <div >
                     <span>Hair</span>
                   </div>
                 </div>
               </div>
 
               <div className="col-md-4">
-                <div className="artist-card">
+                <div className="artist-card"  onClick={(e)=> handleChange("MakeUp")}>
                   <div>
                     <AiOutlineHome />
                   </div>
-                  <div>
+                  <div >
                     <span>Make-up</span>
                   </div>
                 </div>
               </div>
 
               <div className="col-md-4">
-                <div className="artist-card">
+                <div className="artist-card"  onClick={(e)=> handleChange("Dressing")}>
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -50,7 +69,7 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
-                <div className="artist-card">
+                <div className="artist-card"  onClick={(e)=> handleChange("Tattos")}>
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -61,7 +80,7 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
-                <div className="artist-card">
+                <div className="artist-card"  onClick={(e)=> handleChange("Message")}>
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -72,7 +91,7 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
-                <div className="artist-card">
+                <div className="artist-card"  onClick={(e)=> handleChange("Cabin")}>
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -83,7 +102,7 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
-                <div className="artist-card">
+                <div className="artist-card"  onClick={(e)=> handleChange("Potraits")}>
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -94,7 +113,7 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
-                <div className="artist-card">
+                <div className="artist-card"  onClick={(e)=> handleChange("NailArt")}>
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -105,7 +124,7 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
-                <div className="artist-card">
+                <div className="artist-card"  onClick={(e)=> handleChange("Grooming")}>
                   <div>
                     <AiOutlineHome />
                   </div>

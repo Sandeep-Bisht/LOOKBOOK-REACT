@@ -13,8 +13,12 @@ const WizardForm = ({ onSubmit }) => {
     email: "",
     phoneNumber: "",
     address: "",
-    currentLocation:{}
+    currentLocation:{},
+    proffesion:[],
+    place:[],    
   });
+
+  console.log("check form data", formData)
 
   const nextButtonStyle = {    
     color : "#fff",
