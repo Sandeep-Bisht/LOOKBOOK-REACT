@@ -10,11 +10,13 @@ import MUITable from 'pages/tables'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Profile from 'views/profile/profile'
+import Homepage from 'pages/homepage/homepage'
 
 const ApplicationRoutes = () => {
   return (
     <Routes>
-      <Route exact path='/' element={<LoginPage/>}/>
+      <Route exact path='/' element={<Homepage/>}/>
+      <Route path='/login' element={<LoginPage/>}/>
       <Route path="/management" element={<UserLayout/>}>
         <Route path='/management/dashboard' element={<Dashboard/>}/>
         <Route path="/management/account-settings" element={<AccountSettings/>}/> 

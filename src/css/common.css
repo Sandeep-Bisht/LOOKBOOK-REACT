@@ -1,26 +1,26 @@
 /* -----------------------common styling---------------- */
 @font-face {
     font-family:Metropolis-Regular;
-    src: url('../custom-font/Metropolis-Regular.otf');
+    src: url('../customfont/Metropolis-Regular.otf');
   }
   @font-face {
     font-family:Metropolis-Medium;
-    src: url('../custom-font/Metropolis-Medium.otf');
+    src: url('../customfont/Metropolis-Medium.otf');
   }
   @font-face {
     font-family:Metropolis-Bold;
-    src: url('../custom-font/Metropolis-Bold.otf');
+    src: url('../customfont/Metropolis-Bold.otf');
   }
   
   @font-face {
     font-family:Metropolis-Light;
-    src: url('../custom-font/Metropolis-Light.ttf');
+    src: url('../customfont/Metropolis-Light.ttf');
   }
   
   
   @font-face {
     font-family:Forum-regular;
-    src: url('../custom-font/Forum-Regular.ttf');
+    src: url('../customfont/Forum-Regular.ttf');
   }
   
   
@@ -52,7 +52,10 @@
     min-height: 100vh;
     
   }
-  
+  .new-class {
+    position: sticky;
+    top: 0;
+}
   .artist-area
   {
     padding: 50px 0;
