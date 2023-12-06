@@ -2,12 +2,12 @@
 import React, { useState } from "react";
 import MultiStep from "react-multistep";
 import FirstForm from "./FirstForm";
-import SecondForm from "SecondForm";
+import SecondForm from "./SecondForm";
 import ThirdForm from "./ThirdForm"
 import FourthForm from "./FourthForm";
-import FifthForm from "FifthForm";
-import Preview from "Preview";
-import "./styles/wizardForm.css";
+import FifthForm from "./FifthForm";
+import Preview from "./Preview";
+import "../../styles/wizardForm.css";
 
 const WizardForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({

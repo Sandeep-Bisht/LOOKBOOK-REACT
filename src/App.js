@@ -4,18 +4,18 @@ import ThemeComponent from '@core/theme/ThemeComponent'
 import ApplicationRoutes from "routes";
 import 'css/common.css'
 
-
-
 // ** React Perfect Scrollbar Style
 import 'react-perfect-scrollbar/dist/css/styles.css'
-import { useLocation } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 
 const App = () => {
 
-  const location = useLocation();
+  // const location = useLocation();
 
   // Check if the current pathname matches the pattern
-  const isManagementRoute =  location.pathname.startsWith('/management');
+  // const isManagementRoute =  location.pathname.startsWith('/management');
+
+  const isManagementRoute = true;
   
   return (
     <SettingsProvider>
@@ -25,7 +25,7 @@ const App = () => {
               settings = {...settings,mode:'light'}
             }
             return <ThemeComponent settings={settings}>
-                <ApplicationRoutes/>
+                <RouterProvider router={ApplicationRoutes}/>
             </ThemeComponent>
           }}
         </SettingsConsumer>
