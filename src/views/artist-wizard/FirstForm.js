@@ -1,8 +1,7 @@
 import React from "react";
-import Artist from "./images/artist.jpg";
-import "./styles/firstForm.css"
+import "../../styles/firstForm.css"
 
-const FirstForm = ({ formData, setFormData }) => {
+const FirstForm = () => {
 
   return (
     <section className="first-form-wrapper">
@@ -18,7 +17,7 @@ const FirstForm = ({ formData, setFormData }) => {
           </div>
           <div className="col-md-6">
             <div className="about-wizard-pic">
-            <img className="img-fluid" src={Artist} alt="text" />
+            <img className="img-fluid" src="images/artist.jpg" alt="text" />
           </div>
           </div>
         </div>

@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
 import { useState ,useRef} from 'react';
-import { get, useForm } from 'react-hook-form';
+import {  useForm } from 'react-hook-form';
 import  JoditEditor  from 'jodit-react';
-import axios from "axios";
 import {axiosAuth} from 'configs/axiosInstance'
 import slugify from 'react-slugify';
 
@@ -10,7 +8,7 @@ import { Grid, TextField, Button } from "@mui/material";
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
-const Blog = () => {
+const CreateBlog = () => {
 
   const { register, handleSubmit } = useForm();
   const editor = useRef(null);
@@ -109,4 +107,4 @@ const Blog = () => {
   )
 }
 
-export default Blog
+export default CreateBlog

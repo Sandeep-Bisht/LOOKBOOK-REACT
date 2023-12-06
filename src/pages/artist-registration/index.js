@@ -1,7 +1,7 @@
 import React from 'react';
-import WizardForm from "../../WizardForm";
+import WizardForm from "../../views/artist-wizard/WizardForm";
 
-const Profile = () => {
+const ArtistRegistration = () => {
 
     const handleSubmit = (data) => {
         // Handle the form submission here
@@ -17,4 +17,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default ArtistRegistration

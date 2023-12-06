@@ -22,22 +22,9 @@ const navigation = () => {
       sectionTitle: 'Pages'
     },
     {
-      title: 'Login',
+      title: 'Blog',
       icon: Login,
-      path: '/',
-      openInNewTab: true
-    },
-    {
-      title: 'Register',
-      icon: AccountPlusOutline,
-      path: '/',
-      openInNewTab: true
-    },
-    {
-      title: 'Create Profile',
-      icon: AccountPlusOutline,
-      path: '/management/create-profile',
-      openInNewTab: true
+      path: '/management/create-blog'
     },
     {
       sectionTitle: 'User Interface'
