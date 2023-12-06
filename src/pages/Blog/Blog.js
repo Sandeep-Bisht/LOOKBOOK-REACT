@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import { useState ,useRef} from 'react';
-import { useForm } from 'react-hook-form';
+import { get, useForm } from 'react-hook-form';
 import  JoditEditor  from 'jodit-react';
 import axios from "axios";
+import {axiosAuth} from 'configs/axiosInstance'
+import slugify from 'react-slugify';
 
 import { Grid, TextField, Button } from "@mui/material";
 
@@ -13,45 +15,38 @@ const Blog = () => {
   const { register, handleSubmit } = useForm();
   const editor = useRef(null);
   const [content, setContent] = useState('');
-  const [blogdata, setBlogData] =useState('');
 
-  useEffect (()=>{
-    getblog();
-  },[])
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
-  const getblog = async() =>{
-    const response = await axios.post(`${process.env.REACT_APP_APIURL}/blog-create`)
+  const onSubmit = async (data) => {
+    data['content'] = JSON.stringify(content);
   
-  if(response)
-  {
-    setBlogData(response.data.getblog)
-  }
-}
-console.log(blogdata,"check the inside",BASE_URL)
-
+    let formData = new FormData();
+  
+    // Generate slug and add it to the form data
+    const generatedSlug = slugify(data.title);
+    formData.append("slug", generatedSlug);
+  
+    // Append other form data items
+    Object.keys(data).forEach((item) => {
+      if (item === 'featuredImage') {
+        formData.append(item, data.featuredImage[0]);
+      } else {
+        formData.append(item, data[item]);
+      }
+    });
+  
+    try {
+      const response = await axiosAuth.post(`${BASE_URL}/blog/blog-create`, formData);
+      console.log(response.data, 'success');
+    } catch (error) {
+      console.log(error.message || 'error found', 'error');
+    }
+  };
+  
 
   return (
     <>
       {/* <section>
-      <form onSubmit={handleSubmit((data) => console.log(data))} className='blog-form'>
-        <div className='container'>
-          <div className='row blog-form1'>
-            <div className='col-md-6  mx-auto form-wrapper'>
-              <label>first name</label>
-      <input className='inputFeild'{...register('firstName')} />
-      <input {...register('lastName', { required: true })} />
-      {errors.lastName && <p>Last name is required.</p>}
-      <input {...register('age', { pattern: /\d+/ })} />
-      {errors.age && <p>Please enter number for age.</p>}
-      <input type="submit" />
-      </div>
-      </div>
-      </div>
-    </form>
+      
     </section> */}
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={5}>
@@ -67,7 +62,7 @@ console.log(blogdata,"check the inside",BASE_URL)
         </Grid>
         <Grid item xs={12} md={6}>
         <TextField
-                   {...register("image")}
+                   {...register("featuredImage")}
                         type="file"
                         label="Image"
                         variant="outlined"
@@ -78,6 +73,7 @@ console.log(blogdata,"check the inside",BASE_URL)
                         }}
                       />
         </Grid>
+        
         
         <Grid item xs={12} md={6}>
           <TextField
