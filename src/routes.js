@@ -7,6 +7,7 @@ import FormLayouts from 'pages/form-layouts'
 import Icons from 'pages/icons'
 import LoginPage from 'pages/login'
 import MUITable from 'pages/tables'
+import Services from 'pages/servicesCreated'
 import React from 'react'
 import { Outlet, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
@@ -77,6 +78,10 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/management/tables" element={<MUITable/>}/> 
           <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
           <Route path="/management/create-blog" element={<CreateBlog/>}/> 
+        <Route path="/management/services" element={<AllServicesDetails/>}/>
+        <Route path="/management/services/create" element={<Services/>}/>
+        <Route path="/management/product" element={<AllProdutsDetails/>}/>
+        <Route path="/management/product/create" element={<ProductForm/>}/>
         </Route>
       </Route>
     </Route>
