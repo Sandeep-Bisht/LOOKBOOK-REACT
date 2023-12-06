@@ -1,0 +1,16 @@
+.thirdform-wrapper .artist-card {
+    border : 3px solid rgb(206, 202, 202);
+    padding : 10px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.thirdform-wrapper .thirdform-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.thirdform-wrapper .artist-card:hover {
+    border:2px solid #333; /* Darken the border color on hover */
+  }
