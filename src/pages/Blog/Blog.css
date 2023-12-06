@@ -1,0 +1,29 @@
+.blog-form{
+    align-items: center;
+    display: flex;
+    height: 100%;
+}
+
+.form-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.inputFeild{
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    box-shadow: none;
+    color: #262626;
+    font-size: 14px;
+    height: 43px;
+}
+
+.blog-form1{
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 34px -15px rgba(0,0,0,.24);
+    margin: auto;
+    padding: 40px 30px;
+    position: relative;
+    width: 78%;
+}
