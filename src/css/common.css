@@ -1,26 +1,26 @@
 /* -----------------------common styling---------------- */
 @font-face {
     font-family:Metropolis-Regular;
-    src: url('../customfont/Metropolis-Regular.otf');
+    src: url('../../public/fonts/Metropolis-Regular.otf');
   }
   @font-face {
     font-family:Metropolis-Medium;
-    src: url('../customfont/Metropolis-Medium.otf');
+    src: url('../../public/fonts/Metropolis-Medium.otf');
   }
   @font-face {
     font-family:Metropolis-Bold;
-    src: url('../customfont/Metropolis-Bold.otf');
+    src: url('../../public/fonts/Metropolis-Bold.otf');
   }
   
   @font-face {
     font-family:Metropolis-Light;
-    src: url('../customfont/Metropolis-Light.ttf');
+    src: url('../../public/fonts/Metropolis-Light.ttf');
   }
   
   
   @font-face {
     font-family:Forum-regular;
-    src: url('../customfont/Forum-Regular.ttf');
+    src: url('../../public/fonts/Forum-Regular.ttf');
   }
   
   
