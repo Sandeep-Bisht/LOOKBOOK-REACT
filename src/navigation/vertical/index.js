@@ -37,7 +37,7 @@ const navigation = () => {
     {
       title: 'Products',
       icon: CreditCardOutline,
-      path: '/management/product'
+      path: '/management/products'
     },
     {
       icon: CubeOutline,

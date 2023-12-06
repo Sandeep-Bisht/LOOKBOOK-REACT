@@ -1,18 +1,13 @@
-// ** React Imports
-import { useState,useEffect } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
-import Link from '@mui/material/Link'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import CardContent from '@mui/material/CardContent'
 import {useForm}  from 'react-hook-form'
-import axios from 'axios'
-import { axiosPrivate } from 'configs/api'
-import { json,useNavigate } from 'react-router-dom'
+import { axiosAuth } from 'configs/axiosInstance'
 const BASE_URL = process.env.REACT_APP_APIURL;
 
 
@@ -34,7 +29,7 @@ const ProductForm = () => {
       }
   })
   try {
-    const response = await axiosPrivate.post(`${BASE_URL}/product/product-create`,data)
+    const response = await axiosAuth.post(`${BASE_URL}/product/product-create`,formData)
   }
   catch(error)
   {

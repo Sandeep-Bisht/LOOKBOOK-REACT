@@ -98,7 +98,7 @@ const AllServicesDetails = () => {
                   marginTop:"10px"
                 }}
               >
-                <Link  href='/management/product/create'>
+                <Link  href='/management/products/create'>
                   Add
                 </Link>
               </Box>

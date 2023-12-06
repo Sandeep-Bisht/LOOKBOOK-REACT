@@ -1,5 +1,3 @@
-// ** React Imports
-import { useState, useEffect } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -10,8 +8,7 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import CardContent from '@mui/material/CardContent'
 import {useForm} from 'react-hook-form'
-import { json,useNavigate } from 'react-router-dom'
-import { axiosPrivate } from 'configs/api'
+import { axiosAuth } from 'configs/axiosInstance'
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
@@ -23,18 +20,18 @@ const ServicesForm = () => {
   const {register, handleSubmit} = useForm();
 
   const ServicesFormHandler = async (data) => {
-
+    console.log(data,"check the data inside the services")
     const formData=new FormData();
 
    Object.keys(data).map((item) => {
-      if (item === 'image' || item === 'icon') {
+      if (item == 'image' || item == 'icon') {
         formData.append(item, data[item][0]);
       } else {
         formData.append(item, data[item]);
       }
   })
   try {
-    const response = await axiosPrivate.post(`${BASE_URL}/service/services-create`,data)
+    const response = await axiosAuth.post(`${BASE_URL}/service/services-create`,formData)
   }
   catch(error)
   {
