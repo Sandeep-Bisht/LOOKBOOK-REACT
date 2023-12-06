@@ -1,0 +1,51 @@
+.header
+{
+  background: url("../../public/images/nav-bg.jpg");
+  background-size: cover;
+  width: 100;
+  background-position: center;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  top: 25px;
+  z-index: 100;
+}
+.header .main-logo svg
+{
+  height: 30px;
+}
+.header .nav-link
+{
+  
+ color: rgba(252, 247, 242, 1);
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    font-family:Metropolis-Medium;
+
+}
+.action-btn,.common-action
+{
+ 
+  
+  padding: 6px 15px 6px 15px;
+  border-radius: 38px;
+  border: 3px solid rgba(252, 247, 242, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  
+}
+.common-action
+{
+  background: rgba(109, 93, 76, 1);
+  border: 3px solid rgba(109, 93, 76, 1);
+}
+
+.home-banner
+{
+  background-color: #8C6A54;
+  padding: 0 30px 40px 30px;
+}

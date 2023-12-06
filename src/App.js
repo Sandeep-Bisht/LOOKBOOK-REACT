@@ -2,6 +2,9 @@ import React from "react";
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
 import ApplicationRoutes from "routes";
+import 'css/common.css'
+
+
 
 // ** React Perfect Scrollbar Style
 import 'react-perfect-scrollbar/dist/css/styles.css'
