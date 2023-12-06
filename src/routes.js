@@ -8,35 +8,72 @@ import Icons from 'pages/icons'
 import LoginPage from 'pages/login'
 import MUITable from 'pages/tables'
 import React from 'react'
-import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { Outlet, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import ArtistRegistration from 'pages/artist-registration'
 import UserProfile from 'pages/UserProfile'
 import { getUserProfile } from 'configs/initialapis'
 import CreateBlog from 'pages/Blog/createBlog'
+import { SettingsConsumer } from '@core/context/settingsContext'
+import { SettingsProvider } from '@core/context/settingsContext'
+import ThemeComponent from '@core/theme/ThemeComponent'
+
+
+const DashboardComponents = () =>{
+  return (<SettingsProvider>
+    <SettingsConsumer>
+      {({ settings }) => {
+        return <ThemeComponent settings={settings}>
+          <Outlet/>
+        </ThemeComponent>
+      }}
+    </SettingsConsumer>
+    </SettingsProvider>)
+}
+
+const NormalComponents = () =>{
+  return (<SettingsProvider>
+    <SettingsConsumer>
+      {({ settings }) => {
+        settings = {...settings,mode:'light'}
+        return <ThemeComponent settings={settings}>
+          <Outlet/>
+        </ThemeComponent>
+      }}
+    </SettingsConsumer>
+    </SettingsProvider>)
+}
 
 
 const ApplicationRoutes = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route index path='/' element={<Homepage/>}/>
-       <Route path='/login' element={<LoginPage/>}/>
-       <Route path="/management" element={<UserLayout/>}>
-         <Route path='/management/dashboard' element={<Dashboard/>}/>
-         <Route path="/management/account-settings" element={<AccountSettings/>}/> 
-         <Route path="/management/icons" element={<Icons/>}/> 
-         <Route path="/management/cards" element={<CardBasic/>}/> 
-         <Route path="/management/tables" element={<MUITable/>}/> 
-         <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
-         <Route path="/management/create-blog" element={<CreateBlog/>}/> 
-       </Route>
-       <Route path='/user'>
-        <Route path='/user/register-artist' element={<ArtistRegistration />} />
-        <Route path='/user/profile' element={<UserProfile />} loader={getUserProfile}/>
-       </Route>
-       <Route path='/*' element={<Error404/>}/>
+      {/* Normal component */}
+      <Route element={<NormalComponents/>}>
+        <Route index path='/' element={<Homepage/>}/>
+        <Route path='/login' element={<LoginPage/>}/>
+        <Route path='/user'>
+          <Route path='/user/register-artist' element={<ArtistRegistration />} />
+          <Route path='/user/profile' element={<UserProfile />} loader={getUserProfile}/>
+        </Route>
+        <Route path='/*' element={<Error404/>}/>
+      </Route>
+
+      {/* Dashboard component */}
+      <Route element={<DashboardComponents/>}>
+        <Route path="/management" element={<UserLayout/>}>
+          <Route path='/management/dashboard' element={<Dashboard/>}/>
+          <Route path="/management/account-settings" element={<AccountSettings/>}/> 
+          <Route path="/management/icons" element={<Icons/>}/> 
+          <Route path="/management/cards" element={<CardBasic/>}/> 
+          <Route path="/management/tables" element={<MUITable/>}/> 
+          <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
+          <Route path="/management/create-blog" element={<CreateBlog/>}/> 
+        </Route>
+      </Route>
     </Route>
   )
 )
+
 
 export default ApplicationRoutes
