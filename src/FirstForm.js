@@ -1,5 +1,5 @@
 import React from "react";
-import Artist from "./Images/artist.jpg";
+import Artist from "./images/artist.jpg";
 import "./styles/firstForm.css"
 
 const FirstForm = ({ formData, setFormData }) => {
