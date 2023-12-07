@@ -6,8 +6,11 @@ import SecondForm from "SecondForm";
 import ThirdForm from "./ThirdForm"
 import FourthForm from "./FourthForm";
 import FifthForm from "FifthForm";
+<<<<<<< HEAD
 import Preview from "Preview";
 import "./styles/wizardForm.css";
+=======
+>>>>>>> 512e5a7 (design wizard form ui)
 
 const WizardForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -15,6 +18,7 @@ const WizardForm = ({ onSubmit }) => {
     email: "",
     phoneNumber: "",
     address: "",
+<<<<<<< HEAD
     currentLocation:{},
     proffesion:[],
     place:[],    
@@ -22,6 +26,11 @@ const WizardForm = ({ onSubmit }) => {
 
   console.log("check form data", formData)
 
+=======
+    currentLocation:{}
+  });
+
+>>>>>>> 512e5a7 (design wizard form ui)
   const nextButtonStyle = {    
     color : "#fff",
     backgroundColor : "#8C6A54",
@@ -57,10 +66,13 @@ const WizardForm = ({ onSubmit }) => {
      { name: "Step 5",
      component: <FifthForm formData={formData} setFormData={setFormData} />
      },
+<<<<<<< HEAD
      {
       name : "Step 6",
       component: <Preview formData={formData} setFormData={setFormData} />
      }
+=======
+>>>>>>> 512e5a7 (design wizard form ui)
   ];
 
   return (
@@ -69,7 +81,11 @@ const WizardForm = ({ onSubmit }) => {
         <div className="row">
           <div className="col-md-12 mx-auto">
             <MultiStep 
+<<<<<<< HEAD
             activeStep={0} 
+=======
+            activeStep={2} 
+>>>>>>> 512e5a7 (design wizard form ui)
             prevButton={{title: 'Back',style:backButtonStyle}}
             nextButton={{title: 'Next',style:nextButtonStyle}}
             steps={steps} onSubmit={onSubmit} 
@@ -81,5 +97,9 @@ const WizardForm = ({ onSubmit }) => {
   );
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 512e5a7 (design wizard form ui)
 
 export default WizardForm;

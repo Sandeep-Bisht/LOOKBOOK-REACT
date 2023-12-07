@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
+=======
+import { width } from "@mui/system";
+import React, { useState, useEffect } from "react";
+import { useJsApiLoader, GoogleMap, MarkerF } from "@react-google-maps/api";
+>>>>>>> 512e5a7 (design wizard form ui)
 import "styles/fifthForm.css";
 
 const FifthForm = ({ formData, setFormData }) => {
   const [currentLocation, setCurrentLocation] = useState(null);
+<<<<<<< HEAD
   const [address, setAddress] = useState("");
   const [selectedMapAddress, setSelectedMapAddress] = useState(""); // new state variable
 
@@ -85,6 +92,39 @@ const FifthForm = ({ formData, setFormData }) => {
   };
 
 
+=======
+
+  const { isLoaded } = useJsApiLoader({
+    id:'google-map-script',
+    googleMapsApiKey:"AIzaSyDiCaUv3ZKC-Zlo0Jjt3_AJ6Obs2vFc6w0",
+  })
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        setCurrentLocation({ lat: latitude, lng: longitude });
+        setFormData({ lat: latitude, lng: longitude })
+      });
+    }
+  }, []);
+  console.log(currentLocation, "userLocation userLocation");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, email: e.target.value });
+  };
+
+  const mapStyles = {
+    height: "250px",
+    width: "100%",
+    borderRadius: "15px"
+  };
+
+  const defaultCenter = {
+    lat: 30, // You'll update this with your current location
+    lng: 70, // You'll update this with your current location
+  };
+>>>>>>> 512e5a7 (design wizard form ui)
 
   return (
     <section className="fifthForm-wrapper">
@@ -92,7 +132,14 @@ const FifthForm = ({ formData, setFormData }) => {
         <div className="row">
           <div className="col-md-12 form-heading">
             <h3>Where's your place located?</h3>
+<<<<<<< HEAD
             <span>Your address is only shared with guests after they’ve made a reservation.</span>
+=======
+            <span>
+              Your address is only shared with guests after they’ve made a
+              reservation.
+            </span>
+>>>>>>> 512e5a7 (design wizard form ui)
           </div>
         </div>
 
@@ -101,6 +148,7 @@ const FifthForm = ({ formData, setFormData }) => {
             <div className="row">
               <div className="col-md-7 mx-auto">
                 <div className="map-card">
+<<<<<<< HEAD
                   <PlacesAutocomplete value={address} onChange={setAddress} onSelect={handleSelect}>
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                       <div>
@@ -144,6 +192,38 @@ const FifthForm = ({ formData, setFormData }) => {
                   <button className="btn btn-primary" onClick={handleUseCurrentLocation}>
                     Use Current Location
                   </button>
+=======
+                  {/* <LoadScript googleMapsApiKey="AIzaSyDiCaUv3ZKC-Zlo0Jjt3_AJ6Obs2vFc6w0"> */}
+                  {isLoaded ? 
+                    <GoogleMap
+                      mapContainerStyle={mapStyles}
+                      zoom={13}
+                      center={currentLocation || defaultCenter}
+                      options={{
+                        zoomControl: false, // Disable the zoom control
+                        mapTypeControl: false, // Disable the map type control
+                        scaleControl: false, // Disable the scale control
+                        streetViewControl: false, // Disable the street view control
+                        fullscreenControl: false, // Disable the fullscreen control
+                      }}
+                    >
+                      {currentLocation && <MarkerF position={currentLocation} />}
+                    </GoogleMap>
+                    : 
+                    "Loading.."}
+                  {/* </LoadScript> */}
+
+                  <div className="card-field">
+                    <input
+                      className="form-control"
+                      type="name"
+                      placeholder="Enter your address"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
+                  </div>
+>>>>>>> 512e5a7 (design wizard form ui)
                 </div>
               </div>
             </div>

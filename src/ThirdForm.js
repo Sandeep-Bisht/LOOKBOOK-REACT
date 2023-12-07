@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+import React from "react";
+>>>>>>> 512e5a7 (design wizard form ui)
 import { AiOutlineHome } from "react-icons/ai";
 import "styles/thirdForm.css";
 
 const ThirdForm =  ({ formData, setFormData }) => {
+<<<<<<< HEAD
 
   const [artistArray] = useState([])
 
@@ -22,6 +27,8 @@ const ThirdForm =  ({ formData, setFormData }) => {
 
   
 
+=======
+>>>>>>> 512e5a7 (design wizard form ui)
   return (
     <section className="thirdform-wrapper">
       <div className="container">
@@ -36,29 +43,49 @@ const ThirdForm =  ({ formData, setFormData }) => {
           <div className="col-md-7 mx-auto">
             <div className="row">
               <div className="col-md-4">
+<<<<<<< HEAD
                 <div className="artist-card"  onClick={(e)=> handleChange("Hair")}>
                   <div>
                     <AiOutlineHome />
                   </div>
                   <div >
+=======
+                <div className="artist-card">
+                  <div>
+                    <AiOutlineHome />
+                  </div>
+                  <div>
+>>>>>>> 512e5a7 (design wizard form ui)
                     <span>Hair</span>
                   </div>
                 </div>
               </div>
 
               <div className="col-md-4">
+<<<<<<< HEAD
                 <div className="artist-card"  onClick={(e)=> handleChange("MakeUp")}>
                   <div>
                     <AiOutlineHome />
                   </div>
                   <div >
+=======
+                <div className="artist-card">
+                  <div>
+                    <AiOutlineHome />
+                  </div>
+                  <div>
+>>>>>>> 512e5a7 (design wizard form ui)
                     <span>Make-up</span>
                   </div>
                 </div>
               </div>
 
               <div className="col-md-4">
+<<<<<<< HEAD
                 <div className="artist-card"  onClick={(e)=> handleChange("Dressing")}>
+=======
+                <div className="artist-card">
+>>>>>>> 512e5a7 (design wizard form ui)
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -69,7 +96,11 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
+<<<<<<< HEAD
                 <div className="artist-card"  onClick={(e)=> handleChange("Tattos")}>
+=======
+                <div className="artist-card">
+>>>>>>> 512e5a7 (design wizard form ui)
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -80,7 +111,11 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
+<<<<<<< HEAD
                 <div className="artist-card"  onClick={(e)=> handleChange("Message")}>
+=======
+                <div className="artist-card">
+>>>>>>> 512e5a7 (design wizard form ui)
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -91,7 +126,11 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
+<<<<<<< HEAD
                 <div className="artist-card"  onClick={(e)=> handleChange("Cabin")}>
+=======
+                <div className="artist-card">
+>>>>>>> 512e5a7 (design wizard form ui)
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -102,7 +141,11 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
+<<<<<<< HEAD
                 <div className="artist-card"  onClick={(e)=> handleChange("Potraits")}>
+=======
+                <div className="artist-card">
+>>>>>>> 512e5a7 (design wizard form ui)
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -113,7 +156,11 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
+<<<<<<< HEAD
                 <div className="artist-card"  onClick={(e)=> handleChange("NailArt")}>
+=======
+                <div className="artist-card">
+>>>>>>> 512e5a7 (design wizard form ui)
                   <div>
                     <AiOutlineHome />
                   </div>
@@ -124,7 +171,11 @@ const ThirdForm =  ({ formData, setFormData }) => {
               </div>
 
               <div className="col-md-4">
+<<<<<<< HEAD
                 <div className="artist-card"  onClick={(e)=> handleChange("Grooming")}>
+=======
+                <div className="artist-card">
+>>>>>>> 512e5a7 (design wizard form ui)
                   <div>
                     <AiOutlineHome />
                   </div>

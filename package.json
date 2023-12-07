@@ -12,6 +12,11 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.1",
+<<<<<<< HEAD
+=======
+    "formik": "^2.4.5",
+    "leaflet": "^1.9.4",
+>>>>>>> 512e5a7 (design wizard form ui)
     "mdi-material-ui": "^7.7.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
@@ -19,6 +24,10 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.47.0",
     "react-icons": "^4.11.0",
+<<<<<<< HEAD
+=======
+    "react-leaflet": "^4.2.1",
+>>>>>>> 512e5a7 (design wizard form ui)
     "react-multistep": "^5.5.9",
     "react-otp-input": "^3.1.0",
     "react-perfect-scrollbar": "^1.5.8",
