@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
@@ -80,19 +79,3 @@ const SecondForm = ({ formData, setFormData }) => {
 };
 
 export default SecondForm;
-=======
-import React from 'react'
-
-const SecondForm = () => {
-  return (
-    <form >
-    <label>
-      email:
-      <input type="text" value="" />
-    </label>
-  </form>
-  )
-}
-
-export default SecondForm
->>>>>>> b71d306 (resolve conflict)
