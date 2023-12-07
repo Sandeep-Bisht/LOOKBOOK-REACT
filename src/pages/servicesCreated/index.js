@@ -54,9 +54,6 @@ const ServicesForm = () => {
             marginTop: "10px"
           }}
         >
-          <Link href='/'>
-            Add
-          </Link>
         </Box>
       </Grid>
       <CardContent>

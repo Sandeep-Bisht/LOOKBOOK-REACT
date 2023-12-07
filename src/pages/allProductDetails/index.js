@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 // ** MUI Imports
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
@@ -11,70 +11,62 @@ import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
+import { useLoaderData } from "react-router-dom";
 import Grid from '@mui/material/Grid'
 import axios from 'axios'
+import { CiEdit } from "react-icons/ci";
+import { MdDeleteForever } from "react-icons/md";
+import { useNavigate, } from 'react-router-dom'
+import { Button } from '@mui/material'
+import { MdAdd } from "react-icons/md";
 
-function createData(name, code, population, size) {
-  const density = population / size
-
-  return { name, code, population, size, density }
-}
-
-const AllServicesDetails = () => {
+const AllProductsDetails = () => {
   // ** States
+
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [rows, setRows] = useState([])
+  const allProducts = useLoaderData();
 
-  const baseURL= process.env.REACT_APP_APIURL
+  const baseURL = process.env.REACT_APP_APIURL
 
-  useEffect(()=>{
-    allServicesDetails();
-  },[])
+  const navigate=useNavigate()
 
+  useEffect(() => {
+    allProductsDetails();
+  }, [allProducts])
 
   const columns = [
-    { id: 'Service', label: 'Service', minWidth: 170 },
-    { id: 'Icon', label: 'Icon', minWidth: 170 },
-    { id: 'Images', label: 'Images', minWidth: 170 },
-  
+    { id: 'title', label: 'Title', minWidth: 170 },
+    { id: 'icon', label: 'Icon', minWidth: 170 },
+    { id: 'image', label: 'Images', minWidth: 170 },
+    { id: 'action', label: 'Action', minWidth: 170 },
   ]
 
-  let rows = [
-    createData('India', 'IN', 1324171354, 3287263),
-    createData('China', 'CN', 1403500365, 9596961),
-    createData('Italy', 'IT', 60483973, 301340),
-    createData('United States', 'US', 327167434, 9833520),
-    createData('Canada', 'CA', 37602103, 9984670),
-    createData('Australia', 'AU', 25475400, 7692024),
-    createData('Germany', 'DE', 83019200, 357578),
-    createData('Ireland', 'IE', 4857000, 70273),
-    createData('Mexico', 'MX', 126577691, 1972550),
-    createData('Japan', 'JP', 126317000, 377973),
-    createData('France', 'FR', 67022000, 640679),
-    createData('United Kingdom', 'GB', 67545757, 242495),
-    createData('Russia', 'RU', 146793744, 17098246),
-    createData('Nigeria', 'NG', 200962417, 923768),
-    createData('Brazil', 'BR', 210147125, 8515767)
-  ]
-
-  const allServicesDetails = async () => {
+  const allProductsDetails = async () => {
     try {
-      const response = await axios.get(`${baseURL}/product/all_products`);
-      if (response.data) {
-        const servicesData = response.data;
-        const rows = servicesData.map((service) => {
-          const rowData = createData(service); // Pass service object to createData function
-          return rowData;
-        });
-        return rows;
+      if (allProducts && allProducts.length>0) {
+        const productData = allProducts;
+        const formattedData = productData.map(product => ({
+          _id:product._id,
+          product: product.title,
+          icon: {
+            thumbnailUrl: product.icon?.thumbnailUrl || '',
+            name: product.icon?.name || ''
+          },
+          image: {
+            thumbnailUrl: product.image?.thumbnailUrl || '',
+            name: product.image?.name || ''
+          }
+        }));
+        setRows(formattedData || []);
       }
     } catch (error) {
-      console.error("Error fetching services:", error);
+      return error.message || "An error occured while trying to get all product."
       // Handle the error appropriately
     }
   };
   
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
@@ -84,25 +76,29 @@ const AllServicesDetails = () => {
     setPage(0)
   }
 
+  const editHandler = (_id)=>{
+    navigate(`/management/products/${_id}`)
+  }
+
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-              <Grid item xs={12}>
-              <Box
-                sx={{
-                  gap: 5,
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  justifyContent: 'end',
-                  marginRight: "20px",
-                  marginTop:"10px"
-                }}
-              >
-                <Link  href='/management/products/create'>
-                  Add
-                </Link>
-              </Box>
-            </Grid>
+      <Grid item xs={12}>
+        <Box
+          sx={{
+            gap: 5,
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'end',
+            marginRight: "20px",
+            marginTop: "10px"
+          }}
+        >
+          <Button type='submit' variant='contained' size='large' onClick={()=>navigate("/management/products/create")}>
+          <MdAdd className="me-2"/> Add
+          </Button>
+        </Box>
+      </Grid>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label='sticky table'>
           <TableHead>
@@ -115,22 +111,41 @@ const AllServicesDetails = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
-              return (
-                <TableRow hover role='checkbox' tabIndex={-1} key={row.code}>
-                  {columns.map(column => {
-                    const value = row[column.id]
+  {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row =>
+  {
+    return (
+    <TableRow hover role='checkbox' tabIndex={-1} key={row._id}>
+      {columns.map(column => (
+        <TableCell key={column.id} align={column.align}>
+          {column.id === "icon" ? (
+            <div>
+              <img src={row.icon?.thumbnailUrl} alt="Icon" style={{ height: "80px", width: "80px" }} />
+            </div>
+          ) : column.id === "image" ? (
+            <div>
+              <img src={row.image?.thumbnailUrl} alt="Image" style={{ height: "80px", width: "80px" }} />
+            </div>
+          ) : column.id === "title" ? (
+            row.product
+          ) : column.id === "action" ? (
+            <div className='d-flex'>
+              <div onClick={() => editHandler(row?._id)}> {/* Assuming editHandler takes an ID */}
+                <CiEdit />
+              </div>
+              <div className='ms-3'>
+                <MdDeleteForever />
+              </div>
+            </div>
+          ) : (
+            row[column.id]
+          )}
+        </TableCell>
+      ))}
+    </TableRow>
+  )})}
+</TableBody>
 
-                    return (
-                      <TableCell key={column.id} align={column.align}>
-                        {column.format && typeof value === 'number' ? column.format(value) : value}
-                      </TableCell>
-                    )
-                  })}
-                </TableRow>
-              )
-            })}
-          </TableBody>
+
         </Table>
       </TableContainer>
       <TablePagination
@@ -146,4 +161,4 @@ const AllServicesDetails = () => {
   )
 }
 
-export default AllServicesDetails
+export default AllProductsDetails

@@ -13,6 +13,8 @@ import { Outlet, Route, createBrowserRouter, createRoutesFromElements } from 're
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/UserProfile'
 import { getUserProfile } from 'configs/initialapis'
+import {allServicesDetails} from 'configs/initialapis'
+import {allProductsDetails} from 'configs/initialapis'
 import CreateBlog from 'pages/Blog/createBlog'
 import { SettingsConsumer } from '@core/context/settingsContext'
 import { SettingsProvider } from '@core/context/settingsContext'
@@ -20,6 +22,11 @@ import ThemeComponent from '@core/theme/ThemeComponent'
 import ArtistRegistration from 'pages/become-a-artist'
 import ArtistCreation from 'pages/become-a-artist/artist'
 import AboutYou from 'pages/become-a-artist/about'
+import AllServicesDetails from 'pages/allServicesDetails'
+import AllProdutsDetails from 'pages/allProductDetails'
+import ProductForm from 'pages/products'
+import UpdateService from 'pages/updateService/updateService'
+import updateProducts from 'pages/updateProduct'
 
 
 const DashboardComponents = () =>{
@@ -78,10 +85,12 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/management/tables" element={<MUITable/>}/> 
           <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
           <Route path="/management/create-blog" element={<CreateBlog/>}/> 
-        <Route path="/management/services" element={<AllServicesDetails/>}/>
+        <Route path="/management/services" element={<AllServicesDetails/>} loader={allServicesDetails}/>
         <Route path="/management/services/create" element={<Services/>}/>
-        <Route path="/management/product" element={<AllProdutsDetails/>}/>
-        <Route path="/management/product/create" element={<ProductForm/>}/>
+        <Route path="/management/products" element={<AllProdutsDetails/>} loader={allProductsDetails}/>
+        <Route path="/management/products/create" element={<ProductForm/>}/>
+        <Route path="/management/services/:_id" element={<UpdateService/>}/>
+        <Route path="/management/products/:_id" element={<updateProducts/>}/>
         </Route>
       </Route>
     </Route>
