@@ -10,13 +10,15 @@ import MUITable from 'pages/tables'
 import React from 'react'
 import { Outlet, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
-import ArtistRegistration from 'pages/artist-registration'
 import UserProfile from 'pages/UserProfile'
 import { getUserProfile } from 'configs/initialapis'
 import CreateBlog from 'pages/Blog/createBlog'
 import { SettingsConsumer } from '@core/context/settingsContext'
 import { SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
+import ArtistRegistration from 'pages/become-a-artist'
+import ArtistCreation from 'pages/become-a-artist/artist'
+import AboutYou from 'pages/become-a-artist/about'
 
 
 const DashboardComponents = () =>{
@@ -45,6 +47,7 @@ const NormalComponents = () =>{
 }
 
 
+
 const ApplicationRoutes = createBrowserRouter(
   createRoutesFromElements(
     <Route>
@@ -53,8 +56,13 @@ const ApplicationRoutes = createBrowserRouter(
         <Route index path='/' element={<Homepage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/user'>
-          <Route path='/user/register-artist' element={<ArtistRegistration />} />
+          {/* <Route path='/user/register-artist' element={<ArtistRegistration />} /> */}
           <Route path='/user/profile' element={<UserProfile />} loader={getUserProfile}/>
+        </Route>
+        
+        <Route path='/become-a-artist' element={<ArtistCreation/>} loader={getUserProfile}>
+          <Route path='/become-a-artist' element={<ArtistRegistration />} />
+          <Route path='/become-a-artist/about-you' element={<AboutYou />} />
         </Route>
         <Route path='/*' element={<Error404/>}/>
       </Route>
