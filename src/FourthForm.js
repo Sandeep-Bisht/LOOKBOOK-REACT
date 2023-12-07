@@ -1,13 +1,9 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
-=======
-import React from "react";
->>>>>>> 512e5a7 (design wizard form ui)
 import { AiOutlineHome } from "react-icons/ai";
-import "styles/fourthForm.css";
+import "styles/fourthForm.css"; 
+
 
 const FourthForm = ({ formData, setFormData }) => {
-<<<<<<< HEAD
 
   const [location] = useState([])
 
@@ -25,8 +21,6 @@ const FourthForm = ({ formData, setFormData }) => {
     setFormData({...formData, place : location})
   };
 
-=======
->>>>>>> 512e5a7 (design wizard form ui)
   return (
     <section className="fourthForm-wrapper">
       <div className="container">
@@ -39,11 +33,7 @@ const FourthForm = ({ formData, setFormData }) => {
           <div className="col-md-12">
             <div className="row">
               <div className="col-md-7 mx-auto">
-<<<<<<< HEAD
                 <div className="artist-card" onClick={(e)=> handleChange("Entire-place")}>
-=======
-                <div className="artist-card">
->>>>>>> 512e5a7 (design wizard form ui)
                   <div className="card-body">
                     <h5 class="_6pu6cc">An entire place</h5>
                     <div>
@@ -58,11 +48,7 @@ const FourthForm = ({ formData, setFormData }) => {
 
               <div className="col-md-7 mx-auto">
                 <div className="artist-card">
-<<<<<<< HEAD
                   <div className="card-body" onClick={(e)=> handleChange("Room")}>
-=======
-                  <div className="card-body">
->>>>>>> 512e5a7 (design wizard form ui)
                     <h5 class="_6pu6cc">A room</h5>
                     <div>
                       <span>
@@ -79,11 +65,7 @@ const FourthForm = ({ formData, setFormData }) => {
 
               <div className="col-md-7 mx-auto">
                 <div className="artist-card">
-<<<<<<< HEAD
                   <div className="card-body" onClick={(e)=> handleChange("Shared-room")}>
-=======
-                  <div className="card-body">
->>>>>>> 512e5a7 (design wizard form ui)
                     <h5 class="_6pu6cc">A shared room</h5>
                     <div>
                       <span>

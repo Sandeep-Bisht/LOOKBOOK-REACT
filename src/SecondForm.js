@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
@@ -29,17 +28,8 @@ const SecondForm = ({ formData, setFormData }) => {
       setFormData({ ...formData, email: e.target.value})
     }else if(e.target.name === "phoneNumber"){
     setFormData({ ...formData, phoneNumber : e.target.value });
+    
     }
-=======
-import React from "react";
-import { useForm, Controller } from "react-hook-form";
-
-const SecondForm = ({ formData, setFormData }) => {
-  const { handleSubmit, control, errors } = useForm();
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, email: e.target.value });
->>>>>>> 512e5a7 (design wizard form ui)
   };
   return (
     <>
