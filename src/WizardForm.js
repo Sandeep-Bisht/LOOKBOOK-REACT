@@ -6,6 +6,8 @@ import SecondForm from "SecondForm";
 import ThirdForm from "./ThirdForm"
 import FourthForm from "./FourthForm";
 import FifthForm from "FifthForm";
+import Preview from "Preview";
+import "./styles/wizardForm.css";
 
 const WizardForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -55,6 +57,10 @@ const WizardForm = ({ onSubmit }) => {
      { name: "Step 5",
      component: <FifthForm formData={formData} setFormData={setFormData} />
      },
+     {
+      name : "Step 6",
+      component: <Preview formData={formData} setFormData={setFormData} />
+     }
   ];
 
   return (
@@ -63,7 +69,7 @@ const WizardForm = ({ onSubmit }) => {
         <div className="row">
           <div className="col-md-12 mx-auto">
             <MultiStep 
-            activeStep={2} 
+            activeStep={0} 
             prevButton={{title: 'Back',style:backButtonStyle}}
             nextButton={{title: 'Next',style:nextButtonStyle}}
             steps={steps} onSubmit={onSubmit} 

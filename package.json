@@ -25,6 +25,7 @@
     "react-multistep": "^5.5.9",
     "react-otp-input": "^3.1.0",
     "react-perfect-scrollbar": "^1.5.8",
+    "react-places-autocomplete": "^7.3.0",
     "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
     "react-step-wizard": "^5.3.11",

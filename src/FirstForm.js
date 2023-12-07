@@ -1,16 +1,17 @@
 import React from "react";
 import Artist from "./Images/artist.jpg";
+import "./styles/firstForm.css"
 
 const FirstForm = ({ formData, setFormData }) => {
-  const handleChange = (e) => {
-    setFormData({ ...formData, name: e.target.value });
-  };
+  // const handleChange = (e) => {
+  //   setFormData({ ...formData, name: e.target.value });
+  // };
 
   return (
     <section className="first-form-wrapper">
       <div className="container">
-        <div className="row">
-          <div className="col-md-6" style={{ display: "flex", flexDirection: "column" }}>
+        <div className="row profile-section">
+          <div className="col-md-6">
             <h2>Step 1</h2>
             <p>
               Tell us about your place. In this step, we'll ask you which type of
@@ -18,8 +19,10 @@ const FirstForm = ({ formData, setFormData }) => {
               room. Then let us know the location and how many guests can stay.
             </p>
           </div>
-          <div className="col-md-6" style={{ display: "flex", justifyContent: "center" }}>
+          <div className="col-md-6">
+            <div className="about-wizard-pic">
             <img className="img-fluid" src={Artist} alt="text" />
+          </div>
           </div>
         </div>
       </div>

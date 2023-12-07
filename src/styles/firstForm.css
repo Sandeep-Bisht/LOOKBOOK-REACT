@@ -1,0 +1,13 @@
+
+.first-form-wrapper .profile-section {
+    display: flex;
+    align-items: center;
+}
+
+.first-form-wrapper .about-wizard-pic{
+    padding: 60px 10px 10px 10px;
+}
+
+button:disabled {
+    display: none!important;
+}
