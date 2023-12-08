@@ -27,6 +27,24 @@ const navigation = () => {
       path: '/management/create-blog'
     },
     {
+      sectionTitle: 'Configuration'
+    },
+    {
+      title: 'Services',
+      icon: CreditCardOutline,
+      path: '/management/services'
+    },
+    {
+      title: 'Products',
+      icon: CreditCardOutline,
+      path: '/management/products'
+    },
+    {
+      icon: CubeOutline,
+      title: 'Form Layouts',
+      path: '/management/form-layouts'
+    },
+    {
       sectionTitle: 'User Interface'
     },
     {
