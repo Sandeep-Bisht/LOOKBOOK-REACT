@@ -9,6 +9,7 @@ export const getUserProfile = async () =>{
         return error.message || "An error occured while trying to get user profile."
     }
 } 
+
 export const allServicesDetails = async () => {
     try {
       const response = await axiosAuth.get('/service/all_services');
@@ -18,6 +19,7 @@ export const allServicesDetails = async () => {
       // Handle the error appropriately
     }
   };  
+  
   export const allProductsDetails = async () => {
     try {
       const response = await axiosAuth.get('/product/all_products');
@@ -27,3 +29,12 @@ export const allServicesDetails = async () => {
       // Handle the error appropriately
     }
   };
+export const getAllBlog = async () =>{
+    try{
+        const response = await axiosAuth.get('/blog/all_blogs');
+        return response.data.data;
+    }
+    catch(error){
+        return error.message || "An error occured while trying to get user profile."
+    }
+}

@@ -4,7 +4,7 @@ import CardBasic from 'pages/cards'
 import Dashboard from 'pages/dashboard'
 import Error404 from 'pages/error/404'
 import FormLayouts from 'pages/form-layouts'
-import Icons from 'pages/icons'
+// import Icons from 'pages/icons'
 import LoginPage from 'pages/login'
 import MUITable from 'pages/tables'
 import Services from 'pages/servicesCreated'
@@ -27,6 +27,8 @@ import AllProdutsDetails from 'pages/allProductDetails'
 import ProductForm from 'pages/products'
 import UpdateService from 'pages/updateService/updateService'
 import updateProducts from 'pages/updateProduct'
+import BlogList from 'pages/Blog/blogList'
+import { getAllBlog } from 'configs/initialapis'
 
 
 const DashboardComponents = () =>{
@@ -80,11 +82,12 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management" element={<UserLayout/>}>
           <Route path='/management/dashboard' element={<Dashboard/>}/>
           <Route path="/management/account-settings" element={<AccountSettings/>}/> 
-          <Route path="/management/icons" element={<Icons/>}/> 
           <Route path="/management/cards" element={<CardBasic/>}/> 
           <Route path="/management/tables" element={<MUITable/>}/> 
           <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
           <Route path="/management/create-blog" element={<CreateBlog/>}/> 
+
+         <Route path="/management/bloglist" element={<BlogList/>} loader={getAllBlog}/>
         <Route path="/management/services" element={<AllServicesDetails/>} loader={allServicesDetails}/>
         <Route path="/management/services/create" element={<Services/>}/>
         <Route path="/management/products" element={<AllProdutsDetails/>} loader={allProductsDetails}/>
