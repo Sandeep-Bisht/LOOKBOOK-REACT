@@ -29,7 +29,6 @@ export const allServicesDetails = async () => {
       // Handle the error appropriately
     }
   };
-   
 export const getAllBlog = async () =>{
     try{
         const response = await axiosAuth.get('/blog/all_blogs');
