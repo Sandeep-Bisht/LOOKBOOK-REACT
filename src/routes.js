@@ -26,7 +26,7 @@ import AllServicesDetails from 'pages/allServicesDetails'
 import AllProdutsDetails from 'pages/allProductDetails'
 import ProductForm from 'pages/products'
 import UpdateService from 'pages/updateService/updateService'
-import updateProducts from 'pages/updateProduct'
+import UpdateProducts from 'pages/updateProduct'
 import BlogList from 'pages/Blog/blogList'
 import { getAllBlog } from 'configs/initialapis'
 import AboutSkills from "pages/become-a-artist/aboutSkills";
@@ -107,7 +107,7 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/products" element={<AllProdutsDetails/>} loader={allProductsDetails}/>
         <Route path="/management/products/create" element={<ProductForm/>}/>
         <Route path="/management/services/:_id" element={<UpdateService/>}/>
-        <Route path="/management/products/:_id" element={<updateProducts/>}/>
+        <Route path="/management/products/:_id" element={<UpdateProducts/>}/>
         </Route>
       </Route>
     </Route>

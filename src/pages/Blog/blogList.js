@@ -14,6 +14,9 @@ import Grid from '@mui/material/Grid'
 import { useLoaderData } from 'react-router-dom'
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
+import { MdAdd } from "react-icons/md";
+import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import { AiOutlineSafety } from 'react-icons/ai';
 
 const BASE_URL = process.env.REACT_APP_APIURL;
@@ -26,7 +29,7 @@ const BlogList = () => {
 
     const all_blogs=useLoaderData()
     console.log(all_blogs,"check data");
-
+    const navigate=useNavigate()
     useEffect(() => {
       allServicesDetails();
     }, [all_blogs])
@@ -35,7 +38,7 @@ const BlogList = () => {
       { id: 'title', label: 'Title', minWidth: 170 },
       { id: 'featuredImage', label: 'Images', minWidth: 170 },
       { id: 'description', label: 'Description', minWidth: 170 },
-      { id:'action', labe: 'Action', minWidth:170 },
+      { id:'action', label: 'Action', minWidth:170 },
     ]
   
     const allServicesDetails = async () => {
@@ -80,9 +83,9 @@ const BlogList = () => {
               marginTop: "10px"
             }}
           >
-            <Link href='/management/services/create'>
-              Add
-            </Link>
+            <Button type='submit' variant='contained' size='large' onClick={()=>navigate("/management/create-blog")}>
+          <MdAdd className="me-2"/> Add
+          </Button>
           </Box>
         </Grid>
         <TableContainer sx={{ maxHeight: 440 }}>
@@ -101,7 +104,9 @@ const BlogList = () => {
       <TableRow hover role='checkbox' tabIndex={-1} key={row._id}>
         {columns.map(column => (
           <TableCell key={column.id} align={column.align}>
+            
             {column.id == "featuredImage" ? (
+                
               <div>
                 <img src={row.featuredImage?.thumbnailUrl} alt="featuredImage" style={{ height: "100px", width: "100px" }} />
               </div>
@@ -112,7 +117,7 @@ const BlogList = () => {
               ) 
               :
             column.id == "action" ? (
-              <>
+              
               <div className='d-flex'>
               <div><CiEdit/>
               </div>
@@ -120,7 +125,7 @@ const BlogList = () => {
               <MdDeleteForever/>
               </div>
               </div>
-              </>
+            
             ) :
             (
               row[column.id]

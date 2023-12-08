@@ -129,10 +129,10 @@ const AllProductsDetails = () => {
             row.product
           ) : column.id === "action" ? (
             <div className='d-flex'>
-              <div onClick={() => editHandler(row?._id)}> {/* Assuming editHandler takes an ID */}
+              <div className="fs-4 text-black" onClick={() => editHandler(row?._id)}> {/* Assuming editHandler takes an ID */}
                 <CiEdit />
               </div>
-              <div className='ms-3'>
+              <div className='ms-3 fs-4 text-black mb-6'>
                 <MdDeleteForever />
               </div>
             </div>
