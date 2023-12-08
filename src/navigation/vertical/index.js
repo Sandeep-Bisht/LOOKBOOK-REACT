@@ -14,19 +14,6 @@ const navigation = () => {
       path: '/management/dashboard'
     },
     {
-      title: 'Account Settings',
-      icon: AccountCogOutline,
-      path: '/management/account-settings'
-    },
-    {
-      sectionTitle: 'Pages'
-    },
-    {
-      title: 'Blog',
-      icon: Login,
-      path: '/management/create-blog'
-    },
-    {
       sectionTitle: 'Configuration'
     },
     {
@@ -40,23 +27,10 @@ const navigation = () => {
       path: '/management/products'
     },
     {
-      icon: CubeOutline,
-      title: 'Form Layouts',
-      path: '/management/form-layouts'
+      title: 'Blog',
+      icon: Login,
+      path: '/management/create-blog'
     },
-    {
-      sectionTitle: 'User Interface'
-    },
-    {
-      title: 'Cards',
-      icon: CreditCardOutline,
-      path: '/management/cards'
-    },
-    {
-      icon: CubeOutline,
-      title: 'Form Layouts',
-      path: '/management/form-layouts'
-    }
   ]
 }
 
