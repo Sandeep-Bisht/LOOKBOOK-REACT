@@ -4,7 +4,7 @@ import CardBasic from 'pages/cards'
 import Dashboard from 'pages/dashboard'
 import Error404 from 'pages/error/404'
 import FormLayouts from 'pages/form-layouts'
-import Icons from 'pages/icons'
+// import Icons from 'pages/icons'
 import LoginPage from 'pages/login'
 import MUITable from 'pages/tables'
 import Services from 'pages/servicesCreated'
@@ -16,6 +16,7 @@ import { getUserProfile } from 'configs/initialapis'
 import {allServicesDetails} from 'configs/initialapis'
 import {allProductsDetails} from 'configs/initialapis'
 import CreateBlog from 'pages/Blog/createBlog'
+<<<<<<< HEAD
 import { SettingsConsumer } from '@core/context/settingsContext'
 import { SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -54,11 +55,16 @@ const NormalComponents = () =>{
     </SettingsProvider>)
 }
 
+=======
+import BlogList from 'pages/Blog/blogList'
+import { getAllBlog } from 'configs/initialapis'
+>>>>>>> create form and intigrate api on blog page
 
 
 const ApplicationRoutes = createBrowserRouter(
   createRoutesFromElements(
     <Route>
+<<<<<<< HEAD
       {/* Normal component */}
       <Route element={<NormalComponents/>}>
         <Route index path='/' element={<Homepage/>}/>
@@ -93,6 +99,25 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/products/:_id" element={<updateProducts/>}/>
         </Route>
       </Route>
+=======
+      <Route index path='/' element={<Homepage/>}/>
+       <Route path='/login' element={<LoginPage/>}/>
+       <Route path="/management" element={<UserLayout/>}>
+         <Route path='/management/dashboard' element={<Dashboard/>}/>
+         <Route path="/management/account-settings" element={<AccountSettings/>}/> 
+         {/* <Route path="/management/icons" element={<Icons/>}/>  */}
+         <Route path="/management/cards" element={<CardBasic/>}/> 
+         <Route path="/management/tables" element={<MUITable/>}/> 
+         <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
+         <Route path="/management/create-blog" element={<CreateBlog/>}/> 
+         <Route path="/management/bloglist" element={<BlogList/>} loader={getAllBlog}/>
+       </Route>
+       <Route path='/user'>
+        <Route path='/user/register-artist' element={<ArtistRegistration />} />
+        <Route path='/user/profile' element={<UserProfile />} loader={getUserProfile}/>
+       </Route>
+       <Route path='/*' element={<Error404/>}/>
+>>>>>>> create form and intigrate api on blog page
     </Route>
   )
 )

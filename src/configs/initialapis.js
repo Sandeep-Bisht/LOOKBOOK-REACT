@@ -8,6 +8,7 @@ export const getUserProfile = async () =>{
     catch(error){
         return error.message || "An error occured while trying to get user profile."
     }
+<<<<<<< HEAD
 } 
 export const allServicesDetails = async () => {
     try {
@@ -27,3 +28,15 @@ export const allServicesDetails = async () => {
       // Handle the error appropriately
     }
   };
+=======
+}   
+export const getAllBlog = async () =>{
+    try{
+        const response = await axiosAuth.get('/blog/all_blogs');
+        return response.data.data;
+    }
+    catch(error){
+        return error.message || "An error occured while trying to get user profile."
+    }
+}
+>>>>>>> create form and intigrate api on blog page
