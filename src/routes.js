@@ -82,7 +82,6 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management" element={<UserLayout/>}>
           <Route path='/management/dashboard' element={<Dashboard/>}/>
           <Route path="/management/account-settings" element={<AccountSettings/>}/> 
-          <Route path="/management/icons" element={<Icons/>}/> 
           <Route path="/management/cards" element={<CardBasic/>}/> 
           <Route path="/management/tables" element={<MUITable/>}/> 
           <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
