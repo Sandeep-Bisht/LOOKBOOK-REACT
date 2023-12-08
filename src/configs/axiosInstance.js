@@ -6,7 +6,6 @@ const baseURL = process.env.REACT_APP_APIURL;
 
 const axiosAuth = axios.create({
   baseURL: baseURL, // Replace with your API base URL
-  timeout: 5000, // Set a timeout for requests (optional)
 });
 
 axiosAuth.interceptors.request.use(
@@ -28,7 +27,6 @@ axiosAuth.interceptors.request.use(
 
 const axiosLocal = axios.create({
     baseURL: baseURL, // Replace with your API base URL
-    timeout: 5000, // Set a timeout for requests (optional)
   });
 
 
