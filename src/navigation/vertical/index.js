@@ -24,7 +24,7 @@ const navigation = () => {
     {
       title: 'Blog',
       icon: Login,
-      path: '/management/create-blog'
+      path: '/management/blogList'
     },
     {
       sectionTitle: 'Configuration'

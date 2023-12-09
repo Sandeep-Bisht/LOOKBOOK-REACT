@@ -29,7 +29,7 @@ const ServicesForm = () => {
       } else {
         formData.append(item, data[item]);
       }
-  })
+  }) 
   try {
     const response = await axiosAuth.post(`${BASE_URL}/service/services-create`,formData)
   }
