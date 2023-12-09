@@ -1,0 +1,122 @@
+/* Header */
+
+.artist-header{
+    background-color: #8C6A54;
+}
+
+.artist-header .became-artist{
+    margin-bottom:  15px;
+    padding: 15px 0px 15px 0px;
+}
+
+.artist-header .save-exit-button {    
+    display: flex;
+    justify-content: end;
+}
+
+.artist-header .save-exit-button button {
+    background-color: #ffffff;
+    border-radius: 15px;
+
+}
+
+
+/*  */
+
+.artist-registration .artist-landing-page {
+align-items: center;
+}
+
+.artist-registration .get-started-div {
+    display: flex;
+    justify-content: end;
+    
+
+}
+
+.artist-registration .artist-steps-heading {
+    padding: 30px 0px 30px 10px;
+
+}
+
+
+
+/* Button */
+
+.my-componenet-button .get-started-button {
+padding: 12px 24px !important;
+background-color: #8C6A54;
+border-radius: 25px;
+    border: none;
+    color: #ffffff;
+}
+
+
+/* Footer */
+
+.footer .footer-line {
+    height: 3px;
+   background-color: #8C6A54;
+   margin-bottom: 20px;
+}
+
+.footer .footer-next-button{
+    display: flex;
+    justify-content: end;
+    padding-right: 43px;
+}
+
+
+/* About */
+
+.about .artist-card {
+    border : 2px solid rgb(206, 202, 202);
+    font-weight: 400;
+    padding : 10px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 26px;
+    cursor: pointer;
+    color: #8C6A54;
+}
+
+.about .thirdform-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.about .artist-card:hover {
+    border:2px solid #8C6A54; /* Darken the border color on hover */
+  }
+
+
+  /* describe yourself */
+
+  .describe-yourself .artist-card{
+    border : 1px solid rgb(206, 202, 202);
+    padding : 10px 10px;
+    border-radius: 10px;
+    margin-bottom: 7px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    
+}
+.describe-yourself .artist-card:hover {
+    border:1px solid #8C6A54; /* Darken the border color on hover */
+    background-color: rgb(247, 247, 247)
+}
+
+.describe-yourself h3 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.describe-yourself .artist-card .card-icon {
+   font-size: 30px;
+   padding-right: 10px;
+}
+
+.describe-yourself .artist-card .card-body {
+    padding: 15px 8px 10px 13px;
+}

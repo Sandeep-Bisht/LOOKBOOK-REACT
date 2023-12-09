@@ -29,6 +29,10 @@ import UpdateService from 'pages/updateService/updateService'
 import updateProducts from 'pages/updateProduct'
 import BlogList from 'pages/Blog/blogList'
 import { getAllBlog } from 'configs/initialapis'
+import AboutSkills from "pages/become-a-artist/aboutSkills";
+import DescribeYourself from "pages/become-a-artist/describeYourself";
+import ArtistAddress from "pages/become-a-artist/artistAddress";
+import ArtistGallary from "pages/become-a-artist/artistGallary";
 
 
 const DashboardComponents = () =>{
@@ -56,25 +60,35 @@ const NormalComponents = () =>{
     </SettingsProvider>)
 }
 
-
-
 const ApplicationRoutes = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       {/* Normal component */}
-      <Route element={<NormalComponents/>}>
-        <Route index path='/' element={<Homepage/>}/>
-        <Route path='/login' element={<LoginPage/>}/>
-        <Route path='/user'>
+      <Route element={<NormalComponents />}>
+        <Route index path="/" element={<Homepage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/user">
           {/* <Route path='/user/register-artist' element={<ArtistRegistration />} /> */}
-          <Route path='/user/profile' element={<UserProfile />} loader={getUserProfile}/>
+          <Route
+            path="/user/profile"
+            element={<UserProfile />}
+            loader={getUserProfile}
+          />
         </Route>
-        
-        <Route path='/become-a-artist' element={<ArtistCreation/>} loader={getUserProfile}>
-          <Route path='/become-a-artist' element={<ArtistRegistration />} />
-          <Route path='/become-a-artist/about-you' element={<AboutYou />} />
+
+        <Route
+          path="/become-a-artist"
+          element={<ArtistCreation />}
+          loader={getUserProfile}
+        >
+          <Route path="/become-a-artist" element={<ArtistRegistration />} />
+          <Route path="/become-a-artist/about-your-skills" element={ <AboutSkills />} />
+          <Route path="/become-a-artist/about-you" element={<AboutYou />} />
+          <Route path="/become-a-artist/describe-yourself" element={<DescribeYourself />} />
+          <Route path="/become-a-artist/location" element={<ArtistAddress />} />
+          <Route path="/become-a-artist/insight-your-work" element={<ArtistGallary />} />
         </Route>
-        <Route path='/*' element={<Error404/>}/>
+        <Route path="/*" element={<Error404 />} />
       </Route>
 
       {/* Dashboard component */}
@@ -98,7 +112,6 @@ const ApplicationRoutes = createBrowserRouter(
       </Route>
     </Route>
   )
-)
+);
 
-
-export default ApplicationRoutes
+export default ApplicationRoutes;
