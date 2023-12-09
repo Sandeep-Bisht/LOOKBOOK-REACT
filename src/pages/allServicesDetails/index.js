@@ -78,7 +78,7 @@ const AllServicesDetails = () => {
   }
 
   const editHandler = (_id)=>{
-    navigate(`/management/services/${_id}`)
+    navigate(`/management/services/${_id}`,{state:_id})
   }
 
   return (
@@ -131,10 +131,10 @@ const AllServicesDetails = () => {
             row.service
           ) : column.id === "action" ? (
             <div className='d-flex'>
-              <div onClick={() => editHandler(row?._id)}> {/* Assuming editHandler takes an ID */}
+              <div className="fs-4 text-black" onClick={() => editHandler(row?._id)}> {/* Assuming editHandler takes an ID */}
                 <CiEdit />
               </div>
-              <div className='ms-3'>
+              <div className='ms-3 fs-4 text-black'>
                 <MdDeleteForever />
               </div>
             </div>
