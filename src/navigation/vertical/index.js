@@ -1,5 +1,4 @@
 // ** Icon imports
-import Login from 'mdi-material-ui/Login'
 import CubeOutline from 'mdi-material-ui/CubeOutline'
 import HomeOutline from 'mdi-material-ui/HomeOutline'
 import AccountCogOutline from 'mdi-material-ui/AccountCogOutline'
@@ -12,19 +11,6 @@ const navigation = () => {
       title: 'Dashboard',
       icon: HomeOutline,
       path: '/management/dashboard'
-    },
-    {
-      title: 'Account Settings',
-      icon: AccountCogOutline,
-      path: '/management/account-settings'
-    },
-    {
-      sectionTitle: 'Pages'
-    },
-    {
-      title: 'Blog',
-      icon: Login,
-      path: '/management/blogList'
     },
     {
       sectionTitle: 'Configuration'
@@ -40,23 +26,10 @@ const navigation = () => {
       path: '/management/products'
     },
     {
-      icon: CubeOutline,
-      title: 'Form Layouts',
-      path: '/management/form-layouts'
-    },
-    {
-      sectionTitle: 'User Interface'
-    },
-    {
-      title: 'Cards',
+      title: 'Blog',
       icon: CreditCardOutline,
-      path: '/management/cards'
+      path: '/management/create-blog'
     },
-    {
-      icon: CubeOutline,
-      title: 'Form Layouts',
-      path: '/management/form-layouts'
-    }
   ]
 }
 
