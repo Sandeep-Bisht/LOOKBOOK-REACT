@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import React from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import "../../css/artistRegistration.css";
 import MyButtonComponent from "./button";
-import ArtistFooter from "./artistFooter";
 
 const ArtistRegistration = () => {
   const [configuration, setConfiguration, userRequests] = useOutletContext();
