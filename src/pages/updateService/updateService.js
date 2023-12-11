@@ -99,11 +99,10 @@ function UpdateService() {
       const response = await axiosAuth.put(`${BASE_URL}/service/services_update`, formData);
       if(response.status==200)
       {
-        console.log("inside if")
         navigate("/management/services")
       }
     } catch (error) {
-      console.log(error, "error");
+      return error.message || "An error occured while trying to update services."
     }
   };
   
