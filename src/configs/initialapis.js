@@ -69,3 +69,11 @@ export const getArtistRequests = async () =>{
       return error.message || "An error occured while trying to get artist request."
   }
 } 
+export const getServiceById = async (_id) => {
+  try {
+    const response = await axiosAuth.post('/service/get_service_by_id', { _id:_id });
+      return response.data.data
+ } catch (error) {
+    console.log(error, "error");
+  }
+};

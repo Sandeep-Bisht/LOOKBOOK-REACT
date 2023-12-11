@@ -15,6 +15,7 @@ import UserProfile from 'pages/UserProfile'
 import { getUserProfile } from 'configs/initialapis'
 import {allServicesDetails} from 'configs/initialapis'
 import {allProductsDetails} from 'configs/initialapis'
+import {getServiceById} from 'configs/initialapis'
 import CreateBlog from 'pages/Blog/createBlog'
 import { SettingsConsumer } from '@core/context/settingsContext'
 import { SettingsProvider } from '@core/context/settingsContext'
@@ -127,7 +128,7 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/services/create" element={<Services/>}/>
         <Route path="/management/products" element={<AllProdutsDetails/>} loader={allProductsDetails}/>
         <Route path="/management/products/create" element={<ProductForm/>}/>
-        <Route path="/management/services/:_id" element={<UpdateService/>}/>
+        <Route path="/management/services/:_id" element={<UpdateService/>} loader={({params})=>getServiceById(params)}/>
         <Route path="/management/products/:_id" element={<UpdateProducts/>}/>
         </Route>
       </Route>
