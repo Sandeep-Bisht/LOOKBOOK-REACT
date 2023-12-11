@@ -103,7 +103,7 @@ const CreateBlog = () => {
                     {/* <Grid item xs={false} md={2} /> */}
       </Grid>
       <Button type="submit" variant="contained" color="primary">
-        update
+        submit
       </Button>
     </form>
     </>

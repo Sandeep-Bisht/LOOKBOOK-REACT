@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import { useLoaderData, useNavigate, useOutletContext } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
 import { AiOutlineHome } from "react-icons/ai";
+import { colors } from "@mui/material";
 
 const AboutYou = () => {
   const [configuration, setConfiguration] = useOutletContext();
   const [artistPayload, setArtistPayload] = useOutletContext();
   const allServices = useLoaderData();
+  const [isActive, setIsActive] = useState(false);
+
+  // Function to toggle the class
+  const toggleClass = () => {
+    setIsActive(!isActive);
+ 
+  };
 
   const navigate = useNavigate();
   console.log(configuration, "about page config", allServices);
@@ -28,6 +36,7 @@ const AboutYou = () => {
     }
   };
 
+
   console.log("I am getting the selected service data here", selectedServices)
   return (
     <>
@@ -40,28 +49,29 @@ const AboutYou = () => {
           </div>
 
           <div className="row mb-5">
-            <div className="col-md-7 mx-auto">
+            <div className="col-md-10 mx-auto">
               <div className="row">
                 {allServices &&
                   allServices.length > 0 &&
                   allServices.map((service, index) => (
-                    <div key={index} className="col-md-4">
+                    <div key={index} className="col-md-3">
                       <div
-                        className={`artist-card ${
+                        className={`${
                           selectedServices.includes(service.title)
                             ? "selected"
-                            : ""
+                            : "artist-card "
                         }`}
+                        
                         onClick={(e) => handleChange(service.title)}
                       >
-                        <div className="">
-                          <img
+                        <div className={isActive ? 'imageStyle' : ''} >
+                          <img onClick={toggleClass} 
                             src={service.icon.thumbnailUrl}
                             alt={service.title}
                             className="img-fluid"
                           />
                         </div>
-                        <div>
+                        <div className="card-title text-center">
                           <span>{service.title}</span>
                         </div>
                       </div>

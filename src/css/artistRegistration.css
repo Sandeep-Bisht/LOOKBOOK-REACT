@@ -43,18 +43,16 @@
     border-radius: 15px;
 
 }
-/* ---------------------artist registration common css-------------- */
-.artist-inner-heading,.artist-inner-subheading
-{
-    font-size: 30px;
-    color: #000;
-    font-weight:600;
+.about .selected{
+    border: 2px solid #000000!important;
+    font-weight: 400;
+    height: 270px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    cursor: pointer;
 }
-.artist-inner-subheading
-{
-    font-size: 20px;
-    font-weight: 600;
-}
+
 /*  */
 
 .artist-registration .artist-landing-page {
@@ -83,10 +81,14 @@ background-color: #8C6A54;
 border-radius: 25px;
     border: none;
     color: #ffffff;
+    
 }
 
 
 /* Footer */
+.footer{
+    background-color: #fcf7f2;
+}
 
 .footer .footer-line {
     height: 3px;
@@ -103,10 +105,14 @@ border-radius: 25px;
 
 /* About */
 
+.about{
+    padding-top: 7rem;
+    padding-bottom: 6rem;
+}
 .about .artist-card {
     border : 2px solid rgb(206, 202, 202);
     font-weight: 400;
-    padding : 10px 10px;
+    height: 270px;
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 18px;
