@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const BecomeAristHeader = () => {
   return (
-    <section className="artist-header">
+    <section className="artist-header fixed-top">
       <div className="container">
         <div className="row  became-artist">
           <div className="col-md-6">
