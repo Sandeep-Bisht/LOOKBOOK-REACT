@@ -6,7 +6,7 @@ import ArtistFooter from "./artistFooter";
 
 const ArtistRegistration = () => {
   const [configuration, setConfiguration] = useOutletContext();
-  const  navigate = useNavigate()
+  const navigate = useNavigate();
 
   console.log(configuration, "Lookbook config");
   // const handleSubmit = (data) => {
@@ -15,10 +15,8 @@ const ArtistRegistration = () => {
   //     setCount(count + 1)
   //   };
 
- 
-
   return (
-    <>      
+    <>
       <section className="artist-registration">
         <div className="container">
           {/* <p>{configuration}</p> */}
@@ -60,14 +58,16 @@ const ArtistRegistration = () => {
           <hr className="" />
           <div className="row">
             <div className="col-md-12">
-            <div className="get-started-div" onClick={() => navigate("/become-a-artist/about-your-skills")}>
+              <div
+                className="get-started-div"
+                onClick={() => navigate("/become-a-artist/about-your-skills")}
+              >
                 <MyButtonComponent label="Get Started" />
               </div>
             </div>
           </div>
         </div>
       </section>
-
     </>
   );
 };
