@@ -50,7 +50,7 @@ const AboutYou = () => {
 
           <div className="row mb-5">
             <div className="col-md-10 mx-auto">
-              <div className="row">
+              <div className="row g-3">
                 {allServices &&
                   allServices.length > 0 &&
                   allServices.map((service, index) => (
@@ -71,7 +71,7 @@ const AboutYou = () => {
                             className="img-fluid about-images"
                           />
                         </div>
-                        <div className="card-title text-center">
+                        <div className="card-title">
                           <span>{service.title}</span>
                         </div>
                       </div>
