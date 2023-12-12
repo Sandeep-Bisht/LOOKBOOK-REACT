@@ -59,7 +59,14 @@ const InsightStory = () => {
                 <hr className="" />
                 <div className="insight-card mb-4">
                   <div>How many languages do you speak?</div>
-                  <div>2</div>
+                  <div>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>Select</option>
+                      <option value="graduate">graduate</option>
+                      <option value="post-graduate">post-graduate</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
                 </div>
                 <hr className="" />
               </div>
