@@ -52,6 +52,7 @@
     font-size: 18px;
     cursor: pointer;
     padding: 20px;
+    background-color: #c8b29d4a;
     
 }
 
@@ -137,6 +138,11 @@ border-radius: 25px;
     color: #8C6A54;
 
 }
+.about .artist-card:active{
+    transform: scale(0.96);
+}
+
+
 
 .about .thirdform-heading {
     text-align: center;
@@ -163,15 +169,19 @@ border-radius: 25px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    
 }
 .describe-yourself .artist-card:hover {
     border:1px solid #8C6A54; /* Darken the border color on hover */
-    background-color: rgb(247, 247, 247)
+
+}
+
+.describe-yourself .artist-card:active{
+    transform: scale(0.96);
 }
 
 .card-icon img {
     height: 100px!important;
+    border-radius: 0px 10px 10px 0px;
 }
 
 .describe-yourself h3 {
@@ -186,6 +196,16 @@ border-radius: 25px;
 
 .describe-yourself .artist-card .card-body {
     padding: 15px 8px 10px 13px;
+}
+.describe-yourself .selected{
+    border: 1px solid #8C6A54;
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin-bottom: 7px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: #c8b29dc5;
 }
 
 /*---------- Address css------------ */

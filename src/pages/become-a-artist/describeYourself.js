@@ -6,6 +6,12 @@ import { AiOutlineHome } from "react-icons/ai";
 const DescribeYourself = () => {
   const navigate = useNavigate();
   const allProducts = useLoaderData();
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleClass = () => {
+    setIsActive(!isActive);
+ 
+  };
 
   const [selectedProducts, setSelectedProducts] = useState([]);
 
@@ -39,12 +45,12 @@ const DescribeYourself = () => {
           </div>
 
           <div className="row mb-5">
-            <div className="col-md-12">
+            <div className="col-md-10 mx-auto">
               <div className="row">
                 {allProducts &&
                   allProducts.length > 0 &&
                   allProducts.map((product, index) => (
-                    <div key={index} className="col-md-7 mx-auto">
+                    <div key={index} className="col-md-6">
                       <div
                         className={`artist-card ${
                           selectedProducts.includes(product.title)
@@ -59,8 +65,8 @@ const DescribeYourself = () => {
                             <span>{product.description}</span>
                           </div>
                         </div>
-                        <div className="card-icon">
-                          <img
+                        <div className= "card-icon ">
+                          <img onClick={toggleClass} 
                             src={product.icon.thumbnailUrl}
                             alt={product.title}
                             className="img-fluid"

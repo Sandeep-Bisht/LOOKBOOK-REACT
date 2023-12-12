@@ -125,7 +125,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
           <Route path="/management/create-blog" element={<CreateBlog/>}/> 
 
-         <Route path="/management/bloglist" element={<BlogList/>} loader={getAllBlog}/>
+         <Route path="/management/all-blogs" element={<BlogList/>} loader={getAllBlog}/>
         <Route path="/management/services" element={<AllServicesDetails/>} loader={allServicesDetails}/>
         <Route path="/management/services/create" element={<Services/>}/>
         <Route path="/management/products" element={<AllProdutsDetails/>} loader={allProductsDetails}/>

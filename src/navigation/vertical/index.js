@@ -28,7 +28,7 @@ const navigation = () => {
     {
       title: 'Blog',
       icon: CreditCardOutline,
-      path: '/management/create-blog'
+      path: '/management/all-blogs'
     },
   ]
 }
