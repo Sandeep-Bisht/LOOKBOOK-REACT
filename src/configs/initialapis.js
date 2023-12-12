@@ -62,8 +62,8 @@ export const getAllServices = async () =>{
 
 export const getArtistRequests = async () =>{
   try{
-      const response = await axiosAuth.get('/service/all_services');
-      return response.data.data;
+      const response = await axiosAuth.get('/users/getArtistRequests');
+      return response.data;
   }
   catch(error){
       return error.message || "An error occured while trying to get artist request."

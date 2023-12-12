@@ -46,6 +46,7 @@ import ProfilePreview from 'pages/become-a-artist/profilePreview'
 import PriceSetup from 'pages/become-a-artist/priceSetup'
 import CompleteKYC from 'pages/become-a-artist/completeKYC'
 import Certificates from 'pages/become-a-artist/certificates'
+import { getArtistRequests } from 'configs/initialapis'
 
 
 const DashboardComponents = () =>{
@@ -92,7 +93,7 @@ const ApplicationRoutes = createBrowserRouter(
         <Route
           path="/become-a-artist"
           element={<ArtistCreation />}
-          loader={getUserProfile}
+          loader={getArtistRequests}
         >
           <Route path="/become-a-artist" element={<ArtistRegistration />} />
           <Route path="/become-a-artist/about-your-skills" element={ <AboutSkills />} />

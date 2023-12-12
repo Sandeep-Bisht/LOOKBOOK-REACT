@@ -1,9 +1,33 @@
 /* Header */
+.artist-wrapper-ar
+{
+    height: 100vh;
+    position: relative;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    overflow-y: auto;
+}
+
+.artist-wrapper-ar::-webkit-scrollbar{
+    width: 0; /* Set the width to 0 */
+  }
 
 .artist-header{
     background-color: #8C6A54;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
 }
 
+.artist-footer-ar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fcf7f2;
+}
 .artist-header .became-artist{
     margin-bottom:  15px;
     padding: 15px 0px 15px 0px;
@@ -19,8 +43,18 @@
     border-radius: 15px;
 
 }
-
-
+/* ---------------------artist registration common css-------------- */
+.artist-inner-heading,.artist-inner-subheading
+{
+    font-size: 30px;
+    color: #000;
+    font-weight:600;
+}
+.artist-inner-subheading
+{
+    font-size: 20px;
+    font-weight: 600;
+}
 /*  */
 
 .artist-registration .artist-landing-page {
@@ -227,6 +261,50 @@ border-radius: 25px;
     color: red;
     font-weight: bold;
     border-radius: 50%;
+  }
+
+
+
+  /* -----------------artist-progress-component-------- */
+  .progress-component-action-btn
+  {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    width: 100%;
+    border-radius: 12px;
+    background-color: #fff;
+    border:1px solid #dddddd;
+    transition: .3s;
+  }
+  .progress-component-action-btn:hover
+  {
+    border-color: #000;
+    background-color: #f7f7f7;
+  }
+  .progress-component-action-btn .progress-component-action-btn-icon
+  {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:40px;
+    width: 40px;
+    background: #ebebeb;
+    margin-right: 20px;
+    border-radius: 4px;
+
+  }
+
+  .progress-component-action-btn .progress-component-action-btn-icon svg
+  {
+    height: 30px;
+    width: 30px;
+  }
+  .progress-component-action-btn-title
+  {
+    color: #000;
+    font-size: 15px;
+    font-weight: 600;
   }
 
   .showbutton-image{
