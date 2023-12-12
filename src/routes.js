@@ -9,7 +9,7 @@ import LoginPage from 'pages/login'
 import MUITable from 'pages/tables'
 import Services from 'pages/servicesCreated'
 import React from 'react'
-import { Outlet, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/UserProfile'
 import { getUserProfile } from 'configs/initialapis'
@@ -47,6 +47,10 @@ import PriceSetup from 'pages/become-a-artist/priceSetup'
 import CompleteKYC from 'pages/become-a-artist/completeKYC'
 import Certificates from 'pages/become-a-artist/certificates'
 import { getArtistRequests } from 'configs/initialapis'
+import ArtistRequestProvider from 'pages/become-a-artist/provider'
+import GetStarted from 'pages/become-a-artist/getStarted'
+import ArtistGlobalState from 'pages/become-a-artist/globalState'
+import ArtistLocation from 'pages/become-a-artist/location'
 
 
 const DashboardComponents = () =>{
@@ -90,7 +94,31 @@ const ApplicationRoutes = createBrowserRouter(
           />
         </Route>
 
-        <Route
+          <Route
+            path="/become-a-artist"
+            element={<ArtistRequestProvider />}
+            loader={getArtistRequests}
+          />
+          <Route
+            path="/become-a-artist/get-started"
+            element={<GetStarted />}
+            loader={getArtistRequests}
+          />
+
+        <Route path='/become-a-artist/:request_id' element={<ArtistGlobalState/>} loader={getArtistRequests}>
+          <Route
+            path="/become-a-artist/:request_id/get-started"
+            element={<GetStarted />}
+          />
+          <Route path="/become-a-artist/:request_id/about-your-skills" element={ <AboutSkills />} />
+          <Route path="/become-a-artist/:request_id/about-you" element={<AboutYou />}  loader={getAllServices}/>
+          <Route path="/become-a-artist/:request_id/describe-yourself" element={<DescribeYourself />} loader={getAllProducts} />
+          <Route path="/become-a-artist/:request_id/location" element={<ArtistLocation />} />
+          <Route path="/become-a-artist/:request_id/insight-your-work" element={<InsightStory />} />
+        </Route>
+        
+
+        {/* <Route
           path="/become-a-artist"
           element={<ArtistCreation />}
           loader={getArtistRequests}
@@ -111,7 +139,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/become-a-artist/upload-cerificates" element={< Certificates />} />
           <Route path="/become-a-artist/profile-overview" element={< ProfilePreview />} />
          
-        </Route>
+        </Route> */}
         <Route path="/*" element={<Error404 />} />
       </Route>
 

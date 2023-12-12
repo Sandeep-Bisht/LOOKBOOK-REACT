@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
-import BecomeAristHeader from "./header";
+import BecomeAristHeader from "./common/header";
 
 const ArtistCreation = () => {
   const userRequests = useLoaderData();

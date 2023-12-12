@@ -1,10 +1,9 @@
 import React from "react";
-import MyButtonComponent from "./button";
 import { Link } from "react-router-dom";
 
 const BecomeAristHeader = () => {
   return (
-    <section className="artist-header fixed-top">
+    <section className="artist-header">
       <div className="container">
         <div className="row  became-artist">
           <div className="col-md-6">

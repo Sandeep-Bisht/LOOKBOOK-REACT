@@ -3,7 +3,6 @@
 {
     height: 100vh;
     position: relative;
-    padding-top: 90px;
     padding-bottom: 90px;
     overflow-y: auto;
 }
@@ -14,11 +13,11 @@
 
 .artist-header{
     background-color: #8C6A54;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 11;
 }
 
 .artist-footer-ar{
@@ -123,10 +122,6 @@ border-radius: 25px;
 
 /* About */
 
-.about{
-    padding-top: 7rem;
-    padding-bottom: 6rem;
-}
 .about .artist-card {
     border : 2px solid rgb(206, 202, 202);
     font-weight: 400;
@@ -251,10 +246,11 @@ border-radius: 25px;
 
 .insight-wrapper .insight-card{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .plus-button {
+    line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -263,14 +259,14 @@ border-radius: 25px;
     border-radius: 50%;
     border: 1px solid #8C6A54;
     font-size: 20px;
-    color: #333;
+    color: #8C6A54;
     background-color: transparent;
     cursor: pointer;
     outline: none; /* Remove the default button outline */
   }
   
   .plus-button:hover {
-    background-color: #333;
+    background-color: #8C6A54;
     color: #fff;
   }
 
@@ -396,7 +392,96 @@ border-radius: 25px;
   .card-field .your-location-search:focus{
     display: block!important;
   }
-  .search-bar-wrapper
-{
-   display: block;
+
+/* Location css added by shubham */
+
+.location-wrapper{
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.search-container-head{
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+}
+
+.search-container-head .search-bar-wrapper input.form-control{
+  padding: 14px;
+  border: 0;
+  box-shadow: none;
+}
+
+.search-container-head .search-bar-wrapper .suggestionList{
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  padding: 15px 0px;
+  margin-top: 15px;
+  background: white;
+  list-style: none;
+  z-index: 1;
+}
+
+.search-container-head .search-bar-wrapper .suggestionList .suggestion-item{
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.search-container-head .search-bar-wrapper .suggestionList .suggestion-item:hover{
+  background-color: white;
+}
+
+.search-container-head .search-bar-wrapper .suggestionList .suggestion-item:hover .suggestion-heading, .search-container-head .search-bar-wrapper .suggestionList .suggestion-item:hover .suggestion-desc{
+  color: #8C6A54;
+} 
+
+.search-container-head .search-bar-wrapper .suggestionList .suggestion-item .suggestion-heading{
+  font-size: 14px;
+  font-weight: 500;
+  color: #8C6A54;
+  margin: 0;
+}
+
+.search-container-head .search-bar-wrapper .suggestionList .suggestion-item .suggestion-desc{
+  font-size: 12px;
+  font-weight: 400;
+  color: #8C6A54;
+  margin: 0;
+}
+
+.search-container-head .search-bar-wrapper .location-icon{
+  background-color: white!important;
+  border: 0;
+  padding: 0px 20px;
+}
+
+.search-container-head .search-bar-wrapper .location-icon svg{
+  height: 42px;
+}
+
+.use-current-location{
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    margin-top: 6px;
+    font-weight: 500;
+    display: none;
+}
+
+.use-current-location:hover, .use-current-location:active{
+  background: white!important;
+}
+
+.search-container-head .search-bar-wrapper input.form-control:focus  + button {
+  display: block;
+  /* Add any additional styles you want for the focused state */
+}
+
+.use-current-location:hover{
+  display: block;
 }

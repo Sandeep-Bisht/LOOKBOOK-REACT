@@ -1,25 +1,27 @@
-import React, { useState } from "react";
-import { useLoaderData, useNavigate, useOutletContext } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLoaderData, useNavigate, useOutletContext, useParams } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
-import { AiOutlineHome } from "react-icons/ai";
-import { colors } from "@mui/material";
+import NoDataFound from "./common/noDataFound";
+import { axiosAuth } from "configs/axiosInstance";
+
+const BASE_URL = process.env.REACT_APP_APIURL
 
 const AboutYou = () => {
-  const [configuration, setConfiguration] = useOutletContext();
   const [artistPayload, setArtistPayload] = useOutletContext();
   const allServices = useLoaderData();
-  const [isActive, setIsActive] = useState(false);
-
-  // Function to toggle the class
-  const toggleClass = () => {
-    setIsActive(!isActive);
- 
-  };
+  const { request_id } = useParams();
 
   const navigate = useNavigate();
-  console.log(configuration, "about page config", allServices);
 
   const [selectedServices, setSelectedServices] = useState([]);
+
+  useEffect(()=>{
+    if(artistPayload){
+      if(artistPayload.services && Array.isArray(artistPayload.services)){
+        setSelectedServices(artistPayload.services);
+      }
+    }
+  },[artistPayload])
 
   const handleChange = (service) => {
     // Check if the service is already selected
@@ -35,9 +37,32 @@ const AboutYou = () => {
       setSelectedServices((prevSelected) => [...prevSelected, service]);
     }
   };
+  
+  const handleNextClick = async () =>{
+    try{
+        if(artistPayload.services && Array.isArray(artistPayload.services)){
+          const areEqual = selectedServices.every((element, index) => element === artistPayload.services[index]);
 
+          if(areEqual){
+            return navigate(`/become-a-artist/${request_id}/describe-yourself`)
+          }
+          else{
+            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:3,services:selectedServices});
+            setArtistPayload((prev) => {return {...prev,services:selectedServices}})
+            navigate(`/become-a-artist/${request_id}/describe-yourself`)
+          }
 
-  console.log("I am getting the selected service data here", selectedServices)
+        }else{
+          await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:3,services:selectedServices});
+          setArtistPayload((prev) => {return {...prev,services:selectedServices}})
+          navigate(`/become-a-artist/${request_id}/describe-yourself`)
+        }
+    }
+    catch(error){
+        throw error;
+    }
+}
+
   return (
     <>
       <section className="about">
@@ -51,21 +76,24 @@ const AboutYou = () => {
           <div className="row mb-5">
             <div className="col-md-10 mx-auto">
               <div className="row g-3">
-                {allServices &&
-                  allServices.length > 0 &&
-                  allServices.map((service, index) => (
+                {(allServices && Array.isArray(allServices)) ?
+                <>
+                {
+                  allServices.length > 0 ?
+                  <>
+                  {allServices.map((service, index) => (
                     <div key={index} className="col-md-3">
                       <div
                         className={`${
-                          selectedServices.includes(service.title)
+                          selectedServices.includes(service._id)
                             ? "selected"
                             : "artist-card "
                         }`}
                         
-                        onClick={(e) => handleChange(service.title)}
+                        onClick={() => handleChange(service._id)}
                       >
-                        <div className={isActive ? 'imageStyle' : ''} >
-                          <img onClick={toggleClass} 
+                        <div  >
+                          <img 
                             src={service.icon.thumbnailUrl}
                             alt={service.title}
                             className="img-fluid about-images"
@@ -77,6 +105,11 @@ const AboutYou = () => {
                       </div>
                     </div>
                   ))}
+                  </> : 
+                  <NoDataFound/>
+                }
+                </> : <NoDataFound/>}
+               
               </div>
             </div>
           </div>
@@ -84,12 +117,8 @@ const AboutYou = () => {
       </section>
 
       <ArtistFooter
-        backClick={() => navigate("/become-a-artist/about-your-skills")}
-        nextClick={() => {
-          // Access the selected services in the next step
-          console.log("Selected Services:", selectedServices);
-          navigate("/become-a-artist/describe-yourself");
-        }}
+        backClick={() => navigate(`/become-a-artist/${request_id}/about-your-skills`)}
+        nextClick={() => handleNextClick()}
       />
     </>
   );
