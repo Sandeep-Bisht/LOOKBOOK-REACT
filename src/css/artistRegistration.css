@@ -360,3 +360,15 @@ border-radius: 25px;
   .updateImg-wrapper:hover .showbutton-image{
     display: flex;
   }
+
+
+  /* ----------------------about-skills-ar----------------- */
+  .about-skills-ar
+  {
+    padding: 50px 0;
+  }
+  .about-skills-ar img
+  {
+    height: 300px;
+    object-fit: contain;
+  }
