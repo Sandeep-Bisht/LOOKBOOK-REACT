@@ -68,7 +68,7 @@ const AboutYou = () => {
                           <img onClick={toggleClass} 
                             src={service.icon.thumbnailUrl}
                             alt={service.title}
-                            className="img-fluid"
+                            className="img-fluid about-images"
                           />
                         </div>
                         <div className="card-title text-center">
