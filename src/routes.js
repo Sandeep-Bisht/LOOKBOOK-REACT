@@ -33,6 +33,17 @@ import AboutSkills from "pages/become-a-artist/aboutSkills";
 import DescribeYourself from "pages/become-a-artist/describeYourself";
 import ArtistAddress from "pages/become-a-artist/artistAddress";
 import ArtistGallary from "pages/become-a-artist/artistGallary";
+import {getAllProducts} from "configs/initialapis";
+import {getAllServices} from "configs/initialapis";
+import Step2 from 'pages/become-a-artist/step2'
+import InsightStory from 'pages/become-a-artist/insightStory'
+import BestServices from 'pages/become-a-artist/bestServices'
+import Description from 'pages/become-a-artist/description'
+import Step3 from 'pages/become-a-artist/step3'
+import ProfilePreview from 'pages/become-a-artist/profilePreview'
+import PriceSetup from 'pages/become-a-artist/priceSetup'
+import CompleteKYC from 'pages/become-a-artist/completeKYC'
+import Certificates from 'pages/become-a-artist/certificates'
 
 
 const DashboardComponents = () =>{
@@ -83,10 +94,20 @@ const ApplicationRoutes = createBrowserRouter(
         >
           <Route path="/become-a-artist" element={<ArtistRegistration />} />
           <Route path="/become-a-artist/about-your-skills" element={ <AboutSkills />} />
-          <Route path="/become-a-artist/about-you" element={<AboutYou />} />
-          <Route path="/become-a-artist/describe-yourself" element={<DescribeYourself />} />
+          <Route path="/become-a-artist/about-you" element={<AboutYou />}  loader={getAllServices}/>
+          <Route path="/become-a-artist/describe-yourself" element={<DescribeYourself />} loader={getAllProducts} />
           <Route path="/become-a-artist/location" element={<ArtistAddress />} />
-          <Route path="/become-a-artist/insight-your-work" element={<ArtistGallary />} />
+          <Route path="/become-a-artist/insight-your-work" element={<InsightStory />} />
+          <Route path="/become-a-artist/stand-out" element={<Step2 />} />
+          <Route path="/become-a-artist/gallary" element={<ArtistGallary />} />
+          <Route path="/become-a-artist/you-are-best-in" element={<BestServices />} />
+          <Route path="/become-a-artist/description" element={<Description />} />
+          <Route path="/become-a-artist/finish-setup" element={< Step3 />} />
+          <Route path="/become-a-artist/pricing" element={< PriceSetup />} />
+          <Route path="/become-a-artist/complete-KYC" element={< CompleteKYC />} />
+          <Route path="/become-a-artist/upload-cerificates" element={< Certificates />} />
+          <Route path="/become-a-artist/profile-overview" element={< ProfilePreview />} />
+         
         </Route>
         <Route path="/*" element={<Error404 />} />
       </Route>

@@ -18,6 +18,10 @@ const ArtistAddress = () => {
   const [address, setAddress] = useState("");
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
 
+  console.log("this is my coordinates", coordinates)
+  console.log("this is my address", address)
+  
+
   useEffect(() => {
     // Fetch current location when the component mounts
     if (navigator.geolocation) {
@@ -92,6 +96,7 @@ const ArtistAddress = () => {
             <div className="col-md-12">
               <div className="row">
                 <div className="col-md-7 mx-auto">
+                  <div className="map-card-wrapper">
                   <div className="card-field">
                     <PlacesAutocomplete
                       value={address}
@@ -106,7 +111,7 @@ const ArtistAddress = () => {
                               className: "form-control",
                             })}
                           />
-                          <div className="autocomplete-dropdown-container">
+                          <div className="autocomplete-dropdown-container" >
                             {suggestions.map((suggestion) => (
                               <div
                                 key={suggestion.placeId}
@@ -152,6 +157,11 @@ const ArtistAddress = () => {
                     ) : (
                       "Loading.."
                     )}
+                  </div>
+
+                  <div className="text-center mt-3">
+                    <span>Are you availabe for travelling to diffrent location ?</span>
+                  </div>
                   </div>
                 </div>
               </div>
