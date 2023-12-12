@@ -4,33 +4,31 @@ import { Outlet, useLoaderData } from "react-router-dom";
 import BecomeAristHeader from "./header";
 
 const ArtistCreation = () => {
-  const userProfile = useLoaderData();
+  const userRequests = useLoaderData();
 
-  let obj = {
-    user_id : "",
+  let payload = {
     services: [],
     products : [],
     coords : {},
     address : {} ,
-    travel : false,
-    education : "",
     languages: {},
     gallery : [],
-    description : "",
     pricing :{},
-    status: "progress"
+   
   }
 
-  const [configuration, setConfiguration] = useState(userProfile);
-  const [artistPayload, setArtistPayload]= useState(obj)
+  const [artistPayload, setArtistPayload]= useState(payload)
 
 
 
  
   return (
     <>
+    <div className="artist-wrapper-ar">
       <BecomeAristHeader />
-      <Outlet context={[artistPayload, setArtistPayload]} />
+
+         <Outlet context={[artistPayload, setArtistPayload, userRequests]} />
+      </div>
     </>
   );
 };

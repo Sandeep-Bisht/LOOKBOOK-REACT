@@ -6,11 +6,11 @@ const ArtistFooter = ({ backClick, nextClick }) => {
    <div className="footer">
   <div className="container-fluid">
     <div className="row">
-      <div className="col-md-12">
+      <div className="col-md-12 px-0">
         <div className="footer-line"></div>
       </div>
     </div>
-    <div className="row">
+    <div className="row pb-3">
       <div className="col-md-6">
         <MyButtonComponent label="Back" onClick={backClick} />
       </div>

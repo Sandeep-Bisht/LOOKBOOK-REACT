@@ -1,11 +1,23 @@
 import React from "react";
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import "../../css/artistRegistration.css";
 import MyButtonComponent from "./button";
-import ArtistFooter from "./artistFooter";
 
 const ArtistRegistration = () => {
-  const [configuration, setConfiguration] = useOutletContext();
+  const [configuration, setConfiguration, userRequests] = useOutletContext();
+  const openRequest = userRequests.find(item=>item.status == "progress");
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  var createdAtDate,formattedDate;
+  if(openRequest)
+  {
+    createdAtDate = new Date(openRequest.createdAt);
+  // Options for formatting the date
+  
+  // Formatted date string
+   formattedDate = createdAtDate.toLocaleDateString('en-US', options);
+  }
+  
+
   const navigate = useNavigate();
 
   console.log(configuration, "Lookbook config");
@@ -17,7 +29,51 @@ const ArtistRegistration = () => {
 
   return (
     <>
-      <section className="artist-registration">
+       {
+        openRequest ? <>
+         <section className="artist-progress-component py-3">
+          <div className="container">
+              <div className="row">
+                  <div className="col-lg-7 mx-auto">
+                         <div className="progress-component">
+                            <h1 className="artist-inner-heading mb-lg-4">
+                                 Welcome back ,Montu Tiwari
+                            </h1>
+                            <h2 className="artist-inner-subheading mb-lg-3">
+                               Finish your artist request
+                            </h2>
+                            <button className="progress-component-action-btn"  type="btn">  
+                                <span className="progress-component-action-btn-icon">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" 
+                                viewBox="0 0 512 512" height="200px" width="200px" 
+                                xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M208 448V320h96v128h97.6V256H464L256 64 48 256h62.4v192z"></path></svg>
+                                </span>
+                                <span className="progress-component-action-btn-title">
+                                  Your request started on {formattedDate}
+                                </span>
+                            </button>
+                            <h2 className="artist-inner-subheading mb-lg-3 mt-lg-5">
+                               Start a new request
+                            </h2>
+                            <button className="progress-component-action-btn"  type="btn">  
+                                <span className="progress-component-action-btn-icon">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" 
+                                viewBox="0 0 512 512" height="200px" width="200px" 
+                                xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M208 448V320h96v128h97.6V256H464L256 64 48 256h62.4v192z"></path></svg>
+                                </span>
+                                <span className="progress-component-action-btn-title">
+                                  Create a new request
+                                </span>
+                            </button>
+                         </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+         </>:<>
+         <section className="artist-registration">
         <div className="container">
           {/* <p>{configuration}</p> */}
           {/* <button type='button' onClick={()=>handleSubmit()}>Sumit</button> */}
@@ -55,19 +111,27 @@ const ArtistRegistration = () => {
             </div>
           </div>
 
-          <hr className="" />
-          <div className="row">
-            <div className="col-md-12">
+          
+        </div>
+      </section>
+     
+      <footer className="artist-footer-ar">
+      <hr className="m-0" />
+            <div className="col-md-12 p-3">
               <div
-                className="get-started-div"
+                className="get-started-div text-end"
                 onClick={() => navigate("/become-a-artist/about-your-skills")}
               >
                 <MyButtonComponent label="Get Started" />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+            </footer>
+      </>
+       } 
+    
+
+ 
+    
     </>
   );
 };

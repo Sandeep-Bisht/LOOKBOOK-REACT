@@ -1,11 +1,37 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { Link } from "react-router-dom";
 import '../../../css/header.css'
 
 const Header = () => {
+    const [scrollClass,setScrollClass] = useState('')
+    useEffect(() => {
+      const handleScroll = () => {
+        // Set the scroll position at which you want to add or remove the class
+        const scrollPosition = 100; // Change this to your desired scroll position
+  
+        if (window.scrollY >= scrollPosition) {
+          // Add the 'new-class' when scrolled down
+          setScrollClass('new-class');
+        } else {
+          // Remove the 'new-class' when scrolled back to the top
+          setScrollClass('');
+        }
+      };
+  
+      // Attach the event listener when the component mounts
+      window.addEventListener('scroll', handleScroll);
+  
+      // Detach the event listener when the component unmounts
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []); // Empty dependency array ensures that this effect runs only once when the component mounts
+    
+    const headerClasses = `header ${scrollClass}`;
+
     return (
-      <header className="header" id="header">
-  <nav className="navbar navbar-expand-lg ">
+      <header className={headerClasses} id="header">
+           <nav className="navbar navbar-expand-lg ">
     <div className="container-fluid">
       <Link className="navbar-brand" to="/">
         <span className="main-logo">
@@ -68,8 +94,8 @@ const Header = () => {
         </form>
       </div>
     </div>
-  </nav>
-</header>
+           </nav>
+      </header>
 
     );
 };
