@@ -43,18 +43,33 @@
     border-radius: 15px;
 
 }
-/* ---------------------artist registration common css-------------- */
-.artist-inner-heading,.artist-inner-subheading
-{
-    font-size: 30px;
-    color: #000;
-    font-weight:600;
+.about .selected{
+    border: 2px solid #8C6A54!important;
+    font-weight: 400;
+    height: 100%; 
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 20px;
+    
 }
-.artist-inner-subheading
-{
-    font-size: 20px;
+
+.artist-card{
+    padding: 20px;
+}
+
+.about-images{
+    height: 80px;
+
+}
+
+.card-title{
+    padding: 10px 0px;
     font-weight: 600;
+    font-size: 16px;
 }
+
 /*  */
 
 .artist-registration .artist-landing-page {
@@ -83,10 +98,14 @@ background-color: #8C6A54;
 border-radius: 25px;
     border: none;
     color: #ffffff;
+    
 }
 
 
 /* Footer */
+.footer{
+    background-color: #fcf7f2;
+}
 
 .footer .footer-line {
     height: 3px;
@@ -103,15 +122,20 @@ border-radius: 25px;
 
 /* About */
 
+.about{
+    padding-top: 7rem;
+    padding-bottom: 6rem;
+}
 .about .artist-card {
     border : 2px solid rgb(206, 202, 202);
     font-weight: 400;
-    padding : 10px 10px;
+     height: 100%; 
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 18px;
     cursor: pointer;
     color: #8C6A54;
+
 }
 
 .about .thirdform-heading {
@@ -122,6 +146,11 @@ border-radius: 25px;
 .about .artist-card:hover {
     border:2px solid #8C6A54; /* Darken the border color on hover */
   }
+
+  /* .about-images:hover{
+    object-fit: none;
+    border-radius: 44px;
+} */
 
 
   /* describe yourself */
