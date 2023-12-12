@@ -74,6 +74,14 @@ export const getServiceById = async (_id) => {
     const response = await axiosAuth.post('/service/get_service_by_id', { _id:_id });
       return response.data.data
  } catch (error) {
-    console.log(error, "error");
-  }
+  return error.message || "An error occured while trying to get service request."
+}
+};
+export const getProductById = async (_id) => {
+  try {
+    const response = await axiosAuth.post('/product/get_product_by_id', { _id:_id });
+      return response.data.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get product request."
+}
 };

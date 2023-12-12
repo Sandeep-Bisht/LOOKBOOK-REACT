@@ -114,7 +114,6 @@ const AllServicesDetails = () => {
           <TableBody>
   {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row =>
   {
-    console.log(row,"check the row data")
     return (
     <TableRow hover role='checkbox' tabIndex={-1} key={row._id}>
       {columns.map(column => (
@@ -131,10 +130,10 @@ const AllServicesDetails = () => {
             row.service
           ) : column.id === "action" ? (
             <div className='d-flex'>
-              <div className="fs-4 text-black" onClick={() => editHandler(row?._id)}> {/* Assuming editHandler takes an ID */}
+              <div className="fs-4 text-black reset-edit-btn" onClick={() => editHandler(row?._id)}> {/* Assuming editHandler takes an ID */}
                 <CiEdit />
               </div>
-              <div className='ms-3 fs-4 text-black'>
+              <div className='ms-3 fs-4 text-black reset-edit-btn'>
                 <MdDeleteForever />
               </div>
             </div>
