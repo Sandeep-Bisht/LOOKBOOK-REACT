@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
 import { AiOutlineHome } from "react-icons/ai";
 
@@ -8,7 +8,7 @@ const BestServices = () => {
     const [configuration, setConfiguration] = useOutletContext();
 
     const navigate = useNavigate();
-    console.log(configuration, "about page config");
+    const { request_id } = useParams();
   
     const [artistArray] = useState([]);
   
@@ -170,9 +170,9 @@ const BestServices = () => {
           </section>
     
           <ArtistFooter
-            backClick={() => navigate("/become-a-artist/gallary")}
-            nextClick={() => navigate("/become-a-artist/description")}
-          />
+        backClick={() => navigate(`/become-a-artist/${request_id}/gallery`)}
+        nextClick={() => navigate(`/become-a-artist/${request_id}/description`)}
+      />
         </>
   )
 }

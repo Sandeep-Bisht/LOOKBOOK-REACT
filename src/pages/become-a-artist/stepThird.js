@@ -1,9 +1,10 @@
 import React from 'react'
 import ArtistFooter from './artistFooter'
-import { useNavigate, useOutletContext } from 'react-router-dom'
+import { useNavigate, useOutletContext, useParams } from 'react-router-dom'
 
 const StepThird = () => {
   const [artistPayload, setArtistPayload] = useOutletContext();
+  const { request_id } = useParams();
 
   console.log("sthis i s my data", artistPayload)
     let navigate = useNavigate()
@@ -22,8 +23,8 @@ const StepThird = () => {
       </section>
 
       <ArtistFooter
-        backClick={() => navigate("/become-a-artist/description")}
-        nextClick={() => navigate("/become-a-artist/pricing")}
+        backClick={() => navigate(`/become-a-artist/${request_id}/description`)}
+        nextClick={() => navigate(`/become-a-artist/${request_id}/pricing`)}
       />
       </>
   )

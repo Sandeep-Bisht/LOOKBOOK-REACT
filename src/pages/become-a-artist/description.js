@@ -1,10 +1,11 @@
 import React from 'react'
 import ArtistFooter from './artistFooter'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const Description = () => {
 
     let navigate= useNavigate()
+    const { request_id } = useParams();
   return (
     <>
     <section className="about">
@@ -17,10 +18,10 @@ const Description = () => {
       </div>
       </section>
 
-<ArtistFooter
-backClick={() => navigate("/become-a-artist/you-are-best-in")}
-nextClick={() => navigate("/become-a-artist/finish-setup")}
-/>
+      <ArtistFooter
+        backClick={() => navigate(`/become-a-artist/${request_id}/you-are-best-in`)}
+        nextClick={() => navigate(`/become-a-artist/${request_id}/finish-setup`)}
+      />
 </>
   )
 }

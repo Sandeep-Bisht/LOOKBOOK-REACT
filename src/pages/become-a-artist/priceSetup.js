@@ -1,10 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
 
 const PriceSetup = () => {
 
     let navigate = useNavigate()
+    const { request_id } = useParams();
   return (
     <>
       <section className="about">
@@ -17,9 +18,10 @@ const PriceSetup = () => {
         </div>
       </section>
 
+      
       <ArtistFooter
-        backClick={() => navigate("/become-a-artist/finish-setup")}
-        nextClick={() => navigate("/become-a-artist/complete-KYC")}
+        backClick={() => navigate(`/become-a-artist/${request_id}/finish-setup`)}
+        nextClick={() => navigate(`/become-a-artist/${request_id}/complete-kyc`)}
       />
     </>
   );
