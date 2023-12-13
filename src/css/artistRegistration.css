@@ -242,6 +242,10 @@ border-radius: 25px;
     margin-bottom: 20px;
 }
 
+.dynamic-img-wrapper img:hover{
+  background-color: #00000027;
+}
+
 
 /* Insight [age */
 

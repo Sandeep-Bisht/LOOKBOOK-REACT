@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button'
 import { ImCross } from "react-icons/im";
+import { FaTrash } from "react-icons/fa6";
+
 
 const CompleteKYC = () => {
   const { request_id } = useParams();
@@ -47,9 +49,11 @@ const CompleteKYC = () => {
         <div className="image-upload">
           <h3>Aadhar Card Front</h3>
           {aadharFront && (
-            <div className="image-preview">
-              <img src={URL.createObjectURL(aadharFront)} alt="Aadhar Card Front" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-              <button onClick={() => handleRemoveImage(setAadharFront)}><ImCross /></button>
+            <div className="multipale-image-display">
+              <div className="dynamic-img-wrapper">
+                <img src={URL.createObjectURL(aadharFront)} alt="Aadhar Card Front" style={{ height: "200px", width: "200px" }} className='img-fluid' />
+                <button type="button" className="btn dropshadow-gallery" onClick={() => handleRemoveImage(setAadharFront)}>  <FaTrash /></button>
+              </div>
             </div>
           )}
           <div>
@@ -74,9 +78,11 @@ const CompleteKYC = () => {
         <div className="image-upload">
           <h3>Aadhar Card Back</h3>
           {aadharBack && (
-            <div className="image-preview">
-              <img src={URL.createObjectURL(aadharBack)} alt="Aadhar Card Back" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-              <button onClick={() => handleRemoveImage(setAadharBack)}><ImCross /></button>
+            <div className="multipale-image-display">
+              <div className="dynamic-img-wrapper">
+                <img src={URL.createObjectURL(aadharBack)} alt="Aadhar Card Back" style={{ height: "200px", width: "200px" }} className='img-fluid' />
+                <button type="button" className="btn dropshadow-gallery" onClick={() => handleRemoveImage(setAadharBack)}>  <FaTrash /></button>
+              </div>
             </div>
           )}
           <div>
@@ -100,10 +106,13 @@ const CompleteKYC = () => {
         <div className="image-upload">
           <h3>PAN Card</h3>
           {panCard && (
-            <div className="image-preview">
-              <img src={URL.createObjectURL(panCard)} alt="PAN Card" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-              <button onClick={() => handleRemoveImage(setPanCard)}><ImCross /></button>
+            <div className="multipale-image-display">
+              <div className="dynamic-img-wrapper">
+                <img src={URL.createObjectURL(panCard)} alt="PAN Card" style={{ height: "200px", width: "200px" }} className='img-fluid' />
+                <button type="button" className="btn dropshadow-gallery" onClick={() => handleRemoveImage(setPanCard)}>  <FaTrash /></button>
+              </div>
             </div>
+
           )}
           <div>
             <Button
