@@ -70,7 +70,7 @@ const BlogList = () => {
       setPage(0)
     }
     const editHandler = (_id)=>{
-      console.log(_id,"check the id inside the blog")
+      
       navigate(`/management/all-blog/${_id}`,{state:_id})
     }
   
