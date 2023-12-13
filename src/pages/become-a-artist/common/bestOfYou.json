@@ -1,0 +1,412 @@
+[
+    {
+      "_id": "6572c9742eaaf756b91ce5b5",
+      "title": "Hairdresser",
+      "icon": {
+        "fileId": "657808d688c257da33506b80",
+        "name": "1702365396131--mall-shopping-center-icon-salon-icon-hair-icon-line-png-clipart-thumbnail-removebg-preview_WgApSQeAZz.png",
+        "size": 84802,
+        "versionInfo": {
+          "id": "657808d688c257da33506b80",
+          "name": "Version 1"
+        },
+        "filePath": "/1702365396131--mall-shopping-center-icon-salon-icon-hair-icon-line-png-clipart-thumbnail-removebg-preview_WgApSQeAZz.png",
+        "url": "https://ik.imagekit.io/lookbook/1702365396131--mall-shopping-center-icon-salon-icon-hair-icon-line-png-clipart-thumbnail-removebg-preview_WgApSQeAZz.png",
+        "fileType": "image",
+        "height": 300,
+        "width": 300,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702365396131--mall-shopping-center-icon-salon-icon-hair-icon-line-png-clipart-thumbnail-removebg-preview_WgApSQeAZz.png",
+        "AITags": null
+      },
+      "image": {
+        "fileId": "6572c97388c257da33828766",
+        "name": "1702021490428--adam-winger-WXmHwPcFamo-unsplash_OaRNSSdAG.jpg",
+        "size": 62455,
+        "versionInfo": {
+          "id": "6572c97388c257da33828766",
+          "name": "Version 1"
+        },
+        "filePath": "/1702021490428--adam-winger-WXmHwPcFamo-unsplash_OaRNSSdAG.jpg",
+        "url": "https://ik.imagekit.io/lookbook/1702021490428--adam-winger-WXmHwPcFamo-unsplash_OaRNSSdAG.jpg",
+        "fileType": "image",
+        "height": 427,
+        "width": 640,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702021490428--adam-winger-WXmHwPcFamo-unsplash_OaRNSSdAG.jpg",
+        "AITags": null
+      },
+      "status": "Active",
+      "createdBy": "6572baf72eaaf756b91ce583",
+      "createdAt": "2023-12-08T07:44:52.462Z",
+      "updatedAt": "2023-12-12T07:16:39.238Z",
+      "__v": 0
+    },
+    {
+      "_id": "6572cbb12eaaf756b91ce5bb",
+      "title": "manicure pedicure",
+      "icon": {
+        "fileId": "65780e1788c257da336290ab",
+        "name": "1702366742019--pedicure-removebg-preview_dJqb5IKEj6.png",
+        "size": 15189,
+        "versionInfo": {
+          "id": "65780e1788c257da336290ab",
+          "name": "Version 1"
+        },
+        "filePath": "/1702366742019--pedicure-removebg-preview_dJqb5IKEj6.png",
+        "url": "https://ik.imagekit.io/lookbook/1702366742019--pedicure-removebg-preview_dJqb5IKEj6.png",
+        "fileType": "image",
+        "height": 148,
+        "width": 148,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702366742019--pedicure-removebg-preview_dJqb5IKEj6.png",
+        "AITags": null
+      },
+      "image": {
+        "fileId": "6572cbb088c257da338be597",
+        "name": "1702022062974--billie-5OXE3KjDEfI-unsplash_tpG2i1hhw.jpg",
+        "size": 1627029,
+        "versionInfo": {
+          "id": "6572cbb088c257da338be597",
+          "name": "Version 1"
+        },
+        "filePath": "/1702022062974--billie-5OXE3KjDEfI-unsplash_tpG2i1hhw.jpg",
+        "url": "https://ik.imagekit.io/lookbook/1702022062974--billie-5OXE3KjDEfI-unsplash_tpG2i1hhw.jpg",
+        "fileType": "image",
+        "height": 3000,
+        "width": 3000,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702022062974--billie-5OXE3KjDEfI-unsplash_tpG2i1hhw.jpg",
+        "AITags": null
+      },
+      "status": "Active",
+      "createdBy": "6572baf72eaaf756b91ce583",
+      "createdAt": "2023-12-08T07:54:25.392Z",
+      "updatedAt": "2023-12-12T07:39:04.195Z",
+      "__v": 0
+    },
+    {
+      "_id": "6572cc7b2eaaf756b91ce5c0",
+      "title": "Massages",
+      "icon": {
+        "fileId": "6578175e88c257da338c866c",
+        "name": "1702369116226--7305214-removebg-preview_1ABHALp8s.png",
+        "size": 102668,
+        "versionInfo": {
+          "id": "6578175e88c257da338c866c",
+          "name": "Version 1"
+        },
+        "filePath": "/1702369116226--7305214-removebg-preview_1ABHALp8s.png",
+        "url": "https://ik.imagekit.io/lookbook/1702369116226--7305214-removebg-preview_1ABHALp8s.png",
+        "fileType": "image",
+        "height": 500,
+        "width": 500,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702369116226--7305214-removebg-preview_1ABHALp8s.png",
+        "AITags": null
+      },
+      "image": {
+        "fileId": "6572cc7a88c257da338eb6e7",
+        "name": "1702022264991--antonika-chanel-RJCslxmvBcs-unsplash_ETB6hWGXaE.jpg",
+        "size": 4454142,
+        "versionInfo": {
+          "id": "6572cc7a88c257da338eb6e7",
+          "name": "Version 1"
+        },
+        "filePath": "/1702022264991--antonika-chanel-RJCslxmvBcs-unsplash_ETB6hWGXaE.jpg",
+        "url": "https://ik.imagekit.io/lookbook/1702022264991--antonika-chanel-RJCslxmvBcs-unsplash_ETB6hWGXaE.jpg",
+        "fileType": "image",
+        "height": 5792,
+        "width": 8688,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702022264991--antonika-chanel-RJCslxmvBcs-unsplash_ETB6hWGXaE.jpg",
+        "AITags": null
+      },
+      "status": "Active",
+      "createdBy": "6572baf72eaaf756b91ce583",
+      "createdAt": "2023-12-08T07:57:47.505Z",
+      "updatedAt": "2023-12-12T08:18:39.439Z",
+      "__v": 0
+    },
+    {
+      "_id": "6572ccff2eaaf756b91ce5ca",
+      "title": "Tanning",
+      "icon": {
+        "fileId": "65781a9588c257da3397a79d",
+        "name": "1702369939367--tanning-removebg-preview_4Z8DZChMF.png",
+        "size": 20407,
+        "versionInfo": {
+          "id": "65781a9588c257da3397a79d",
+          "name": "Version 1"
+        },
+        "filePath": "/1702369939367--tanning-removebg-preview_4Z8DZChMF.png",
+        "url": "https://ik.imagekit.io/lookbook/1702369939367--tanning-removebg-preview_4Z8DZChMF.png",
+        "fileType": "image",
+        "height": 225,
+        "width": 225,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702369939367--tanning-removebg-preview_4Z8DZChMF.png",
+        "AITags": null
+      },
+      "image": {
+        "fileId": "6572ccfe88c257da3390a299",
+        "name": "1702022397075--emiliano-vittoriosi-dsy_ILnH69A-unsplash_3WOEZ3ENh.jpg",
+        "size": 3064256,
+        "versionInfo": {
+          "id": "6572ccfe88c257da3390a299",
+          "name": "Version 1"
+        },
+        "filePath": "/1702022397075--emiliano-vittoriosi-dsy_ILnH69A-unsplash_3WOEZ3ENh.jpg",
+        "url": "https://ik.imagekit.io/lookbook/1702022397075--emiliano-vittoriosi-dsy_ILnH69A-unsplash_3WOEZ3ENh.jpg",
+        "fileType": "image",
+        "height": 4288,
+        "width": 2848,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702022397075--emiliano-vittoriosi-dsy_ILnH69A-unsplash_3WOEZ3ENh.jpg",
+        "AITags": null
+      },
+      "status": "Active",
+      "createdBy": "6572baf72eaaf756b91ce583",
+      "createdAt": "2023-12-08T07:59:59.453Z",
+      "updatedAt": "2023-12-12T08:32:22.481Z",
+      "__v": 0
+    },
+    {
+      "_id": "6572ce052eaaf756b91ce5d8",
+      "title": "complementary care  aromatherapy.",
+      "icon": {
+        "fileId": "6578122e88c257da33733f83",
+        "name": "1702367789657--aromatherapy.__-removebg-preview_Qf1dYE9Xq.png",
+        "size": 27348,
+        "versionInfo": {
+          "id": "6578122e88c257da33733f83",
+          "name": "Version 1"
+        },
+        "filePath": "/1702367789657--aromatherapy.__-removebg-preview_Qf1dYE9Xq.png",
+        "url": "https://ik.imagekit.io/lookbook/1702367789657--aromatherapy.__-removebg-preview_Qf1dYE9Xq.png",
+        "fileType": "image",
+        "height": 225,
+        "width": 225,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702367789657--aromatherapy.__-removebg-preview_Qf1dYE9Xq.png",
+        "AITags": null
+      },
+      "image": {
+        "fileId": "6572ce0488c257da3398ac5f",
+        "name": "1702022659592--national-cancer-institute-BxXgTQEw1M4-unsplash_AtOrPYZVS.jpg",
+        "size": 777043,
+        "versionInfo": {
+          "id": "6572ce0488c257da3398ac5f",
+          "name": "Version 1"
+        },
+        "filePath": "/1702022659592--national-cancer-institute-BxXgTQEw1M4-unsplash_AtOrPYZVS.jpg",
+        "url": "https://ik.imagekit.io/lookbook/1702022659592--national-cancer-institute-BxXgTQEw1M4-unsplash_AtOrPYZVS.jpg",
+        "fileType": "image",
+        "height": 2000,
+        "width": 3000,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702022659592--national-cancer-institute-BxXgTQEw1M4-unsplash_AtOrPYZVS.jpg",
+        "AITags": null
+      },
+      "status": "Active",
+      "createdBy": "6572baf72eaaf756b91ce583",
+      "createdAt": "2023-12-08T08:04:21.776Z",
+      "updatedAt": "2023-12-12T07:56:31.930Z",
+      "__v": 0
+    },
+    {
+      "_id": "6572ce332eaaf756b91ce5db",
+      "title": "facials and skin treatments.",
+      "icon": {
+        "fileId": "657813ac88c257da337932ef",
+        "name": "1702368170096--facials-removebg-preview_QnKOa_Z0T.png",
+        "size": 15895,
+        "versionInfo": {
+          "id": "657813ac88c257da337932ef",
+          "name": "Version 1"
+        },
+        "filePath": "/1702368170096--facials-removebg-preview_QnKOa_Z0T.png",
+        "url": "https://ik.imagekit.io/lookbook/1702368170096--facials-removebg-preview_QnKOa_Z0T.png",
+        "fileType": "image",
+        "height": 225,
+        "width": 225,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702368170096--facials-removebg-preview_QnKOa_Z0T.png",
+        "AITags": null
+      },
+      "image": {
+        "fileId": "6572ce3288c257da33993dc5",
+        "name": "1702022705537--adrian-motroc-87InWldRhgs-unsplash_R8HfmDYqYp.jpg",
+        "size": 547197,
+        "versionInfo": {
+          "id": "6572ce3288c257da33993dc5",
+          "name": "Version 1"
+        },
+        "filePath": "/1702022705537--adrian-motroc-87InWldRhgs-unsplash_R8HfmDYqYp.jpg",
+        "url": "https://ik.imagekit.io/lookbook/1702022705537--adrian-motroc-87InWldRhgs-unsplash_R8HfmDYqYp.jpg",
+        "fileType": "image",
+        "height": 3258,
+        "width": 2407,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702022705537--adrian-motroc-87InWldRhgs-unsplash_R8HfmDYqYp.jpg",
+        "AITags": null
+      },
+      "status": "Active",
+      "createdBy": "6572baf72eaaf756b91ce583",
+      "createdAt": "2023-12-08T08:05:07.789Z",
+      "updatedAt": "2023-12-12T08:02:53.805Z",
+      "__v": 0
+    },
+    {
+      "_id": "6572cec72eaaf756b91ce5e0",
+      "title": "Waxing and  hair removal.",
+      "icon": {
+        "fileId": "6578148788c257da337bf2fa",
+        "name": "1702368390422--hair-remove-removebg-preview_iOMF530smF.png",
+        "size": 14188,
+        "versionInfo": {
+          "id": "6578148788c257da337bf2fa",
+          "name": "Version 1"
+        },
+        "filePath": "/1702368390422--hair-remove-removebg-preview_iOMF530smF.png",
+        "url": "https://ik.imagekit.io/lookbook/1702368390422--hair-remove-removebg-preview_iOMF530smF.png",
+        "fileType": "image",
+        "height": 200,
+        "width": 200,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702368390422--hair-remove-removebg-preview_iOMF530smF.png",
+        "AITags": null
+      },
+      "image": {
+        "fileId": "6572cec688c257da339b7f28",
+        "name": "1702022852866--angelo-pantazis-uIyzZCdCnWc-unsplash_qPhgObLlb.jpg",
+        "size": 1413457,
+        "versionInfo": {
+          "id": "6572cec688c257da339b7f28",
+          "name": "Version 1"
+        },
+        "filePath": "/1702022852866--angelo-pantazis-uIyzZCdCnWc-unsplash_qPhgObLlb.jpg",
+        "url": "https://ik.imagekit.io/lookbook/1702022852866--angelo-pantazis-uIyzZCdCnWc-unsplash_qPhgObLlb.jpg",
+        "fileType": "image",
+        "height": 4256,
+        "width": 2832,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702022852866--angelo-pantazis-uIyzZCdCnWc-unsplash_qPhgObLlb.jpg",
+        "AITags": null
+      },
+      "status": "Active",
+      "createdBy": "6572baf72eaaf756b91ce583",
+      "createdAt": "2023-12-08T08:07:35.338Z",
+      "updatedAt": "2023-12-12T08:06:32.715Z",
+      "__v": 0
+    },
+    {
+      "_id": "6572cf3b2eaaf756b91ce5e5",
+      "title": "Makeover",
+      "icon": {
+        "fileId": "6578150f88c257da33820797",
+        "name": "1702368525779--makeover-removebg-preview_3THQBAPVbA.png",
+        "size": 81590,
+        "versionInfo": {
+          "id": "6578150f88c257da33820797",
+          "name": "Version 1"
+        },
+        "filePath": "/1702368525779--makeover-removebg-preview_3THQBAPVbA.png",
+        "url": "https://ik.imagekit.io/lookbook/1702368525779--makeover-removebg-preview_3THQBAPVbA.png",
+        "fileType": "image",
+        "height": 500,
+        "width": 500,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702368525779--makeover-removebg-preview_3THQBAPVbA.png",
+        "AITags": null
+      },
+      "image": {
+        "fileId": "6572cf3a88c257da33a18b31",
+        "name": "1702022969052--artem-labunsky-ZbOGYp1G-GU-unsplash_st14s-uPZD.jpg",
+        "size": 3636468,
+        "versionInfo": {
+          "id": "6572cf3a88c257da33a18b31",
+          "name": "Version 1"
+        },
+        "filePath": "/1702022969052--artem-labunsky-ZbOGYp1G-GU-unsplash_st14s-uPZD.jpg",
+        "url": "https://ik.imagekit.io/lookbook/1702022969052--artem-labunsky-ZbOGYp1G-GU-unsplash_st14s-uPZD.jpg",
+        "fileType": "image",
+        "height": 3193,
+        "width": 4804,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702022969052--artem-labunsky-ZbOGYp1G-GU-unsplash_st14s-uPZD.jpg",
+        "AITags": null
+      },
+      "status": "Active",
+      "createdBy": "6572baf72eaaf756b91ce583",
+      "createdAt": "2023-12-08T08:09:31.576Z",
+      "updatedAt": "2023-12-12T08:08:48.087Z",
+      "__v": 0
+    },
+    {
+      "_id": "6572cfc02eaaf756b91ce5ec",
+      "title": "Cosmetics",
+      "icon": {
+        "fileId": "657815b988c257da338735f8",
+        "name": "1702368695850--cosmetic-removebg-preview_d4lZQmj8l.png",
+        "size": 28296,
+        "versionInfo": {
+          "id": "657815b988c257da338735f8",
+          "name": "Version 1"
+        },
+        "filePath": "/1702368695850--cosmetic-removebg-preview_d4lZQmj8l.png",
+        "url": "https://ik.imagekit.io/lookbook/1702368695850--cosmetic-removebg-preview_d4lZQmj8l.png",
+        "fileType": "image",
+        "height": 227,
+        "width": 222,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702368695850--cosmetic-removebg-preview_d4lZQmj8l.png",
+        "AITags": null
+      },
+      "image": {
+        "fileId": "6572cfbf88c257da33a44067",
+        "name": "1702023101865--amin-rk-e5a8TlCzV10-unsplash_e4anasSuS.jpg",
+        "size": 2185779,
+        "versionInfo": {
+          "id": "6572cfbf88c257da33a44067",
+          "name": "Version 1"
+        },
+        "filePath": "/1702023101865--amin-rk-e5a8TlCzV10-unsplash_e4anasSuS.jpg",
+        "url": "https://ik.imagekit.io/lookbook/1702023101865--amin-rk-e5a8TlCzV10-unsplash_e4anasSuS.jpg",
+        "fileType": "image",
+        "height": 5041,
+        "width": 3712,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702023101865--amin-rk-e5a8TlCzV10-unsplash_e4anasSuS.jpg",
+        "AITags": null
+      },
+      "status": "Active",
+      "createdBy": "6572baf72eaaf756b91ce583",
+      "createdAt": "2023-12-08T08:11:44.207Z",
+      "updatedAt": "2023-12-12T08:11:38.140Z",
+      "__v": 0
+    },
+    {
+      "_id": "6572d1dc2eaaf756b91ce5f1",
+      "title": "Nail treatments",
+      "icon": {
+        "fileId": "6578164488c257da3389510b",
+        "name": "1702368835240--nail-removebg-preview_sY_cXCUIra.png",
+        "size": 14746,
+        "versionInfo": {
+          "id": "6578164488c257da3389510b",
+          "name": "Version 1"
+        },
+        "filePath": "/1702368835240--nail-removebg-preview_sY_cXCUIra.png",
+        "url": "https://ik.imagekit.io/lookbook/1702368835240--nail-removebg-preview_sY_cXCUIra.png",
+        "fileType": "image",
+        "height": 200,
+        "width": 200,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702368835240--nail-removebg-preview_sY_cXCUIra.png",
+        "AITags": null
+      },
+      "image": {
+        "fileId": "6572d1db88c257da33ab3130",
+        "name": "1702023642447--designecologist-r-Ej0NQmFlQ-unsplash_UPFIJbyEL.jpg",
+        "size": 352036,
+        "versionInfo": {
+          "id": "6572d1db88c257da33ab3130",
+          "name": "Version 1"
+        },
+        "filePath": "/1702023642447--designecologist-r-Ej0NQmFlQ-unsplash_UPFIJbyEL.jpg",
+        "url": "https://ik.imagekit.io/lookbook/1702023642447--designecologist-r-Ej0NQmFlQ-unsplash_UPFIJbyEL.jpg",
+        "fileType": "image",
+        "height": 1899,
+        "width": 2848,
+        "thumbnailUrl": "https://ik.imagekit.io/lookbook/tr:n-ik_ml_thumbnail/1702023642447--designecologist-r-Ej0NQmFlQ-unsplash_UPFIJbyEL.jpg",
+        "AITags": null
+      },
+      "status": "Active",
+      "createdBy": "6572baf72eaaf756b91ce583",
+      "createdAt": "2023-12-08T08:20:44.627Z",
+      "updatedAt": "2023-12-12T08:13:57.367Z",
+      "__v": 0
+    }
+  ]
