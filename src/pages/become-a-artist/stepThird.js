@@ -2,7 +2,7 @@ import React from 'react'
 import ArtistFooter from './artistFooter'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 
-const Step3 = () => {
+const StepThird = () => {
   const [artistPayload, setArtistPayload] = useOutletContext();
 
   console.log("sthis i s my data", artistPayload)
@@ -29,4 +29,4 @@ const Step3 = () => {
   )
 }
 
-export default Step3
+export default StepThird

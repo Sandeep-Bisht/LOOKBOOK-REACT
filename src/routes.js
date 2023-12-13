@@ -37,7 +37,6 @@ import StepSecond from 'pages/become-a-artist/stepSecond'
 import InsightStory from 'pages/become-a-artist/insightStory'
 import BestServices from 'pages/become-a-artist/bestServices'
 import Description from 'pages/become-a-artist/description'
-import Step3 from 'pages/become-a-artist/step3'
 import ProfilePreview from 'pages/become-a-artist/profilePreview'
 import PriceSetup from 'pages/become-a-artist/priceSetup'
 import CompleteKYC from 'pages/become-a-artist/completeKYC'
@@ -48,6 +47,7 @@ import GetStarted from 'pages/become-a-artist/getStarted'
 import ArtistGlobalState from 'pages/become-a-artist/globalState'
 import ArtistLocation from 'pages/become-a-artist/location'
 import StepFirst from 'pages/become-a-artist/stepFirst'
+import StepThird from 'pages/become-a-artist/stepThird'
 
 
 const DashboardComponents = () =>{
@@ -112,6 +112,13 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/become-a-artist/:request_id/location" element={<ArtistLocation />} />
           <Route path="/become-a-artist/:request_id/insight-your-work" element={<InsightStory />} />
           <Route path="/become-a-artist/:request_id/stand-out" element={<StepSecond />} />
+          <Route path="/become-a-artist/:request_id/gallery" element={<ArtistGallary />} />
+          <Route path="/become-a-artist/:request_id/you-are-best-in" element={<BestServices />} />
+          <Route path="/become-a-artist/:request_id/description" element={<Description />} />
+          <Route path="/become-a-artist/:request_id/finish-setup" element={< StepThird />} />
+          <Route path="/become-a-artist/:request_id/pricing" element={< PriceSetup />} />
+          <Route path="/become-a-artist/:request_id/complete-kyc" element={< CompleteKYC />} />
+          <Route path="/become-a-artist/:request_id/upload-cerificates" element={< Certificates />} />
         </Route>
         
 
