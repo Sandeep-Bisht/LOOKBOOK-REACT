@@ -40,6 +40,7 @@ const LocationAwareMap = ({height, styles,  coords, onMarkerDragEnd, markerDragg
     center={coords == undefined ? location ? { lat: location.coords.latitude, lng: location.coords.longitude } : { lat: 30.3317463, lng: 78.0289588 } : coords}
     zoom={(location || coords) ? 13 : 12} // Adjust the zoom level as needed
     options={{
+              streetViewControl:false,
               styles: styles == undefined ? [
               { 
                 featureType: "poi",
