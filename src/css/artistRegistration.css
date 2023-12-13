@@ -528,3 +528,9 @@ border-radius: 25px;
 .dynamic-img-wrapper:hover button{
   display: flex;
 }
+
+.custom-add-card{
+  background-color: transparent!important;
+  box-shadow: none!important;
+  color: #8C6A54!important;;
+}

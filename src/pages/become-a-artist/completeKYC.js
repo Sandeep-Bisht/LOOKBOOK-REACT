@@ -60,10 +60,10 @@ const CompleteKYC = () => {
             <Button
               component="label"
               variant="contained"
-              className="mt-2"
+              className="mt-2 custom-add-card"
               htmlFor="adhar-front-image"
             >
-              +
+              
               <input
                 hidden
                 type="file"
@@ -71,6 +71,11 @@ const CompleteKYC = () => {
                 onChange={handleAadharFrontChange}
                 accept="image/*"
               />
+               <div className="multipale-image-display">
+              <div className="dynamic-img-wrapper">
+                <h1>+</h1>
+              </div>
+            </div>
             </Button>
           </div>
         </div>
@@ -89,10 +94,10 @@ const CompleteKYC = () => {
             <Button
               component="label"
               variant="contained"
-              className="mt-2"
+              className="mt-2 custom-add-card"
               htmlFor="adhar-back-image"
             >
-              +
+              
               <input
                 hidden
                 type="file"
@@ -100,6 +105,12 @@ const CompleteKYC = () => {
                 onChange={handleAadharBackChange}
                 accept="image/*"
               />
+              
+              <div className="multipale-image-display">
+              <div className="dynamic-img-wrapper">
+                <h1>+</h1>
+              </div>
+            </div>
             </Button>
           </div>
         </div>
@@ -118,10 +129,9 @@ const CompleteKYC = () => {
             <Button
               component="label"
               variant="contained"
-              className="mt-2"
+              className="mt-2 custom-add-card"
               htmlFor="pancard-image"
             >
-              +
               <input
                 hidden
                 type="file"
@@ -129,6 +139,11 @@ const CompleteKYC = () => {
                 onChange={handlePanCardChange}
                 accept="image/*"
               />
+              <div className="multipale-image-display">
+              <div className="dynamic-img-wrapper">
+                <h1>+</h1>
+              </div>
+            </div>
             </Button>
           </div>
         </div>
