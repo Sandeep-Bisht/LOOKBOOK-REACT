@@ -46,6 +46,7 @@ const BlogList = () => {
         if (all_blogs && all_blogs.length>0) {
           const blogData = all_blogs;
           const formattedData = blogData.map(blog => ({
+            _id:blog._id,
             title: blog.title,
             featuredImage: {
               thumbnailUrl: blog.featuredImage?.thumbnailUrl || '',
@@ -67,6 +68,10 @@ const BlogList = () => {
     const handleChangeRowsPerPage = event => {
       setRowsPerPage(+event.target.value)
       setPage(0)
+    }
+    const editHandler = (_id)=>{
+      console.log(_id,"check the id inside the blog")
+      navigate(`/management/all-blog/${_id}`,{state:_id})
     }
   
     return (
@@ -119,9 +124,9 @@ const BlogList = () => {
             column.id == "action" ? (
               
               <div className='d-flex'>
-              <div><CiEdit/>
+              <div className="fs-4 text-black reset-edit-btn" onClick={() => editHandler(row?._id)}><CiEdit/>
               </div>
-              <div className='ms-3'>
+              <div className='ms-3 fs-4 text-black reset-edit-btn'>
               <MdDeleteForever/>
               </div>
               </div>

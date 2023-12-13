@@ -85,3 +85,12 @@ export const getProductById = async (_id) => {
   return error.message || "An error occured while trying to get product request."
 }
 };
+
+// export const getBlogById = async (_id) => {
+//   try {
+//     const response = await axiosAuth.post('/blog/get_blog_by_id', { _id:_id });
+//       return response.data.data
+//  } catch (error) {
+//   return error.message || "An error occured while trying to get product request."
+// }
+// };
