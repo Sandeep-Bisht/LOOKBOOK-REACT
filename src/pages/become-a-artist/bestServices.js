@@ -1,180 +1,95 @@
 import React, { useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
-import { AiOutlineHome } from "react-icons/ai";
+import NoDataFound from "./common/noDataFound";
+import allServices from "./common/bestOfYou.json"
 
 const BestServices = () => {
+  const { request_id } = useParams();
 
-    const [configuration, setConfiguration] = useOutletContext();
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    const { request_id } = useParams();
-  
-    const [artistArray] = useState([]);
-  
-    const handleChange = (proffesion) => {
-      console.log("value", proffesion);
-      const index = artistArray.indexOf(proffesion);
-      if (index !== -1) {
-        // Element found, remove it using splice
-        artistArray.splice(index, 1);
-      } else {
-        artistArray.push(proffesion);
+  const [selectedServices, setSelectedServices] = useState([]);
+
+
+  const handleChange = (service) => {
+    
+    // Check if the service is already selected
+    const isSelected = selectedServices.includes(service);
+
+    if (isSelected) {
+      // If selected, remove it from the list
+      setSelectedServices((prevSelected) =>
+        prevSelected.filter((item) => item !== service)
+      );
+    } else {
+      if(selectedServices.length < 2){
+        setSelectedServices((prevSelected) => [...prevSelected, service]);
       }
+      // If not selected, add it to the list
+    }
+  };
   
-      console.log(artistArray, "check array");
-    };
 
-    return (
-        <>
-          <section className="about">
-            <div className="container">
-              <div className="row mb-3">
-                <div className="col-md-12">
-                  <h1 className="text-center">Which of the best describe you ?</h1>
-                </div>
-              </div>
-    
-              <div className="row mb-5">
-                <div className="col-md-7 mx-auto">
-                  <div className="row">
-                    <div className="col-md-4">
+  return (
+    <>
+      <section className="about">
+        <div className="container">
+          <div className="row mb-3">
+            <div className="col-md-12">
+              <h1 className="text-center">Which of these best describe you ?</h1>
+            </div>
+          </div>
+
+          <div className="row mb-5">
+            <div className="col-md-10 mx-auto">
+              <div className="row g-3">
+                {(allServices && Array.isArray(allServices)) ?
+                <>
+                {
+                  allServices.length > 0 ?
+                  <>
+                  {allServices.map((service, index) => (
+                    <div key={index} className="col-md-3">
                       <div
-                        className="artist-card"
-                        onClick={(e) => handleChange("Hair")}
+                        className={`${
+                          selectedServices.includes(service._id)
+                            ? "selected"
+                            : "artist-card "
+                        }`}
+                        
+                        onClick={() => handleChange(service._id)}
                       >
-                        <div className="">
-                          <AiOutlineHome />
+                        <div  >
+                          <img 
+                            src={service.icon.thumbnailUrl}
+                            alt={service.title}
+                            className="img-fluid about-images"
+                          />
                         </div>
-                        <div>
-                          <span>Hair</span>
+                        <div className="card-title">
+                          <span>{service.title}</span>
                         </div>
                       </div>
                     </div>
-    
-                    <div className="col-md-4">
-                      <div
-                        className="artist-card"
-                        onClick={(e) => handleChange("MakeUp")}
-                      >
-                        <div>
-                          <AiOutlineHome />
-                        </div>
-                        <div>
-                          <span>Make-up</span>
-                        </div>
-                      </div>
-                    </div>
-    
-                    <div className="col-md-4">
-                      <div
-                        className="artist-card"
-                        onClick={(e) => handleChange("Dressing")}
-                      >
-                        <div>
-                          <AiOutlineHome />
-                        </div>
-                        <div>
-                          <span>Dressing</span>
-                        </div>
-                      </div>
-                    </div>
-    
-                    <div className="col-md-4">
-                      <div
-                        className="artist-card"
-                        onClick={(e) => handleChange("Tattos")}
-                      >
-                        <div>
-                          <AiOutlineHome />
-                        </div>
-                        <div>
-                          <span>Tattos</span>
-                        </div>
-                      </div>
-                    </div>
-    
-                    <div className="col-md-4">
-                      <div
-                        className="artist-card"
-                        onClick={(e) => handleChange("Message")}
-                      >
-                        <div>
-                          <AiOutlineHome />
-                        </div>
-                        <div>
-                          <span>Message</span>
-                        </div>
-                      </div>
-                    </div>
-    
-                    <div className="col-md-4">
-                      <div
-                        className="artist-card"
-                        onClick={(e) => handleChange("Cabin")}
-                      >
-                        <div>
-                          <AiOutlineHome />
-                        </div>
-                        <div>
-                          <span>Cabin</span>
-                        </div>
-                      </div>
-                    </div>
-    
-                    <div className="col-md-4">
-                      <div
-                        className="artist-card"
-                        onClick={(e) => handleChange("Potraits")}
-                      >
-                        <div>
-                          <AiOutlineHome />
-                        </div>
-                        <div>
-                          <span>Potraits</span>
-                        </div>
-                      </div>
-                    </div>
-    
-                    <div className="col-md-4">
-                      <div
-                        className="artist-card"
-                        onClick={(e) => handleChange("NailArt")}
-                      >
-                        <div>
-                          <AiOutlineHome />
-                        </div>
-                        <div>
-                          <span>Nail art</span>
-                        </div>
-                      </div>
-                    </div>
-    
-                    <div className="col-md-4">
-                      <div
-                        className="artist-card"
-                        onClick={(e) => handleChange("Grooming")}
-                      >
-                        <div>
-                          <AiOutlineHome />
-                        </div>
-                        <div>
-                          <span>Grooming</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  ))}
+                  </> : 
+                  <NoDataFound/>
+                }
+                </> : <NoDataFound/>}
+               
               </div>
             </div>
-          </section>
-    
-          <ArtistFooter
+          </div>
+        </div>
+      </section>
+
+      <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/gallery`)}
         nextClick={() => navigate(`/become-a-artist/${request_id}/description`)}
       />
-        </>
-  )
-}
+    </>
+  );
+};
 
-export default BestServices
+export default BestServices;
