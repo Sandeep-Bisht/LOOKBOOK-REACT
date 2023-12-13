@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
 import { FaRegImage } from "react-icons/fa6";
 
 const ArtistGallery = () => {
   const navigate = useNavigate();
+  const { request_id } = useParams();
   const [selectedImages, setSelectedImages] = useState([]);
 
   const handleImageChange = (event) => {
@@ -90,8 +91,8 @@ const ArtistGallery = () => {
       </section>
 
       <ArtistFooter
-        backClick={() => navigate("/become-a-artist/stand-out")}
-        nextClick={() => navigate("/become-a-artist/you-are-best-in")}
+        backClick={() => navigate(`/become-a-artist/${request_id}/stand-out`)}
+        nextClick={() => navigate(`/become-a-artist/${request_id}/you-are-best-in`)}
       />
     </>
   );

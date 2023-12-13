@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import ArtistFooter from './artistFooter';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Certificates = () => {
   const [selectedCertificates, setSelectedCertificates] = useState([]);
+  const { request_id } = useParams();
+  let navigate = useNavigate();
 
   const handleCertificateChange = (event) => {
     const files = event.target.files;
@@ -18,6 +22,7 @@ const Certificates = () => {
   };
 
   return (
+    <>
     <section className="about">
       <div className="container">
         <div className="row mb-3">
@@ -53,6 +58,12 @@ const Certificates = () => {
         )}
       </div>
     </section>
+    
+    <ArtistFooter
+        backClick={() => navigate(`/become-a-artist/${request_id}/complete-kyc`)}
+        nextClick={() => navigate(`/become-a-artist/${request_id}/upload-cerificates`)}
+      />
+    </>
   );
 };
 

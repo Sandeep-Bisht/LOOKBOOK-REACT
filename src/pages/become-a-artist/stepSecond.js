@@ -52,7 +52,7 @@ const StepSecond = () => {
 
       <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/insight-your-work`)}
-        nextClick={() => navigate(`/become-a-artist/${request_id}/stand-out`)}
+        nextClick={() => navigate(`/become-a-artist/${request_id}/gallery`)}
       />
       </>
   )

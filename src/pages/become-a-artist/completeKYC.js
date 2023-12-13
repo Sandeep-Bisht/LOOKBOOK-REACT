@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import ArtistFooter from './artistFooter';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const CompleteKYC = () => {
     let navigate = useNavigate()
+    const { request_id } = useParams();
   const [aadharFront, setAadharFront] = useState(null);
   const [aadharBack, setAadharBack] = useState(null);
   const [panCard, setPanCard] = useState(null);
@@ -76,8 +77,8 @@ const CompleteKYC = () => {
 
 
       <ArtistFooter
-        backClick={() => navigate("/become-a-artist/pricing")}
-        nextClick={() => navigate("/become-a-artist/upload-cerificates")}
+        backClick={() => navigate(`/become-a-artist/${request_id}/pricing`)}
+        nextClick={() => navigate(`/become-a-artist/${request_id}/upload-cerificates`)}
       />
     </>
   );
