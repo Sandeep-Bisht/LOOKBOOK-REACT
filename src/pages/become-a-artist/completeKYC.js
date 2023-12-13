@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import ArtistFooter from './artistFooter';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button'
+import { ImCross } from "react-icons/im";
 
 const CompleteKYC = () => {
-    let navigate = useNavigate()
-    const { request_id } = useParams();
+  const { request_id } = useParams();
+  let navigate = useNavigate()
   const [aadharFront, setAadharFront] = useState(null);
   const [aadharBack, setAadharBack] = useState(null);
   const [panCard, setPanCard] = useState(null);
@@ -43,35 +46,82 @@ const CompleteKYC = () => {
       <div className="image-upload-container">
         <div className="image-upload">
           <h3>Aadhar Card Front</h3>
-          <input type="file" accept="image/*" onChange={handleAadharFrontChange} />
           {aadharFront && (
             <div className="image-preview">
-              <img src={URL.createObjectURL(aadharFront)} alt="Aadhar Card Front"  className='img-fluid'/>
-              <button onClick={() => handleRemoveImage(setAadharFront)}>Remove</button>
+              <img src={URL.createObjectURL(aadharFront)} alt="Aadhar Card Front" style={{ height: "200px", width: "200px" }} className='img-fluid' />
+              <button onClick={() => handleRemoveImage(setAadharFront)}><ImCross /></button>
             </div>
           )}
+          <div>
+            <Button
+              component="label"
+              variant="contained"
+              className="mt-2"
+              htmlFor="adhar-front-image"
+            >
+              +
+              <input
+                hidden
+                type="file"
+                id="adhar-front-image"
+                onChange={handleAadharFrontChange}
+                accept="image/*"
+              />
+            </Button>
+          </div>
         </div>
 
         <div className="image-upload">
           <h3>Aadhar Card Back</h3>
-          <input type="file" accept="image/*" onChange={handleAadharBackChange} />
           {aadharBack && (
             <div className="image-preview">
-              <img src={URL.createObjectURL(aadharBack)} alt="Aadhar Card Back"  className='img-fluid'/>
-              <button onClick={() => handleRemoveImage(setAadharBack)}>Remove</button>
+              <img src={URL.createObjectURL(aadharBack)} alt="Aadhar Card Back" style={{ height: "200px", width: "200px" }} className='img-fluid' />
+              <button onClick={() => handleRemoveImage(setAadharBack)}><ImCross /></button>
             </div>
           )}
+          <div>
+            <Button
+              component="label"
+              variant="contained"
+              className="mt-2"
+              htmlFor="adhar-back-image"
+            >
+              +
+              <input
+                hidden
+                type="file"
+                id="adhar-back-image"
+                onChange={handleAadharBackChange}
+                accept="image/*"
+              />
+            </Button>
+          </div>
         </div>
-
         <div className="image-upload">
           <h3>PAN Card</h3>
-          <input type="file" accept="image/*" onChange={handlePanCardChange} />
           {panCard && (
             <div className="image-preview">
-              <img src={URL.createObjectURL(panCard)} alt="PAN Card"  className='img-fluid'/>
-              <button onClick={() => handleRemoveImage(setPanCard)}>Remove</button>
+              <img src={URL.createObjectURL(panCard)} alt="PAN Card" style={{ height: "200px", width: "200px" }} className='img-fluid' />
+              <button onClick={() => handleRemoveImage(setPanCard)}><ImCross /></button>
             </div>
           )}
+          <div>
+            <Button
+              component="label"
+              variant="contained"
+              className="mt-2"
+              htmlFor="pancard-image"
+            >
+              +
+              <input
+                hidden
+                type="file"
+                id="pancard-image"
+                onChange={handlePanCardChange}
+                accept="image/*"
+              />
+            </Button>
+          </div>
         </div>
       </div>
 

@@ -298,15 +298,12 @@ border-radius: 25px;
   
   .image-preview button {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: #fff;
+    top: 0px;
+    right: 23px;
     border: none;
-    padding: 5px;
     cursor: pointer;
-    color: red;
     font-weight: bold;
-    border-radius: 50%;
+    font-size: 12px;
   }
 
 
