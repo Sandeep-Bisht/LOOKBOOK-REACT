@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
-import { FaRegImage } from "react-icons/fa6";
+import { IoMdImages } from "react-icons/io";
+import { FaTrash } from "react-icons/fa6";
 
 const ArtistGallery = () => {
   const navigate = useNavigate();
@@ -44,19 +45,21 @@ const ArtistGallery = () => {
             <div className="col-md-12">
               <div className="row mb-3">
                 <div className="col-md-8 cover-image mx-auto">
-                  <div className="upload-image">
-                    <label htmlFor="imageInput" className="text-center f-20">
-                      <FaRegImage />
-                    </label>
+                  <div>
+                    <label className="upload-image" htmlFor="imageInput">
+                      <h1 className="text-center">
+                      <IoMdImages />
+                      </h1>
                     <input
                       type="file"
                       id="imageInput"
-                      style={{ display: "none" }}
+                      hidden
                       onChange={handleImageChange}
                       multiple // Enable multiple file selection
                     />
-                    <p>Drag your photos here</p>
-                    <label htmlFor="imageInput">Upload from your device</label>
+                    <h4>Drag your photos here</h4>
+                    <p className="text-center mt-3"><b><u>Upload from your device</u></b></p>
+                    </label>
                   </div>
                 </div>
               </div>
@@ -71,14 +74,16 @@ const ArtistGallery = () => {
                           key={index}
                         >
                           <div className="multipale-image-display">
+                            <div className="dynamic-img-wrapper">
                             <img src={URL.createObjectURL(image)} className="img-fluid" alt={`Selected Image ${index + 1}`} />
                             <button
                               type="button"
-                              className="btn btn-danger btn-sm"
+                              className="btn dropshadow-gallery"
                               onClick={() => removeImage(index)}
                             >
-                              Remove
+                              <FaTrash/>
                             </button>
+                            </div>
                           </div>
                         </div>
                       ))}
