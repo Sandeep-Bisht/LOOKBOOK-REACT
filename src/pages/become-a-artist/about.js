@@ -39,22 +39,31 @@ const AboutYou = () => {
   };
   
   const handleNextClick = async () =>{
-    try{
+    try{ 
+      
+      let payload = {currentStep:3,services:selectedServices}
+
+        if(artistPayload.currentStep > 3){
+            delete payload.currentStep;
+        }
+
         if(artistPayload.services && Array.isArray(artistPayload.services)){
           const areEqual = selectedServices.every((element, index) => element === artistPayload.services[index]);
+         
 
           if(areEqual){
             return navigate(`/become-a-artist/${request_id}/describe-yourself`)
           }
           else{
-            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:3,services:selectedServices});
-            setArtistPayload((prev) => {return {...prev,services:selectedServices}})
+            
+            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
+            setArtistPayload((prev) => {return {...prev,...payload}})
             navigate(`/become-a-artist/${request_id}/describe-yourself`)
           }
 
         }else{
-          await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:3,services:selectedServices});
-          setArtistPayload((prev) => {return {...prev,services:selectedServices}})
+          await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
+          setArtistPayload((prev) => {return {...prev,...payload}})
           navigate(`/become-a-artist/${request_id}/describe-yourself`)
         }
     }
