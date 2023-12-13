@@ -1,19 +1,26 @@
-import React, { useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLoaderData, useNavigate, useOutletContext, useParams } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
-import { AiOutlineHome } from "react-icons/ai";
+import NoDataFound from "./common/noDataFound";
+import { axiosAuth } from "configs/axiosInstance";
+
+const BASE_URL = process.env.REACT_APP_APIURL
 
 const DescribeYourself = () => {
+  const [artistPayload, setArtistPayload] = useOutletContext();
   const navigate = useNavigate();
   const allProducts = useLoaderData();
-  const [isActive, setIsActive] = useState(false);
-
-  const toggleClass = () => {
-    setIsActive(!isActive);
- 
-  };
+  const { request_id } = useParams();
 
   const [selectedProducts, setSelectedProducts] = useState([]);
+
+  useEffect(()=>{
+    if(artistPayload){
+      if(artistPayload.products && Array.isArray(artistPayload.products)){
+        setSelectedProducts(artistPayload.products);
+      }
+    }
+  },[artistPayload])
 
   const handleChange = (product) => {
     // Check if the product is already selected
@@ -30,7 +37,32 @@ const DescribeYourself = () => {
     }
   };
 
-  console.log("this is my selected product data ", selectedProducts)
+  
+  const handleNextClick = async () =>{
+    try{
+        if(artistPayload.products && Array.isArray(artistPayload.products)){
+          const areEqual = selectedProducts.every((element, index) => element === artistPayload.products[index]);
+
+          if(areEqual){
+            return navigate(`/become-a-artist/${request_id}/location`)
+          }
+          else{
+            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:4,products:selectedProducts});
+            setArtistPayload((prev) => {return {...prev,products:selectedProducts}})
+            navigate(`/become-a-artist/${request_id}/location`)
+          }
+
+        }else{
+          await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:4,products:selectedProducts});
+          setArtistPayload((prev) => {return {...prev,products:selectedProducts}})
+          navigate(`/become-a-artist/${request_id}/location`)
+        }
+    }
+    catch(error){
+        throw error;
+    }
+}
+
 
   return (
     <>
@@ -47,34 +79,42 @@ const DescribeYourself = () => {
           <div className="row mb-5">
             <div className="col-md-10 mx-auto">
               <div className="row">
-                {allProducts &&
-                  allProducts.length > 0 &&
-                  allProducts.map((product, index) => (
+              {(allProducts && Array.isArray(allProducts)) ?
+                <>
+                {
+                  allProducts.length > 0 ?
+                  <>
+                  {allProducts.map((product, index) => (
                     <div key={index} className="col-md-6">
-                      <div
-                        className={`artist-card ${
-                          selectedProducts.includes(product.title)
-                            ? "selected"
-                            : ""
-                        }`}
-                        onClick={(e) => handleChange(product.title)}
-                      >
-                        <div className="card-body">
-                          <h5 className="_6pu6cc">{product.title}</h5>
-                          <div>
-                            <span>{product.description}</span>
-                          </div>
-                        </div>
-                        <div className= "card-icon ">
-                          <img onClick={toggleClass} 
-                            src={product.icon.thumbnailUrl}
-                            alt={product.title}
-                            className="img-fluid"
-                          />
+                    <div
+                      className={`artist-card ${
+                        selectedProducts.includes(product._id)
+                          ? "selected"
+                          : ""
+                      }`}
+                      onClick={(e) => handleChange(product._id)}
+                    >
+                      <div className="card-body">
+                        <h5 className="_6pu6cc">{product.title}</h5>
+                        <div>
+                          <span>{product.description}</span>
                         </div>
                       </div>
+                      <div className= "card-icon ">
+                        <img 
+                          src={product.icon.thumbnailUrl}
+                          alt={product.title}
+                          className="img-fluid"
+                        />
+                      </div>
                     </div>
+                  </div>
                   ))}
+                  </> : 
+                  <NoDataFound/>
+                }
+                </> : <NoDataFound/>}
+
               </div>
             </div>
           </div>
@@ -82,12 +122,8 @@ const DescribeYourself = () => {
       </section>
 
       <ArtistFooter
-        backClick={() => navigate("/become-a-artist/about-you")}
-        nextClick={() => {
-          // Access the selected products in the next step
-          console.log("Selected Products:", selectedProducts);
-          navigate("/become-a-artist/location");
-        }}
+        backClick={() => navigate(`/become-a-artist/${request_id}/about-you`)}
+        nextClick={() => handleNextClick()}
       />
     </>
   );

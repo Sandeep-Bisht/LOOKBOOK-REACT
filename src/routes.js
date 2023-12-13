@@ -21,8 +21,6 @@ import CreateBlog from 'pages/Blog/createBlog'
 import { SettingsConsumer } from '@core/context/settingsContext'
 import { SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
-import ArtistRegistration from 'pages/become-a-artist'
-import ArtistCreation from 'pages/become-a-artist/artist'
 import AboutYou from 'pages/become-a-artist/about'
 import AllServicesDetails from 'pages/allServicesDetails'
 import AllProdutsDetails from 'pages/allProductDetails'
@@ -31,13 +29,11 @@ import UpdateService from 'pages/updateService/updateService'
 import UpdateProducts from 'pages/updateProduct'
 import BlogList from 'pages/Blog/blogList'
 import { getAllBlog } from 'configs/initialapis'
-import AboutSkills from "pages/become-a-artist/aboutSkills";
 import DescribeYourself from "pages/become-a-artist/describeYourself";
-import ArtistAddress from "pages/become-a-artist/artistAddress";
 import ArtistGallary from "pages/become-a-artist/artistGallary";
 import {getAllProducts} from "configs/initialapis";
 import {getAllServices} from "configs/initialapis";
-import Step2 from 'pages/become-a-artist/step2'
+import StepSecond from 'pages/become-a-artist/stepSecond'
 import InsightStory from 'pages/become-a-artist/insightStory'
 import BestServices from 'pages/become-a-artist/bestServices'
 import Description from 'pages/become-a-artist/description'
@@ -47,6 +43,11 @@ import PriceSetup from 'pages/become-a-artist/priceSetup'
 import CompleteKYC from 'pages/become-a-artist/completeKYC'
 import Certificates from 'pages/become-a-artist/certificates'
 import { getArtistRequests } from 'configs/initialapis'
+import ArtistRequestProvider from 'pages/become-a-artist/provider'
+import GetStarted from 'pages/become-a-artist/getStarted'
+import ArtistGlobalState from 'pages/become-a-artist/globalState'
+import ArtistLocation from 'pages/become-a-artist/location'
+import StepFirst from 'pages/become-a-artist/stepFirst'
 
 
 const DashboardComponents = () =>{
@@ -82,7 +83,6 @@ const ApplicationRoutes = createBrowserRouter(
         <Route index path="/" element={<Homepage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/user">
-          {/* <Route path='/user/register-artist' element={<ArtistRegistration />} /> */}
           <Route
             path="/user/profile"
             element={<UserProfile />}
@@ -90,7 +90,32 @@ const ApplicationRoutes = createBrowserRouter(
           />
         </Route>
 
-        <Route
+          <Route
+            path="/become-a-artist"
+            element={<ArtistRequestProvider />}
+            loader={getArtistRequests}
+          />
+          <Route
+            path="/become-a-artist/get-started"
+            element={<GetStarted />}
+            loader={getArtistRequests}
+          />
+
+        <Route path='/become-a-artist/:request_id' element={<ArtistGlobalState/>} loader={getArtistRequests}>
+          <Route
+            path="/become-a-artist/:request_id/get-started"
+            element={<GetStarted />}
+          />
+          <Route path="/become-a-artist/:request_id/about-your-skills" element={ <StepFirst />} />
+          <Route path="/become-a-artist/:request_id/about-you" element={<AboutYou />}  loader={getAllServices}/>
+          <Route path="/become-a-artist/:request_id/describe-yourself" element={<DescribeYourself />} loader={getAllProducts} />
+          <Route path="/become-a-artist/:request_id/location" element={<ArtistLocation />} />
+          <Route path="/become-a-artist/:request_id/insight-your-work" element={<InsightStory />} />
+          <Route path="/become-a-artist/:request_id/stand-out" element={<StepSecond />} />
+        </Route>
+        
+
+        {/* <Route
           path="/become-a-artist"
           element={<ArtistCreation />}
           loader={getArtistRequests}
@@ -111,7 +136,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/become-a-artist/upload-cerificates" element={< Certificates />} />
           <Route path="/become-a-artist/profile-overview" element={< ProfilePreview />} />
          
-        </Route>
+        </Route> */}
         <Route path="/*" element={<Error404 />} />
       </Route>
 

@@ -1,10 +1,28 @@
 import React from "react";
 import ArtistFooter from "./artistFooter";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import SkillIMG from '@core/assets/images/skill-pic.png'
+import { axiosAuth } from "configs/axiosInstance";
 
-const AboutSkills = () => {
+const BASE_URL = process.env.REACT_APP_APIURL
+
+const StepFirst = () => {
+  const [artistPayload] = useOutletContext();
   const navigate = useNavigate();
+  const { request_id } = useParams();
+
+  const handleNextClick = async () =>{
+    try{
+      if(artistPayload.currentStep > 1){
+       return  navigate(`/become-a-artist/${request_id}/about-you`)
+      }
+        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:2});
+        navigate(`/become-a-artist/${request_id}/about-you`)
+    }
+    catch(error){
+        throw error;
+    }
+}
   return (
     <>
       <section className="about-skills-ar">
@@ -32,11 +50,11 @@ const AboutSkills = () => {
       </section>
 
       <ArtistFooter
-        backClick={() => navigate("/become-a-artist")}
-        nextClick={() => navigate("/become-a-artist/about-you")}
+        backClick={() => navigate(`/become-a-artist/${request_id}/get-started`)}
+        nextClick={() => handleNextClick()}
       />
     </>
   );
 };
 
-export default AboutSkills;
+export default StepFirst;

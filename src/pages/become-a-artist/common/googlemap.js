@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, MarkerF } from '@react-google-maps/api';
 // import Loader from './loader';
-import { useNavigate } from 'react-router-dom';
 
-const LocationAwareMap = ({height, styles, icon, coords, onMarkerDragEnd, markerDraggable, markerTitle, markers, loaderStyle, redirect}) => {
-  const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
-  const navigate = useNavigate();
-
-//   const { isLoaded } = useJsApiLoader({
-//     id: 'google-map-script',
-//     googleMapsApiKey: googleMapsApiKey,
-//   });
+const LocationAwareMap = ({height, styles,  coords, onMarkerDragEnd, markerDraggable, markerTitle}) => {
 
   const [location, setLocation] = useState(null);
   // Function to handle location change
