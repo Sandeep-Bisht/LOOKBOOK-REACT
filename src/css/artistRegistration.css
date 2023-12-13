@@ -242,6 +242,10 @@ border-radius: 25px;
     margin-bottom: 20px;
 }
 
+.dynamic-img-wrapper img:hover{
+  background-color: #00000027;
+}
+
 
 /* Insight [age */
 
@@ -298,15 +302,12 @@ border-radius: 25px;
   
   .image-preview button {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: #fff;
+    top: 0px;
+    right: 23px;
     border: none;
-    padding: 5px;
     cursor: pointer;
-    color: red;
     font-weight: bold;
-    border-radius: 50%;
+    font-size: 12px;
   }
 
 
@@ -526,4 +527,10 @@ border-radius: 25px;
 
 .dynamic-img-wrapper:hover button{
   display: flex;
+}
+
+.custom-add-card{
+  background-color: transparent!important;
+  box-shadow: none!important;
+  color: #8C6A54!important;;
 }
