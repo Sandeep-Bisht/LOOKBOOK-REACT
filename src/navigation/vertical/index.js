@@ -1,9 +1,9 @@
 // ** Icon imports
 import CubeOutline from 'mdi-material-ui/CubeOutline'
 import HomeOutline from 'mdi-material-ui/HomeOutline'
-import AccountCogOutline from 'mdi-material-ui/AccountCogOutline'
-import CreditCardOutline from 'mdi-material-ui/CreditCardOutline'
-import AccountPlusOutline from 'mdi-material-ui/AccountPlusOutline'
+import Bookmark from 'mdi-material-ui/Bookmark'
+
+import Settings from 'mdi-material-ui/light/Settings'
 
 const navigation = () => {
   return [
@@ -17,17 +17,17 @@ const navigation = () => {
     },
     {
       title: 'Services',
-      icon: CreditCardOutline,
+      icon: Settings,
       path: '/management/services'
     },
     {
       title: 'Products',
-      icon: CreditCardOutline,
+      icon: CubeOutline,
       path: '/management/products'
     },
     {
       title: 'Blog',
-      icon: CreditCardOutline,
+      icon: Bookmark,
       path: '/management/all-blogs'
     },
   ]

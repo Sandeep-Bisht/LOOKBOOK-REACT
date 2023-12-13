@@ -37,7 +37,6 @@ import StepSecond from 'pages/become-a-artist/stepSecond'
 import InsightStory from 'pages/become-a-artist/insightStory'
 import BestServices from 'pages/become-a-artist/bestServices'
 import Description from 'pages/become-a-artist/description'
-import ProfilePreview from 'pages/become-a-artist/profilePreview'
 import PriceSetup from 'pages/become-a-artist/priceSetup'
 import CompleteKYC from 'pages/become-a-artist/completeKYC'
 import Certificates from 'pages/become-a-artist/certificates'
@@ -48,6 +47,7 @@ import ArtistGlobalState from 'pages/become-a-artist/globalState'
 import ArtistLocation from 'pages/become-a-artist/location'
 import StepFirst from 'pages/become-a-artist/stepFirst'
 import StepThird from 'pages/become-a-artist/stepThird'
+import Icons from 'pages/icons'
 
 
 const DashboardComponents = () =>{
@@ -153,6 +153,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path='/management/dashboard' element={<Dashboard/>}/>
           <Route path="/management/account-settings" element={<AccountSettings/>}/> 
           <Route path="/management/cards" element={<CardBasic/>}/> 
+          <Route path="/management/icons" element={<Icons/>}/> 
           <Route path="/management/tables" element={<MUITable/>}/> 
           <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
           <Route path="/management/create-blog" element={<CreateBlog/>}/> 

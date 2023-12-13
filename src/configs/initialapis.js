@@ -85,3 +85,4 @@ export const getProductById = async (_id) => {
   return error.message || "An error occured while trying to get product request."
 }
 };
+
