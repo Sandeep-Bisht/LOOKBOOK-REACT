@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
 import InputLabel from '@mui/material/InputLabel';
@@ -6,6 +6,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useForm } from "react-hook-form";
+import { axiosAuth } from "configs/axiosInstance";
+
+const BASE_URL = process.env.REACT_APP_APIURL
 
 const InsightStory = () => {
   
@@ -14,9 +17,13 @@ const InsightStory = () => {
   const submitBtnRef = useRef(null)
   const { request_id } = useParams();
   let navigate = useNavigate();
-  const [experience, setExperience] = useState(1);
-
+  const [experience, setExperience] = useState(0);
   
+  useEffect(()=>{
+    if(artistPayload && artistPayload.experience){
+      setExperience(artistPayload.experience);
+    }
+  },[artistPayload])
 
   const decreaseExperience = () => {
     if (experience > 0) {
@@ -25,12 +32,36 @@ const InsightStory = () => {
   };
 
   const increaseExperience = () => {
-    setExperience(experience + 1);
+    setExperience( 1 + + experience);
   };
 
-  const submitForm = (data) =>{
-    console.log(data,'data is this')
 
+  const handleNextClick = async ({education}) =>{
+    try{
+        if(artistPayload.experience || artistPayload.education){
+            if(artistPayload.experience == experience && artistPayload.education == education ){
+                return navigate(`/become-a-artist/${request_id}/stand-out`)
+            }
+            else{
+            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:6,experience,education});
+            setArtistPayload((prev) => {return {...prev,experience,education}})
+            navigate(`/become-a-artist/${request_id}/stand-out`)
+          }
+
+        }else{
+            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:6,experience,education});
+            setArtistPayload((prev) => {return {...prev,experience,education}})
+            navigate(`/become-a-artist/${request_id}/stand-out`)
+        }
+    }
+    catch(error){
+        throw error;
+    }
+  }
+
+
+  const submitForm = (data) =>{
+    handleNextClick(data);
   }
 
   return (
