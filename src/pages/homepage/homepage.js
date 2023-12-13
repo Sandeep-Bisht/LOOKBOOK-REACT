@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "layouts/components/header/header";
 import Footer from "layouts/components/footer/footer"
-import '../../css/home.css'
+import '../../css/user/homepage.css'
 const Homepage = () => {
     return (
         <>
@@ -130,9 +130,9 @@ const Homepage = () => {
                     </div>
                 </div>
             </section>
-            <section className="artist-area">
+            <section className="usr-artist-area">
                 <div className="container">
-                    <div className="row">
+                    <div className="row d-none">
                         <div className="col-lg-12">
                             <h1 className="common-heading  text-center">
                                 The Experts at LookBook
@@ -141,22 +141,26 @@ const Homepage = () => {
                     </div>
                     <div className="row">
                         <div className="col-lg-12 mx-auto">
+                            <div className="usr-artist-area-wrapper">
                             <ul id="cards">
-                                <li className="card" id="card1">
+                                <li className="card usr-artist-area-card" id="card1">
                                     <div className="card-body">
                                         <div className="row align-items-center w-100">
-                                            <div className="col-lg-8 col-md-6">
+                                            <div className="col-lg-5 mx-auto">
+                                                <div className="usr-expert-pic-expert-info">
+                                                    
+                                                </div>
                                                 <div className="expert-pic">
                                                     <img src="images/1.jpg" className="img-fluid" />
                                                 </div>
                                             </div>
-                                            <div className="col-lg-4 col-md-6">
+                                            {/* <div className="col-lg-4 col-md-6 d-none">
                                                 <div className="artist-info mb-3">
                                                     <div className="artist-name ">
                                                         ballu 320
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </li>
@@ -233,6 +237,7 @@ const Homepage = () => {
                                     </div>
                                 </li>
                             </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
