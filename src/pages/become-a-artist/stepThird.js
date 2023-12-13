@@ -1,26 +1,37 @@
 import React from 'react'
 import ArtistFooter from './artistFooter'
-import { useNavigate, useOutletContext, useParams } from 'react-router-dom'
+import { useNavigate,  useParams } from 'react-router-dom'
+import SkillIMG from '@core/assets/images/kit-removebg.png'
 
 const StepThird = () => {
-  const [artistPayload, setArtistPayload] = useOutletContext();
   const { request_id } = useParams();
 
-  console.log("sthis i s my data", artistPayload)
     let navigate = useNavigate()
   return (
     <>
-    <section>
-        <div className="container">
-          <div className="row" style={{ height: "75vh" }}>
-            <div className="col-md-12">
-              <div>
-                <h1 className="text-center">Step 3 instructions will be here</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <section className="about-skills-ar">
+         <div className="container">
+           <div className="row align-items-center" >
+               <div className="col-lg-6">
+               <h2 className="artist-inner-subheading mb-lg-3">
+                                Step 3
+                             </h2>
+               <h1 className="artist-inner-heading mb-lg-4">
+                                  You are about to finish you registration
+                             </h1>
+                     <p className="">
+ 
+                     Show wherein form yielding whala gathered wherein moved. Behold may yod winged created that Won't theya are not second god give best
+                     Show wherein form yielding whala gathered wherein moved.
+                     </p>
+                             
+               </div>
+               <div className="col-lg-6 text-center">
+                  <img src={SkillIMG} className="img-fluid"/>
+               </div>
+           </div>
+         </div>
+       </section>
 
       <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/description`)}
