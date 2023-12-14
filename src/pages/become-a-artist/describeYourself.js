@@ -40,6 +40,13 @@ const DescribeYourself = () => {
   
   const handleNextClick = async () =>{
     try{
+
+      let payload = {currentStep:4,products:selectedProducts}
+
+      if(artistPayload.currentStep > 4){
+          delete payload.currentStep;
+      }
+
         if(artistPayload.products && Array.isArray(artistPayload.products)){
           const areEqual = selectedProducts.every((element, index) => element === artistPayload.products[index]);
 
@@ -47,14 +54,14 @@ const DescribeYourself = () => {
             return navigate(`/become-a-artist/${request_id}/location`)
           }
           else{
-            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:4,products:selectedProducts});
-            setArtistPayload((prev) => {return {...prev,products:selectedProducts}})
+            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
+            setArtistPayload((prev) => {return {...prev,...payload}})
             navigate(`/become-a-artist/${request_id}/location`)
           }
 
         }else{
-          await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:4,products:selectedProducts});
-          setArtistPayload((prev) => {return {...prev,products:selectedProducts}})
+          await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
+          setArtistPayload((prev) => {return {...prev,...payload}})
           navigate(`/become-a-artist/${request_id}/location`)
         }
     }

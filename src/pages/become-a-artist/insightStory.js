@@ -12,7 +12,7 @@ const BASE_URL = process.env.REACT_APP_APIURL
 
 const InsightStory = () => {
   
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit } = useForm();  
   const [artistPayload, setArtistPayload] = useOutletContext();
   const submitBtnRef = useRef(null)
   const { request_id } = useParams();
@@ -20,8 +20,9 @@ const InsightStory = () => {
   const [experience, setExperience] = useState(0);
   
   useEffect(()=>{
-    if(artistPayload && artistPayload.experience){
-      setExperience(artistPayload.experience);
+    if(artistPayload && artistPayload?.experience){
+      setExperience(artistPayload?.experience);
+      
     }
   },[artistPayload])
 
@@ -35,23 +36,39 @@ const InsightStory = () => {
     setExperience( 1 + + experience);
   };
 
+  const updatePayload = async (payload)=>{
 
-  const handleNextClick = async ({education}) =>{
+    await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
+    setArtistPayload((prev) => {return {...prev,...payload}})
+    navigate(`/become-a-artist/${request_id}/stand-out`)
+  }
+
+  const handleNextClick = async ({education,languages}) =>{
+    let payload = {
+      currentStep:6,experience,education,languages
+    }
+
+    if(artistPayload?.currentStep > 6){
+      delete payload.currentStep;
+    }
+
     try{
-        if(artistPayload.experience || artistPayload.education){
-            if(artistPayload.experience == experience && artistPayload.education == education ){
+        if(artistPayload?.experience || artistPayload?.education || artistPayload?.languages){
+            if(artistPayload?.experience == experience && artistPayload?.education == education && Array.isArray(artistPayload?.languages)){
+              const areEqual = languages.every((element, index) => element === artistPayload?.languages[index]);
+              if(areEqual){
                 return navigate(`/become-a-artist/${request_id}/stand-out`)
+              }
+              else{
+                  updatePayload(payload)
+              }
             }
             else{
-            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:6,experience,education});
-            setArtistPayload((prev) => {return {...prev,experience,education}})
-            navigate(`/become-a-artist/${request_id}/stand-out`)
+              updatePayload(payload);
           }
 
         }else{
-            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:6,experience,education});
-            setArtistPayload((prev) => {return {...prev,experience,education}})
-            navigate(`/become-a-artist/${request_id}/stand-out`)
+          updatePayload(payload);
         }
     }
     catch(error){
@@ -138,7 +155,10 @@ const InsightStory = () => {
                   id="demo-simple-select-standard"
                   name="languages"
                   label="Languages"
+                  defaultValue={artistPayload?.languages ? artistPayload?.languages : []}
                   {...register("languages")}
+                  multiple
+                  // onChange={handleLanguageChange}
                   > 
                   <MenuItem value="">
                     <em>None</em>
