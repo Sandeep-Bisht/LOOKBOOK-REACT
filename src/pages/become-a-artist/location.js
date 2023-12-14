@@ -46,19 +46,26 @@ const ArtistLocation = () => {
 
 const handleNextClick = async () =>{
     try{
+
+      let payload = {currentStep:5,coords:markerPosition,travel:availability}
+
+      if(artistPayload.currentStep > 5){
+          delete payload.currentStep;
+      }
+
         if(artistPayload.coords){
             if(artistPayload.coords.lat == markerPosition.lat && artistPayload.coords.lng == markerPosition.lng && artistPayload.travel == availability ){
                 return navigate(`/become-a-artist/${request_id}/insight-your-work`)
             }
             else{
-            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:5,coords:markerPosition,travel:availability});
-            setArtistPayload((prev) => {return {...prev,coords:markerPosition,travel:availability}})
+            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
+            setArtistPayload((prev) => {return {...prev,...payload}})
             navigate(`/become-a-artist/${request_id}/insight-your-work`)
           }
 
         }else{
-            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:5,coords:markerPosition,travel:availability});
-            setArtistPayload((prev) => {return {...prev,coords:markerPosition,travel:availability}})
+            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
+            setArtistPayload((prev) => {return {...prev,...payload}})
             navigate(`/become-a-artist/${request_id}/insight-your-work`)
         }
     }

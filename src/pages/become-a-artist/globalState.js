@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import BecomeAristHeader from './common/header';
 import { Navigate, Outlet, useLoaderData, useParams } from 'react-router-dom';
+import { Loading } from 'react-loading-dot'
 
 const ArtistGlobalState = () => {
   
@@ -28,14 +29,16 @@ const ArtistGlobalState = () => {
 
         currentRequest = openRequest;
     }
-    
+  
   
     return (
-      <>
-      <div className="artist-wrapper-ar">
-        <BecomeAristHeader />
-           <Outlet context={[artistPayload, setArtistPayload]} />
-        </div>
+      <>{artistPayload ?
+            <div className="artist-wrapper-ar">
+            <BecomeAristHeader />
+            <Outlet context={[artistPayload, setArtistPayload]} />
+            </div> 
+        : <Loading background="#8c6a54"/>
+      }
       </>
     );
 }
