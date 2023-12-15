@@ -6,7 +6,11 @@ import { Grid, TextField, Button } from "@mui/material";
 import JoditEditor from "jodit-react";
 import { useNavigate } from 'react-router-dom'
 import { FaTrash } from "react-icons/fa6";
+import {axiosAuth} from 'configs/axiosInstance'
+import slugify from 'react-slugify';
+import { Update } from "mdi-material-ui";
 
+const BASE_URL = process.env.REACT_APP_APIURL;
 
 const UpdateBlog = () => {
   const getBlogById = useLoaderData();
@@ -16,6 +20,7 @@ const UpdateBlog = () => {
   const [content, setContent] = useState("");
   const navigate=useNavigate()
   const [Image, setImage] = useState(false);
+  const [loading,setLoading] = useState(false);
   const [selectFileImage,setSelectFileImage]=useState()
   const [imageUrl, setImageUrl] = useState(
     getBlogById?.featuredImage.thumbnailUrl
@@ -37,18 +42,48 @@ const UpdateBlog = () => {
     }
   };
 
-  console.log(getBlogById, "inside the blog ");
-  const onSubmit = (data) => {
-    // Handle form submission with updated data
-    console.log(data);
-    // Add logic to update the blog with the submitted data
+  const onSubmit = async(data) => {
+    setLoading(true)
+    console.log(data,"gggghghfjghfhj", content,"kjdhskjlfhdskjlfh",selectFileImage);
+    const formData = new FormData();
+    formData.append("_id",getBlogById._id)
+    if(selectFileImage){
+       formData.append("updatedFeaturedImage",selectFileImage)
+    }
+    if(content){
+      formData.append("content",content)
+   }
+   if(data.title)
+   {
+    const generatedSlug = slugify(data.title);
+    formData.append("slug", generatedSlug);
+   }
+   Object.keys(data).map((key)=>{
+    if(key)
+    {
+      formData.append(key,data[key]);
+    }
+   })
+   try{
+     const response = await axiosAuth.put(`${BASE_URL}/blog/blog_update`,formData)
+     {
+      if(response.status==200)
+      {
+        setLoading(false)
+        navigate("/management/all-blogs");
+      }
+     }
+   }catch(error){
+    console.log(error,"error")
+   }
+
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container spacing={5}>
-          <Grid item xs={12} md={6}>
+        <Grid container spacing={2} >
+          <Grid item xs={12} md={6} style={{paddingLeft:"0px"}}>
             <TextField
               {...register("title")}
               label="Title"
@@ -70,124 +105,59 @@ const UpdateBlog = () => {
               rows={4}
             />
           </Grid>
-          <Grid item xs={12} md={6}>
-            <div>
-              <img
-                src={imageUrl}
-                alt="featuredImage"
-                style={{ height: "150px", width: "150px" , border:"1px dotted #000"}}
-              />
-              
-               <label htmlFor="featuredImage" fullWidth style={{ marginLeft:"10px"}}>
-              <input
-                type="file"
-                name="featuredImage"
-                id="featuredImage"
-                accept="image/*"
-                hidden
-                onChange={handleImageChange}
-                
-              />
+          <Grid item xs={12} md={6} container alignItems="center" className='d-flex justify-content-center'>
+              <div className='updateImg-wrapper'>
+              <h6>Featured Image</h6>
+                <img
+                  src={imageUrl}
+                  alt='image'
+                  style={{ height: '200px', width: '200px' }}
+                />
+                <div className='showbutton-image'
+                >
+                  {/* Upload button triggers file input */}
 
+                  <Button
+                    component="label"
+                    variant="contained"
+                    className="mt-2"
+                    htmlFor="image"
+                  >
+                    Upload
+                    <input
+                      hidden
+                      type="file"
+                      id="image"
+                      onChange={handleImageChange}
+                      accept="image/*"
+                    />
+                  </Button>
 
-              <div className="multipale-image-display">
-                <div className="dynamic-img-wrapper">
-                  <h1>+</h1>
+                  <Button variant="contained" className="ms-2 mt-2" color="secondary" onClick={() => setImageUrl(getBlogById?.featuredImage.thumbnailUrl)}>
+                    Reset
+                  </Button>
                 </div>
               </div>
-            </label>
-            <div>
-              {Image && 
-                            <div className="showbutton-image">
-                            <div className="">
-                            <button type="button" className="btn dropshadow-gallery" onClick={()=>setImageUrl(getBlogById?.featuredImage.thumbnailUrl)}>  <FaTrash /></button>
-                            </div>
-                          </div>
-                          }
-
-          
-            
-            </div>
-            </div>
-            {/* <label htmlFor="featuredImage" fullWidth>
-              <input
-                type="file"
-                name="featuredImage"
-                id="featuredImage"
-                accept="image/*"
-                hidden
-                onChange={handleImageChange}
-              />
-
-              <div className="multipale-image-display">
-                <div className="dynamic-img-wrapper">
-                  <h1>+</h1>
-                </div>
-              </div>
-            </label> */}
-
-            {/* <TextField
-        
-                   {...register("featuredImage")}
-                      
-               
-                        margin="normal"
-                        
-                        accept="imageUrl/*"
-                        style={{ height: '200px', width: '200px' }}
-                        InputLabelProps={{
-                          shrink: true,
-                         
-                        }}
-                       
-                      />
-                      <input
-                    hidden
-                    type="file"
-                    accept="featuredImage/*"
-                    
-                // id="adhar-front-image"
-                
-                // accept="image/*"
-              /> */}
-          </Grid>
-
-          {/* <Grid item xs={12} md={6}>
-          <TextField
-            {...register('description')}
-            label="Description"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            defaultValue={getBlogById.description?getBlogById.description:""}
-            multiline
-            rows={4}
-          />
-          
-        </Grid> */}
-          <Grid item xs={12}>
-            {/* <Jodit
-                        {...register('description')} // Register Jodit editor with React Hook Form
-                        onChange={(content) => console.log(content)} // Handle editor content change
-                      /> */}
+            </Grid>
             <JoditEditor
               ref={editor}
-              value={content}
+              value={getBlogById?.content}
               // config={config}
               tabIndex={1} // tabIndex of textarea
               onChange={(newContent) => setContent(newContent)}
             />
           </Grid>
-          {/* <Grid item xs={false} md={2} /> */}
-        </Grid>
+          
+        
         <Button
           type="submit"
           variant="contained"
           color="primary"
           className="mt-3"
-          onClick={()=>navigate("/management/create-blog")} >
-          update
+          >
+          {loading ? "updating..." : "update"}
         </Button>
+        
       </form>
     </div>
   );

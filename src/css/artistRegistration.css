@@ -245,6 +245,11 @@ border-radius: 25px;
     border: 1px dotted black;
     margin-bottom: 20px;
 }
+.blog-image-display{
+  padding: 50px 50px;
+  border: 1px dotted black;
+  margin-bottom: 20px;
+}
 
 
 /* Insight [age */
@@ -392,3 +397,25 @@ border-radius: 25px;
     height: 300px;
     object-fit: contain;
   }
+
+  .drop-shadow-delete{
+    position: relative;
+    right: 35%;
+  }
+
+   .drop-shadow-delete{ 
+    display: none;
+  }
+  img:hover .showbutton-image.drop-shadow-delete{
+    display: flex;
+  }
+
+  /* .dynamic-blog-img{
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 300ms;
+  } */
+
