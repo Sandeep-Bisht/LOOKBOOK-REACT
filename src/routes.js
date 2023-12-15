@@ -41,6 +41,7 @@ import PriceSetup from 'pages/become-a-artist/priceSetup'
 import CompleteKYC from 'pages/become-a-artist/completeKYC'
 import Certificates from 'pages/become-a-artist/certificates'
 import { getArtistRequests } from 'configs/initialapis'
+import {getAllArtists} from 'configs/initialapis'
 import ArtistRequestProvider from 'pages/become-a-artist/provider'
 import GetStarted from 'pages/become-a-artist/getStarted'
 import ArtistGlobalState from 'pages/become-a-artist/globalState'
@@ -48,6 +49,7 @@ import ArtistLocation from 'pages/become-a-artist/location'
 import StepFirst from 'pages/become-a-artist/stepFirst'
 import StepThird from 'pages/become-a-artist/stepThird'
 import Icons from 'pages/icons'
+import GetAllArtists from 'pages/Artists'
 
 
 const DashboardComponents = () =>{
@@ -165,6 +167,7 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/products/create" element={<ProductForm/>}/>
         <Route path="/management/services/:_id" element={<UpdateService/>} loader={({params})=>getServiceById(params)}/>
         <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
+        <Route path='/management/artists' element={<GetAllArtists/>} loader={()=>getAllArtists()}/>
         </Route>
       </Route>
     </Route>

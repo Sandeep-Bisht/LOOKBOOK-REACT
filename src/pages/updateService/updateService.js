@@ -10,7 +10,6 @@ import { useForm } from 'react-hook-form'
 import { axiosAuth } from 'configs/axiosInstance'
 import { useLoaderData, useNavigate } from "react-router-dom";
 
-
 const BASE_URL = process.env.REACT_APP_APIURL;
 
 function UpdateService() {
@@ -20,6 +19,8 @@ function UpdateService() {
   const [selectFileImage, setSelectFileImage] = useState()
   const [iconUrl, setIconUrl] = useState(getServiceDataById?.icon.thumbnailUrl)
   const [imageUrl, setImageUrl] = useState(getServiceDataById?.image.thumbnailUrl)
+  const [loading,setLoading] = useState(false);
+
 
   const navigate = useNavigate()
 
@@ -54,6 +55,7 @@ function UpdateService() {
   };
 
   const ServicesFormHandler = async (data) => {
+    setLoading(true)
     const formData = new FormData();
     formData.append("_id", getServiceDataById?._id);
     formData.append("title", data?.title);
@@ -69,6 +71,7 @@ function UpdateService() {
     try {
       const response = await axiosAuth.put(`${BASE_URL}/service/services_update`, formData);
       if (response.status == 200) {
+        setLoading(false)
         navigate("/management/services")
       }
     } catch (error) {
@@ -178,14 +181,13 @@ function UpdateService() {
                 }}
               >
                 <Button type='submit' variant='contained' size='large'>
-                  update
+                  {loading ? "updating..." : "update"}
                 </Button>
               </Box>
             </Grid>
           </Grid>
         </form>
       </CardContent>
-
     </Card>
     </div>
   )

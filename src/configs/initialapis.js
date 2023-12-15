@@ -86,3 +86,12 @@ export const getProductById = async (_id) => {
 }
 };
 
+export const getAllArtists = async () => {
+  try {
+    const response = await axiosAuth.get('/users/getAllArtistRequest');
+      return response.data.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get artists request."
+}
+};
+
