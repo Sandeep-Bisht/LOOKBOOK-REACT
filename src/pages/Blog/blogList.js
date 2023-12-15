@@ -28,7 +28,6 @@ const BlogList = () => {
     const [rows, setRows] = useState([])
 
     const all_blogs=useLoaderData()
-    console.log(all_blogs,"check data");
     const navigate=useNavigate()
     useEffect(() => {
       allServicesDetails();
@@ -71,7 +70,7 @@ const BlogList = () => {
     }
     const editHandler = (_id)=>{
       
-      navigate(`/management/all-blog/${_id}`,{state:_id})
+      navigate(`/management/all-blogs/${_id}`,{state:_id})
     }
   
     return (

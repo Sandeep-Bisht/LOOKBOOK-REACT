@@ -3,6 +3,7 @@
 {
     height: 100vh;
     position: relative;
+    padding-top: 90px;
     padding-bottom: 90px;
     overflow-y: auto;
 }
@@ -13,11 +14,11 @@
 
 .artist-header{
     background-color: #8C6A54;
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 11;
+    z-index: 1;
 }
 
 .artist-footer-ar{
@@ -122,6 +123,10 @@ border-radius: 25px;
 
 /* About */
 
+.about{
+    padding-top: 7rem;
+    padding-bottom: 6rem;
+}
 .about .artist-card {
     border : 2px solid rgb(206, 202, 202);
     font-weight: 400;
@@ -167,7 +172,7 @@ border-radius: 25px;
 }
 .describe-yourself .artist-card:hover {
     border:1px solid #8C6A54; /* Darken the border color on hover */
-
+    background-color: #c8b29d;
 }
 
 .describe-yourself .artist-card:active{
@@ -233,7 +238,6 @@ border-radius: 25px;
     justify-content: center;
     padding: 120px 120px;
     border: 1px dotted black;
-    cursor: pointer;
 }
 
 .multipale-image-display{
@@ -242,20 +246,15 @@ border-radius: 25px;
     margin-bottom: 20px;
 }
 
-.dynamic-img-wrapper img:hover{
-  background-color: #00000027;
-}
-
 
 /* Insight [age */
 
 .insight-wrapper .insight-card{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .plus-button {
-    line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -264,14 +263,14 @@ border-radius: 25px;
     border-radius: 50%;
     border: 1px solid #8C6A54;
     font-size: 20px;
-    color: #8C6A54;
+    color: #333;
     background-color: transparent;
     cursor: pointer;
     outline: none; /* Remove the default button outline */
   }
   
   .plus-button:hover {
-    background-color: #8C6A54;
+    background-color: #333;
     color: #fff;
   }
 
@@ -302,12 +301,15 @@ border-radius: 25px;
   
   .image-preview button {
     position: absolute;
-    top: 0px;
-    right: 23px;
+    top: 5px;
+    right: 5px;
+    background-color: #fff;
     border: none;
+    padding: 5px;
     cursor: pointer;
+    color: red;
     font-weight: bold;
-    font-size: 12px;
+    border-radius: 50%;
   }
 
 
@@ -390,147 +392,3 @@ border-radius: 25px;
     height: 300px;
     object-fit: contain;
   }
-
-  .card-field .your-location-search:focus{
-    display: block!important;
-  }
-
-/* Location css added by shubham */
-
-.location-wrapper{
-  border-radius: 15px;
-  overflow: hidden;
-  position: relative;
-}
-
-.search-container-head{
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  z-index: 1;
-  transform: translateX(-50%);
-}
-
-.search-container-head .search-bar-wrapper input.form-control{
-  padding: 14px;
-  border: 0;
-  box-shadow: none;
-}
-
-.search-container-head .search-bar-wrapper .suggestionList{
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  padding: 15px 0px;
-  margin-top: 15px;
-  background: white;
-  list-style: none;
-  z-index: 1;
-}
-
-.search-container-head .search-bar-wrapper .suggestionList .suggestion-item{
-  padding: 5px 20px;
-  cursor: pointer;
-}
-
-.search-container-head .search-bar-wrapper .suggestionList .suggestion-item:hover{
-  background-color: white;
-}
-
-.search-container-head .search-bar-wrapper .suggestionList .suggestion-item:hover .suggestion-heading, .search-container-head .search-bar-wrapper .suggestionList .suggestion-item:hover .suggestion-desc{
-  color: #8C6A54;
-} 
-
-.search-container-head .search-bar-wrapper .suggestionList .suggestion-item .suggestion-heading{
-  font-size: 14px;
-  font-weight: 500;
-  color: #8C6A54;
-  margin: 0;
-}
-
-.search-container-head .search-bar-wrapper .suggestionList .suggestion-item .suggestion-desc{
-  font-size: 12px;
-  font-weight: 400;
-  color: #8C6A54;
-  margin: 0;
-}
-
-.search-container-head .search-bar-wrapper .location-icon{
-  background-color: white!important;
-  border: 0;
-  padding: 0px 20px;
-}
-
-.search-container-head .search-bar-wrapper .location-icon svg{
-  height: 42px;
-}
-
-.use-current-location{
-    width: 100%;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-    margin-top: 6px;
-    font-weight: 500;
-    display: none;
-}
-
-.use-current-location:hover, .use-current-location:active{
-  background: white!important;
-}
-
-.search-container-head .search-bar-wrapper input.form-control:focus  + button {
-  display: block;
-  /* Add any additional styles you want for the focused state */
-}
-
-.use-current-location:hover{
-  display: block;
-}
-
-.dynamic-img-wrapper{
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all ease-in-out 300ms;
-}
-
-.dynamic-img-wrapper img{
-  height: 200px;
-}
-
-.dynamic-img-wrapper .dropshadow-gallery{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(252 247 242 / 72%);
-}
-
-.dynamic-img-wrapper .dropshadow-gallery svg{
-  height: 32px;
-  width: 32px;
-  color: #8C6A54;
-}
-
-.dynamic-img-wrapper .dropshadow-gallery:active{
-  background-color: rgb(252 247 242 / 72%);
-  border: 0;
-}
-
-.dynamic-img-wrapper:hover button{
-  display: flex;
-}
-
-.custom-add-card{
-  background-color: transparent!important;
-  box-shadow: none!important;
-  color: #8C6A54!important;;
-}
