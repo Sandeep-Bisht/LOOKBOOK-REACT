@@ -23,6 +23,7 @@ function UpdateProducts() {
   const [selectFileImage, setSelectFileImage] = useState()
   const [iconUrl, setIconUrl] = useState(getProductDataById?.icon.thumbnailUrl)
   const [imageUrl, setImageUrl] = useState(getProductDataById?.image.thumbnailUrl)
+  const [loading,setLoading] = useState(false);
 
   const navigate = useNavigate()
 
@@ -57,6 +58,7 @@ function UpdateProducts() {
   };
 
   const ProductFormHandler = async (data) => {
+    setLoading(true)
     const formData = new FormData();
     formData.append("_id", getProductDataById?._id);
     formData.append("title", data?.title);
@@ -72,6 +74,7 @@ function UpdateProducts() {
     try {
       const response = await axiosAuth.put(`${BASE_URL}/product/product_update`, formData);
       if (response.status == 200) {
+        setLoading(false)
         navigate("/management/products")
       }
     } catch (error) {
@@ -183,7 +186,7 @@ function UpdateProducts() {
                 }}
               >
                 <Button type='submit' variant='contained' size='large'>
-                  update
+                  {loading ? "updating..." : "update" }
                 </Button>
               </Box>
             </Grid>

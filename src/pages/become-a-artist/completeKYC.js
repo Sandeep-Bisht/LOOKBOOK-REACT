@@ -48,75 +48,79 @@ const CompleteKYC = () => {
       <div className="image-upload-container">
         <div className="image-upload">
           <h3>Aadhar Card Front</h3>
-          {aadharFront && (
+          {aadharFront ? (
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
                 <img src={URL.createObjectURL(aadharFront)} alt="Aadhar Card Front" style={{ height: "200px", width: "200px" }} className='img-fluid' />
                 <button type="button" className="btn dropshadow-gallery" onClick={() => handleRemoveImage(setAadharFront)}>  <FaTrash /></button>
               </div>
             </div>
-          )}
-          <div>
-            <Button
-              component="label"
-              variant="contained"
-              className="mt-2 custom-add-card"
-              htmlFor="adhar-front-image"
-            >
-              
-              <input
-                hidden
-                type="file"
-                id="adhar-front-image"
-                onChange={handleAadharFrontChange}
-                accept="image/*"
-              />
-               <div className="multipale-image-display">
-              <div className="dynamic-img-wrapper">
-                <h1>+</h1>
-              </div>
-            </div>
-            </Button>
+          )
+        :
+        <div>
+        <Button
+          component="label"
+          variant="contained"
+          className="mt-2 custom-add-card"
+          htmlFor="adhar-front-image"
+        >
+          
+          <input
+            hidden
+            type="file"
+            id="adhar-front-image"
+            onChange={handleAadharFrontChange}
+            accept="image/*"
+          />
+           <div className="multipale-image-display">
+          <div className="dynamic-img-wrapper">
+            <h1>+</h1>
           </div>
+        </div>
+        </Button>
+      </div>
+        }
         </div>
 
         <div className="image-upload">
           <h3>Aadhar Card Back</h3>
-          {aadharBack && (
+          {aadharBack ? (
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
                 <img src={URL.createObjectURL(aadharBack)} alt="Aadhar Card Back" style={{ height: "200px", width: "200px" }} className='img-fluid' />
                 <button type="button" className="btn dropshadow-gallery" onClick={() => handleRemoveImage(setAadharBack)}>  <FaTrash /></button>
               </div>
             </div>
-          )}
-          <div>
-            <Button
-              component="label"
-              variant="contained"
-              className="mt-2 custom-add-card"
-              htmlFor="adhar-back-image"
-            >
-              
-              <input
-                hidden
-                type="file"
-                id="adhar-back-image"
-                onChange={handleAadharBackChange}
-                accept="image/*"
-              />
-              
-              <div className="multipale-image-display">
-              <div className="dynamic-img-wrapper">
-                <h1>+</h1>
-              </div>
-            </div>
-            </Button>
+          )
+        :
+        <div>
+        <Button
+          component="label"
+          variant="contained"
+          className="mt-2 custom-add-card"
+          htmlFor="adhar-back-image"
+        >
+          
+          <input
+            hidden
+            type="file"
+            id="adhar-back-image"
+            onChange={handleAadharBackChange}
+            accept="image/*"
+          />
+          
+          <div className="multipale-image-display">
+          <div className="dynamic-img-wrapper">
+            <h1>+</h1>
           </div>
+        </div>
+        </Button>
+      </div>
+        }
         </div>
         <div className="image-upload">
           <h3>PAN Card</h3>
-          {panCard && (
+          {panCard ? (
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
                 <img src={URL.createObjectURL(panCard)} alt="PAN Card" style={{ height: "200px", width: "200px" }} className='img-fluid' />
@@ -124,28 +128,30 @@ const CompleteKYC = () => {
               </div>
             </div>
 
-          )}
-          <div>
-            <Button
-              component="label"
-              variant="contained"
-              className="mt-2 custom-add-card"
-              htmlFor="pancard-image"
-            >
-              <input
-                hidden
-                type="file"
-                id="pancard-image"
-                onChange={handlePanCardChange}
-                accept="image/*"
-              />
-              <div className="multipale-image-display">
-              <div className="dynamic-img-wrapper">
-                <h1>+</h1>
-              </div>
-            </div>
-            </Button>
+          )
+        :
+        <div>
+        <Button
+          component="label"
+          variant="contained"
+          className="mt-2 custom-add-card"
+          htmlFor="pancard-image"
+        >
+          <input
+            hidden
+            type="file"
+            id="pancard-image"
+            onChange={handlePanCardChange}
+            accept="image/*"
+          />
+          <div className="multipale-image-display">
+          <div className="dynamic-img-wrapper">
+            <h1>+</h1>
           </div>
+        </div>
+        </Button>
+      </div>
+      }
         </div>
       </div>
 

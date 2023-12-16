@@ -30,6 +30,11 @@ const navigation = () => {
       icon: Bookmark,
       path: '/management/all-blogs'
     },
+    {
+      title: 'Artists',
+      icon: Bookmark,
+      path: '/management/artists'
+    },
   ]
 }
 
