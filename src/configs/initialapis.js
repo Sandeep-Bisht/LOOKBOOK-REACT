@@ -29,6 +29,7 @@ export const allServicesDetails = async () => {
       // Handle the error appropriately
     }
   };
+
 export const getAllBlog = async () =>{
     try{
         const response = await axiosAuth.get('/blog/all_blogs');
@@ -69,6 +70,7 @@ export const getArtistRequests = async () =>{
       return error.message || "An error occured while trying to get artist request."
   }
 } 
+
 export const getServiceById = async (_id) => {
   try {
     const response = await axiosAuth.post('/service/get_service_by_id', { _id:_id });
@@ -77,6 +79,7 @@ export const getServiceById = async (_id) => {
   return error.message || "An error occured while trying to get service request."
 }
 };
+
 export const getProductById = async (_id) => {
   try {
     const response = await axiosAuth.post('/product/get_product_by_id', { _id:_id });
@@ -86,12 +89,21 @@ export const getProductById = async (_id) => {
 }
 };
 
+
+export const getBlogById = async (_id) => {
+  try {
+    const response = await axiosAuth.post('/blog/get_blog_by_id', { _id:_id });
+      return response.data.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get Blog request."
+}
+};
+
 export const getAllArtists = async () => {
   try {
     const response = await axiosAuth.get('/users/getAllArtistRequest');
       return response.data.data
  } catch (error) {
   return error.message || "An error occured while trying to get artists request."
-}
+   }
 };
-
