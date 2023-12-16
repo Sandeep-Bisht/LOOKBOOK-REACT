@@ -70,7 +70,7 @@ const BlogList = () => {
     }
     const editHandler = (_id)=>{
       
-      navigate(`/management/all-blogs/${_id}`,{state:_id})
+      navigate(`/management/blogs/${_id}`,{state:_id})
     }
   
     return (

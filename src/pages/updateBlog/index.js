@@ -44,7 +44,6 @@ const UpdateBlog = () => {
 
   const onSubmit = async(data) => {
     setLoading(true)
-    console.log(data,"gggghghfjghfhj", content,"kjdhskjlfhdskjlfh",selectFileImage);
     const formData = new FormData();
     formData.append("_id",getBlogById._id)
     if(selectFileImage){
@@ -70,7 +69,7 @@ const UpdateBlog = () => {
       if(response.status==200)
       {
         setLoading(false)
-        navigate("/management/all-blogs");
+        navigate("/management/blogs");
       }
      }
    }catch(error){

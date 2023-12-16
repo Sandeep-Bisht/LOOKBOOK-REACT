@@ -11,6 +11,7 @@ import CardContent from '@mui/material/CardContent'
 import { useForm } from 'react-hook-form'
 import { axiosAuth } from 'configs/axiosInstance'
 import { useLoaderData, useNavigate } from "react-router-dom";
+import ToastNotification from 'toastNotification/toastNatification'
 
 
 const BASE_URL = process.env.REACT_APP_APIURL;
@@ -24,6 +25,7 @@ function UpdateProducts() {
   const [iconUrl, setIconUrl] = useState(getProductDataById?.icon.thumbnailUrl)
   const [imageUrl, setImageUrl] = useState(getProductDataById?.image.thumbnailUrl)
   const [loading,setLoading] = useState(false);
+  const [toastNotification,setToastNotification] = useState(false)
 
   const navigate = useNavigate()
 
@@ -74,6 +76,7 @@ function UpdateProducts() {
     try {
       const response = await axiosAuth.put(`${BASE_URL}/product/product_update`, formData);
       if (response.status == 200) {
+        setToastNotification(true);
         setLoading(false)
         navigate("/management/products")
       }
@@ -193,6 +196,12 @@ function UpdateProducts() {
           </Grid>
         </form>
       </CardContent>
+      {
+        toastNotification && <ToastNotification
+        content="Product updated successfully"
+        appearance="success"
+        autoDismiss={false}/>
+      }
     </Card></div>
   )
 }
