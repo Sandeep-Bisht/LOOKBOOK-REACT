@@ -419,3 +419,75 @@ border-radius: 25px;
     transition: all ease-in-out 300ms;
   } */
 
+.search-container-head .search-bar-wrapper input.form-control:focus  + button {
+  display: block;
+  /* Add any additional styles you want for the focused state */
+}
+
+.use-current-location:hover{
+  display: block;
+}
+
+.dynamic-img-wrapper{
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all ease-in-out 300ms;
+}
+
+.dynamic-img-wrapper img{
+  height: 200px;
+}
+
+.dynamic-img-wrapper .dropshadow-gallery{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(252 247 242 / 72%);
+}
+
+.dynamic-img-wrapper .dropshadow-gallery svg{
+  height: 32px;
+  width: 32px;
+  color: #8C6A54;
+}
+
+.dynamic-img-wrapper .dropshadow-gallery:active{
+  background-color: rgb(252 247 242 / 72%);
+  border: 0;
+}
+
+.dynamic-img-wrapper:hover button{
+  display: flex;
+}
+
+.custom-add-card{
+  background-color: transparent!important;
+  box-shadow: none!important;
+  color: #8C6A54!important;;
+}
+
+.price-wrapper input{
+  font-size: 50px;
+  background-color: transparent;
+  border: none;
+  color: #8C6A54;
+  text-align: center;
+}
+
+.total-price{
+    width: 115px!important;
+    padding: 0;
+    font-size: 18px!important;
+    font-weight: 700;
+    display: inline-block;
+    text-align: start!important;
+}

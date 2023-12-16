@@ -26,7 +26,7 @@ const ArtistGallery = () => {
     setSelectedImages(updatedImages);
   };
 
-  console.log("this is selected image", selectedImages)
+  console.log("this is selected image 7", selectedImages)
 
   return (
     <>

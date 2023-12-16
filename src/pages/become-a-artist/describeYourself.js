@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData, useNavigate, useOutletContext, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
 import NoDataFound from "./common/noDataFound";
 import { axiosAuth } from "configs/axiosInstance";
@@ -7,9 +7,8 @@ import { axiosAuth } from "configs/axiosInstance";
 const BASE_URL = process.env.REACT_APP_APIURL
 
 const DescribeYourself = () => {
-  const [artistPayload, setArtistPayload] = useOutletContext();
+  const [artistPayload, setArtistPayload, ,allProducts] = useOutletContext();
   const navigate = useNavigate();
-  const allProducts = useLoaderData();
   const { request_id } = useParams();
 
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -43,7 +42,7 @@ const DescribeYourself = () => {
 
       let payload = {currentStep:4,products:selectedProducts}
 
-      if(artistPayload.currentStep > 4){
+      if(artistPayload.currentStep > 3){
           delete payload.currentStep;
       }
 
@@ -69,6 +68,7 @@ const DescribeYourself = () => {
         throw error;
     }
 }
+
 
 
   return (

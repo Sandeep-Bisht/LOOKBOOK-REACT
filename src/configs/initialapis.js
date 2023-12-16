@@ -20,7 +20,7 @@ export const allServicesDetails = async () => {
     }
   };  
   
-  export const allProductsDetails = async () => {
+export const allProductsDetails = async () => {
     try {
       const response = await axiosAuth.get('/product/all_products');
       return response.data.data
@@ -39,27 +39,6 @@ export const getAllBlog = async () =>{
         return error.message || "An error occured while trying to get user profile."
     }
 }
-
-export const getAllProducts = async () =>{
-  try{
-      const response = await axiosAuth.get('/product/all_products');
-      return response.data.data;
-  }
-  catch(error){
-      return error.message || "An error occured while trying to get products."
-  }
-} 
-
-
-export const getAllServices = async () =>{
-  try{
-      const response = await axiosAuth.get('/service/all_services');
-      return response.data.data;
-  }
-  catch(error){
-      return error.message || "An error occured while trying to get services."
-  }
-} 
 
 export const getArtistRequests = async () =>{
   try{
@@ -106,4 +85,22 @@ export const getAllArtists = async () => {
  } catch (error) {
   return error.message || "An error occured while trying to get artists request."
    }
+};
+export const getWizardData  = async () => {
+  const urls = [`/users/getArtistRequests`, `/service/all_services`, `/product/all_products`];
+
+  try {
+    const responses = await Promise.all(urls.map(url => axiosAuth.get(url)));
+
+    // Initialize an object with keys representing the source of the data
+    let data = {
+      artistRequests: responses[0].data,   // assuming the first API is for artist requests
+      allServices: responses[1].data.data,
+      allProducts: responses[2].data.data
+    };
+
+    return data;
+  } catch (error) {
+    return error.message || "An error occurred while trying to get artist requests.";
+  }
 };

@@ -37,18 +37,27 @@ const InsightStory = () => {
   };
 
   const updatePayload = async (payload)=>{
-
+    try{
     await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
     setArtistPayload((prev) => {return {...prev,...payload}})
     navigate(`/become-a-artist/${request_id}/stand-out`)
+    }
+    catch(error){
+      throw error;
+    }
   }
 
   const handleNextClick = async ({education,languages}) =>{
+
+    if(!Array.isArray(languages)){
+      languages  = languages.split(',')
+    }
+
     let payload = {
       currentStep:6,experience,education,languages
     }
 
-    if(artistPayload?.currentStep > 6){
+    if(artistPayload?.currentStep > 5){
       delete payload.currentStep;
     }
 

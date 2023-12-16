@@ -49,7 +49,7 @@ const handleNextClick = async () =>{
 
       let payload = {currentStep:5,coords:markerPosition,travel:availability}
 
-      if(artistPayload.currentStep > 5){
+      if(artistPayload.currentStep > 4){
           delete payload.currentStep;
       }
 
