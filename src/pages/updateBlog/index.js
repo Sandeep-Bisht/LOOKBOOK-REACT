@@ -1,14 +1,14 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData,useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useRef } from "react";
 import { Grid, TextField, Button } from "@mui/material";
 import JoditEditor from "jodit-react";
-import { useNavigate } from 'react-router-dom'
 import { FaTrash } from "react-icons/fa6";
 import {axiosAuth} from 'configs/axiosInstance'
 import slugify from 'react-slugify';
 import { Update } from "mdi-material-ui";
+import ToastNotification from "toastNotification/toastNatification";
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
@@ -21,6 +21,7 @@ const UpdateBlog = () => {
   const navigate=useNavigate()
   const [Image, setImage] = useState(false);
   const [loading,setLoading] = useState(false);
+  const [successStatus,setSuccessStatus] = useState(false);
   const [selectFileImage,setSelectFileImage]=useState()
   const [imageUrl, setImageUrl] = useState(
     getBlogById?.featuredImage.thumbnailUrl
@@ -68,6 +69,7 @@ const UpdateBlog = () => {
      {
       if(response.status==200)
       {
+        setSuccessStatus(true)
         setLoading(false)
         navigate("/management/blogs");
       }
@@ -158,6 +160,13 @@ const UpdateBlog = () => {
         </Button>
         
       </form>
+      {
+            successStatus &&
+            <ToastNotification
+            content="Blog Updated Successfully"
+            appearance="success"
+            autoDismiss={false}/>
+          }
     </div>
   );
 };

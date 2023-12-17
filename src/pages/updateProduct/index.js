@@ -25,7 +25,7 @@ function UpdateProducts() {
   const [iconUrl, setIconUrl] = useState(getProductDataById?.icon.thumbnailUrl)
   const [imageUrl, setImageUrl] = useState(getProductDataById?.image.thumbnailUrl)
   const [loading,setLoading] = useState(false);
-  const [toastNotification,setToastNotification] = useState(false)
+  const [successStatus,setSuccessStatus] = useState(false)
 
   const navigate = useNavigate()
 
@@ -76,7 +76,7 @@ function UpdateProducts() {
     try {
       const response = await axiosAuth.put(`${BASE_URL}/product/product_update`, formData);
       if (response.status == 200) {
-        setToastNotification(true);
+        setSuccessStatus(true);
         setLoading(false)
         navigate("/management/products")
       }
@@ -197,8 +197,8 @@ function UpdateProducts() {
         </form>
       </CardContent>
       {
-        toastNotification && <ToastNotification
-        content="Product updated successfully"
+        successStatus && <ToastNotification
+        content="Product Updated Successfully"
         appearance="success"
         autoDismiss={false}/>
       }

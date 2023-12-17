@@ -22,7 +22,7 @@ function UpdateService() {
   const [iconUrl, setIconUrl] = useState(getServiceDataById?.icon.thumbnailUrl)
   const [imageUrl, setImageUrl] = useState(getServiceDataById?.image.thumbnailUrl)
   const [loading,setLoading] = useState(false);
-  const [toastNotification,setToastNotification] = useState(false)
+  const [successStatus,setSuccessStatus] = useState(false)
 
 
 
@@ -75,7 +75,7 @@ function UpdateService() {
     try {
       const response = await axiosAuth.put(`${BASE_URL}/service/services_update`, formData);
       if (response.status == 200) {
-        setToastNotification(true);
+        setSuccessStatus(true);
         setLoading(false)
         navigate("/management/services")
       }
@@ -194,8 +194,8 @@ function UpdateService() {
         </form>
       </CardContent>
       {
-        toastNotification && <ToastNotification
-        content="Product updated successfully"
+        successStatus && <ToastNotification
+        content="Service Updated Successfully"
         appearance="success"
         placement= "bottom-right"
         autoDismiss={false}/>

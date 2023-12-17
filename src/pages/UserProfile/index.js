@@ -4,7 +4,7 @@ import { Grid, TextField, Button } from "@mui/material";
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import { axiosAuth } from "configs/axiosInstance";
-
+import ToastNotification from 'toastNotification/toastNatification'
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { styled } from "@mui/material/styles";
@@ -28,7 +28,9 @@ const UserProfile = () => {
 
   const userProfile = useLoaderData();
   const [profile, setProfile] = useState(userProfile);
-  const [imgSrc, setImgSrc] = useState(userProfile?.image.thumbnailUrl ? userProfile.image.thumbnailUrl : "/images/avatars/1.png");
+  const [imgSrc, setImgSrc] = useState(userProfile?.image?.thumbnailUrl ? userProfile.image.thumbnailUrl : "/images/avatars/1.png");
+  const [successStatus,setSuccessStatus] = useState(false)
+  const [loading,setLoading] = useState(false);
 
   const ImgStyled = styled("img")(({ theme }) => ({
     width: 120,
@@ -70,9 +72,8 @@ const UserProfile = () => {
   };
 
   const submitProfileHandler = async (payload) => {
-    console.log(payload.image[0], 'profile data to update')
+    setLoading(true);
     const formData = new FormData();
-
     Object.keys(payload).forEach((key) => {
       if (key == "image") {
         formData.append(key, payload.image[0]);
@@ -83,7 +84,11 @@ const UserProfile = () => {
 
     try {
       const response = await axiosAuth.post("/users/setProfile", formData);
-      console.log(response.data);
+      if(response.status==200)
+      {
+        setSuccessStatus(true);
+        setLoading(false)
+      }
     } catch (error) {
       console.log(
         error.message ||
@@ -100,7 +105,7 @@ const UserProfile = () => {
         <Grid container spacing={7}>
           <Grid item xs={12} sx={{ marginTop: 4.8, marginBottom: 3 }}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <ImgStyled src={imgSrc} alt="Profile Pic" />
+              <ImgStyled src={imgSrc} alt="/images/avatars/1.png" />
               <Box>
                 <ButtonStyled
                   component="label"
@@ -123,7 +128,7 @@ const UserProfile = () => {
                 <ResetButtonStyled
                   color="error"
                   variant="outlined"
-                  onClick={() => setImgSrc(userProfile?.image.thumbnailUrl ? userProfile.image.thumbnailUrl : "/images/avatars/1.png")}
+                  onClick={() => setImgSrc(userProfile?.image?.thumbnailUrl ? userProfile.image.thumbnailUrl : "/images/avatars/1.png")}
                 >
                   Reset
                 </ResetButtonStyled>
@@ -225,7 +230,7 @@ const UserProfile = () => {
 
           <Grid item xs={12}>
             <Button type="submit" variant="contained" sx={{ marginRight: 3.5 }}>
-              Update Changes
+              {loading ? "Updating..." : "Update Changes"}
             </Button>
             <Button type="reset" variant="outlined" color="secondary" onClick={reset}>
               Reset
@@ -233,6 +238,13 @@ const UserProfile = () => {
           </Grid>
         </Grid>
       </form>
+      {
+            successStatus &&
+            <ToastNotification
+            content="Profile Updated Successfully"
+            appearance="success"
+            autoDismiss={false}/>
+          }
     </CardContent>
   );
 };
