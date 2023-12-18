@@ -4,7 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button'
 import { FaTrash } from "react-icons/fa6";
+import { axiosAuth } from 'configs/axiosInstance';
 
+const BASE_URL = process.env.REACT_APP_APIURL
 
 const CompleteKYC = () => {
   const { request_id } = useParams();
@@ -12,24 +14,100 @@ const CompleteKYC = () => {
   const [aadharFront, setAadharFront] = useState(null);
   const [aadharBack, setAadharBack] = useState(null);
   const [panCard, setPanCard] = useState(null);
+  const [uploading,setUploading] = useState(false)
+  const [progress, setProgress] = useState(0);
+
 
   const handleAadharFrontChange = (event) => {
     const file = event.target.files[0];
     setAadharFront(file);
+    handleUploadAdharFront(file);
   };
 
   const handleAadharBackChange = (event) => {
     const file = event.target.files[0];
     setAadharBack(file);
+    handleUploadAdharBack(file);
+
   };
 
   const handlePanCardChange = (event) => {
     const file = event.target.files[0];
     setPanCard(file);
+    handleUploadPanCard(file)
   };
 
   const handleRemoveImage = (setImage) => {
     setImage(null);
+  };
+
+  const handleUploadAdharFront = async (file) => {
+
+    const formData = new FormData();
+      formData.append('adharFront', file);
+
+    try {
+      setUploading(true)
+      const response = await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`, formData, {
+        onUploadProgress: (progressEvent) => {
+          const { loaded, total } = progressEvent;
+          const percentCompleted = Math.round((loaded * 100) / total);
+          setProgress(percentCompleted);
+        },
+      });
+      setProgress(0)
+      setUploading(false)
+    } catch (error) {
+      setProgress(0)
+      setUploading(false)
+      console.error(error, 'file upload error');
+    }
+  };
+
+  const handleUploadAdharBack = async (file) => {
+
+    const formData = new FormData();
+      formData.append('adharBack', file);
+
+    try {
+      setUploading(true)
+      const response = await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`, formData, {
+        onUploadProgress: (progressEvent) => {
+          const { loaded, total } = progressEvent;
+          const percentCompleted = Math.round((loaded * 100) / total);
+          setProgress(percentCompleted);
+        },
+      });
+      setProgress(0)
+      setUploading(false)
+    } catch (error) {
+      setProgress(0)
+      setUploading(false)
+      console.error(error, 'file upload error');
+    }
+  };
+
+  const handleUploadPanCard = async (file) => {
+
+    const formData = new FormData();
+      formData.append('panCard', file);
+
+    try {
+      setUploading(true)
+      const response = await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`, formData, {
+        onUploadProgress: (progressEvent) => {
+          const { loaded, total } = progressEvent;
+          const percentCompleted = Math.round((loaded * 100) / total);
+          setProgress(percentCompleted);
+        },
+      });
+      setProgress(0)
+      setUploading(false)
+    } catch (error) {
+      setProgress(0)
+      setUploading(false)
+      console.error(error, 'file upload error');
+    }
   };
 
   return (
@@ -47,7 +125,21 @@ const CompleteKYC = () => {
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
                 <img src={URL.createObjectURL(aadharFront)} alt="Aadhar Card Front" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-                <button type="button" className="btn dropshadow-gallery" onClick={() => handleRemoveImage(setAadharFront)}>  <FaTrash /></button>
+                <Button
+                    component="label"
+                    variant="contained"
+                    className="mt-2 kyc-upload-btn d-none"
+                    htmlFor="adhar-front-image"
+                  >
+                    Upload
+                    <input
+                      hidden
+                      type="file"
+                      id="adhar-front-image"
+                      onChange={handleAadharFrontChange}
+                      accept="image/*"
+                    />
+                  </Button>
               </div>
             </div>
           )
@@ -73,6 +165,7 @@ const CompleteKYC = () => {
           </div>
         </div>
         </Button>
+        <div>{progress}</div>
       </div>
         }
         
@@ -84,7 +177,21 @@ const CompleteKYC = () => {
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
                 <img src={URL.createObjectURL(aadharBack)} alt="Aadhar Card Back" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-                <button type="button" className="btn dropshadow-gallery" onClick={() => handleRemoveImage(setAadharBack)}>  <FaTrash /></button>
+                <Button
+                    component="label"
+                    variant="contained"
+                    className="mt-2 kyc-upload-btn d-none"
+                    htmlFor="adhar-back-image"
+                  >
+                    Upload
+                    <input
+                      hidden
+                      type="file"
+                      id="adhar-back-image"
+                      onChange={handleAadharBackChange}
+                      accept="image/*"
+                    />
+                  </Button>
               </div>
             </div>
           )
@@ -111,6 +218,7 @@ const CompleteKYC = () => {
           </div>
         </div>
         </Button>
+        <div>{progress}</div>
       </div>
         }
         
@@ -121,7 +229,21 @@ const CompleteKYC = () => {
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
                 <img src={URL.createObjectURL(panCard)} alt="PAN Card" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-                <button type="button" className="btn dropshadow-gallery" onClick={() => handleRemoveImage(setPanCard)}>  <FaTrash /></button>
+                <Button
+                    component="label"
+                    variant="contained"
+                    className="mt-2 kyc-upload-btn d-none"
+                    htmlFor="pancard-image"
+                  >
+                    Upload
+                    <input
+                      hidden
+                      type="file"
+                      id="pancard-image"
+                      onChange={handlePanCardChange}
+                      accept="image/*"
+                    />
+                  </Button>
               </div>
             </div>
 
@@ -147,6 +269,7 @@ const CompleteKYC = () => {
           </div>
         </div>
         </Button>
+        <div>{progress}</div>
       </div>
       }
       

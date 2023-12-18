@@ -466,8 +466,14 @@ border-radius: 25px;
 }
 
 .dynamic-img-wrapper:hover button{
-  display: flex;
+  display: flex!important;
 }
+
+.dynamic-img-wrapper:hover .kyc-upload-btn{
+  display: flex!important;
+  left: 50px;
+}
+
 
 .custom-add-card{
   background-color: transparent!important;
@@ -614,4 +620,9 @@ border-radius: 25px;
 
 .use-current-location:hover, .use-current-location:active{
   background: white!important;
+}
+
+.kyc-upload-btn{
+  position: absolute!important;
+  left: 0;
 }
