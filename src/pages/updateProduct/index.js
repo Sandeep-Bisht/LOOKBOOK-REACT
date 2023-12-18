@@ -75,7 +75,7 @@ function UpdateProducts() {
 
     try {
       const response = await axiosAuth.put(`${BASE_URL}/product/product_update`, formData);
-      if (response.status == 200) {
+      if (response.statusText == "OK") {
         setSuccessStatus(true);
         setLoading(false)
         navigate("/management/products")

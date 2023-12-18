@@ -37,7 +37,7 @@ const ProductForm = () => {
   })
   try {
     const response = await axiosAuth.post(`${BASE_URL}/product/product-create`,formData)
-    if(response.status==200)
+    if(response.statusText=="OK")
     {
       setSuccessStatus(true);
       setLoading(false)

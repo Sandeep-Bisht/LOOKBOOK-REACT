@@ -67,7 +67,6 @@ const UserProfile = () => {
   }));
 
   const onSubmit = (data) => {
-    console.log(data,'data of form')
     submitProfileHandler(data);
   };
 
@@ -84,7 +83,7 @@ const UserProfile = () => {
 
     try {
       const response = await axiosAuth.post("/users/setProfile", formData);
-      if(response.status==200)
+      if(response.statusText=="OK")
       {
         setSuccessStatus(true);
         setLoading(false)

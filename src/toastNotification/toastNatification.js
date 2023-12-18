@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useToasts } from "react-toast-notifications";
 
-const ToastNotification = ({ content, appearance, autoDismiss }) => {
+const ToastNotification = ({ content, appearance, autoDismiss, placement }) => {
   const { addToast } = useToasts();
 
   useEffect(() => {
@@ -10,7 +10,7 @@ const ToastNotification = ({ content, appearance, autoDismiss }) => {
       autoDismiss: autoDismiss || true,
       placement: "bottom-right"
     });
-  }, []);
+  }, [addToast, content, appearance, autoDismiss, placement]);
 
   return null;
 };

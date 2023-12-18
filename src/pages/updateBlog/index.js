@@ -67,7 +67,7 @@ const UpdateBlog = () => {
    try{
      const response = await axiosAuth.put(`${BASE_URL}/blog/blog_update`,formData)
      {
-      if(response.status==200)
+      if(response.statusText=="OK")
       {
         setSuccessStatus(true)
         setLoading(false)
@@ -165,6 +165,7 @@ const UpdateBlog = () => {
             <ToastNotification
             content="Blog Updated Successfully"
             appearance="success"
+            placement="bottom-right"
             autoDismiss={false}/>
           }
     </div>

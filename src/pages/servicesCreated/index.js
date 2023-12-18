@@ -38,7 +38,7 @@ const ServicesForm = () => {
   }) 
   try {
     const response = await axiosAuth.post(`${BASE_URL}/service/services-create`,formData)
-    if(response.status==200)
+    if(response.statusText=="OK")
     {
       setSuccessStatus(true);
       setLoading(false)

@@ -16,7 +16,6 @@ const CreateBlog = () => {
   const editor = useRef(null);
   const [content, setContent] = useState('');
   const [loading,setLoading] = useState(false);
-  // const [projectList, setProjectList] = useState([])
 
   const navigate = useNavigate()
 
@@ -26,7 +25,6 @@ const CreateBlog = () => {
     let formData = new FormData();
       const generatedSlug = slugify(data.title);
     formData.append("slug", generatedSlug);
-      console.log(data,"check inside")
     Object.keys(data).forEach((item) => {
       if (item === 'featuredImage') {
         formData.append(item, data.featuredImage[0]);
@@ -36,7 +34,7 @@ const CreateBlog = () => {
     });
     try {
       const response = await axiosAuth.post(`${BASE_URL}/blog/blog-create`, formData);
-      if(response.status==200)
+      if(response.statusText=="OK")
       {
         setSuccessStatus(true);
         setLoading(false)
@@ -92,19 +90,13 @@ const CreateBlog = () => {
           />
         </Grid>
         <Grid item xs={12}>
-                      {/* <Jodit
-                        {...register('description')} // Register Jodit editor with React Hook Form
-                        onChange={(content) => console.log(content)} // Handle editor content change
-                      /> */}
                       <JoditEditor
 			ref={editor}
 			value={content}
-			// config={config}
-			tabIndex={1} // tabIndex of textarea
+			tabIndex={1}
 			onChange={newContent => setContent(newContent)}
 		/>
                     </Grid>
-                    {/* <Grid item xs={false} md={2} /> */}
       </Grid>
       <Button type="submit" variant="contained" color="primary" className="mt-3">
         {loading ? "Submiting..." : "Submit"}

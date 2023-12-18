@@ -74,7 +74,7 @@ function UpdateService() {
 
     try {
       const response = await axiosAuth.put(`${BASE_URL}/service/services_update`, formData);
-      if (response.status == 200) {
+      if (response.statusText == "OK") {
         setSuccessStatus(true);
         setLoading(false)
         navigate("/management/services")
