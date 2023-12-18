@@ -3,9 +3,13 @@ import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
 import NoDataFound from "./common/noDataFound";
 import allServices from "./common/bestOfYou.json"
+import { axiosAuth } from "configs/axiosInstance";
+
+const BASE_URL = process.env.REACT_APP_APIURL
 
 const BestServices = () => {
   const { request_id } = useParams();
+  const [artistPayload, setArtistPayload] = useOutletContext();
 
   const navigate = useNavigate();
 
@@ -30,6 +34,20 @@ const BestServices = () => {
     }
   };
   
+  
+  const handleNextClick = async () =>{
+    try{
+      if(artistPayload.currentStep > 8){
+       return  navigate(`/become-a-artist/${request_id}/description`)
+      }
+        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:9});
+        navigate(`/become-a-artist/${request_id}/description`)
+    }
+    catch(error){
+        throw error;
+    }
+  }
+
   // 8
 
   return (
@@ -87,7 +105,7 @@ const BestServices = () => {
 
       <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/gallery`)}
-        nextClick={() => navigate(`/become-a-artist/${request_id}/description`)}
+        nextClick={() => handleNextClick()}
       />
     </>
   );

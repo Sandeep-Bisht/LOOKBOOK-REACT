@@ -140,6 +140,20 @@ const Gallery = (props) =>{
       console.error(error, 'file upload error');
     }
   };
+
+  const updateImages = async (gallery) =>{
+    
+    try {
+      const response = await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`, {gallery});
+
+      setImages(response?.data?.data?.gallery)
+      setArtistPayload(response?.data?.data);
+      // Handle response if needed
+    } catch (error) {
+      // Handle error
+      console.error(error, 'file drag change error');
+    }
+  }
   
   const moveImage = React.useCallback((dragIndex, hoverIndex) => {
     setImages((prevCards) => {
@@ -148,6 +162,7 @@ const Gallery = (props) =>{
 
       clonedCards.splice(hoverIndex, 0, removedItem);
       setImages(clonedCards);
+      updateImages(clonedCards)
       return clonedCards;
     });
   }, []);

@@ -4,11 +4,28 @@ import ArtistFooter from "./artistFooter";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Gallery from "./components/gallery";
+import { axiosAuth } from "configs/axiosInstance";
+
+const BASE_URL = process.env.REACT_APP_APIURL
 
 const ArtistGallery = () => {
   const navigate = useNavigate();
   const { request_id } = useParams();
   const [artistPayload, setArtistPayload] = useOutletContext();
+
+  
+  const handleNextClick = async () =>{
+    try{
+      if(artistPayload.currentStep > 7){
+       return  navigate(`/become-a-artist/${request_id}/you-are-best-in`)
+      }
+        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:8});
+        navigate(`/become-a-artist/${request_id}/you-are-best-in`)
+    }
+    catch(error){
+        throw error;
+    }
+  }
 
   return (
     <>
@@ -39,7 +56,7 @@ const ArtistGallery = () => {
 
       <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/stand-out`)}
-        nextClick={() => navigate(`/become-a-artist/${request_id}/you-are-best-in`)}
+        nextClick={() => handleNextClick()}
       />
     </>
   );
