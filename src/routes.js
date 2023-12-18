@@ -101,7 +101,7 @@ const ApplicationRoutes = createBrowserRouter(
           />
           <Route
             path="/become-a-artist/get-started"
-            element={<><BecomeAristHeader/><GetStarted /></>}
+            element={<><div className="artist-wrapper-ar"><BecomeAristHeader/><GetStarted /></div></>}
             loader={getArtistRequests}
           />
 
