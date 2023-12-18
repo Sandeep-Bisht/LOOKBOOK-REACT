@@ -16,7 +16,6 @@ const StepThird = () => {
   const handleNextClick = async () =>{
     try{
       if(artistPayload.currentStep > 10){
-        console.log('if condition')
        return  navigate(`/become-a-artist/${request_id}/pricing`)
       }
       else{

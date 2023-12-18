@@ -3,7 +3,6 @@ import ArtistFooter from './artistFooter';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button'
-import { ImCross } from "react-icons/im";
 import { FaTrash } from "react-icons/fa6";
 
 
@@ -42,12 +41,8 @@ const CompleteKYC = () => {
               <h1 className="text-center">Complete your KYC</h1>
             </div>
           </div>
-        </div>
-      </section>
-
-      <div className="image-upload-container">
+        <div className="image-upload-container">
         <div className="image-upload">
-          <h3>Aadhar Card Front</h3>
           {aadharFront ? (
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
@@ -80,10 +75,11 @@ const CompleteKYC = () => {
         </Button>
       </div>
         }
+        
+        <h6>Aadhar Front</h6>
         </div>
 
         <div className="image-upload">
-          <h3>Aadhar Card Back</h3>
           {aadharBack ? (
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
@@ -117,9 +113,10 @@ const CompleteKYC = () => {
         </Button>
       </div>
         }
+        
+        <h6>Aadhar Back</h6>
         </div>
         <div className="image-upload">
-          <h3>PAN Card</h3>
           {panCard ? (
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
@@ -152,10 +149,12 @@ const CompleteKYC = () => {
         </Button>
       </div>
       }
+      
+      <h6>PAN Card</h6>
         </div>
       </div>
-
-
+      </div>
+      </section>
       <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/pricing`)}
         nextClick={() => navigate(`/become-a-artist/${request_id}/upload-cerificates`)}
