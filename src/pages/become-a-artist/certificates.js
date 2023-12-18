@@ -1,67 +1,62 @@
-import React, { useState } from 'react';
-import ArtistFooter from './artistFooter';
-import { useNavigate, useParams } from 'react-router-dom';
+import React from "react";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
+import ArtistFooter from "./artistFooter";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import CertificateGallery from './components/certificateGallery';
+import { axiosAuth } from "configs/axiosInstance";
+
+const BASE_URL = process.env.REACT_APP_APIURL
 
 const Certificates = () => {
-  const [selectedCertificates, setSelectedCertificates] = useState([]);
+  const navigate = useNavigate();
   const { request_id } = useParams();
-  let navigate = useNavigate();
+  const [artistPayload, setArtistPayload] = useOutletContext();
 
-  const handleCertificateChange = (event) => {
-    const files = event.target.files;
-    // Convert FileList to an array
-    const newCertificates = Array.from(files);
-    // Update the state with the new array of certificates
-    setSelectedCertificates([...selectedCertificates, ...newCertificates]);
-  };
-
-  const handleRemoveCertificate = (index) => {
-    const updatedCertificates = [...selectedCertificates];
-    updatedCertificates.splice(index, 1);
-    setSelectedCertificates(updatedCertificates);
-  };
+  
+  const handleNextClick = async () =>{
+    try{
+      if(artistPayload.currentStep > 13){
+       return  navigate(`/become-a-artist/${request_id}/review-request`)
+      }
+        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:14});
+        navigate(`/become-a-artist/${request_id}/review-request`)
+    }
+    catch(error){
+        throw error;
+    }
+  }
 
   return (
     <>
-    <section className="about">
-      <div className="container">
-        <div className="row mb-3">
-          <div className="col-md-12">
-            <h1 className="text-center">Upload your certificates</h1>
+      <section>
+        <div className="container  pt-4">
+          <div className="row">
+            <div className="col-md-12">
+              <div>
+                <h1 className="text-center">
+                  Share your achievements
+                </h1>
+                <h6 className="text-center">You can add more or make changes later.</h6>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="certificate-upload-container">
-        <input
-          type="file"
-          accept="image/*,.pdf"
-          onChange={handleCertificateChange}
-          multiple // Enable multiple file selection
-        />
-
-        {selectedCertificates.length > 0 && (
-          <div className="certificate-preview">
-            {selectedCertificates.map((certificate, index) => (
-              <div key={index} className="certificate-item">
-                <img
-                  src={URL.createObjectURL(certificate)}
-                  alt={`Certificate ${index + 1}`}
-                  className="certificate-image img-fluid"
-                />
-                <button onClick={() => handleRemoveCertificate(index)}>
-                  Remove
-                </button>
-              </div>
-            ))}
+        <div className="customized-gallery pt-4">
+          <div className="container">
+            
+          <div className="row gallery-row g-3">
+          <DndProvider backend={HTML5Backend}>
+            <CertificateGallery context={[artistPayload, setArtistPayload, request_id]}/>
+          </DndProvider>
           </div>
-        )}
-      </div>
-    </section>
-    
-    <ArtistFooter
+        </div>
+        </div>
+      </section>
+
+      <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/complete-kyc`)}
-        nextClick={() => navigate(`/become-a-artist/${request_id}/upload-cerificates`)}
+        nextClick={() => handleNextClick()}
       />
     </>
   );
