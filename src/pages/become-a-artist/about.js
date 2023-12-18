@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData, useNavigate, useOutletContext, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import ArtistFooter from "./artistFooter";
 import NoDataFound from "./common/noDataFound";
 import { axiosAuth } from "configs/axiosInstance";
@@ -7,8 +7,7 @@ import { axiosAuth } from "configs/axiosInstance";
 const BASE_URL = process.env.REACT_APP_APIURL
 
 const AboutYou = () => {
-  const [artistPayload, setArtistPayload] = useOutletContext();
-  const allServices = useLoaderData();
+  const [artistPayload, setArtistPayload, allServices] = useOutletContext();
   const { request_id } = useParams();
 
   const navigate = useNavigate();
@@ -43,7 +42,7 @@ const AboutYou = () => {
       
       let payload = {currentStep:3,services:selectedServices}
 
-        if(artistPayload.currentStep > 3){
+        if(artistPayload.currentStep > 2){
             delete payload.currentStep;
         }
 

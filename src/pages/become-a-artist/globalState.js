@@ -5,7 +5,7 @@ import { Loading } from 'react-loading-dot'
 
 const ArtistGlobalState = () => {
   
-    const artistRequests = useLoaderData();
+    const {artistRequests, allServices, allProducts} = useLoaderData();
     const { request_id } = useParams();
     const [artistPayload, setArtistPayload]= useState()
     var currentRequest;
@@ -35,7 +35,7 @@ const ArtistGlobalState = () => {
       <>{artistPayload ?
             <div className="artist-wrapper-ar">
             <BecomeAristHeader />
-            <Outlet context={[artistPayload, setArtistPayload]} />
+            <Outlet context={[artistPayload, setArtistPayload, allServices, allProducts]} />
             </div> 
         : <Loading background="#8c6a54"/>
       }

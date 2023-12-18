@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const BecomeAristHeader = () => {
+  const navigate = useNavigate();
   return (
     <section className="artist-header">
       <div className="container">
@@ -25,7 +26,7 @@ const BecomeAristHeader = () => {
             </Link>
           </div>
           <div className="col-md-6 save-exit-button">
-            <button className="btn">Save & Exit</button>
+            <button className="btn" type="button" onClick={()=>navigate('/')}>Save & Exit</button>
           </div>
         </div>
       </div>

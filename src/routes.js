@@ -4,7 +4,6 @@ import CardBasic from 'pages/cards'
 import Dashboard from 'pages/dashboard'
 import Error404 from 'pages/error/404'
 import FormLayouts from 'pages/form-layouts'
-// import Icons from 'pages/icons'
 import LoginPage from 'pages/login'
 import MUITable from 'pages/tables'
 import Services from 'pages/servicesCreated'
@@ -33,8 +32,6 @@ import BlogList from 'pages/Blog/blogList'
 import { getAllBlog } from 'configs/initialapis'
 import DescribeYourself from "pages/become-a-artist/describeYourself";
 import ArtistGallary from "pages/become-a-artist/artistGallary";
-import {getAllProducts} from "configs/initialapis";
-import {getAllServices} from "configs/initialapis";
 import StepSecond from 'pages/become-a-artist/stepSecond'
 import InsightStory from 'pages/become-a-artist/insightStory'
 import BestServices from 'pages/become-a-artist/bestServices'
@@ -52,6 +49,8 @@ import StepFirst from 'pages/become-a-artist/stepFirst'
 import StepThird from 'pages/become-a-artist/stepThird'
 import Icons from 'pages/icons'
 import GetAllArtists from 'pages/Artists'
+import BecomeAristHeader from 'pages/become-a-artist/common/header'
+import { getWizardData } from 'configs/initialapis'
 
 
 const DashboardComponents = () =>{
@@ -101,18 +100,18 @@ const ApplicationRoutes = createBrowserRouter(
           />
           <Route
             path="/become-a-artist/get-started"
-            element={<GetStarted />}
+            element={<><BecomeAristHeader/><GetStarted /></>}
             loader={getArtistRequests}
           />
 
-        <Route path='/become-a-artist/:request_id' element={<ArtistGlobalState/>} loader={getArtistRequests}>
+        <Route path='/become-a-artist/:request_id' element={<ArtistGlobalState/>} loader={getWizardData}>
           <Route
             path="/become-a-artist/:request_id/get-started"
             element={<GetStarted />}
           />
           <Route path="/become-a-artist/:request_id/about-your-skills" element={ <StepFirst />} />
-          <Route path="/become-a-artist/:request_id/about-you" element={<AboutYou />}  loader={getAllServices}/>
-          <Route path="/become-a-artist/:request_id/describe-yourself" element={<DescribeYourself />} loader={getAllProducts} />
+          <Route path="/become-a-artist/:request_id/about-you" element={<AboutYou />}/>
+          <Route path="/become-a-artist/:request_id/describe-yourself" element={<DescribeYourself />} />
           <Route path="/become-a-artist/:request_id/location" element={<ArtistLocation />} />
           <Route path="/become-a-artist/:request_id/insight-your-work" element={<InsightStory />} />
           <Route path="/become-a-artist/:request_id/stand-out" element={<StepSecond />} />
@@ -124,30 +123,6 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/become-a-artist/:request_id/complete-kyc" element={< CompleteKYC />} />
           <Route path="/become-a-artist/:request_id/upload-cerificates" element={< Certificates />} />
         </Route>
-        
-
-        {/* <Route
-          path="/become-a-artist"
-          element={<ArtistCreation />}
-          loader={getArtistRequests}
-        >
-          <Route path="/become-a-artist" element={<ArtistRegistration />} />
-          <Route path="/become-a-artist/about-your-skills" element={ <AboutSkills />} />
-          <Route path="/become-a-artist/about-you" element={<AboutYou />}  loader={getAllServices}/>
-          <Route path="/become-a-artist/describe-yourself" element={<DescribeYourself />} loader={getAllProducts} />
-          <Route path="/become-a-artist/location" element={<ArtistAddress />} />
-          <Route path="/become-a-artist/insight-your-work" element={<InsightStory />} />
-          <Route path="/become-a-artist/stand-out" element={<Step2 />} />
-          <Route path="/become-a-artist/gallary" element={<ArtistGallary />} />
-          <Route path="/become-a-artist/you-are-best-in" element={<BestServices />} />
-          <Route path="/become-a-artist/description" element={<Description />} />
-          <Route path="/become-a-artist/finish-setup" element={< Step3 />} />
-          <Route path="/become-a-artist/pricing" element={< PriceSetup />} />
-          <Route path="/become-a-artist/complete-KYC" element={< CompleteKYC />} />
-          <Route path="/become-a-artist/upload-cerificates" element={< Certificates />} />
-          <Route path="/become-a-artist/profile-overview" element={< ProfilePreview />} />
-         
-        </Route> */}
         <Route path="/*" element={<Error404 />} />
       </Route>
 

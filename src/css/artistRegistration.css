@@ -18,7 +18,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 999;
 }
 
 .artist-footer-ar{
@@ -123,10 +123,10 @@ border-radius: 25px;
 
 /* About */
 
-.about{
-    padding-top: 7rem;
+/* .about{
+    padding-top: 3rem;
     padding-bottom: 6rem;
-}
+} */
 .about .artist-card {
     border : 2px solid rgb(206, 202, 202);
     font-weight: 400;
@@ -256,7 +256,7 @@ border-radius: 25px;
 
 .insight-wrapper .insight-card{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .plus-button {
@@ -419,3 +419,199 @@ border-radius: 25px;
     transition: all ease-in-out 300ms;
   } */
 
+.search-container-head .search-bar-wrapper input.form-control:focus  + button {
+  display: block;
+  /* Add any additional styles you want for the focused state */
+}
+
+.use-current-location:hover{
+  display: block;
+}
+
+.dynamic-img-wrapper{
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all ease-in-out 300ms;
+}
+
+.dynamic-img-wrapper img{
+  height: 200px;
+}
+
+.dynamic-img-wrapper .dropshadow-gallery{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(252 247 242 / 72%);
+}
+
+.dynamic-img-wrapper .dropshadow-gallery svg{
+  height: 32px;
+  width: 32px;
+  color: #8C6A54;
+}
+
+.dynamic-img-wrapper .dropshadow-gallery:active{
+  background-color: rgb(252 247 242 / 72%);
+  border: 0;
+}
+
+.dynamic-img-wrapper:hover button{
+  display: flex;
+}
+
+.custom-add-card{
+  background-color: transparent!important;
+  box-shadow: none!important;
+  color: #8C6A54!important;;
+}
+
+.price-wrapper input{
+  font-size: 50px;
+  background-color: transparent;
+  border: none;
+  color: #8C6A54;
+  text-align: center;
+}
+
+.total-price{
+    width: 115px!important;
+    padding: 0;
+    font-size: 18px!important;
+    font-weight: 700;
+    display: inline-block;
+    text-align: start!important;
+}
+
+
+.customized-gallery  .gallery-row{
+  width: 50%;
+  margin: auto;
+}
+
+.customized-gallery .gallery-row .custom-index-dropzone{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 50px;
+  border: 1px dotted #8C6A54;
+  cursor: pointer;
+}
+
+.uploading{
+  position: relative;
+}
+
+.uploading img{
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.card img{
+  width: 100%;
+  height: 100%;
+  max-height: 60vh;
+  object-fit: cover;
+}
+
+.circular-progressbar{
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  width: 36px;
+  z-index: 1;
+}
+
+ /* Location css added by shubham  */
+
+.location-wrapper{
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.search-container-head{
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+}
+
+.search-container-head .search-bar-wrapper input.form-control{
+  padding: 14px;
+  border: 0;
+  box-shadow: none;
+}
+
+.search-container-head .search-bar-wrapper .suggestionList{
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  padding: 15px 0px;
+  margin-top: 15px;
+  background: white;
+  list-style: none;
+  z-index: 1;
+}
+
+.search-container-head .search-bar-wrapper .suggestionList .suggestion-item{
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.search-container-head .search-bar-wrapper .suggestionList .suggestion-item:hover{
+  background-color: white;
+}
+
+.search-container-head .search-bar-wrapper .suggestionList .suggestion-item:hover .suggestion-heading, .search-container-head .search-bar-wrapper .suggestionList .suggestion-item:hover .suggestion-desc{
+  color: #8C6A54;
+} 
+
+.search-container-head .search-bar-wrapper .suggestionList .suggestion-item .suggestion-heading{
+  font-size: 14px;
+  font-weight: 500;
+  color: #8C6A54;
+  margin: 0;
+}
+
+.search-container-head .search-bar-wrapper .suggestionList .suggestion-item .suggestion-desc{
+  font-size: 12px;
+  font-weight: 400;
+  color: #8C6A54;
+  margin: 0;
+}
+
+.search-container-head .search-bar-wrapper .location-icon{
+  background-color: white!important;
+  border: 0;
+  padding: 0px 20px;
+}
+
+.search-container-head .search-bar-wrapper .location-icon svg{
+  height: 42px;
+}
+
+.use-current-location{
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    margin-top: 6px;
+    font-weight: 500;
+    display: none;
+}
+
+.use-current-location:hover, .use-current-location:active{
+  background: white!important;
+}
