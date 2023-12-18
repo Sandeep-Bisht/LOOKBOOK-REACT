@@ -125,7 +125,21 @@ const CompleteKYC = () => {
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
                 <img src={URL.createObjectURL(aadharFront)} alt="Aadhar Card Front" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-                <button type="button" className="btn dropshadow-gallery" onClick={() => handleRemoveImage(setAadharFront)}>  <FaTrash /></button>
+                <Button
+                    component="label"
+                    variant="contained"
+                    className="mt-2 kyc-upload-btn d-none"
+                    htmlFor="adhar-front-image"
+                  >
+                    Upload
+                    <input
+                      hidden
+                      type="file"
+                      id="adhar-front-image"
+                      onChange={handleAadharFrontChange}
+                      accept="image/*"
+                    />
+                  </Button>
               </div>
             </div>
           )
@@ -163,7 +177,21 @@ const CompleteKYC = () => {
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
                 <img src={URL.createObjectURL(aadharBack)} alt="Aadhar Card Back" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-                <button type="button" className="btn dropshadow-gallery" onClick={() => handleRemoveImage(setAadharBack)}>  <FaTrash /></button>
+                <Button
+                    component="label"
+                    variant="contained"
+                    className="mt-2 kyc-upload-btn d-none"
+                    htmlFor="adhar-back-image"
+                  >
+                    Upload
+                    <input
+                      hidden
+                      type="file"
+                      id="adhar-back-image"
+                      onChange={handleAadharBackChange}
+                      accept="image/*"
+                    />
+                  </Button>
               </div>
             </div>
           )
@@ -201,7 +229,21 @@ const CompleteKYC = () => {
             <div className="multipale-image-display">
               <div className="dynamic-img-wrapper">
                 <img src={URL.createObjectURL(panCard)} alt="PAN Card" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-                <button type="button" className="btn dropshadow-gallery" onClick={() => handleRemoveImage(setPanCard)}>  <FaTrash /></button>
+                <Button
+                    component="label"
+                    variant="contained"
+                    className="mt-2 kyc-upload-btn d-none"
+                    htmlFor="pancard-image"
+                  >
+                    Upload
+                    <input
+                      hidden
+                      type="file"
+                      id="pancard-image"
+                      onChange={handlePanCardChange}
+                      accept="image/*"
+                    />
+                  </Button>
               </div>
             </div>
 
