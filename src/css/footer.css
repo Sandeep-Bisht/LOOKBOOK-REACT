@@ -1,219 +1,86 @@
 
-
-footer .footer-link-wrapper ul
+footer
 {
-   list-style-type: none;
-   padding-left: 0;
-
+  background:  #FCF7F2;
+  padding: 20px 0 5px 0;
 }
-footer .footer-para
-{
-  text-decoration: none;
-  font-family:Metropolis-Regular;
-  font-size: 12px;
-  letter-spacing: .3px;
-color:#FCF7F2;
-display: block;
-margin: 15px 0;
+.usr-footer{
+    display: flex;
+    justify-content: space-between;
 }
-.footer-heading
-{
-  font-family:Metropolis-Bold;
-  color: #FCF7F2;
-  font-size: 14px;
-  margin-bottom: 10px;
 
+.usr-footer ul{
+    padding-left: 0;
+    margin-bottom: 0;
 }
-footer .expand-cards-wrapper
-{
-  margin: 0;
-    padding: 0;
-    width: 100%;
+
+.usr-icon-list{
+    display: flex;
+    list-style: none;
+}
+
+.usr-footer-menu{
     display: flex;
     align-items: center;
-    height: 600px;
-    overflow: hidden;
+    justify-content: end;
 }
-.expand-cards-wrapper-single
-{
-    flex: 1;
-    height: 100%;
-    position: relative;
-    transition: 3s ease;
-    overflow: hidden;
-    cursor: pointer;
-    padding: 100px 90px 0 90px;
-}
-.expand-cards-wrapper-single:hover
-{
-   
-   transition-property: flex;
-   transition-duration: 3s;
-
-
-}
-.expand-cards-wrapper-single.left{
-  background-color: #8C6A54;
-  
-  display: block;
-  flex:6;
-
-}
-.expand-cards-wrapper-single.right{
-  background-color: #6D5D4C;
- 
-  display: block;
-  flex:3;
-
-}
-.expand-cards-wrapper-single.right:hover
-{
-   flex: 4;
-}
-
-
-footer .subscribe-box
-{
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #FCF7F2;
-  width: 100%;
-  margin: auto;
-  border-radius: 8px;
-  margin-bottom: 30px;
-}
-footer .subscribe-box input
-{
-  width: 100%;
-  height: 42px;
-  border: 0;
-  background: transparent;
-  padding: 0 20px;
-  color: #fff;
-}
-footer .subscribe-box input::placeholder
-{
-  font-family:Metropolis-Regular;
+.footer-link{
+  color:  #6D5D4C;
+  font-family:AvenirLTProBook;
   font-size: 12px;
-  letter-spacing: .3px;
-color:#FCF7F2;
-}
-footer .subscribe-box  .subs-submit
-{
-  background: #657A52;
-  position: absolute;
-  right: 0;
-  border: 0;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  border-radius: 10px;
-  border-left: 1px solid #fff;
-  width: 13%;
-}
-footer .subscribe-box  .subs-submit svg{
-  height: 25px;
-}
-.follow-us-box
-{
-  text-align: center;
-}
-.follow-us-box ul 
-{
-  display: flex;
-  justify-content: center;
-}
-
-.follow-us-box ul  li
-{
-  margin: 0 6px;
-}
-.follow-us-box ul  li svg
-{
-  height: 20px;
-}
-.follow-us-box.reach-us
-{
-  margin-top: 35px;
-}
-.follow-us-box.reach-us .footer-para
-{
-  margin: 8px 0;
-}
-.footer-logo-box
-{
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  overflow: hidden;
-  transform: translateX(-50%);
-  z-index: 3;
-}
-.footer-logo-box ul{
-  list-style-type: none;
-  padding-left: 0;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0;
-  align-items: center;
-}
-.footer-logo-box ul li{
-  font-family: Metropolis-Bold;
-  color: rgba(255,255,255,0.15);
-  font-size: 200px;
   text-transform: uppercase;
-  line-height: 1.2;
-  position: relative;
-  top: 50px;
-  animation: lighting 4s linear infinite;
 }
-@keyframes lighting {
-	0% {
-    color: rgba(255,255,255,0.15);
-		text-shadow: none;
-	}
-
-	90% {
-    color: rgba(255,255,255,0.15);
-		text-shadow: none;
-	}
-
-	100% {
-		color: #fff;
-		text-shadow: 0 0 2px #fff, 0 0 10px #fff;
-	}
+.footer-link:hover
+{
+  color:  #6D5D4C;
+}
+.usr-footer-menu-list
+{
+  display: flex;
+    list-style: none;
 }
 
-.footer-logo-box ul li:nth-child(1) {
-  animation-delay: 0s; /* Adjust animation delay as needed */
+.footer-link.active{
+  font-family:AvenirLTProHeavy;
 }
 
-.footer-logo-box ul li:nth-child(2) {
-  animation-delay: 0.4s; /* Adjust animation delay as needed */
+
+.usr-footer-menu-list li,.usr-icon-list li,
+.usr-footer-last-icon div,.usr-footer-last-icon div img{
+    margin: 0 5px;
 }
 
-.footer-logo-box ul li:nth-child(3) {
-  animation-delay: 0.8s; /* Adjust animation delay as needed */
+.usr-footer-menu-list a{
+    color: #6D5D4C;
+    text-decoration: none;
+
 }
 
-.footer-logo-box ul li:nth-child(4) {
-  animation-delay: 1.2s; /* Adjust animation delay as needed */
+.usr-footer-last-icon{
+    display: flex;
+    justify-content: end;
 }
 
-.footer-logo-box ul li:nth-child(5) {
-  animation-delay: 1.6s; /* Adjust animation delay as needed */
+.usr-footer-text{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.4px;
+    color: #6D5D4C;
 }
 
-.footer-logo-box ul li:nth-child(6) {
-  animation-delay: 2.0s; /* Adjust animation delay as needed */
+.usr-footer-last-icon a{
+    text-decoration: none;
 }
 
-.footer-logo-box ul li:nth-child(7) {
-  animation-delay: 2.4s; /* Adjust animation delay as needed */
+.usr-footer-para{
+    text-align: center;
+    margin-top: 10px;
+    color: #6D5D4C;
+    font-weight: 400;
+    font-size: 14px;
 }
 
-.footer-logo-box ul li:nth-child(8) {
-  animation-delay: 2.8s; /* Adjust animation delay as needed */
+.footer-link
+{
+
 }

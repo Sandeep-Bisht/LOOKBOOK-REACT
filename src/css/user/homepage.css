@@ -1,0 +1,871 @@
+/* ------------------------home banner css----------------------- */
+.usr-home-banner
+{
+    padding: 20px 0;
+}
+.usr-home-banner .usr-home-banner-heading
+
+{
+    color: #6D5D4C;
+    font-family:Forum-regular;
+    font-size: 44px;
+    letter-spacing: 5px;
+    position: relative;
+    bottom: 35px;
+}
+
+.usr-home-banner .usr-home-banner-tag
+{
+    color: #6D5D4C;
+    font-family:Forum-regular;
+    font-size: 22px;
+    position: relative;
+    bottom: 35px
+   
+}
+.usr-home-banner-action-btn
+{
+    position: relative;
+    bottom: 30px;
+}
+
+/* .usr-home-banner .slick-slider {
+    width: 100%;
+    background-color: transparent;
+}
+
+.usr-home-banner .slick-slider .slick-track {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 400px;
+    justify-content: center;
+}
+
+.usr-home-banner .slick-slider .slick-slide {
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 0px;
+    margin: 10px;
+    background-color: white;
+    transition: all 0.3s ease;
+    height: auto;
+    text-align: center;
+}
+
+.usr-home-banner .slick-slider .slick-slide.slick-current,
+.usr-home-banner .slick-slider .slick-slide.slick-center {
+    background: linear-gradient(45deg, #f69259, #f16975);
+    padding: 30px 0px;
+}
+
+.usr-home-banner .slick-prev,
+.usr-home-banner .slick-next {
+    z-index: 10;
+    top: 0px;
+    background-color: transparent;
+}
+
+.usr-home-banner .slick-prev {
+    left: 10px;
+}
+
+.usr-home-banner .slick-next {
+    right: 10px;
+} */
+
+/* Ensure that the slider container has a fixed height */
+/* .usr-home-banner .slick-slider {
+    width: 100%;
+    position: relative;
+  } */
+  
+  /* Style for each slide */
+  /* .usr-home-banner .slick-slide {
+    transition: transform 0.5s ease; 
+  } */
+  
+  /* Center the slides */
+  /* .usr-home-banner .slick-center {
+    transform: scale(1.2); 
+  }
+   */
+  /* Hide dots and arrows */
+  /* .usr-home-banner .slick-dots,.usr-home-banner .slick-prev, .usr-home-banner.slick-next {
+    display: none !important;
+  } */
+  
+  /* .custom-slider {
+    display: flex;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 70%;
+  } */
+  
+  /* .slide {
+    flex: 0 0 auto;
+    width: 100%;
+    transition: transform 0.5s ease; 
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+   */
+  /* Center the active slide */
+  /* .custom-slider.active-slide {
+    transform: translateX(calc(-100% / 3));
+  } */
+  /* .usr-home-banner .slick-slide{
+    transform: scale(0.8);
+    transition: all 0.4s ease-in-out;
+    padding: 40px 0;
+  }
+  .usr-home-banner .slick-slide img{
+    max-width: 100%;
+    transition: all 0.4s ease-in-out;
+  }
+  .usr-home-banner .slick-center{
+    transform: scale(1.1);
+  } */
+
+  .slick-slider .owl-item .item {
+    transform: translate3d(0, 0, 0);
+    /* DO NOT REMEMBER WHERE TU PUT THIS, SEARCH FOR 3D ACCELERATION */
+    transform: scale(0.9);
+
+    transition: all .25s ease-in-out; 
+    margin: 50px 0;
+    padding: 8px;
+    /* OVERWRITE PLUGIN MARGIN */
+}
+
+.slick-slide .owl-item .item img {
+    -webkit-transition: 0.3s;
+    -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    -o-transition: 0.3s;
+     height: 300px;
+    transition: 0.3s;
+    -webkit-transform: scale(0.80);
+    -ms-transform: scale(0.80);
+    transform: scale(0.80);
+}
+
+.slick-slider .owl-item.center .item img {
+    -webkit-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    transform: scale(1.15);
+    
+}
+
+.slick-slider .owl-nav {
+    text-align: center;
+    margin: 40px 0;
+}
+
+/* .slick-slider.owl-carousel .owl-item img {
+    display: block;
+    width: 100%;
+    height: 300px!important;
+    object-fit: cover!important;
+} */
+
+
+
+
+
+
+/* ----------------------home-selection-area css------------------------ */
+
+/* ----------------------artist area------------- */
+.usr-artist-area {
+    padding: 50px 0;
+    background: #fcf7f2;
+}
+
+.usr-artist-area-wrapper {
+    background-color: #fff;
+    padding: 50px;
+}
+
+:root {
+    --cards: 5;
+    --cardHeight: 87vh;
+    --cardTopPadding: 20px;
+    --cardMargin: 3vw;
+}
+
+.usr-artist-area .container.artist-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.usr-artist-area-card {
+    background-color: #fff !important;
+    box-shadow: -9px 9.5px 30px 0px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}
+
+.usr-artist-area-card .usr-expert-pic-name-box,
+.usr-expert-pic-charges-box {
+
+    line-height: 1;
+    border: 1px solid #dedede;
+    /* border-radius: 11px; */
+    border-top: 0;
+    border-left: 0;
+    border-bottom-right-radius: 10px;
+    padding: 0 0 12px 0;
+}
+
+.usr-expert-pic-charges-box {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+    padding-left: 18px;
+}
+
+.usr-artist-area-card .usr-expert-pic-name {
+    font-family: Forum-regular;
+    color: #6D5D4C;
+    font-size: 22px;
+    margin-bottom: 0;
+    line-height: 1;
+
+}
+
+.usr-artist-area-card .usr-expert-pic-profile {
+    font-family: AvenirLTProLight;
+    font-size: 12px;
+    color: #8C6A54;
+    letter-spacing: -0.4px;
+}
+
+
+.usr-artist-area .expert-pic {
+    margin-top: 20px;
+    position: relative;
+}
+
+.usr-artist-area .expert-pic .usr-expert-certification {
+    position: absolute;
+    bottom: 30px;
+    width: 165px;
+    height: 39px;
+    left: 0;
+    border-radius: 0px 19.5px 19.5px 0px;
+    background: #FEFEFE;
+    color: #6D5D4C;
+
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.usr-artist-area .usr-expert-pic-insta-box {
+    margin-top: 15px;
+    color: #000;
+
+    font-family: AvenirLTProLight;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 26px;
+    /* 185.714% */
+    letter-spacing: -0.4px;
+
+}
+
+.usr-artist-area .usr-expert-pic-insta-box svg {
+    height: 17px;
+    width: 17px;
+}
+
+.usr-artist-area .usr-expert-pic-insta-box a {
+    color: #000;
+    margin-left: 15px;
+}
+
+
+.usr-artist-area #cards {
+    list-style: none;
+    padding-left: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(var(--cards), var(--cardHeight));
+    gap: var(--cardMargin);
+    padding-bottom: calc(var(--cards) * var(--cardTopPadding));
+    margin-bottom: var(--cardMargin);
+
+}
+
+.usr-artist-area #card1 {
+    --index: 1;
+}
+
+.usr-artist-area #card2 {
+    --index: 2;
+}
+
+.usr-artist-area #card3 {
+    --index: 3;
+}
+
+.usr-artist-area #card4 {
+    --index: 4;
+}
+
+.usr-artist-area #card5 {
+    --index: 5;
+}
+
+.usr-artist-area .card {
+    position: sticky;
+    top: 0;
+    border: 0;
+    background: transparent;
+    margin-bottom: var(--cardTopPadding);
+}
+
+.usr-artist-area .card img {
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 100%;
+    height: 300px;
+}
+
+.usr-artist-area .card .card-body {
+    padding: 0;
+}
+
+.usr-artist-area #card2 {
+    transform: rotate(2deg);
+
+    margin-left: 10px;
+
+}
+
+.usr-artist-area #card3 {
+    transform: rotate(4deg);
+
+    margin-left: 14px;
+}
+
+.usr-artist-area #card4 {
+    transform: rotate(6deg);
+    margin-left: 18px;
+}
+
+.usr-artist-area #card5 {
+    transform: rotate(8deg);
+    margin-left: 22px;
+}
+
+
+/* -----------------------usr-overlapping-multiple-section-wrapper -------------- */
+.usr-overlapping-multiple-section-wrapper {}
+
+.usr-overlapping-multiple-section-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.usr-overlapping-multiple-section-wrapper .usr-overlap-section {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: #FCF7F2;
+    overflow-y: scroll;
+}
+
+.usr-overlapping-multiple-section-wrapper .usr-overlap-section::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+.usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(1) {}
+
+.usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(2) {
+    background-color: #FCF7F2;
+    height: 100vh;
+}
+
+.usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(3) {
+    background-color: #fff;
+    height: 100vh;
+}
+
+.usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(4) {
+    background-color: #FCF7F2;
+    height: 100vh;
+}
+
+.usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(5) {
+    background-color: #fff;
+    height: 100vh;
+}
+
+/* --------------user-select-package ------------------- */
+.user-select-package {
+    padding: 60px 0;
+}
+
+.user-select-package .usr-package-card {
+    padding: 50px 30px 30px 30px;
+    background: #FCF7F2;
+    box-shadow: -9px 9.5px 30px 0px rgba(0, 0, 0, 0.05);
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.user-select-package .usr-package-card:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+
+    background: #fff;
+    z-index: 2;
+    transition: all .45s ease;
+    transform: translateY(50%);
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+
+
+.user-select-package .usr-package-card:hover::before {
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-select-package .usr-package-card-content {
+    position: relative;
+    z-index: 3;
+}
+
+.user-select-package .usr-package-card-icon {
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 3;
+}
+
+.user-select-package .usr-package-card-icon svg {
+    height: 50px !important;
+    width: 50px !important;
+}
+
+.user-select-package .usr-package-card-title {
+    font-family: Forum-regular;
+    color: #6D5D4C;
+    font-size: 32px;
+}
+
+.user-select-package .usr-package-card-price {
+    display: flex;
+    padding: 6px 10px;
+    justify-content: center;
+    align-items: center;
+    background: #8C6A54;
+    color: #FEFEFE;
+    font-family: Forum-regular;
+    font-size: 14px;
+    width: 55%;
+
+}
+
+.user-select-package .usr-package-card-para {
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
+.user-select-package .usr-book-now {
+    font-family: AvenirLTProLight;
+    display: flex;
+    padding: 12px 30px 12px 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #6D5D4C;
+    color: #6D5D4C;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    margin-top: 10px;
+
+    transition: .2s;
+}
+
+
+.user-select-package .usr-book-now:hover {
+    background-color: #6D5D4C;
+    color: #fefefe;
+}
+
+/* ---------------------------usr-featured-artist-------------------------- */
+.usr-featured-artist {
+    padding: 60px 0;
+}
+
+.usr-featured-artist-card {}
+
+.usr-featured-artist-card {
+    position: relative;
+
+}
+
+.usr-featured-artist-card {
+    position: relative;
+    width: 100%;
+    height: 410px;
+    background: #FCF7F2;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.08);
+}
+
+.usr-featured-artist-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    clip-path: circle(150px at 80% 20%);
+    transition: 0.5s ease-in-out;
+}
+
+.usr-featured-artist-card:hover:before {
+    clip-path: circle(400px at 50% 50%);
+}
+
+.usr-featured-artist-card:after {
+    content: 'Nike';
+    position: absolute;
+    top: 30%;
+    left: -20%;
+    font-size: 12em;
+    font-weight: 800;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.04);
+}
+
+.usr-featured-artist-card .imgBx {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10000;
+    width: 100%;
+    height: 180px;
+    transition: 0.5s;
+}
+
+.usr-featured-artist-card:hover .imgBx {
+    top: 0;
+    transform: translateY(0%);
+}
+
+.usr-featured-artist-card .imgBx img {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 160px;
+    border-radius: 50%;
+    height: 160px;
+    transition: .5s all ease-in-out;
+    object-fit: cover;
+}
+
+.usr-featured-artist-card:hover .imgBx img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+}
+
+.usr-featured-artist-card .name {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    transition: 1s;
+    z-index: 10;
+}
+
+.usr-featured-artist-card:hover .name {
+    height: 150px;
+}
+
+.usr-featured-artist-card .name h2 {
+    position: relative;
+    letter-spacing: 1px;
+    color: #6D5D4C;
+    font-family: Forum-regular;
+    color: #6D5D4C;
+    font-size: 32px;
+    margin-bottom: 0;
+}
+
+.usr-featured-artist-card .name .profession {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    transition: 0.5s;
+}
+
+.usr-featured-artist-card .name .desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* .container .card:hover .name .profession {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.5s;
+} */
+
+.usr-featured-artist-card:hover .name .desc {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.6s;
+}
+
+.usr-featured-artist-card .name .profession h3 {
+    color: #6D5D4C;
+    letter-spacing: 2px;
+    font-family: AvenirLTProLight;
+    font-size: 14px;
+    color: #8C6A54;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+.usr-featured-artist-card .name .desc p {
+    color: #6D5D4C;
+    letter-spacing: 2px;
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+    font-size: 11px;
+    padding: 0 20px;
+    letter-spacing: 1.3px;
+}
+
+.usr-featured-artist-card .name .profession span {
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 14px;
+    display: inline-block;
+    color: #111111;
+    background: #6D5D4C;
+    margin: 0 5px;
+    transition: 0.5s;
+    color: #111111;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.usr-featured-artist-card .name .profession span:hover {
+    background: #9BDC28;
+}
+
+.usr-featured-artist-card .name .desc span {
+    width: 20px;
+    height: 20px;
+    background: #FF0;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.usr-featured-artist-card .name .desc span:nth-child(2) {
+    background: #9BDC28;
+}
+
+.usr-featured-artist-card .name .desc span:nth-child(3) {
+    background: #03A9F4;
+}
+
+.usr-featured-artist-card .name .desc span:nth-child(4) {
+    background: #E91E63;
+}
+
+.usr-featured-artist-card .name a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #6D5D4C;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #111111;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.5s;
+}
+
+.usr-featured-artist-card:hover .name a {
+    opacity: 1;
+    transform: translateY(0px);
+    transition-delay: 0.75s;
+}
+
+.usr-featured-artist-card .image {
+    width: 320px;
+}
+
+.usr-featured-artist-card .prizeButton {
+    display: flex;
+    justify-content: space-around;
+    z-index: 9;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.usr-featured-artist-card .prizeButton .prize span.usr-charges,
+.usr-featured-artist-card .prizeButton .prize span.usr-price {
+    display: block;
+    margin-right: 10px;
+    font-family: AvenirLTProLight;
+    font-size: 12px;
+    color: #8C6A54;
+    letter-spacing: 1px;
+}
+
+.usr-featured-artist-card .prizeButton .prize span.usr-price {
+    font-family: AvenirLTProHeavy;
+    letter-spacing: .7px;
+}
+
+
+.usr-featured-artist-card .prizeButton .reserveButton .rButton {
+    border-radius: 20px;
+    background-color: #6D5D4C;
+    padding: 5px 10px;
+    border: 0px;
+    color: #fff;
+    letter-spacing: .35px;
+    color: #FEFEFE;
+    font-family: AvenirLTProLight;
+    font-size: 12px;
+    text-transform: uppercase;
+
+}
+
+
+/* ----------------------blog--------------- */
+
+
+.usr-recent-blog {
+    padding: 30px;
+}
+
+.usr-recent-blog-heading {
+    text-align: center;
+    font-size: 55px;
+    font-weight: 400;
+    line-height: 60.72px;
+    color: #6D5D4C;
+}
+
+.blog-section-card {
+    padding-top: 10px;
+}
+
+.usr-blog-main-content-wrapper {
+    padding: 20px;
+}
+
+.usr-blog-main-content {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    margin: 0 20px;
+    border-radius: 0;
+    border: 1px solid #8C6A54;
+}
+.usr-blog-main-content img{
+    height: 270px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.usr-blog-main-content .usr-card-body {
+    padding: 10px 0 0 0;
+}
+
+.usr-blog-main-content .usr-blog-heading {
+
+    font-size: 22px;
+    line-height: 27.6px;
+    color: #6D5D4C;
+    font-family: Forum-regular;
+    padding-top: 10px;
+
+}
+
+.usr-blog-main-content .usr-blog-para {
+
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+
+    font-size: 13px;
+    letter-spacing: 1.3px;
+}
+
+.usr-blog-main-content .usr-blog-date {
+    font-size: 12px;
+    font-family: AvenirLTProLight;
+    line-height: 14.4px;
+    color: #6D5D4C;
+
+
+}
+
+.recent-blog-main-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.recent-blog-btn {
+    border: 1px solid #6D5D4C;
+    border-radius: 5px;
+    padding: 17px 30px 15px 30px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 18px;
+}
+
+.blog-card-icon {
+    display: flex;
+    margin-top: 10px;
+    color: #6D5D4C;
+    font-family: AvenirLTProLight;
+    font-size: 14px;
+    
+}

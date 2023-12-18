@@ -1,39 +1,54 @@
 /* -----------------------common styling---------------- */
 @font-face {
-    font-family:Metropolis-Regular;
-    src: url('../../public/fonts/Metropolis-Regular.otf');
+    font-family:AvenirLTProBook;
+    src: url('../../public/fonts/AvenirLTProBook.otf');
   }
   @font-face {
-    font-family:Metropolis-Medium;
-    src: url('../../public/fonts/Metropolis-Medium.otf');
+    font-family:AvenirLTProHeavy;
+    src: url('../../public/fonts/AvenirLTProHeavy.otf');
   }
   @font-face {
-    font-family:Metropolis-Bold;
-    src: url('../../public/fonts/Metropolis-Bold.otf');
+    font-family:AvenirLTProLight;
+    src: url('../../public/fonts/AvenirLTProLight.otf');
   }
-  
-  @font-face {
-    font-family:Metropolis-Light;
-    src: url('../../public/fonts/Metropolis-Light.ttf');
-  }
-  
   
   @font-face {
     font-family:Forum-regular;
     src: url('../../public/fonts/Forum-Regular.ttf');
   }
   
+  .AvenirLTProBook{
+    font-family:AvenirLTProBook;
+    font-weight: 400;
+
+  }
+  .AvenirLTProHeavy
+  {
+    font-family:AvenirLTProHeavy;
+    font-weight: 700;
+  }
+  .AvenirLTProLight
+  {
+    font-family:AvenirLTProLight;
+    font-weight: 300;
+  }
   
+  .Forum-regular
+  {
+    font-family:Forum-regular;
+  }
+  
+
   
   :focus-visible 
   {
     outline: none;
   }
   
-  .common-heading
+  .usr-common-heading
   {
     font-family:Forum-regular;
-    font-size: 60px;
+    font-size: 40px;
     line-height: 60px;
     color:rgb(109,93,76);
       
@@ -47,6 +62,30 @@
     margin: 12px 0 8px 0;
       
   }
+  .usr-common-action-btn{
+    background-color: transparent!important;
+    font-family: AvenirLTProLight;
+    display: flex;
+    padding: 12px 30px 12px 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #6D5D4C;
+    color: #6D5D4C;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    margin-top: 10px;
+
+    transition: .2s;
+}
+.usr-common-action-btn:hover
+
+{
+  background-color: #6D5D4C!important;
+    color: #fefefe;
+}
   
   .form-select:focus,.form-control:focus
   {
