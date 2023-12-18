@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
-import ArtistFooter from "./artistFooter";
+import ArtistFooter from "./common/artistFooter";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -143,11 +143,11 @@ const InsightStory = () => {
                     <em>None</em>
                   </MenuItem>
                   <MenuItem value="High School">High School</MenuItem>
-                  <MenuItem value="Associate\'s Degree">Associate\'s Degree</MenuItem>
-                  <MenuItem value="Bachelor\'s Degree">Bachelor\'s Degree</MenuItem>
-                  <MenuItem value="Master\'s Degree">Master\'s Degree</MenuItem>
-                  <MenuItem value="Doctorate/Ph.D.">Doctorate/Ph.D.</MenuItem>
-                  <MenuItem value="Vocational/Technical Training">Vocational/Technical Training</MenuItem>
+                  <MenuItem value="Associate's Degree">Associate's Degree</MenuItem>
+                  <MenuItem value="Bachelor's Degree">Bachelor's Degree</MenuItem>
+                  <MenuItem value="Master's Degree">Master's Degree</MenuItem>
+                  <MenuItem value="Doctorate Ph.D.">Doctorate Ph.D.</MenuItem>
+                  <MenuItem value="Vocational Technical Training">Vocational Technical Training</MenuItem>
                   <MenuItem value="Other">Other</MenuItem>
                 </Select>
                 </FormControl>
@@ -169,7 +169,7 @@ const InsightStory = () => {
                   multiple
                   // onChange={handleLanguageChange}
                   > 
-                  <MenuItem value="">
+                  <MenuItem value="" >
                     <em>None</em>
                   </MenuItem>
                   <MenuItem value="Hindi">Hindi</MenuItem>

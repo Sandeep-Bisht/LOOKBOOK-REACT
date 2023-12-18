@@ -5,19 +5,21 @@ import { IoAdd } from "react-icons/io5";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css";
 import { axiosAuth } from 'configs/axiosInstance';
+import { MdDeleteForever } from "react-icons/md";
 
 const BASE_URL = process.env.REACT_APP_APIURL
 
 function DropzoneWithoutClick({children, onUpload, handleUpload, disabled}) {
-    const {getRootProps, getInputProps, acceptedFiles, isDragAccept} = useDropzone({noClick: true, disabled});
-    
-    useEffect(()=>{
-      if(acceptedFiles && acceptedFiles.length > 0){
-        let filesCopy = [...acceptedFiles]
-        onUpload(filesCopy)
-        handleUpload(filesCopy)
+
+    const {getRootProps, getInputProps, isDragAccept} = useDropzone({
+      noClick: true,
+      onDrop:(files)=>{onUpload(files);handleUpload(files)},
+      disabled,
+      accept: {
+        'image/*': ['.jpeg', '.png', '.jpg', '.gif', '.avif', '.svg', '.tiff', '.webp']
       }
-    },[acceptedFiles])
+    });
+
 
     return (
         <div {...getRootProps({className: 'dropzone col-12'})}>
@@ -94,20 +96,11 @@ const Gallery = (props) =>{
 
   
   const [uploading,setUploading] = useState(false)
-  const {acceptedFiles, getRootProps, getInputProps} = useDropzone({disabled:uploading});
+
   const [binaryFiles,setBinaryFiles] = useState([])
-  const [artistPayload, setArtistPayload, request_id] = props.context
+  const [artistPayload, setArtistPayload] = props.context
   const [images, setImages] = React.useState(artistPayload.gallery ? artistPayload.gallery : []);
   const [progress, setProgress] = useState(0);
-
-  useEffect(()=>{
-    if(acceptedFiles && acceptedFiles.length > 0){
-      let filesCopy = [...acceptedFiles]
-      setBinaryFiles(filesCopy)
-      handleUpload(filesCopy)
-    }
-  },[acceptedFiles])
-
   
   const handleUpload = async (files) => {
 
@@ -141,6 +134,15 @@ const Gallery = (props) =>{
     }
   };
 
+  
+  const { getRootProps, getInputProps} = useDropzone({
+    disabled:uploading,
+    accept: {
+      'image/*': ['.jpeg', '.png', '.jpg', '.gif', '.avif', '.svg', '.tiff', '.webp']
+    },
+    onDrop:(files)=>{setBinaryFiles(files);handleUpload(files)}
+  });
+
   const updateImages = async (gallery) =>{
     
     try {
@@ -167,6 +169,27 @@ const Gallery = (props) =>{
     });
   }, []);
 
+  const removeImage = async(index) =>{
+    // Create a copy of the array
+    const updatedGallery = [...images];
+
+    // Use splice to remove the item at the specified index
+    updatedGallery.splice(index, 1);
+
+    // Update the state with the new array
+    setImages(updatedGallery);
+
+    try{
+    const response = await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`, {'gallery':updatedGallery});
+    setArtistPayload(response?.data?.data);
+    setImages(response?.data?.data?.gallery)
+    // Handle response if needed
+  } catch (error) {
+    console.error(error, 'file upload error');
+  }
+}
+
+
   return (<>
         {(images.length > 0 || binaryFiles.length > 0) ? 
         <>
@@ -175,6 +198,7 @@ const Gallery = (props) =>{
           {React.Children.toArray(
           images.map((image, index) => (
             <div className={index === 0 ? 'col-12' : 'col-6'}>
+            <div className='h-100 custom-kyc-img-wrapper'>
             <ImageCard
               src={image?.url}
               title={image?.name}
@@ -182,6 +206,10 @@ const Gallery = (props) =>{
               index={index}
               moveImage={moveImage}
             />
+            <div className='custom-kyc-update-dropshadow-box' onClick={()=>removeImage(index)}>
+                  <MdDeleteForever />
+            </div>
+            </div>
             </div>
           ))
           )}

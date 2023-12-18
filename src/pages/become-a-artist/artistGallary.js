@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
-import ArtistFooter from "./artistFooter";
+import ArtistFooter from "./common/artistFooter";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Gallery from "./components/gallery";
@@ -20,6 +20,8 @@ const ArtistGallery = () => {
        return  navigate(`/become-a-artist/${request_id}/you-are-best-in`)
       }
         await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:8});
+        
+        setArtistPayload((prev) => {return {...prev,currentStep:8}})
         navigate(`/become-a-artist/${request_id}/you-are-best-in`)
     }
     catch(error){

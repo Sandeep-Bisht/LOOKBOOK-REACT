@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ArtistFooter from "./artistFooter";
+import ArtistFooter from "./common/artistFooter";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { axiosAuth } from "configs/axiosInstance";
 import LocationAwareMap from "./common/googlemap";

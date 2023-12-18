@@ -504,7 +504,7 @@ border-radius: 25px;
   margin: auto;
 }
 
-.customized-gallery .gallery-row .custom-index-dropzone{
+.customized-gallery .gallery-row .custom-index-dropzone, .custom-add-more-files-card{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -625,4 +625,44 @@ border-radius: 25px;
 .kyc-upload-btn{
   position: absolute!important;
   left: 0;
+}
+
+
+.custom-kyc-img-wrapper{
+  position: relative;
+}
+
+.custom-kyc-img-wrapper:hover .custom-kyc-update-dropshadow-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  color: #8C6A54;
+  cursor: pointer;
+}
+
+.custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: #c8b29da5;
+  display: none;
+}
+
+.custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box a{
+  color: inherit;
+}
+
+.custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box svg:hover{
+  filter: brightness(1.2);
+}
+
+/* celebration page css */
+
+.celebration-page-wrapper{
+  height: 100vh;
+  overflow: hidden;
 }
