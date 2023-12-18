@@ -28,7 +28,7 @@ const navigation = () => {
     {
       title: 'Blog',
       icon: Bookmark,
-      path: '/management/all-blogs'
+      path: '/management/blogs'
     },
     {
       title: 'Artists',

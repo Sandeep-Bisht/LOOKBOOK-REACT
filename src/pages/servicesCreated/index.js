@@ -9,6 +9,9 @@ import TextField from '@mui/material/TextField'
 import CardContent from '@mui/material/CardContent'
 import {useForm} from 'react-hook-form'
 import { axiosAuth } from 'configs/axiosInstance'
+import ToastNotification from 'toastNotification/toastNatification'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
@@ -18,11 +21,14 @@ const ServicesForm = () => {
   // ** States
 
   const {register, handleSubmit} = useForm();
+  const [successStatus,setSuccessStatus] = useState(false)
+  const [loading,setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const ServicesFormHandler = async (data) => {
-    console.log(data,"check the data inside the services")
+    setLoading(true)
     const formData=new FormData();
-
    Object.keys(data).map((item) => {
       if (item == 'image' || item == 'icon') {
         formData.append(item, data[item][0]);
@@ -32,6 +38,12 @@ const ServicesForm = () => {
   }) 
   try {
     const response = await axiosAuth.post(`${BASE_URL}/service/services-create`,formData)
+    if(response.statusText=="OK")
+    {
+      setSuccessStatus(true);
+      setLoading(false)
+      navigate("/management/services")
+    }
   }
   catch(error)
   {
@@ -40,6 +52,7 @@ const ServicesForm = () => {
   }
 
   return (
+    <>
     <Card>
       {/* <CardHeader title='Add' titleTypographyProps={{ variant: 'h6' }} /> */}
       <Grid item xs={12}>
@@ -93,7 +106,7 @@ const ServicesForm = () => {
                 }}
               >
                 <Button type='submit' variant='contained' size='large'>
-                  Submit
+                  {loading ? "Submiting..." : "Submit"}
                 </Button>
               </Box>
             </Grid>
@@ -101,6 +114,14 @@ const ServicesForm = () => {
         </form>
       </CardContent>
     </Card>
+    {
+            successStatus &&
+            <ToastNotification
+            content="Service Created Successfully"
+            appearance="success"
+            autoDismiss={false}/>
+          }
+    </> 
   )
 }
 

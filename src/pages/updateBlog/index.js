@@ -1,14 +1,14 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData,useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useRef } from "react";
 import { Grid, TextField, Button } from "@mui/material";
 import JoditEditor from "jodit-react";
-import { useNavigate } from 'react-router-dom'
 import { FaTrash } from "react-icons/fa6";
 import {axiosAuth} from 'configs/axiosInstance'
 import slugify from 'react-slugify';
 import { Update } from "mdi-material-ui";
+import ToastNotification from "toastNotification/toastNatification";
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
@@ -21,6 +21,7 @@ const UpdateBlog = () => {
   const navigate=useNavigate()
   const [Image, setImage] = useState(false);
   const [loading,setLoading] = useState(false);
+  const [successStatus,setSuccessStatus] = useState(false);
   const [selectFileImage,setSelectFileImage]=useState()
   const [imageUrl, setImageUrl] = useState(
     getBlogById?.featuredImage.thumbnailUrl
@@ -44,7 +45,6 @@ const UpdateBlog = () => {
 
   const onSubmit = async(data) => {
     setLoading(true)
-    console.log(data,"gggghghfjghfhj", content,"kjdhskjlfhdskjlfh",selectFileImage);
     const formData = new FormData();
     formData.append("_id",getBlogById._id)
     if(selectFileImage){
@@ -67,10 +67,11 @@ const UpdateBlog = () => {
    try{
      const response = await axiosAuth.put(`${BASE_URL}/blog/blog_update`,formData)
      {
-      if(response.status==200)
+      if(response.statusText=="OK")
       {
+        setSuccessStatus(true)
         setLoading(false)
-        navigate("/management/all-blogs");
+        navigate("/management/blogs");
       }
      }
    }catch(error){
@@ -159,6 +160,14 @@ const UpdateBlog = () => {
         </Button>
         
       </form>
+      {
+            successStatus &&
+            <ToastNotification
+            content="Blog Updated Successfully"
+            appearance="success"
+            placement="bottom-right"
+            autoDismiss={false}/>
+          }
     </div>
   );
 };

@@ -8,6 +8,9 @@ import TextField from '@mui/material/TextField'
 import CardContent from '@mui/material/CardContent'
 import {useForm}  from 'react-hook-form'
 import { axiosAuth } from 'configs/axiosInstance'
+import ToastNotification from 'toastNotification/toastNatification'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 const BASE_URL = process.env.REACT_APP_APIURL;
 
 
@@ -16,11 +19,15 @@ const BASE_URL = process.env.REACT_APP_APIURL;
 const ProductForm = () => {
   // ** States
   const {register,handleSubmit}=useForm();
+  const [successStatus,setSuccessStatus] = useState(false)
+  const [loading,setLoading] = useState(false)
+
+  const navigate =useNavigate()
 
 
   const productsFormHandler = async (data) => {
+    setLoading(true)
     const formData=new FormData();
-
    Object.keys(data).map((item) => {
       if (item === 'image' || item === 'icon') {
         formData.append(item, data[item][0]);
@@ -30,6 +37,12 @@ const ProductForm = () => {
   })
   try {
     const response = await axiosAuth.post(`${BASE_URL}/product/product-create`,formData)
+    if(response.statusText=="OK")
+    {
+      setSuccessStatus(true);
+      setLoading(false)
+      navigate("/management/products")
+    }
   }
   catch(error)
   {
@@ -77,13 +90,20 @@ const ProductForm = () => {
                 }}
               >
                 <Button type='submit' variant='contained' size='large'>
-                  Submit
+                 {loading ? "Submiting..." : "Submit"}
                 </Button>
               </Box>
             </Grid>
           </Grid>
         </form>
       </CardContent>
+      {
+            successStatus &&
+            <ToastNotification
+            content="Product Created Successfully"
+            appearance="success"
+            autoDismiss={false}/>
+          }
     </Card>
   )
 }

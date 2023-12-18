@@ -137,7 +137,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
           <Route path="/management/create-blog" element={<CreateBlog/>}/> 
 
-         <Route path="/management/all-blogs" element={<BlogList/>} loader={getAllBlog}/>
+         <Route path="/management/blogs" element={<BlogList/>} loader={getAllBlog}/>
         <Route path="/management/services" element={<AllServicesDetails/>} loader={allServicesDetails}/>
         <Route path="/management/services/create" element={<Services/>}/>
         <Route path="/management/products" element={<AllProdutsDetails/>} loader={allProductsDetails}/>
@@ -145,7 +145,7 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/services/:_id" element={<UpdateService/>} loader={({params})=>getServiceById(params)}/>
         <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
         <Route path='/management/artists' element={<GetAllArtists/>} loader={()=>getAllArtists()}/>
-        <Route path="/management/all-blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogById(params)}/>
+        <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogById(params)}/>
         </Route>
       </Route>
     </Route>

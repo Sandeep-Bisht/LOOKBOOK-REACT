@@ -36,6 +36,7 @@
     "react-scripts": "5.0.1",
     "react-slugify": "^3.0.3",
     "react-step-wizard": "^5.3.11",
+    "react-toast-notifications": "^2.5.1",
     "reactjs-social-login": "^2.6.3",
     "universal-cookie": "^6.1.1",
     "web-vitals": "^2.1.4"

@@ -9,6 +9,8 @@ import CardContent from '@mui/material/CardContent'
 import { useForm } from 'react-hook-form'
 import { axiosAuth } from 'configs/axiosInstance'
 import { useLoaderData, useNavigate } from "react-router-dom";
+import ToastNotification from 'toastNotification/toastNatification'
+
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
@@ -20,6 +22,8 @@ function UpdateService() {
   const [iconUrl, setIconUrl] = useState(getServiceDataById?.icon.thumbnailUrl)
   const [imageUrl, setImageUrl] = useState(getServiceDataById?.image.thumbnailUrl)
   const [loading,setLoading] = useState(false);
+  const [successStatus,setSuccessStatus] = useState(false)
+
 
 
   const navigate = useNavigate()
@@ -70,7 +74,8 @@ function UpdateService() {
 
     try {
       const response = await axiosAuth.put(`${BASE_URL}/service/services_update`, formData);
-      if (response.status == 200) {
+      if (response.statusText == "OK") {
+        setSuccessStatus(true);
         setLoading(false)
         navigate("/management/services")
       }
@@ -188,6 +193,13 @@ function UpdateService() {
           </Grid>
         </form>
       </CardContent>
+      {
+        successStatus && <ToastNotification
+        content="Service Updated Successfully"
+        appearance="success"
+        placement= "bottom-right"
+        autoDismiss={false}/>
+      }
     </Card>
     </div>
   )

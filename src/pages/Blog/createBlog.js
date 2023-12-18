@@ -3,29 +3,28 @@ import {  useForm } from 'react-hook-form';
 import  JoditEditor  from 'jodit-react';
 import {axiosAuth} from 'configs/axiosInstance'
 import slugify from 'react-slugify';
-
 import { Grid, TextField, Button } from "@mui/material";
+import ToastNotification from 'toastNotification/toastNatification';
+import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
 const CreateBlog = () => {
 
   const { register, handleSubmit } = useForm();
+  const [successStatus,setSuccessStatus] = useState(false);
   const editor = useRef(null);
   const [content, setContent] = useState('');
-  // const [projectList, setProjectList] = useState([])
+  const [loading,setLoading] = useState(false);
+
+  const navigate = useNavigate()
 
   const onSubmit = async (data) => {
+    setLoading(true);
     data['content'] = JSON.stringify(content);
-  
     let formData = new FormData();
-  
-    // Generate slug and add it to the form data
-    const generatedSlug = slugify(data.title);
+      const generatedSlug = slugify(data.title);
     formData.append("slug", generatedSlug);
-  
-    // Append other form data items
-    console.log(data,"check inside")
     Object.keys(data).forEach((item) => {
       if (item === 'featuredImage') {
         formData.append(item, data.featuredImage[0]);
@@ -33,11 +32,14 @@ const CreateBlog = () => {
         formData.append(item, data[item]);
       }
     });
-    
-  
     try {
       const response = await axiosAuth.post(`${BASE_URL}/blog/blog-create`, formData);
-      console.log(response.data, 'success');
+      if(response.statusText=="OK")
+      {
+        setSuccessStatus(true);
+        setLoading(false)
+        navigate("/management/blogs")
+      }
     } catch (error) {
       console.log(error.message || 'error found', 'error');
     }
@@ -88,24 +90,26 @@ const CreateBlog = () => {
           />
         </Grid>
         <Grid item xs={12}>
-                      {/* <Jodit
-                        {...register('description')} // Register Jodit editor with React Hook Form
-                        onChange={(content) => console.log(content)} // Handle editor content change
-                      /> */}
                       <JoditEditor
 			ref={editor}
 			value={content}
-			// config={config}
-			tabIndex={1} // tabIndex of textarea
+			tabIndex={1}
 			onChange={newContent => setContent(newContent)}
 		/>
                     </Grid>
-                    {/* <Grid item xs={false} md={2} /> */}
       </Grid>
       <Button type="submit" variant="contained" color="primary" className="mt-3">
-        submit
+        {loading ? "Submiting..." : "Submit"}
       </Button>
     </form>
+    {
+      successStatus && 
+      <ToastNotification
+      content="Blog Created Successfully"
+      appearance="success"
+      autoDismiss={false}
+      />
+    }
     </>
   )
 }
