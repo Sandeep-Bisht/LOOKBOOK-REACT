@@ -51,6 +51,7 @@ import Icons from 'pages/icons'
 import GetAllArtists from 'pages/Artists'
 import BecomeAristHeader from 'pages/become-a-artist/common/header'
 import { getWizardData } from 'configs/initialapis'
+import Review from 'pages/become-a-artist/review'
 
 
 const DashboardComponents = () =>{
@@ -100,7 +101,7 @@ const ApplicationRoutes = createBrowserRouter(
           />
           <Route
             path="/become-a-artist/get-started"
-            element={<><BecomeAristHeader/><GetStarted /></>}
+            element={<><div className="artist-wrapper-ar"><BecomeAristHeader/><GetStarted /></div></>}
             loader={getArtistRequests}
           />
 
@@ -122,6 +123,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/become-a-artist/:request_id/pricing" element={< PriceSetup />} />
           <Route path="/become-a-artist/:request_id/complete-kyc" element={< CompleteKYC />} />
           <Route path="/become-a-artist/:request_id/upload-cerificates" element={< Certificates />} />
+          <Route path="/become-a-artist/:request_id/review-request" element={< Review />} />
         </Route>
         <Route path="/*" element={<Error404 />} />
       </Route>
