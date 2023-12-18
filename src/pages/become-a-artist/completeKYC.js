@@ -4,7 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button'
 import { FaTrash } from "react-icons/fa6";
+import { axiosAuth } from 'configs/axiosInstance';
 
+const BASE_URL = process.env.REACT_APP_APIURL
 
 const CompleteKYC = () => {
   const { request_id } = useParams();
@@ -12,24 +14,100 @@ const CompleteKYC = () => {
   const [aadharFront, setAadharFront] = useState(null);
   const [aadharBack, setAadharBack] = useState(null);
   const [panCard, setPanCard] = useState(null);
+  const [uploading,setUploading] = useState(false)
+  const [progress, setProgress] = useState(0);
+
 
   const handleAadharFrontChange = (event) => {
     const file = event.target.files[0];
     setAadharFront(file);
+    handleUploadAdharFront(file);
   };
 
   const handleAadharBackChange = (event) => {
     const file = event.target.files[0];
     setAadharBack(file);
+    handleUploadAdharBack(file);
+
   };
 
   const handlePanCardChange = (event) => {
     const file = event.target.files[0];
     setPanCard(file);
+    handleUploadPanCard(file)
   };
 
   const handleRemoveImage = (setImage) => {
     setImage(null);
+  };
+
+  const handleUploadAdharFront = async (file) => {
+
+    const formData = new FormData();
+      formData.append('adharFront', file);
+
+    try {
+      setUploading(true)
+      const response = await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`, formData, {
+        onUploadProgress: (progressEvent) => {
+          const { loaded, total } = progressEvent;
+          const percentCompleted = Math.round((loaded * 100) / total);
+          setProgress(percentCompleted);
+        },
+      });
+      setProgress(0)
+      setUploading(false)
+    } catch (error) {
+      setProgress(0)
+      setUploading(false)
+      console.error(error, 'file upload error');
+    }
+  };
+
+  const handleUploadAdharBack = async (file) => {
+
+    const formData = new FormData();
+      formData.append('adharBack', file);
+
+    try {
+      setUploading(true)
+      const response = await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`, formData, {
+        onUploadProgress: (progressEvent) => {
+          const { loaded, total } = progressEvent;
+          const percentCompleted = Math.round((loaded * 100) / total);
+          setProgress(percentCompleted);
+        },
+      });
+      setProgress(0)
+      setUploading(false)
+    } catch (error) {
+      setProgress(0)
+      setUploading(false)
+      console.error(error, 'file upload error');
+    }
+  };
+
+  const handleUploadPanCard = async (file) => {
+
+    const formData = new FormData();
+      formData.append('panCard', file);
+
+    try {
+      setUploading(true)
+      const response = await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`, formData, {
+        onUploadProgress: (progressEvent) => {
+          const { loaded, total } = progressEvent;
+          const percentCompleted = Math.round((loaded * 100) / total);
+          setProgress(percentCompleted);
+        },
+      });
+      setProgress(0)
+      setUploading(false)
+    } catch (error) {
+      setProgress(0)
+      setUploading(false)
+      console.error(error, 'file upload error');
+    }
   };
 
   return (
@@ -73,6 +151,7 @@ const CompleteKYC = () => {
           </div>
         </div>
         </Button>
+        <div>{progress}</div>
       </div>
         }
         
@@ -111,6 +190,7 @@ const CompleteKYC = () => {
           </div>
         </div>
         </Button>
+        <div>{progress}</div>
       </div>
         }
         
@@ -147,6 +227,7 @@ const CompleteKYC = () => {
           </div>
         </div>
         </Button>
+        <div>{progress}</div>
       </div>
       }
       
