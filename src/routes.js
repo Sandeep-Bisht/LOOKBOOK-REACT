@@ -8,7 +8,7 @@ import LoginPage from 'pages/login'
 import MUITable from 'pages/tables'
 import Services from 'pages/servicesCreated'
 import React from 'react'
-import { Outlet, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/UserProfile'
 import { getUserProfile } from 'configs/initialapis'
@@ -52,6 +52,8 @@ import GetAllArtists from 'pages/Artists'
 import BecomeAristHeader from 'pages/become-a-artist/common/header'
 import { getWizardData } from 'configs/initialapis'
 import Review from 'pages/become-a-artist/review'
+import Details from 'pages/become-a-artist/details'
+import Celebration from 'pages/become-a-artist/celebration'
 
 
 const DashboardComponents = () =>{
@@ -105,7 +107,10 @@ const ApplicationRoutes = createBrowserRouter(
             loader={getArtistRequests}
           />
 
-        <Route path='/become-a-artist/:request_id' element={<ArtistGlobalState/>} loader={getWizardData}>
+        <Route path='/become-a-artist/:request_id' element={<ArtistGlobalState/>} loader={getWizardData}><Route
+            path="/become-a-artist/:request_id/"
+            element={<Navigate to="/become-a-artist" replace={true}  />}
+          />
           <Route
             path="/become-a-artist/:request_id/get-started"
             element={<GetStarted />}
@@ -123,8 +128,12 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/become-a-artist/:request_id/pricing" element={< PriceSetup />} />
           <Route path="/become-a-artist/:request_id/complete-kyc" element={< CompleteKYC />} />
           <Route path="/become-a-artist/:request_id/upload-cerificates" element={< Certificates />} />
+          <Route path="/become-a-artist/:request_id/personal-details" element={< Details />} />
           <Route path="/become-a-artist/:request_id/review-request" element={< Review />} />
         </Route>
+        
+        <Route path="/become-a-artist/publish-celebration" element={<Celebration />} />
+        
         <Route path="/*" element={<Error404 />} />
       </Route>
 

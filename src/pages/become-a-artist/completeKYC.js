@@ -1,50 +1,85 @@
 import React, { useState } from 'react';
-import ArtistFooter from './artistFooter';
-import { useParams } from 'react-router-dom';
+import ArtistFooter from './common/artistFooter';
+import { useOutletContext, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button'
-import { FaTrash } from "react-icons/fa6";
+import { IoAdd } from "react-icons/io5";
+import { useDropzone } from 'react-dropzone';
 import { axiosAuth } from 'configs/axiosInstance';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { IoMdCloudUpload } from "react-icons/io";
 
 const BASE_URL = process.env.REACT_APP_APIURL
+
+const ImageCard = ({handleDrop, kycDocuments, uploading, name, title, binaryFiles, progress}) => {
+  
+  const {getRootProps, getInputProps} = useDropzone({
+    disabled:uploading, 
+    onDrop: (e)=>handleDrop(name,e), 
+    accept: {
+      'image/*': ['.jpeg', '.png', '.jpg', '.gif', '.avif', '.svg', '.tiff', '.webp']
+    },
+    multiple:false
+  });
+
+  return (<>
+          {binaryFiles && binaryFiles[name] ?
+          <div className='uploading card  h-100'>
+          <img alt='Binary Image' src={URL.createObjectURL(binaryFiles[name])}/>
+          <div className='circular-progressbar'>
+          <CircularProgressbar
+            value={progress}
+            strokeWidth={50}
+            styles={buildStyles({
+              strokeLinecap: "butt",
+              trailColor: '#FCF7F2',
+              pathColor:"#8C6A54"
+            })}
+          />
+          </div>
+          </div>  
+          :
+          <>
+          {kycDocuments && kycDocuments[name] ? 
+           <div {...getRootProps({className: 'dropzone custom-kyc-img-wrapper'})}>
+            <input {...getInputProps()} />
+              <img src={kycDocuments[name]?.url} alt={title} className='img-fluid w-100'/>
+            <div className='custom-kyc-update-dropshadow-box'>
+            <IoMdCloudUpload />
+            </div>
+          </div>
+          :
+          <div {...getRootProps({className: 'dropzone custom-add-more-files-card'})}>
+            <input {...getInputProps()} />
+            <IoAdd className='fs-1 mb-2'/>
+            <h6>{title}</h6>
+          </div>
+          }
+          </>
+        }
+          </>)
+}
 
 const CompleteKYC = () => {
   const { request_id } = useParams();
   let navigate = useNavigate()
-  const [aadharFront, setAadharFront] = useState(null);
-  const [aadharBack, setAadharBack] = useState(null);
-  const [panCard, setPanCard] = useState(null);
+  const [artistPayload, setArtistPayload] = useOutletContext()
+
+  const [kycDocuments,setKycDocuments] = useState({adharFront : artistPayload.adharFront ? artistPayload.adharFront : null,
+    adharBack : artistPayload.adharBack ? artistPayload.adharBack : null,
+    panCard : artistPayload.panCard ? artistPayload.panCard : null,})
+
   const [uploading,setUploading] = useState(false)
-  const [progress, setProgress] = useState(0);
+  const [progress,setProgress] = useState(0)
+  const [binaryFiles,setBinaryFiles] = useState(null)
 
+  const handleDrop = async (name,files) =>{
 
-  const handleAadharFrontChange = (event) => {
-    const file = event.target.files[0];
-    setAadharFront(file);
-    handleUploadAdharFront(file);
-  };
-
-  const handleAadharBackChange = (event) => {
-    const file = event.target.files[0];
-    setAadharBack(file);
-    handleUploadAdharBack(file);
-
-  };
-
-  const handlePanCardChange = (event) => {
-    const file = event.target.files[0];
-    setPanCard(file);
-    handleUploadPanCard(file)
-  };
-
-  const handleRemoveImage = (setImage) => {
-    setImage(null);
-  };
-
-  const handleUploadAdharFront = async (file) => {
+    setBinaryFiles({[name]:files[0]});
 
     const formData = new FormData();
-      formData.append('adharFront', file);
+    files.forEach((file) => {
+      formData.append(name, file);
+    });
 
     try {
       setUploading(true)
@@ -53,62 +88,37 @@ const CompleteKYC = () => {
           const { loaded, total } = progressEvent;
           const percentCompleted = Math.round((loaded * 100) / total);
           setProgress(percentCompleted);
-        },
+        }
       });
+      
+      setBinaryFiles(null)
       setProgress(0)
       setUploading(false)
+      setArtistPayload(response?.data?.data);
+      setKycDocuments(prev => ({...prev,[name]:response?.data?.data[name]}))
+      // Handle response if needed
     } catch (error) {
+      // Handle error
+      setBinaryFiles(null)
       setProgress(0)
       setUploading(false)
       console.error(error, 'file upload error');
     }
-  };
+  }
 
-  const handleUploadAdharBack = async (file) => {
-
-    const formData = new FormData();
-      formData.append('adharBack', file);
-
-    try {
-      setUploading(true)
-      const response = await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`, formData, {
-        onUploadProgress: (progressEvent) => {
-          const { loaded, total } = progressEvent;
-          const percentCompleted = Math.round((loaded * 100) / total);
-          setProgress(percentCompleted);
-        },
-      });
-      setProgress(0)
-      setUploading(false)
-    } catch (error) {
-      setProgress(0)
-      setUploading(false)
-      console.error(error, 'file upload error');
+  const handleNextClick = async () =>{
+    try{
+      if(artistPayload.currentStep > 12){
+       return  navigate(`/become-a-artist/${request_id}/upload-cerificates`)
+      }
+        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:13});
+        setArtistPayload((prev) => {return {...prev,currentStep:13}})
+        navigate(`/become-a-artist/${request_id}/upload-cerificates`)
     }
-  };
-
-  const handleUploadPanCard = async (file) => {
-
-    const formData = new FormData();
-      formData.append('panCard', file);
-
-    try {
-      setUploading(true)
-      const response = await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`, formData, {
-        onUploadProgress: (progressEvent) => {
-          const { loaded, total } = progressEvent;
-          const percentCompleted = Math.round((loaded * 100) / total);
-          setProgress(percentCompleted);
-        },
-      });
-      setProgress(0)
-      setUploading(false)
-    } catch (error) {
-      setProgress(0)
-      setUploading(false)
-      console.error(error, 'file upload error');
+    catch(error){
+        throw error;
     }
-  };
+  }
 
   return (
     <>
@@ -118,169 +128,24 @@ const CompleteKYC = () => {
             <div className="col-md-12">
               <h1 className="text-center">Complete your KYC</h1>
             </div>
-          </div>
-        <div className="image-upload-container">
-        <div className="image-upload">
-          {aadharFront ? (
-            <div className="multipale-image-display">
-              <div className="dynamic-img-wrapper">
-                <img src={URL.createObjectURL(aadharFront)} alt="Aadhar Card Front" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-                <Button
-                    component="label"
-                    variant="contained"
-                    className="mt-2 kyc-upload-btn d-none"
-                    htmlFor="adhar-front-image"
-                  >
-                    Upload
-                    <input
-                      hidden
-                      type="file"
-                      id="adhar-front-image"
-                      onChange={handleAadharFrontChange}
-                      accept="image/*"
-                    />
-                  </Button>
-              </div>
+            <div className='col-md-4 p-5'>
+              <ImageCard handleDrop={handleDrop} uploading={uploading} name="adharFront" title="Aadhar Front" kycDocuments={kycDocuments} binaryFiles={binaryFiles} progress={progress}/>
+              <h6 className='text-center mt-3'>Aadhar Front</h6>
             </div>
-          )
-        :
-        <div>
-        <Button
-          component="label"
-          variant="contained"
-          className="mt-2 custom-add-card"
-          htmlFor="adhar-front-image"
-        >
-          
-          <input
-            hidden
-            type="file"
-            id="adhar-front-image"
-            onChange={handleAadharFrontChange}
-            accept="image/*"
-          />
-           <div className="multipale-image-display">
-          <div className="dynamic-img-wrapper">
-            <h1>+</h1>
-          </div>
-        </div>
-        </Button>
-        <div>{progress}</div>
-      </div>
-        }
-        
-        <h6>Aadhar Front</h6>
-        </div>
-
-        <div className="image-upload">
-          {aadharBack ? (
-            <div className="multipale-image-display">
-              <div className="dynamic-img-wrapper">
-                <img src={URL.createObjectURL(aadharBack)} alt="Aadhar Card Back" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-                <Button
-                    component="label"
-                    variant="contained"
-                    className="mt-2 kyc-upload-btn d-none"
-                    htmlFor="adhar-back-image"
-                  >
-                    Upload
-                    <input
-                      hidden
-                      type="file"
-                      id="adhar-back-image"
-                      onChange={handleAadharBackChange}
-                      accept="image/*"
-                    />
-                  </Button>
-              </div>
+            <div className='col-md-4 p-5'>
+              <ImageCard handleDrop={handleDrop} uploading={uploading} name="adharBack" title="Aadhar Back" kycDocuments={kycDocuments} binaryFiles={binaryFiles} progress={progress}/>
+              <h6 className='text-center mt-3'>Aadhar Back</h6>
             </div>
-          )
-        :
-        <div>
-        <Button
-          component="label"
-          variant="contained"
-          className="mt-2 custom-add-card"
-          htmlFor="adhar-back-image"
-        >
-          
-          <input
-            hidden
-            type="file"
-            id="adhar-back-image"
-            onChange={handleAadharBackChange}
-            accept="image/*"
-          />
-          
-          <div className="multipale-image-display">
-          <div className="dynamic-img-wrapper">
-            <h1>+</h1>
-          </div>
-        </div>
-        </Button>
-        <div>{progress}</div>
-      </div>
-        }
-        
-        <h6>Aadhar Back</h6>
-        </div>
-        <div className="image-upload">
-          {panCard ? (
-            <div className="multipale-image-display">
-              <div className="dynamic-img-wrapper">
-                <img src={URL.createObjectURL(panCard)} alt="PAN Card" style={{ height: "200px", width: "200px" }} className='img-fluid' />
-                <Button
-                    component="label"
-                    variant="contained"
-                    className="mt-2 kyc-upload-btn d-none"
-                    htmlFor="pancard-image"
-                  >
-                    Upload
-                    <input
-                      hidden
-                      type="file"
-                      id="pancard-image"
-                      onChange={handlePanCardChange}
-                      accept="image/*"
-                    />
-                  </Button>
-              </div>
+            <div className='col-md-4 p-5'>
+            <ImageCard handleDrop={handleDrop} uploading={uploading} name="panCard" title="Pan Card" kycDocuments={kycDocuments} binaryFiles={binaryFiles} progress={progress}/>
+              <h6 className='text-center mt-3'>Pan Card</h6>
             </div>
-
-          )
-        :
-        <div>
-        <Button
-          component="label"
-          variant="contained"
-          className="mt-2 custom-add-card"
-          htmlFor="pancard-image"
-        >
-          <input
-            hidden
-            type="file"
-            id="pancard-image"
-            onChange={handlePanCardChange}
-            accept="image/*"
-          />
-          <div className="multipale-image-display">
-          <div className="dynamic-img-wrapper">
-            <h1>+</h1>
           </div>
-        </div>
-        </Button>
-        <div>{progress}</div>
-      </div>
-      }
-      
-      <h6>PAN Card</h6>
-        </div>
-      </div>
       </div>
       </section>
       <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/pricing`)}
-        nextClick={() => navigate(`/become-a-artist/${request_id}/upload-cerificates`)}
+        nextClick={() => handleNextClick()}
       />
     </>
   );

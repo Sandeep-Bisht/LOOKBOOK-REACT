@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import ArtistFooter from './artistFooter'
+import ArtistFooter from './common/artistFooter'
 import { useNavigate, useOutletContext, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { axiosAuth } from 'configs/axiosInstance';
@@ -52,7 +52,7 @@ const Description = () => {
                 <div className="form-floating">
                   <textarea className="form-control resize-none" placeholder="Leave a comment here" id="floatingTextarea2" style={{ height: 150 }} defaultValue={artistPayload.description ? artistPayload.description : ''} 
                   {...register("description")}/>
-                  <label htmlFor="floatingTextarea2">Comments</label>
+                  <label htmlFor="floatingTextarea2">Description</label>
                 </div>
               </div>
               <button type="submit" hidden ref={submitBtn}></button>

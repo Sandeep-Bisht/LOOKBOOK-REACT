@@ -1,5 +1,5 @@
 import React from 'react'
-import ArtistFooter from './artistFooter'
+import ArtistFooter from './common/artistFooter'
 import { useNavigate, useOutletContext, useParams } from 'react-router-dom'
 import SkillIMG from '@core/assets/images/kit-removebg.png'
 import { axiosAuth } from 'configs/axiosInstance'
@@ -8,7 +8,7 @@ const BASE_URL = process.env.REACT_APP_APIURL
 
 const StepSecond = () => {
 
-  const [artistPayload] = useOutletContext();
+  const [artistPayload,setArtistPayload] = useOutletContext();
   const navigate = useNavigate();
   const { request_id } = useParams();
 
@@ -19,6 +19,7 @@ const StepSecond = () => {
        return  navigate(`/become-a-artist/${request_id}/gallery`)
       }
         await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:7});
+        setArtistPayload((prev) => {return {...prev,currentStep:7}})
         navigate(`/become-a-artist/${request_id}/gallery`)
     }
     catch(error){

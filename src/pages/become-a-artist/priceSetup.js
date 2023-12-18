@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import CurrencyInput from 'react-currency-input-field';
 
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
-import ArtistFooter from "./artistFooter";
+import ArtistFooter from "./common/artistFooter";
 import { axiosAuth } from 'configs/axiosInstance';
 
 const BASE_URL = process.env.REACT_APP_APIURL

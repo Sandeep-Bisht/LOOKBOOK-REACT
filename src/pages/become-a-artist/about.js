@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
-import ArtistFooter from "./artistFooter";
+import ArtistFooter from "./common/artistFooter";
 import NoDataFound from "./common/noDataFound";
 import { axiosAuth } from "configs/axiosInstance";
 
@@ -127,6 +127,7 @@ const AboutYou = () => {
       <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/about-your-skills`)}
         nextClick={() => handleNextClick()}
+        nextDisabled={selectedServices.length > 0 ? false : true}
       />
     </>
   );

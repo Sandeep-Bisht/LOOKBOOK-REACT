@@ -1,7 +1,7 @@
 import React from "react";
-import MyButtonComponent from "./button";
+import CommonButton from "./commonButton";
 
-const ArtistFooter = ({ backClick, nextClick }) => {
+const ArtistFooter = ({ backClick, nextClick, nextDisabled }) => {
   return (
    <div className="footer fixed-bottom">
   <div className="container-fluid p-0">
@@ -12,10 +12,10 @@ const ArtistFooter = ({ backClick, nextClick }) => {
     </div>
     <div className="row">
       <div className="col-md-6 ps-5">
-        <MyButtonComponent label="Back" onClick={backClick} />
+        <CommonButton label="Back" onClick={backClick} />
       </div>
       <div className="col-md-6 footer-next-button">
-        <MyButtonComponent label="Next" onClick={nextClick} />
+        <CommonButton label="Next" onClick={nextClick} disabled={nextDisabled}/>
       </div>
     </div>
   </div>
