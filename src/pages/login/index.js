@@ -47,7 +47,7 @@ const LoginPage = () => {
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
   const redirectUrl = queryParams.get('redirectUrl');
-  
+  console.log(redirectUrl,'redirect login')
   const [error,setError] = useState(null)
   const [value, setValue] = useState('')
   const [signupType,setSignupType] = useState('email')
@@ -232,7 +232,7 @@ const LoginPage = () => {
             </Button>
             <Divider sx={{ my: 5 }}>or</Divider>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <SocialLogin/>
+                <SocialLogin redirectUrl={redirectUrl}/>
                 {signupType == 'email' ? 
                 <IconButton component='a' onClick={()=>ChangeSignupType()}>
                   <Phone sx={{ color: '#8C6A54' }} />

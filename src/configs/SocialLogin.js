@@ -16,7 +16,7 @@ import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
 
 
-const SocialLogin = () => {
+const SocialLogin = ({redirectUrl}) => {
 
     const navigate = useNavigate();
     const cookies = new Cookies();
@@ -46,7 +46,12 @@ const SocialLogin = () => {
               .then((response) => {
                 if(response.data && !response.data.error && response.data.token){
                     cookies.set('LOOKBOOK_TOKEN',response.data.token,{sameSite:'strict',path:'/',expires: new Date(new Date().getTime()+60*60*24*1000)});
-                    navigate('/management/dashboard') 
+                    if(redirectUrl){
+                      navigate(redirectUrl)
+                    }
+                    else{
+                      navigate('/')
+                    }
                   }
               })
               .catch((error) => {
@@ -74,7 +79,12 @@ const SocialLogin = () => {
                     .then((response) => {
                         if(response.data && !response.data.error && response.data.token){
                             cookies.set('LOOKBOOK_TOKEN',response.data.token,{sameSite:'strict',path:'/',expires: new Date(new Date().getTime()+60*60*24*1000)});
-                            navigate('/management/dashboard') 
+                            if(redirectUrl){
+                              navigate(redirectUrl)
+                            }
+                            else{
+                              navigate('/')
+                            } 
                           }
                     })
                     .catch((error) => {
