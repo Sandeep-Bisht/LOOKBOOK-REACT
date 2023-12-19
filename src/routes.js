@@ -8,7 +8,7 @@ import LoginPage from 'pages/login'
 import MUITable from 'pages/tables'
 import Services from 'pages/servicesCreated'
 import React from 'react'
-import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/UserProfile'
 import { getUserProfile } from 'configs/initialapis'
@@ -54,7 +54,9 @@ import { getWizardData } from 'configs/initialapis'
 import Review from 'pages/become-a-artist/review'
 import Details from 'pages/become-a-artist/details'
 import Celebration from 'pages/become-a-artist/celebration'
-
+import Cookies from 'universal-cookie';
+import { jwtDecode } from "jwt-decode";
+import Error401 from 'pages/error/401'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -81,6 +83,47 @@ const NormalComponents = () =>{
     </SettingsProvider>)
 }
 
+const RequireAuth = ({allowedRoles}) =>{
+
+  const location = useLocation()
+  const cookies = new Cookies();
+
+  const token = cookies.get('LOOKBOOK_TOKEN')
+  if(token){
+    const decoded = jwtDecode(token);
+    if(decoded && decoded.role && decoded.userID){
+      if(allowedRoles && Array.isArray(allowedRoles)){
+        let userAllowed = allowedRoles.includes(decoded.role);
+        if(userAllowed){
+          return <Outlet/>;
+        }
+        else{
+          return <Error401/>;
+        }
+      }
+      else{
+        return <Navigate to={`/login?redirectUrl=${location.pathname}`} replace={true}/>
+      }
+    }
+    else{
+      return <Navigate to={`/login?redirectUrl=${location.pathname}`} replace={true}/>
+    }
+    // setDecodedToken(decoded);
+  }
+  else{
+    return <Navigate to={`/login?redirectUrl=${location.pathname}`} replace={true}/>
+  }
+  
+}
+
+const roles = {
+  user:process.env.REACT_APP_USER,
+  artist:process.env.REACT_APP_ARTIST,
+  admin:process.env.REACT_APP_ADMIN,
+  manager:process.env.REACT_APP_MANAGER,
+  super_admin:process.env.REACT_APP_SUPER_ADMIN
+}
+
 const ApplicationRoutes = createBrowserRouter(
   createRoutesFromElements(
     <Route>
@@ -88,6 +131,9 @@ const ApplicationRoutes = createBrowserRouter(
       <Route element={<NormalComponents />}>
         <Route index path="/" element={<Homepage />} />
         <Route path="/login" element={<LoginPage />} />
+        
+        {/* Auth routes for user */}
+        <Route element={<RequireAuth allowedRoles={[roles.user,roles.artist]} />}>
         <Route path="/user">
           <Route
             path="/user/profile"
@@ -95,17 +141,16 @@ const ApplicationRoutes = createBrowserRouter(
             loader={getUserProfile}
           />
         </Route>
-
-          <Route
+        <Route
             path="/become-a-artist"
             element={<ArtistRequestProvider />}
             loader={getArtistRequests}
-          />
-          <Route
+        />
+        <Route
             path="/become-a-artist/get-started"
             element={<><div className="artist-wrapper-ar"><BecomeAristHeader/><GetStarted /></div></>}
             loader={getArtistRequests}
-          />
+        />
 
         <Route path='/become-a-artist/:request_id' element={<ArtistGlobalState/>} loader={getWizardData}><Route
             path="/become-a-artist/:request_id/"
@@ -131,13 +176,16 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/become-a-artist/:request_id/personal-details" element={< Details />} />
           <Route path="/become-a-artist/:request_id/review-request" element={< Review />} />
         </Route>
-        
         <Route path="/become-a-artist/publish-celebration" element={<Celebration />} />
+        </Route>
+        {/* End auth routes for user */}
+
         
         <Route path="/*" element={<Error404 />} />
       </Route>
 
-      {/* Dashboard component */}
+      {/* Dashboard component and admin auth routes*/}
+      <Route element={<RequireAuth allowedRoles={[roles.admin,roles.super_admin]} />}>
       <Route element={<DashboardComponents/>}>
         <Route path="/management" element={<UserLayout/>}>
           <Route path='/management/dashboard' element={<Dashboard/>}/>
@@ -159,6 +207,8 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogById(params)}/>
         </Route>
       </Route>
+      </Route>
+      {/* end admin auth routes */}
     </Route>
   )
 );

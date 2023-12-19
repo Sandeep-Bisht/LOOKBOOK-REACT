@@ -29,7 +29,7 @@ import BlankLayout from '@core/layouts/BlankLayout'
 import SocialLogin from 'configs/SocialLogin'
 import axios from 'axios'
 import Cookies from 'universal-cookie';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
@@ -44,6 +44,10 @@ const LoginPage = () => {
 
   const cookies = new Cookies();
   
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
+  const redirectUrl = queryParams.get('redirectUrl');
+  console.log(redirectUrl,'redirect login')
   const [error,setError] = useState(null)
   const [value, setValue] = useState('')
   const [signupType,setSignupType] = useState('email')
@@ -114,7 +118,13 @@ const LoginPage = () => {
       setIsSubmitting(false);
         if(response.data && !response.data.error && response.data.token){
           cookies.set('LOOKBOOK_TOKEN',response.data.token,{sameSite:'strict',path:'/',expires: new Date(new Date().getTime()+60*60*24*1000)});
-          navigate('/management/dashboard')
+          if(redirectUrl){
+            navigate(redirectUrl)
+          }
+          else{
+            navigate('/')
+          }
+          
         }
     })
     .catch((error) => {
@@ -222,7 +232,7 @@ const LoginPage = () => {
             </Button>
             <Divider sx={{ my: 5 }}>or</Divider>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <SocialLogin/>
+                <SocialLogin redirectUrl={redirectUrl}/>
                 {signupType == 'email' ? 
                 <IconButton component='a' onClick={()=>ChangeSignupType()}>
                   <Phone sx={{ color: '#8C6A54' }} />
