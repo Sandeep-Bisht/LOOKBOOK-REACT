@@ -58,12 +58,9 @@ import Celebration from 'pages/become-a-artist/celebration'
 import Cookies from 'universal-cookie';
 import { jwtDecode } from "jwt-decode";
 import Error401 from 'pages/error/401'
-<<<<<<< HEAD
 import SingleArtistInformation from 'pages/singleArtistPage'
 import ArtistCertificates from 'pages/artistCertificates'
-=======
 import TermsPage from 'pages/Terms'
->>>>>>> create pages of terms and condition , privacy policy
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
