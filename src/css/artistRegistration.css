@@ -666,3 +666,12 @@ border-radius: 25px;
   height: 100vh;
   overflow: hidden;
 }
+
+.artists-detail-para
+{
+  font-size: 15px;
+}
+.artists-detail-heading{
+  font-size: 16px;
+  font-weight: 500;
+}

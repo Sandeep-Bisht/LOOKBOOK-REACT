@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 // ** MUI Imports
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
-import  Chip  from '@mui/material/Chip';
+import Chip from '@mui/material/Chip';
 import TableRow from '@mui/material/TableRow'
 import TableHead from '@mui/material/TableHead'
 import TableBody from '@mui/material/TableBody'
@@ -14,6 +14,7 @@ import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
 import { useLoaderData } from "react-router-dom";
 import Grid from '@mui/material/Grid'
+import { MdOutlinePreview } from "react-icons/md";
 import axios from 'axios'
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
@@ -33,36 +34,15 @@ const AllArtist = () => {
 
     const navigate = useNavigate()
 
-    useEffect(() => {
-        AllArtist();
-    }, [getAllArtists])
-
     const columns = [
+        { id: 'fullname', label: 'Name', minWidth: 170 },
         { id: 'education', label: 'Education', minWidth: 170 },
         { id: 'experience', label: 'Experience', minWidth: 170 },
         { id: 'languages', label: 'Languages', minWidth: 170 },
         { id: 'status', label: 'Status', minWidth: 170 },
-        
+        { id: 'action', label:'', minWidth: 170},
+
     ]
-
-    const AllArtist = async () => {
-        try {
-            if (getAllArtists && getAllArtists.length > 0) {
-                const artistData = getAllArtists;
-                const formattedData = artistData.map(artists => ({
-                    _id: artists._id,
-                    education: artists.education,
-                    experience: artists.experience,
-                    status: artists.status,
-                    languages: Array.isArray(artists.languages) ? artists.languages.join(', ') : ''                 }));
-                setRows(formattedData || []);
-            }
-        } catch (error) {
-            return error.message || "An error occurred while trying to get all product."
-            // Handle the error appropriately
-        }
-    };
-
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage)
@@ -73,6 +53,9 @@ const AllArtist = () => {
         setPage(0)
     }
 
+    const viewArtistHandler = (artistInformation)=>{
+         navigate(`/management/artists/${artistInformation?._id}`,{state : artistInformation})
+    }
 
     return (
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -105,17 +88,26 @@ const AllArtist = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
+                        {getAllArtists.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
                             return (
                                 <TableRow hover role='checkbox' tabIndex={-1} key={row._id}>
                                     {columns.map(column => (
-              <TableCell key={column.id} align={column.align}>
-              {column.id === 'status' ? (
-                <Chip label={row[column.id]} color="primary" /> // Customize chip based on your needs
-              ) : (
-                row[column.id]
-              )}
-            </TableCell>
+                                        <TableCell key={column.id} align={column.align}>
+                                            {column.id === 'status' ? (
+                                                <Chip label={row[column.id]} color="primary" /> // Customize chip based on your needs
+                                            ) : column.id === 'action'  ?
+                                            (
+                                                <div className=''>
+                                                <button className='btn' style={{background:"#8c6a54", border:"none", color:"#fff", fontSize:"12px"}} 
+                                                onClick={()=>viewArtistHandler(row)}>
+                                                    <span>View <MdOutlinePreview/></span>
+                                                </button>
+                                                </div>
+                                            ) :
+                                            (
+                                                row[column.id]
+                                            )}
+                                        </TableCell>
                                     ))}
                                 </TableRow>
                             )

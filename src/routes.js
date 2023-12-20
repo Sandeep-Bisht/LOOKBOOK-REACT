@@ -57,6 +57,8 @@ import Celebration from 'pages/become-a-artist/celebration'
 import Cookies from 'universal-cookie';
 import { jwtDecode } from "jwt-decode";
 import Error401 from 'pages/error/401'
+import SingleArtistInformation from 'pages/singleArtistPage'
+import ArtistCertificates from 'pages/artistCertificates'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -205,6 +207,9 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
         <Route path='/management/artists' element={<GetAllArtists/>} loader={()=>getAllArtists()}/>
         <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogById(params)}/>
+        <Route path='/management/artists/:id' element={<SingleArtistInformation/>}/>
+        <Route path='/management/artists/:id/certificates' element={<ArtistCertificates/>}/>
+
         </Route>
       </Route>
       </Route>
