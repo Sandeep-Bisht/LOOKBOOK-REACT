@@ -1,57 +1,18 @@
 import React, { useEffect } from "react";
 import Header from "layouts/components/header/header";
 import Footer from "layouts/components/footer/footer"
+import EmergingArtist from "../emergingArtist/index.js"
+import FeatureArtist from "pages/featuredArtist/index.js";
 import '../../css/user/homepage.css'
 
 
 
 const Homepage = () => {
     useEffect(() => {
-        const customScript = `
-        $(document).ready(function() {
-            $('.slick-slider').owlCarousel({
-                loop: true,
-        responsiveClass: true,
-        nav: false,
-        margin: 0,
-        autoplay: true,
-        autoplayTimeout: 3000,
-        smartSpeed: 500,
-        center: true,
-        navText: ['&#8592;', '&#8594;'],
-        responsive: {
-            0: {
-                items: 1,
-            },
-            600: {
-                items: 5
-            },
-            1200: {
-                items: 3
-            }
-        }
-                
-              });
-              
-
-              $(".multiple-items").slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                autoplay: true,
-                
-            });
-
-
-    
-
-
-
-        });
-        `;
 
         const script = document.createElement("script");
-        script.textContent = customScript;
+        script.src = 'js/homepage.js';
+        script.async = true;
         document.head.appendChild(script);
 
         return () => {
@@ -198,10 +159,10 @@ const Homepage = () => {
                     </div>
                 </div>
             </section>
-            <div className="usr-overlapping-multiple-section-wrapper">
+           
 
                 <section className="usr-artist-area usr-overlap-section">
-                    <div className="container">
+                    <div className="container-fluid">
                         <div className="row d-none">
                             <div className="col-lg-12">
                                 <h1 className="common-heading  text-center">
@@ -735,10 +696,10 @@ const Homepage = () => {
                         </div>
                     </div>
                 </section>
-                <section className="usr-emerging-artist usr-overlap-section d-none">
-                    <h1 className="text-dark">Emerging Artist</h1>
-                </section>
-                <section className="usr-featured-artist usr-overlap-section">
+               <EmergingArtist/>
+               <FeatureArtist />
+               
+                {/* <section className="usr-featured-artist usr-overlap-section" id="yourNextSectionId">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
@@ -892,19 +853,23 @@ const Homepage = () => {
                             </div>
                         </div>
                     </div>
-                </section>
-                <section className="usr-recent-blog usr-overlap-section">
-                    <div className="container">
+                </section> */}
+                <section className="usr-recent-blog usr-overlap-section ">
+                    <div className="container-fluid">
+                        
+
+                      <div className="usr-blog-wrapper">
+
+                        <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
                                 <h1 className="usr-common-heading text-center">Recent Blog</h1>
 
                             </div>
                         </div>
-
-                        <div className="row">
+                            <div className="row mt-lg-5 pt-lg-3">
                             <div className="col-lg-12">
-                                <div className="blog-section-card">
+                                <div className="blog-section-card ">
                                     <div className="multiple-items">
                                         <div className="usr-blog-main-content-wrapper">
                                             <div className="usr-blog-main-content">
@@ -1144,11 +1109,13 @@ const Homepage = () => {
                                 <div className="recent-blog-main-btn text-center">
                                     <button type="button" className="usr-common-action-btn">LOAD ALL</button>
                                 </div></div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </section>
 
-            </div>
+            
 
 
 

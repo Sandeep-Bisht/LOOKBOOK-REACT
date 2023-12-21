@@ -1,21 +1,5 @@
 /* -----------------------common styling---------------- */
-@font-face {
-    font-family:AvenirLTProBook;
-    src: url('../../public/fonts/AvenirLTProBook.otf');
-  }
-  @font-face {
-    font-family:AvenirLTProHeavy;
-    src: url('../../public/fonts/AvenirLTProHeavy.otf');
-  }
-  @font-face {
-    font-family:AvenirLTProLight;
-    src: url('../../public/fonts/AvenirLTProLight.otf');
-  }
-  
-  @font-face {
-    font-family:Forum-regular;
-    src: url('../../public/fonts/Forum-Regular.ttf');
-  }
+
   
   .AvenirLTProBook{
     font-family:AvenirLTProBook;
