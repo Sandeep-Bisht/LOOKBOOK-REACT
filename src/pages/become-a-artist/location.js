@@ -19,6 +19,7 @@ const ArtistLocation = () => {
   
   const [markerPosition, setMarkerPosition] = useState(null);
   const [availability,setAvailability] = useState(null)
+  const [attemptedNextWithoutSelection, setAttemptedNextWithoutSelection] = useState(false);
 
   const handleMarkerDrag = (event) => {
     const { latLng } = event;
@@ -31,6 +32,7 @@ const ArtistLocation = () => {
   const selectSearch = (event) => {
     if (event.coords) {
       setMarkerPosition(event.coords);
+      
     }
   };
 
@@ -45,6 +47,8 @@ const ArtistLocation = () => {
   },[artistPayload])
 
 const handleNextClick = async () =>{
+  if(markerPosition){
+
     try{
 
       let payload = {currentStep:5,coords:markerPosition,travel:availability}
@@ -72,6 +76,9 @@ const handleNextClick = async () =>{
     catch(error){
         throw error;
     }
+  } else{
+    setAttemptedNextWithoutSelection(true);
+  }
 }
 
   return (
@@ -86,7 +93,7 @@ const handleNextClick = async () =>{
             <p className="text-center">Your address is only shared with the user after they’ve made a booking.</p>
             <div className="location-wrapper">
                 
-            <SearchLocation cb={selectSearch} className="w-50" />
+            <SearchLocation cb={selectSearch} setAttemptedNextWithoutSelection={setAttemptedNextWithoutSelection} className={`w-50 ${attemptedNextWithoutSelection ? 'search-box-error' : ''}`}/>
             <LocationAwareMap
                   coords={markerPosition}
                   onMarkerDragEnd={handleMarkerDrag} //function

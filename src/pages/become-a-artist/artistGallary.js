@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import ArtistFooter from "./common/artistFooter";
 import { DndProvider } from "react-dnd";
@@ -12,9 +12,10 @@ const ArtistGallery = () => {
   const navigate = useNavigate();
   const { request_id } = useParams();
   const [artistPayload, setArtistPayload] = useOutletContext();
-
+  const [attemptedNextWithoutSelection, setAttemptedNextWithoutSelection] = useState(false);
   
   const handleNextClick = async () =>{
+    if(artistPayload){
     try{
       if(artistPayload.currentStep > 7){
        return  navigate(`/become-a-artist/${request_id}/you-are-best-in`)
@@ -26,6 +27,9 @@ const ArtistGallery = () => {
     }
     catch(error){
         throw error;
+    }
+    }else{
+      setAttemptedNextWithoutSelection(true)
     }
   }
 
@@ -49,7 +53,8 @@ const ArtistGallery = () => {
             
           <div className="row gallery-row g-3">
           <DndProvider backend={HTML5Backend}>
-            <Gallery context={[artistPayload, setArtistPayload, request_id]}/>
+            <Gallery context={[artistPayload, setArtistPayload, request_id]} className={`${attemptedNextWithoutSelection ? 'gallary-error' : "gallary-no-error" }` }/>
+           
           </DndProvider>
           </div>
         </div>

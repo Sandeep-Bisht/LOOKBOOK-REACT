@@ -13,6 +13,7 @@ const AboutYou = () => {
   const navigate = useNavigate();
 
   const [selectedServices, setSelectedServices] = useState([]);
+  const [attemptedNextWithoutSelection, setAttemptedNextWithoutSelection] = useState(false);
 
   useEffect(()=>{
     if(artistPayload){
@@ -25,6 +26,7 @@ const AboutYou = () => {
   const handleChange = (service) => {
     // Check if the service is already selected
     const isSelected = selectedServices.includes(service);
+    setAttemptedNextWithoutSelection(false);
 
     if (isSelected) {
       // If selected, remove it from the list
@@ -38,8 +40,9 @@ const AboutYou = () => {
   };
   
   const handleNextClick = async () =>{
-    try{ 
-      
+
+    if(selectedServices.length > 0){
+    try{       
       let payload = {currentStep:3,services:selectedServices}
 
         if(artistPayload.currentStep > 2){
@@ -69,6 +72,10 @@ const AboutYou = () => {
     catch(error){
         throw error;
     }
+    }else{
+      // alert("Please select teh service")
+      setAttemptedNextWithoutSelection(true);
+    }
 }
 
   return (
@@ -90,12 +97,12 @@ const AboutYou = () => {
                   allServices.length > 0 ?
                   <>
                   {allServices.map((service, index) => (
-                    <div key={index} className="col-md-3">
+                   <div key={index} className={`col-md-3 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
                       <div
                         className={`${
                           selectedServices.includes(service._id)
                             ? "selected"
-                            : "artist-card "
+                            : "artist-card"
                         }`}
                         
                         onClick={() => handleChange(service._id)}
@@ -127,7 +134,7 @@ const AboutYou = () => {
       <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/about-your-skills`)}
         nextClick={() => handleNextClick()}
-        nextDisabled={selectedServices.length > 0 ? false : true}
+        // nextDisabled={selectedServices.length > 0 ? false : true}
       />
     </>
   );

@@ -2,14 +2,20 @@ import React, { useState } from 'react'
 import { FaLocationDot } from "react-icons/fa6";
 import { FaLocationArrow } from "react-icons/fa6";
 
-const SearchLocation = ({cb, className}) => {
+const SearchLocation = ({cb, className, setAttemptedNextWithoutSelection}) => {
     const [query, setQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
 
 
+    const handleOnClick = () => {
+      setAttemptedNextWithoutSelection(false)
+    }
+
     const handleInputChange = (e) => {
         const inputValue = e.target.value;
         setQuery(inputValue);
+        
+        
     
         // Use Google Places Autocomplete API to fetch suggestions
         const autoCompleteService = new window.google.maps.places.AutocompleteService();
@@ -65,12 +71,16 @@ const SearchLocation = ({cb, className}) => {
 
   return (
     <div className={`search-container-head ${className ? className : ''}`}>
-      <div className="input-group search-bar-wrapper">
+      <div 
+      
+      className="input-group search-bar-wrapper"
+      >
         <span className="input-group-text location-icon" id="global-search"><FaLocationDot/></span>
         <input type='search'
          value={query}
          onChange={handleInputChange}
-         className='form-control' 
+         onClick={handleOnClick}
+         className='form-control'
          id="globalSearch" 
          autoComplete='off'
          placeholder='Search for cities, places...' 
