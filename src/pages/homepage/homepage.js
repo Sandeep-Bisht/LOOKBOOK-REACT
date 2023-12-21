@@ -1,68 +1,31 @@
 import React, { useEffect } from "react";
 import Header from "layouts/components/header/header";
 import Footer from "layouts/components/footer/footer"
+import EmergingArtist from "../emergingArtist/index.js"
+import FeatureArtist from "pages/featuredArtist/index.js";
 import '../../css/user/homepage.css'
+import Slider from "react-slick";
 
 
 
 const Homepage = () => {
-    useEffect(() => {
-        const customScript = `
-        $(document).ready(function() {
-            $('.slick-slider').owlCarousel({
-                loop: true,
-        responsiveClass: true,
-        nav: false,
-        margin: 0,
-        autoplay: true,
-        autoplayTimeout: 3000,
-        smartSpeed: 500,
-        center: true,
-        navText: ['&#8592;', '&#8594;'],
-        responsive: {
-            0: {
-                items: 1,
-            },
-            600: {
-                items: 5
-            },
-            1200: {
-                items: 3
-            }
-        }
-                
-              });
-              
 
-              $(".multiple-items").slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                autoplay: true,
-                
-            });
-
-
-    
-
-
-
-        });
-        `;
-
-        const script = document.createElement("script");
-        script.textContent = customScript;
-        document.head.appendChild(script);
-
-        return () => {
-            // Clean up the script when the component is unmounted
-            document.head.removeChild(script);
-        };
-    }, []);
+    var settings = {
+        dots: false,
+        infinite: true,
+        arrows:false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay:true,
+        centerMode:true,
+        centerPadding:"0px",
+        autoplayTimeout:3000
+      };
     return (
         <>
             <Header />
-            <section className="usr-home-banner">
+            {/* <section className="usr-home-banner">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
@@ -98,7 +61,45 @@ const Homepage = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
+
+<section className='usr-home-banner'>
+        <div className='container'>
+          <Slider {...settings}>
+            <div className="item">
+              <img src="images/banner/1.jpg" className="img-fluid owl-pic" />
+            </div>
+            <div className="item">
+              <img src="images/banner/2.jpg" className="img-fluid owl-pic" />
+            </div>
+            <div className="item">
+              <img src="images/banner/3.jpg" className="img-fluid owl-pic" />
+            </div>
+            <div className="item">
+              <img src="images/banner/4.jpg" className="img-fluid owl-pic" />
+            </div>
+            <div className="item">
+              <img src="images/banner/5.jpg" className="img-fluid owl-pic" />
+            </div>
+            <div className="item">
+              <img src="images/banner/6.jpg" className="img-fluid owl-pic" />
+            </div>
+          </Slider>
+          <div class="col-md-12 usr-content text-center">
+            <h1 class="usr-home-banner-heading">Experience the Beauty of</h1>
+            <span class="usr-home-banner-tag ">Professional Makeup</span>
+          </div>
+          <div class="usr-button d-flex justify-content-center mt-lg-2">
+            <button class="usr-common-action-btn usr-home-banner-action-btn">Consult A Professional</button>
+          </div>
+        </div>
+        </section>
+
+
+
+
+
+
             <section className="home-selection-area d-none">
                 <div className="container">
                     <div className="row">
@@ -198,10 +199,10 @@ const Homepage = () => {
                     </div>
                 </div>
             </section>
-            <div className="usr-overlapping-multiple-section-wrapper">
+           
 
                 <section className="usr-artist-area usr-overlap-section">
-                    <div className="container">
+                    <div className="container-fluid">
                         <div className="row d-none">
                             <div className="col-lg-12">
                                 <h1 className="common-heading  text-center">
@@ -735,10 +736,10 @@ const Homepage = () => {
                         </div>
                     </div>
                 </section>
-                <section className="usr-emerging-artist usr-overlap-section d-none">
-                    <h1 className="text-dark">Emerging Artist</h1>
-                </section>
-                <section className="usr-featured-artist usr-overlap-section">
+               <EmergingArtist/>
+               <FeatureArtist />
+               
+                {/* <section className="usr-featured-artist usr-overlap-section" id="yourNextSectionId">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
@@ -892,20 +893,24 @@ const Homepage = () => {
                             </div>
                         </div>
                     </div>
-                </section>
-                <section className="usr-recent-blog usr-overlap-section">
-                    <div className="container">
+                </section> */}
+                <section className="usr-recent-blog usr-overlap-section ">
+                    <div className="container-fluid">
+                        
+
+                      <div className="usr-blog-wrapper">
+
+                        <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
                                 <h1 className="usr-common-heading text-center">Recent Blog</h1>
 
                             </div>
                         </div>
-
-                        <div className="row">
+                            <div className="row mt-lg-5 pt-lg-3">
                             <div className="col-lg-12">
-                                <div className="blog-section-card">
-                                    <div className="multiple-items">
+                                <div className="blog-section-card ">
+                                    <Slider {...settings}>
                                         <div className="usr-blog-main-content-wrapper">
                                             <div className="usr-blog-main-content">
                                                 <img src="images/blog/blog image 1.jpg" className="img-fluid" />
@@ -1099,7 +1104,8 @@ const Homepage = () => {
 
                                                     </div>
                                                 </div>
-                                            </div></div>
+                                            </div>
+                                        </div>
                                         <div className="usr-blog-main-content-wrapper">
                                             <div className="usr-blog-main-content">
                                                 <img src="images/blog/blog image 6.jpg" className="img-fluid" />
@@ -1137,18 +1143,21 @@ const Homepage = () => {
 
                                                     </div>
                                                 </div>
-                                            </div></div>
-                                    </div>
+                                            </div>
+                                        </div>
+                                    </Slider>
                                 </div>
 
                                 <div className="recent-blog-main-btn text-center">
                                     <button type="button" className="usr-common-action-btn">LOAD ALL</button>
                                 </div></div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </section>
 
-            </div>
+            
 
 
 

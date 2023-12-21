@@ -1,140 +1,56 @@
 /* ------------------------home banner css----------------------- */
-.usr-home-banner
-{
+.usr-home-banner .slick-slide{
+    padding: 30px;
+}
+
+.usr-home-banner .slick-slide.slick-center{
+    padding: 0px;
+}
+
+.usr-home-banner .slick-slide img{
+    width: 100%;
+    
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    /* Add other styling as needed */
+  }
+.usr-home-banner {
     padding: 20px 0;
 }
-.usr-home-banner .usr-home-banner-heading
 
-{
+.usr-home-banner .usr-home-banner-heading {
     color: #6D5D4C;
-    font-family:Forum-regular;
-    font-size: 44px;
-    letter-spacing: 5px;
+    font-family: Forum-regular;
+    font-size: 28px;
+    letter-spacing: 3px;
     position: relative;
-    bottom: 35px;
+    /* bottom: 35px; */
+    margin-top: 10px;
 }
 
-.usr-home-banner .usr-home-banner-tag
-{
+.usr-home-banner .usr-home-banner-tag {
     color: #6D5D4C;
-    font-family:Forum-regular;
-    font-size: 22px;
+    font-family: Forum-regular;
+    font-size: 18px;
     position: relative;
-    bottom: 35px
-   
+    /* bottom: 35px */
 }
-.usr-home-banner-action-btn
-{
+
+.usr-home-banner-action-btn {
     position: relative;
-    bottom: 30px;
+    /* bottom: 30px; */
 }
 
-/* .usr-home-banner .slick-slider {
-    width: 100%;
-    background-color: transparent;
-}
 
-.usr-home-banner .slick-slider .slick-track {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    height: 400px;
-    justify-content: center;
-}
-
-.usr-home-banner .slick-slider .slick-slide {
-    float: none;
-    display: inline-block;
-    vertical-align: middle;
-    padding: 10px 0px;
-    margin: 10px;
-    background-color: white;
-    transition: all 0.3s ease;
-    height: auto;
-    text-align: center;
-}
-
-.usr-home-banner .slick-slider .slick-slide.slick-current,
-.usr-home-banner .slick-slider .slick-slide.slick-center {
-    background: linear-gradient(45deg, #f69259, #f16975);
-    padding: 30px 0px;
-}
-
-.usr-home-banner .slick-prev,
-.usr-home-banner .slick-next {
-    z-index: 10;
-    top: 0px;
-    background-color: transparent;
-}
-
-.usr-home-banner .slick-prev {
-    left: 10px;
-}
-
-.usr-home-banner .slick-next {
-    right: 10px;
-} */
-
-/* Ensure that the slider container has a fixed height */
-/* .usr-home-banner .slick-slider {
-    width: 100%;
-    position: relative;
-  } */
-  
-  /* Style for each slide */
-  /* .usr-home-banner .slick-slide {
-    transition: transform 0.5s ease; 
-  } */
-  
-  /* Center the slides */
-  /* .usr-home-banner .slick-center {
-    transform: scale(1.2); 
-  }
-   */
-  /* Hide dots and arrows */
-  /* .usr-home-banner .slick-dots,.usr-home-banner .slick-prev, .usr-home-banner.slick-next {
-    display: none !important;
-  } */
-  
-  /* .custom-slider {
-    display: flex;
-    overflow: hidden;
-    margin: 0 auto;
-    width: 70%;
-  } */
-  
-  /* .slide {
-    flex: 0 0 auto;
-    width: 100%;
-    transition: transform 0.5s ease; 
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-   */
-  /* Center the active slide */
-  /* .custom-slider.active-slide {
-    transform: translateX(calc(-100% / 3));
-  } */
-  /* .usr-home-banner .slick-slide{
-    transform: scale(0.8);
-    transition: all 0.4s ease-in-out;
-    padding: 40px 0;
-  }
-  .usr-home-banner .slick-slide img{
-    max-width: 100%;
-    transition: all 0.4s ease-in-out;
-  }
-  .usr-home-banner .slick-center{
-    transform: scale(1.1);
-  } */
-
-  .slick-slider .owl-item .item {
+.slick-slider .owl-item .item {
     transform: translate3d(0, 0, 0);
     /* DO NOT REMEMBER WHERE TU PUT THIS, SEARCH FOR 3D ACCELERATION */
     transform: scale(0.9);
 
-    transition: all .25s ease-in-out; 
+    transition: all .25s ease-in-out;
     margin: 50px 0;
     padding: 8px;
     /* OVERWRITE PLUGIN MARGIN */
@@ -145,7 +61,7 @@
     -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     -o-transition: 0.3s;
-     height: 300px;
+    height: 300px;
     transition: 0.3s;
     -webkit-transform: scale(0.80);
     -ms-transform: scale(0.80);
@@ -156,7 +72,7 @@
     -webkit-transform: scale(1.15);
     -ms-transform: scale(1.15);
     transform: scale(1.15);
-    
+
 }
 
 .slick-slider .owl-nav {
@@ -180,6 +96,7 @@
 
 /* ----------------------artist area------------- */
 .usr-artist-area {
+    padding-top: 100px;
     padding: 50px 0;
     background: #fcf7f2;
 }
@@ -187,6 +104,8 @@
 .usr-artist-area-wrapper {
     background-color: #fff;
     padding: 50px;
+    width: 95%;
+    margin: auto;
 }
 
 :root {
@@ -196,7 +115,8 @@
     --cardMargin: 3vw;
 }
 
-.usr-artist-area .container.artist-container {
+.usr-artist-area .container.artist-container,
+.usr-emerging-artist-wrapper {
     width: 90%;
     margin: 0 auto;
 }
@@ -322,7 +242,7 @@
 
 .usr-artist-area .card {
     position: sticky;
-    top: 0;
+    top: 100px;
     border: 0;
     background: transparent;
     margin-bottom: var(--cardTopPadding);
@@ -367,17 +287,17 @@
 .usr-overlapping-multiple-section-wrapper {}
 
 .usr-overlapping-multiple-section-wrapper {
-    position: relative;
-    width: 100%;
+    /* position: relative;
+    width: 100%; */
 }
 
 .usr-overlapping-multiple-section-wrapper .usr-overlap-section {
-    position: sticky;
+    /* position: sticky;
     top: 0;
     width: 100%;
     height: 100vh;
     background: #FCF7F2;
-    overflow-y: scroll;
+    overflow-y: scroll; */
 }
 
 .usr-overlapping-multiple-section-wrapper .usr-overlap-section::-webkit-scrollbar {
@@ -388,22 +308,22 @@
 
 .usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(2) {
     background-color: #FCF7F2;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(3) {
     background-color: #fff;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(4) {
     background-color: #FCF7F2;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(5) {
     background-color: #fff;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 /* --------------user-select-package ------------------- */
@@ -412,7 +332,7 @@
 }
 
 .user-select-package .usr-package-card {
-    padding: 50px 30px 30px 30px;
+    padding: 70px 30px 70px 30px;
     background: #FCF7F2;
     box-shadow: -9px 9.5px 30px 0px rgba(0, 0, 0, 0.05);
     position: relative;
@@ -781,9 +701,21 @@
 
 
 .usr-recent-blog {
-    padding: 30px;
+    padding: 60px 0 0 0;
+    background-color:#fcf7f2;
 }
-
+.usr-recent-blog .usr-blog-wrapper
+{
+    width: 95%;
+    background-color: #fff;
+    margin: auto;
+    padding:0 0 100px 0;
+}
+.usr-recent-blog .usr-common-heading
+{
+    position: relative;
+    top:60px;
+}
 .usr-recent-blog-heading {
     text-align: center;
     font-size: 55px;
@@ -808,7 +740,8 @@
     border-radius: 0;
     border: 1px solid #8C6A54;
 }
-.usr-blog-main-content img{
+
+.usr-blog-main-content img {
     height: 270px;
     object-fit: cover;
     width: 100%;
@@ -867,5 +800,140 @@
     color: #6D5D4C;
     font-family: AvenirLTProLight;
     font-size: 14px;
-    
+
+}
+
+
+/* -------------------------------------circular carosel css------------------- */
+.usr-emerging-artist-carousel {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.usr-emerging-artist-carousel-item {
+    --items: 7;
+    --width: clamp(240px, 20vw, 380px);
+    --height: clamp(338.8px, 30vw, 520px);
+    --x: calc(var(--active) * 400%);
+    --y: calc(var(--active) * 100%);
+    --rot: calc(var(--active) * 120deg);
+    /* --opacity: calc(var(--zIndex) / var(--items) * 3 - 2); */
+    overflow: hidden;
+    position: absolute;
+    z-index: var(--zIndex);
+    width: var(--width);
+    height: var(--height);
+    margin: calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
+    border-radius: 20px;
+    top: clamp(45%, 50vw, 50%);
+    left: 50%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transform-origin: 125% 325%;
+    /* box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2); */
+    background-color: #ffffff00;
+    pointer-events: all;
+    transform: translate(var(--x), var(--y)) rotate(var(--rot));
+    transition: transform 0.8s cubic-bezier(0, 0.02, 0, 1);
+    opacity: var(--opacity);
+}
+
+.usr-emerging-artist-carousel-item .usr-emerging-artist-carousel-box {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 340px;
+    transition: opacity 0.8s cubic-bezier(0, 0.02, 0, 1);
+    border-radius: 12px;
+    background: #F5EEEA;
+    text-align: center;
+}
+
+.usr-emerging-artist-carousel-item .usr-emerging-artist-carousel-box p {
+    font-family: AvenirLTProHeavy;
+    color: #625B5A;
+    text-align: center;
+
+    font-size: 18px;
+
+
+    line-height: 26px;
+    letter-spacing: -0.4px;
+}
+
+.usr-emerging-artist-carousel-item .usr-emerging-artist-carousel-box:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0) 30%,
+            rgba(0, 0, 0, 0) 50%,
+            rgba(0, 0, 0, 0.5));
+}
+
+.usr-emerging-artist-carousel-item .usr-emerging-artist-carousel-box img {
+    height: 300px !important;
+    width: 100% !important;
+    border-radius: 20px;
+    object-fit: cover;
+    padding: 14px;
+}
+
+.custom-cursor {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    cursor: auto;
+   mix-blend-mode: difference;
+    width: 80px;
+    margin-left: -40px;
+    margin-top: -40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    /* background-color: #ffcd84; */
+    transition-property: transform, scale, opacity;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+    scale: 0.3;
+    z-index: 10000;
+}
+
+.custom-cursor--link {
+    scale: 1;
+}
+
+.custom-cursor--init {
+    opacity: 1;
+}
+
+
+
+/* -----------------------------usr-emerging-artist----------- */
+.usr-emerging-artist {
+    background-color: #fcf7f2;
+    padding: 60px 0;
+
+}
+
+.usr-emerging-artist-wrapper {
+    background: #fff;
+    width: 95%;
+}
+.usr-emerging-artist .usr-common-heading
+{
+    position: relative;
+    top:60px;
 }
