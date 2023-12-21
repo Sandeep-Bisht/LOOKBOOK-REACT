@@ -86,6 +86,7 @@ export const getAllArtists = async () => {
   return error.message || "An error occured while trying to get artists request."
    }
 };
+
 export const getWizardData  = async () => {
   const urls = [`/users/getArtistRequests`, `/service/all_services`, `/product/all_products`];
 
