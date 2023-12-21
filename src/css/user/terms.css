@@ -1,0 +1,25 @@
+.usr-terms-heading{
+    font-size: 40px;
+      font-weight: 400;
+      color: #6D5D4C;
+      font-family: Forum-regular;
+      line-height: 60px;
+  }
+  
+  .usr-terms-para{
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+  
+    font-size: 13px;
+    letter-spacing: 1.3px;
+  }
+  
+  .usr-terms-list{
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+  
+    font-size: 15px;
+    letter-spacing: 1.3px;
+    list-style: none;
+  
+  }

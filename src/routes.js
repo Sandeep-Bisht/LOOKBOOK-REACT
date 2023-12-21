@@ -29,6 +29,7 @@ import UpdateService from 'pages/updateService/updateService'
 import UpdateProducts from 'pages/updateProduct'
 import UpdateBlog from 'pages/updateBlog'
 import BlogList from 'pages/Blog/blogList'
+import PrivacyPage from 'pages/lookBookPrivacy'
 import { getAllBlog } from 'configs/initialapis'
 import DescribeYourself from "pages/become-a-artist/describeYourself";
 import ArtistGallary from "pages/become-a-artist/artistGallary";
@@ -59,6 +60,7 @@ import { jwtDecode } from "jwt-decode";
 import Error401 from 'pages/error/401'
 import SingleArtistInformation from 'pages/singleArtistPage'
 import ArtistCertificates from 'pages/artistCertificates'
+import TermsPage from 'pages/Terms'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -148,6 +150,7 @@ const ApplicationRoutes = createBrowserRouter(
             element={<ArtistRequestProvider />}
             loader={getArtistRequests}
         />
+        
         <Route
             path="/become-a-artist/get-started"
             element={<><div className="artist-wrapper-ar"><BecomeAristHeader/><GetStarted /></div></>}
@@ -203,6 +206,7 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/services/create" element={<Services/>}/>
         <Route path="/management/products" element={<AllProdutsDetails/>} loader={allProductsDetails}/>
         <Route path="/management/products/create" element={<ProductForm/>}/>
+        
         <Route path="/management/services/:_id" element={<UpdateService/>} loader={({params})=>getServiceById(params)}/>
         <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
         <Route path='/management/artists' element={<GetAllArtists/>} loader={()=>getAllArtists()}/>
@@ -213,6 +217,8 @@ const ApplicationRoutes = createBrowserRouter(
         </Route>
       </Route>
       </Route>
+      <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
+      <Route path='/terms-conditions' element={<TermsPage/>}/>
       {/* end admin auth routes */}
     </Route>
   )
