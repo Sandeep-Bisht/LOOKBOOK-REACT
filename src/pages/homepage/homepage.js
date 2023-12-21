@@ -4,26 +4,28 @@ import Footer from "layouts/components/footer/footer"
 import EmergingArtist from "../emergingArtist/index.js"
 import FeatureArtist from "pages/featuredArtist/index.js";
 import '../../css/user/homepage.css'
+import Slider from "react-slick";
 
 
 
 const Homepage = () => {
-    useEffect(() => {
 
-        const script = document.createElement("script");
-        script.src = 'js/homepage.js';
-        script.async = true;
-        document.head.appendChild(script);
-
-        return () => {
-            // Clean up the script when the component is unmounted
-            document.head.removeChild(script);
-        };
-    }, []);
+    var settings = {
+        dots: false,
+        infinite: true,
+        arrows:false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay:true,
+        centerMode:true,
+        centerPadding:"0px",
+        autoplayTimeout:3000
+      };
     return (
         <>
             <Header />
-            <section className="usr-home-banner">
+            {/* <section className="usr-home-banner">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
@@ -59,7 +61,45 @@ const Homepage = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
+
+<section className='usr-home-banner'>
+        <div className='container'>
+          <Slider {...settings}>
+            <div className="item">
+              <img src="images/banner/1.jpg" className="img-fluid owl-pic" />
+            </div>
+            <div className="item">
+              <img src="images/banner/2.jpg" className="img-fluid owl-pic" />
+            </div>
+            <div className="item">
+              <img src="images/banner/3.jpg" className="img-fluid owl-pic" />
+            </div>
+            <div className="item">
+              <img src="images/banner/4.jpg" className="img-fluid owl-pic" />
+            </div>
+            <div className="item">
+              <img src="images/banner/5.jpg" className="img-fluid owl-pic" />
+            </div>
+            <div className="item">
+              <img src="images/banner/6.jpg" className="img-fluid owl-pic" />
+            </div>
+          </Slider>
+          <div class="col-md-12 usr-content text-center">
+            <h1 class="usr-home-banner-heading">Experience the Beauty of</h1>
+            <span class="usr-home-banner-tag ">Professional Makeup</span>
+          </div>
+          <div class="usr-button d-flex justify-content-center mt-lg-2">
+            <button class="usr-common-action-btn usr-home-banner-action-btn">Consult A Professional</button>
+          </div>
+        </div>
+        </section>
+
+
+
+
+
+
             <section className="home-selection-area d-none">
                 <div className="container">
                     <div className="row">
@@ -870,7 +910,7 @@ const Homepage = () => {
                             <div className="row mt-lg-5 pt-lg-3">
                             <div className="col-lg-12">
                                 <div className="blog-section-card ">
-                                    <div className="multiple-items">
+                                    <Slider {...settings}>
                                         <div className="usr-blog-main-content-wrapper">
                                             <div className="usr-blog-main-content">
                                                 <img src="images/blog/blog image 1.jpg" className="img-fluid" />
@@ -1064,7 +1104,8 @@ const Homepage = () => {
 
                                                     </div>
                                                 </div>
-                                            </div></div>
+                                            </div>
+                                        </div>
                                         <div className="usr-blog-main-content-wrapper">
                                             <div className="usr-blog-main-content">
                                                 <img src="images/blog/blog image 6.jpg" className="img-fluid" />
@@ -1102,8 +1143,9 @@ const Homepage = () => {
 
                                                     </div>
                                                 </div>
-                                            </div></div>
-                                    </div>
+                                            </div>
+                                        </div>
+                                    </Slider>
                                 </div>
 
                                 <div className="recent-blog-main-btn text-center">
