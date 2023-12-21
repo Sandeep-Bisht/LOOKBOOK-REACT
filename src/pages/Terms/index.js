@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from "layouts/components/header/header";
 import Footer from "layouts/components/footer/footer"
+import '../../css/user/terms.css'
 
 const  TermsPage  = () => {
   return (

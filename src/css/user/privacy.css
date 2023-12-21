@@ -1,0 +1,33 @@
+.usr-privacy-policy-main li{
+    list-style: none;
+  }
+  .usr-privacy-para{
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+  
+    font-size: 13px;
+    letter-spacing: 1.3px;
+  }
+  
+  .usr-privacy-heading{
+    font-size: 40px;
+      font-weight: 400;
+      color: #6D5D4C;
+      font-family: Forum-regular;
+      line-height: 60px;
+  }
+  .usr-privacy-heading-text{
+    font-size: 30px;
+    font-weight: 400;
+    color: #6D5D4C;
+    font-family: Forum-regular;
+    line-height: 60px;
+  }
+  
+  .usr-privacy-list{
+    font-size: 16px;
+    font-weight: 400;
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+  }
+  
