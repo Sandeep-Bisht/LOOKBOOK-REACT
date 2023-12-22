@@ -33,7 +33,7 @@ const navigation = () => {
     {
       title: 'Artists',
       icon: Bookmark,
-      path: '/management/artists'
+      path: '/management/artists-request'
     },
   ]
 }

@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useNavigate, useOutletContext, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams, useLoaderData } from "react-router-dom";
 import ArtistFooter from "./common/artistFooter";
 import {
   FormControl,
@@ -16,6 +16,11 @@ const BASE_URL = process.env.REACT_APP_APIURL;
 
 const Details = () => {
   const [artistPayload, setArtistPayload] = useOutletContext();
+  const [handlerNumberEdit,setHandlerNumberEdit] = useState(false);
+  const [handlerEmailEdit,setHandlerEmailEdit] = useState(false);
+  const [mobileToVerify, setMobileToVerify] = useState('');
+  const [emailToVerify, setEmailToVerify] = useState('');
+
   let navigate = useNavigate();
   const { request_id } = useParams();
   // const { register, handleSubmit } = useForm();
@@ -26,6 +31,7 @@ const Details = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
 
   const currentDate = new Date().toISOString().split("T")[0]; // Get the current date in 'YYYY-MM-DD' format
 
@@ -68,6 +74,14 @@ const Details = () => {
       }
     }
   };
+
+  const verifyMobileHandler = (mobile)=>{
+        console.log(mobile, "check the  mobile number");
+  }
+
+  const verifyEmailHandler = (email)=>{
+    console.log(email,"check email erery time")
+  }
 
   return (
     <>
@@ -115,68 +129,6 @@ const Details = () => {
                   </div>
                   <div className="col-md-6">
                     <div className="form-floating">
-                      <Controller
-                        name="email"
-                        defaultValue={artistPayload.email ? artistPayload.email : ''}
-                        control={control}
-                        rules={{
-                          required: "Email is required",
-                        }}
-                        render={({ field }) => (
-                          <>
-                            <input
-                              {...field}
-                              type="email"
-                              className={`form-control ${
-                                errors.email ? "is-invalid" : ""
-                              }`}
-                              placeholder="Email"
-                              id="floatingText"
-                            />
-                            {errors.email && (
-                              <div className="invalid-feedback">
-                                {errors.email.message}
-                              </div>
-                            )}
-                          </>
-                        )}
-                      />
-                      <label htmlFor="floatingText">Email</label>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-floating">
-                      <Controller
-                        defaultValue={artistPayload.mobile ? artistPayload.mobile : ''}
-                        name="mobile"
-                        control={control}
-                        rules={{
-                          required: "Mobile is required",
-                        }}
-                        render={({ field }) => (
-                          <>
-                            <input
-                              {...field}
-                              type="number"
-                              className={`form-control ${
-                                errors.mobile ? "is-invalid" : ""
-                              }`}
-                              placeholder="Mobile"
-                              id="floatingText"
-                            />
-                            {errors.mobile && (
-                              <div className="invalid-feedback">
-                                {errors.mobile.message}
-                              </div>
-                            )}
-                          </>
-                        )}
-                      />
-                      <label htmlFor="floatingText">Mobile</label>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-floating">
                       <Controller      
                         defaultValue={artistPayload.alias ? artistPayload.alias : ''}
                         name="alias"
@@ -205,50 +157,105 @@ const Details = () => {
                       />
                       <label htmlFor="floatingText">Alias</label>
                     </div>
-
-                    {/* <div className="form-floating">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Alias"
-                        id="floatingText"
-                        defaultValue={
-                          artistPayload.alias ? artistPayload.alias : ""
-                        }
-                        {...register("alias")}
+                     </div>
+                  <div className="col-md-6">
+                    <div className="row">
+                      <div className="col-md-7">
+                      <div className="form-floating">
+                      <Controller
+                        defaultValue={artistPayload.mobile ? artistPayload.mobile : ''}
+                        name="mobile"
+                        control={control}
+                        rules={{
+                          required: "Mobile is required",
+                        }}
+                        render={({ field }) => (
+                          <>
+                            <input
+                              {...field}
+                              type="number"
+                              className={`form-control ${
+                                errors.mobile ? "is-invalid" : ""
+                              }`}
+                              placeholder="Mobile"
+                              id="floatingText"
+                              onChange={(e) => {
+                                field.onChange(e);
+                                setMobileToVerify(e.target.value);
+                              }}
+                              readOnly={handlerNumberEdit} 
+                             />
+                            {errors.mobile && (
+                              <div className="invalid-feedback">
+                                {errors.mobile.message}
+                              </div>
+                            )}
+                          </>
+                        )}
                       />
-                      <label htmlFor="floatingTextarea2">Alias</label>
-                    </div> */}
+                      <label htmlFor="floatingText">Mobile</label>
+                    </div>
+                      </div>
+                      <div className="col-md-5 d-flex align-items-center">
+                        {
+                          artistPayload.mobile!=="" ? 
+                          <button className="btn" style={{background:"#8c6a54", color:"#fff",borderRadius:"25px",height:"35px"}} onClick={setHandlerNumberEdit(true)}>Edit</button>
+                          :
+                          <button className="btn ms-2" style={{background:"#8c6a54", color:"#fff",borderRadius:"25px",height:"35px"}} onClick={() => verifyMobileHandler(mobileToVerify)}>Verify</button>
+                        }
+                    </div>
+                    </div>
                   </div>
                   <div className="col-md-6">
-                    {/* <FormControl component="fieldset">
-                      <FormLabel component="legend">Gender</FormLabel>
-                      <RadioGroup
-                        row
-                        {...register("gender")}
-                        aria-label="gender"
-                        name="gender"
-                        defaultValue={
-                          artistPayload.gender ? artistPayload.gender : ""
+                    <div className="row">
+                      <div className="col-md-7">
+                      <div className="form-floating">
+                      <Controller
+                        name="email"
+                        defaultValue={artistPayload.email ? artistPayload.email : ''}
+                        control={control}
+                        rules={{
+                          required: "Email is required",
+                        }}
+                        render={({ field }) => (
+                          <>
+                            <input
+                              {...field}
+                              type="email"
+                              className={`form-control ${
+                                errors.email ? "is-invalid" : ""
+                              }`}
+                              placeholder="Email"
+                              id="floatingText"
+                              onChange={(e) => {
+                                field.onChange(e);
+                                setEmailToVerify(e.target.value);
+                              }}
+                              readOnly={handlerEmailEdit}
+                            />
+                            {errors.email && (
+                              <div className="invalid-feedback">
+                                {errors.email.message}
+                              </div>
+                            )}
+                          </>
+                        )}
+                      />
+                      <label htmlFor="floatingText">Email</label>
+                    </div>
+                      </div>
+                      <div className="col-md-5 d-flex align-items-center">
+                        {
+                          artistPayload.email!=="" ?
+                          <button className="btn ms-2" style={{background:"#8c6a54", color:"#fff",borderRadius:"25px",height:"35px"}} onClick={setHandlerEmailEdit(true)}>Edit</button>
+                          :
+                          <button className="btn" style={{background:"#8c6a54", color:"#fff",borderRadius:"25px",height:"35px"}} onClick={() => verifyEmailHandler(emailToVerify)}>Verify</button>
                         }
-                      >
-                        <FormControlLabel
-                          value="male"
-                          control={<Radio />}
-                          label="Male"
-                        />
-                        <FormControlLabel
-                          value="female"
-                          control={<Radio />}
-                          label="Female"
-                        />
-                        <FormControlLabel
-                          value="other"
-                          control={<Radio />}
-                          label="Other"
-                        />
-                      </RadioGroup>
-                    </FormControl> */}
+                    </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                  
                     <FormControl component="fieldset">
                       <FormLabel component="legend">Gender</FormLabel>
                       <Controller
@@ -286,19 +293,6 @@ const Details = () => {
                     </FormControl>
                   </div>
 
-                  {/* <div className="col-md-6">
-                    <FormLabel component="legend">Date of Birth</FormLabel>
-                    <TextField
-                      {...register("dob")}
-                      variant="outlined"
-                      name="dob"
-                      fullWidth
-                      type="date"
-                      placeholder="DD/MM/YYYY"
-                      defaultValue={artistPayload.dob ? artistPayload.dob : ""}
-                    />
-                  </div> */}
-
                   <div className="col-md-6">
                     <FormLabel component="legend">Date of Birth</FormLabel>
                     <Controller
@@ -323,30 +317,13 @@ const Details = () => {
                           error={!!errors.dob}
                           helperText={errors.dob ? errors.dob.message : ""}
                           inputProps={{
-                            max: currentDate, // Set the max attribute for the input field
+                            max: currentDate, 
                           }}
                         />
                       )}
                     />
                   </div>
-
-                  {/* <div className="col-md-6 d-flex align-items-end">
-                    <div className="form-floating w-100">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Instagram ID"
-                        id="floatingText"
-                        defaultValue={
-                          artistPayload.instaId ? artistPayload.instaId : ""
-                        }
-                        {...register("instaId")}
-                      />
-                      <label htmlFor="floatingTextarea2">Instagram ID</label>
-                    </div>
-                  </div> */}
-
-                  <div className="col-md-6 d-flex align-items-end">
+                   <div className="col-md-6 d-flex align-items-end">
                     <div className="form-floating w-100">
                       <Controller
                         name="instaId"
@@ -378,20 +355,6 @@ const Details = () => {
                       />
                       <label htmlFor="floatingText">Instagram ID</label>
                     </div>
-
-                    {/* <div className="form-floating">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Alias"
-                        id="floatingText"
-                        defaultValue={
-                          artistPayload.alias ? artistPayload.alias : ""
-                        }
-                        {...register("alias")}
-                      />
-                      <label htmlFor="floatingTextarea2">Alias</label>
-                    </div> */}
                   </div>
                 </div>
                 <button type="submit" hidden ref={submitBtn}></button>

@@ -54,7 +54,7 @@ const AllArtist = () => {
     }
 
     const viewArtistHandler = (artistInformation)=>{
-         navigate(`/management/artists/${artistInformation?._id}`,{state : artistInformation})
+         navigate(`/management/artists-request/${artistInformation?._id}`,{state : artistInformation})
     }
 
     return (
