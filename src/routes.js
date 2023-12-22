@@ -64,6 +64,7 @@ import TermsPage from 'pages/Terms'
 import { checkAuth } from 'configs/auth'
 import Header from 'layouts/components/header/header'
 import Footer from 'layouts/components/footer/footer'
+import ArtistRequestGallary from 'pages/artistRequestGallary'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -216,7 +217,7 @@ const ApplicationRoutes = createBrowserRouter(
             <Route path="/become-a-artist/:request_id/pricing" element={< PriceSetup />} />
             <Route path="/become-a-artist/:request_id/complete-kyc" element={< CompleteKYC />} />
             <Route path="/become-a-artist/:request_id/upload-cerificates" element={< Certificates />} />
-            <Route path="/become-a-artist/:request_id/personal-details" element={< Details />} />
+            <Route path="/become-a-artist/:request_id/personal-details" element={< Details/>} />
             <Route path="/become-a-artist/:request_id/review-request" element={< Review />} />
           </Route>
           <Route path="/become-a-artist/publish-celebration" element={<Celebration />} />
@@ -247,9 +248,10 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
         <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogById(params)}/>
         
-        <Route path='/management/artists' element={<GetAllArtists/>} loader={()=>getAllArtists()}/>
-        <Route path='/management/artists/:id' element={<SingleArtistInformation/>}/>
-        <Route path='/management/artists/:id/certificates' element={<ArtistCertificates/>}/>
+        <Route path='/management/artists-request' element={<GetAllArtists/>} loader={()=>getAllArtists()}/>
+        <Route path='/management/artists-request/:id' element={<SingleArtistInformation/>}/>
+        <Route path='/management/artists-request/:id/certificates' element={<ArtistCertificates/>}/>
+        <Route path='/management/artists-request/:id/gallery' element={<ArtistRequestGallary/>}/>
 
         </Route>
       </Route>

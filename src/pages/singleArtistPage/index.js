@@ -1,14 +1,38 @@
+import { ViewGallery } from 'mdi-material-ui';
 import React, { useState } from 'react'
 import { useLocation,useNavigate } from 'react-router-dom'
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import LocationAwareMap from 'pages/become-a-artist/common/googlemap';
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 600,
+    bgcolor: '',
+    boxShadow: 24,
+    p: 4,
+  };
 
 function SingleArtistInformation() {
     const location = useLocation();
     const [artistInformation, setArtistInformation] = useState(location?.state)
+    const [openMapModal, setOpenMapModal] = React.useState(false);
+    const handleOpen = () => setOpenMapModal(true);
+    const handleClose = () => setOpenMapModal(false);
 
     const navigate = useNavigate()
 
     const certiFicatesHandler = (certificates)=>{
-        navigate("/management/artists/658281125dc82e4c5e6ebe88/certificates",{state : certificates || []})
+        navigate("/management/artists-request/658281125dc82e4c5e6ebe88/certificates",{state : certificates || []})
+    }
+
+    const ViewGalleryHandler = (gallery)=>{
+        navigate("/management/artists-request/658281125dc82e4c5e6ebe88/gallery",{state : gallery || []})
     }
 
     return (
@@ -90,7 +114,7 @@ function SingleArtistInformation() {
                                   <span className="artists-detail-heading">Location</span>
                                   </div>
                                   <div className='col-9'>
-                                    <button className='btn ms-3' style={{ background: "#8c6a54", border: "none", color: "#fff", fontSize: "12px" }}>View</button>
+                                    <button className='btn ms-3' style={{ background: "#8c6a54", border: "none", color: "#fff", fontSize: "12px" }}  onClick={handleOpen}>View</button>
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +210,7 @@ function SingleArtistInformation() {
                                     <span className="artists-detail-heading">Gallery</span>
                                     </div>
                                     <div className='col-9'>
-                                    <button className='btn ms-3' style={{ background: "#8c6a54", border: "none", color: "#fff", fontSize: "12px" }}>View</button>
+                                    <button className='btn ms-3' style={{ background: "#8c6a54", border: "none", color: "#fff", fontSize: "12px" }} onClick={()=>ViewGalleryHandler(artistInformation.gallery)}>View</button>
                                     </div>
                                 </div>
                             </div>
@@ -243,6 +267,20 @@ function SingleArtistInformation() {
                     </div>
                 </div>
             </div>
+            <div>
+      <Modal
+        open={openMapModal}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+            
+        <LocationAwareMap
+                  coords={artistInformation.coords}/>
+        </Box>
+      </Modal>
+    </div>
         </section>
     )
 }
