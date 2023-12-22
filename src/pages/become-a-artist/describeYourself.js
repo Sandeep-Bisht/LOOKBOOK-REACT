@@ -4,26 +4,28 @@ import ArtistFooter from "./common/artistFooter";
 import NoDataFound from "./common/noDataFound";
 import { axiosAuth } from "configs/axiosInstance";
 
-const BASE_URL = process.env.REACT_APP_APIURL
+const BASE_URL = process.env.REACT_APP_APIURL;
 
 const DescribeYourself = () => {
-  const [artistPayload, setArtistPayload, ,allProducts] = useOutletContext();
+  const [artistPayload, setArtistPayload, , allProducts] = useOutletContext();
   const navigate = useNavigate();
   const { request_id } = useParams();
 
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const [attemptedNextWithoutSelection, setAttemptedNextWithoutSelection] = useState(false);
 
-  useEffect(()=>{
-    if(artistPayload){
-      if(artistPayload.products && Array.isArray(artistPayload.products)){
+  useEffect(() => {
+    if (artistPayload) {
+      if (artistPayload.products && Array.isArray(artistPayload.products)) {
         setSelectedProducts(artistPayload.products);
       }
     }
-  },[artistPayload])
+  }, [artistPayload]);
 
   const handleChange = (product) => {
     // Check if the product is already selected
     const isSelected = selectedProducts.includes(product);
+    setAttemptedNextWithoutSelection(false);
 
     if (isSelected) {
       // If selected, remove it from the list
@@ -36,40 +38,46 @@ const DescribeYourself = () => {
     }
   };
 
-  
-  const handleNextClick = async () =>{
-    try{
+  const handleNextClick = async () => {
+    if(selectedProducts.length > 0){
+    try {
+      let payload = { currentStep: 4, products: selectedProducts };
 
-      let payload = {currentStep:4,products:selectedProducts}
-
-      if(artistPayload.currentStep > 3){
-          delete payload.currentStep;
+      if (artistPayload.currentStep > 3) {
+        delete payload.currentStep;
       }
 
-        if(artistPayload.products && Array.isArray(artistPayload.products)){
-          const areEqual = selectedProducts.every((element, index) => element === artistPayload.products[index]);
+      if (artistPayload.products && Array.isArray(artistPayload.products)) {
+        const areEqual = selectedProducts.every(
+          (element, index) => element === artistPayload.products[index]
+        );
 
-          if(areEqual){
-            return navigate(`/become-a-artist/${request_id}/location`)
-          }
-          else{
-            await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
-            setArtistPayload((prev) => {return {...prev,...payload}})
-            navigate(`/become-a-artist/${request_id}/location`)
-          }
-
-        }else{
-          await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
-          setArtistPayload((prev) => {return {...prev,...payload}})
-          navigate(`/become-a-artist/${request_id}/location`)
+        if (areEqual) {
+          return navigate(`/become-a-artist/${request_id}/location`);
+        } else {
+          await axiosAuth.post(
+            `${BASE_URL}/users/updateArtistRequest`,
+            payload
+          );
+          setArtistPayload((prev) => {
+            return { ...prev, ...payload };
+          });
+          navigate(`/become-a-artist/${request_id}/location`);
         }
+      } else {
+        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`, payload);
+        setArtistPayload((prev) => {
+          return { ...prev, ...payload };
+        });
+        navigate(`/become-a-artist/${request_id}/location`);
+      }
+    } catch (error) {
+      throw error;
     }
-    catch(error){
-        throw error;
+    }else{
+      setAttemptedNextWithoutSelection(true);
     }
-}
-
-
+  };
 
   return (
     <>
@@ -86,42 +94,44 @@ const DescribeYourself = () => {
           <div className="row mb-5">
             <div className="col-md-10 mx-auto">
               <div className="row">
-              {(allProducts && Array.isArray(allProducts)) ?
-                <>
-                {
-                  allProducts.length > 0 ?
+                {allProducts && Array.isArray(allProducts) ? (
                   <>
-                  {allProducts.map((product, index) => (
-                    <div key={index} className="col-md-6">
-                    <div
-                      className={`artist-card ${
-                        selectedProducts.includes(product._id)
-                          ? "selected"
-                          : ""
-                      }`}
-                      onClick={(e) => handleChange(product._id)}
-                    >
-                      <div className="card-body">
-                        <h5 className="_6pu6cc">{product.title}</h5>
-                        <div>
-                          <span>{product.description}</span>
-                        </div>
-                      </div>
-                      <div className= "card-icon ">
-                        <img 
-                          src={product.icon.thumbnailUrl}
-                          alt={product.title}
-                          className="img-fluid"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  ))}
-                  </> : 
-                  <NoDataFound/>
-                }
-                </> : <NoDataFound/>}
-
+                    {allProducts.length > 0 ? (
+                      <>
+                        {allProducts.map((product, index) => (
+                          <div key={index} className={`col-md-6 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
+                            <div
+                              className={`artist-card ${
+                                selectedProducts.includes(product._id)
+                                  ? "selected"
+                                  : ""
+                              }`}
+                              onClick={(e) => handleChange(product._id)}
+                            >
+                              <div className="card-body">
+                                <h5 className="_6pu6cc">{product.title}</h5>
+                                <div>
+                                  <span>{product.description}</span>
+                                </div>
+                              </div>
+                              <div className="card-icon ">
+                                <img
+                                  src={product.icon.thumbnailUrl}
+                                  alt={product.title}
+                                  className="img-fluid"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </>
+                    ) : (
+                      <NoDataFound />
+                    )}
+                  </>
+                ) : (
+                  <NoDataFound />
+                )}
               </div>
             </div>
           </div>

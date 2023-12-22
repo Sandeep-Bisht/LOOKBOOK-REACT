@@ -63,6 +63,7 @@ const CompleteKYC = () => {
   const { request_id } = useParams();
   let navigate = useNavigate()
   const [artistPayload, setArtistPayload] = useOutletContext()
+  const [attemptedNextWithoutSelection, setAttemptedNextWithoutSelection] = useState(false);
 
   const [kycDocuments,setKycDocuments] = useState({adharFront : artistPayload.adharFront ? artistPayload.adharFront : null,
     adharBack : artistPayload.adharBack ? artistPayload.adharBack : null,
@@ -107,6 +108,7 @@ const CompleteKYC = () => {
   }
 
   const handleNextClick = async () =>{
+    if(kycDocuments.adharFront && kycDocuments.adharBack && kycDocuments.panCard){
     try{
       if(artistPayload.currentStep > 12){
        return  navigate(`/become-a-artist/${request_id}/upload-cerificates`)
@@ -118,7 +120,11 @@ const CompleteKYC = () => {
     catch(error){
         throw error;
     }
+    }else{
+      setAttemptedNextWithoutSelection(true)
+    }
   }
+  
 
   return (
     <>
@@ -129,16 +135,29 @@ const CompleteKYC = () => {
               <h1 className="text-center">Complete your KYC</h1>
             </div>
             <div className='col-md-4 p-5'>
-              <ImageCard handleDrop={handleDrop} uploading={uploading} name="adharFront" title="Aadhar Front" kycDocuments={kycDocuments} binaryFiles={binaryFiles} progress={progress}/>
+            <div className={`${!kycDocuments.adharFront && attemptedNextWithoutSelection ? 'gallary-error ' : 'gallary-no-error' }`}
+            onClick={()=>setAttemptedNextWithoutSelection(false)}
+            >
+              <ImageCard  handleDrop={handleDrop} uploading={uploading} name="adharFront" title="Aadhar Front" kycDocuments={kycDocuments} binaryFiles={binaryFiles} progress={progress}/>
+               </div>
               <h6 className='text-center mt-3'>Aadhar Front</h6>
+             
             </div>
             <div className='col-md-4 p-5'>
-              <ImageCard handleDrop={handleDrop} uploading={uploading} name="adharBack" title="Aadhar Back" kycDocuments={kycDocuments} binaryFiles={binaryFiles} progress={progress}/>
+            <div className={`${!kycDocuments.adharBack && attemptedNextWithoutSelection ? 'gallary-error ' : 'gallary-no-error' }`}
+            onClick={()=>setAttemptedNextWithoutSelection(false)}
+            >
+              <ImageCard  handleDrop={handleDrop} uploading={uploading} name="adharBack" title="Aadhar Back" kycDocuments={kycDocuments} binaryFiles={binaryFiles} progress={progress}/>
+              </div>
               <h6 className='text-center mt-3'>Aadhar Back</h6>
             </div>
             <div className='col-md-4 p-5'>
-            <ImageCard handleDrop={handleDrop} uploading={uploading} name="panCard" title="Pan Card" kycDocuments={kycDocuments} binaryFiles={binaryFiles} progress={progress}/>
-              <h6 className='text-center mt-3'>Pan Card</h6>
+            <div className={`${!kycDocuments.panCard && attemptedNextWithoutSelection ? 'gallary-error ' : 'gallary-no-error' }`}
+            onClick={()=>setAttemptedNextWithoutSelection(false)}
+            >
+            <ImageCard  handleDrop={handleDrop} uploading={uploading} name="panCard" title="Pan Card" kycDocuments={kycDocuments} binaryFiles={binaryFiles} progress={progress}/>
+             </div>
+             <h6 className='text-center mt-3'>Pan Card</h6>
             </div>
           </div>
       </div>
