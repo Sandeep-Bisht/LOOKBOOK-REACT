@@ -86,8 +86,8 @@ const Details = () => {
                     <div className="form-floating">
                       <Controller
                         name="fullname"
+                        defaultValue={artistPayload.fullname ? artistPayload.fullname : ''}
                         control={control}
-                        defaultValue=""
                         rules={{
                           required: "Fullname is required",
                         }}
@@ -117,8 +117,8 @@ const Details = () => {
                     <div className="form-floating">
                       <Controller
                         name="email"
+                        defaultValue={artistPayload.email ? artistPayload.email : ''}
                         control={control}
-                        defaultValue=""
                         rules={{
                           required: "Email is required",
                         }}
@@ -143,27 +143,13 @@ const Details = () => {
                       />
                       <label htmlFor="floatingText">Email</label>
                     </div>
-
-                    {/* <div className="form-floating">
-                      <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Email"
-                        id="floatingText"
-                        defaultValue={
-                          artistPayload.email ? artistPayload.email : ""
-                        }
-                        {...register("email")}
-                      />
-                      <label htmlFor="floatingTextarea2">Email</label>
-                    </div> */}
                   </div>
                   <div className="col-md-6">
                     <div className="form-floating">
                       <Controller
-                        name="Mobile"
+                        defaultValue={artistPayload.mobile ? artistPayload.mobile : ''}
+                        name="mobile"
                         control={control}
-                        defaultValue=""
                         rules={{
                           required: "Mobile is required",
                         }}
@@ -173,14 +159,14 @@ const Details = () => {
                               {...field}
                               type="number"
                               className={`form-control ${
-                                errors.Mobile ? "is-invalid" : ""
+                                errors.mobile ? "is-invalid" : ""
                               }`}
-                              placeholder="Email"
+                              placeholder="Mobile"
                               id="floatingText"
                             />
-                            {errors.Mobile && (
+                            {errors.mobile && (
                               <div className="invalid-feedback">
-                                {errors.Mobile.message}
+                                {errors.mobile.message}
                               </div>
                             )}
                           </>
@@ -188,27 +174,13 @@ const Details = () => {
                       />
                       <label htmlFor="floatingText">Mobile</label>
                     </div>
-
-                    {/* <div className="form-floating">
-                      <input
-                        type="number"
-                        className="form-control"
-                        placeholder="Mobile"
-                        id="floatingText"
-                        defaultValue={
-                          artistPayload.mobile ? artistPayload.mobile : ""
-                        }
-                        {...register("mobile")}
-                      />
-                      <label htmlFor="floatingTextarea2">Mobile</label>
-                    </div> */}
                   </div>
                   <div className="col-md-6">
                     <div className="form-floating">
-                      <Controller
+                      <Controller      
+                        defaultValue={artistPayload.alias ? artistPayload.alias : ''}
                         name="alias"
                         control={control}
-                        defaultValue=""
                         rules={{
                           required: "Alias is required",
                         }}

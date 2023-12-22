@@ -164,6 +164,9 @@ const ApplicationRoutes = createBrowserRouter(
       <Route element={<NormalComponents />}>
         <Route element={<CommonLayout/>}>
           <Route index path="/" element={<Homepage />} />
+          <Route path='/terms-conditions' element={<TermsPage/>}/>
+          <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
+          
           <Route element={<CheckLoggedIn/>}>
             <Route path="/login" element={<LoginPage />} />
           </Route>
@@ -242,16 +245,15 @@ const ApplicationRoutes = createBrowserRouter(
         
         <Route path="/management/services/:_id" element={<UpdateService/>} loader={({params})=>getServiceById(params)}/>
         <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
-        <Route path='/management/artists' element={<GetAllArtists/>} loader={()=>getAllArtists()}/>
         <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogById(params)}/>
+        
+        <Route path='/management/artists' element={<GetAllArtists/>} loader={()=>getAllArtists()}/>
         <Route path='/management/artists/:id' element={<SingleArtistInformation/>}/>
         <Route path='/management/artists/:id/certificates' element={<ArtistCertificates/>}/>
 
         </Route>
       </Route>
       </Route>
-      <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
-      <Route path='/terms-conditions' element={<TermsPage/>}/>
       {/* end admin auth routes */}
     </Route>
   )

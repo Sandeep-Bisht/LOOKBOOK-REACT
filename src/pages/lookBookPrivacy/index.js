@@ -1,11 +1,8 @@
 import React from 'react'
-import Header from "layouts/components/header/header";
-import Footer from "layouts/components/footer/footer"
 import '../../css/user/privacy.css'
 const PrivacyPage = () => {
   return (
     <>
-    <Header />
      <section className='usr-privacy-policy-hero pt-5'>
         <div className='container'>
             <div className='row'>
@@ -217,7 +214,6 @@ const PrivacyPage = () => {
             </div>
         </div>
         </section> 
-        <Footer />
     </>
   )
 }

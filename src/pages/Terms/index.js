@@ -1,12 +1,9 @@
 import React from 'react'
-import Header from "layouts/components/header/header";
-import Footer from "layouts/components/footer/footer"
 import '../../css/user/terms.css'
 
 const  TermsPage  = () => {
   return (
     <>
-    <Header />
       <section className='pt-5'>
         <div className='container'>
             <div className='row'>
@@ -138,8 +135,6 @@ const  TermsPage  = () => {
             </div>
         </div>
       </section>
-
-      <Footer />
     </>
   )
 }
