@@ -1,7 +1,23 @@
 /* -----------------------common styling---------------- */
-
+@font-face {
+  font-family:AvenirLTProBook;
+  src: url('../../public/fonts/AvenirLTProBook.otf');
+}
+@font-face {
+  font-family:AvenirLTProHeavy;
+  src: url('../../public/fonts/AvenirLTProHeavy.otf');
+}
+@font-face {
+  font-family:AvenirLTProLight;
+  src: url('../../public/fonts/AvenirLTProLight.otf');
+}
+@font-face {
+  font-family:Forum-Regular;
+  src: url('../../public/fonts/Forum-Regular.ttf');
+}  
   
-  .AvenirLTProBook{
+/* 
+.AvenirLTProBook{
     font-family:AvenirLTProBook;
     font-weight: 400;
 
@@ -21,7 +37,7 @@
   {
     font-family:Forum-regular;
   }
-  
+   */
 
   
   :focus-visible 
@@ -37,13 +53,13 @@
     color:rgb(109,93,76);
       
   }
-  .common-para
+  .usr-common-para
   {
      
-    font-family: Metropolis-Light;
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
     font-size: 13px;
-    color: rgba(255, 255, 255, 1);
-    margin: 12px 0 8px 0;
+    letter-spacing: 1.3px;
       
   }
   .usr-common-action-btn{
