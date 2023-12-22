@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import '../../../css/header.css'
+import { checkAuth } from "configs/auth";
+import UserMenu from "./userMenu";
+import { AccountOutline } from "mdi-material-ui";
 
 const Header = () => {
-  const [scrollClass, setScrollClass] = useState('')
+  const [scrollClass, setScrollClass] = useState('');
+  const [currentUser,setCurrentUser] = useState(checkAuth());
   useEffect(() => {
     const handleScroll = () => {
       // Set the scroll position at which you want to add or remove the class
@@ -177,8 +181,37 @@ const Header = () => {
               </li>
 
             </ul>
-            <form className="d-flex" role="search">
-              <Link className="common-action nav-link" to="/login">
+            {currentUser ? <>
+              <div className="dropdown user-dropdown">
+                <button className="common-action btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span className="me-1">
+                  <svg width={17} height={17} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clipPath="url(#clip0_1_165)">
+                      <path d="M10 12.5C12.7614 12.5 15 10.2614 15 7.5C15 4.73858 12.7614 2.5 10 2.5C7.23858 2.5 5 4.73858 5 7.5C5 10.2614 7.23858 12.5 10 12.5Z" stroke="#FEFEFE" strokeWidth={2} strokeMiterlimit={10} />
+                      <path d="M2.42102 16.8743C3.18943 15.5442 4.29431 14.4398 5.62468 13.672C6.95505 12.9042 8.46405 12.5 10.0001 12.5C11.5361 12.5 13.0451 12.9043 14.3755 13.6721C15.7058 14.44 16.8107 15.5444 17.5791 16.8744" stroke="#FEFEFE" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1_165">
+                        <rect width={20} height={20} fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </span>
+                <span>
+                  <svg width="17" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.95521 13C10.1405 13.001 10.3241 12.9674 10.4957 12.9011C10.6672 12.8348 10.8232 12.7371 10.9547 12.6136L16.586 7.28389C16.8511 7.03299 17 6.6927 17 6.33787C17 5.98305 16.8511 5.64275 16.586 5.39185C16.3209 5.14095 15.9613 5 15.5864 5C15.2115 5 14.852 5.14095 14.5869 5.39185L9.95521 9.78884L5.32352 5.40518C5.05421 5.18689 4.70778 5.07283 4.35347 5.08578C3.99916 5.09873 3.66306 5.23775 3.41234 5.47505C3.16161 5.71234 3.01474 6.03044 3.00105 6.36578C2.98737 6.70112 3.10788 7.029 3.33852 7.28389L8.96974 12.6136C9.23196 12.8597 9.58588 12.9985 9.95521 13Z" fill="#FEFEFE" />
+                  </svg>
+                </span>
+                </button>
+                <ul className="dropdown-menu">
+                  <UserMenu props={[currentUser,setCurrentUser]}/>
+                </ul>
+              </div>
+              </> : 
+              <Link to="/login" className="common-action btn text-white">
+              <AccountOutline sx={{ marginRight: 2, color:'white' }} />
+              Login</Link>}
+              {/* <Link className="common-action nav-link" to="/login">
                 <span className="me-1">
                   <svg width={17} height={17} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_1_165)">
@@ -199,8 +232,7 @@ const Header = () => {
                     <path d="M9.95521 13C10.1405 13.001 10.3241 12.9674 10.4957 12.9011C10.6672 12.8348 10.8232 12.7371 10.9547 12.6136L16.586 7.28389C16.8511 7.03299 17 6.6927 17 6.33787C17 5.98305 16.8511 5.64275 16.586 5.39185C16.3209 5.14095 15.9613 5 15.5864 5C15.2115 5 14.852 5.14095 14.5869 5.39185L9.95521 9.78884L5.32352 5.40518C5.05421 5.18689 4.70778 5.07283 4.35347 5.08578C3.99916 5.09873 3.66306 5.23775 3.41234 5.47505C3.16161 5.71234 3.01474 6.03044 3.00105 6.36578C2.98737 6.70112 3.10788 7.029 3.33852 7.28389L8.96974 12.6136C9.23196 12.8597 9.58588 12.9985 9.95521 13Z" fill="#FEFEFE" />
                   </svg>
                 </span>
-              </Link>
-            </form>
+              </Link> */}
           </div>
         </div>
       </nav>

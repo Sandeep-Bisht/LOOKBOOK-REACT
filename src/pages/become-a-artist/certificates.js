@@ -20,7 +20,6 @@ const Certificates = () => {
   const [uploading, setUploading] = useState(false);
   const [binaryFiles, setBinaryFiles] = useState([]);
   const [progress, setProgress] = useState(0);
-  const [attemptedNextWithoutSelection, setAttemptedNextWithoutSelection] = useState(false);
 
   const handleDrop = async (files) => {
     setBinaryFiles(files);
@@ -106,7 +105,6 @@ const Certificates = () => {
 
 
   const handleNextClick = async () => {
-    if(certificates.length > 0){
     try {
       if (artistPayload.currentStep > 13) {
         return navigate(`/become-a-artist/${request_id}/personal-details`);
@@ -120,9 +118,6 @@ const Certificates = () => {
       navigate(`/become-a-artist/${request_id}/personal-details`);
     } catch (error) {
       throw error;
-    }
-    }else{
-      setAttemptedNextWithoutSelection(true)
     }
   };
 
@@ -232,9 +227,8 @@ const Certificates = () => {
                   </>
                 ) : (
                   <div
-                  onClick={()=>setAttemptedNextWithoutSelection(false)}
                   {...getRootProps({
-                    className: `dropzone col-12 custom-index-dropzone ${attemptedNextWithoutSelection ? 'gallary-error' : 'gallary-no-error'}`
+                    className: `dropzone col-12 custom-index-dropzone `
                   })}
                   
                   >

@@ -538,7 +538,7 @@ img:hover .showbutton-image.drop-shadow-delete {
   justify-content: center;
   align-items: center;
   padding: 100px 50px;
-  /* border: 1px dotted #8C6A54; */
+  border: 1px dotted #8C6A54;
   cursor: pointer;
 }
 

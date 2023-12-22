@@ -15,7 +15,7 @@ const ArtistGallery = () => {
   const [attemptedNextWithoutSelection, setAttemptedNextWithoutSelection] = useState(false);
   
   const handleNextClick = async () =>{
-    if(artistPayload){
+    if(artistPayload && artistPayload.gallery && Array.isArray(artistPayload.gallery) && artistPayload.gallery.length > 2){
     try{
       if(artistPayload.currentStep > 7){
        return  navigate(`/become-a-artist/${request_id}/you-are-best-in`)
