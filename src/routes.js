@@ -65,6 +65,7 @@ import { checkAuth } from 'configs/auth'
 import Header from 'layouts/components/header/header'
 import Footer from 'layouts/components/footer/footer'
 import ArtistRequestGallary from 'pages/artistRequestGallary'
+import ContactPage from 'pages/contact'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -167,7 +168,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route index path="/" element={<Homepage />} />
           <Route path='/terms-conditions' element={<TermsPage/>}/>
           <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
-          
+          <Route path='/contact' element={<ContactPage/>}/>
           <Route element={<CheckLoggedIn/>}>
             <Route path="/login" element={<LoginPage />} />
           </Route>
