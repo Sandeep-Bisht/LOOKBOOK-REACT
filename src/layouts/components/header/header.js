@@ -40,16 +40,7 @@ const Header = () => {
           <Link className="navbar-brand" to="/">
             <span className="main-logo">
               <h1>
-                <ul>
-                  <li>L</li>
-                  <li>o</li>
-                  <li>o</li>
-                  <li>k</li>
-                  <li>b</li>
-                  <li>o</li>
-                  <li>o</li>
-                  <li>k</li>
-                </ul>
+              <img src="images/main-logo.png" className="img-fluid " />
               </h1>
             </span>
           </Link>
@@ -157,7 +148,7 @@ const Header = () => {
                           </div>
                           <div className="right">
                             <p className="mb-0">
-                              <span className="nav-link">Artist Type</span>
+                              <span className="nav-link">Artist</span>
 
                             </p>
                           </div>
