@@ -56,7 +56,7 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="col-md-12">
-                            <p className="footer-link text-center mt-lg-3 pb-2">© 2023 by LOOKBOOK<a href="#" className="text-decoration-none text-capitalize footer-link ms-2">Designed & developed by giks india pvt ltd</a></p>
+                            <p className="footer-link text-center mt-lg-3 pb-2">© 2023 by LOOKBOOK</p>
                         </div>
                     </div>
                 </div>

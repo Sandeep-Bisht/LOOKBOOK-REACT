@@ -199,7 +199,7 @@ const Details = () => {
                       <div className="col-md-5 d-flex align-items-center">
                         {
                           artistPayload.mobile!=="" ? 
-                          <button className="btn" style={{background:"#8c6a54", color:"#fff",borderRadius:"25px",height:"35px"}} onClick={setHandlerNumberEdit(true)}>Edit</button>
+                          <button className="btn" style={{background:"#8c6a54", color:"#fff",borderRadius:"25px",height:"35px"}} onClick={()=>setHandlerNumberEdit(true)}>Edit</button>
                           :
                           <button className="btn ms-2" style={{background:"#8c6a54", color:"#fff",borderRadius:"25px",height:"35px"}} onClick={() => verifyMobileHandler(mobileToVerify)}>Verify</button>
                         }
@@ -247,7 +247,7 @@ const Details = () => {
                       <div className="col-md-5 d-flex align-items-center">
                         {
                           artistPayload.email!=="" ?
-                          <button className="btn ms-2" style={{background:"#8c6a54", color:"#fff",borderRadius:"25px",height:"35px"}} onClick={setHandlerEmailEdit(true)}>Edit</button>
+                          <button className="btn ms-2" style={{background:"#8c6a54", color:"#fff",borderRadius:"25px",height:"35px"}} onClick={()=>setHandlerEmailEdit(true)}>Edit</button>
                           :
                           <button className="btn" style={{background:"#8c6a54", color:"#fff",borderRadius:"25px",height:"35px"}} onClick={() => verifyEmailHandler(emailToVerify)}>Verify</button>
                         }
