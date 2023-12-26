@@ -47,7 +47,7 @@ const Header = () => {
                     <li><a className="dropdown-item" href="#">Makeup Artist</a></li>
                     <li><a className="dropdown-item" href="#">Hair Artist</a></li>
                     <li><a className="dropdown-item" href="#">Emerging Artist</a></li>
-                    <li><a className="dropdown-item" href="#">All Artist</a></li>
+                    <li><Link className="dropdown-item" to="/artists">All Artist</Link></li>
                   </ul>
                 </div>
 
@@ -131,7 +131,6 @@ const Header = () => {
                           <div className="right">
                             <p className="mb-0">
                               <span className="nav-link">Artist</span>
-
                             </p>
                           </div>
                         </button>

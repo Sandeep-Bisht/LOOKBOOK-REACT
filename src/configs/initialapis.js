@@ -1,4 +1,4 @@
-import { axiosAuth } from "./axiosInstance"
+import { axiosAuth, axiosLocal } from "./axiosInstance"
 
 export const getUserProfile = async () =>{
     try{
@@ -71,14 +71,14 @@ export const getProductById = async (_id) => {
 
 export const getBlogById = async (_id) => {
   try {
-    const response = await axiosAuth.post('/blog/get_blog_by_id', { _id:_id });
+    const response = await axiosLocal.post('/blog/get_blog_by_id', { _id:_id });
       return response.data.data
  } catch (error) {
   return error.message || "An error occured while trying to get Blog request."
 }
 };
 
-export const getAllArtists = async () => {
+export const getAllArtistRequest = async () => {
   try {
     const response = await axiosAuth.get('/users/getAllArtistRequest');
       return response.data.data
@@ -98,6 +98,34 @@ export const getWizardData  = async () => {
       artistRequests: responses[0].data,   // assuming the first API is for artist requests
       allServices: responses[1].data.data,
       allProducts: responses[2].data.data
+    };
+
+    return data;
+  } catch (error) {
+    return error.message || "An error occurred while trying to get artist requests.";
+  }
+};
+
+
+export const getAllArtists  = async () => {
+  try {
+    const response = await axiosLocal.get('/artists/get-all');
+      return response.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get artists request."
+   }
+};
+
+export const getHomepageData  = async () => {
+  const urls = [`/artists/get-all`, `/blog/all_blogs`];
+
+  try {
+    const responses = await Promise.all(urls.map(url => axiosAuth.get(url)));
+
+    // Initialize an object with keys representing the source of the data
+    let data = {
+      allArtists: responses[0].data,   // assuming the first API is for artist requests
+      allBlogs: responses[1].data.data
     };
 
     return data;
