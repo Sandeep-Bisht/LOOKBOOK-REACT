@@ -1,12 +1,15 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import {  useOutletContext, useParams } from 'react-router-dom'
 import PdfIcon from '@core/assets/images/pdfIcon-removebg.png'
 
 
 function Certificates() {
 
-    const location = useLocation();
-    const artistCertificates = location?.state
+    const [getAllArtists] = useOutletContext();
+    const { request_id } = useParams();
+    const artistInformation = getAllArtists.find((item) => item._id == request_id);
+
+    const artistCertificates = artistInformation?.certificates;
 
   return (
     <section>

@@ -9,6 +9,15 @@ import { MdDeleteForever } from "react-icons/md";
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
+const acceptedImages =  {
+  "image/*": [
+    ".jpeg",
+    ".png",
+    ".jpg",
+    ".webp",
+  ],
+}
+
 function DropzoneWithoutClick({ children, onUpload, handleUpload, disabled }) {
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
     noClick: true,
@@ -17,18 +26,7 @@ function DropzoneWithoutClick({ children, onUpload, handleUpload, disabled }) {
       handleUpload(files);
     },
     disabled,
-    accept: {
-      "image/*": [
-        ".jpeg",
-        ".png",
-        ".jpg",
-        ".gif",
-        ".avif",
-        ".svg",
-        ".tiff",
-        ".webp",
-      ],
-    },
+    accept: acceptedImages,
   });
 
   return (
@@ -148,18 +146,7 @@ const Gallery = (props) => {
 
   const { getRootProps, getInputProps } = useDropzone({
     disabled: uploading,
-    accept: {
-      "image/*": [
-        ".jpeg",
-        ".png",
-        ".jpg",
-        ".gif",
-        ".avif",
-        ".svg",
-        ".tiff",
-        ".webp",
-      ],
-    },
+    accept: acceptedImages,
     onDrop: (files) => {
       setBinaryFiles(files);
       handleUpload(files);

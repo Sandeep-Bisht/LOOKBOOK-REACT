@@ -1,11 +1,14 @@
 import { ViewGallery } from 'mdi-material-ui';
 import React, { useState } from 'react'
-import { useLocation,useNavigate } from 'react-router-dom'
+import { useLocation,useNavigate, useOutletContext, useParams } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import LocationAwareMap from 'pages/become-a-artist/common/googlemap';
+import NoDataFound from 'pages/become-a-artist/common/noDataFound';
+import { toast } from 'react-toastify';
+import { axiosAuth } from 'configs/axiosInstance';
 
 const style = {
     position: 'absolute',
@@ -18,24 +21,76 @@ const style = {
     p: 4,
   };
 
+  
+const BASE_URL = process.env.REACT_APP_APIURL;
+
 function SingleArtistInformation() {
-    const location = useLocation();
-    const [artistInformation, setArtistInformation] = useState(location?.state)
+    const [getAllArtists] = useOutletContext();
+    const { request_id } = useParams();
+    const artistInformation = getAllArtists.find((item) => item._id == request_id);
+    
     const [openMapModal, setOpenMapModal] = React.useState(false);
+    const [remark,setRemark] = useState(artistInformation?.remark ? artistInformation?.remark : '')
+    const [invalid,setInvalid] = useState(false)
+    const [updating,setUpdating] = useState(false)
     const handleOpen = () => setOpenMapModal(true);
     const handleClose = () => setOpenMapModal(false);
 
     const navigate = useNavigate()
 
-    const certiFicatesHandler = (certificates)=>{
-        navigate("/management/artists-request/658281125dc82e4c5e6ebe88/certificates",{state : certificates || []})
+    const certiFicatesHandler = ()=>{
+        navigate(`/management/artists-request/${request_id}/certificates`)
     }
 
-    const ViewGalleryHandler = (gallery)=>{
-        navigate("/management/artists-request/658281125dc82e4c5e6ebe88/gallery",{state : gallery || []})
+    const ViewGalleryHandler = ()=>{
+        navigate(`/management/artists-request/${request_id}/gallery`)
     }
 
-    return (
+    const handleApprove = () =>{
+        setInvalid(false)
+        handleUpdate({request_id,remark,status:"approved"});
+    }
+
+    const handleChange = (e) =>{
+        if(invalid ){
+            setInvalid(false)
+        }
+        setRemark(e.target.value);
+    }
+
+    const handleReject = () =>{
+        if(remark == ''){
+            setInvalid(true)
+        }
+        else{
+            setInvalid(false)
+            handleUpdate({request_id,remark,status:"rejected"});
+        }
+    }
+
+    const handleUpdate = async(payload) =>{
+        setUpdating(true);
+      try {
+        const response = await axiosAuth.post(`${BASE_URL}/management/artist-request`, payload);
+        if (response.statusText == "OK") {
+          toast.success('Request updated Successfully!');
+          navigate("/management/artists-request")
+          setUpdating(false)
+        }
+      } catch (error) {
+        setUpdating(false)
+        toast.warn('Failed to update Status!');
+        return error.message || "An error occured while trying to update services."
+      }
+
+    }
+
+
+    return (<>
+        {
+            !artistInformation ?
+            <NoDataFound/>
+            :
         <section>
             <div className='container'>
                 <div className='row'>
@@ -50,7 +105,7 @@ function SingleArtistInformation() {
                                     <span className="artists-detail-heading">Full Name</span>
                                     </div>
                                     <div className='col-9'>
-                                    <p className='ms-4 artists-detail-para'>{artistInformation.fullname}</p>
+                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile_id?.fullName}</p>
                                     </div>
                                 </div>
                                 <div className='d-flex row'>
@@ -58,7 +113,7 @@ function SingleArtistInformation() {
                                     <span className="artists-detail-heading">Emai</span>
                                     </div>
                                     <div className='col-9'>
-                                    <p className='ms-4 artists-detail-para'>{artistInformation.email}</p>
+                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile_id?.email}</p>
                                     </div>
                                 </div>
                                 <div className='d-flex row'>
@@ -66,7 +121,7 @@ function SingleArtistInformation() {
                                     <span className="artists-detail-heading">Mobile</span>
                                     </div>
                                     <div className='col-9'>
-                                    <p className='ms-4 artists-detail-para'>{artistInformation.mobile}</p>
+                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile_id?.mobile}</p>
                                     </div>
                                 </div>
                                 <div className='d-flex row'>
@@ -74,7 +129,7 @@ function SingleArtistInformation() {
                                     <span className="artists-detail-heading">DOB</span>
                                     </div>
                                     <div className='col-9'>
-                                    <p className='ms-4 artists-detail-para'>{artistInformation.dob}</p>
+                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile_id?.dob}</p>
                                     </div>
                                 </div>
                                 <div className='d-flex row'>
@@ -98,7 +153,7 @@ function SingleArtistInformation() {
                                     <span className="artists-detail-heading">Gender</span>
                                     </div>
                                     <div className='col-9'>
-                                    <p className='ms-4 artists-detail-para'>{artistInformation.gender}</p>
+                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile_id?.gender}</p>
                                     </div>
                                 </div>
                                 <div className='d-flex row'>
@@ -106,7 +161,7 @@ function SingleArtistInformation() {
                                     <span className="artists-detail-heading">Certificates</span>
                                     </div>
                                     <div className='col-9'>
-                                    <button className='btn ms-3' style={{ background: "#8c6a54", border: "none", color: "#fff", fontSize: "12px" }} onClick={()=>certiFicatesHandler(artistInformation.certificates)}>View</button>
+                                    <button className='btn ms-3' style={{ background: "#8c6a54", border: "none", color: "#fff", fontSize: "12px" }} onClick={()=>certiFicatesHandler()}>View</button>
                                     </div>
                                 </div>
                                 <div className='d-flex row mt-2'>
@@ -133,12 +188,7 @@ function SingleArtistInformation() {
                                     </div>
                                     <div className='col-9'>
                                     <p className='ms-4 artists-detail-para'>
-                                        {artistInformation.languages.map((item, index) => (
-                                            <span key={item}>
-                                                {index > 0 ? ', ' : ''}
-                                                {item}
-                                            </span>
-                                        ))}
+                                        {artistInformation.languages.join(', ')}
                                     </p>  
                                     </div>
                                   </div>
@@ -147,7 +197,7 @@ function SingleArtistInformation() {
                                     <span className="artists-detail-heading">Travel</span>
                                     </div>
                                     <div className='col-9'>
-                                    <p className='ms-4 artists-detail-para'>{artistInformation.travel || "no travel"}</p>
+                                    <p className='ms-4 artists-detail-para'>{artistInformation.travel ? "Yes": "No"}</p>
                                     </div>
                                 </div>
                                 {
@@ -202,7 +252,7 @@ function SingleArtistInformation() {
                                     <span className="artists-detail-heading">Insta-Id</span>
                                     </div>
                                     <div className='col-9'>
-                                    <p className='ms-4 artists-detail-para'><a target='blank' href={`https://www.instagram.com/${artistInformation.instaId}`} style={{textDecoration:"none"}}>{artistInformation.instaId}</a></p>
+                                    <p className='ms-4 artists-detail-para'><a target='blank' href={`https://www.instagram.com/${artistInformation?.profile_id?.instaId}`} style={{textDecoration:"none"}}>{artistInformation?.profile_id?.instaId}</a></p>
                                     </div>
                                 </div>
                                 <div className='d-flex row'>
@@ -210,7 +260,7 @@ function SingleArtistInformation() {
                                     <span className="artists-detail-heading">Gallery</span>
                                     </div>
                                     <div className='col-9'>
-                                    <button className='btn ms-3' style={{ background: "#8c6a54", border: "none", color: "#fff", fontSize: "12px" }} onClick={()=>ViewGalleryHandler(artistInformation.gallery)}>View</button>
+                                    <button className='btn ms-3' style={{ background: "#8c6a54", border: "none", color: "#fff", fontSize: "12px" }} onClick={()=>ViewGalleryHandler()}>View</button>
                                     </div>
                                 </div>
                             </div>
@@ -251,16 +301,18 @@ function SingleArtistInformation() {
                         <div className='col-12 mt-4 '>
                             <label>Remark</label>
                             <textarea type='text'
-                                className='form-control'
+                                value={remark}
+                                onChange={handleChange}
+                                className={`form-control ${invalid ? 'is-invalid' : ''}`} 
                             />
                         </div>
                         <div className='col-6 mt-4'>
                             <div className='row'>
                                 <div className='col-3'>
-                                    <button className="btn" type='button' style={{ background: "#8c6a54", color: "#fff" }}>Approve</button>
+                                    <button className="btn" type='button' style={{ background: "#8c6a54", color: "#fff" }} onClick={handleApprove} disabled={updating}>Approve</button>
                                 </div>
                                 <div className='col-2'>
-                                    <button className="btn" type='button' style={{ background: "#8c6a54", color: "#fff" }}>Reject</button>
+                                    <button className="btn" type='button' style={{ background: "#8c6a54", color: "#fff" }} onClick={handleReject} disabled={updating}>Reject</button>
                                 </div>
                             </div>
                         </div>
@@ -282,6 +334,8 @@ function SingleArtistInformation() {
       </Modal>
     </div>
         </section>
+        }
+        </>
     )
 }
 

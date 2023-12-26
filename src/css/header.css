@@ -26,9 +26,9 @@
     margin-bottom: 0;
     align-items: center;
 }
-.header .main-logo h1 ul li{
-  /* animation: lighting 4s linear infinite; */
-}
+/* .header .main-logo h1 ul li{
+  animation: lighting 4s linear infinite;
+} */
 @keyframes lighting {
 	0% {
     color: rgba(255,255,255,0.15);
@@ -102,11 +102,11 @@
 
 }
 
-.header .home-selection-area
+/* .header .home-selection-area
 {
   
   
-}
+} */
 .header .custom-drodown-btn 
 {
   display: flex;
@@ -125,10 +125,10 @@
    margin-right: 10px;
   padding: 0 10px;
 }
-.header .custom-drodown-btn  .left
+/* .header .custom-drodown-btn  .left
 {
-  /* margin-right: 20px; */
-}
+  margin-right: 20px;
+} */
 .header .custom-drodown-btn  .left svg{
   height: 16px;
   width: 16px;

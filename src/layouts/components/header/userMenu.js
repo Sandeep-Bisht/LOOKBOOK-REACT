@@ -10,6 +10,7 @@ import HelpCircleOutline from 'mdi-material-ui/HelpCircleOutline'
 import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'universal-cookie'
 import { Divider } from '@mui/material'
+import { HomeOutline } from 'mdi-material-ui'
 
 
 
@@ -27,6 +28,16 @@ const UserMenu = ({props}) => {
 
     return (
         <>
+         {(currentUser?.role == process.env.REACT_APP_ADMIN || currentUser?.role == process.env.REACT_APP_SUPER_ADMIN) ? 
+              <li>
+                <Link className="dropdown-item " to="/management/dashboard">
+                <HomeOutline sx={{ marginRight: 2 }} />
+                Dashboard
+                </Link>
+              </li>
+              :
+              null
+              }
         <li>
            <Link to="/user/profile" className="dropdown-item">
            <AccountOutline sx={{ marginRight: 2 }} />

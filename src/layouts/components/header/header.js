@@ -147,9 +147,14 @@ const Header = () => {
               <li className="nav-item">
                 <Link className="nav-link " to="/contact">Contact us</Link>
               </li>
+              
+              {(currentUser?.role == process.env.REACT_APP_USER || !currentUser) ? 
               <li className="nav-item">
                 <Link className="nav-link " to="/become-a-artist">Join Us</Link>
               </li>
+              :
+              null
+              }
 
             </ul>
             {currentUser ? <>

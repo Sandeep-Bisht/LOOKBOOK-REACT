@@ -11,7 +11,7 @@ import CardContent from '@mui/material/CardContent'
 import { useForm } from 'react-hook-form'
 import { axiosAuth } from 'configs/axiosInstance'
 import { useLoaderData, useNavigate } from "react-router-dom";
-import ToastNotification from 'toastNotification/toastNatification'
+import { toast } from 'react-toastify'
 
 
 const BASE_URL = process.env.REACT_APP_APIURL;
@@ -25,7 +25,6 @@ function UpdateProducts() {
   const [iconUrl, setIconUrl] = useState(getProductDataById?.icon.thumbnailUrl)
   const [imageUrl, setImageUrl] = useState(getProductDataById?.image.thumbnailUrl)
   const [loading,setLoading] = useState(false);
-  const [successStatus,setSuccessStatus] = useState(false)
 
   const navigate = useNavigate()
 
@@ -76,19 +75,21 @@ function UpdateProducts() {
     try {
       const response = await axiosAuth.put(`${BASE_URL}/product/product_update`, formData);
       if (response.statusText == "OK") {
-        setSuccessStatus(true);
+        
+        toast.success('Product updated Successfully!');
         setLoading(false)
         navigate("/management/products")
       }
     } catch (error) {
+      toast.warn('Failed to update product!');
       return error.message || "An error occured while trying to update services."
+      
     }
   };
 
 
   return (
     <div><Card>
-      {/* <CardHeader title='Add' titleTypographyProps={{ variant: 'h6' }} /> */}
       <Grid item xs={12}>
         <Box
           sx={{
@@ -196,12 +197,6 @@ function UpdateProducts() {
           </Grid>
         </form>
       </CardContent>
-      {
-        successStatus && <ToastNotification
-        content="Product Updated Successfully"
-        appearance="success"
-        autoDismiss={false}/>
-      }
     </Card></div>
   )
 }

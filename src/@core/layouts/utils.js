@@ -6,7 +6,7 @@
  * @param activeItem
  */
 export const handleURLQueries = (router, path) => {
-  console.log(router,'router is this missed configuration remember again.')
+  console.log(router,'router missed configuration remember again.')
   // if (Object.keys(router.query).length && path) {
   //   const arr = Object.keys(router.query)
 

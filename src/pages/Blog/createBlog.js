@@ -4,15 +4,14 @@ import  JoditEditor  from 'jodit-react';
 import {axiosAuth} from 'configs/axiosInstance'
 import slugify from 'react-slugify';
 import { Grid, TextField, Button } from "@mui/material";
-import ToastNotification from 'toastNotification/toastNatification';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
 const CreateBlog = () => {
 
   const { register, handleSubmit } = useForm();
-  const [successStatus,setSuccessStatus] = useState(false);
   const editor = useRef(null);
   const [content, setContent] = useState('');
   const [loading,setLoading] = useState(false);
@@ -36,11 +35,12 @@ const CreateBlog = () => {
       const response = await axiosAuth.post(`${BASE_URL}/blog/blog-create`, formData);
       if(response.statusText=="OK")
       {
-        setSuccessStatus(true);
+        toast.success('Blog Created Successfully!');
         setLoading(false)
         navigate("/management/blogs")
       }
     } catch (error) {
+      toast.warn('Failed to create Blog!');
       console.log(error.message || 'error found', 'error');
     }
   };
@@ -102,14 +102,6 @@ const CreateBlog = () => {
         {loading ? "Submiting..." : "Submit"}
       </Button>
     </form>
-    {
-      successStatus && 
-      <ToastNotification
-      content="Blog Created Successfully"
-      appearance="success"
-      autoDismiss={false}
-      />
-    }
     </>
   )
 }

@@ -4,6 +4,7 @@ import HomeOutline from 'mdi-material-ui/HomeOutline'
 import Bookmark from 'mdi-material-ui/Bookmark'
 
 import Settings from 'mdi-material-ui/light/Settings'
+import { Application } from 'mdi-material-ui'
 
 const navigation = () => {
   return [
@@ -31,8 +32,8 @@ const navigation = () => {
       path: '/management/blogs'
     },
     {
-      title: 'Artists',
-      icon: Bookmark,
+      title: 'Requests',
+      icon: Application,
       path: '/management/artists-request'
     },
   ]

@@ -30,6 +30,7 @@ import SocialLogin from "configs/SocialLogin";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { useLocation, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 // ** Styled Components
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -44,7 +45,6 @@ const LoginPage = () => {
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
   const redirectUrl = queryParams.get("redirectUrl");
-  console.log(redirectUrl, "redirect login");
   const [error, setError] = useState(null);
   const [value, setValue] = useState("");
   const [signupType, setSignupType] = useState("email");
@@ -155,7 +155,18 @@ const LoginPage = () => {
             if (redirectUrl) {
               navigate(redirectUrl);
             } else {
-              navigate("/");
+              let token = response.data.token;
+              if(token){
+                let decoded = jwtDecode(token);
+                if(decoded?.role == process.env.REACT_APP_SUPER_ADMIN || decoded?.role == process.env.REACT_APP_ADMIN ){
+                  return navigate("/management/dashboard");
+                }else{
+                  navigate("/");
+                }
+              }
+              else{
+                navigate("/");
+              }
             }
           }
         })
