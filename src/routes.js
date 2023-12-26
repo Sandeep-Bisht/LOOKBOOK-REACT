@@ -182,9 +182,11 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path='/terms-conditions' element={<TermsPage/>}/>
           <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
           <Route path='/contact' element={<ContactPage/>}/>
+          
           <Route element={<CheckLoggedIn/>}>
             <Route path="/login" element={<LoginPage />} />
           </Route>
+
           <Route element={<RequireAuth allowedRoles={[roles.user,roles.artist]} />}>
             <Route path="/user">
               <Route
