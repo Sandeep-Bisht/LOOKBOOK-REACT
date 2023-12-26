@@ -66,6 +66,7 @@ import Header from 'layouts/components/header/header'
 import Footer from 'layouts/components/footer/footer'
 import ArtistRequestGallary from 'pages/artistRequestGallary'
 import ContactPage from 'pages/contact'
+import ArtistSingle from 'pages/artistSingle'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -173,6 +174,7 @@ const ApplicationRoutes = createBrowserRouter(
       <Route element={<NormalComponents />}>
         <Route element={<CommonLayout/>}>
           <Route index path="/" element={<Homepage />} />
+          <Route path="/artist/:artist_id" element={<ArtistSingle/>}/>
           <Route path='/terms-conditions' element={<TermsPage/>}/>
           <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
           <Route path='/contact' element={<ContactPage/>}/>

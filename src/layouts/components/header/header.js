@@ -4,6 +4,8 @@ import '../../../css/header.css'
 import { checkAuth } from "configs/auth";
 import UserMenu from "./userMenu";
 import { AccountOutline } from "mdi-material-ui";
+import mainLogo from "@core/assets/header/main-logo.png"
+
 
 const Header = () => {
   const [currentUser,setCurrentUser] = useState(checkAuth());
@@ -20,7 +22,7 @@ const Header = () => {
           <Link className="navbar-brand" to="/">
             <span className="main-logo">
               <h1>
-              <img src="images/main-logo.png" className="img-fluid " />
+              <img src={mainLogo} className="img-fluid " />
               </h1>
             </span>
           </Link>
