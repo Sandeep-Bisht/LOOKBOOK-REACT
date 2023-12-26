@@ -273,7 +273,7 @@ function SingleArtistInformation() {
                         </div>
                         <div className='row mt-4 text-center'>
                             <div className='col-4'>
-                                <img src={artistInformation.adharFront.thumbnailUrl} className="img-fluid" alt="adharFront" style={{ maxHeight: "200px" }} />
+                                <img src={artistInformation.adharFront.url} className="img-fluid" alt="adharFront" style={{ maxHeight: "200px" }} />
                                 <div>
                                     <span className="artists-detail-heading">
                                         Adhar Front
@@ -281,7 +281,7 @@ function SingleArtistInformation() {
                                 </div>
                             </div>
                             <div className='col-4'>
-                                <img src={artistInformation.adharBack.thumbnailUrl} className="img-fluid" alt="adharBack" style={{ maxHeight: "200px" }} />
+                                <img src={artistInformation.adharBack.url} className="img-fluid" alt="adharBack" style={{ maxHeight: "200px" }} />
                                 <div>
                                     <span className="artists-detail-heading">
                                         Adhar Back
@@ -289,7 +289,7 @@ function SingleArtistInformation() {
                                 </div>
                             </div>
                             <div className='col-4'>
-                                <img src={artistInformation.panCard.thumbnailUrl} className="img-fluid" alt="panCard" style={{ maxHeight: "200px" }} />
+                                <img src={artistInformation.panCard.url} className="img-fluid" alt="panCard" style={{ maxHeight: "200px" }} />
                                 <div>
                                     <span className="artists-detail-heading">
                                         Pancard

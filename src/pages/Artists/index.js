@@ -88,34 +88,40 @@ const AllArtist = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {getAllArtists.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
-                            return (
-                                <TableRow hover role='checkbox' tabIndex={-1} key={row._id}>
-                                    <TableCell>
-                                        {row.profile_id?.fullName}
-                                    </TableCell>
-                                    <TableCell>
-                                        {row?.education}
-                                    </TableCell>
-                                    <TableCell>
-                                        {row?.experience}
-                                    </TableCell>
-                                    <TableCell>
-                                        {row?.languages.join(', ')}
-                                    </TableCell>
-                                    <TableCell>
-                                        <Chip label={row?.status} color="primary" /> 
-                                    </TableCell>
-                                    <TableCell>
-                                        <div className=''>
-                                            <button className='btn' style={{background:"#8c6a54", border:"none", color:"#fff", fontSize:"12px"}} 
-                                                onClick={()=>viewArtistHandler(row)}>
-                                                    <span>View <MdOutlinePreview/></span>
-                                            </button>
-                                        </div>
-                                    </TableCell>
-                                </TableRow>
-                            )
+                        {getAllArtists.map(row => {
+                            if(row.status=="progress")
+                            {
+                                return null
+                            }
+                            else{
+                                return (
+                                    <TableRow hover role='checkbox' tabIndex={-1} key={row._id}>
+                                        <TableCell>
+                                            {row.profile_id?.fullName}
+                                        </TableCell>
+                                        <TableCell>
+                                            {row?.education}
+                                        </TableCell>
+                                        <TableCell>
+                                            {row?.experience}
+                                        </TableCell>
+                                        <TableCell>
+                                            {row && row.languages ? row.languages.join(', ') : ""}
+                                        </TableCell>
+                                        <TableCell>
+                                            <Chip label={row?.status} color="primary" /> 
+                                        </TableCell>
+                                        <TableCell>
+                                            <div className=''>
+                                                <button className='btn' style={{background:"#8c6a54", border:"none", color:"#fff", fontSize:"12px"}} 
+                                                    onClick={()=>viewArtistHandler(row)}>
+                                                        <span>View <MdOutlinePreview/></span>
+                                                </button>
+                                            </div>
+                                        </TableCell>
+                                    </TableRow>
+                                )
+                            }
                         })}
                     </TableBody>
 
