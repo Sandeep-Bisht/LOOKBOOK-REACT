@@ -723,7 +723,11 @@ img:hover .showbutton-image.drop-shadow-delete {
   font-size: 16px;
   font-weight: 500;
 }
-
+.number-verified-otp input{
+  width: 45px!important;
+  height: 40px!important;
+  margin-left: 5px;
+}
 
 
 

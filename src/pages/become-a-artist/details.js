@@ -254,6 +254,8 @@ const Details = () => {
             </div>
           </div>
         </div>
+        <div>
+    </div>
       </section>
 
       <ArtistFooter
