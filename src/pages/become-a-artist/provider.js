@@ -17,7 +17,7 @@ const ArtistRequestProvider = () => {
 
     var openRequest = artistRequests.find(item=>item.status == "progress");
 
-    if(!openRequest){
+    if(!openRequest && artistRequests.length == 0){
         return(
             <Navigate to="/become-a-artist/get-started" replace={true} />
         )
@@ -55,8 +55,9 @@ const ArtistRequestProvider = () => {
                                         {/* print name here */}
                                     </h1>
                                     <h2 className="artist-inner-subheading mb-lg-3">
-                                        Finish your artist request
+                                        {openRequest ? 'Finish your artist request' : 'Artist request' }
                                     </h2>
+                                    {openRequest ? 
                                     <button className="progress-component-action-btn" type="button" onClick={()=>startPreviousRequest()}>
                                         <span className="progress-component-action-btn-icon">
                                             <svg stroke="currentColor" fill="currentColor" strokeWidth="0"
@@ -68,6 +69,9 @@ const ArtistRequestProvider = () => {
                                             Your request started on {getFormatteddate(openRequest.createdAt)}
                                         </span>
                                     </button>
+                                    :
+                                    null}
+                                    
                                     {
                                         artistRequests.map((item)=>{
                                             if(item.status !== 'progress'){
@@ -79,7 +83,7 @@ const ArtistRequestProvider = () => {
                                                             <path d="M208 448V320h96v128h97.6V256H464L256 64 48 256h62.4v192z"></path></svg>
                                                     </span>
                                                     <span className="progress-component-action-btn-title">
-                                                        Your request {item.status} on {getFormatteddate(item.updatedAt)}
+                                                        Your request is {item.status}
                                                     </span>
                                                 </button>
                                             } 

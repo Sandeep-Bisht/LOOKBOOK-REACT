@@ -1,14 +1,29 @@
 import React from 'react'
-import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import CardImg from '@core/assets/images/skill-pic.png'
 import { FaCalendarCheck, FaCalendar  } from "react-icons/fa";
 import { HiMiniPencil } from "react-icons/hi2";
 import ArtistFooter from './common/artistFooter';
+import { axiosAuth } from 'configs/axiosInstance';
+import { toast } from 'react-toastify';
+
+const BASE_URL = process.env.REACT_APP_APIURL;
 
 const Review = () => {
     
   let navigate = useNavigate()
   const { request_id } = useParams();
+
+  const handleNextClick = async() =>{
+    try{
+        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{status:'pending'});
+        navigate(`/become-a-artist/publish-celebration`)
+    }
+    catch(error){
+        console.log(error?.response?.data?.message || 'Error found');
+        toast.warn(error?.response?.data?.message || 'Unable to submit your request for review.');
+    }
+  }
 
   return (
     <>
@@ -55,7 +70,7 @@ const Review = () => {
     </div>
     <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/personal-details`)}
-        nextClick={() => navigate(`/become-a-artist/publish-celebration`)}
+        nextClick={() => handleNextClick()}
       />
     </>
   )

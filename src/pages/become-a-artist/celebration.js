@@ -30,7 +30,7 @@ const Celebration = () => {
                         />
                         </svg>
                         <div className='mt-4'>
-                        <CommonButton label="Get started" onClick={()=>navigate('/')}/>
+                        <CommonButton label="Get started" onClick={()=>navigate('/become-a-artist')}/>
                         </div>
                     </div>
                 </div>

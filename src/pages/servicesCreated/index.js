@@ -9,9 +9,9 @@ import TextField from '@mui/material/TextField'
 import CardContent from '@mui/material/CardContent'
 import {useForm} from 'react-hook-form'
 import { axiosAuth } from 'configs/axiosInstance'
-import ToastNotification from 'toastNotification/toastNatification'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
@@ -21,7 +21,6 @@ const ServicesForm = () => {
   // ** States
 
   const {register, handleSubmit} = useForm();
-  const [successStatus,setSuccessStatus] = useState(false)
   const [loading,setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -40,21 +39,20 @@ const ServicesForm = () => {
     const response = await axiosAuth.post(`${BASE_URL}/service/services-create`,formData)
     if(response.statusText=="OK")
     {
-      setSuccessStatus(true);
+      toast.success('Service Created Successfully!');
       setLoading(false)
       navigate("/management/services")
     }
   }
   catch(error)
   {
-    console.log(error,"error")
+    toast.warn('Failed to create service!');
   }
   }
 
   return (
     <>
     <Card>
-      {/* <CardHeader title='Add' titleTypographyProps={{ variant: 'h6' }} /> */}
       <Grid item xs={12}>
         <Box
           sx={{
@@ -114,13 +112,6 @@ const ServicesForm = () => {
         </form>
       </CardContent>
     </Card>
-    {
-            successStatus &&
-            <ToastNotification
-            content="Service Created Successfully"
-            appearance="success"
-            autoDismiss={false}/>
-          }
     </> 
   )
 }

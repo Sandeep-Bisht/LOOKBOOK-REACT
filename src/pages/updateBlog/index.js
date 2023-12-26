@@ -4,11 +4,9 @@ import { useForm } from "react-hook-form";
 import { useState, useRef } from "react";
 import { Grid, TextField, Button } from "@mui/material";
 import JoditEditor from "jodit-react";
-import { FaTrash } from "react-icons/fa6";
 import {axiosAuth} from 'configs/axiosInstance'
 import slugify from 'react-slugify';
-import { Update } from "mdi-material-ui";
-import ToastNotification from "toastNotification/toastNatification";
+import { toast } from "react-toastify";
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
@@ -19,9 +17,7 @@ const UpdateBlog = () => {
   const editor = useRef(null);
   const [content, setContent] = useState("");
   const navigate=useNavigate()
-  const [Image, setImage] = useState(false);
   const [loading,setLoading] = useState(false);
-  const [successStatus,setSuccessStatus] = useState(false);
   const [selectFileImage,setSelectFileImage]=useState()
   const [imageUrl, setImageUrl] = useState(
     getBlogById?.featuredImage.thumbnailUrl
@@ -34,7 +30,6 @@ const UpdateBlog = () => {
     reader.onload = function (event) {
       const imageUrl = event.target.result;
       setImageUrl(imageUrl);
-      setImage(true);
     };
 
     if (file) {
@@ -69,12 +64,14 @@ const UpdateBlog = () => {
      {
       if(response.statusText=="OK")
       {
-        setSuccessStatus(true)
+        
+        toast.success('Blog updated Successfully!');
         setLoading(false)
         navigate("/management/blogs");
       }
      }
    }catch(error){
+    toast.warn('Failed to update Blog!');
     console.log(error,"error")
    }
 
@@ -160,14 +157,6 @@ const UpdateBlog = () => {
         </Button>
         
       </form>
-      {
-            successStatus &&
-            <ToastNotification
-            content="Blog Updated Successfully"
-            appearance="success"
-            placement="bottom-right"
-            autoDismiss={false}/>
-          }
     </div>
   );
 };

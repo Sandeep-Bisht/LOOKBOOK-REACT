@@ -8,7 +8,7 @@ import LoginPage from 'pages/login'
 import MUITable from 'pages/tables'
 import Services from 'pages/servicesCreated'
 import React from 'react'
-import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLocation } from 'react-router-dom'
+import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/UserProfile'
 import { getUserProfile } from 'configs/initialapis'
@@ -159,6 +159,11 @@ const CommonLayout = () =>{
   </>)
 }
 
+const UseLoaderOutletContext = () =>{
+  const loaderData = useLoaderData();
+  return <Outlet context={[loaderData]} />
+}
+
 const ApplicationRoutes = createBrowserRouter(
   createRoutesFromElements(
     <Route>
@@ -184,7 +189,7 @@ const ApplicationRoutes = createBrowserRouter(
         </Route>
         
         {/* Auth routes for user */}
-        <Route element={<RequireAuth allowedRoles={[roles.user,roles.artist]} />}>
+        <Route element={<RequireAuth allowedRoles={[roles.user]} />}>
           <Route
               path="/become-a-artist"
               element={<ArtistRequestProvider />}
@@ -218,7 +223,7 @@ const ApplicationRoutes = createBrowserRouter(
             <Route path="/become-a-artist/:request_id/pricing" element={< PriceSetup />} />
             <Route path="/become-a-artist/:request_id/complete-kyc" element={< CompleteKYC />} />
             <Route path="/become-a-artist/:request_id/upload-cerificates" element={< Certificates />} />
-            <Route path="/become-a-artist/:request_id/personal-details" element={< Details/>} />
+            <Route path="/become-a-artist/:request_id/personal-details" element={< Details/>} loader={getUserProfile}/>
             <Route path="/become-a-artist/:request_id/review-request" element={< Review />} />
           </Route>
           <Route path="/become-a-artist/publish-celebration" element={<Celebration />} />
@@ -249,11 +254,12 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
         <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogById(params)}/>
         
-        <Route path='/management/artists-request' element={<GetAllArtists/>} loader={()=>getAllArtists()}/>
-        <Route path='/management/artists-request/:id' element={<SingleArtistInformation/>}/>
-        <Route path='/management/artists-request/:id/certificates' element={<ArtistCertificates/>}/>
-        <Route path='/management/artists-request/:id/gallery' element={<ArtistRequestGallary/>}/>
-
+        <Route path='/management/artists-request' element={<UseLoaderOutletContext/>} loader={()=>getAllArtists()}>
+          <Route path='/management/artists-request' element={<GetAllArtists/>} />
+          <Route path='/management/artists-request/:request_id' element={<SingleArtistInformation/>}/>
+          <Route path='/management/artists-request/:request_id/certificates' element={<ArtistCertificates/>}/>
+          <Route path='/management/artists-request/:request_id/gallery' element={<ArtistRequestGallary/>}/>
+        </Route>
         </Route>
       </Route>
       </Route>

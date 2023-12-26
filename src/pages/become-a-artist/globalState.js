@@ -19,7 +19,7 @@ const ArtistGlobalState = () => {
 
     if(artistRequests && Array.isArray(artistRequests) && request_id){
         
-        var openRequest = artistRequests.find(item=>item._id == request_id);
+        var openRequest = artistRequests.find(item=>item._id == request_id && item.status == 'progress');
 
         if(!openRequest){
             return(

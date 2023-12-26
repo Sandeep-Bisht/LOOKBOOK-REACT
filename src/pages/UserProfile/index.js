@@ -4,7 +4,6 @@ import { Grid, TextField, Button } from "@mui/material";
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import { axiosAuth } from "configs/axiosInstance";
-import ToastNotification from 'toastNotification/toastNatification'
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { styled } from "@mui/material/styles";
@@ -17,6 +16,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { toast } from "react-toastify";
 
 const UserProfile = () => {
   const {
@@ -29,7 +29,6 @@ const UserProfile = () => {
   const userProfile = useLoaderData();
   const [profile, setProfile] = useState(userProfile);
   const [imgSrc, setImgSrc] = useState(userProfile?.image?.thumbnailUrl ? userProfile.image.thumbnailUrl : "/images/avatars/1.png");
-  const [successStatus,setSuccessStatus] = useState(false)
   const [loading,setLoading] = useState(false);
 
   const ImgStyled = styled("img")(({ theme }) => ({
@@ -85,10 +84,11 @@ const UserProfile = () => {
       const response = await axiosAuth.post("/users/setProfile", formData);
       if(response.statusText=="OK")
       {
-        setSuccessStatus(true);
+        toast.success('Profile updated Successfully!');
         setLoading(false)
       }
     } catch (error) {
+      toast.warn('Failed to update profile!');
       console.log(
         error.message ||
         "An error occured while submiting the  user  profile data."
@@ -237,13 +237,6 @@ const UserProfile = () => {
           </Grid>
         </Grid>
       </form>
-      {
-            successStatus &&
-            <ToastNotification
-            content="Profile Updated Successfully"
-            appearance="success"
-            autoDismiss={false}/>
-          }
     </CardContent>
   );
 };

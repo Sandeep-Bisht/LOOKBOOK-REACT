@@ -8,9 +8,9 @@ import TextField from '@mui/material/TextField'
 import CardContent from '@mui/material/CardContent'
 import {useForm}  from 'react-hook-form'
 import { axiosAuth } from 'configs/axiosInstance'
-import ToastNotification from 'toastNotification/toastNatification'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 const BASE_URL = process.env.REACT_APP_APIURL;
 
 
@@ -19,7 +19,6 @@ const BASE_URL = process.env.REACT_APP_APIURL;
 const ProductForm = () => {
   // ** States
   const {register,handleSubmit}=useForm();
-  const [successStatus,setSuccessStatus] = useState(false)
   const [loading,setLoading] = useState(false)
 
   const navigate =useNavigate()
@@ -39,13 +38,14 @@ const ProductForm = () => {
     const response = await axiosAuth.post(`${BASE_URL}/product/product-create`,formData)
     if(response.statusText=="OK")
     {
-      setSuccessStatus(true);
+      toast.success('Product Created Successfully!');
       setLoading(false)
       navigate("/management/products")
     }
   }
   catch(error)
   {
+    toast.warn('Failed to create product!');
     console.log(error,"error")
   }
 }
@@ -97,13 +97,6 @@ const ProductForm = () => {
           </Grid>
         </form>
       </CardContent>
-      {
-            successStatus &&
-            <ToastNotification
-            content="Product Created Successfully"
-            appearance="success"
-            autoDismiss={false}/>
-          }
     </Card>
   )
 }

@@ -12,7 +12,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
-import { useLoaderData } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import Grid from '@mui/material/Grid'
 import { MdOutlinePreview } from "react-icons/md";
 import axios from 'axios'
@@ -25,7 +25,7 @@ import { MdAdd } from "react-icons/md";
 
 const AllArtist = () => {
     // ** States
-    const getAllArtists = useLoaderData();
+    const [getAllArtists] = useOutletContext();
     const [page, setPage] = useState(0)
     const [rowsPerPage, setRowsPerPage] = useState(10)
     const [rows, setRows] = useState([])
@@ -54,7 +54,7 @@ const AllArtist = () => {
     }
 
     const viewArtistHandler = (artistInformation)=>{
-         navigate(`/management/artists-request/${artistInformation?._id}`,{state : artistInformation})
+         navigate(`/management/artists-request/${artistInformation?._id}`)
     }
 
     return (
@@ -91,24 +91,29 @@ const AllArtist = () => {
                         {getAllArtists.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
                             return (
                                 <TableRow hover role='checkbox' tabIndex={-1} key={row._id}>
-                                    {columns.map(column => (
-                                        <TableCell key={column.id} align={column.align}>
-                                            {column.id === 'status' ? (
-                                                <Chip label={row[column.id]} color="primary" /> // Customize chip based on your needs
-                                            ) : column.id === 'action'  ?
-                                            (
-                                                <div className=''>
-                                                <button className='btn' style={{background:"#8c6a54", border:"none", color:"#fff", fontSize:"12px"}} 
+                                    <TableCell>
+                                        {row.profile_id?.fullName}
+                                    </TableCell>
+                                    <TableCell>
+                                        {row?.education}
+                                    </TableCell>
+                                    <TableCell>
+                                        {row?.experience}
+                                    </TableCell>
+                                    <TableCell>
+                                        {row?.languages.join(', ')}
+                                    </TableCell>
+                                    <TableCell>
+                                        <Chip label={row?.status} color="primary" /> 
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className=''>
+                                            <button className='btn' style={{background:"#8c6a54", border:"none", color:"#fff", fontSize:"12px"}} 
                                                 onClick={()=>viewArtistHandler(row)}>
                                                     <span>View <MdOutlinePreview/></span>
-                                                </button>
-                                                </div>
-                                            ) :
-                                            (
-                                                row[column.id]
-                                            )}
-                                        </TableCell>
-                                    ))}
+                                            </button>
+                                        </div>
+                                    </TableCell>
                                 </TableRow>
                             )
                         })}
