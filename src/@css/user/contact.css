@@ -3,7 +3,10 @@
     padding-top: 20px;
     margin-bottom: 55px;
 }
-
+/* .contact-form .css-stc7tk-MuiInputBase-root-MuiOutlinedInput-root:hover:not(.Mui-focused) .MuiOutlinedInput-notchedOutline
+{
+    border-color: #8C6A54;
+} */
 .usr-contact-heading{    font-family: Forum-regular;
 font-size: 40px;
 line-height: 60px;
@@ -59,23 +62,12 @@ letter-spacing: 2px;
 margin-right: 5px;
 }
 
-.form-contact-control {
-    border: 1px solid #8C6A54!important;
-    border-radius: 8px!important;
-    margin-bottom: 18px;
-    color: #6D5D4C!important;
-    display: block;
-    width: 100%;
-    padding: 0.7rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 0.375rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+
+label{
+    color: #8C6A54;
+}
+
+textarea::placeholder{
+    color: #8C6A54;
 }

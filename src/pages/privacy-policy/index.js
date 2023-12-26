@@ -1,7 +1,7 @@
 import React from 'react'
 import '@css/user/privacy.css'
 const PrivacyPage = () => {
-  return (
+  return ( 
     <>
      <section className='usr-privacy-policy-hero pt-5'>
         <div className='container'>

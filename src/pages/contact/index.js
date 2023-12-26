@@ -1,6 +1,8 @@
 import React from "react";
 import "@css/user/contact.css";
 import { useForm } from "react-hook-form";
+import { TextField} from '@mui/material';
+
 const ContactPage = () => {
   const {
     register,
@@ -125,32 +127,49 @@ const ContactPage = () => {
                 <div className="col-md-8">
                   <div className="usr-contact-form">
                     <h1 className="usr-contact-heading">Send a message</h1>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                      <input
+                    <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+                      <TextField
                         defaultValue=""
-                        {...register("example", { required: true })}
-                        placeholder="Name"
+                        {...register("name", { required: true })}
+                        variant="outlined"
+                        label="Name"
+                        fullWidth
+                        margin="normal"
                         className="form-contact-control"
                       />
-                      <input
-                        {...register("exampleRequired", { required: true })}
-                        placeholder="Email*"
-                        className="form-contact-control"
+                      {errors.name && (<span style={{color:"red"}}>This field is required</span>)}
+                      <TextField
+                        {...register("email", { required: true })}
+                        label="Email*"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                    
+                        // className="form-contact-control"
                       />
-                      <input
-                        {...register("exampleRequired", { required: true })}
-                        placeholder="Phone number"
-                        className="form-contact-control"
+                      {errors.email && (<span style={{color:"red"}}>This feild is required</span>)}
+                      <TextField
+                        { ...register("number", { required: true })}
+                        label="Phone number"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        // className="form-contact-control"
                       />
-                      <textarea
-                        {...register("exampleRequired", { required: true })}
-                        placeholder="Message"
-                        className="form-contact-control"
-                        rows="3"
+                      {errors.number && (<span style={{color:"red"}}>This feild is required</span>)}
+                      <TextField
+                        {...register("message", { required: true })}
+                        fullWidth
+                        margin="normal"
+                        label="Message"
+                        // className="form-contact-control"
+                        multiline
+                        rows={4}
+                        variant="outlined"
                       />
-                      {/* {errors.exampleRequired && (
-                        <span>This field is required</span>
-                      )} */}
+                       {errors.message && (
+                        <p style={{color:"red"}}>This field is required</p>
+                      )} 
 
                       <button type="submit" className="usr-contact-btn btn">
                         SEND MESSAGE
