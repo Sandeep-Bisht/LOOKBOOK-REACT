@@ -7,16 +7,26 @@
 {
     border-color: #8C6A54;
 } */
-.usr-contact-heading{    font-family: Forum-regular;
-font-size: 40px;
+.usr-contact-heading{   
+font-family:AvenirLTProHeavy;
+font-size: 60px;
 line-height: 60px;
 color: rgb(109,93,76);
 letter-spacing: 2px;
+font-weight: 700;
 }
 
 .usr-contact-para{
     color: #6D5D4C;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: AvenirLTProBook;
+    letter-spacing: 1.3px;
+}
+
+.usr-contact-text-para{
+    color: #6D5D4C;
+    font-size: 22px;
     font-weight: 400;
     font-family: AvenirLTProBook;
     letter-spacing: 1.3px;
@@ -47,6 +57,8 @@ letter-spacing: 2px;
     border-radius: 6px;
     background: #6D5D4C;
     color: #FCF7F2;
+    padding: 18px 0;
+    width: 180px;
 }
 
 .usr-contact-btn:hover{
@@ -70,4 +82,21 @@ label{
 
 textarea::placeholder{
     color: #8C6A54;
+}
+
+.usr-contact-clendly{
+    padding-top: 60px;
+}
+
+.usr-contact-meeting-btn {
+    border: 1px solid border #6D5D4C;
+    border-radius: 6px;
+    background: #6D5D4C;
+    color: #FCF7F2;
+    padding: 18px 0;
+    width: 200px;
+}
+
+.usr-contact-image{
+    padding: 0 50px;
 }

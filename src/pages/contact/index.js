@@ -1,7 +1,8 @@
 import React from "react";
 import "@css/user/contact.css";
 import { useForm } from "react-hook-form";
-import { TextField} from '@mui/material';
+import { TextField} from '@mui/material'
+import Calendly from "layouts/components/calendly/Calendly";
 
 const ContactPage = () => {
   const {
@@ -21,7 +22,7 @@ const ContactPage = () => {
             <div className="col-md-12">
               <div className="usr-contact-main text-center">
                 <h1 className="usr-contact-heading">CONTACT US</h1>
-                <p className="usr-contact-para">LET’S GET IN TOUCH</p>
+                <p className="usr-contact-text-para">LET’S GET IN TOUCH</p>
               </div>
               <div className="row">
                 <div className="col-md-4 usr-contact-part">
@@ -126,7 +127,7 @@ const ContactPage = () => {
                 </div>
                 <div className="col-md-8">
                   <div className="usr-contact-form">
-                    <h1 className="usr-contact-heading">Send a message</h1>
+                    <p className="usr-contact-text-para">Send a message</p>
                     <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
                       <TextField
                         defaultValue=""
@@ -170,10 +171,11 @@ const ContactPage = () => {
                        {errors.message && (
                         <p style={{color:"red"}}>This field is required</p>
                       )} 
-
+                       <div className="mt-3">
                       <button type="submit" className="usr-contact-btn btn">
                         SEND MESSAGE
                       </button>
+                      </div>
                     </form>
                   </div>
                 </div>
@@ -182,12 +184,31 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-      <section>
+
+
+      <section className="usr-contact-clendly">
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
-                    <div className="usr-contact-date text-center">
-                        <h1>SCHEDULE A MEETING</h1>
+                    <div className="usr-contact-text text-center">
+                        <p className="usr-contact-text-para">SCHEDULE A MEETING</p>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-4">
+                        <div className="usr-contact-date">
+                            <Calendly/>
+                        </div>
+                        <div className="mt-4">
+                        <button type="submit" className="usr-contact-meeting-btn btn">
+                        SCHEDULE A MEETING
+                      </button></div>
+                            
+                        </div>
+                        <div className="col-md-8">
+                        <div className="usr-contact-image">
+                                <img src="images/beauty.jpg" className="img-fluid"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
