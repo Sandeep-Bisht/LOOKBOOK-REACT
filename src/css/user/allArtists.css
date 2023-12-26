@@ -1,0 +1,125 @@
+.usr-all-artist .usr-all-artist-card {
+    height: 450px;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .usr-all-artist .usr-all-artist-card-wrapper {
+    position: relative;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-favourite {
+    position: absolute;
+    z-index: 9;
+    right: 10px;
+    top: 5px;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-favourite .usr-all-artist-card-favourite-button {
+    border: none;
+    background-color: transparent;
+    color: #fefefe;
+    font-size:24px ;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-list .slick-track .slick-slide img {
+    height: 300px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-arrow {
+    display: none !important;
+  }
+  
+  .usr-all-artist .usr-all-artist-card:hover .slick-arrow {
+    display: block !important;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-prev:before,
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-next:before{
+    font-size: 24px;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-prev {
+    left: 10px;
+    z-index: 9;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-next {
+    right: 10px;
+    z-index: 9;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-dots {
+    bottom: 10px;
+    z-index: 9;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-dots li {
+    margin: 0;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-dots li.slick-active button:before,
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-dots li button:before {
+    color: #fefefe;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-prev.slick-disabled:before,
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-next.slick-disabled:before {
+    display: none;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-card-rating {
+    color: #6D5D4C;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-family: Avenir LT Pro;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-card-rating svg {
+    margin-right: 10px;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-card-name {
+    color: #6D5D4C;
+    font-family: Forum;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-card-date,
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-prize-list .usr-all-artist-card-tag {
+    color: #949393;
+    font-family: Avenir LT Pro;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-prize-list span {
+    display: block;
+  }
+  
+  .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-prize-list .usr-all-artist-card-prize {
+    color: #6D5D4C;
+    font-family: Avenir Next LT Pro;
+    font-size: 12.277px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 10px;
+  }

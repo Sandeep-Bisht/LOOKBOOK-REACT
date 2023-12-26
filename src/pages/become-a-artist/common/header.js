@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Logo from '@core/assets/images/main-logo.png'
 
 const BecomeAristHeader = () => {
   const navigate = useNavigate();
@@ -11,13 +12,13 @@ const BecomeAristHeader = () => {
           <Link className="navbar-brand" to="/">
             <span className="main-logo">
               <h1>
-              <img src="images/main-logo.png" className="img-fluid" height={35}/>
+              <img src={Logo} className="img-fluid" width={180}/>
               </h1>
             </span>
           </Link>
           </div>
           <div className="col-md-6 save-exit-button">
-            <button className="btn" type="button" onClick={()=>navigate('/')}>Save & Exit</button>
+            <button className="btn px-3" type="button" onClick={()=>navigate('/')}>Save & Exit</button>
           </div>
         </div>
       </div>

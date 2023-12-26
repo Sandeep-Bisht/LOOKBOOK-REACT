@@ -67,6 +67,9 @@ import Footer from 'layouts/components/footer/footer'
 import ArtistRequestGallary from 'pages/artistRequestGallary'
 import ContactPage from 'pages/contact'
 import ArtistSingle from 'pages/artistSingle'
+import AllArtists from 'pages/all-artists'
+import { getAllArtistRequest } from 'configs/initialapis'
+import { getHomepageData } from 'configs/initialapis'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -163,24 +166,40 @@ const CommonLayout = () =>{
 
 const UseLoaderOutletContext = () =>{
   const loaderData = useLoaderData();
-  console.log(loaderData,"check loader data")
   return <Outlet context={[loaderData]} />
+}
+
+const MainWrapper = () =>{
+
+  const location = useLocation()
+
+  console.log(location ,'location is this')
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  },[location])
+  return <Outlet/>;
 }
 
 const ApplicationRoutes = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
+    <Route element={<MainWrapper/>}>
       {/* Normal component */}
       <Route element={<NormalComponents />}>
         <Route element={<CommonLayout/>}>
-          <Route index path="/" element={<Homepage />} />
-          <Route path="/artist/:artist_id" element={<ArtistSingle/>}/>
+          <Route index path="/" element={<Homepage />} loader={getHomepageData}/>
+          <Route path='/artists' element={<AllArtists/>} loader={getAllArtists}/>
+          <Route path="/artists/:artist_id" element={<ArtistSingle/>}/>
           <Route path='/terms-conditions' element={<TermsPage/>}/>
           <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
           <Route path='/contact' element={<ContactPage/>}/>
+          
           <Route element={<CheckLoggedIn/>}>
             <Route path="/login" element={<LoginPage />} />
           </Route>
+
           <Route element={<RequireAuth allowedRoles={[roles.user,roles.artist]} />}>
             <Route path="/user">
               <Route
@@ -258,7 +277,7 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
         <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogById(params)}/>
         
-        <Route path='/management/artists-request' element={<UseLoaderOutletContext/>} loader={()=>getAllArtists()}>
+        <Route path='/management/artists-request' element={<UseLoaderOutletContext/>} loader={()=>getAllArtistRequest()}>
           <Route path='/management/artists-request' element={<GetAllArtists/>} />
           <Route path='/management/artists-request/:request_id' element={<SingleArtistInformation/>}/>
           <Route path='/management/artists-request/:request_id/certificates' element={<ArtistCertificates/>}/>

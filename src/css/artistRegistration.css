@@ -2,7 +2,6 @@
 .artist-wrapper-ar {
   height: 100vh;
   position: relative;
-  padding-top: 90px;
   padding-bottom: 90px;
   overflow-y: auto;
 }
@@ -14,9 +13,9 @@
 
 .artist-header {
   position: sticky;
-  width: 100%;
   top: 0;
-  z-index: 10001;
+  width: 100%;
+  z-index: 999;
   background-color: #fff;
   box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.03);
 }
@@ -29,10 +28,9 @@
   background: #fcf7f2;
 }
 
-.artist-header .became-artist {
-  margin-bottom: 15px;
+/* .artist-header .became-artist {
   padding: 10px 0px 10px 0px;
-}
+} */
 
 .artist-header .save-exit-button {
   display: flex;
@@ -44,7 +42,6 @@
   background-color: #6d5d4c;
   border-radius: 15px;
   color:#fff;
-  height:42px
 }
 
 .about .selected {
@@ -724,11 +721,6 @@ img:hover .showbutton-image.drop-shadow-delete {
 .artists-detail-heading{
   font-size: 16px;
   font-weight: 500;
-}
-.number-verified-otp input{
-  width: 45px!important;
-  height: 40px!important;
-  margin-left: 5px;
 }
 
 
