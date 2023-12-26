@@ -7,7 +7,7 @@ import FormLayouts from 'pages/form-layouts'
 import LoginPage from 'pages/login'
 import MUITable from 'pages/tables'
 import Services from 'pages/servicesCreated'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/UserProfile'
@@ -159,8 +159,10 @@ const CommonLayout = () =>{
   </>)
 }
 
+
 const UseLoaderOutletContext = () =>{
   const loaderData = useLoaderData();
+  console.log(loaderData,"check loader data")
   return <Outlet context={[loaderData]} />
 }
 
