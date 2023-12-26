@@ -182,6 +182,17 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
+      <section>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="usr-contact-date text-center">
+                        <h1>SCHEDULE A MEETING</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
     </div>
   );
 };
