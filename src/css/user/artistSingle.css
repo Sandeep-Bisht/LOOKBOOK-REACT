@@ -1,0 +1,233 @@
+.usr-artist-single
+{
+    background-color: #fcf7f2;
+    padding: 60px 0;
+}
+.usr-artist-single .carousel-root
+{
+    position: relative;
+}
+.usr-artist-single-carousel .carousel-slider img
+{
+    height:450px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+}
+.usr-artist-single-carousel .carousel .carousel-status
+{
+    display: none;
+}
+.usr-artist-single-carousel .control-dots
+{
+    display: none;
+}
+.usr-artist-single-carousel .carousel .thumbs
+{
+    display: flex;
+    justify-content: space-between;
+    padding:0 15px;
+    margin-bottom: 0;
+}
+.usr-artist-single-carousel .carousel .slider-wrapper
+{
+    border-radius: 18px;
+}
+
+.usr-artist-single-carousel .carousel .thumbs-wrapper
+{
+   margin: 20px 0;
+}
+.usr-artist-single-carousel .carousel .thumb
+{
+    width: 112px!important;
+ height: 90px;
+ border-radius: 18px;
+background:  #FEFEFE;
+border:0;
+padding: 4px;
+box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
+
+}
+.usr-artist-single-carousel .carousel .thumb img{
+    border-radius: 18px;
+    width: 100%;
+    height: 100%;
+}
+.usr-artist-single-carousel .carousel .thumb.selected,.usr-artist-single-carousel .carousel .thumb:hover
+{
+    background: #6D5D4C;
+    border:0;
+}
+.usr-artist-single-carousel .carousel .thumb:last-child
+{
+    margin-right: 0;
+  
+}
+.usr-artist-single-carousel .carousel .control-arrow,.usr-artist-single-carousel .carousel.carousel-slider .control-arrow
+{
+   opacity: 1;
+}
+.usr-artist-single-carousel .carousel .control-next.control-arrow:before{
+    content: url('../../@core/assets/images/Play.png');
+    border: 0;
+    position: absolute;
+    bottom: 15px;
+    right: 35px;
+    
+}
+.usr-artist-single-carousel .carousel .control-prev.control-arrow:before{
+    content: url('../../@core/assets/images/Play.png');
+    border: 0;
+    transform: rotate(180deg);
+    position: absolute;
+    bottom: 23px;
+    left: 35px;
+}
+
+.usr-artist-single-carousel .carousel.carousel-slider .control-arrow:hover
+{
+    background-color: transparent;
+}
+.usr-artist-single-carousel .carousel.carousel-slider
+{
+   position: static!important;
+}
+
+
+/* ---------------------------saurabhcss------------------------- */
+.usr-detail-card {
+    background-color: #fefefe;
+    border-radius: 18px;
+    padding: 25px;
+}
+
+.usr-detail-card .usr-artist-details-tag {
+    border-bottom: 1px solid #6D5D4C;
+}
+
+
+.usr-detail-card .usr-artist-details-tag .usr-name h3 {
+    font-size: 30px;
+    font-family: AvenirLTProLight;
+    font-style: normal;
+    font-weight: 400;
+    background-color: #6D5D4C;
+    padding: 10px 30px;
+    color: #fefefe;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    margin-bottom: 0;
+}
+
+.usr-detail-card .usr-artist-details-tag .usr-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.usr-detail-card .usr-artist-details-tag .usr-name .rating {
+    background-color: #6D5D4C;
+    padding: 10px;
+    color: #fefefe;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.usr-detail-card .usr-artist-details-tag .usr-name .rating svg {
+    margin-right: 10px;
+}
+
+.usr-detail-card .usr-artist-details-tag .usr-rating .usr-access-details {
+    padding: 10px 20px 0;
+}
+
+.usr-detail-card .usr-artist-charges {
+    background-color: #fcf7f2;
+    margin: 30px 0;
+    padding: 15px 20px;
+    border-radius: 18px;
+}
+
+.usr-detail-card .usr-artist-charges p,
+.usr-detail-card .usr-artist-details-tag .usr-rating .usr-access-details .usr-globally p {
+    margin-bottom: 4px;
+}
+
+.usr-detail-card .usr-artist-order {
+    background-color: #fcf7f2;
+    margin: 0 0 30px 0;
+    padding: 15px 20px;
+    border-radius: 18px;
+}
+
+.usr-detail-card .usr-artist-details-tag .usr-rating {
+    display: flex;
+    justify-content: space-between;
+}
+
+.usr-detail-card .usr-artist-order p {
+    margin-bottom: 0;
+}
+
+.usr-detail-card .usr-artist-details-tag .usr-rating .usr-verifed-svg {
+    display: flex;
+    align-items: end;
+}
+
+.usr-detail-card .usr-artist-order h6,
+.usr-detail-card .usr-artist-charges h6,
+.usr-detail-card .usr-artist-details-tag .usr-rating .usr-verifed-svg p,
+.usr-detail-card .usr-artist-charges p span,
+.usr-detail-card .usr-artist-details-tag .usr-rating .usr-access-details .usr-experience p span {
+    color: #6D5D4C;
+    font-family: Avenir LT Pro;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.usr-detail-card .usr-artist-charges p span,
+.usr-detail-card .usr-artist-details-tag .usr-rating .usr-access-details .usr-experience p span {
+    font-style: italic;
+    letter-spacing: 1px;
+    margin-left: 5px;
+}
+
+.usr-detail-card .usr-artist-charges p,
+.usr-detail-card .usr-artist-order p,
+.usr-detail-card .usr-artist-details-tag .usr-rating .usr-access-details .usr-address p,
+.usr-detail-card .usr-artist-details-tag .usr-rating .usr-access-details .usr-globally p,
+.usr-detail-card .usr-artist-details-tag .usr-rating .usr-access-details .usr-experience p {
+    color: #6D5D4C;
+    font-family: Avenir LT Pro;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.usr-detail-card .usr-card-booking-button {
+    border-top: 1px solid #6D5D4C;
+    padding: 30px 0 0 0;
+}
+
+.usr-detail-card .usr-card-booking-button .usr-btn {
+    background-color: #6D5D4C;
+    border: none;
+    color: #fcf7f2;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-family: Avenir LT Pro;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.usr-detail-card .usr-card-booking-button .usr-btn:hover {
+    background-color: #8C6A54;
+}

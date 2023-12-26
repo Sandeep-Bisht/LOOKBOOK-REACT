@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../../../css/footer.css'
-
+import instagram from "@core/assets/footer/instagram.png"
+import facebook from "@core/assets/footer/Facebook.png"
+import twitter from "@core/assets/footer/twitter.png"
+import linkedin from "@core/assets/footer/LinkedIn.png"
+import youtube from "@core/assets/footer/youtube.png"
 const Footer = () => {
     return (
         <>
@@ -13,11 +17,13 @@ const Footer = () => {
                             <div className="row usr-footer">
                                 <div className="col-md-2 usr-recent-icon">
                                     <ul className="usr-icon-list">
-                                        <li><a href="#"><img src="images/footer/instagram.png" /></a></li>
-                                        <li><a href="#"><img src="images/footer/Facebook.png" /></a></li>
-                                        <li><a href="#"><img src="images/footer/twitter.png" /></a></li>
-                                        <li><a href="#"><img src="images/footer/LinkedIn.png" /></a></li>
-                                        <li><a href="#"><img src="images/footer/youtube.png" /></a></li>
+                                        <li><a href="#">
+                                            </a></li>
+                                        <li><a href="#"><img src={instagram} alt='footer-social-icon' /></a></li>
+                                        <li><a href="#"><img src={facebook} alt='footer-social-icon' /></a></li>
+                                        <li><a href="#"><img src={twitter} alt='footer-social-icon' /></a></li>
+                                        <li><a href="#"><img src={linkedin} alt='footer-social-icon' /></a></li>
+                                        <li><a href="#"><img src={youtube} alt='footer-social-icon' /></a></li>
                                     </ul>
                                 </div>
                                 <div className="col-md-6 usr-footer-menu">

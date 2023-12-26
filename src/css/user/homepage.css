@@ -242,10 +242,10 @@
 
 .usr-artist-area .card {
     position: sticky;
-    top: 100px;
+    top: 25vh;
     border: 0;
     background: transparent;
-    margin-bottom: var(--cardTopPadding);
+    margin-bottom: 25vh;
 }
 
 .usr-artist-area .card img {
