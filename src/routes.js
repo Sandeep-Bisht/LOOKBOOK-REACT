@@ -166,13 +166,26 @@ const CommonLayout = () =>{
 
 const UseLoaderOutletContext = () =>{
   const loaderData = useLoaderData();
-  console.log(loaderData,"check loader data")
   return <Outlet context={[loaderData]} />
+}
+
+const MainWrapper = () =>{
+
+  const location = useLocation()
+
+  console.log(location ,'location is this')
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  },[location])
+  return <Outlet/>;
 }
 
 const ApplicationRoutes = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
+    <Route element={<MainWrapper/>}>
       {/* Normal component */}
       <Route element={<NormalComponents />}>
         <Route element={<CommonLayout/>}>
