@@ -284,36 +284,23 @@
 
 
 /* -----------------------usr-overlapping-multiple-section-wrapper -------------- */
-.usr-overlapping-multiple-section-wrapper {}
 
-.usr-overlapping-multiple-section-wrapper {
-    /* position: relative;
-    width: 100%; */
-}
-
-.usr-overlapping-multiple-section-wrapper .usr-overlap-section {
-    /* position: sticky;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background: #FCF7F2;
-    overflow-y: scroll; */
-}
 
 .usr-overlapping-multiple-section-wrapper .usr-overlap-section::-webkit-scrollbar {
     width: 0 !important;
 }
 
-.usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(1) {}
+
 
 .usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(2) {
     background-color: #FCF7F2;
-    /* height: 100vh; */
+  
 }
 
 .usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(3) {
     background-color: #fff;
-    /* height: 100vh; */
+  
+
 }
 
 .usr-overlapping-multiple-section-wrapper .usr-overlap-section:nth-child(4) {
@@ -437,7 +424,7 @@
     padding: 60px 0;
 }
 
-.usr-featured-artist-card {}
+
 
 .usr-featured-artist-card {
     position: relative;
@@ -485,7 +472,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10000;
+    z-index: 3;
     width: 100%;
     height: 180px;
     transition: 0.5s;
