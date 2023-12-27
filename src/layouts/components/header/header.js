@@ -4,12 +4,10 @@ import '@css/header.css'
 import { checkAuth } from "configs/auth";
 import UserMenu from "./userMenu";
 import { AccountOutline } from "mdi-material-ui";
-import mainLogo from "@core/assets/header/main-logo.png"
-
+import mainLogo from "@core/assets/header/main-logo.png";
 import DatePicker from "react-multi-date-picker";
-import { allServicesDetails } from "configs/initialapis";
 
-const Header = () => {
+const Header = ({ city, service }) => {
   const [currentUser, setCurrentUser] = useState(checkAuth());
   const [showSearchNavbar, setShowSearchNavbar] = useState(false);
   const location = useLocation();
@@ -17,15 +15,12 @@ const Header = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedService, setSelectedService] = useState(null);
 
-  useEffect(() => {
-    getAllServices();
-  }, []);
+  const today = new Date();
+  const tomorrow = new Date();
 
-  const getAllServices = async () => {
-    const response = await allServicesDetails();
-    console.log(response, "this is my data ");
-    setAllServices(response);
-  };
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  const [values, setValues] = useState([]);
 
   const handleLocationSelect = (location) => {
     setSelectedLocation(location);
@@ -37,18 +32,14 @@ const Header = () => {
     console.log("Selected service:", service);
   };
 
-  const today = new Date();
-  const tomorrow = new Date();
-
-  tomorrow.setDate(tomorrow.getDate() + 1);
-
-  const [values, setValues] = useState([today, tomorrow]);
-
   useEffect(() => {
     setCurrentUser(checkAuth());
   }, [location]);
 
-  console.log("this is my date", values);
+  const isPastDate = (today) => {
+    const currentDate = new Date();
+    return today < currentDate;
+  };
 
   return (
     <header className="header" id="header">
@@ -57,7 +48,7 @@ const Header = () => {
           <Link className="navbar-brand" to="/">
             <span className="main-logo">
               <h1>
-                <img src="images/main-logo.png" className="img-fluid " />
+                <img src={mainLogo} className="img-fluid " />
               </h1>
             </span>
           </Link>
@@ -120,9 +111,9 @@ const Header = () => {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" to="/artists">
                         All Artist
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -149,13 +140,8 @@ const Header = () => {
                     </button>
                     <div className="row">
                       <div className="col-lg-4 px-0">
-                        <div className="dropdown">
-                          <button
-                            className="custom-drodown-btn dropdown-toggle"
-                            type="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
+                        <div className="">
+                          <button className="custom-drodown-btn " type="button">
                             <div className="left">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -186,33 +172,12 @@ const Header = () => {
                               </p>
                             </div>
                           </button>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Another action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Something else here
-                              </a>
-                            </li>
-                          </ul>
                         </div>
                       </div>
+
                       <div className="col-lg-4 px-0">
-                        <div className="dropdown">
-                          <button
-                            className="custom-drodown-btn dropdown-toggle "
-                            type="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
+                        <div className="">
+                          <button className="custom-drodown-btn" type="button">
                             <div className="left">
                               <svg
                                 width="21"
@@ -263,32 +228,14 @@ const Header = () => {
                               </p>
                             </div>
                           </button>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Another action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Something else here
-                              </a>
-                            </li>
-                          </ul>
                         </div>
                       </div>
+
                       <div className="col-lg-4 px-0">
-                        <div className="dropdown">
+                        <div className="">
                           <button
-                            className="custom-drodown-btn dropdown-toggle border-0"
+                            className="custom-drodown-btn border-0"
                             type="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
                           >
                             <div className="left">
                               <svg
@@ -321,23 +268,6 @@ const Header = () => {
                               </p>
                             </div>
                           </button>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Another action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Something else here
-                              </a>
-                            </li>
-                          </ul>
                         </div>
                       </div>
                     </div>
@@ -363,7 +293,7 @@ const Header = () => {
               {showSearchNavbar && (
                 <li className="nav-item w-100">
                   <form className="home-selction-form">
-                    <button className=" custom-search">
+                    <Link className=" custom-search" to="/search">
                       <svg
                         width={46}
                         height={45}
@@ -376,7 +306,7 @@ const Header = () => {
                           fill="#FEFEFE"
                         />
                       </svg>
-                    </button>
+                    </Link>
                     <div className="row">
                       <div className="col-lg-4 px-0">
                         <div className="dropdown">
@@ -414,57 +344,32 @@ const Header = () => {
                               <p className="mb-0">
                                 <span className="nav-link">Location</span>
                               </p>
-                              {selectedLocation && <span>{selectedLocation}</span> }
+                              {selectedLocation && (
+                                <span>{selectedLocation}</span>
+                              )}
                             </div>
                           </button>
                           <ul className="dropdown-menu">
-                            <li>
-                              <span
-                                className="dropdown-item"
-                                onClick={() => handleLocationSelect("Dehradun")}
-                              >
-                                Dehradun
-                              </span>
-                            </li>
-                            <li>
-                              <span
-                                className="dropdown-item"
-                                onClick={() => handleLocationSelect("Delhi")}
-                              >
-                                Delhi
-                              </span>
-                            </li>
-                            <li>
-                              <span
-                                className="dropdown-item"
-                                onClick={() => handleLocationSelect("Mumbai")}
-                              >
-                                Mumbai
-                              </span>
-                            </li>
-                            <li>
-                              <span
-                                className="dropdown-item"
-                                onClick={() =>
-                                  handleLocationSelect("Chandigarh")
-                                }
-                              >
-                                Chandigarh
-                              </span>
-                            </li>
-                            <li>
-                              <span
-                                className="dropdown-item"
-                                onClick={() => handleLocationSelect("Noida")}
-                              >
-                                Noida
-                              </span>
-                            </li>
+                            {city.map((cityName, index) => {
+                              return (
+                                <li>
+                                  <span
+                                    className="dropdown-item"
+                                    onClick={() =>
+                                      handleLocationSelect(cityName)
+                                    }
+                                  >
+                                    {cityName}
+                                  </span>
+                                </li>
+                              );
+                            })}
                           </ul>
                         </div>
                       </div>
+
                       <div className="col-lg-4 px-0">
-                        <div className="dropdown">
+                        {/* <div className="dropdown">
                           <button
                             className="custom-drodown-btn dropdown-toggle "
                             type="button"
@@ -515,22 +420,25 @@ const Header = () => {
                                 />
                               </svg>
                             </div>
+                            
                             <div className="right">
                               <p className="mb-0">
-                                <span className="nav-link">Date ch</span>
+                                <span className="nav-link">Date</span>
                               </p>
                             </div>
-                          </button>
+                            </button>
+                        </div> */}
+                        <DatePicker
+      value={values}
+      onChange={setValues}
+      multiple
+      minDate={today}
+    />
 
-                          <ul className="dropdown-menu">
-                            <DatePicker
-                              multiple
-                              value={values}
-                              onChange={setValues}
-                            />
-                          </ul>
-                        </div>
+
+                          
                       </div>
+
                       <div className="col-lg-4 px-0">
                         <div className="dropdown">
                           <button
@@ -567,24 +475,27 @@ const Header = () => {
                             <div className="right">
                               <p className="mb-0">
                                 <span className="nav-link">Artist</span>
-                                
                               </p>
-                              {selectedService && <span>{selectedService}</span> }
+                              {selectedService && (
+                                <span>{selectedService}</span>
+                              )}
                             </div>
                           </button>
                           <ul className="dropdown-menu">
-                            {allServices && allServices.map((service, index)=>{
-                              return(
-                               <li>
-                               <span className="dropdown-item" onClick={() => handleServiceSelect(service.title)}>
-                                 {service.title}
-                               </span>
-                             </li>
-                              )
+                            {service.map((service, index) => {
+                              return (
+                                <li>
+                                  <span
+                                    className="dropdown-item"
+                                    onClick={() =>
+                                      handleServiceSelect(service.title)
+                                    }
+                                  >
+                                    {service.title}
+                                  </span>
+                                </li>
+                              );
                             })}
-                            
-                           
-                         
                           </ul>
                         </div>
                       </div>

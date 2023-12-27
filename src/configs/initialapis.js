@@ -143,3 +143,12 @@ export const getArtistRequestByID = async({params}) =>{
   return error.message || "An error occured while trying to get artists request."
    }
 }
+
+export const getSearchParameters = async () => {
+  try {
+    const response = await axiosAuth.get('/search/getInitialData');
+    return response.data
+  } catch (error) {
+      return error.message || "An error occured while trying to get search parameters."
+  }
+};  
