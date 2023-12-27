@@ -71,6 +71,7 @@ import AllArtists from 'pages/all-artists'
 import { getAllArtistRequest } from 'configs/initialapis'
 import { getHomepageData } from 'configs/initialapis'
 import { getArtistRequestByID } from 'configs/initialapis'
+import Search from 'pages/search/searchPage'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -196,6 +197,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
           <Route path='/contact' element={<ContactPage/>}/>
           
+          <Route path='/search' element={< Search /> } />
           <Route element={<CheckLoggedIn/>}>
             <Route path="/login" element={<LoginPage />} />
           </Route>
@@ -287,6 +289,7 @@ const ApplicationRoutes = createBrowserRouter(
         </Route>
         </Route>
       </Route>
+      
       </Route>
       {/* end admin auth routes */}
     </Route>
