@@ -3,6 +3,11 @@ import "@css/user/contact.css";
 import { useForm } from "react-hook-form";
 import { TextField} from '@mui/material'
 import Calendly from "layouts/components/calendly/Calendly";
+import instagram from "@core/assets/contact/instagram.png"
+import facebook from "@core/assets/contact/Facebook.png"
+import twitter from "@core/assets/contact/twitter.png"
+import linkedin from "@core/assets/contact/LinkedIn.png"
+import youtube from "@core/assets/contact/youtube.png"
 
 const ContactPage = () => {
   const {
@@ -19,10 +24,12 @@ const ContactPage = () => {
       <section>
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <div className="usr-contact-main text-center">
+            <div className="col-md-12 usr-contact-main">
+              <div className="text-center">
                 <h1 className="usr-contact-heading">CONTACT US</h1>
-                <p className="usr-contact-text-para">LET’S GET IN TOUCH</p>
+                <p className="usr-contact-main-para">LET’S GET IN TOUCH</p>
+              </div>
+              </div>
               </div>
               <div className="row">
                 <div className="col-md-4 usr-contact-part">
@@ -30,8 +37,8 @@ const ContactPage = () => {
                     <div className="usr-contact-number">
                       <span>
                         <svg
-                          width="30"
-                          height="30"
+                          width="20"
+                          height="20"
                           viewBox="0 0 30 30"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -48,8 +55,8 @@ const ContactPage = () => {
                     <div className="usr-contact-place">
                       <span className="me-2">
                         <svg
-                          width="30"
-                          height="30"
+                          width="20"
+                          height="20"
                           viewBox="0 0 30 30"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -68,8 +75,8 @@ const ContactPage = () => {
                     <div className="usr-contact-mail">
                       <span className="me-2">
                         <svg
-                          width="30"
-                          height="30"
+                          width="20"
+                          height="20"
                           viewBox="0 0 30 30"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -92,42 +99,23 @@ const ContactPage = () => {
                       <p className="usr-contact-para">example@email.com</p>
                     </div>
                     <div className="usr-contact-follow">
-                      <h1 className="usr-contact-heading">Follow us</h1>
+                      <p className="usr-contact-text-para">Follow us</p>
                       <div className="usr-contact-menu">
                         <ul className="usr-contact-list-menu">
-                          <li>
-                            <a href="#">
-                              <img src="images/footer/instagram.png" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <img src="images/footer/Facebook.png" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <img src="images/footer/twitter.png" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <img src="images/footer/LinkedIn.png" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <img src="images/footer/youtube.png" />
-                            </a>
-                          </li>
+                        <li><a href="#"><img src={instagram} alt='contact-social-icon' /></a></li>
+                                        <li><a href="#"><img src={facebook} alt='contact-social-icon' /></a></li>
+                                        <li><a href="#"><img src={twitter} alt='contact-social-icon' /></a></li>
+                                        <li><a href="#"><img src={linkedin} alt='contact-social-icon' /></a></li>
+                                        <li><a href="#"><img src={youtube} alt='contact-social-icon' /></a></li>
                         </ul>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="col-md-8">
+                    
                   <div className="usr-contact-form">
-                    <p className="usr-contact-text-para">Send a message</p>
+                  <p className="usr-contact-text-para">Send a message</p>
                     <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
                       <TextField
                         defaultValue=""
@@ -180,18 +168,17 @@ const ContactPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+          
         </div>
       </section>
 
 
-      <section className="usr-contact-clendly">
+      <section className="usr-contact-clendly bg-white">
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
                     <div className="usr-contact-text text-center">
-                        <p className="usr-contact-text-para">SCHEDULE A MEETING</p>
+                        <p className="usr-contact-calendly-text-para">SCHEDULE A MEETING</p>
                     </div>
                     <div className="row">
                         <div className="col-md-4">

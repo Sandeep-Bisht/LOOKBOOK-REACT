@@ -1,7 +1,10 @@
 
 .usr-contact-main{
-    padding-top: 20px;
-    margin-bottom: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    width: 100%;
 }
 /* .contact-form .css-stc7tk-MuiInputBase-root-MuiOutlinedInput-root:hover:not(.Mui-focused) .MuiOutlinedInput-notchedOutline
 {
@@ -9,27 +12,38 @@
 } */
 .usr-contact-heading{   
 font-family:AvenirLTProHeavy;
-font-size: 60px;
+font-size: 90px;
 line-height: 60px;
 color: rgb(109,93,76);
 letter-spacing: 2px;
 font-weight: 700;
 }
 
+
+
 .usr-contact-para{
     color: #6D5D4C;
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 400;
     font-family: AvenirLTProBook;
     letter-spacing: 1.3px;
+    padding-top: 7px;
 }
-
+.usr-contact-main-para{
+    color: #6D5D4C;
+    font-size: 30px;
+    font-weight: 400;
+    font-family: AvenirLTProBook;
+    letter-spacing: 1.3px;
+    padding-top: 27px;
+}
 .usr-contact-text-para{
     color: #6D5D4C;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: 400;
     font-family: AvenirLTProBook;
     letter-spacing: 1.3px;
+    
 }
 
 .usr-contact-list-menu{
@@ -43,21 +57,31 @@ font-weight: 700;
 }
 
 .usr-contact-form{
-    padding: 0 50px
+    padding: 0 0 0 50px;
+    position: relative;
 
 }
-.usr-contact-part{
-    border-right: 1px solid;
-    padding-right: 40px;
-    align-items: center;
-    display: flex;
+.usr-contact-form::before{
+    content: '';
+    position: absolute;
+    background-color: #8C6A54;
+    width: 1px;
+    height: 71%;
+    bottom: 70px;
+    left: 0;
+
+
 }
+/* .usr-contact-part{
+    border-right: 1px solid;
+   
+} */
 .usr-contact-btn{
     border: 1px solid border #6D5D4C;
     border-radius: 6px;
     background: #6D5D4C;
     color: #FCF7F2;
-    padding: 18px 0;
+    padding: 10px 0;
     width: 180px;
 }
 
@@ -65,9 +89,13 @@ font-weight: 700;
     background-color: #6D5D4C;
     color: #FCF7F2;
 }
+.usr-contact-main-details{
+    margin: 80px 60px 0 0
+}
 
 .usr-contact-main-details span{
     color: #6D5D4C;
+    font-weight: 500;
 }
 
 .usr-contact-main-details svg{
@@ -85,7 +113,8 @@ textarea::placeholder{
 }
 
 .usr-contact-clendly{
-    padding-top: 60px;
+    margin-top: 90px;
+    height: 100vh;
 }
 
 .usr-contact-meeting-btn {
@@ -93,10 +122,23 @@ textarea::placeholder{
     border-radius: 6px;
     background: #6D5D4C;
     color: #FCF7F2;
-    padding: 18px 0;
+    padding: 10px 0;
     width: 200px;
 }
 
 .usr-contact-image{
-    padding: 0 50px;
+    padding: 0 0 0 50px;
+}
+
+.usr-contact-image img{
+    border-radius: 16px;
+}
+.usr-contact-calendly-text-para{
+    color: #6D5D4C;
+    font-size: 30px;
+    font-weight: 400;
+    font-family: AvenirLTProBook;
+    letter-spacing: 1.3px;
+    padding-top: 65px;
+    margin-bottom: 50px;
 }

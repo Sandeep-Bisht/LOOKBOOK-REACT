@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import React from 'react'
 import { Helmet } from 'react-helmet';
+import "../../../css/Calendly.css"
 const Calendly = () => {
     useEffect(() => {
         const script = document.createElement('script');
@@ -25,7 +26,7 @@ const Calendly = () => {
       <div
         className="calendly-inline-widget"
         data-url="https://calendly.com/sandeepbisht29/30min"
-        style={{ minWidth: '300px', height: '433px' , borderRadius:'5px', border:'1px solid #8C6A54'}}
+        style={{ minWidth: '300px', height: '398px' , borderRadius:'16px', border:'1px solid #8C6A54'}}
       />
     </div>
   );
