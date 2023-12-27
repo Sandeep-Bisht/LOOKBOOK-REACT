@@ -46,7 +46,6 @@ const ProductForm = () => {
   catch(error)
   {
     toast.warn('Failed to create product!');
-    console.log(error,"error")
   }
 }
 

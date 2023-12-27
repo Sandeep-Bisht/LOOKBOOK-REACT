@@ -25,9 +25,8 @@ const style = {
 const BASE_URL = process.env.REACT_APP_APIURL;
 
 function SingleArtistInformation() {
-    const [getAllArtists] = useOutletContext();
+    const [artistInformation] = useOutletContext();
     const { request_id } = useParams();
-    const artistInformation = getAllArtists.find((item) => item._id == request_id);
     
     const [openMapModal, setOpenMapModal] = React.useState(false);
     const [remark,setRemark] = useState(artistInformation?.remark ? artistInformation?.remark : '')

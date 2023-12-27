@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/user/contact.css";
+import "@css/user/contact.css";
 import { useForm } from "react-hook-form";
 const ContactPage = () => {
   const {

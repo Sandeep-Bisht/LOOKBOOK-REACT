@@ -2,9 +2,7 @@ import React from 'react'
 import { useOutletContext, useParams } from 'react-router-dom'
 
 function ArtistGallery() {
-  const [getAllArtists] = useOutletContext();
-  const { request_id } = useParams();
-  const artistInformation = getAllArtists.find((item) => item._id == request_id);
+  const [artistInformation] = useOutletContext();
 
   const artistRequestGallery = artistInformation?.gallery;
   return (

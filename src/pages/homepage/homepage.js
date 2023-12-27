@@ -1,9 +1,7 @@
-import EmergingArtist from "../emergingArtist/index.js"
-import FeatureArtist from "pages/featuredArtist/index.js";
-import '../../css/user/homepage.css'
+import EmergingArtist from "./emergingArtist/index.js"
+import '@css/user/homepage.css'
 import Slider from "react-slick";
 import { useLoaderData } from "react-router-dom";
-import NoDataFound from "pages/become-a-artist/common/noDataFound.js";
 
 
 

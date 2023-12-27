@@ -20,7 +20,6 @@ const Review = () => {
         navigate(`/become-a-artist/publish-celebration`)
     }
     catch(error){
-        console.log(error?.response?.data?.message || 'Error found');
         toast.warn(error?.response?.data?.message || 'Unable to submit your request for review.');
     }
   }

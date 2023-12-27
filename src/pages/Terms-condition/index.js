@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../css/user/terms.css'
+import '@css/user/terms.css'
 
 const  TermsPage  = () => {
   return (

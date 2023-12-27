@@ -1,12 +1,7 @@
 import React, { useEffect, useRef,useState } from 'react';
-import { Link } from "react-router-dom";
-import '../../css/user/homepage.css'
-import FeatureArtist from 'pages/featuredArtist';
+import '@css/user/homepage.css'
 
 const EmergingArtist = () => {
-  const progressRef = useRef(7);
-  const startXRef = useRef(0);
-  const isDownRef = useRef(false);
   const [isNextSectionVisible, setNextSectionVisible] = useState(false);
   const [isSticky, setSticky] = useState(false);
 
@@ -219,9 +214,6 @@ const EmergingArtist = () => {
                         </div>
                     </div>
                 </section>
-                {isNextSectionVisible && (
-        <FeatureArtist />
-      )}
 
         </>
 
