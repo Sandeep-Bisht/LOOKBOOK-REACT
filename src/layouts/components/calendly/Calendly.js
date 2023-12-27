@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import React from 'react'
 import { Helmet } from 'react-helmet';
-import "../../../css/Calendly.css"
+import "@css/Calendly.css"
+
 const Calendly = () => {
     useEffect(() => {
         const script = document.createElement('script');
