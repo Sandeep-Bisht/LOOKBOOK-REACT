@@ -41,7 +41,6 @@ const CreateBlog = () => {
       }
     } catch (error) {
       toast.warn('Failed to create Blog!');
-      console.log(error.message || 'error found', 'error');
     }
   };
   

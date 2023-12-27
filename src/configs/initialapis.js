@@ -133,3 +133,13 @@ export const getHomepageData  = async () => {
     return error.message || "An error occurred while trying to get artist requests.";
   }
 };
+
+export const getArtistRequestByID = async({params}) =>{
+  const request_id = params.request_id
+  try {
+    const response = await axiosAuth.get(`/management/artist-request-by-id/${request_id}`);
+    return response.data
+  } catch (error) {
+  return error.message || "An error occured while trying to get artists request."
+   }
+}

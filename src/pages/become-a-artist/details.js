@@ -57,8 +57,6 @@ const Details = () => {
 
   const submitForm = async (data) => {
     setUpdating(true)
-    console.log(data,'submitted')
-
     try {
       const profileSame = areValuesEqual(data, userProfile);
 

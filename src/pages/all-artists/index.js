@@ -4,12 +4,11 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { useLoaderData } from 'react-router-dom';
 import NoDataFound from 'pages/become-a-artist/common/noDataFound';
-import '../../css/user/allArtists.css'
+import '@css/user/allArtists.css'
 
 const AllArtists = () => {
 
   const allArtists = useLoaderData()
-  console.log(allArtists,'all artists')
     
     var settings = {
         dots: true,

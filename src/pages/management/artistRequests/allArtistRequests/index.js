@@ -12,7 +12,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
-import { useOutletContext } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import Grid from '@mui/material/Grid'
 import { MdOutlinePreview } from "react-icons/md";
 import axios from 'axios'
@@ -25,7 +25,7 @@ import { MdAdd } from "react-icons/md";
 
 const AllArtist = () => {
     // ** States
-    const [getAllArtists] = useOutletContext();
+    const getAllArtists = useLoaderData();
     const [page, setPage] = useState(0)
     const [rowsPerPage, setRowsPerPage] = useState(10)
     const [rows, setRows] = useState([])

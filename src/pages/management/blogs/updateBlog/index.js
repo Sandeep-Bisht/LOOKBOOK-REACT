@@ -72,7 +72,6 @@ const UpdateBlog = () => {
      }
    }catch(error){
     toast.warn('Failed to update Blog!');
-    console.log(error,"error")
    }
 
   };

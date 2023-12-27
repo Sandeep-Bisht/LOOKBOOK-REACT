@@ -1,6 +1,6 @@
 import React from "react";
 import ApplicationRoutes from "routes";
-import 'css/common.css'
+import '@css/common.css'
 // Import slick carousel css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

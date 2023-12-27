@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/user/artistSingle.css";
+import "@css/user/artistSingle.css";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import slider1 from "@core/assets/1.jpg"

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../../../css/footer.css'
+import '@css/footer.css'
 import instagram from "@core/assets/footer/instagram.png"
 import facebook from "@core/assets/footer/Facebook.png"
 import twitter from "@core/assets/footer/twitter.png"

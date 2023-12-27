@@ -88,7 +88,6 @@ const SocialLogin = ({redirectUrl}) => {
                           }
                     })
                     .catch((error) => {
-                        console.log(error,'error is this')
                         console.log('error logged in by google')
                     });
               }}

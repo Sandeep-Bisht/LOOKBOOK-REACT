@@ -5,9 +5,7 @@ import PdfIcon from '@core/assets/images/pdfIcon-removebg.png'
 
 function Certificates() {
 
-    const [getAllArtists] = useOutletContext();
-    const { request_id } = useParams();
-    const artistInformation = getAllArtists.find((item) => item._id == request_id);
+    const [artistInformation] = useOutletContext();
 
     const artistCertificates = artistInformation?.certificates;
 

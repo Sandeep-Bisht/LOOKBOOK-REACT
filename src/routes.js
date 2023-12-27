@@ -1,35 +1,35 @@
 import UserLayout from 'layouts/UserLayout'
-import AccountSettings from 'pages/accountSetting'
-import CardBasic from 'pages/cards'
-import Dashboard from 'pages/dashboard'
+import AccountSettings from 'pages/Demo/accountSetting'
+import CardBasic from 'pages/Demo/cards'
+import Dashboard from 'pages/management/dashboard'
 import Error404 from 'pages/error/404'
-import FormLayouts from 'pages/form-layouts'
+import FormLayouts from 'pages/Demo/form-layouts'
 import LoginPage from 'pages/login'
-import MUITable from 'pages/tables'
-import Services from 'pages/servicesCreated'
+import MUITable from 'pages/Demo/tables'
+import Services from 'pages/management/services/servicesCreated'
 import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
-import UserProfile from 'pages/UserProfile'
+import UserProfile from 'pages/user/Profile'
 import { getUserProfile } from 'configs/initialapis'
 import {allServicesDetails} from 'configs/initialapis'
 import {allProductsDetails} from 'configs/initialapis'
 import {getServiceById} from 'configs/initialapis'
 import {getProductById} from 'configs/initialapis'
 import {getBlogById} from 'configs/initialapis'
-import CreateBlog from 'pages/Blog/createBlog'
+import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer } from '@core/context/settingsContext'
 import { SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
 import AboutYou from 'pages/become-a-artist/about'
-import AllServicesDetails from 'pages/allServicesDetails'
-import AllProdutsDetails from 'pages/allProductDetails'
-import ProductForm from 'pages/products'
-import UpdateService from 'pages/updateService/updateService'
-import UpdateProducts from 'pages/updateProduct'
-import UpdateBlog from 'pages/updateBlog'
-import BlogList from 'pages/Blog/blogList'
-import PrivacyPage from 'pages/lookBookPrivacy'
+import AllServicesDetails from 'pages/management/services/allServicesDetails'
+import AllProdutsDetails from 'pages/management/products/allProductDetails'
+import ProductForm from 'pages/management/products/products'
+import UpdateService from 'pages/management/services/updateService'
+import UpdateProducts from 'pages/management/products/updateProduct'
+import UpdateBlog from 'pages/management/blogs/updateBlog'
+import BlogList from 'pages/management/blogs/blogList'
+import PrivacyPage from 'pages/privacy-policy'
 import { getAllBlog } from 'configs/initialapis'
 import DescribeYourself from "pages/become-a-artist/describeYourself";
 import ArtistGallary from "pages/become-a-artist/artistGallary";
@@ -48,8 +48,8 @@ import ArtistGlobalState from 'pages/become-a-artist/globalState'
 import ArtistLocation from 'pages/become-a-artist/location'
 import StepFirst from 'pages/become-a-artist/stepFirst'
 import StepThird from 'pages/become-a-artist/stepThird'
-import Icons from 'pages/icons'
-import GetAllArtists from 'pages/Artists'
+import Icons from 'pages/Demo/icons'
+import GetAllArtists from 'pages/management/artistRequests/allArtistRequests'
 import BecomeAristHeader from 'pages/become-a-artist/common/header'
 import { getWizardData } from 'configs/initialapis'
 import Review from 'pages/become-a-artist/review'
@@ -59,17 +59,18 @@ import Cookies from 'universal-cookie';
 import { jwtDecode } from "jwt-decode";
 import Error401 from 'pages/error/401'
 import SingleArtistInformation from 'pages/singleArtistPage'
-import ArtistCertificates from 'pages/artistCertificates'
-import TermsPage from 'pages/Terms'
+import ArtistCertificates from 'pages/management/artistRequests/artistCertificates'
+import TermsPage from 'pages/Terms-condition'
 import { checkAuth } from 'configs/auth'
 import Header from 'layouts/components/header/header'
 import Footer from 'layouts/components/footer/footer'
-import ArtistRequestGallary from 'pages/artistRequestGallary'
+import ArtistRequestGallary from 'pages/management/artistRequests/artistRequestGallary'
 import ContactPage from 'pages/contact'
-import ArtistSingle from 'pages/artistSingle'
+import ArtistSingle from 'pages/management/artistRequests/artistSingle'
 import AllArtists from 'pages/all-artists'
 import { getAllArtistRequest } from 'configs/initialapis'
 import { getHomepageData } from 'configs/initialapis'
+import { getArtistRequestByID } from 'configs/initialapis'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -173,7 +174,6 @@ const MainWrapper = () =>{
 
   const location = useLocation()
 
-  console.log(location ,'location is this')
   useEffect(()=>{
     window.scrollTo({
       top: 0,
@@ -277,8 +277,10 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
         <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogById(params)}/>
         
-        <Route path='/management/artists-request' element={<UseLoaderOutletContext/>} loader={()=>getAllArtistRequest()}>
-          <Route path='/management/artists-request' element={<GetAllArtists/>} />
+        
+        <Route path='/management/artists-request' element={<GetAllArtists/>} loader={()=>getAllArtistRequest()}/>
+        
+        <Route path='/management/artists-request/:request_id' element={<UseLoaderOutletContext/>} loader={getArtistRequestByID}>
           <Route path='/management/artists-request/:request_id' element={<SingleArtistInformation/>}/>
           <Route path='/management/artists-request/:request_id/certificates' element={<ArtistCertificates/>}/>
           <Route path='/management/artists-request/:request_id/gallery' element={<ArtistRequestGallary/>}/>
