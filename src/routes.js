@@ -71,6 +71,8 @@ import AllArtists from 'pages/all-artists'
 import { getAllArtistRequest } from 'configs/initialapis'
 import { getHomepageData } from 'configs/initialapis'
 import { getArtistRequestByID } from 'configs/initialapis'
+import Search from 'pages/search/searchPage'
+import { getSearchParameters } from 'configs/initialapis'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -156,9 +158,11 @@ const CheckLoggedIn = () =>{
 }
 
 const CommonLayout = () =>{
+  
+  const {cities , services} = useLoaderData() 
   return (
   <>
-  <Header/>
+  <Header  city={cities} service={services}/>
     <Outlet/>
   <Footer/>
   </>)
@@ -188,7 +192,7 @@ const ApplicationRoutes = createBrowserRouter(
     <Route element={<MainWrapper/>}>
       {/* Normal component */}
       <Route element={<NormalComponents />}>
-        <Route element={<CommonLayout/>}>
+        <Route element={<CommonLayout/>} loader={getSearchParameters}>
           <Route index path="/" element={<Homepage />} loader={getHomepageData}/>
           <Route path='/artists' element={<AllArtists/>} loader={getAllArtists}/>
           <Route path="/artists/:artist_id" element={<ArtistSingle/>}/>
@@ -196,6 +200,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
           <Route path='/contact' element={<ContactPage/>}/>
           
+          <Route path='/search' element={< Search /> } loader={getAllArtists} />
           <Route element={<CheckLoggedIn/>}>
             <Route path="/login" element={<LoginPage />} />
           </Route>
@@ -287,6 +292,7 @@ const ApplicationRoutes = createBrowserRouter(
         </Route>
         </Route>
       </Route>
+      
       </Route>
       {/* end admin auth routes */}
     </Route>
