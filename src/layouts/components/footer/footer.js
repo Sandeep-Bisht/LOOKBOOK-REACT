@@ -19,21 +19,21 @@ const Footer = () => {
                                     <ul className="usr-icon-list">
                                         <li><a href="#">
                                             </a></li>
-                                        <li><a href="#"><img src={instagram} alt='footer-social-icon' /></a></li>
-                                        <li><a href="#"><img src={facebook} alt='footer-social-icon' /></a></li>
-                                        <li><a href="#"><img src={twitter} alt='footer-social-icon' /></a></li>
-                                        <li><a href="#"><img src={linkedin} alt='footer-social-icon' /></a></li>
-                                        <li><a href="#"><img src={youtube} alt='footer-social-icon' /></a></li>
+                                        <li><a><img src={instagram} alt='footer-social-icon' /></a></li>
+                                        <li><a><img src={facebook} alt='footer-social-icon' /></a></li>
+                                        <li><a><img src={twitter} alt='footer-social-icon' /></a></li>
+                                        <li><a><img src={linkedin} alt='footer-social-icon' /></a></li>
+                                        <li><a><img src={youtube} alt='footer-social-icon' /></a></li>
                                     </ul>
                                 </div>
                                 <div className="col-md-6 usr-footer-menu">
                                     <ul className="usr-footer-menu-list">
-                                        <li><Link to="/home" className="footer-link active">HOME</Link></li>
-                                        <li><Link to="/artist" className="footer-link">ARTIST</Link></li>
-                                        <li><Link to="/about-us" className="footer-link">ABOUT US</Link></li>
-                                        <li><Link to="/contact-us" className="footer-link">CONTACT US</Link></li>
-                                        <li><Link to="/join-us" className="footer-link">JOIN US</Link></li>
-                                        <li><Link to="/blog" className="footer-link">BLOG</Link></li>
+                                        <li><Link to="/" className="footer-link active">HOME</Link></li>
+                                        <li><Link to="/artists" className="footer-link">ARTIST</Link></li>
+                                        <li><Link to="/" className="footer-link">ABOUT US</Link></li>
+                                        <li><Link to="/contact" className="footer-link">CONTACT US</Link></li>
+                                        <li><Link to="/become-a-artist" className="footer-link">JOIN US</Link></li>
+                                        <li><Link to="/" className="footer-link">BLOG</Link></li>
                                     </ul>
                                 </div>
                                 <div className="col-md-4 usr-footer-last-icon">

@@ -25,7 +25,7 @@ import { MdAdd } from "react-icons/md";
 
 const AllArtist = () => {
     // ** States
-    const getAllArtists = useLoaderData();
+    const getAllArtistRequest = useLoaderData();
     const [page, setPage] = useState(0)
     const [rowsPerPage, setRowsPerPage] = useState(10)
     const [rows, setRows] = useState([])
@@ -88,7 +88,7 @@ const AllArtist = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {getAllArtists.map(row => {
+                        {getAllArtistRequest && Array.isArray(getAllArtistRequest) && getAllArtistRequest.map(row => {
                             if(row.status=="progress")
                             {
                                 return null
