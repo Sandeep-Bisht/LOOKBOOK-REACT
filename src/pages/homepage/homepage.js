@@ -2,6 +2,8 @@ import EmergingArtist from "./emergingArtist/index.js"
 import '@css/user/homepage.css'
 import Slider from "react-slick";
 import { useLoaderData } from "react-router-dom";
+import { truncateDescription } from "configs/truncateDescription.js"; 
+import { formatIndianRupee } from "configs/formatIndianRupee.js";
 
 
 
@@ -21,6 +23,8 @@ const Homepage = () => {
         centerPadding:"0px",
         autoplayTimeout:3000
       };
+
+
     return (
         <>
         <section className='usr-home-banner'>
@@ -92,7 +96,7 @@ const Homepage = () => {
                                                                                                 Charges:
                                                                                             </p>
                                                                                             <span className="usr-expert-pic-profile">
-                                                                                                {allArtists[index]?.pricing?.totalPrice}/-
+                                                                                                {formatIndianRupee(allArtists[index]?.pricing?.totalPrice)}/-
                                                                                             </span>
                                                                                         </div>
                                                                                     </div>
@@ -293,13 +297,13 @@ const Homepage = () => {
                                                 <h3>Makeup Artist</h3>
                                             </div>
                                             <div className="desc">
-                                                <p>{allArtists[index]?.description}</p>
+                                            <p>{truncateDescription(allArtists[index]?.description, 45 )}</p>
                                             </div>
                                         </div>
                                         <div className="prizeButton">
                                             <div className="prize">
                                                 <span className="usr-charges">Charges</span>
-                                                <span className="usr-price">₹ {allArtists[index]?.pricing?.totalPrice}</span>
+                                                <span className="usr-price">₹ {formatIndianRupee(allArtists[index]?.pricing?.totalPrice)}</span>
                                             </div>
                                             <div className="reserveButton">
                                                 <button className="rButton">
@@ -351,7 +355,7 @@ const Homepage = () => {
                                             <div className="usr-card-body">
                                                 <h4 className="usr-blog-heading">{blog.title}</h4>
                                                 <p className="usr-blog-para">
-                                                {blog.description}
+                                                {truncateDescription( blog.description, 75)}
                                                 </p>
                                                 <span className="usr-blog-date">Oct 3-2 min</span>
                                             </div>
