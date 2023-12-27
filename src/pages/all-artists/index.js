@@ -23,7 +23,7 @@ const AllArtists = () => {
     <section className="usr-all-artist">
         <div className="container">
           <div className="row my-5">
-            {allArtists.map((artist,ind)=>{
+            {allArtists && Array.isArray(allArtists) && allArtists.map((artist,ind)=>{
               return (
                 <div className="col-md-3" key={`artist${ind}`}>
               <div className="usr-all-artist-card">
