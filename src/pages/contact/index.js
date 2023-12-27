@@ -1,6 +1,14 @@
 import React from "react";
 import "@css/user/contact.css";
 import { useForm } from "react-hook-form";
+import { TextField} from '@mui/material'
+import Calendly from "layouts/components/calendly/Calendly";
+import instagram from "@core/assets/contact/instagram.png"
+import facebook from "@core/assets/contact/Facebook.png"
+import twitter from "@core/assets/contact/twitter.png"
+import linkedin from "@core/assets/contact/LinkedIn.png"
+import youtube from "@core/assets/contact/youtube.png"
+
 const ContactPage = () => {
   const {
     register,
@@ -16,10 +24,12 @@ const ContactPage = () => {
       <section>
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <div className="usr-contact-main text-center">
+            <div className="col-md-12 usr-contact-main">
+              <div className="text-center">
                 <h1 className="usr-contact-heading">CONTACT US</h1>
-                <p className="usr-contact-para">LET’S GET IN TOUCH</p>
+                <p className="usr-contact-main-para">LET’S GET IN TOUCH</p>
+              </div>
+              </div>
               </div>
               <div className="row">
                 <div className="col-md-4 usr-contact-part">
@@ -27,8 +37,8 @@ const ContactPage = () => {
                     <div className="usr-contact-number">
                       <span>
                         <svg
-                          width="30"
-                          height="30"
+                          width="20"
+                          height="20"
                           viewBox="0 0 30 30"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -45,8 +55,8 @@ const ContactPage = () => {
                     <div className="usr-contact-place">
                       <span className="me-2">
                         <svg
-                          width="30"
-                          height="30"
+                          width="20"
+                          height="20"
                           viewBox="0 0 30 30"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -65,8 +75,8 @@ const ContactPage = () => {
                     <div className="usr-contact-mail">
                       <span className="me-2">
                         <svg
-                          width="30"
-                          height="30"
+                          width="20"
+                          height="20"
                           viewBox="0 0 30 30"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -89,78 +99,106 @@ const ContactPage = () => {
                       <p className="usr-contact-para">example@email.com</p>
                     </div>
                     <div className="usr-contact-follow">
-                      <h1 className="usr-contact-heading">Follow us</h1>
+                      <p className="usr-contact-text-para">Follow us</p>
                       <div className="usr-contact-menu">
                         <ul className="usr-contact-list-menu">
-                          <li>
-                            <a href="#">
-                              <img src="images/footer/instagram.png" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <img src="images/footer/Facebook.png" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <img src="images/footer/twitter.png" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <img src="images/footer/LinkedIn.png" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <img src="images/footer/youtube.png" />
-                            </a>
-                          </li>
+                        <li><a href="#"><img src={instagram} alt='contact-social-icon' /></a></li>
+                                        <li><a href="#"><img src={facebook} alt='contact-social-icon' /></a></li>
+                                        <li><a href="#"><img src={twitter} alt='contact-social-icon' /></a></li>
+                                        <li><a href="#"><img src={linkedin} alt='contact-social-icon' /></a></li>
+                                        <li><a href="#"><img src={youtube} alt='contact-social-icon' /></a></li>
                         </ul>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="col-md-8">
+                    
                   <div className="usr-contact-form">
-                    <h1 className="usr-contact-heading">Send a message</h1>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                      <input
+                  <p className="usr-contact-text-para">Send a message</p>
+                    <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+                      <TextField
                         defaultValue=""
-                        {...register("example", { required: true })}
-                        placeholder="Name"
+                        {...register("name", { required: true })}
+                        variant="outlined"
+                        label="Name"
+                        fullWidth
+                        margin="normal"
                         className="form-contact-control"
                       />
-                      <input
-                        {...register("exampleRequired", { required: true })}
-                        placeholder="Email*"
-                        className="form-contact-control"
+                      {errors.name && (<span style={{color:"red"}}>This field is required</span>)}
+                      <TextField
+                        {...register("email", { required: true })}
+                        label="Email*"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                    
+                        // className="form-contact-control"
                       />
-                      <input
-                        {...register("exampleRequired", { required: true })}
-                        placeholder="Phone number"
-                        className="form-contact-control"
+                      {errors.email && (<span style={{color:"red"}}>This feild is required</span>)}
+                      <TextField
+                        { ...register("number", { required: true })}
+                        label="Phone number"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        // className="form-contact-control"
                       />
-                      <textarea
-                        {...register("exampleRequired", { required: true })}
-                        placeholder="Message"
-                        className="form-contact-control"
-                        rows="3"
+                      {errors.number && (<span style={{color:"red"}}>This feild is required</span>)}
+                      <TextField
+                        {...register("message", { required: true })}
+                        fullWidth
+                        margin="normal"
+                        label="Message"
+                        // className="form-contact-control"
+                        multiline
+                        rows={4}
+                        variant="outlined"
                       />
-                      {/* {errors.exampleRequired && (
-                        <span>This field is required</span>
-                      )} */}
-
+                       {errors.message && (
+                        <p style={{color:"red"}}>This field is required</p>
+                      )} 
+                       <div className="mt-3">
                       <button type="submit" className="usr-contact-btn btn">
                         SEND MESSAGE
                       </button>
+                      </div>
                     </form>
                   </div>
                 </div>
               </div>
+          
+        </div>
+      </section>
+
+
+      <section className="usr-contact-clendly bg-white">
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="usr-contact-text text-center">
+                        <p className="usr-contact-calendly-text-para">SCHEDULE A MEETING</p>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-4">
+                        <div className="usr-contact-date">
+                            <Calendly/>
+                        </div>
+                        <div className="mt-4">
+                        <button type="submit" className="usr-contact-meeting-btn btn">
+                        SCHEDULE A MEETING
+                      </button></div>
+                            
+                        </div>
+                        <div className="col-md-8">
+                        <div className="usr-contact-image">
+                                <img src="images/beauty.jpg" className="img-fluid"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
       </section>
     </div>
