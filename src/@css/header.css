@@ -224,3 +224,10 @@ button.common-action:is(:hover,:active,:focus,:focus-visible){
 .user-dropdown .dropdown-menu a{
   text-decoration: none;
 }
+
+/* ---- Search container css ---- */
+
+.usr-search-container{
+  order: 1;
+  width: 100%;
+}
