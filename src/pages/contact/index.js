@@ -173,8 +173,8 @@ const ContactPage = () => {
       </section>
 
 
-      <section className="usr-contact-clendly bg-white">
-        <div className="container">
+      <section className="usr-contact-clendly">
+        <div className="container bg-white">
             <div className="row">
                 <div className="col-md-12">
                     <div className="usr-contact-text text-center">

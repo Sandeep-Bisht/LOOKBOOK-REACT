@@ -27,7 +27,7 @@ const Calendly = () => {
       <div
         className="calendly-inline-widget"
         data-url="https://calendly.com/sandeepbisht29/30min"
-        style={{ minWidth: '300px', height: '398px' , borderRadius:'16px', border:'1px solid #8C6A54'}}
+        style={{ minWidth: '300px', height: '380px' , borderRadius:'16px', border:'1px solid #8C6A54'}}
       />
     </div>
   );
