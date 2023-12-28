@@ -1,0 +1,35 @@
+.usr-all-blog .all-blog-top-heading{
+    font-size: 90px;
+    color: #6d5d4c;
+}
+.usr-all-blog .usr-blog-content{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    margin: 0 20px;
+    background-color: #fff;
+    border-radius: 0;
+}
+.usr-all-blog .usr-blog-content img{
+    height: 200px;
+}
+
+.usr-all-blog .usr-blog-content .usr-all-blog-heading{
+    font-size: 13px;
+    line-height: 22.5px;
+    color: #6D5D4C;
+    font-family: AvenirLTProHeavy;
+    padding-top: 10px;
+}
+.usr-all-blog .blog-section-card .blog-card-icon{
+   font-size: 13px;
+   font-family:AvenirLTProLight;
+}
+.usr-all-blog .usr-blog-content .usr-all-blog-para{
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+    font-size: 13px;
+    letter-spacing:0;
+}
+
+

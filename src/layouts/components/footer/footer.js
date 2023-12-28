@@ -33,7 +33,7 @@ const Footer = () => {
                                         <li><Link to="/" className="footer-link">ABOUT US</Link></li>
                                         <li><Link to="/contact" className="footer-link">CONTACT US</Link></li>
                                         <li><Link to="/become-a-artist" className="footer-link">JOIN US</Link></li>
-                                        <li><Link to="/" className="footer-link">BLOG</Link></li>
+                                        <li><Link to="/blogs" className="footer-link">BLOG</Link></li>
                                     </ul>
                                 </div>
                                 <div className="col-md-4 usr-footer-last-icon">

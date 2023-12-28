@@ -73,6 +73,7 @@ import { getHomepageData } from 'configs/initialapis'
 import { getArtistRequestByID } from 'configs/initialapis'
 import Search from 'pages/search/searchPage'
 import { getSearchParameters } from 'configs/initialapis'
+import  AllBlogs  from 'pages/allBlogs'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -199,7 +200,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path='/terms-conditions' element={<TermsPage/>}/>
           <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
           <Route path='/contact' element={<ContactPage/>}/>
-          
+          <Route path='/blogs' element={<AllBlogs/>} loader={getAllBlog}/>
           <Route path='/search' element={< Search /> } loader={getAllArtists} />
           <Route element={<CheckLoggedIn/>}>
             <Route path="/login" element={<LoginPage />} />
