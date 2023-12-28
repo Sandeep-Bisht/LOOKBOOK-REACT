@@ -57,7 +57,7 @@ font-weight: 700;
 }
 
 .usr-contact-form{
-    padding: 0 0 0 50px;
+    padding: 0 25px 0 50px;
     position: relative;
 
 }
@@ -66,8 +66,8 @@ font-weight: 700;
     position: absolute;
     background-color: #8C6A54;
     width: 1px;
-    height: 71%;
-    bottom: 70px;
+    height: 72%;
+    bottom: 64px;
     left: 0;
 
 
@@ -82,7 +82,8 @@ font-weight: 700;
     background: #6D5D4C;
     color: #FCF7F2;
     padding: 10px 0;
-    width: 180px;
+    width: 150px;
+    font-size: 11px;
 }
 
 .usr-contact-btn:hover{
@@ -90,7 +91,8 @@ font-weight: 700;
     color: #FCF7F2;
 }
 .usr-contact-main-details{
-    margin: 80px 60px 0 0
+    margin: 80px 60px 0 0;
+    padding: 0 0 0 25px;
 }
 
 .usr-contact-main-details span{
@@ -123,11 +125,15 @@ textarea::placeholder{
     background: #6D5D4C;
     color: #FCF7F2;
     padding: 10px 0;
-    width: 200px;
+    width: 160px;
+    font-size: 11px;
+    margin-bottom: 30px;
 }
-
+.usr-contact-date{
+    padding: 0 0 0 25px;
+}
 .usr-contact-image{
-    padding: 0 0 0 50px;
+    padding: 0 25px 0 50px;
 }
 
 .usr-contact-image img{
