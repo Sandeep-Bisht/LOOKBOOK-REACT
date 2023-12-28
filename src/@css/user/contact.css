@@ -57,7 +57,7 @@ font-weight: 700;
 }
 
 .usr-contact-form{
-    padding: 0 0 0 50px;
+    padding: 0 25px 0 50px;
     position: relative;
 
 }
@@ -90,7 +90,8 @@ font-weight: 700;
     color: #FCF7F2;
 }
 .usr-contact-main-details{
-    margin: 80px 60px 0 0
+    margin: 80px 60px 0 0;
+    padding: 0 0 0 25px;
 }
 
 .usr-contact-main-details span{
@@ -125,9 +126,11 @@ textarea::placeholder{
     padding: 10px 0;
     width: 200px;
 }
-
+.usr-contact-date{
+    padding: 0 0 0 25px;
+}
 .usr-contact-image{
-    padding: 0 0 0 50px;
+    padding: 0 25px 0 50px;
 }
 
 .usr-contact-image img{
