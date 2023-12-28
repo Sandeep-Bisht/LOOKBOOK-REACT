@@ -7,10 +7,12 @@
 @font-face {
   font-family:AvenirLTProHeavy;
   src: url('../../public/fonts/AvenirLTProHeavy.otf');
+  /* --700--- */
 }
 @font-face {
   font-family:AvenirLTProLight;
   src: url('../../public/fonts/AvenirLTProLight.otf');
+  /* --300--- */
 }
 @font-face {
   font-family:Forum-Regular;
