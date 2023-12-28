@@ -66,7 +66,6 @@ import Header from 'layouts/components/header/header'
 import Footer from 'layouts/components/footer/footer'
 import ArtistRequestGallary from 'pages/management/artistRequests/artistRequestGallary'
 import ContactPage from 'pages/contact'
-import ArtistSingle from 'pages/management/artistRequests/artistSingle'
 import AllArtists from 'pages/all-artists'
 import { getAllArtistRequest } from 'configs/initialapis'
 import { getHomepageData } from 'configs/initialapis'
@@ -75,6 +74,7 @@ import Search from 'pages/search/searchPage'
 import { getSearchParameters } from 'configs/initialapis'
 import  AllBlogs  from 'pages/allBlogs'
 import AboutUS from 'pages/about-us'
+import ArtistSingle from 'pages/artistSingle'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>

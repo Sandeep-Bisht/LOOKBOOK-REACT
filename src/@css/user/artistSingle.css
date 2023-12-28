@@ -56,8 +56,9 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
 }
 .usr-artist-single-carousel .carousel .thumb.selected,.usr-artist-single-carousel .carousel .thumb:hover
 {
-    background: #6D5D4C;
+    
     border:0;
+    border:1px solid #6D5D4C;
 }
 .usr-artist-single-carousel .carousel .thumb:last-child
 {
