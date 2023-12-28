@@ -232,7 +232,7 @@ const ArtistSingle = () => {
                                               Only some sessions are still available for booking. Bookings close 1 day before the session starts.
                                               </p>
                                           </div>
-                                          <div className="usr-artist-single-modal-time-box-lower">
+                                             <div className="usr-artist-single-modal-time-box-lower">
                                              <button className="usr-artist-single-modal-time-box-btn">
                                                  <span>10:00 am</span>
                                                  <span>10:30 am</span>       
@@ -253,6 +253,12 @@ const ArtistSingle = () => {
                                                  <span>12:00 pm</span>
                                                  <span>12:30 pm</span>       
                                              </button>
+                                             </div>
+                                            <div className="d-flex justify-content-center">
+                                               <button class="usr-common-action-btn">Confirm</button>
+                                            </div>
+                                          <div>
+
                                           </div>
                                        </div>
                                   </div>
