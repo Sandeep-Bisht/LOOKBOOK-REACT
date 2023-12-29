@@ -33,7 +33,6 @@ export const allProductsDetails = async () => {
 export const getAllBlog = async () =>{
     try{
         const response = await axiosAuth.get('/blog/all_blogs');
-        console.log(response,"check response")
         return response.data.data;
     }
     catch(error){

@@ -191,7 +191,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path='/blogs' element={<AllBlogs/>} loader={getAllBlog}/>
           <Route path='/about-us' element={<AboutUS/>}/>
           
-          <Route path='/search' element={< Search /> } loader={getAllArtists} />
+          <Route path='/search' element={< Search />} />
           <Route element={<CheckLoggedIn/>}>
             <Route path="/login" element={<LoginPage />} />
           </Route>
