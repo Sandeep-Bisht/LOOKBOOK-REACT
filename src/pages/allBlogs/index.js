@@ -7,7 +7,7 @@ import "@css/allBlog.css"
 const AllBlogs = () => {
 
   const allBlogs = useLoaderData();
-  console.log(allBlogs,"check all blogs")
+  
 
   return (
     <section className='usr-all-blog'>
