@@ -230,4 +230,23 @@ button.common-action:is(:hover,:active,:focus,:focus-visible){
 .usr-search-container{
   order: 1;
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.usr-search-container .common-calendor-si{
+  min-width: 300px;
+}
+
+.usr-search-container .home-selction-form{
+  padding: 0;
+  padding-right: 50px;
+}
+
+.usr-search-container .row{
+  margin: 0;
+}
+
+.usr-search-container .custom-drodown-btn{
+  padding: 10px;
 }

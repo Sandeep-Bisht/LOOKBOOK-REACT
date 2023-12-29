@@ -7,16 +7,13 @@ import { AccountOutline } from "mdi-material-ui";
 import mainLogo from "@core/assets/header/main-logo.png";
 import DatePicker from "react-multi-date-picker";
 
-const Header = ({ city, service }) => {
+const Header = ({ cities, services }) => {
 
   // Toggle Search container js
 
   const [isClicked, setIsClicked] = useState(false);
   const headerRef = useRef(null);
 
-  const handleHeaderClick = () => {
-    setIsClicked(!isClicked); // Toggle the state
-  };
 
   useEffect(() => {
     // Function to handle clicks outside the header
@@ -35,48 +32,24 @@ const Header = ({ city, service }) => {
     };
   }, []);
 
-
-  // Add or remove the class based on the state
-  const headerClass = isClicked ? 'usr-search-container' : '';
-
 // End Toggle Search container js
 
 
   const [currentUser, setCurrentUser] = useState(checkAuth());
   const location = useLocation();
-  const [allServices, setAllServices] = useState(null);
-  // const [selectedLocation, setSelectedLocation] = useState("");
-  // const [selectedService, setSelectedService] = useState(null);
-
-  const today = new Date();
-  // const tomorrow = new Date();
-
-  // tomorrow.setDate(tomorrow.getDate() + 1);
-
-  // const [values, setValues] = useState([]);
-
-  // const handleLocationSelect = (location) => {
-  //   setSelectedLocation(location);
-  //   console.log("Selected Location:", location);
-  // };
-
-  // const handleServiceSelect = (service) => {
-  //   setSelectedService(service);
-  //   console.log("Selected service:", service);
-  // };
+  const [selectedLocation,setSelectedLocation] = useState()
+  const [selectedService,setSelectedService] = useState()
+  const [selectedDates,setSelectedDaes] = useState()
 
   useEffect(() => {
     setCurrentUser(checkAuth());
     setIsClicked(false)
   }, [location]);
 
-  const isPastDate = (today) => {
-    const currentDate = new Date();
-    return today < currentDate;
-  };
-
-
-
+  const handleSearch = () =>{
+    let payload = {city:selectedLocation, service:selectedService, dates:selectedDates}
+    console.log(payload,'payload is this')
+  }
 
   return (
     <header className="header" id="header" ref={headerRef}>
@@ -155,9 +128,10 @@ const Header = ({ city, service }) => {
                   </ul>
                 </div>
               </li>
-              <li className={`nav-item ${headerClass}`} onClick={handleHeaderClick}>
-                  <form className="home-selction-form">
-                    <button className=" custom-search">
+              {/* Search Container */}
+              <li className={`nav-item ${isClicked ? 'usr-search-container' : ''}`} onClick={()=>setIsClicked(true)}>
+                  <div className="home-selction-form">
+                    <button className=" custom-search" type="button" onClick={handleSearch}>
                       <svg
                         width={46}
                         height={45}
@@ -173,8 +147,8 @@ const Header = ({ city, service }) => {
                     </button>
                     <div className="row">
                       <div className="col-lg-4 px-0">
-                        <div className="">
-                          <button className="custom-drodown-btn " type="button">
+                        <div className="btn-group d-block">
+                          <button className="custom-drodown-btn " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div className="left">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -205,12 +179,16 @@ const Header = ({ city, service }) => {
                               </p>
                             </div>
                           </button>
+                          <ul class="dropdown-menu">
+                            {cities && Array.isArray(cities) && cities.length > 0 && cities.map((city,ind)=>{
+                              return <li onClick={()=>setSelectedLocation(city)} className={selectedLocation == city ? 'active':''} key={`${city}${ind}`}>{city}</li>
+                            })}
+                          </ul>
                         </div>
                       </div>
-
                       <div className="col-lg-4 px-0">
-                        <div className="">
-                          <button className="custom-drodown-btn" type="button">
+                        {/* <div className="btn-group d-block">
+                          <button className="custom-drodown-btn"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div className="left">
                               <svg
                                 width="21"
@@ -261,14 +239,82 @@ const Header = ({ city, service }) => {
                               </p>
                             </div>
                           </button>
+                          <div class="dropdown-menu">
+                          </div>
+                        </div> */}
+                        <div>
+                        <DatePicker 
+                          range 
+                          dateSeparator=" to " 
+                          minDate={new Date()}
+                          value={selectedDates}
+                          onChange={setSelectedDaes}
+                          render={(value, openCalendar) => {
+                            return (
+                              <button className="custom-drodown-btn"  type="button" onClick={openCalendar}>
+                              <div className="left">
+                                <svg
+                                  width="21"
+                                  height="21"
+                                  viewBox="0 0 21 21"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M15.8425 18H10.5H5.15745C3.96593 18 3 17.0985 3 15.9864V6.01362C3 4.90153 3.96593 4 5.15745 4H15.8425C17.0341 4 18 4.90153 18 6.01362V15.9864C18 17.0985 17.0341 18 15.8425 18Z"
+                                    stroke="#6D5D4C"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                  <path
+                                    d="M3 9H18"
+                                    stroke="#6D5D4C"
+                                    stroke-miterlimit="10"
+                                    stroke-linejoin="round"
+                                  />
+                                  <path
+                                    d="M10.5 3V5"
+                                    stroke="#6D5D4C"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                  <path
+                                    d="M15 3V5"
+                                    stroke="#6D5D4C"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                  <path
+                                    d="M6 3V5"
+                                    stroke="#6D5D4C"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
+                              <div className="right">
+                                <p className="mb-0">
+                                  <span className="nav-link">{value ? value :'Date'}</span>
+                                </p>
+                              </div>
+                            </button>
+                            )
+                          }}
+                        />
                         </div>
                       </div>
 
                       <div className="col-lg-4 px-0">
-                        <div className="">
+                        <div className="btn-group d-block">
                           <button
                             className="custom-drodown-btn border-0"
                             type="button"
+                            data-bs-toggle="dropdown" 
+                            aria-expanded="false"
                           >
                             <div className="left">
                               <svg
@@ -301,11 +347,17 @@ const Header = ({ city, service }) => {
                               </p>
                             </div>
                           </button>
+                          <ul class="dropdown-menu">
+                            {services && Array.isArray(services) && services.length > 0 && services.map((service,ind)=>{
+                              return <li onClick={()=>setSelectedService(service._id)} className={selectedService == service._id ? 'active':''} key={`${service._id}${ind}`}>{service.title}</li>
+                            })}
+                          </ul>
                         </div>
                       </div>
                     </div>
-                  </form>
-                </li>
+                  </div>
+              </li>
+              {/* End Search Container */}
               <li className="nav-item">
                 <Link className="nav-link " to="/contact">
                   Contact us
