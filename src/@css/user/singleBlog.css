@@ -1,0 +1,68 @@
+.usr-single-blogs .usr-single-blogs-content,
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .reviews a {
+    color: #6D5D4C;
+}
+
+.usr-single-blogs .usr-single-blogs-content h3 {
+    font-family: AvenirLTProLight;
+}
+
+.usr-single-blogs .usr-single-blogs-image{
+    border-bottom: 1px solid rgba(109,93,76,.3);
+}
+.usr-single-blogs .usr-single-blogs-content p,
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .reviews a {
+    font-family: AvenirLTProBook;
+    font-size: 14px;
+}
+
+.usr-single-blogs {
+    margin: 30px 0;
+}
+
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons {
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .social-icons,
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .reviews {
+    display: flex;
+}
+
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .reviews {
+    align-items: center;
+}
+
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .reviews a {
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .social-icons .social-link {
+    background-color: #FEFEFE;
+    margin-right: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+}
+
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .social-icons .social-link svg,
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .reviews .likes svg {
+    height: 20px;
+    width: 20px;
+}
+
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .social-icons .social-link svg path {
+    fill: #6D5D4C;
+}
+
+.usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .reviews .likes svg path {
+    fill: #6D5D4C;
+    stroke: #FCF7F2;
+}

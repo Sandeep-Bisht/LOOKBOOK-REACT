@@ -36,7 +36,7 @@ export const getAllBlog = async () =>{
         return response.data.data;
     }
     catch(error){
-        return error.message || "An error occured while trying to get user profile."
+        return error.message || "An error occured while trying to get All Blogs."
     }
 }
 
@@ -55,7 +55,7 @@ export const getServiceById = async (_id) => {
     const response = await axiosAuth.post('/service/get_service_by_id', { _id:_id });
       return response.data.data
  } catch (error) {
-  return error.message || "An error occured while trying to get service request."
+  return error.message || "An error occured while trying to get service by ID."
 }
 };
 
@@ -64,7 +64,7 @@ export const getProductById = async (_id) => {
     const response = await axiosAuth.post('/product/get_product_by_id', { _id:_id });
       return response.data.data
  } catch (error) {
-  return error.message || "An error occured while trying to get product request."
+  return error.message || "An error occured while trying to get product by ID."
 }
 };
 
@@ -74,7 +74,7 @@ export const getBlogById = async (_id) => {
     const response = await axiosLocal.post('/blog/get_blog_by_id', { _id:_id });
       return response.data.data
  } catch (error) {
-  return error.message || "An error occured while trying to get Blog request."
+  return error.message || "An error occured while trying to get Blog by ID."
 }
 };
 
@@ -83,7 +83,7 @@ export const getAllArtistRequest = async () => {
     const response = await axiosAuth.get('/users/getAllArtistRequest');
       return response.data.data
  } catch (error) {
-  return error.message || "An error occured while trying to get artists request."
+  return error.message || "An error occured while trying to get all artists request."
    }
 };
 
@@ -112,7 +112,7 @@ export const getAllArtists  = async () => {
     const response = await axiosLocal.get('/artists/get-all');
       return response.data
  } catch (error) {
-  return error.message || "An error occured while trying to get artists request."
+  return error.message || "An error occured while trying to get all artists."
    }
 };
 
@@ -130,7 +130,7 @@ export const getHomepageData  = async () => {
 
     return data;
   } catch (error) {
-    return error.message || "An error occurred while trying to get artist requests.";
+    return error.message || "An error occurred while trying to get artist homepage initialdata.";
   }
 };
 
@@ -140,7 +140,7 @@ export const getArtistRequestByID = async({params}) =>{
     const response = await axiosAuth.get(`/management/artist-request-by-id/${request_id}`);
     return response.data
   } catch (error) {
-  return error.message || "An error occured while trying to get artists request."
+  return error.message || "An error occured while trying to get artists request by ID."
    }
 }
 
@@ -149,6 +149,27 @@ export const getSearchParameters = async () => {
     const response = await axiosAuth.get('/search/getInitialData');
     return response.data
   } catch (error) {
-      return error.message || "An error occured while trying to get search parameters."
+      return error.message || "An error occured while trying to get search initial Data."
   }
 };  
+
+export const getArtistById = async ({params}) => {
+  try {
+    const {artist_id} = params;
+    const response = await axiosAuth.get(`/artists/get-by-id/${artist_id}`);
+    return response.data
+  } catch (error) {
+      return error.message || "An error occured while trying to get artist by id."
+  }
+};  
+
+
+export const getBlogBySlug = async ({params}) => {
+  try {
+    const {slug} = params;
+    const response = await axiosAuth.get(`/blog/get_blog_by_slug/${slug}`);
+    return response.data
+  } catch (error) {
+      return error.message || "An error occured while trying to get Blog by slug."
+  }
+}; 

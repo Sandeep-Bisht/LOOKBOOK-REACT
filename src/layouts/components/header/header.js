@@ -187,7 +187,7 @@ const Header = ({ cities, services }) => {
                                 />
                               </svg>
                             </span>
-                            <span className="nav-link">Location</span>
+                            <span className="nav-link">{isClicked ? 'Location' : <>{selectedLocation ? selectedLocation : 'Location'}</>}</span>
                           </div>
 
 
@@ -195,8 +195,8 @@ const Header = ({ cities, services }) => {
                           <div>
                             {isClicked && (
                               <span className="clicked-text">
-
-                                Choose your Location
+                                {selectedLocation ? selectedLocation : 'Choose your Location'}
+                                
                               </span>
                             )}</div>
                         </button>
@@ -210,61 +210,6 @@ const Header = ({ cities, services }) => {
                     </div>
                    
                     <div className="col-lg-4 px-0">
-                      {/* <div className="btn-group d-block">
-                          <button className="custom-drodown-btn"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div className="left">
-                              <svg
-                                width="21"
-                                height="21"
-                                viewBox="0 0 21 21"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M15.8425 18H10.5H5.15745C3.96593 18 3 17.0985 3 15.9864V6.01362C3 4.90153 3.96593 4 5.15745 4H15.8425C17.0341 4 18 4.90153 18 6.01362V15.9864C18 17.0985 17.0341 18 15.8425 18Z"
-                                  stroke="#6D5D4C"
-                                  stroke-miterlimit="10"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                />
-                                <path
-                                  d="M3 9H18"
-                                  stroke="#6D5D4C"
-                                  stroke-miterlimit="10"
-                                  stroke-linejoin="round"
-                                />
-                                <path
-                                  d="M10.5 3V5"
-                                  stroke="#6D5D4C"
-                                  stroke-miterlimit="10"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                />
-                                <path
-                                  d="M15 3V5"
-                                  stroke="#6D5D4C"
-                                  stroke-miterlimit="10"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                />
-                                <path
-                                  d="M6 3V5"
-                                  stroke="#6D5D4C"
-                                  stroke-miterlimit="10"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                />
-                              </svg>
-                            </div>
-                            <div className="right">
-                              <p className="mb-0">
-                                <span className="nav-link">Date</span>
-                              </p>
-                            </div>
-                          </button>
-                          <div class="dropdown-menu">
-                          </div>
-                        </div> */}
                         <div>
                         <DatePicker 
                           minDate={new Date()}
@@ -322,11 +267,6 @@ const Header = ({ cities, services }) => {
                                   <span className="nav-link">{value ? value : 'Date'}</span>
                               
                                 </div>
-                                {/* <div className="right">
-                                  <p className="mb-0">
-                                    <span className="nav-link">{value ? value : 'Date'}</span>
-                                  </p>
-                                </div> */}
                                  <div>
                             {isClicked && (
                               <span className="clicked-text">
@@ -374,19 +314,13 @@ const Header = ({ cities, services }) => {
                                 </clipPath>
                               </defs>
                             </svg></span>
-                            <span className="nav-link">Artist</span>
+                            <span className="nav-link">{isClicked ? 'Artist' : <>{selectedService ? <>{services.find(item => item._id == selectedService)?.title}</> : 'Artist'}</>}</span>
                           </div>
                           
-                          {/* <div className="right">
-                            <p className="mb-0">
-                              <span className="nav-link">Artist</span>
-                            </p>
-                          </div> */}
                           <div>
                           {isClicked && (
                              <span className="clicked-text">
-
-Select Available Date
+                              {selectedService ? <>{services.find(item => item._id == selectedService)?.title}</> : 'Select Artist'}
                               </span>
                             )}
                               

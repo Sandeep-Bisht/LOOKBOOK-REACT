@@ -65,9 +65,11 @@ const UserDropdown = () => {
   }
 
 
-  const handleLogout = async () =>{
+  const handleLogout = () =>{
     const cookies = new Cookies();
-    await cookies.remove('LOOKBOOK_TOKEN')
+    if(cookies.get('LOOKBOOK_TOKEN')){
+      cookies.remove('LOOKBOOK_TOKEN', { path: '/'})
+    }
     handleDropdownClose('/')
   }
 

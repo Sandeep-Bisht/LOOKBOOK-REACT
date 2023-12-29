@@ -19,9 +19,11 @@ const UserMenu = ({props}) => {
     const navigate = useNavigate()
 
     const handleLogout = () =>{
-        const cookies = new Cookies();
+      const cookies = new Cookies();
+      if(cookies.get('LOOKBOOK_TOKEN')){
+         cookies.remove('LOOKBOOK_TOKEN', { path: '/'})
+      }
 
-        cookies.remove('LOOKBOOK_TOKEN')
         setCurrentUser(null)
         navigate('/');
     }  

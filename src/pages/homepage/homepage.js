@@ -1,7 +1,7 @@
 import EmergingArtist from "./emergingArtist/index.js"
 import '@css/user/homepage.css'
 import Slider from "react-slick";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { truncateDescription } from "configs/truncateDescription.js"; 
 import { formatIndianRupee } from "configs/formatIndianRupee.js";
 
@@ -10,6 +10,8 @@ import { formatIndianRupee } from "configs/formatIndianRupee.js";
 const Homepage = () => {
 
     const {allArtists, allBlogs} = useLoaderData()
+
+    const navigate = useNavigate();
 
     var settings = {
         dots: false,
@@ -50,7 +52,7 @@ const Homepage = () => {
             <span class="usr-home-banner-tag ">Professional Makeup</span>
           </div>
           <div class="usr-button d-flex justify-content-center mt-lg-2">
-            <button class="usr-common-action-btn usr-home-banner-action-btn">Consult A Professional</button>
+            <button class="usr-common-action-btn usr-home-banner-action-btn" type="button" onClick={()=>navigate('/artists')}>Consult A Professional</button>
           </div>
         </div>
         </section>
@@ -81,7 +83,7 @@ const Homepage = () => {
                                                                             <div className="usr-expert-pic-expert-info">
                                                                                 <div className="row g-0">
                                                                                     <div className="col-lg-8">
-                                                                                        <div className="usr-expert-pic-name-box">
+                                                                                        <div className="usr-expert-pic-name-box common-cursor-pointer"  onClick={()=>navigate(`/artists/${allArtists[index]?._id}`)}>
                                                                                             <p className="usr-expert-pic-name">
                                                                                                 {allArtists[index]?.profile_id?.fullName}
                                                                                             </p>
@@ -104,7 +106,7 @@ const Homepage = () => {
                                                                                 </div>
                                                                             </div>
                                                                             <div className="expert-pic">
-                                                                                <img src={allArtists[index]?.gallery[0]?.url} className="img-fluid" />
+                                                                                <img src={allArtists[index]?.gallery[0]?.url} className="img-fluid common-cursor-pointer" onClick={()=>navigate(`/artists/${allArtists[index]?._id}`)}/>
                                                                                 <span className="usr-expert-certification">
                                                                                     Certified by Lookbook
                                                                                     <span className="ms-2">
@@ -266,7 +268,7 @@ const Homepage = () => {
                         </div>
                     </div>
                 </section>
-               <EmergingArtist/>
+               <EmergingArtist artists={allArtists}/>
                <section className="usr-featured-artist usr-overlap-section" id="yourNextSectionId">
                     <div className="container">
                         <div className="row">
@@ -284,7 +286,7 @@ const Homepage = () => {
                         {[...Array(allArtists.length > 4 ? 4 : allArtists.length)].map((_,index)=>{
                             return(
                                 <div className="col-lg-3">
-                                <div className="usr-featured-artist-card">
+                                <div className="usr-featured-artist-card common-cursor-pointer"  onClick={()=>navigate(`/artists/${allArtists[index]?._id}`)}>
                                     <div className="imgBx">
                                         <img className="image"
                                             src={`${allArtists[index]?.gallery[0]?.url}?tr=h-220,w-300,fo-auto`}
@@ -332,15 +334,11 @@ const Homepage = () => {
                 </section>  
                 <section className="usr-recent-blog usr-overlap-section ">
                     <div className="container-fluid">
-                        
-
                       <div className="usr-blog-wrapper">
-
                         <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
                                 <h1 className="usr-common-heading text-center">Recent Blog</h1>
-
                             </div>
                         </div>
                             <div className="row mt-lg-5 pt-lg-3">
@@ -349,7 +347,7 @@ const Homepage = () => {
                                 <div className="blog-section-card ">
                                 <Slider {...settings}>
                                     {allBlogs.map((blog,ind)=>{
-                                        return(<div className="usr-blog-main-content-wrapper" key={`blog${ind}`}>
+                                        return(<div className="usr-blog-main-content-wrapper common-cursor-pointer" key={`blog${ind}`}  onClick={()=>navigate(`/blogs/${blog?.slug}`)}>
                                         <div className="usr-blog-main-content">
                                             <img src={blog.featuredImage.url} className="img-fluid" />
                                             <div className="usr-card-body">
@@ -370,20 +368,16 @@ const Homepage = () => {
                                                     <span className="usr-blog-card-view-comment-box-number">
                                                         2
                                                     </span>
-
                                                 </div>
                                                 <div className="usr-blog-card-view-comment-box">
                                                     <span className="usr-blog-card-view-comment-box-icon me-1">
                                                         <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M15.2004 0.400391H0.800391C0.580391 0.400391 0.400391 0.580391 0.400391 0.800391V10.4004C0.400391 10.6204 0.580391 10.8004 0.800391 10.8004H4.00039V13.2004C4.00039 13.5604 4.42039 13.7404 4.68039 13.4804L7.40039 10.8004H15.2004C15.4204 10.8004 15.6004 10.6204 15.6004 10.4004V0.800391C15.6004 0.580391 15.4204 0.400391 15.2004 0.400391ZM14.8004 10.0004H7.24039C7.14039 10.0004 7.04039 10.0404 6.96039 10.1204L4.80039 12.2404V10.4004C4.80039 10.1804 4.62039 10.0004 4.40039 10.0004H1.20039V1.20039H14.8004V10.0004Z" fill="#6D5D4C" />
                                                         </svg>
-
-
                                                     </span>
                                                     <span className="usr-blog-card-view-comment-box-number">
                                                         0
                                                     </span>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -393,9 +387,8 @@ const Homepage = () => {
                                 </div>
                                 : 
                                 <div className="p-5">No Data Found.</div>}
-
                                 <div className="recent-blog-main-btn text-center">
-                                    <button type="button" className="usr-common-action-btn">LOAD ALL</button>
+                                    <button type="button" className="usr-common-action-btn"  onClick={()=>navigate(`/blogs`)}>LOAD ALL</button>
                                 </div></div>
                             </div>
                         </div>
