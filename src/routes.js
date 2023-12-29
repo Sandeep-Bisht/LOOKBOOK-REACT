@@ -11,15 +11,9 @@ import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/user/Profile'
-import { getUserProfile } from 'configs/initialapis'
-import {allServicesDetails} from 'configs/initialapis'
-import {allProductsDetails} from 'configs/initialapis'
-import {getServiceById} from 'configs/initialapis'
-import {getProductById} from 'configs/initialapis'
-import {getBlogById} from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogById } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
-import { SettingsConsumer } from '@core/context/settingsContext'
-import { SettingsProvider } from '@core/context/settingsContext'
+import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
 import AboutYou from 'pages/become-a-artist/about'
 import AllServicesDetails from 'pages/management/services/allServicesDetails'
@@ -30,7 +24,6 @@ import UpdateProducts from 'pages/management/products/updateProduct'
 import UpdateBlog from 'pages/management/blogs/updateBlog'
 import BlogList from 'pages/management/blogs/blogList'
 import PrivacyPage from 'pages/privacy-policy'
-import { getAllBlog } from 'configs/initialapis'
 import DescribeYourself from "pages/become-a-artist/describeYourself";
 import ArtistGallary from "pages/become-a-artist/artistGallary";
 import StepSecond from 'pages/become-a-artist/stepSecond'
@@ -40,8 +33,6 @@ import Description from 'pages/become-a-artist/description'
 import PriceSetup from 'pages/become-a-artist/priceSetup'
 import CompleteKYC from 'pages/become-a-artist/completeKYC'
 import Certificates from 'pages/become-a-artist/certificates'
-import { getArtistRequests } from 'configs/initialapis'
-import {getAllArtists} from 'configs/initialapis'
 import ArtistRequestProvider from 'pages/become-a-artist/provider'
 import GetStarted from 'pages/become-a-artist/getStarted'
 import ArtistGlobalState from 'pages/become-a-artist/globalState'
@@ -51,14 +42,12 @@ import StepThird from 'pages/become-a-artist/stepThird'
 import Icons from 'pages/Demo/icons'
 import GetAllArtists from 'pages/management/artistRequests/allArtistRequests'
 import BecomeAristHeader from 'pages/become-a-artist/common/header'
-import { getWizardData } from 'configs/initialapis'
 import Review from 'pages/become-a-artist/review'
 import Details from 'pages/become-a-artist/details'
 import Celebration from 'pages/become-a-artist/celebration'
 import Cookies from 'universal-cookie';
 import { jwtDecode } from "jwt-decode";
 import Error401 from 'pages/error/401'
-import SingleArtistInformation from 'pages/singleArtistPage'
 import ArtistCertificates from 'pages/management/artistRequests/artistCertificates'
 import TermsPage from 'pages/Terms-condition'
 import { checkAuth } from 'configs/auth'
@@ -67,14 +56,11 @@ import Footer from 'layouts/components/footer/footer'
 import ArtistRequestGallary from 'pages/management/artistRequests/artistRequestGallary'
 import ContactPage from 'pages/contact'
 import AllArtists from 'pages/all-artists'
-import { getAllArtistRequest } from 'configs/initialapis'
-import { getHomepageData } from 'configs/initialapis'
-import { getArtistRequestByID } from 'configs/initialapis'
 import Search from 'pages/search/searchPage'
-import { getSearchParameters } from 'configs/initialapis'
 import  AllBlogs  from 'pages/allBlogs'
 import AboutUS from 'pages/about-us'
 import ArtistSingle from 'pages/artistSingle'
+import SingleArtistInformation from 'pages/management/artistRequests/singleArtistRequestPage'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -164,7 +150,7 @@ const CommonLayout = () =>{
   const {cities , services} = useLoaderData() 
   return (
   <>
-  <Header  city={cities} service={services}/>
+  <Header  cities={cities} services={services}/>
     <Outlet/>
   <Footer/>
   </>)
@@ -185,7 +171,8 @@ const MainWrapper = () =>{
       top: 0,
       behavior: 'smooth',
     });
-  },[location])
+  },[location.pathname])
+  
   return <Outlet/>;
 }
 
