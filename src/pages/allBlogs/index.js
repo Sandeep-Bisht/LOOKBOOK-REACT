@@ -1,13 +1,13 @@
 import React from 'react'
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, useNavigate } from 'react-router-dom'
 import { truncateDescription } from 'configs/truncateDescription'
 import "@css/allBlog.css"
-
 
 const AllBlogs = () => {
 
   const allBlogs = useLoaderData();
-  
+
+  const navigate =  useNavigate();
 
   return (
     <section className='usr-all-blog'>
@@ -26,8 +26,8 @@ const AllBlogs = () => {
             <div className='row'>
               {
                 allBlogs && Array.isArray(allBlogs) && allBlogs.map((item,index)=>(
-                    <div className='col-md-3'>
-                    <div className="usr-blog-section-card-content">
+                    <div className='col-md-3' key={index}>
+                    <div className="usr-blog-section-card-content  common-cursor-pointer"  onClick={()=>navigate(`/blogs/${item?.slug}`)}>
                       <div className="usr-blog-content-wrapper">
                         <div className="usr-blog-content">
                           <img src={item.featuredImage.url} className="img-fluid" />

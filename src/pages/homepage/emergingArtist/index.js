@@ -1,9 +1,12 @@
 import React, { useEffect, useRef,useState } from 'react';
 import '@css/user/homepage.css'
+import { useNavigate } from 'react-router-dom';
 
-const EmergingArtist = () => {
+const EmergingArtist = ({artists}) => {
   const [isNextSectionVisible, setNextSectionVisible] = useState(false);
   const [isSticky, setSticky] = useState(false);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     let progress = 7;
@@ -94,8 +97,6 @@ const EmergingArtist = () => {
       animate();
     };
 
-    const cursor = document.querySelector(".custom-cursor");
-
     document.addEventListener("wheel", handleWheel);
     document.addEventListener("mousedown", handleMouseDown);
     document.addEventListener("mousemove", handleMouseMove);
@@ -163,48 +164,16 @@ const EmergingArtist = () => {
                                 </h2>
                                     <div className="usr-emerging-artist-custom-cursor" />
                                     <div className="usr-emerging-artist-carousel">
-                                        <div className="usr-emerging-artist-carousel-item" data-description="Learn about my skills and goals!">
+                                      {artists && Array.isArray(artists) && artists.length > 0 && artists.map((item,ind)=>{
+                                        return(
+                                          <div className="usr-emerging-artist-carousel-item common-cursor-pointer" key={ind} onClick={()=>navigate(`/artists/${item?._id}`)}>
                                             <div className="usr-emerging-artist-carousel-box">
-                                                <img className="img-fluid" src="images/circular-slider/Meru Jain.jpeg" />
-                                                <p>Meru Jain</p>
+                                                <img className="img-fluid" src={item?.gallery[0] ? item?.gallery[0].url : null} />
+                                                <p>{item?.profile_id?.fullName ? item?.profile_id?.fullName : null }</p>
                                             </div>
                                         </div>
-                                        <div className="usr-emerging-artist-carousel-item" data-description="Get to know about me!">
-                                            <div className="usr-emerging-artist-carousel-box">
-                                                <img className="img-fluid" src="images/circular-slider/Saaba Arora.jpeg" />
-                                                <p>Saaba Arora</p>
-                                            </div>
-                                        </div>
-                                        <div className="usr-emerging-artist-carousel-item" data-description="Some of the models and assets I created in the past.">
-                                            <div className="usr-emerging-artist-carousel-box">
-                                                <img className="img-fluid" src="images/circular-slider/Jazz Wahan.jpeg" />
-                                                <p>Jazz Wahan</p>
-                                            </div>
-                                        </div>
-                                        <div className="usr-emerging-artist-carousel-item" data-description="Our award winning Jam Game! - Enhancer Gaming Hackathon 2023">
-                                            <div className="usr-emerging-artist-carousel-box">
-                                                <img className="img-fluid" src="images/circular-slider/Nazrana Bhagu.jpeg" />
-                                                <p>Nazrana Bhagu</p>
-                                            </div>
-                                        </div>
-                                        <div className="usr-emerging-artist-carousel-item" data-description="Unforgettable VR experience of being an Ape who has guns! - BUG Spring Jam 2023">
-                                            <div className="usr-emerging-artist-carousel-box">
-                                                <img className="img-fluid" src="images/circular-slider/Pankhi Bhavnani.jpeg" />
-                                                <p>Pankhi Bhavnani</p>
-                                            </div>
-                                        </div>
-                                        <div className="usr-emerging-artist-carousel-item" data-description="Fight off the endless waves of demons in this procedurally generated hotel! - BUG Fall Jam 2022">
-                                            <div className="usr-emerging-artist-carousel-box">
-                                                <img className="img-fluid" src="images/circular-slider/Akash Kapoor.jpeg" />
-                                                <p>Akash Kapoor</p>
-                                            </div>
-                                        </div>
-                                        <div className="usr-emerging-artist-carousel-item" data-description="Fight off the endless waves of demons in this procedurally generated hotel! - BUG Fall Jam 2022">
-                                            <div className="usr-emerging-artist-carousel-box">
-                                                <img className="img-fluid" src="images/circular-slider/Suhani Sood.jpeg" />
-                                                <p>Suhani Sood</p>
-                                            </div>
-                                        </div>
+                                        )
+                                      })}
                                     </div>
                                 </div>
 
