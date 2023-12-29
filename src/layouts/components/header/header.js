@@ -33,7 +33,7 @@ const Header = ({ cities, services }) => {
     };
   }, []);
 
-// End Toggle Search container js
+  // End Toggle Search container js
 
 
   const [currentUser, setCurrentUser] = useState(checkAuth());
@@ -155,27 +155,15 @@ const Header = ({ cities, services }) => {
                 </div>
               </li>
               {/* Search Container */}
-              <li className={`nav-item ${isClicked ? 'usr-search-container' : ''}`} onClick={()=>setIsClicked(true)}>
-                  <div className="home-selction-form">
-                    <button className=" custom-search" type="button" onClick={handleSearch}>
-                      <svg
-                        width={46}
-                        height={45}
-                        viewBox="0 0 46 45"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M41.2062 38.0438L34.25 31.1438C36.9502 27.777 38.2578 23.5037 37.904 19.2024C37.5502 14.9012 35.5619 10.899 32.3479 8.01871C29.1338 5.13845 24.9384 3.59909 20.6242 3.71714C16.3101 3.83519 12.2051 5.60168 9.15339 8.6534C6.10168 11.7051 4.33519 15.8101 4.21714 20.1242C4.09909 24.4384 5.63845 28.6338 8.51871 31.8479C11.399 35.0619 15.4012 37.0502 19.7024 37.404C24.0037 37.7578 28.277 36.4502 31.6438 33.75L38.5438 40.65C38.7181 40.8258 38.9254 40.9652 39.1539 41.0604C39.3824 41.1556 39.6275 41.2046 39.875 41.2046C40.1225 41.2046 40.3676 41.1556 40.5961 41.0604C40.8246 40.9652 41.0319 40.8258 41.2062 40.65C41.5442 40.3004 41.7331 39.8331 41.7331 39.3469C41.7331 38.8606 41.5442 38.3934 41.2062 38.0438ZM21.125 33.75C18.5291 33.75 15.9915 32.9802 13.8331 31.538C11.6747 30.0959 9.99248 28.046 8.99908 25.6477C8.00568 23.2494 7.74577 20.6104 8.2522 18.0644C8.75863 15.5184 10.0087 13.1798 11.8442 11.3442C13.6798 9.50866 16.0184 8.25863 18.5644 7.7522C21.1104 7.24577 23.7494 7.50569 26.1477 8.49909C28.546 9.49249 30.5958 11.1748 32.038 13.3331C33.4802 15.4915 34.25 18.0291 34.25 20.625C34.25 24.106 32.8672 27.4444 30.4058 29.9058C27.9444 32.3672 24.606 33.75 21.125 33.75Z"
-                          fill="#FEFEFE"
-                        />
-                      </svg>
-                    </button>
-                    <div className="row">
-                      <div className="col-lg-4 px-0">
-                        <div className="btn-group d-block">
-                          <button className="custom-drodown-btn " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div className="left">
+              <li className={`nav-item ${isClicked ? 'usr-search-container' : ''}`} onClick={() => setIsClicked(true)}>
+                <div className="home-selction-form">
+
+                  <div className="row m-0 align-items-center">
+                    <div className="col-lg-4 px-0">
+                      <div className="btn-group d-block h-100">
+                        <button className="custom-drodown-btn h-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <div className="left d-flex align-items-center">
+                            <span>
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="21"
@@ -198,22 +186,31 @@ const Header = ({ cities, services }) => {
                                   stroke-linejoin="round"
                                 />
                               </svg>
-                            </div>
-                            <div className="right">
-                              <p className="mb-0">
-                                <span className="nav-link">Location</span>
-                              </p>
-                            </div>
-                          </button>
-                          <ul class="dropdown-menu">
-                            {cities && Array.isArray(cities) && cities.length > 0 && cities.map((city,ind)=>{
-                              return <li onClick={()=>setSelectedLocation(city)} className={selectedLocation == city ? 'active':''} key={`${city}${ind}`}>{city}</li>
-                            })}
-                          </ul>
-                        </div>
+                            </span>
+                            <span className="nav-link">Location</span>
+                          </div>
+
+
+
+                          <div>
+                            {isClicked && (
+                              <span className="clicked-text">
+
+                                Choose your Location
+                              </span>
+                            )}</div>
+                        </button>
+                        
+                        <ul class="dropdown-menu">
+                          {cities && Array.isArray(cities) && cities.length > 0 && cities.map((city, ind) => {
+                            return <li onClick={() => setSelectedLocation(city)} className={selectedLocation == city ? 'active' : ''} key={`${city}${ind}`}>{city}</li>
+                          })}
+                        </ul>
                       </div>
-                      <div className="col-lg-4 px-0">
-                        {/* <div className="btn-group d-block">
+                    </div>
+                   
+                    <div className="col-lg-4 px-0">
+                      {/* <div className="btn-group d-block">
                           <button className="custom-drodown-btn"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div className="left">
                               <svg
@@ -276,111 +273,157 @@ const Header = ({ cities, services }) => {
                           format="DD/MM/YYYY"
                           render={(value, openCalendar) => {
                             return (
-                              <button className="custom-drodown-btn"  type="button" onClick={openCalendar}>
-                              <div className="left">
-                                <svg
-                                  width="21"
-                                  height="21"
-                                  viewBox="0 0 21 21"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M15.8425 18H10.5H5.15745C3.96593 18 3 17.0985 3 15.9864V6.01362C3 4.90153 3.96593 4 5.15745 4H15.8425C17.0341 4 18 4.90153 18 6.01362V15.9864C18 17.0985 17.0341 18 15.8425 18Z"
-                                    stroke="#6D5D4C"
-                                    stroke-miterlimit="10"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                  />
-                                  <path
-                                    d="M3 9H18"
-                                    stroke="#6D5D4C"
-                                    stroke-miterlimit="10"
-                                    stroke-linejoin="round"
-                                  />
-                                  <path
-                                    d="M10.5 3V5"
-                                    stroke="#6D5D4C"
-                                    stroke-miterlimit="10"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                  />
-                                  <path
-                                    d="M15 3V5"
-                                    stroke="#6D5D4C"
-                                    stroke-miterlimit="10"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                  />
-                                  <path
-                                    d="M6 3V5"
-                                    stroke="#6D5D4C"
-                                    stroke-miterlimit="10"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                  />
-                                </svg>
-                              </div>
-                              <div className="right">
-                                <p className="mb-0">
+                              <button className="custom-drodown-btn" type="button" onClick={openCalendar}>
+                                <div className="left d-flex align-items-center">
+                                  <span>
+                                  <svg
+                                    width="21"
+                                    height="21"
+                                    viewBox="0 0 21 21"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M15.8425 18H10.5H5.15745C3.96593 18 3 17.0985 3 15.9864V6.01362C3 4.90153 3.96593 4 5.15745 4H15.8425C17.0341 4 18 4.90153 18 6.01362V15.9864C18 17.0985 17.0341 18 15.8425 18Z"
+                                      stroke="#6D5D4C"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                    <path
+                                      d="M3 9H18"
+                                      stroke="#6D5D4C"
+                                      stroke-miterlimit="10"
+                                      stroke-linejoin="round"
+                                    />
+                                    <path
+                                      d="M10.5 3V5"
+                                      stroke="#6D5D4C"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                    <path
+                                      d="M15 3V5"
+                                      stroke="#6D5D4C"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                    <path
+                                      d="M6 3V5"
+                                      stroke="#6D5D4C"
+                                      stroke-miterlimit="10"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    />
+                                  </svg>
+                                  </span>
                                   <span className="nav-link">{value ? value : 'Date'}</span>
-                                </p>
-                              </div>
-                            </button>
+                              
+                                </div>
+                                {/* <div className="right">
+                                  <p className="mb-0">
+                                    <span className="nav-link">{value ? value : 'Date'}</span>
+                                  </p>
+                                </div> */}
+                                 <div>
+                            {isClicked && (
+                              <span className="clicked-text">
+
+                                Select Available Date
+                              </span>
+                            )}</div>
+                              </button>
                             )
                           }}
                         />
-                        </div>
                       </div>
+                    </div>
 
-                      <div className="col-lg-4 px-0">
-                        <div className="btn-group d-block">
-                          <button
-                            className="custom-drodown-btn border-0"
-                            type="button"
-                            data-bs-toggle="dropdown" 
-                            aria-expanded="false"
-                          >
-                            <div className="left">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="21"
-                                height="21"
-                                viewBox="0 0 21 21"
-                                fill="none"
-                              >
-                                <g clip-path="url(#clip0_919_1365)">
-                                  <path
-                                    d="M12.4534 10.9616C13.8184 10.1216 14.7004 8.46257 14.7004 6.92957C14.7004 4.74557 12.9154 2.30957 10.5004 2.30957C8.08543 2.30957 6.30043 4.74557 6.30043 6.92957C6.30043 8.46257 7.18243 10.1216 8.54743 10.9616C5.31343 11.8226 2.94043 14.7836 2.94043 18.2696C2.94043 18.5006 3.12943 18.6896 3.36043 18.6896H17.6404C17.8714 18.6896 18.0604 18.5006 18.0604 18.2696C18.0604 14.7836 15.6874 11.8226 12.4534 10.9616ZM7.14043 6.92957C7.14043 4.76657 8.92543 3.14957 10.5004 3.14957C12.0754 3.14957 13.8604 4.76657 13.8604 6.92957C13.8604 9.09257 12.0754 10.7096 10.5004 10.7096C8.92543 10.7096 7.14043 9.09257 7.14043 6.92957ZM3.80143 17.8496C4.01143 14.3426 6.95143 11.5496 10.5004 11.5496C14.0494 11.5496 16.9894 14.3426 17.1994 17.8496H3.80143Z"
-                                    fill="#6D5D4C"
-                                  />
-                                  <path
-                                    d="M257.04 -165.9V187.74H-117.6V-165.9H257.04ZM258.72 -167.58H-119.28V189.42H258.72V-167.58Z"
-                                    fill="#6D5D4C"
-                                  />
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_919_1365">
-                                    <rect width="21" height="21" fill="white" />
-                                  </clipPath>
-                                </defs>
-                              </svg>
-                            </div>
-                            <div className="right">
-                              <p className="mb-0">
-                                <span className="nav-link">Artist</span>
-                              </p>
-                            </div>
-                          </button>
-                          <ul class="dropdown-menu">
-                            {services && Array.isArray(services) && services.length > 0 && services.map((service,ind)=>{
-                              return <li onClick={()=>setSelectedService(service._id)} className={selectedService == service._id ? 'active':''} key={`${service._id}${ind}`}>{service.title}</li>
-                            })}
-                          </ul>
-                        </div>
+                    <div className="col-lg-4 px-0">
+                      <div className="btn-group d-block">
+                        <button
+                          className="custom-drodown-btn border-0 custom-drodown-btn-artist"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                       <div className="left d-flex align-items-center">
+                        <span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="21"
+                              height="21"
+                              viewBox="0 0 21 21"
+                              fill="none"
+                            >
+                              <g clip-path="url(#clip0_919_1365)">
+                                <path
+                                  d="M12.4534 10.9616C13.8184 10.1216 14.7004 8.46257 14.7004 6.92957C14.7004 4.74557 12.9154 2.30957 10.5004 2.30957C8.08543 2.30957 6.30043 4.74557 6.30043 6.92957C6.30043 8.46257 7.18243 10.1216 8.54743 10.9616C5.31343 11.8226 2.94043 14.7836 2.94043 18.2696C2.94043 18.5006 3.12943 18.6896 3.36043 18.6896H17.6404C17.8714 18.6896 18.0604 18.5006 18.0604 18.2696C18.0604 14.7836 15.6874 11.8226 12.4534 10.9616ZM7.14043 6.92957C7.14043 4.76657 8.92543 3.14957 10.5004 3.14957C12.0754 3.14957 13.8604 4.76657 13.8604 6.92957C13.8604 9.09257 12.0754 10.7096 10.5004 10.7096C8.92543 10.7096 7.14043 9.09257 7.14043 6.92957ZM3.80143 17.8496C4.01143 14.3426 6.95143 11.5496 10.5004 11.5496C14.0494 11.5496 16.9894 14.3426 17.1994 17.8496H3.80143Z"
+                                  fill="#6D5D4C"
+                                />
+                                <path
+                                  d="M257.04 -165.9V187.74H-117.6V-165.9H257.04ZM258.72 -167.58H-119.28V189.42H258.72V-167.58Z"
+                                  fill="#6D5D4C"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="clip0_919_1365">
+                                  <rect width="21" height="21" fill="white" />
+                                </clipPath>
+                              </defs>
+                            </svg></span>
+                            <span className="nav-link">Artist</span>
+                          </div>
+                          
+                          {/* <div className="right">
+                            <p className="mb-0">
+                              <span className="nav-link">Artist</span>
+                            </p>
+                          </div> */}
+                          <div>
+                          {isClicked && (
+                             <span className="clicked-text">
+
+Select Available Date
+                              </span>
+                            )}
+                              
+                            
+        
+                          </div>
+                          
+                        </button>
+                        <ul class="dropdown-menu">
+                          {services && Array.isArray(services) && services.length > 0 && services.map((service, ind) => {
+                            return <li onClick={() => setSelectedService(service._id)} className={selectedService == service._id ? 'active' : ''} key={`${service._id}${ind}`}>{service.title}</li>
+                          })}
+                        </ul>
                       </div>
                     </div>
                   </div>
+                  <button className=" custom-search" type="button" onClick={handleSearch}>
+                    {isClicked && (
+                      <span>
+
+                        Search
+                      </span>
+                    )}
+                    <svg
+                      width={46}
+                      height={45}
+                      viewBox="0 0 46 45"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M41.2062 38.0438L34.25 31.1438C36.9502 27.777 38.2578 23.5037 37.904 19.2024C37.5502 14.9012 35.5619 10.899 32.3479 8.01871C29.1338 5.13845 24.9384 3.59909 20.6242 3.71714C16.3101 3.83519 12.2051 5.60168 9.15339 8.6534C6.10168 11.7051 4.33519 15.8101 4.21714 20.1242C4.09909 24.4384 5.63845 28.6338 8.51871 31.8479C11.399 35.0619 15.4012 37.0502 19.7024 37.404C24.0037 37.7578 28.277 36.4502 31.6438 33.75L38.5438 40.65C38.7181 40.8258 38.9254 40.9652 39.1539 41.0604C39.3824 41.1556 39.6275 41.2046 39.875 41.2046C40.1225 41.2046 40.3676 41.1556 40.5961 41.0604C40.8246 40.9652 41.0319 40.8258 41.2062 40.65C41.5442 40.3004 41.7331 39.8331 41.7331 39.3469C41.7331 38.8606 41.5442 38.3934 41.2062 38.0438ZM21.125 33.75C18.5291 33.75 15.9915 32.9802 13.8331 31.538C11.6747 30.0959 9.99248 28.046 8.99908 25.6477C8.00568 23.2494 7.74577 20.6104 8.2522 18.0644C8.75863 15.5184 10.0087 13.1798 11.8442 11.3442C13.6798 9.50866 16.0184 8.25863 18.5644 7.7522C21.1104 7.24577 23.7494 7.50569 26.1477 8.49909C28.546 9.49249 30.5958 11.1748 32.038 13.3331C33.4802 15.4915 34.25 18.0291 34.25 20.625C34.25 24.106 32.8672 27.4444 30.4058 29.9058C27.9444 32.3672 24.606 33.75 21.125 33.75Z"
+                        fill="#FEFEFE"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </li>
               {/* End Search Container */}
               <li className="nav-item">
@@ -390,7 +433,7 @@ const Header = ({ cities, services }) => {
               </li>
 
               {currentUser?.role == process.env.REACT_APP_USER ||
-              !currentUser ? (
+                !currentUser ? (
                 <li className="nav-item">
                   <Link className="nav-link " to="/become-a-artist">
                     Join Us
