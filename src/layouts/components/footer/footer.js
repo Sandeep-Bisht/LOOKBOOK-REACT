@@ -30,7 +30,7 @@ const Footer = () => {
                                     <ul className="usr-footer-menu-list">
                                         <li><Link to="/" className="footer-link active">HOME</Link></li>
                                         <li><Link to="/artists" className="footer-link">ARTIST</Link></li>
-                                        <li><Link to="/" className="footer-link">ABOUT US</Link></li>
+                                        <li><Link to="/about-us" className="footer-link">ABOUT US</Link></li>
                                         <li><Link to="/contact" className="footer-link">CONTACT US</Link></li>
                                         <li><Link to="/become-a-artist" className="footer-link">JOIN US</Link></li>
                                         <li><Link to="/blogs" className="footer-link">BLOG</Link></li>

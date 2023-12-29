@@ -77,7 +77,7 @@ const AboutUS = () => {
         </div>
        </section>
 
-       <section>
+       <section className='pt-5'>
         <div className='container'>
             <div className='row'>
                 <div className='col-md-4 mx-auto'>

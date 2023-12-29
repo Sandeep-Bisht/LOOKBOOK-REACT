@@ -7,7 +7,7 @@ import "@css/allBlog.css"
 const AllBlogs = () => {
 
   const allBlogs = useLoaderData();
-  console.log(allBlogs,"check all blogs")
+  
 
   return (
     <section className='usr-all-blog'>
@@ -27,10 +27,11 @@ const AllBlogs = () => {
               {
                 allBlogs && Array.isArray(allBlogs) && allBlogs.map((item,index)=>(
                     <div className='col-md-3'>
-                    <div className="blog-section-card ">
+                    <div className="usr-blog-section-card-content">
                       <div className="usr-blog-content-wrapper">
                         <div className="usr-blog-content">
                           <img src={item.featuredImage.url} className="img-fluid" />
+                          <div className='usr-blog-date'>Oct 03</div>
                           <div className="usr-card-body">
                             <h4 className="usr-all-blog-heading">{item.title}</h4>
                             <p className="usr-all-blog-para">
