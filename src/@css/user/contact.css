@@ -148,3 +148,8 @@ textarea::placeholder{
     padding-top: 65px;
     margin-bottom: 50px;
 }
+
+.usr-contact-meeting-btn:hover{
+  background-color: #6D5D4C;
+  color: #FCF7F2;
+}
