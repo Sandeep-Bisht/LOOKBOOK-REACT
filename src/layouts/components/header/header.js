@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import '@css/header.css'
 import { checkAuth } from "configs/auth";
 import UserMenu from "./userMenu";
@@ -14,6 +14,7 @@ const Header = ({ cities, services }) => {
   const [isClicked, setIsClicked] = useState(false);
   const headerRef = useRef(null);
 
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Function to handle clicks outside the header
@@ -37,18 +38,43 @@ const Header = ({ cities, services }) => {
 
   const [currentUser, setCurrentUser] = useState(checkAuth());
   const location = useLocation();
+  const [searchQuery,setSearchQuery] = useState({})
   const [selectedLocation,setSelectedLocation] = useState()
   const [selectedService,setSelectedService] = useState()
-  const [selectedDates,setSelectedDaes] = useState()
+  const [selectedDates,setSelectedDates] = useState()
 
   useEffect(() => {
     setCurrentUser(checkAuth());
     setIsClicked(false)
-  }, [location]);
+      // Get the search string from the location object
+      const searchParams = new URLSearchParams(location.search);
+  
+      // Convert the searchParams object to a plain JavaScript object
+      const queryParams = {};
+      for (const [key, value] of searchParams.entries()) {
+        queryParams[key] = value;
+      }
+
+      setSearchQuery(queryParams)
+
+  }, [location.pathname]);
 
   const handleSearch = () =>{
-    let payload = {city:selectedLocation, service:selectedService, dates:selectedDates}
-    console.log(payload,'payload is this')
+    if(selectedLocation || selectedService || selectedDates){
+      let payload = {};
+      if(selectedLocation){
+        payload['location'] = selectedLocation;
+      }
+      if(selectedService){
+        payload['service'] = selectedService;
+      }
+      if(selectedDates){
+        payload['dates'] = selectedDates.format('DD/MM/YYYY');
+      }
+
+      const redirectUrl = `/search?${new URLSearchParams(payload).toString()}`;
+      navigate(redirectUrl);
+    }
   }
 
   return (
@@ -244,11 +270,10 @@ const Header = ({ cities, services }) => {
                         </div> */}
                         <div>
                         <DatePicker 
-                          range 
-                          dateSeparator=" to " 
                           minDate={new Date()}
                           value={selectedDates}
-                          onChange={setSelectedDaes}
+                          onChange={setSelectedDates}
+                          format="DD/MM/YYYY"
                           render={(value, openCalendar) => {
                             return (
                               <button className="custom-drodown-btn"  type="button" onClick={openCalendar}>
@@ -298,7 +323,7 @@ const Header = ({ cities, services }) => {
                               </div>
                               <div className="right">
                                 <p className="mb-0">
-                                  <span className="nav-link">{value ? value :'Date'}</span>
+                                  <span className="nav-link">{value ? value : 'Date'}</span>
                                 </p>
                               </div>
                             </button>

@@ -5,6 +5,7 @@ import { FaStar } from "react-icons/fa";
 import { useLoaderData } from 'react-router-dom';
 import NoDataFound from 'pages/become-a-artist/common/noDataFound';
 import '@css/user/allArtists.css'
+import { formatIndianRupee } from 'configs/formatIndianRupee';
 
 const AllArtists = () => {
 
@@ -47,7 +48,7 @@ const AllArtists = () => {
                   <span className="usr-all-artist-card-date">18-23 Dec | 5 kilometers away </span>
                   <div className="usr-all-artist-prize-list">
                     <span className="usr-all-artist-card-tag">Charges</span>
-                    <span className="usr-all-artist-card-prize">₹ {artist?.pricing?.totalPrice}</span>
+                    <span className="usr-all-artist-card-prize">{formatIndianRupee(artist?.pricing?.totalPrice ? artist?.pricing?.totalPrice : 0)}</span>
                   </div>
                 </div>
               </div>

@@ -303,7 +303,7 @@ const Homepage = () => {
                                         <div className="prizeButton">
                                             <div className="prize">
                                                 <span className="usr-charges">Charges</span>
-                                                <span className="usr-price">₹ {formatIndianRupee(allArtists[index]?.pricing?.totalPrice)}</span>
+                                                <span className="usr-price">{formatIndianRupee(allArtists[index]?.pricing?.totalPrice)}</span>
                                             </div>
                                             <div className="reserveButton">
                                                 <button className="rButton">
