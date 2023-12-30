@@ -188,7 +188,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/artists/:artist_id" element={<ArtistSingle/>} loader={getArtistById}/>
           <Route path='/terms-conditions' element={<TermsPage/>}/>
           <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
-          <Route path='/contact' element={<ContactPage/>}/>
+          <Route path='/contact-us' element={<ContactPage/>}/>
           <Route path='/blogs' element={<AllBlogs/>} loader={getAllBlog}/>
           <Route path='/blogs/:slug' element={<SingleBlog/>} loader={getBlogBySlug}/>
           <Route path='/about-us' element={<AboutUS/>}/>
