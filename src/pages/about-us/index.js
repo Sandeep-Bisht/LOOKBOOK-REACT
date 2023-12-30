@@ -10,9 +10,9 @@ const AboutUS = () => {
                 <div className='col-md-12'>
                     <div className='usr-about-main'>
                     <div className='usr-about-part'>
-                        <h1 className='usr-about-heading'>About us</h1>
-                        <p className='usr-about-main-para'>lookbook journey was inspired by a passion for makeup.</p>
-                        <p className='usr-common-para'>Lorem ipsum dolor sit amet consectetur. Etiam sem placerat 
+                        <h1 className='usr-about-heading'>ABOUT US</h1>
+                        <p className='usr-about-para'>lookbook journey was inspired by a passion for makeup.</p>
+                        <p className='usr-common-para ps-4 pe-4'>Lorem ipsum dolor sit amet consectetur. Etiam sem placerat 
                             consectetur tempor blandit mauris. Id viverra etiam pretium ac. 
                             Viverra at tristique volutpat integer tempus sed velit volutpat. 
                             Et tortor sapien ultrices pretium lacinia rhoncus. Massa mattis 
@@ -90,8 +90,8 @@ const AboutUS = () => {
                 </div>
                 <div className='col-md-12 '>
                     <div className='text-center'>
-                    <div className='usr-about-text-para'><p className='usr-about-main-para'>Lorem ipsum dolor sit amet consectetur.</p>
-                        <p className='usr-common-para'>Lorem ipsum dolor sit amet consectetur. Etiam sem placerat 
+                    <div className='usr-about-text-para'><p className='usr-about-para'>Lorem ipsum dolor sit amet consectetur.</p>
+                        <p className='usr-common-para ps-4 pe-4'>Lorem ipsum dolor sit amet consectetur. Etiam sem placerat 
                             consectetur tempor blandit mauris. Id viverra etiam pretium ac. 
                             Viverra at tristique volutpat integer tempus sed velit volutpat. 
                             Et tortor sapien ultrices pretium lacinia rhoncus. Massa mattis 
