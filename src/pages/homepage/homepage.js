@@ -355,7 +355,6 @@ const Homepage = () => {
                                                 <p className="usr-blog-para">
                                                 {truncateDescription( blog.description, 75)}
                                                 </p>
-                                                <span className="usr-blog-date">Oct 3-2 min</span>
                                             </div>
                                             <div className="blog-card-icon">
                                                 <div className="usr-blog-card-view-comment-box me-2">
