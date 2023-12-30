@@ -153,3 +153,66 @@ textarea::placeholder{
   background-color: #6D5D4C;
   color: #FCF7F2;
 }
+
+
+
+
+/*-----------media query---------*/
+
+@media screen and (max-width: 767.98px) {
+
+    .usr-contact-heading{
+        font-size: 77px;
+        line-height: 73px;
+        color: rgb(109,93,76);
+        letter-spacing: 2px;
+        font-weight: 700;
+    }
+
+    .usr-contact-main-para {
+        color: #6D5D4C;
+        font-size: 30px;
+        font-weight: 400;
+        font-family: AvenirLTProBook;
+        letter-spacing: 1.3px;
+        padding-top: 15px;
+        margin-bottom: 0;
+    }
+
+    
+}
+
+@media screen and (max-width: 576.98px) {
+
+    .usr-contact-heading {
+        font-size: 76px;
+        line-height: 73px;
+        color: rgb(109,93,76);
+        letter-spacing: 2px;
+        font-weight: 700;
+    }
+    
+}
+
+@media screen and (max-width: 429.98px) {
+
+    .usr-contact-heading {
+        font-size: 60px;
+        line-height: 73px;
+        color: rgb(109,93,76);
+        letter-spacing: 2px;
+        font-weight: 700;
+    }
+
+}
+
+@media screen and (max-width: 389.98px) {
+
+    .usr-contact-heading {
+        font-size: 54px;
+        line-height: 73px;
+        color: rgb(109,93,76);
+        letter-spacing: 2px;
+        font-weight: 700;
+    }
+}

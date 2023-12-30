@@ -361,7 +361,7 @@ const Header = ({ cities, services }) => {
               </li>
               {/* End Search Container */}
               <li className="nav-item">
-                <Link className="nav-link " to="/contact">
+                <Link className="nav-link " to="/contact-us">
                   Contact us
                 </Link>
               </li>
