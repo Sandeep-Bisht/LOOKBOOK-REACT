@@ -22,7 +22,6 @@ export const ArtistCard = ({artistInfo, wishlist}) => {
     let cookies = new Cookies();
     const [userWishlist,setUserWishlist] = useState(wishlist ? wishlist : [])
     const location = useLocation();
-    console.log("this is resposne", location)
 
 
     const wishlistHandler = async (artist_id) => {    
