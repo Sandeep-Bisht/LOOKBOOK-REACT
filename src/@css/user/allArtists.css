@@ -123,3 +123,8 @@
     line-height: normal;
     margin-bottom: 10px;
   }
+
+  .usr-all-artist .usr-all-artist-card .usr-whishlist-icon svg path
+  {
+    fill:#C8B29D!important;
+  }

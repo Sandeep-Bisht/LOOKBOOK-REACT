@@ -7,6 +7,7 @@ import { AccountOutline } from "mdi-material-ui";
 import mainLogo from "@core/assets/header/main-logo.png";
 import DatePicker from "react-multi-date-picker";
 
+
 const Header = ({ cities, services }) => {
 
   // Toggle Search container js

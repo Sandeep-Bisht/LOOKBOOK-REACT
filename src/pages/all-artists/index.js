@@ -1,12 +1,14 @@
 import React from 'react'
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useOutletContext } from 'react-router-dom';
 import NoDataFound from 'pages/become-a-artist/common/noDataFound';
+import Cookies from 'universal-cookie';
 import '@css/user/allArtists.css'
 import { ArtistCard } from 'layouts/components/artistCard';
 
 const AllArtists = () => {
 
   const allArtists = useLoaderData()
+  const [ wishlist ] = useOutletContext();
     
   return (
     <>
