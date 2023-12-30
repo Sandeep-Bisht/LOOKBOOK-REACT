@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Cookies from 'universal-cookie';
 import { formatIndianRupee } from 'configs/formatIndianRupee';
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Slider from "react-slick";
-import { FaRegHeart, FaStar } from "react-icons/fa";
+import { FaHeart, FaStar } from "react-icons/fa";
+import { axiosAuth } from "configs/axiosInstance";
 
-export const ArtistCard = ({artistInfo}) => {
+const BASE_URL = process.env.REACT_APP_APIURL
+
+export const ArtistCard = ({artistInfo, wishlist}) => {
 
     const settings = {
         dots: true,
@@ -15,13 +19,32 @@ export const ArtistCard = ({artistInfo}) => {
       };
 
     const navigate = useNavigate()
+    let cookies = new Cookies();
+    const [userWishlist,setUserWishlist] = useState(wishlist ? wishlist : [])
+    const location = useLocation();
+    console.log("this is resposne", location)
+
+
+    const wishlistHandler = async (artist_id) => {    
+      const token = cookies.get('LOOKBOOK_TOKEN');
+      if(token){
+        let resposne = await axiosAuth.post(`${BASE_URL}/wishlist/mark_user_wishlist`,{artist_id});
+        if(resposne){
+         
+          setUserWishlist(resposne.data.data)
+        }
+      } else{
+        navigate(`/login?redirectUrl=${location.pathname}${location.search ? location.search : ''}`)
+      }      
+
+    }
     
   return (
     <div className={`usr-all-artist-card`}>
                 <div className="usr-all-artist-card-wrapper">
-                  <div className="usr-all-artist-card-favourite">
-                    <button className="usr-all-artist-card-favourite-button">
-                      <FaRegHeart />
+                  <div className="usr-all-artist-card-favourite" onClick={() => wishlistHandler(artistInfo?._id)}>
+                    <button className={`usr-all-artist-card-favourite-button ${userWishlist?.artist?.includes(artistInfo?._id) ? 'usr-whishlist-icon' : ''}`}>
+                      <FaHeart />
                     </button>
                   </div>
                   <Slider className="usr-all-artist-card-carsouel" {...settings}>
