@@ -206,6 +206,10 @@
 
 }
 
+.header .home-selction-form .usr-header-datePicker .rmdp-container{
+  width: 100%;
+}
+
 .header .usr-search-container .custom-drodown-btn 
 {
   padding:8px 13px;
@@ -220,14 +224,18 @@
 }
 .header .usr-search-container .custom-drodown-btn .clicked-text
 {
-  font-family:AvenirLTProLight;
+  font-family: AvenirLTProLight;
   color: #6D5D4C;
   font-size: 12px;
   opacity: .50;
+  display: block;
+  text-align: left;
+  padding-top: 6px;
 }
 .usr-search-container .home-selction-form
 {
   padding: 2px;
+  width: 70%;
 }
 .header .usr-search-container .custom-search 
 {
@@ -235,7 +243,7 @@
     font-family: AvenirLTProLight;
     font-size: 14px;  
   width:auto;
-    height: auto;
+    height: 100%;
     margin-left: 15px;
     border-radius: 36px;
     padding: 13px 30px;
@@ -325,13 +333,49 @@ button.common-action:is(:hover,:active,:focus,:focus-visible){
   justify-content: center;
 }
 
-.usr-search-container .common-calendor-si{
-  min-width: 300px;
+/* ----------------------- usr-search-container dropdown css-----------*/
+.usr-search-container .dropdown-menu
+{
+  border-radius: 20px;
+  background:  #FEFEFE;
+  padding: 10px 5px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.18);
 }
 
-.usr-search-container .home-selction-form{
-  /* padding: 0;
-  padding-right: 50px; */
+.usr-search-container .dropdown-menu .dropdown-menu-wrapper{
+  max-height: 150px; 
+  overflow-y: auto; 
+ 
+}
+.usr-search-container .dropdown-menu .dropdown-menu-wrapper::-webkit-scrollbar {
+  width: 10px;
+ 
 }
 
+.usr-search-container .dropdown-menu .dropdown-menu-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 75px;
+  background: #D9D9D9;
+}
 
+.usr-search-container .dropdown-menu .dropdown-menu-wrapper::-webkit-scrollbar-track {
+background:  #FEFEFE;
+
+}
+
+.usr-search-container .dropdown-menu .usr-dropdown-link
+{
+  color: #6D5D4C;
+  font-family: AvenirLTProLight;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 8px 13px;
+  border-radius: 33px;
+  background-color:#FEFEFE;
+  transition: .3s linear;
+  cursor: pointer;
+}
+
+.usr-search-container .dropdown-menu .usr-dropdown-link:hover,.usr-search-container .dropdown-menu .usr-dropdown-link.active
+{
+  background: #FCF7F2;
+}

@@ -158,7 +158,7 @@ const Header = ({ cities, services }) => {
               <li className={`nav-item ${isClicked ? 'usr-search-container' : ''}`} onClick={() => setIsClicked(true)}>
                 <div className="home-selction-form">
 
-                  <div className="row m-0 align-items-center">
+                  <div className="row m-0 w-100 align-items-center">
                     <div className="col-lg-4 px-0">
                       <div className="btn-group d-block h-100">
                         <button className="custom-drodown-btn h-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -201,16 +201,19 @@ const Header = ({ cities, services }) => {
                             )}</div>
                         </button>
                         
-                        <ul class="dropdown-menu">
+                        
+                        <div class="dropdown-menu">
+                             <div className="dropdown-menu-wrapper">
                           {cities && Array.isArray(cities) && cities.length > 0 && cities.map((city, ind) => {
-                            return <li onClick={() => setSelectedLocation(city)} className={selectedLocation == city ? 'active' : ''} key={`${city}${ind}`}>{city}</li>
+                            return <div onClick={() => setSelectedLocation(city)} className={`usr-dropdown-link ${selectedLocation == city ? 'active' : ''}`} key={`${city}${ind}`}>{city}</div>
                           })}
-                        </ul>
+                        </div></div>
+                        
                       </div>
                     </div>
                    
                     <div className="col-lg-4 px-0">
-                        <div>
+                        <div className="usr-header-datePicker">
                         <DatePicker 
                           minDate={new Date()}
                           value={selectedDates}
@@ -329,11 +332,18 @@ const Header = ({ cities, services }) => {
                           </div>
                           
                         </button>
-                        <ul class="dropdown-menu">
+                        <div class="dropdown-menu">
+                             <div className="dropdown-menu-wrapper">
                           {services && Array.isArray(services) && services.length > 0 && services.map((service, ind) => {
-                            return <li onClick={() => setSelectedService(service._id)} className={selectedService == service._id ? 'active' : ''} key={`${service._id}${ind}`}>{service.title}</li>
+                           
+                            return <div onClick={() => setSelectedService(service._id)} className={`usr-dropdown-link ${selectedService === service._id ? 'active' : ''}`}
+                            key={`${service._id}${ind}`}
+                          >
+                            {service.title}
+                          </div>
                           })}
-                        </ul>
+                        </div>
+                        </div>
                       </div>
                     </div>
                   </div>
