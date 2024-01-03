@@ -80,10 +80,11 @@ const AboutUS = () => {
        <section className='pt-5'>
         <div className='container'>
             <div className='row'>
+            <p className='usr-about-main-para text-center'>WE AIM TO PROVIDE YOU</p>
                 <div className='col-md-4 mx-auto'>
-                   
+                
                     <div className='usr-about-image-section'>
-                        <p className='usr-about-main-para text-center'>WE AIM TO PROVIDE YOU</p>
+                       
                         <img src='images/image (3).jpg' className='img-fluid'/>
                     </div>
                     

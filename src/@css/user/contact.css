@@ -194,7 +194,25 @@ textarea::placeholder{
     
 }
 
-@media screen and (max-width: 429.98px) {
+@media screen and (max-width: 528.98px) {
+
+    .usr-contact-heading {
+        font-size: 75px;
+        line-height: 73px;
+        color: rgb(109,93,76);
+        letter-spacing: 2px;
+        font-weight: 700;
+    }
+    .usr-contact-date {
+        padding: 0 0 0 0px; 
+    }
+    
+    .usr-contact-image {
+         padding: 0 0px 0 0px; 
+    }
+}
+
+@media screen and (max-width: 430.98px) {
 
     .usr-contact-heading {
         font-size: 60px;
@@ -206,10 +224,27 @@ textarea::placeholder{
 
 }
 
-@media screen and (max-width: 389.98px) {
-
+@media screen and (max-width: 390.98px) {
+    .usr-contact-date {
+        padding: 0 0 0 0px; 
+    }
+    
+    .usr-contact-image {
+         padding: 0 0px 0 0px; 
+    }
     .usr-contact-heading {
         font-size: 54px;
+        line-height: 73px;
+        color: rgb(109,93,76);
+        letter-spacing: 2px;
+        font-weight: 700;
+    }
+}
+
+@media screen and (max-width: 375.98px) {
+
+    .usr-contact-heading {
+        font-size: 51px;
         line-height: 73px;
         color: rgb(109,93,76);
         letter-spacing: 2px;
