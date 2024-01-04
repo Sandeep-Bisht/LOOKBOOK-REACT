@@ -59,6 +59,12 @@ const UserMenu = ({props}) => {
            </Link>
         </li>
         <li>
+           <Link to="/wishlist" className="dropdown-item">
+           <MessageOutline sx={{ marginRight: 2 }} />
+            Wishlist
+           </Link>
+        </li>
+        <li>
         <Divider />
            <Link to="/" className="dropdown-item">
            <CogOutline sx={{ marginRight: 2 }} />
