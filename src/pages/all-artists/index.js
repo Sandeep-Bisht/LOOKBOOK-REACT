@@ -9,7 +9,6 @@ const AllArtists = () => {
 
   const allArtists = useLoaderData()
   const [ wishlist ] = useOutletContext();
-
     
   return (
     <>
