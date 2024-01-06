@@ -343,7 +343,7 @@ const Homepage = () => {
                         </div>
                             <div className="row mt-lg-5 pt-lg-3">
                             <div className="col-lg-12">
-                                {allBlogs.length > 0 ? 
+                                {allBlogs && Array.isArray(allBlogs) && allBlogs.length > 0 ? 
                                 <div className="blog-section-card ">
                                 <Slider {...settings}>
                                     {allBlogs.map((blog,ind)=>{

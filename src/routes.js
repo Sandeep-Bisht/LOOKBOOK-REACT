@@ -62,6 +62,8 @@ import AboutUS from 'pages/about-us'
 import ArtistSingle from 'pages/artistSingle'
 import SingleArtistInformation from 'pages/management/artistRequests/singleArtistRequestPage'
 import SingleBlog from 'pages/single-blog/singleBlog'
+import Wishlist from 'pages/wishlist-page/wishlist'
+import { getUserWishlist } from 'configs/initialapis'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -191,6 +193,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route index path="/" element={<Homepage />} loader={getHomepageData}/>
           <Route element={<WishlistContextProvider/>} loader={getUserWishlistByID}>
             <Route path='/artists' element={<AllArtists/>} loader={getAllArtists} />
+            <Route path='/wishlist' element={<Wishlist /> } loader={getUserWishlist}/>
             <Route path="/artists/:artist_id" element={<ArtistSingle/>}/>
             <Route path='/search' element={< Search />} />
           </Route>
