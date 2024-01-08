@@ -82,7 +82,7 @@ const Categories = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-    {all_categories.data && all_categories.data.length>0 && all_categories.data.map(row => 
+    {all_categories && all_categories.length>0 && all_categories.map(row => 
     {
         return(
             <TableRow hover role='checkbox' tabIndex={-1} key={row._id}>
@@ -121,7 +121,7 @@ const Categories = () => {
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component='div'
-          count={all_categories.data.length}
+          count={all_categories.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

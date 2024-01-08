@@ -43,7 +43,6 @@ const CreateBlog = () => {
       toast.warn('Failed to create Blog!');
     }
   };
-
   return (
     <>
       {/* <section>
@@ -84,7 +83,7 @@ const CreateBlog = () => {
           label="Category"
         >
           {
-            allCategory && allCategory.data.length>0 && allCategory.data.map((item,index)=>{
+            allCategory && Array.isArray(allCategory) && allCategory.length>0 && allCategory.map((item,index)=>{
               return (
                 <MenuItem key={index} value={item._id}>{item.title}</MenuItem>
               )
