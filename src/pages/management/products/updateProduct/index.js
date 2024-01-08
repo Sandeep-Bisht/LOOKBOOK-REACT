@@ -82,7 +82,7 @@ function UpdateProducts() {
       }
     } catch (error) {
       toast.warn('Failed to update product!');
-      return error.message || "An error occured while trying to update services."
+      return error.message || "An error occured while trying to update product."
       
     }
   };
