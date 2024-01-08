@@ -23,18 +23,17 @@
 
 .usr-home-banner .usr-home-banner-heading {
     color: #6D5D4C;
-    font-family: Forum-regular;
-    font-size: 28px;
-    letter-spacing: 3px;
+    font-family:AvenirLTProHeavy;
+    font-size: 30px;
+    letter-spacing: 0px;
     position: relative;
-    /* bottom: 35px; */
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .usr-home-banner .usr-home-banner-tag {
     color: #6D5D4C;
-    font-family: Forum-regular;
-    font-size: 18px;
+    font-family:AvenirLTProBook;
+    font-size: 16px;
     position: relative;
     /* bottom: 35px */
 }
@@ -148,9 +147,9 @@
 }
 
 .usr-artist-area-card .usr-expert-pic-name {
-    font-family: Forum-regular;
+    font-family:AvenirLTProBook;
     color: #6D5D4C;
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 0;
     line-height: 1;
     text-transform: capitalize;
@@ -170,6 +169,7 @@
 }
 
 .usr-artist-area .expert-pic .usr-expert-certification {
+    font-family: AvenirLTProLight;
     position: absolute;
     bottom: 30px;
     width: 165px;
@@ -370,23 +370,24 @@
 }
 
 .user-select-package .usr-package-card-title {
-    font-family: Forum-regular;
+    font-family:AvenirLTProBook;
     color: #6D5D4C;
-    font-size: 32px;
+    font-size: 30px;
 }
 
 .user-select-package .usr-package-card-price {
     display: flex;
-    padding: 6px 10px;
-    justify-content: center;
+    padding: 6px 10px 6px 20px;
+    justify-content: left;
     align-items: center;
     background: #8C6A54;
     color: #FEFEFE;
-    font-family: Forum-regular;
-    font-size: 14px;
+    font-family: AvenirLTProBook;
+    font-size: 12px;
     width: 55%;
-
 }
+
+
 
 .user-select-package .usr-package-card-para {
     color: #6D5D4C;
@@ -521,11 +522,9 @@
 
 .usr-featured-artist-card .name h2 {
     position: relative;
-    letter-spacing: 1px;
+   font-family:AvenirLTProBook;
     color: #6D5D4C;
-    font-family: Forum-regular;
-    color: #6D5D4C;
-    font-size: 32px;
+    font-size: 26px;
     margin-bottom: 0;
     text-transform: capitalize;
 }
@@ -741,10 +740,10 @@
 
 .usr-blog-main-content .usr-blog-heading {
 
-    font-size: 22px;
+    font-size: 20px;
     line-height: 27.6px;
     color: #6D5D4C;
-    font-family: Forum-regular;
+    font-family:AvenirLTProBook;
     padding-top: 10px;
 
 }
@@ -925,3 +924,363 @@
     position: relative;
     top:60px;
 }
+
+
+/* ------------------------media query------------------ */
+
+
+@media (min-width:1921px) and (max-width: 2561px) {
+
+ 
+}
+
+
+@media (min-width:1536px) and (max-width: 1920px) {
+
+
+}
+
+
+@media (max-width: 1399.98px) {
+  
+}
+
+
+@media (max-width: 1199.98px) {
+  
+
+}
+
+
+@media (max-width: 1024.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+   
+    .usr-home-banner .slick-slide
+    {
+        padding: 20px;
+    }
+    .usr-home-banner .usr-home-banner-heading
+    {
+        font-size: 23px;
+        margin-bottom: 0;
+    }
+    .usr-home-banner .usr-home-banner-tag
+    {
+        font-size: 14px;
+    }
+    .usr-artist-area-wrapper
+    {
+        width: 55%;
+        padding-bottom: 0;
+    }
+    .usr-artist-area-card .usr-expert-pic-name
+    {
+        font-size: 18px;
+    }
+    .usr-artist-area-card .usr-expert-pic-profile
+    {
+        font-size: 11px;
+    }
+    .usr-artist-area .expert-pic .usr-expert-certification
+    {
+        width: 160px;
+        height: 40px;
+    }
+    .usr-artist-area .card
+    {
+        margin-bottom: 0;
+    }
+    .user-select-package .usr-package-card
+    {
+        padding: 40px 20px 40px 20px;
+        margin-bottom: 20px;
+    }
+    .user-select-package .usr-package-card-icon
+    {
+        margin-bottom: 10px;
+    }
+    .user-select-package .usr-package-card-icon svg
+
+    {
+        height: 43px!important;
+        width: 43px!important;
+    }
+    .user-select-package .usr-package-card-title
+    {
+        font-size: 26px;
+    }
+    .user-select-package .usr-package-card-price
+    {
+        font-size: 11px;
+         width: 80%;
+    }
+    .user-select-package .usr-package-card-para
+
+    {
+        font-size: 12px;
+    }
+    .user-select-package .usr-book-now
+    {
+        padding: 8px 20px 8px 20px;
+        font-size: 9px;
+    }
+
+    .usr-featured-artist-card
+    {
+        margin-bottom: 20px;
+    }
+    .usr-featured-artist-card .name h2
+
+    {
+        font-size: 22px;
+    }
+    .usr-featured-artist-card .name .profession h3
+    {
+        font-size: 13px;
+    }
+    .usr-featured-artist-card .prizeButton .prize span.usr-charges,
+.usr-featured-artist-card .prizeButton .prize span.usr-price
+{
+    font-size: 11px;
+}
+.usr-featured-artist-card .prizeButton .reserveButton .rButton svg{
+    height: 12px;
+    width: 12px;
+}
+.usr-featured-artist-card .prizeButton .reserveButton .rButton {
+    font-size: 10px;
+}
+.usr-blog-main-content
+{
+    margin: 0;
+    padding: 10px;
+    height: 395px;
+    position: relative;
+}
+.blog-card-icon
+{
+    position: absolute;
+    bottom: 12px;
+}
+.usr-blog-main-content .usr-blog-para {
+  font-size: 12px;
+}
+.usr-blog-main-content img
+{
+    height: 200px;
+}
+.usr-blog-main-content-wrapper
+{
+    padding: 5px;
+}
+.usr-blog-main-content .usr-blog-heading
+{
+    font-size: 18px;
+    text-transform: capitalize;
+
+}
+
+}
+
+
+
+@media (max-width: 820.98px) {
+    .usr-artist-area-wrapper
+    {
+        width: 65%;
+    }
+}
+
+@media (max-width: 800.98px) {
+    .usr-artist-area-wrapper
+    {
+        width: 70%;
+    }
+}
+
+
+
+  @media (max-width: 767.98px) {
+    .usr-home-banner .slick-slide
+    {
+        padding: 15px;
+    }
+    .usr-home-banner .usr-home-banner-heading
+    {
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+    .usr-home-banner .usr-home-banner-tag
+    {
+        font-size: 12px;
+    }
+    .usr-artist-area-wrapper
+    {
+        width: 85%;
+    }
+    .user-select-package .usr-package-card-price
+    {
+        width: 40%;
+    }
+    .usr-emerging-artist-carousel-item .usr-emerging-artist-carousel-box img
+    {
+        height: 250px!important;
+    }
+    .usr-emerging-artist-carousel-item .usr-emerging-artist-carousel-box
+
+    {
+        height: 290px!important;
+    }
+    .usr-emerging-artist-carousel-item .usr-emerging-artist-carousel-box p
+    {
+        font-size: 18px;
+    }
+
+  }
+
+  /* -------------------footer----- */
+  
+
+
+
+
+
+
+
+
+
+@media (max-width: 630.98px) {
+  
+}
+
+@media (max-width: 575.98px) {
+
+    .usr-artist-area-wrapper
+    {
+        width: 100%;
+    }
+    .usr-artist-area-card .usr-expert-pic-name {
+        font-size: 17px;
+    }
+    .usr-artist-area .card img
+    {
+        height: 250px;
+    }
+    .usr-artist-area .expert-pic .usr-expert-certification
+    {
+        height: 35px;
+    }
+    .user-select-package .usr-package-card {
+        width: 80%;
+        margin: 0 auto 20px auto;
+    }
+    .user-select-package .usr-package-card-title
+    {
+        font-size: 24px;
+    }
+    .user-select-package .usr-package-card-price
+    {
+        width: 40%;
+    }
+    .usr-featured-artist-card
+    {
+        height: 450px;
+        width: 80%;
+        margin:20px auto 20px auto;
+    }
+
+}
+
+@media (max-width: 516.98px) {
+ 
+}
+
+@media (max-width: 483.98px) {
+ 
+
+  
+}
+
+@media (max-width: 481.98px) {
+ 
+    .usr-blog-main-content
+    {
+        width: 80%;
+        margin: auto;
+    }
+  
+}
+
+
+
+
+@media (max-width: 460.98px) {
+    .usr-artist-area-wrapper
+    {
+        padding: 50px 20px;
+    }
+ 
+    .usr-artist-area-card
+    {
+        padding: 20px 10px;
+    }
+    .usr-artist-area-card .usr-expert-pic-name
+    {
+        font-size: 14px;
+    }
+    .usr-artist-area-card .usr-expert-pic-profile
+    {
+        font-size: 10px;
+    }
+    .usr-artist-area .card img
+    {
+        height: 230px;
+    }
+    .usr-artist-area .usr-expert-pic-insta-box svg
+    {
+        height: 14px;
+        width: 14px;
+    }
+    .usr-artist-area .usr-expert-pic-insta-box a {
+      margin-left: 7px;
+    }
+    .user-select-package .usr-package-card-price
+    {
+        width: 45%;
+    }
+}
+
+
+
+@media (max-width: 440.98px) {
+    .usr-featured-artist-card .name h2
+    {
+        font-size: 20px;
+    }
+
+    .usr-featured-artist-card
+    {
+        height:400px;
+    }
+
+
+}
+
+@media (max-width:410.98px) {
+    .user-select-package .usr-package-card-price
+    {
+        width: 50%;
+    }
+}
+
+@media (max-width:390.98px) {
+  
+}
+
+@media (max-width: 380.98px) {
+ 
+}
+
