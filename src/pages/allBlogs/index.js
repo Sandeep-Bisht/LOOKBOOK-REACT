@@ -1,14 +1,47 @@
-import React from 'react'
+import React,{ useState} from 'react'
 import { useLoaderData, useNavigate } from 'react-router-dom'
 import { truncateDescription } from 'configs/truncateDescription'
 import "@css/allBlog.css"
+import axios from 'axios'
+const baseURL = process.env.REACT_APP_APIURL;
 
 const AllBlogs = () => {
 
-  const allBlogs = useLoaderData();
+  const {allBlogs,allCategories} = useLoaderData();
 
   const navigate =  useNavigate();
 
+  const [blogs,setBlogs] = useState(allBlogs)
+
+  const retriveDate=(dateString)=>{
+  const date = new Date(dateString);
+  const options = { month: 'short', day: 'numeric' };
+  return date.toLocaleDateString('en-US', options);
+  
+}
+
+const categoryHandler = async(_id)=>{
+  try{
+    const response = await axios.get(`${baseURL}/blog/get_blog_category_by_id/${_id}`)
+    if(response.status="OK"){
+      setBlogs(response.data)
+    }
+  }catch(error){
+    return error.message || "An error occured while trying to get all categories."
+  }
+}
+
+
+const allBlogsHandler =async()=>{
+  try{
+    const response = await axios.get(`${baseURL}/blog/all_blogs`)
+    if(response){
+      setBlogs(response.data.data)
+    }
+  }catch(error){
+    return error.message || "An error occured while trying to get all categories."
+  }
+}
   return (
     <section className='usr-all-blog'>
       <div className='container'>
@@ -17,21 +50,25 @@ const AllBlogs = () => {
             <h2 className='all-blog-top-heading .usr-common-heading'>ALL BLOGS</h2>
           </div>
           <div className='col-md-12 mt-5 text-center'>
-            <button className='btn blog-type-btn'>All Post |</button>
-            <button className='btn blog-type-btn'>Make Trends |</button>
-            <button className='btn blog-type-btn'>Makeup Artist Career |</button>
-            <button className='btn blog-type-btn'>And Other Posts</button>
+            <button className='btn blog-type-btn' onClick={allBlogsHandler}>All Post |</button>
+            {
+              allCategories && Array.isArray(allCategories) && allCategories.map((category,index)=>{
+                return(
+                  <button className='btn blog-type-btn' key={index} onClick={()=>categoryHandler(category._id)}>{category.title} |</button>
+                )
+              })
+            }
           </div>
           <div className='col-md-12 mt-2'>
             <div className='row'>
               {
-                allBlogs && Array.isArray(allBlogs) && allBlogs.map((item,index)=>(
+                blogs && Array.isArray(blogs)?  blogs.map((item,index)=>(
                     <div className='col-md-3' key={index}>
-                    <div className="usr-blog-section-card-content  common-cursor-pointer"  onClick={()=>navigate(`/blogs/${item?.slug}`)}>
+                    <div className="usr-blog-section-card-content  common-cursor-pointer mt-3"  onClick={()=>navigate(`/blogs/${item?.slug}`)}>
                       <div className="usr-blog-content-wrapper">
                         <div className="usr-blog-content">
                           <img src={item.featuredImage.url} className="img-fluid" />
-                          <div className='usr-blog-date'>Oct 03</div>
+                          <div className='usr-blog-date'>{retriveDate(item?.createdAt)}</div>
                           <div className="usr-card-body">
                             <h4 className="usr-all-blog-heading">{item.title}</h4>
                             <p className="usr-all-blog-para">
@@ -89,6 +126,10 @@ const AllBlogs = () => {
                     </div>
                   </div>
                 ))
+                :
+                <div>
+                  <span>No data</span>
+                </div>
               }
             </div>
           </div>

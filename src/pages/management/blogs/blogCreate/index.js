@@ -1,16 +1,16 @@
-import {  useState,useRef} from 'react';
+import React,{  useState,useRef} from 'react';
 import {  useForm } from 'react-hook-form';
 import  JoditEditor  from 'jodit-react';
 import {axiosAuth} from 'configs/axiosInstance'
 import slugify from 'react-slugify';
-import { Grid, TextField, Button } from "@mui/material";
-import { useNavigate } from 'react-router-dom';
+import { Grid, TextField, Button, Select, MenuItem, InputLabel } from "@mui/material";
+import { useNavigate, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
 const CreateBlog = () => {
-
+  const allCategory = useLoaderData()
   const { register, handleSubmit } = useForm();
   const editor = useRef(null);
   const [content, setContent] = useState('');
@@ -43,8 +43,6 @@ const CreateBlog = () => {
       toast.warn('Failed to create Blog!');
     }
   };
-  
-
   return (
     <>
       {/* <section>
@@ -75,7 +73,25 @@ const CreateBlog = () => {
                         }}
                       />
         </Grid>
-        
+        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6}>
+        <InputLabel id="demo-simple-select-label">Category</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          {...register("category")}
+          label="Category"
+        >
+          {
+            allCategory && Array.isArray(allCategory) && allCategory.length>0 && allCategory.map((item,index)=>{
+              return (
+                <MenuItem key={index} value={item._id}>{item.title}</MenuItem>
+              )
+            })
+          }
+        </Select>
+        </Grid>
+        </Grid>
         
         <Grid item xs={12} md={6}>
           <TextField

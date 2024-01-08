@@ -190,5 +190,21 @@ export const getUserWishlist = async() =>{
   return error.message || "An error occured while trying to get user wishlist."
    }
 }
+export const getAllCategories  = async () => {
+  try {
+    const response = await axiosLocal.get('/category/all_categories');
+      return response.data.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get all categories."
+   }
+};
 
-
+export const getCategoryById = async ({params}) => {
+  try {
+    const {category_id} = params;
+    const response = await axiosAuth.get(`/category/get_category_by_id/${category_id}`);
+    return response.data
+  } catch (error) {
+      return error.message || "An error occured while trying to get artist by id."
+  }
+}; 

@@ -45,6 +45,11 @@
     letter-spacing:0;
 }
 
+.usr-all-blog .usr-blog-section-card-content img{
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
 
 @media screen and (max-width: 767.98px)
 {
