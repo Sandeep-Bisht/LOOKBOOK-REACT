@@ -11,7 +11,7 @@ import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/user/Profile'
-import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogById, getArtistById, getBlogBySlug, getUserWishlistByID } from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogById, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -64,6 +64,9 @@ import SingleArtistInformation from 'pages/management/artistRequests/singleArtis
 import SingleBlog from 'pages/single-blog/singleBlog'
 import Wishlist from 'pages/wishlist-page/wishlist'
 import { getUserWishlist } from 'configs/initialapis'
+import Categories from 'pages/management/categories/allCategories'
+import CategoriesForm from 'pages/management/categories/categoryCreate'
+import UpdateCategories from 'pages/management/categories/updateCategory'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -200,7 +203,16 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path='/terms-conditions' element={<TermsPage/>}/>
           <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
           <Route path='/contact-us' element={<ContactPage/>}/>
-          <Route path='/blogs' element={<AllBlogs/>} loader={getAllBlog}/>
+          <Route path='/blogs' element={<AllBlogs/>} loader={()=>{
+            const allBlogs=getAllBlog();
+            const allCategories=getAllCategories();
+            return Promise.all([allBlogs,allCategories]).then((results)=>{
+             return {
+              allBlogs: results[0],
+              allCategories: results[1],
+             }
+            })
+            }}/>
           <Route path='/blogs/:slug' element={<SingleBlog/>} loader={getBlogBySlug}/>
           <Route path='/about-us' element={<AboutUS/>}/>
           <Route element={<CheckLoggedIn/>}>
@@ -272,14 +284,16 @@ const ApplicationRoutes = createBrowserRouter(
           <Route path="/management/icons" element={<Icons/>}/> 
           <Route path="/management/tables" element={<MUITable/>}/> 
           <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
-          <Route path="/management/create-blog" element={<CreateBlog/>}/> 
+          <Route path="/management/create-blog" element={<CreateBlog/>} loader={getAllCategories}/> 
 
          <Route path="/management/blogs" element={<BlogList/>} loader={getAllBlog}/>
         <Route path="/management/services" element={<AllServicesDetails/>} loader={allServicesDetails}/>
+        <Route path="/management/categories" element={<Categories/>} loader={getAllCategories}/>
+        <Route path="/management/categories/create" element={<CategoriesForm/>} loader={getAllCategories}/>
         <Route path="/management/services/create" element={<Services/>}/>
         <Route path="/management/products" element={<AllProdutsDetails/>} loader={allProductsDetails}/>
         <Route path="/management/products/create" element={<ProductForm/>}/>
-        
+        <Route path="/management/categories/create/:category_id" element={<UpdateCategories/>} loader={getCategoryById}/>
         <Route path="/management/services/:_id" element={<UpdateService/>} loader={({params})=>getServiceById(params)}/>
         <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
         <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogById(params)}/>

@@ -20,7 +20,7 @@ const UpdateBlog = () => {
   const [loading,setLoading] = useState(false);
   const [selectFileImage,setSelectFileImage]=useState()
   const [imageUrl, setImageUrl] = useState(
-    getBlogById?.featuredImage.thumbnailUrl
+    getBlogById?.featuredImage?.thumbnailUrl
   );
 
   const handleImageChange = (event) => {
