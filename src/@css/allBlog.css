@@ -6,6 +6,7 @@
 .usr-blog-section-card-content{
     padding: 15px;
     background: #fff;
+   
 }
 
 .usr-all-blog .usr-blog-content{
@@ -45,3 +46,17 @@
 }
 
 
+@media screen and (max-width: 767.98px)
+{
+
+    .usr-all-blog .all-blog-top-heading{
+        font-size: 60px;
+        color: #6d5d4c;
+    }
+
+    /* .usr-blog-section-card-content{
+        padding: 15px;
+        background: #fff;
+        margin-bottom: 26px;
+    } */
+}
