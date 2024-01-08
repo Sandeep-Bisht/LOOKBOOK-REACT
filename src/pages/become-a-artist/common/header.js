@@ -6,13 +6,13 @@ const BecomeAristHeader = () => {
   const navigate = useNavigate();
   return (
     <section className="artist-header">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row  became-artist">
           <div className="col-md-6">
           <Link className="navbar-brand" to="/">
             <span className="main-logo">
               <h1>
-              <img src={Logo} className="img-fluid" width={180}/>
+              <img src={Logo} className="img-fluid" width={240}/>
               </h1>
             </span>
           </Link>

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Navigate, useLoaderData, useNavigate } from 'react-router-dom'
 import BecomeAristHeader from './common/header';
-import DefineSteps from './common/steps.json'
+import DefineSteps from './common/steps.json';
 import "@css/artistRegistration.css";
+import "@css/user/become-a-artist.css";
 
 const ArtistRequestProvider = () => {
 

@@ -40,7 +40,7 @@ const InsightStory = () => {
     try{
     await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
     setArtistPayload((prev) => {return {...prev,...payload}})
-    navigate(`/become-a-artist/${request_id}/stand-out`)
+    navigate(`/become-a-artist/${request_id}/you-are-best-in`)
     }
     catch(error){
       throw error;
@@ -54,10 +54,10 @@ const InsightStory = () => {
     }
 
     let payload = {
-      currentStep:6,experience,education,languages
+      currentStep:8,experience,education,languages
     }
 
-    if(artistPayload?.currentStep > 5){
+    if(artistPayload?.currentStep > 7){
       delete payload.currentStep;
     }
 
@@ -66,7 +66,7 @@ const InsightStory = () => {
             if(artistPayload?.experience == experience && artistPayload?.education == education && Array.isArray(artistPayload?.languages)){
               const areEqual = languages.every((element, index) => element === artistPayload?.languages[index]);
               if(areEqual){
-                return navigate(`/become-a-artist/${request_id}/stand-out`)
+                return navigate(`/become-a-artist/${request_id}/you-are-best-in`)
               }
               else{
                   updatePayload(payload)
@@ -92,22 +92,23 @@ const InsightStory = () => {
 
   return (
     <>
-      <section className="insight-wrapper py-5">
+      <section className="insight-wrapper">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="">
-                <h1 className="text-center">
+              <div className="insight-wrapper-heading text-center">
+                <h4 className="">
                   Share some insights of your work
-                </h1>
+                </h4>
+                <p>Lorem ipsum dolor sit amet consectetur. Turpis viverra porttitor elit ipsum.</p>
               </div>
             </div>
           </div>
-          <form onSubmit={handleSubmit(submitForm)}>
-          <div className="col-md-12 mt-4 mb-5">
+          <form className="my-5" onSubmit={handleSubmit(submitForm)}>
+          <div className="col-md-12">
             <div className="row">
               <div className="col-md-8 mx-auto">
-                <div className="insight-card mb-4">
+                <div className="insight-card mb-5">
                   <div>Year of experience ?</div>
                   <div className="d-flex align-items-center">
                     <span
@@ -126,7 +127,7 @@ const InsightStory = () => {
                   </div>
                 </div>
                 <hr className="" />
-                <div className="insight-card mb-4">
+                <div className="insight-card mb-5">
                   <div>Level of education ?</div>
                   <div>
                 <FormControl variant="standard" sx={{ m: 1, minWidth: 200 }}>
@@ -154,7 +155,7 @@ const InsightStory = () => {
                   </div>
                 </div>
                 <hr className="" />
-                <div className="insight-card mb-4">
+                <div className="insight-card mb-5">
                   <div>How many languages do you speak?</div>
                   <div>
                   <FormControl variant="standard" sx={{ m: 1, minWidth: 200 }}>
@@ -190,10 +191,11 @@ const InsightStory = () => {
           <button type="submit" className="d-none" ref={submitBtnRef}></button>
           </form>
         </div>
+        <div className="horizontal-bar"></div>
       </section>
 
       <ArtistFooter
-        backClick={() => navigate(`/become-a-artist/${request_id}/location`)}
+        backClick={() => navigate(`/become-a-artist/${request_id}/gallery`)}
         nextClick={() => submitBtnRef.current.click()}
       />
     </>

@@ -2,46 +2,33 @@ import React, { useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import ArtistFooter from "./common/artistFooter";
 import NoDataFound from "./common/noDataFound";
-import allServices from "./common/bestOfYou.json"
 import { axiosAuth } from "configs/axiosInstance";
 
 const BASE_URL = process.env.REACT_APP_APIURL
 
 const BestServices = () => {
+  const [artistPayload, setArtistPayload, allServices] = useOutletContext();
   const { request_id } = useParams();
-  const [artistPayload,setArtistPayload] = useOutletContext();
 
   const navigate = useNavigate();
 
-  const [selectedServices, setSelectedServices] = useState([]);
-
-
-  const handleChange = (service) => {
-    
-    // Check if the service is already selected
-    const isSelected = selectedServices.includes(service);
-
-    if (isSelected) {
-      // If selected, remove it from the list
-      setSelectedServices((prevSelected) =>
-        prevSelected.filter((item) => item !== service)
-      );
-    } else {
-      if(selectedServices.length < 2){
-        setSelectedServices((prevSelected) => [...prevSelected, service]);
-      }
-      // If not selected, add it to the list
-    }
-  };
-  
+  const [selectedService, setSelectedService] = useState(artistPayload.featuredService ? artistPayload.featuredService : null);
+  const [attemptedNextWithoutSelection, setAttemptedNextWithoutSelection] = useState(false);
+  const options = allServices.filter((item) => artistPayload?.services?.includes(item._id));
   
   const handleNextClick = async () =>{
+    if(!selectedService || selectedService == ''){
+      return setAttemptedNextWithoutSelection(true);
+    }
+
+    setAttemptedNextWithoutSelection(false)
+
     try{
-      if(artistPayload.currentStep > 8){
+      if(artistPayload.currentStep > 8 && artistPayload.featuredService == selectedService){
        return  navigate(`/become-a-artist/${request_id}/description`)
       }
-        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:9});
-        setArtistPayload((prev) => {return {...prev,currentStep:9}})
+        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:9,featuredService:selectedService});
+        setArtistPayload((prev) => {return {...prev,currentStep:9,featuredService:selectedService}})
         navigate(`/become-a-artist/${request_id}/description`)
     }
     catch(error){
@@ -51,32 +38,32 @@ const BestServices = () => {
 
   return (
     <>
-      <section className="about">
-        <div className="container">
+      <section className="about best-in-wrapper">
+        <div className="container h-min-75vh">
           <div className="row mb-3">
-            <div className="col-md-12">
-              <h1 className="text-center">Which of these best describe you ?</h1>
+            <div className="col-md-12 about-heading">
+              <h4 className="text-center">Which of these your are best in ?</h4>
             </div>
           </div>
 
-          <div className="row mb-5">
+          <div className="row my-5 w-75 mx-auto">
             <div className="col-md-10 mx-auto">
               <div className="row g-3">
-                {(allServices && Array.isArray(allServices)) ?
+                {(options && Array.isArray(options)) ?
                 <>
                 {
-                  allServices.length > 0 ?
+                  options.length > 0 ?
                   <>
-                  {allServices.map((service, index) => (
-                    <div key={index} className="col-md-3">
+                  {options.map((service, index) => (
+                   <div key={index} className={`col-md-6 ${attemptedNextWithoutSelection && (!selectedService || selectedService == '') ? 'border-highlight' : ''}`}>
                       <div
                         className={`${
-                          selectedServices.includes(service._id)
+                          service._id == selectedService
                             ? "selected"
-                            : "artist-card "
+                            : "artist-card"
                         }`}
                         
-                        onClick={() => handleChange(service._id)}
+                        onClick={() => setSelectedService(service._id)}
                       >
                         <div  >
                           <img 
@@ -100,6 +87,7 @@ const BestServices = () => {
             </div>
           </div>
         </div>
+        <div className="horizontal-bar"></div>
       </section>
 
       <ArtistFooter

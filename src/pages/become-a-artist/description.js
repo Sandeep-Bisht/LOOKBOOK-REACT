@@ -46,18 +46,18 @@ const Description = () => {
 
   return (
     <>
-      <section className="about">
-        <div className="container">
-          <div className="row mb-3">
+      <section className="description-box-ar">
+        <div className="container h-min-75vh">
+          <div className="description-box-ar-heading">
+            <h1 className="text-center">Create your description</h1>
+            <p className="text-center">
+              Describe yourself and your work - you can always change it later.
+            </p></div>
+          <div className="row my-5">
             <div className="col-lg-8 mx-auto">
-              <h1 className="text-center">Create your description</h1>
-              <h6 className="text-center">
-                Short titles work best.Have fun with it - you can always change
-                it later
-              </h6>
               <form onSubmit={handleSubmit(submitForm)}>
-                <div className="description-box mt-lg-5">
-                  <div className="form-floating">
+                <div className="description-box">
+                  <div className="">
                     <Controller
                       name="description"
                       control={control}
@@ -65,16 +65,16 @@ const Description = () => {
                       rules={{ required: "Description is required" }}
                       render={({ field }) => (
                         <>
+                        <label htmlFor="floatingTextarea2" className="mb-2">Description</label>
                           <textarea
                             {...field}
-                            className={`form-control resize-none ${
-                              errors.description ? "is-invalid" : ""
-                            }`}
-                            placeholder="Leave a comment here"
+                            className={`form-control resize-none ${errors.description ? "is-invalid" : ""
+                              }`}
+                            placeholder="Write something here...."
                             id="floatingTextarea2"
                             style={{ height: 150 }}
                           />
-                          <label htmlFor="floatingTextarea2">Description</label>
+                          
                           {errors.description && (
                             <div className="invalid-feedback">
                               {errors.description.message}
@@ -90,6 +90,7 @@ const Description = () => {
             </div>
           </div>
         </div>
+        <div className="horizontal-bar"></div>
       </section>
 
       <ArtistFooter

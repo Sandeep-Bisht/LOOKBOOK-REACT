@@ -59,18 +59,18 @@ const handleNextClick = async () =>{
 
         if(artistPayload.coords){
             if(artistPayload.coords.lat == markerPosition.lat && artistPayload.coords.lng == markerPosition.lng && artistPayload.travel == availability ){
-                return navigate(`/become-a-artist/${request_id}/insight-your-work`)
+                return navigate(`/become-a-artist/${request_id}/stand-out`)
             }
             else{
             await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
             setArtistPayload((prev) => {return {...prev,...payload}})
-            navigate(`/become-a-artist/${request_id}/insight-your-work`)
+            navigate(`/become-a-artist/${request_id}/stand-out`)
           }
 
         }else{
             await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,payload);
             setArtistPayload((prev) => {return {...prev,...payload}})
-            navigate(`/become-a-artist/${request_id}/insight-your-work`)
+            navigate(`/become-a-artist/${request_id}/stand-out`)
         }
     }
     catch(error){
@@ -83,34 +83,37 @@ const handleNextClick = async () =>{
 
   return (
     <>
-      <section className="about-skills-ar">
+       <section className="your-location-ar">
         <div className="container">
           <div className="row align-items-center justify-content-center" >
-            <div className="col-lg-8">
-            <h1 className="artist-inner-heading mb-lg-1 text-center">
-                Where's your place located?
-            </h1>
-            <p className="text-center">Your address is only shared with the user after they’ve made a booking.</p>
-            <div className="location-wrapper">
-                
-            <SearchLocation cb={selectSearch} setAttemptedNextWithoutSelection={setAttemptedNextWithoutSelection} className={`w-50 ${attemptedNextWithoutSelection ? 'search-box-error' : ''}`}/>
-            <LocationAwareMap
+              <div className="your-location-ar-heading">
+                <h4 className="artist-inner-heading mb-lg-1 text-center">
+                  Your Location ?
+                </h4>
+                <p className="text-center">Your address is only shared with the user after they’ve made a booking.</p>
+              </div>
+            <div className="col-lg-8 my-5">
+              <div className="location-wrapper">
+
+                <SearchLocation cb={selectSearch} setAttemptedNextWithoutSelection={setAttemptedNextWithoutSelection} className={`w-50 ${attemptedNextWithoutSelection ? 'search-box-error' : ''}`} />
+                <LocationAwareMap
                   coords={markerPosition}
                   onMarkerDragEnd={handleMarkerDrag} //function
                   markerDraggable={true}
                   markerTitle="Your location"
                   height="60vh"
                 />
-            </div>
-            <div className="mt-3">
-            <Switch {...label} onChange={(e)=>setAvailability(e.target.checked)} checked={availability ? true : false}/> 
-            <Typography variant='label' sx={{ mb: 1, fontSize: '1rem !important' }} >
-                Are you available to travel between two locations ?
-            </Typography>
-            </div>
+              </div>
+              <div className="text-center mt-3 bg-white mx-5">
+                <Switch {...label} onChange={(e) => setAvailability(e.target.checked)} checked={availability ? true : false} />
+                <Typography variant='label' sx={{ mb: 1, fontSize: '1rem !important' }} >
+                  Are you available to travel between two locations ?
+                </Typography>
+              </div>
             </div>
           </div>
         </div>
+        <div className="horizontal-bar"></div>
       </section>
 
       <ArtistFooter

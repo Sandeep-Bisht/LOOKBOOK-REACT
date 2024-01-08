@@ -1,11 +1,11 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import CardImg from '@core/assets/images/skill-pic.png'
-import { FaCalendarCheck, FaCalendar  } from "react-icons/fa";
-import { HiMiniPencil } from "react-icons/hi2";
 import ArtistFooter from './common/artistFooter';
 import { axiosAuth } from 'configs/axiosInstance';
 import { toast } from 'react-toastify';
+import CardImg from '@core/assets/5.jpg'
+import { FaCalendarCheck, FaCalendar  } from "react-icons/fa";
+import { HiMiniPencil } from "react-icons/hi2";
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
@@ -26,15 +26,14 @@ const Review = () => {
 
   return (
     <>
-    <div className='about'>
-      <div className='container d-flex justify-content-center'>
-        <div className='col-8'>
-        <div className='p-3'>
+    <section className="review-request-ar">
+      <div className='container h-min-75vh'>
+        <div className='p-3 text-center'>
           <h2>Review your request</h2>
           <p>Here's what we'll show to users. Make sure everything looks good.</p>
         </div>
-        <div className='row g-5'>
-          <div className='col-5 d-flex align-items-center'>
+        <div className='row w-75 mx-auto pb-5'>
+        <div className='col-5 d-flex align-items-center'>
               <div className='review-card card p-3'>
                 <img src={CardImg} alt="review card" className='img-fluid'/>
               </div>
@@ -63,10 +62,11 @@ const Review = () => {
                 </div>
             </div>
           </div>
-          </div>
         </div>
       </div>
-    </div>
+        <div class="horizontal-bar"></div>
+    </section>
+
     <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/personal-details`)}
         nextClick={() => handleNextClick()}
