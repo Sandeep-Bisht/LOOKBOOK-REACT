@@ -181,7 +181,7 @@ const ContactPage = () => {
                         <p className="usr-contact-calendly-text-para">SCHEDULE A MEETING</p>
                     </div>
                     <div className="row">
-                        <div className="col-md-4">
+                        <div className="col-md-5 col-lg-4">
                         <div className="usr-contact-date">
                             <Calendly/>
                         </div>
@@ -191,7 +191,7 @@ const ContactPage = () => {
                       </button></div>
                             
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-7 col-lg-8">
                         <div className="usr-contact-image">
                                 <img src="images/beauty.jpg" className="img-fluid"/>
                             </div>

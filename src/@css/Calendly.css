@@ -1,3 +1,15 @@
 .calendly-inline-widget iframe{
     border-radius: 16px;
 }
+
+/*--------Media quiry---------*/
+
+@media screen and (max-width: 1280.98px){
+    .calendly-inline-widget{
+        position: relative;
+    min-width: 300px;
+    height: 380px!important;
+    border-radius: 16px;
+    border: 1px solid rgb(140, 106, 84)
+    }
+}

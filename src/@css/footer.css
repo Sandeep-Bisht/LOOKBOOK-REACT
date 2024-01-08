@@ -80,7 +80,20 @@ footer
     font-size: 14px;
 }
 
-.footer-link
-{
 
+
+/*------ Media query-----*/
+
+@media screen and (max-width: 767.98px){
+
+    .usr-footer-menu-list li{
+        margin: 0 6px;
+    }
+
+    .footer-link{
+        color:  #6D5D4C;
+        font-family:AvenirLTProBook;
+        font-size: 10px;
+        text-transform: uppercase;
+      }
 }

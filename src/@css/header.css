@@ -26,6 +26,10 @@
     margin-bottom: 0;
     align-items: center;
 }
+
+.navbar-toggler:focus{
+  box-shadow: none;
+}
 /* .header .main-logo h1 ul li{
   animation: lighting 4s linear infinite;
 } */
@@ -379,3 +383,15 @@ background:  #FEFEFE;
 {
   background: #FCF7F2;
 }
+
+
+/*----- Media Query----- */
+
+@media screen and (max-width: 412.98px){
+  .main-logo img {
+    height: 34px;
+  }
+}
+
+
+
