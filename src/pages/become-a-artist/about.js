@@ -83,12 +83,12 @@ const AboutYou = () => {
       <section className="about">
         <div className="container">
           <div className="row mb-3">
-            <div className="col-md-12">
-              <h1 className="text-center">Which of these best describe you ?</h1>
+            <div className="col-md-12 about-heading">
+              <h4 className="text-center">Which of these best describe you ?</h4>
             </div>
           </div>
 
-          <div className="row mb-5">
+          <div className="row my-5 w-75 mx-auto">
             <div className="col-md-10 mx-auto">
               <div className="row g-3">
                 {(allServices && Array.isArray(allServices)) ?
@@ -97,7 +97,7 @@ const AboutYou = () => {
                   allServices.length > 0 ?
                   <>
                   {allServices.map((service, index) => (
-                   <div key={index} className={`col-md-3 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
+                   <div key={index} className={`col-md-6 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
                       <div
                         className={`${
                           selectedServices.includes(service._id)
@@ -129,6 +129,7 @@ const AboutYou = () => {
             </div>
           </div>
         </div>
+        <div className="horizontal-bar"></div>
       </section>
 
       <ArtistFooter

@@ -17,13 +17,13 @@ const ArtistGallery = () => {
   const handleNextClick = async () =>{
     if(artistPayload && artistPayload.gallery && Array.isArray(artistPayload.gallery) && artistPayload.gallery.length > 2){
     try{
-      if(artistPayload.currentStep > 7){
-       return  navigate(`/become-a-artist/${request_id}/you-are-best-in`)
+      if(artistPayload.currentStep > 6){
+       return  navigate(`/become-a-artist/${request_id}/insight-your-work`)
       }
-        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:8});
+        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:7});
         
-        setArtistPayload((prev) => {return {...prev,currentStep:8}})
-        navigate(`/become-a-artist/${request_id}/you-are-best-in`)
+        setArtistPayload((prev) => {return {...prev,currentStep:7}})
+        navigate(`/become-a-artist/${request_id}/insight-your-work`)
     }
     catch(error){
         throw error;
@@ -35,20 +35,20 @@ const ArtistGallery = () => {
 
   return (
     <>
-      <section>
-        <div className="container  pt-4">
+      <section className="customized-gallery-ar">
+        <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div>
-                <h1 className="text-center">
+              <div className="customized-gallery-ar-heading">
+                <h4 className="text-center">
                   Share some insights of your work
-                </h1>
+                </h4>
                 <h6 className="text-center">You'll need 3 photos to get started. You can add more or make changes later.</h6>
               </div>
             </div>
           </div>
         </div>
-        <div className="customized-gallery pt-4">
+        <div className="customized-gallery my-5">
           <div className="container">
             
           <div className="row gallery-row g-3">
@@ -59,6 +59,7 @@ const ArtistGallery = () => {
           </div>
         </div>
         </div>
+        <div className="horizontal-bar"></div>
       </section>
 
       <ArtistFooter

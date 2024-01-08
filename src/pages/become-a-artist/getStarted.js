@@ -6,96 +6,99 @@ import { axiosAuth } from 'configs/axiosInstance'
 const BASE_URL = process.env.REACT_APP_APIURL
 
 const GetStarted = () => {
-    const {request_id} = useParams()
+    const { request_id } = useParams()
     const artistRequests = useLoaderData();
 
     const navigate = useNavigate()
 
-    const [loading,setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    if(artistRequests && Array.isArray(artistRequests) && (!request_id)){
+    if (artistRequests && Array.isArray(artistRequests) && (!request_id)) {
 
-        var openRequest = artistRequests.find(item=>item.status == "progress");
+        var openRequest = artistRequests.find(item => item.status == "progress");
 
-        if(openRequest){
-            return(
+        if (openRequest) {
+            return (
                 <Navigate to={`/become-a-artist/${openRequest._id}/get-started`} replace={true} />
             )
         }
     }
 
-    const createNewRequest = async () =>{
-        try{
+    const createNewRequest = async () => {
+        try {
             setLoading(() => true);
             const response = await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`);
             setLoading(() => false);
             let id = response.data?.data._id;
             navigate(`/become-a-artist/${id}/about-your-skills`)
         }
-        catch(error){
+        catch (error) {
             throw error;
         }
     }
 
-  return (
-      <>
-          <section className="artist-registration">
-              <div className="container">
-                  <div className="row artist-landing-page">
-                      <div className="col-md-6">
-                          <div>
-                              <h1>It’s easy to get started on Lookbook</h1>
-                          </div>
-                      </div>
-                      <div className="col-md-6">
-                          <div>
-                              <div className="artist-steps-heading">
-                                  <h3>1. Tell us about your place</h3>
-                                  <span>
-                                      Share some basic info, such as where it is and how many
-                                      guests can stay.
-                                  </span>
-                              </div>
-                              <div className="artist-steps-heading">
-                                  <h3>2. Make it stand out</h3>
-                                  <span>
-                                      Add 5 or more photos plus a title and description – we’ll
-                                      help you out.
-                                  </span>
-                              </div>
-                              <div className="artist-steps-heading">
-                                  <h3>3. Finish up and publish</h3>
-                                  <span>
-                                      Share some basic info, such as where it is and how many
-                                      guests can stay.
-                                  </span>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+    return (
+        <>
+            <section class="usr-join-us-intro">
+                <div class="container">
+                    <div class="usr-join-us-head">
+                        <div class="row">
+                            <div class="col-md-12 usr-join-us-tags">
+                                <h1>BE DISCOVERED</h1>
+                                <div class="usr-join-us-cards">
+                                    <div class="usr-join-us-card">
+                                        <div class="usr-join-us-card-serial-number">
+                                            <h1>1</h1>
+                                        </div>
+                                        <div class="usr-join-us-card-body">
+                                            <h6>Tell us about yourself</h6>
+                                            <p>Share some basic info, such as where it is and how many guests can stay.</p>
+                                        </div>
+                                    </div>
+                                    <div class="usr-join-us-card">
+                                        <div class="usr-join-us-card-serial-number">
+                                            <h1>2</h1>
+                                        </div>
+                                        <div class="usr-join-us-card-body">
+                                            <h6>Make it stand out</h6>
+                                            <p>Add 5 or more photos plus a title and description – we’ll help you out.</p>
+                                        </div>
+                                    </div>
+                                    <div class="usr-join-us-card">
+                                        <div class="usr-join-us-card-serial-number">
+                                            <h1>3</h1>
+                                        </div>
+                                        <div class="usr-join-us-card-body">
+                                            <h6>Finish up and publish</h6>
+                                            <p>Choose if you'd like to start with an experienced guest, set a starting price and
+                                                publish your listing.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="horizontal-bar"></div>
+            </section>
 
+            <footer className="artist-footer-ar">
+                <div className="col-md-12 p-2">
+                    <div
+                        className="get-started-div text-center"
 
-              </div>
-          </section>
+                    >
+                        {
+                            request_id ? <CommonButton label="Get Started" onClick={() => navigate(`/become-a-artist/${request_id}/about-your-skills`)} />
+                                :
+                                <CommonButton label="Get Started" onClick={() => createNewRequest()} disabled={loading} />
+                        }
 
-          <footer className="artist-footer-ar">
-              <hr className="m-0" />
-              <div className="col-md-12 p-3">
-                  <div
-                      className="get-started-div text-end"
-                     
-                  >
-                    {
-                        request_id ? <CommonButton label="Get Started"  onClick={() => navigate(`/become-a-artist/${request_id}/about-your-skills`)}/>
-                        :
-                        <CommonButton label="Get Started"  onClick={() => createNewRequest()} disabled={loading}/>
-                    }
-                    
-                  </div>
-              </div>
-          </footer>
-      </>
-  )
+                    </div>
+                </div>
+            </footer>
+        </>
+    )
 }
 
 export default GetStarted

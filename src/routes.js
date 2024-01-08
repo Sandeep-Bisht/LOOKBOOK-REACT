@@ -197,7 +197,7 @@ const ApplicationRoutes = createBrowserRouter(
           <Route element={<WishlistContextProvider/>} loader={getUserWishlistByID}>
             <Route path='/artists' element={<AllArtists/>} loader={getAllArtists} />
             <Route path='/wishlist' element={<Wishlist /> } loader={getUserWishlist}/>
-            <Route path="/artists/:artist_id" element={<ArtistSingle/>}/>
+            <Route path="/artists/:artist_id" element={<ArtistSingle/>}  loader={getArtistById}/>
             <Route path='/search' element={< Search />} />
           </Route>
           <Route path='/terms-conditions' element={<TermsPage/>}/>

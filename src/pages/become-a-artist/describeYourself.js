@@ -84,22 +84,20 @@ const DescribeYourself = () => {
       <section className="describe-yourself">
         <div className="container">
           <div className="row mb-3">
-            <div className="col-md-12">
-              <div className="">
-                <h1 className="text-center">Which brands you used?</h1>
-              </div>
+            <div className="col-md-12 describe-yourself-heading">
+                <h4 className="text-center">Which brands you used?</h4>
             </div>
           </div>
 
-          <div className="row mb-5">
+          <div className="row my-5">
             <div className="col-md-10 mx-auto">
-              <div className="row">
+              <div className="row describe-yourself-allProducts">
                 {allProducts && Array.isArray(allProducts) ? (
                   <>
                     {allProducts.length > 0 ? (
                       <>
                         {allProducts.map((product, index) => (
-                          <div key={index} className={`col-md-6 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
+                          <div key={index} className={`col-md-3 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
                             <div
                               className={`artist-card ${
                                 selectedProducts.includes(product._id)
@@ -108,12 +106,12 @@ const DescribeYourself = () => {
                               }`}
                               onClick={(e) => handleChange(product._id)}
                             >
-                              <div className="card-body">
+                              {/* <div className="card-body">
                                 <h5 className="_6pu6cc">{product.title}</h5>
                                 <div>
                                   <span>{product.description}</span>
                                 </div>
-                              </div>
+                              </div> */}
                               <div className="card-icon ">
                                 <img
                                   src={product.icon.thumbnailUrl}
@@ -136,6 +134,7 @@ const DescribeYourself = () => {
             </div>
           </div>
         </div>
+        <div className="horizontal-bar"></div>
       </section>
 
       <ArtistFooter

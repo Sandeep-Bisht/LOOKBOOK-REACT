@@ -106,14 +106,16 @@ const Details = () => {
 
   return (
     <>
-      <section className="about">
+      <section className="last-step-ar">
         <div className="container">
-          <div className="row mb-3">
+          <div className="last-step-ar-heading">
+              <h4 className="text-center">Just one last step</h4>
+              <p className="text-center">Please fill out the details below</p>
+          </div>
+          <div className="row my-5">
             <div className="col-lg-8 mx-auto">
-              <h1 className="text-center">Just one last step</h1>
-              <h5 className="text-center">Complete Your Profile</h5>
               <form onSubmit={handleSubmit(submitForm)}>
-                <div className="row g-3 mt-4">
+                <div className="row g-3">
                   <div className="col-md-6">
                     <TextField
                       {...register("fullName", { required: "Fullname is required." })}
@@ -254,7 +256,8 @@ const Details = () => {
         </div>
         <div>
     </div>
-      </section>
+    <div class="horizontal-bar"></div>
+    </section>
 
       <ArtistFooter
         backClick={() =>

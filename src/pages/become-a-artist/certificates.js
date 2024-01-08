@@ -123,20 +123,18 @@ const Certificates = () => {
 
   return (
     <>
-      <section>
-        <div className="container  pt-4">
+       <section className="achivements-ar">
+        <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <div>
-                <h1 className="text-center">Share your achievements</h1>
-                <h6 className="text-center">
+            <div className="col-md-12 achivements-ar-heading">
+                <h4 className="text-center">Share your achievements</h4>
+                <p className="text-center">
                   You can add more or make changes later.
-                </h6>
-              </div>
+                </p>
             </div>
           </div>
         </div>
-        <div className="customized-gallery pt-4">
+        <div className="customized-gallery my-5">
           <div className="container">
             <div className="row gallery-row g-3">
               <>
@@ -245,6 +243,7 @@ const Certificates = () => {
             </div>
           </div>
         </div>
+        <div class="horizontal-bar"></div>
       </section>
 
       <ArtistFooter

@@ -1,0 +1,89 @@
+.usr-join-us-intro .usr-join-us-head .usr-join-us-tags h1,
+.usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards .usr-join-us-card .usr-join-us-card-serial-number h1 {
+    color: #6D5D4C;
+    font-family: AvenirLTProHeavy;
+    font-size: 120px;
+    text-transform: uppercase;
+}
+
+.usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards .usr-join-us-card .usr-join-us-card-body h6 {
+    color: #6D5D4C;
+    font-family: AvenirLTProHeavy;
+    font-size: 15px;
+}
+
+.usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards .usr-join-us-card .usr-join-us-card-body p,
+.progress-bar .usr-join-us-progress-button .usr-progress-button {
+    font-family: AvenirLTProLight;
+    color: #6D5D4C;
+    font-size: 15px;
+}
+
+.usr-join-us-intro {
+    background-color: #FCF7F2;
+}
+
+.progress-bar {
+    background-color: #FCF7F2;
+}
+
+.usr-join-us-intro .usr-join-us-head {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usr-join-us-intro .usr-join-us-head .usr-join-us-tags h1 {
+    text-align: center;
+}
+
+.usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards {
+    display: flex;
+    width: 1000px;
+}
+
+.usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards .usr-join-us-card {
+    display: flex;
+    align-items: center;
+}
+
+.usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards .usr-join-us-card:not(:last-child) {
+    border-right: 1px solid rgba(109, 93, 76, .3);
+    padding: 0 30px 0 10px;
+}
+
+.usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards .usr-join-us-card:last-child {
+    padding: 0 0px 0 10px;
+}
+
+.usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards .usr-join-us-card .usr-join-us-card-body {
+    padding: 0px 0px 0 10px;
+}
+
+/* Bar */
+
+.horizontal-bar {
+    height: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.usr-join-us-intro .horizontal-bar {
+    background: rgba(109, 93, 76, .3);
+}
+
+.about .about-heading,
+.describe-yourself .describe-yourself-heading,
+.your-location-ar .your-location-ar-heading,
+.insight-wrapper .insight-wrapper-heading,
+.customized-gallery-ar .customized-gallery-ar-heading,
+.description-box-ar .description-box-ar-heading,
+.price-ar .price-ar-heading,
+.KYC-ar .KYC-ar-heading,
+.achivements-ar .achivements-ar-heading,
+.last-step-ar .last-step-ar-heading,
+.review-request-ar .review-request-ar-heading {
+    border-bottom: 1px solid rgba(109, 93, 76, .3);
+    padding: 40px 0 40px 0;
+}

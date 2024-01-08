@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import CurrencyInput from 'react-currency-input-field';
 
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
@@ -47,47 +47,52 @@ const PriceSetup = () => {
 
   return (
     <>
-      <section className="about h-75">
-        <div className="container h-100">
-          <div className="row mb-3 h-100">
-            <div className="col-lg-8 mx-auto">
-              <h1 className="text-center">Now, set your per-session price</h1>
-               <h6 className='text-center'>You can change it anytime</h6>
-            </div>
-          <div className='price-wrapper'>
-            <CurrencyInput
-              id="price"
-              name="price"
-              className='w-100'
-              placeholder="set your per-session price"
-              allowDecimals={false}
-              prefix="₹" 
-              allowNegativeValue={false}
-              value={price}
-              maxLength={5}
-              intlConfig={{ locale: 'en-IN', currency: 'INR' }}
-              autoComplete="off"
-              onValueChange={(value) => {
-                if(!value ){
-                  return setPrice(0)
-                }
+      <section className="price-ar">
+        <div className="container">
+          <div className="price-ar-heading">
+            <h4 className="text-center">Now, set your per-session price</h4>
+            <p className='text-center'>You can change it anytime</p>
+          </div>
+          <div className="row mb-3 price-ar-wrapper">
+            <div className='price-wrapper'>
+              <div className="price-ar-current">
+                <label>Set your price</label>
+                <CurrencyInput
+                id="price"
+                name="price"
+                className='w-100'
+                placeholder="set your per-session price"
+                allowDecimals={false}
+                prefix="₹"
+                allowNegativeValue={false}
+                value={price}
+                maxLength={5}
+                intlConfig={{ locale: 'en-IN', currency: 'INR' }}
+                autoComplete="off"
+                onValueChange={(value) => {
+                  if (!value) {
+                    return setPrice(0)
+                  }
 
-                setPrice(Number(value))}}
-            />
-            
-            <p className='text-center'> Total Price after tax <b>
-              <CurrencyInput
-              className='total-price'
-              prefix="₹" 
-              value={totalPrice}
-              intlConfig={{ locale: 'en-IN', currency: 'INR' }}
-              disabled={true}
-            />
-            </b>
-            </p>
+                  setPrice(Number(value))
+                }}
+              />
+              </div>
+
+              <div className='price-ar-total-tax'>
+              <p> Total Price after tax </p>
+                <CurrencyInput
+                  className='total-price'
+                  prefix="₹"
+                  value={totalPrice}
+                  intlConfig={{ locale: 'en-IN', currency: 'INR' }}
+                  disabled={true}
+                />
+              </div>
             </div>
           </div>
         </div>
+        <div className='horizontal-bar'></div>
       </section>
 
       

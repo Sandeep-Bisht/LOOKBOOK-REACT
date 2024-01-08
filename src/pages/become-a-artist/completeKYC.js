@@ -128,11 +128,11 @@ const CompleteKYC = () => {
 
   return (
     <>
-      <section className="about">
+      <section className="KYC-ar">
         <div className="container">
           <div className="row mb-3">
-            <div className="col-md-12">
-              <h1 className="text-center">Complete your KYC</h1>
+            <div className="col-md-12 KYC-ar-heading">
+              <h4 className="text-center">Complete your KYC</h4>
             </div>
             <div className='col-md-4 p-5'>
             <div className={`${!kycDocuments.adharFront && attemptedNextWithoutSelection ? 'gallary-error ' : 'gallary-no-error' }`}
@@ -161,6 +161,7 @@ const CompleteKYC = () => {
             </div>
           </div>
       </div>
+      <div class="horizontal-bar"></div>
       </section>
       <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/pricing`)}

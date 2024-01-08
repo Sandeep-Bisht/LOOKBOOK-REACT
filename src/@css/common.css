@@ -230,3 +230,7 @@
 .common-cursor-pointer{
   cursor: pointer;
 }
+
+.h-min-75vh{
+  min-height: 75vh;
+}
