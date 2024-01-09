@@ -68,6 +68,7 @@ import Categories from 'pages/management/categories/allCategories'
 import CategoriesForm from 'pages/management/categories/categoryCreate'
 import UpdateCategories from 'pages/management/categories/updateCategory'
 import ViewArtists from 'pages/management/artistRequests/viewAllArtists'
+import { getAdminDashboardInitialData } from 'configs/initialapis'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -279,7 +280,7 @@ const ApplicationRoutes = createBrowserRouter(
       <Route element={<RequireAuth allowedRoles={[roles.admin,roles.super_admin]} />}>
       <Route element={<DashboardComponents/>}>
         <Route path="/management" element={<UserLayout/>}>
-          <Route path='/management/dashboard' element={<Dashboard/>}/>
+          <Route path='/management/dashboard' element={<Dashboard/>} loader={getAdminDashboardInitialData}/>
           <Route path="/management/account-settings" element={<AccountSettings/>}/> 
           <Route path="/management/cards" element={<CardBasic/>}/> 
           <Route path="/management/icons" element={<Icons/>}/> 
