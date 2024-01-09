@@ -208,3 +208,13 @@ export const getCategoryById = async ({params}) => {
       return error.message || "An error occured while trying to get artist by id."
   }
 }; 
+export const getAdminDashboardInitialData = async() =>{
+  try {
+    const response = await axiosAuth.get(`/management/get-admin-dashboard-initial-data`);
+    return response.data.data
+  } catch (error) {
+  return error.message || "An error occured while trying to get dashboard data."
+   }
+}
+
+

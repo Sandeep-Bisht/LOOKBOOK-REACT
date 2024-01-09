@@ -42,6 +42,11 @@ const navigation = () => {
       icon: MdOutlineCategory,
       path: '/management/categories'
     },
+    {
+      title: 'Artists',
+      icon: Application,
+      path: '/management/view-artists'
+    },
   ]
 }
 
