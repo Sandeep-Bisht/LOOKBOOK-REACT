@@ -215,11 +215,14 @@ const Header = ({ cities, services }) => {
                    
                     <div className="col-lg-4 px-0">
                         <div className="usr-header-datePicker">
+
                         <DatePicker 
+                        className="new-date"
                           minDate={new Date()}
                           value={selectedDates}
                           onChange={setSelectedDates}
                           format="DD/MM/YYYY"
+                         
                           render={(value, openCalendar) => {
                             return (
                               <button className="custom-drodown-btn" type="button" onClick={openCalendar}>
@@ -288,7 +291,7 @@ const Header = ({ cities, services }) => {
                     <div className="col-lg-4 px-0">
                       <div className="btn-group d-block">
                         <button
-                          className="custom-drodown-btn border-0 custom-drodown-btn-artist"
+                          className="custom-drodown-btn border-0 custom-drodown-btn-artist "
                           type="button"
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
@@ -454,6 +457,7 @@ const Header = ({ cities, services }) => {
           </div>
         </div>
       </nav>
+      
     </header>
   );
 };

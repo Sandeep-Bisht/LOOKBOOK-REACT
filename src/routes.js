@@ -67,6 +67,7 @@ import { getUserWishlist } from 'configs/initialapis'
 import Categories from 'pages/management/categories/allCategories'
 import CategoriesForm from 'pages/management/categories/categoryCreate'
 import UpdateCategories from 'pages/management/categories/updateCategory'
+import ViewArtists from 'pages/management/artistRequests/viewAllArtists'
 
 const DashboardComponents = () =>{
   return (<SettingsProvider>
@@ -157,7 +158,7 @@ const CommonLayout = () =>{
   return (
   <>
   <Header  cities={cities} services={services}/>
-    <Outlet/>
+    <Outlet />
   <Footer/>
   </>)
 }
@@ -298,7 +299,7 @@ const ApplicationRoutes = createBrowserRouter(
         <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
         <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogById(params)}/>
         
-        
+        <Route path='/management/view-artists' element={ <ViewArtists /> } loader={getAllArtists}/>
         <Route path='/management/artists-request' element={<GetAllArtists/>} loader={()=>getAllArtistRequest()}/>
         
         <Route path='/management/artists-request/:request_id' element={<UseLoaderOutletContext/>} loader={getArtistRequestByID}>

@@ -30,6 +30,76 @@
 .navbar-toggler:focus{
   box-shadow: none;
 }
+/* calander and Datepicker csss  6 jan */
+
+.dropdown-menu{
+border-radius: 20px;
+    background: #FEFEFE;
+    padding: 10px 5px;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.18);
+}
+
+.dropdown-item{
+  color: #6D5D4C;
+    font-family: AvenirLTProLight;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 8px 13px;
+    border-radius: 33px;
+    background-color: #FEFEFE;
+    transition: .3s linear;
+    cursor: pointer;
+}
+
+
+
+.new-date{
+  background: #fcf7f2!important;
+}
+.rmdp-arrow-container:hover{
+  background-color: transparent!important;
+  box-shadow: none!important;
+   
+}
+
+
+
+
+.rmdp-header-values  button:hover {
+  color: #ffffff!important;
+}
+
+.rmdp-arrow {
+  border: solid #6d5d4c!important;
+  border-width: 0 2px 2px 0!important;
+  display: inline-block!important;
+  height: 3px!important;
+  margin-top: 5px!important;
+  padding: 2px!important;
+  width: 3px!important; 
+ 
+}
+.rmdp-week-day{
+  color: #6d5d4c!important;
+  cursor: default!important;
+  font-size: 13px!important;
+  font-weight: 500!important;
+}
+
+.rmdp-day.rmdp-selected span:not(.highlight){
+  background-color: #6d5d4c!important;
+  box-shadow: 0 0 3px #8798ad!important;
+  color: #fff!important;
+}
+
+.rmdp-day:not(.rmdp-disabled,.rmdp-day-hidden) span:hover{
+  background-color: #6d5d4c!important;
+}
+
+/* Css ends here of 6 jan */
+
+
+
 /* .header .main-logo h1 ul li{
   animation: lighting 4s linear infinite;
 } */
@@ -347,7 +417,7 @@ button.common-action:is(:hover,:active,:focus,:focus-visible){
 }
 
 .usr-search-container .dropdown-menu .dropdown-menu-wrapper{
-  max-height: 150px; 
+  max-height: 230px; 
   overflow-y: auto; 
  
 }
