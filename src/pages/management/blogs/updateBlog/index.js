@@ -25,7 +25,8 @@ const UpdateBlog = () => {
   const [imageUrl, setImageUrl] = useState(
     blogs?.featuredImage?.thumbnailUrl
   );
-  const [tags, setTags] = useState(Array.isArray(blogs.tags) ? blogs.tags : []);
+  console.log(blogs,'blogs is this')
+  const [tags, setTags] = useState(Array.isArray(blogs.tags) ? blogs.tags : null);
 
   const handleImageChange = (event) => {
     const reader = new FileReader();
@@ -49,6 +50,7 @@ const UpdateBlog = () => {
     } else{
       data.tags=[];
     }
+
     const formData = new FormData();
     formData.append("_id", blogs._id);
       if (selectFileImage) {
@@ -64,9 +66,15 @@ const UpdateBlog = () => {
       Object.keys(data).forEach((key) => {
         
       if (key === 'tags' && Array.isArray(data.tags)) {
+        
+        if(data.tags.length === 0){
+          return formData.append("tags", data.tags);
+        }
+
         data.tags.forEach((tag) => {
           formData.append("tags", tag);
         });
+
       } else {
         formData.append(key, data[key]);
       }
