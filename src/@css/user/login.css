@@ -1,0 +1,126 @@
+
+
+.bg-color {
+    background-color: #FCF7F2;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.bg-white {
+    height: calc(100vh - 10vh);
+}
+
+.usr-login-bg-image {
+     background-image: url('/public/images/Snapinsta 1.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.usr-login-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper form {
+    width: 450px;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper div h3 {
+    color: #6D5D4C;
+    font-family: AvenirLTProHeavy;
+    font-size: 35px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper div h6 {
+    color: #6D5D4C;
+    font-family: AvenirLTProLight;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper div p {
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .input-control {
+    
+    width: 100%;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .input-control::placeholder {
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .input-control:focus-visible {
+    outline: 0px !important;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .usr-login-button {
+    width: 100%;
+    border: none;
+    background-color: #6D5D4C;
+    color: #fefefe;
+    border-radius: 6px;
+    padding: 10px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .usr-login-button:hover {
+    background-color: #8C6A54;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .usr-login-other-source span {
+    display: flex;
+    color: #6D5D4C;
+    font-family: AvenirLTProHeavy;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .usr-login-other-source span:before,
+.usr-login-form-wrapper .usr-login-wrapper .usr-login-other-source span:after {
+    color: #6D5D4C;
+    content: '';
+    flex: 1;
+    border-bottom: groove 2px;
+    margin: auto 0.65rem;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .usr-login-social-icon {
+    text-align: center;
+    margin: 30px 0 0 0;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .usr-login-social-icon a {
+    text-decoration: none;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .usr-login-social-icon a svg path {
+    fill: #6D5D4C;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .usr-login-social-icon a svg {
+    margin-left: 7px;
+}
+
+.usr-login-form-wrapper .usr-login-wrapper .usr-login-social-icon a svg path:hover {
+    fill: #8C6A54;
+}
+
+@media (max-width:991.98px){
+    .usr-login-form-wrapper .usr-login-wrapper form {
+    width: 100%;
+}
+}
