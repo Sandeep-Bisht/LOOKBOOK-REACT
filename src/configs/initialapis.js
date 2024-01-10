@@ -218,3 +218,26 @@ export const getAdminDashboardInitialData = async() =>{
 }
 
 
+
+export const getBlogsAndCategory = async()=>{
+  const allBlogs=getAllBlog();
+  const allCategories=getAllCategories();
+  return Promise.all([allBlogs,allCategories]).then((results)=>{
+   return {
+    allBlogs: results[0],
+    allCategories: results[1],
+   }
+  })
+}
+
+export const getBlogByIdAndCategory = async({params})=>{
+  const {_id} = params 
+  const getBlogByid=getBlogById(_id);
+  const allCategories=getAllCategories();
+  return Promise.all([getBlogByid,allCategories]).then((results)=>{
+   return {
+    allBlogs: results[0],
+    allCategories: results[1],
+   }
+  })
+}

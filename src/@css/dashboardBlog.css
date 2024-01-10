@@ -1,0 +1,12 @@
+.tags-input .rti--container{
+    background-color: #fcf7f2!important;
+    --rti-main:#734e30!important;
+    line-height: 2.1rem;
+}
+.tags-input .rti--input{
+    background-color: #fcf7f2!important;
+    width: 30%!important;
+}
+.tags-input .rti--tag {
+    background: #c9b39e!important;
+}

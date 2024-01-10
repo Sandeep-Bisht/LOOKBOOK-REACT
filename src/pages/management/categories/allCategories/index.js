@@ -82,7 +82,7 @@ const Categories = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-    {all_categories && all_categories.length>0 && all_categories.map(row => 
+    {all_categories && Array.isArray(all_categories) && all_categories.length>0 && all_categories.map(row => 
     {
         return(
             <TableRow hover role='checkbox' tabIndex={-1} key={row._id}>
