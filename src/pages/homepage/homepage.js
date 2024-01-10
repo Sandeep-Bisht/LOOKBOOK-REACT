@@ -459,21 +459,6 @@ const Homepage = () => {
                 </div>
             </section>
 
-            
-
-                    <h3>Comments</h3>
-                    <div class="comments">
-                        <h6 class="comment-name">John Doe</h6>
-                        <p class="comment">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad dolore nisi
-                            nobis hic optio quidem accusamus voluptate illo obcaecati commodi ipsa possimus, ea,
-                            officiis blanditiis alias molestias expedita distinctio explicabo?</p>
-                    </div>
-                    <div class="comments">
-                        <h6 class="comment-name">John Doe</h6>
-                        <p class="comment">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad dolore nisi
-                            nobis hic optio quidem accusamus voluptate illo obcaecati commodi ipsa possimus, ea,
-                            officiis blanditiis alias molestias expedita distinctio explicabo?</p>
-                    </div>
         </>
     );
 };
