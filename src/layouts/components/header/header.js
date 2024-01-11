@@ -6,6 +6,7 @@ import UserMenu from "./userMenu";
 import { AccountOutline } from "mdi-material-ui";
 import mainLogo from "@core/assets/header/main-logo.png";
 import DatePicker from "react-multi-date-picker";
+import ArtistFilter from "./artist-filter";
 
 
 const Header = ({ cities, services }) => {
@@ -79,6 +80,7 @@ const Header = ({ cities, services }) => {
   }
 
   return (
+    <>
     <header className="header" id="header" ref={headerRef}>
       <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid  align-items-start">
@@ -459,6 +461,10 @@ const Header = ({ cities, services }) => {
       </nav>
       
     </header>
+    {location.pathname.startsWith("/artists") &&
+    <ArtistFilter services={services} />
+  }
+    </>
   );
 };
 

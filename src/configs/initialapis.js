@@ -116,6 +116,18 @@ export const getAllArtists  = async () => {
    }
 };
 
+export const getArtistByServiceId = async ({params}) =>{
+  const request_id = params.service_id
+  try {
+    const response = await axiosLocal.get(`/search/findArtist`, {
+      params: { service: request_id },
+    })
+    return response.data
+  } catch (error) {
+  return error.message || "An error occured while trying to get artists request by ID."
+   }
+}
+
 export const getHomepageData  = async () => {
   const urls = [`/artists/get-all`, `/blog/all_blogs`];
 

@@ -23,7 +23,7 @@ const navigation = () => {
       path: '/management/services'
     },
     {
-      title: 'Products',
+      title: 'Brands',
       icon: CubeOutline,
       path: '/management/products'
     },
@@ -33,7 +33,7 @@ const navigation = () => {
       path: '/management/blogs'
     },
     {
-      title: 'Requests',
+      title: 'Artist Requests',
       icon: Application,
       path: '/management/artists-request'
     },
@@ -43,7 +43,7 @@ const navigation = () => {
       path: '/management/categories'
     },
     {
-      title: 'Artists',
+      title: 'Approved Artists',
       icon: Application,
       path: '/management/view-artists'
     },

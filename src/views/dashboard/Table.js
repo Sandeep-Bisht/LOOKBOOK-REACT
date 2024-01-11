@@ -29,71 +29,33 @@ const rows = [
     email: 'kocrevy0@thetimes.co.uk',
     designation: 'Nuclear Power Engineer'
   },
-  {
-    age: 59,
-    date: '10/15/2017',
-    name: 'Minnie Roy',
-    status: 'rejected',
-    salary: '$18991.67',
-    email: 'ediehn6@163.com',
-    designation: 'Environmental Specialist'
-  },
-  {
-    age: 30,
-    date: '06/12/2018',
-    status: 'resigned',
-    salary: '$19252.12',
-    name: 'Ralph Leonard',
-    email: 'dfalloona@ifeng.com',
-    designation: 'Sales Representative'
-  },
-  {
-    age: 66,
-    status: 'applied',
-    date: '03/24/2018',
-    salary: '$13076.28',
-    name: 'Annie Martin',
-    designation: 'Operator',
-    email: 'sganderton2@tuttocitta.it'
-  },
-  {
-    age: 33,
-    date: '08/25/2017',
-    salary: '$10909.52',
-    name: 'Adeline Day',
-    status: 'professional',
-    email: 'hnisius4@gnu.org',
-    designation: 'Senior Cost Accountant'
-  },
-  {
-    age: 61,
-    status: 'current',
-    date: '06/01/2017',
-    salary: '$17803.80',
-    name: 'Lora Jackson',
-    designation: 'Geologist',
-    email: 'ghoneywood5@narod.ru'
-  },
-  {
-    age: 22,
-    date: '12/03/2017',
-    salary: '$12336.17',
-    name: 'Rodney Sharp',
-    status: 'professional',
-    designation: 'Cost Accountant',
-    email: 'dcrossman3@google.co.jp'
-  }
+  
+  
+
 ]
 
 const statusObj = {
-  applied: { color: 'info' },
+  progress: { color: 'info' },
   rejected: { color: 'error' },
-  current: { color: 'primary' },
+  pending: { color: 'primary' },
   resigned: { color: 'warning' },
   professional: { color: 'success' }
 }
 
-const DashboardTable = () => {
+function calculateAge(birthdate) {
+  const today = new Date();
+  const birthdateDate = new Date(birthdate);
+  let age = today.getFullYear() - birthdateDate.getFullYear();
+  const monthDiff = today.getMonth() - birthdateDate.getMonth();
+
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthdateDate.getDate())) {
+    age--;
+  }
+
+  return age;
+}
+
+const DashboardTable = ({ artistRequests }) => {
   return (
     <Card>
       <TableContainer>
@@ -109,22 +71,29 @@ const DashboardTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
-              <TableRow hover key={row.name} sx={{ '&:last-of-type td, &:last-of-type th': { border: 0 } }}>
+            {artistRequests && artistRequests.map(row => (
+              <TableRow hover key={row.profile_id?.fullName} sx={{ '&:last-of-type td, &:last-of-type th': { border: 0 } }}>
                 <TableCell sx={{ py: theme => `${theme.spacing(0.5)} !important` }}>
                   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <Typography sx={{ fontWeight: 500, fontSize: '0.875rem !important' }}>{row.name}</Typography>
-                    <Typography variant='caption'>{row.designation}</Typography>
+                    <Typography sx={{ fontWeight: 500, fontSize: '0.875rem !important' }}>{row.profile_id?.fullName}</Typography>
+                    <Typography variant='caption'>
+                    {row.services?.map((service, i) => (i === row.services.length - 1 ? service.title : `${service.title}, `))}
+                    </Typography>
                   </Box>
                 </TableCell>
-                <TableCell>{row.email}</TableCell>
-                <TableCell>{row.date}</TableCell>
-                <TableCell>{row.salary}</TableCell>
-                <TableCell>{row.age}</TableCell>
+                <TableCell>{row.profile_id?.email}</TableCell>
+                <TableCell>
+                  {row.profile_id?.createdAt
+    && new Date(row.profile_id.createdAt).toLocaleDateString('en-GB')}
+    </TableCell>
+                <TableCell>{row.pricing?.totalPrice}</TableCell>
+                <TableCell> {row.profile_id?.dob
+    ? calculateAge(new Date(row.profile_id.dob))
+    : ''}</TableCell>
                 <TableCell>
                   <Chip
                     label={row.status}
-                    color={statusObj[row.status].color}
+                    color={statusObj[row.status]?.color}
                     sx={{
                       height: 24,
                       fontSize: '0.75rem',
