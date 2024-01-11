@@ -1,0 +1,233 @@
+.usr-new-profile{
+    margin: 80px 0;
+}
+
+.usr-new-profile .view-details{
+    border-bottom: 1px solid rgba(109,93,76,.3);
+    padding-bottom:20px ;
+}
+
+.usr-new-profile .usr-new-profile-name h1{
+    color: #6D5D4C;
+    text-align: center;
+    font-family: AvenirLTProHeavy;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.usr-new-profile .usr-new-profile-photo{
+    position: relative;
+    height: 100%;
+}
+
+.usr-new-profile .usr-new-profile-photo img{
+    border-radius: 20px;
+    /* height: 350px; */
+    width: 100%;
+}
+
+.usr-new-profile .usr-new-profile-photo .rating_review{
+    background-color: #fefefe;
+    border-radius: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 15px;
+}
+
+.usr-new-profile .usr-new-profile-photo .rating_review div{
+    text-align: center;
+}
+
+.usr-new-profile .usr-new-profile-photo .rating_review hr{
+    color: #6D5D4C;
+    opacity: .3;
+}
+
+.usr-new-profile .usr-new-profile-photo .rating_review div h1{
+    color: #6D5D4C;
+    text-align: center;
+    font-family: AvenirLTProHeavy;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.usr-new-profile .usr-new-profile-photo .rating_review div h1,
+.usr-new-profile .usr-user-details h1{
+    font-family: AvenirLTProBook;
+}
+
+.usr-new-profile .usr-new-profile-photo .rating_review div p{
+    color: #6D5D4C;
+    text-align: center;
+    font-family: AvenirLTProHeavy;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usr-new-profile .usr-new-profile-photo .rating_review div p svg{
+    margin-right: 3px;
+}
+
+.usr-new-profile .usr-new-profile-photo .edit_image_button button{
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.usr-new-profile .usr-user-details,
+.usr-new-profile .confirmation{
+    height: 100%;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    color: #6D5D4C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usr-new-profile .usr-user-details h1{
+    margin-bottom: 30px;
+    line-height: 40px;
+}
+
+.usr-new-profile .usr-user-details p,
+.usr-new-profile .confirmation p{
+    font-family: AvenirLTProBook;
+    font-size: 14px;
+}
+
+.usr-new-profile .usr-user-details p svg,
+.usr-new-profile .confirmation p svg{
+    margin-right: 5px;
+}
+
+.usr-new-profile .confirmation h4{
+    font-family: AvenirLTProHeavy;
+    margin-bottom: 30px;
+}
+
+.usr-new-profile .confirmation a,
+.usr-new-profile .usr-user-other-details{
+    color: #6D5D4C;
+}
+
+.usr-new-profile .usr-user-other-details{
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.usr-new-profile .usr-user-other-details .other-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.usr-new-profile .usr-user-other-details .other-details hr{
+    width: 50px;
+    color: #6D5D4C;
+    opacity: .3;
+    transform: rotate(90deg);
+}
+
+.usr-new-profile .usr-user-other-details .other-details .details{
+    padding: 10px;
+}
+
+.usr-new-profile .usr-user-other-details .other-details .details h6{
+    font-size: 15px;
+    font-family: AvenirLTProHeavy;
+}
+.usr-new-profile .usr-user-other-details .other-details .details p{
+    font-size: 15px;
+    font-family: AvenirLTProBook;
+    margin-bottom: 0;
+}
+
+.usr-new-profile .usr-user-other-details .other-details .details.edit-button{
+    text-align: center;
+    background-color: #fcf7f2;
+    border-radius: 20px;
+}
+
+
+.usr-new-profile .review-section{
+    padding: 20px 0 0 0 ;
+}
+
+.usr-new-profile .review-section .slick-slider .slick-arrow{
+    /* border: 1px solid #6D5D4C;
+    border-radius: 50%; */
+    width: 30px;
+    height: 30px;
+    top: -10%;
+}
+
+.usr-new-profile .review-section .slick-slider .slick-prev{
+    left: 93%!important;
+}
+
+.usr-new-profile .review-section .slick-slider .slick-next{
+    right: 0%!important;
+}
+
+.usr-new-profile .review-section .slick-slider .slick-prev:before, .usr-new-profile .review-section .slick-slider .slick-next:before{
+    font-size: 30px;
+    color: #6D5D4C;
+}
+
+.usr-new-profile .review-section .slick-slider .slick-list .slick-track .slick-current div .review-cards .review{
+    margin-left:0!important ;
+}
+
+.usr-new-profile .review-section .review-cards .review{
+    background-color: #fff;
+    padding: 20px;
+    height: 100%;
+    border-radius: 20px;
+    margin: 10px;
+    color: #6D5D4C;
+}
+
+.usr-new-profile .review-section .review-cards .review p{
+    font-size: 14px;
+    font-family: AvenirLTProBook;
+    margin-bottom: 0;
+}
+
+
+.usr-new-profile .review-section .review-cards .review .review-profile .about-profile{
+    margin-top: 20px;
+}
+.usr-new-profile .review-section .review-cards .review .review-profile .about-profile h6{
+    font-family: AvenirLTProHeavy;
+    font-size: 14px;
+}
+
+.usr-new-profile .more-review-button{
+    background-color: transparent;
+    border: 1px solid #6D5D4C;
+    color: #6D5D4C;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+
+.usr-new-profile .more-review-button:hover{
+    background-color: #6D5D4C;
+    color: #fff;
+}
