@@ -57,7 +57,7 @@ import ArtistRequestGallary from 'pages/management/artistRequests/artistRequestG
 import ContactPage from 'pages/contact'
 import AllArtists from 'pages/all-artists'
 import Search from 'pages/search/searchPage'
-import  AllBlogs  from 'pages/allBlogs'
+import AllBlogs from 'pages/allBlogs'
 import AboutUS from 'pages/about-us'
 import ArtistSingle from 'pages/artistSingle'
 import SingleArtistInformation from 'pages/management/artistRequests/singleArtistRequestPage'
@@ -69,185 +69,199 @@ import CategoriesForm from 'pages/management/categories/categoryCreate'
 import UpdateCategories from 'pages/management/categories/updateCategory'
 import ViewArtists from 'pages/management/artistRequests/viewAllArtists'
 import { getAdminDashboardInitialData } from 'configs/initialapis'
+import NewProfile from 'pages/user/Profile/newProfile'
 
-const DashboardComponents = () =>{
+const DashboardComponents = () => {
   return (<SettingsProvider>
     <SettingsConsumer>
       {({ settings }) => {
         return <ThemeComponent settings={settings}>
-          <Outlet/>
+          <Outlet />
         </ThemeComponent>
       }}
     </SettingsConsumer>
-    </SettingsProvider>)
+  </SettingsProvider>)
 }
 
-const NormalComponents = () =>{
+const NormalComponents = () => {
   return (<SettingsProvider>
     <SettingsConsumer>
       {({ settings }) => {
-        settings = {...settings,mode:'light'}
+        settings = { ...settings, mode: 'light' }
         return <ThemeComponent settings={settings}>
-          <Outlet/>
+          <Outlet />
         </ThemeComponent>
       }}
     </SettingsConsumer>
-    </SettingsProvider>)
+  </SettingsProvider>)
 }
 
-const RequireAuth = ({allowedRoles}) =>{
+const RequireAuth = ({ allowedRoles }) => {
 
   const location = useLocation()
   const cookies = new Cookies();
 
   const token = cookies.get('LOOKBOOK_TOKEN')
-  if(token){
+  if (token) {
     const decoded = jwtDecode(token);
-    if(decoded && decoded.role && decoded.userID){
-      if(allowedRoles && Array.isArray(allowedRoles)){
+    if (decoded && decoded.role && decoded.userID) {
+      if (allowedRoles && Array.isArray(allowedRoles)) {
         let userAllowed = allowedRoles.includes(decoded.role);
-        if(userAllowed){
-          return <Outlet/>;
+        if (userAllowed) {
+          return <Outlet />;
         }
-        else{
-          return <Error401/>;
+        else {
+          return <Error401 />;
         }
       }
-      else{
-        return <Navigate to={`/login?redirectUrl=${location.pathname}`} replace={true}/>
+      else {
+        return <Navigate to={`/login?redirectUrl=${location.pathname}`} replace={true} />
       }
     }
-    else{
-      return <Navigate to={`/login?redirectUrl=${location.pathname}`} replace={true}/>
+    else {
+      return <Navigate to={`/login?redirectUrl=${location.pathname}`} replace={true} />
     }
     // setDecodedToken(decoded);
   }
-  else{
-    return <Navigate to={`/login?redirectUrl=${location.pathname}`} replace={true}/>
+  else {
+    return <Navigate to={`/login?redirectUrl=${location.pathname}`} replace={true} />
   }
-  
+
 }
 
 const roles = {
-  user:process.env.REACT_APP_USER,
-  artist:process.env.REACT_APP_ARTIST,
-  admin:process.env.REACT_APP_ADMIN,
-  manager:process.env.REACT_APP_MANAGER,
-  super_admin:process.env.REACT_APP_SUPER_ADMIN
+  user: process.env.REACT_APP_USER,
+  artist: process.env.REACT_APP_ARTIST,
+  admin: process.env.REACT_APP_ADMIN,
+  manager: process.env.REACT_APP_MANAGER,
+  super_admin: process.env.REACT_APP_SUPER_ADMIN
 }
 
-const CheckLoggedIn = () =>{
+const CheckLoggedIn = () => {
   const check = checkAuth();
 
-  if(check){
-    if(check.role == roles.user || check.role == roles.artist){
-      return <Navigate to="/" replace={true}/>
+  if (check) {
+    if (check.role == roles.user || check.role == roles.artist) {
+      return <Navigate to="/" replace={true} />
     }
-    else if(check.role == roles.admin){
-      return <Navigate to="/management/dashboard" replace={true}/>
+    else if (check.role == roles.admin) {
+      return <Navigate to="/management/dashboard" replace={true} />
     }
-    return <Navigate to="/" replace={true}/>
+    return <Navigate to="/" replace={true} />
   }
-  else{
-    return <Outlet/>;
+  else {
+    return <Outlet />;
   }
 }
 
-const CommonLayout = () =>{
-  
-  const {cities , services} = useLoaderData() 
+const CommonLayout = () => {
+
+  const { cities, services } = useLoaderData()
   return (
-  <>
-  <Header  cities={cities} services={services}/>
-    <Outlet />
-  <Footer/>
-  </>)
+    <>
+      <Header cities={cities} services={services} />
+      <Outlet />
+      <Footer />
+    </>)
 }
 
 
-const UseLoaderOutletContext = () =>{
+const UseLoaderOutletContext = () => {
   const loaderData = useLoaderData();
   return <Outlet context={[loaderData]} />
 }
 
-const MainWrapper = () =>{
+const MainWrapper = () => {
 
   const location = useLocation()
 
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
-  },[location.pathname])
-  
-  return <Outlet/>;
+  }, [location.pathname])
+
+  return <Outlet />;
 }
 
-const WishlistContextProvider = () =>{
+const WishlistContextProvider = () => {
   const wishlist = useLoaderData();
   return <Outlet context={[wishlist]} />
 }
 
 const ApplicationRoutes = createBrowserRouter(
   createRoutesFromElements(
-    <Route element={<MainWrapper/>}>
+    <Route element={<MainWrapper />}>
       {/* Normal component */}
       <Route element={<NormalComponents />}>
-        <Route element={<CommonLayout/>} loader={getSearchParameters}>
-          <Route index path="/" element={<Homepage />} loader={getHomepageData}/>
-          <Route element={<WishlistContextProvider/>} loader={getUserWishlistByID}>
-            <Route path='/artists' element={<AllArtists/>} loader={getAllArtists} />
-            <Route path='/wishlist' element={<Wishlist /> } loader={getUserWishlist}/>
-            <Route path="/artists/:service_id" element={<AllArtists/>}  loader={getArtistByServiceId}/>
-            <Route path="/artists/:service_id/:artist_id" element={<ArtistSingle/>}  loader={getArtistById}/>
+        <Route element={<CommonLayout />} loader={getSearchParameters}>
+          <Route index path="/" element={<Homepage />} loader={getHomepageData} />
+          <Route element={<WishlistContextProvider />} loader={getUserWishlistByID}>
+            <Route path='/artists' element={<AllArtists />} loader={getAllArtists} />
+            <Route path='/wishlist' element={<Wishlist />} loader={getUserWishlist} />
+            <Route path="/artists/:artist_id" element={<ArtistSingle />} loader={getArtistById} />
             <Route path='/search' element={< Search />} />
           </Route>
-          <Route path='/terms-conditions' element={<TermsPage/>}/>
-          <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
-          <Route path='/contact-us' element={<ContactPage/>}/>
-          <Route path='/blogs' element={<AllBlogs/>} loader={getBlogsAndCategory}/>
-          <Route path='/blogs/:slug' element={<SingleBlog/>} loader={getBlogBySlug}/>
-          <Route path='/about-us' element={<AboutUS/>}/>
-          <Route element={<CheckLoggedIn/>}>
+          <Route path='/terms-conditions' element={<TermsPage />} />
+          <Route path='/privacy-policy' element={<PrivacyPage />} />
+          <Route path='/contact-us' element={<ContactPage />} />
+          <Route path='/blogs' element={<AllBlogs />} loader={() => {
+            const allBlogs = getAllBlog();
+            const allCategories = getAllCategories();
+            return Promise.all([allBlogs, allCategories]).then((results) => {
+              return {
+                allBlogs: results[0],
+                allCategories: results[1],
+              }
+            })
+          }} />
+          <Route path='/blogs/:slug' element={<SingleBlog />} loader={getBlogBySlug} />
+          <Route path='/about-us' element={<AboutUS />} />
+          <Route element={<CheckLoggedIn />}>
             <Route path="/login" element={<LoginPage />} />
           </Route>
 
-          <Route element={<RequireAuth allowedRoles={[roles.user,roles.artist]} />}>
+          <Route element={<RequireAuth allowedRoles={[roles.user, roles.artist]} />}>
             <Route path="/user">
               <Route
                 path="/user/profile"
                 element={<UserProfile />}
                 loader={getUserProfile}
               />
+              <Route
+                path="/user/new-profile"
+                element={<NewProfile />}
+                loader={getUserProfile}
+              />
             </Route>
           </Route>
         </Route>
-        
+
         {/* Auth routes for user */}
         <Route element={<RequireAuth allowedRoles={[roles.user]} />}>
           <Route
-              path="/become-a-artist"
-              element={<ArtistRequestProvider />}
-              loader={getArtistRequests}
+            path="/become-a-artist"
+            element={<ArtistRequestProvider />}
+            loader={getArtistRequests}
           />
           <Route
-              path="/become-a-artist/get-started"
-              element={<><div className="artist-wrapper-ar"><BecomeAristHeader/><GetStarted /></div></>}
-              loader={getArtistRequests}
+            path="/become-a-artist/get-started"
+            element={<><div className="artist-wrapper-ar"><BecomeAristHeader /><GetStarted /></div></>}
+            loader={getArtistRequests}
           />
 
-          <Route path='/become-a-artist/:request_id' element={<ArtistGlobalState/>} loader={getWizardData}>
+          <Route path='/become-a-artist/:request_id' element={<ArtistGlobalState />} loader={getWizardData}>
             <Route
               path="/become-a-artist/:request_id/"
-              element={<Navigate to="/become-a-artist" replace={true}  />}
+              element={<Navigate to="/become-a-artist" replace={true} />}
             />
             <Route
               path="/become-a-artist/:request_id/get-started"
               element={<GetStarted />}
             />
-            <Route path="/become-a-artist/:request_id/about-your-skills" element={ <StepFirst />} />
-            <Route path="/become-a-artist/:request_id/about-you" element={<AboutYou />}/>
+            <Route path="/become-a-artist/:request_id/about-your-skills" element={<StepFirst />} />
+            <Route path="/become-a-artist/:request_id/about-you" element={<AboutYou />} />
             <Route path="/become-a-artist/:request_id/describe-yourself" element={<DescribeYourself />} />
             <Route path="/become-a-artist/:request_id/location" element={<ArtistLocation />} />
             <Route path="/become-a-artist/:request_id/insight-your-work" element={<InsightStory />} />
@@ -259,7 +273,7 @@ const ApplicationRoutes = createBrowserRouter(
             <Route path="/become-a-artist/:request_id/pricing" element={< PriceSetup />} />
             <Route path="/become-a-artist/:request_id/complete-kyc" element={< CompleteKYC />} />
             <Route path="/become-a-artist/:request_id/upload-cerificates" element={< Certificates />} />
-            <Route path="/become-a-artist/:request_id/personal-details" element={< Details/>} loader={getUserProfile}/>
+            <Route path="/become-a-artist/:request_id/personal-details" element={< Details />} loader={getUserProfile} />
             <Route path="/become-a-artist/:request_id/review-request" element={< Review />} />
           </Route>
           <Route path="/become-a-artist/publish-celebration" element={<Celebration />} />
@@ -269,40 +283,40 @@ const ApplicationRoutes = createBrowserRouter(
       </Route>
 
       {/* Dashboard component and admin auth routes*/}
-      <Route element={<RequireAuth allowedRoles={[roles.admin,roles.super_admin]} />}>
-      <Route element={<DashboardComponents/>}>
-        <Route path="/management" element={<UserLayout/>}>
-          <Route path='/management/dashboard' element={<Dashboard/>} loader={getAdminDashboardInitialData}/>
-          <Route path="/management/account-settings" element={<AccountSettings/>}/> 
-          <Route path="/management/cards" element={<CardBasic/>}/> 
-          <Route path="/management/icons" element={<Icons/>}/> 
-          <Route path="/management/tables" element={<MUITable/>}/> 
-          <Route path="/management/form-layouts" element={<FormLayouts/>}/> 
-          <Route path="/management/create-blog" element={<CreateBlog/>} loader={getAllCategories}/> 
+      <Route element={<RequireAuth allowedRoles={[roles.admin, roles.super_admin]} />}>
+        <Route element={<DashboardComponents />}>
+          <Route path="/management" element={<UserLayout />}>
+            <Route path='/management/dashboard' element={<Dashboard />} loader={getAdminDashboardInitialData} />
+            <Route path="/management/account-settings" element={<AccountSettings />} />
+            <Route path="/management/cards" element={<CardBasic />} />
+            <Route path="/management/icons" element={<Icons />} />
+            <Route path="/management/tables" element={<MUITable />} />
+            <Route path="/management/form-layouts" element={<FormLayouts />} />
+            <Route path="/management/create-blog" element={<CreateBlog />} loader={getAllCategories} />
 
-         <Route path="/management/blogs" element={<BlogList/>} loader={getAllBlog}/>
-        <Route path="/management/services" element={<AllServicesDetails/>} loader={allServicesDetails}/>
-        <Route path="/management/categories" element={<Categories/>} loader={getAllCategories}/>
-        <Route path="/management/categories/create" element={<CategoriesForm/>} loader={getAllCategories}/>
-        <Route path="/management/services/create" element={<Services/>}/>
-        <Route path="/management/products" element={<AllProdutsDetails/>} loader={allProductsDetails}/>
-        <Route path="/management/products/create" element={<ProductForm/>}/>
-        <Route path="/management/categories/create/:category_id" element={<UpdateCategories/>} loader={getCategoryById}/>
-        <Route path="/management/services/:_id" element={<UpdateService/>} loader={({params})=>getServiceById(params)}/>
-        <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
-        <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogByIdAndCategory({params})}/>
-        
-        <Route path='/management/view-artists' element={ <ViewArtists /> } loader={getAllArtists}/>
-        <Route path='/management/artists-request' element={<GetAllArtists/>} loader={()=>getAllArtistRequest()}/>
-        
-        <Route path='/management/artists-request/:request_id' element={<UseLoaderOutletContext/>} loader={getArtistRequestByID}>
-          <Route path='/management/artists-request/:request_id' element={<SingleArtistInformation/>}/>
-          <Route path='/management/artists-request/:request_id/certificates' element={<ArtistCertificates/>}/>
-          <Route path='/management/artists-request/:request_id/gallery' element={<ArtistRequestGallary/>}/>
+            <Route path="/management/blogs" element={<BlogList />} loader={getAllBlog} />
+            <Route path="/management/services" element={<AllServicesDetails />} loader={allServicesDetails} />
+            <Route path="/management/categories" element={<Categories />} loader={getAllCategories} />
+            <Route path="/management/categories/create" element={<CategoriesForm />} loader={getAllCategories} />
+            <Route path="/management/services/create" element={<Services />} />
+            <Route path="/management/products" element={<AllProdutsDetails />} loader={allProductsDetails} />
+            <Route path="/management/products/create" element={<ProductForm />} />
+            <Route path="/management/categories/create/:category_id" element={<UpdateCategories />} loader={getCategoryById} />
+            <Route path="/management/services/:_id" element={<UpdateService />} loader={({ params }) => getServiceById(params)} />
+            <Route path="/management/products/:_id" element={<UpdateProducts />} loader={({ params }) => getProductById(params)} />
+            <Route path="/management/blogs/:_id" element={<UpdateBlog />} loader={({ params }) => getBlogById(params)} />
+
+            <Route path='/management/view-artists' element={<ViewArtists />} loader={getAllArtists} />
+            <Route path='/management/artists-request' element={<GetAllArtists />} loader={() => getAllArtistRequest()} />
+
+            <Route path='/management/artists-request/:request_id' element={<UseLoaderOutletContext />} loader={getArtistRequestByID}>
+              <Route path='/management/artists-request/:request_id' element={<SingleArtistInformation />} />
+              <Route path='/management/artists-request/:request_id/certificates' element={<ArtistCertificates />} />
+              <Route path='/management/artists-request/:request_id/gallery' element={<ArtistRequestGallary />} />
+            </Route>
+          </Route>
         </Route>
-        </Route>
-      </Route>
-      
+
       </Route>
       {/* end admin auth routes */}
     </Route>
