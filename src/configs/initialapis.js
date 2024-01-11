@@ -242,7 +242,7 @@ export const getBlogsAndCategory = async()=>{
   })
 }
 
-export const getBlogByIdAndCategory = async({params})=>{
+export const getBlogByIdAndCategory = async(params)=>{
   const {_id} = params 
   const getBlogByid=getBlogById(_id);
   const allCategories=getAllCategories();
@@ -253,3 +253,13 @@ export const getBlogByIdAndCategory = async({params})=>{
    }
   })
 }
+
+export const getBlogByCategorySlug  = async ({params}) => {
+  const {category_slug} = params;
+  try {
+    const response = await axiosLocal.get(`/blog/get_blog_by_category_slug/${category_slug}`);
+      return response.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get all categories."
+   }
+};

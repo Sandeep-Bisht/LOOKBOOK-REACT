@@ -11,7 +11,7 @@ import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/user/Profile'
-import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogById, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogsAndCategory, getBlogByIdAndCategory, getArtistByServiceId } from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogsAndCategory, getBlogByIdAndCategory, getArtistByServiceId } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -70,6 +70,7 @@ import UpdateCategories from 'pages/management/categories/updateCategory'
 import ViewArtists from 'pages/management/artistRequests/viewAllArtists'
 import { getAdminDashboardInitialData } from 'configs/initialapis'
 import NewProfile from 'pages/user/Profile/newProfile'
+import BlogsCategoryFilter from 'layouts/components/Filters/blogsCategoryFilter'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
