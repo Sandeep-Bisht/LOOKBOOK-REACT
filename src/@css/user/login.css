@@ -119,6 +119,24 @@
     fill: #8C6A54;
 }
 
+.css-1tvf726-MuiSvgIcon-root{
+    color:#6D5D4C!important;
+    font-size: 30px!important;
+}
+.css-yi173b-MuiSvgIcon-root {
+    color:#6D5D4C!important;
+    font-size: 30px!important;
+}
+
+.css-1e5s3iq-MuiSvgIcon-root{
+    font-size: 1.9rem!important;
+    color: #6d5d4c!important;
+}
+
+.css-1jaiswo-MuiButtonBase-root-MuiButton-root{
+    background-color: #6D5D4C!important;
+}
+
 @media (max-width:991.98px){
     .usr-login-form-wrapper .usr-login-wrapper form {
     width: 100%;

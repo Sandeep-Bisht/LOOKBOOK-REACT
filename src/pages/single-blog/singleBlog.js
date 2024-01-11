@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import "@css/user/singleBlog.css"
 import { useForm } from "react-hook-form"
@@ -19,6 +19,8 @@ const SingleBlog = ()=> {
         formState: { errors },
       } = useForm();
     const blogData = useLoaderData()
+
+    const [imageData, setImageData] = useState();
    
     const onSubmit = (data) => console.log(data)
     return (
@@ -92,6 +94,7 @@ const SingleBlog = ()=> {
         officiis blanditiis alias molestias expedita distinctio explicabo?</p>
     </div>
     <form onSubmit={handleSubmit(onSubmit)}>
+
         <div className='row mb-3'>
             <div className='col-md-6'>
     <TextField variant="outlined" id="outlined-basic" label="firstname" {...register("firstName", { required: true })} fullWidth></TextField>
@@ -166,10 +169,11 @@ const SingleBlog = ()=> {
             </div>
           </div>
         </div>
+        
         <div className="col-md-6">
           <div className="usr-recent-post-card">
             <div className="usr-card-image">
-              <img src="./images/recent-card.jpeg" />
+              <img src={imageData.featuredImage} />
             </div>
             <div className="usr-recent-post-card-body">
               <h6 className="usr-recent-post-card-title">Makeup artist career</h6>
