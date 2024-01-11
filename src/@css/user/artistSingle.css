@@ -6,7 +6,14 @@
 .usr-artist-single .carousel-root
 {
     position: relative;
+    display: flex;
+    flex-direction: row-reverse;
 }
+
+.usr-artist-single .carousel-root .carousel{
+    width: fit-content;
+}
+
 .usr-artist-single-carousel .carousel-slider img
 {
     height:450px;
@@ -24,7 +31,10 @@
 }
 .usr-artist-single-carousel .carousel .thumbs
 {
+    transform: none!important;
     display: flex;
+    gap:13px;
+    flex-direction: column;
     justify-content: space-between;
     padding:0 15px;
     margin-bottom: 0;
@@ -32,11 +42,29 @@
 .usr-artist-single-carousel .carousel .slider-wrapper
 {
     border-radius: 18px;
+
+   
+}
+.usr-artist-single-carousel .carousel .slider-wrapper
+{
+
+}
+
+.image-gallery-slide.image-gallery-center.usr-single-img img{
+    height: 70vh;
+    object-fit: cover ;
+    object-position: top;
+}
+
+.image-gallery-thumbnails-wrapper.image-gallery-thumbnails-left .image-gallery-thumbnails .image-gallery-thumbnail+.image-gallery-thumbnail.usr-single-thumbnail img{
+height: 75px;
+object-fit: cover;
+object-position: top;
 }
 
 .usr-artist-single-carousel .carousel .thumbs-wrapper
 {
-   margin: 20px 0;
+   margin: 0px 0;
 }
 .usr-artist-single-carousel .carousel .thumb
 {
@@ -94,6 +122,24 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
 {
    position: static!important;
 }
+
+/* custom-carousel.css */
+
+.custom-thumbs {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%; /* Make the thumbnails container take the full height of the carousel */
+    width: 100px; /* Adjust the width as needed */
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .custom-thumbs .thumb {
+    margin-bottom: 5px; /* Adjust the margin as needed */
+  }
+  
 /* -----------------------usr-artist-single-tab css---------------------- */
 .usr-artist-single-tab
 {
@@ -107,9 +153,9 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
 .usr-artist-single-tab-wrapper .nav .nav-link
 {
     font-family:AvenirLTProBook;
-    color:#6D5D4C;
+    color: #b4a99f;
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
 }
 .usr-artist-single-tab-wrapper .nav .nav-link.active
 {
@@ -155,10 +201,12 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
     background-color: #fefefe;
     border-radius: 18px;
     padding: 25px;
+    position: relative;
 }
 
 .usr-detail-card .usr-artist-details-tag {
-    border-bottom: 1px solid #6D5D4C;
+    border-bottom: 1px solid #d3cec9;
+    padding-bottom: 12px;
 }
 
 
@@ -173,6 +221,19 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
     border-top-right-radius: 18px;
     border-bottom-right-radius: 18px;
     margin-bottom: 0;
+
+
+}
+.usr-detail-card .usr-artist-details-tag .usr-name h3::before
+{
+    position: absolute;
+    content: '';
+    display: block;
+    background-color: #6d5d4c;
+    left: 0;
+    height: 36px;
+     top: 26px;
+    width: 30px;
 }
 
 .usr-detail-card .usr-artist-details-tag .usr-name {
@@ -203,10 +264,11 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
 }
 
 .usr-detail-card .usr-artist-charges {
-    background-color: #fcf7f2;
+    background-color: #fff;
     margin: 30px 0;
-    padding: 15px 20px;
-    border-radius: 18px;
+    padding: 25px 20px;
+    border-radius: 5px;
+    border: 1px solid #d3cec9;
 }
 
 .usr-detail-card .usr-artist-charges p,
@@ -215,10 +277,11 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
 }
 
 .usr-detail-card .usr-artist-order {
-    background-color: #fcf7f2;
-    margin: 0 0 30px 0;
-    padding: 15px 20px;
-    border-radius: 18px;
+    background-color: #fff;
+    margin: 30px 0;
+    padding: 25px 20px;
+    border-radius: 5px;
+    border: 1px solid #d3cec9;
 }
 
 .usr-detail-card .usr-artist-details-tag .usr-rating {
@@ -268,7 +331,7 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
 }
 
 .usr-detail-card .usr-card-booking-button {
-    border-top: 1px solid #6D5D4C;
+    border-top: 1px solid #d3cec9;
     padding: 30px 0 0 0;
 }
 
@@ -276,11 +339,11 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
     background-color: #6D5D4C;
     border: none;
     color: #fcf7f2;
-    padding: 10px 20px;
+    padding: 10px 40px;
     text-transform: uppercase;
     border-radius: 5px;
     font-family: Avenir LT Pro;
-    font-size: 15px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 300;
 }

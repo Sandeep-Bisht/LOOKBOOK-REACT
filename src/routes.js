@@ -305,6 +305,8 @@ const ApplicationRoutes = createBrowserRouter(
       </Route>
       {/* end admin auth routes */}
     </Route>
+
+
   )
 );
 

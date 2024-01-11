@@ -14,34 +14,25 @@
   src: url('../../public/fonts/AvenirLTProLight.otf');
   /* --300--- */
 }
-/* @font-face {
-  font-family:Forum-Regular;
-  src: url('../../public/fonts/Forum-Regular.ttf');
-}   */
-  
-/* 
-.AvenirLTProBook{
-    font-family:AvenirLTProBook;
-    font-weight: 400;
 
-  }
-  .AvenirLTProHeavy
-  {
-    font-family:AvenirLTProHeavy;
-    font-weight: 700;
-  }
-  .AvenirLTProLight
-  {
-    font-family:AvenirLTProLight;
-    font-weight: 300;
-  }
-  
-  .Forum-regular
-  {
-    font-family:Forum-regular;
-  }
-   */
+.fw-400
+{
+  font-family:AvenirLTProBook!important;
+}
+.fw-700
+{
+  font-family:AvenirLTProHeavy!important;
 
+}
+
+.fw-300{
+  font-family:AvenirLTProLight!important;
+
+}
+.font-style-italic
+{
+  font-style: italic!important;
+}
   
   :focus-visible 
   {
@@ -75,7 +66,7 @@
     border-radius: 5px;
     border: 1px solid #6D5D4C;
     color: #6D5D4C;
-    font-size: 12px;
+    font-size: 13px;
     text-transform: uppercase;
     text-align: center;
     line-height: 1;
