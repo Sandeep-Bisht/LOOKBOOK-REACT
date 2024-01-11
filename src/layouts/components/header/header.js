@@ -323,7 +323,7 @@ const Header = ({ cities, services }) => {
                                 </clipPath>
                               </defs>
                             </svg></span>
-                            <span className="nav-link">{isClicked ? 'Artist' : <>{selectedService ? <>{services.find(item => item._id == selectedService)?.title}</> : 'Artist'}</>}</span>
+                            <span className="nav-link">{isClicked ? 'Services' : <>{selectedService ? <>{services.find(item => item._id == selectedService)?.title}</> : 'Services'}</>}</span>
                           </div>
                           
                           <div>

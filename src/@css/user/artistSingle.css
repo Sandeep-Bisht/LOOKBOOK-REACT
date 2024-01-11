@@ -139,7 +139,20 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
   .custom-thumbs .thumb {
     margin-bottom: 5px; /* Adjust the margin as needed */
   }
-  
+
+
+ .usr-artist-single .image-gallery-thumbnails .image-gallery-thumbnails-container{
+    cursor: pointer;
+    text-align: center;
+    height: 100%;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+
+ 
 /* -----------------------usr-artist-single-tab css---------------------- */
 .usr-artist-single-tab
 {
@@ -196,6 +209,85 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
     font-size: 14px;
     
 }
+
+.usr-artist-single .usr-single-artist-review-card
+{
+  padding-right: 35px;
+}
+.usr-single-artist-review-card-pic
+{
+  display: flex;
+  align-items: center;
+}
+.usr-single-artist-review-card-pic span
+{
+  display: block;
+}
+.usr-single-artist-review-card-pic span.usr-artist-review-name
+{
+  font-family: AvenirLTProHeavy;
+  font-size: 12px;
+  letter-spacing: .2px;
+  color: #6D5D4C;
+}
+.usr-single-artist-review-card-pic .pic
+{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.usr-single-artist-review-card-pic img
+{
+   width: 100%;
+   object-fit: cover;
+   height: 100%;
+}
+
+.usr-artist-single .slick-slider
+{
+  position: static!important;
+}
+.usr-artist-single .slick-current{
+   padding-left: 30px!important;
+   border-left: 1px solid #DADADA!important;
+}
+.usr-artist-single .slick-prev, .usr-artist-single  .slick-next
+{
+  border:1px solid #88796b;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  bottom: 0!important;
+  top:unset;
+  
+}
+.usr-artist-single .slick-prev{
+    left:44%;
+}
+
+.usr-artist-single  .slick-next
+{
+   right: 44%;
+}
+.usr-artist-single .slick-prev:before{
+  content: url('../../@core/assets/images/prev.png');
+ 
+
+} 
+.usr-artist-single .slick-next:before{
+  content: url('../../@core/assets/images/next.png');
+
+}
+
+.usr-artist-single-tab-content.review-tab{
+    padding-bottom: 100px;
+} 
+
+
+
+
 /* ---------------------------saurabhcss------------------------- */
 .usr-detail-card {
     background-color: #fefefe;
