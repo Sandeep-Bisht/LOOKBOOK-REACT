@@ -195,10 +195,7 @@
   /* Darken the border color on hover */
 }
 
-/* .about-images:hover{
-    object-fit: none;
-    border-radius: 44px;
-} */
+
 
 
 /* describe yourself */
@@ -257,10 +254,6 @@
   margin-bottom: 25px;
 }
 
-.describe-yourself .artist-card .card-icon {
-  /* font-size: 30px;
-   padding-right: 10px; */
-}
 
 .describe-yourself .artist-card .card-body {
   padding: 15px 8px 10px 13px;
@@ -315,7 +308,8 @@
 }
 
 
-/* ======== Upload Images=========== */
+
+/* ========= Upload Images=========== */
 
 .cover-image .upload-image {
   display: grid;
@@ -1022,6 +1016,8 @@ img:hover .showbutton-image.drop-shadow-delete {
 }
 
 .artists-detail-heading {
+
   font-size: 16px;
   font-weight: 500;
+  
 }

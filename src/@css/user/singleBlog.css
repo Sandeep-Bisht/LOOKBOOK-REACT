@@ -3,6 +3,22 @@
     color: #6D5D4C;
 }
 
+.usr-single-blogs .usr-single-blogs-content h3,
+    .usr-single-blogs .usr-single-blogs-comments h3,
+    .usr-single-blogs .usr-single-blogs-tags-recents-posts .tags h3,
+    .usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .recents-posts-heading h3 {
+        font-family: AvenirLTProLight;
+    }
+
+.usr-single-blogs .usr-single-blogs-image,
+    .usr-single-blogs .usr-single-blogs-comments h3 {
+        border-bottom: 1px solid rgba(109, 93, 76, .3);
+        margin-bottom: 30px;
+        color: #6D5D4C;
+    }
+    .usr-single-blogs .usr-single-blogs-comments{
+        color: #6D5D4C; 
+    }
 .usr-single-blogs .usr-single-blogs-content h3 {
     font-family: AvenirLTProLight;
 }
@@ -65,4 +81,94 @@
 .usr-single-blogs .usr-single-blogs-image .usr-single-blogs-social-icons .reviews .likes svg path {
     fill: #6D5D4C;
     stroke: #FCF7F2;
+}
+
+.usr-single-blogs .usr-single-blogs-comments .comments {
+    margin-bottom: 30px;
+}
+
+.usr-single-blogs .usr-single-blogs-comments form .input-control {
+    /* width: 100%;
+    border: 1px solid #6D5D4C; */
+    background-color: #FCF7F2;
+    
+    margin-bottom: 30px;
+}
+
+.usr-single-blogs .usr-single-blogs-comments form .post-comments-button {
+    background-color: #6D5D4C;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: none;
+    color: #fefefe;
+    padding: 10px 100px;
+}
+
+.usr-single-blogs .usr-single-blogs-comments form .post-comments-button:hover {
+    background-color: #8C6A54;
+}
+
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .tags a {
+    text-decoration: none;
+    background-color: #6D5D4C;
+    padding: 10px;
+    color: #FCF7F2;
+    display: inline-block;
+    margin: 5px 5px 0px 0px;
+}
+
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card {
+    background-color: #fefefe;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-card-image {
+    height: 150px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-card-image img {
+    width: 100%;
+}
+
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-body {
+    border-bottom: 1px solid rgba(109, 93, 76, .3);
+}
+
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review .reviews {
+    display: flex;
+}
+
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review .reviews .view,
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review .reviews .comment {
+    padding: 0 10px;
+    border-right: 1px solid rgba(109, 93, 76, .3);
+}
+
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review .reviews .view a,
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review .reviews .comment a,
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review .reviews .share a,
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review .reviews .favorite a {
+    text-decoration: none;
+    color: #6D5D4C;
+    font-size: 14px;
+}
+
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review .reviews .view svg,
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review .reviews .comment svg {
+    margin-right: 5px;
+}
+
+.usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review .reviews .share {
+    padding: 0 10px;
 }

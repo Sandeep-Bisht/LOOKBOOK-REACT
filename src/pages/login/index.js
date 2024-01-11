@@ -1,6 +1,7 @@
 // ** React Imports
 import { useState, useEffect, useRef } from "react";
-
+import '@css/user/login.css';
+import { MdOutlinePhoneAndroid } from "react-icons/md";
 // ** Next Imports
 import OtpInput from "react-otp-input";
 import AuthStyle from "@core/css/auth.module.css";
@@ -185,14 +186,18 @@ const LoginPage = () => {
   };
 
   return (
-    <BlankLayout>
-      <Box className="content-center">
-        <Card sx={{ zIndex: 1 }}>
-          <CardContent
-            sx={{ padding: (theme) => `${theme.spacing(12, 9, 7)} !important` }}
-          >
-            {otpView ? (
+    <>
+    <section className="bg-color">
+  <div className="container">
+    <div className="row bg-white">
+      <div className="col-md-5 usr-login-bg-image d-md-block">
+      </div>
+      
+      {otpView ? 
               <>
+              <div className="col-md-7">
+        <div className="usr-login-form-wrapper">
+          <div className="usr-login-wrapper">              
                 <Typography
                   variant="h6"
                   sx={{
@@ -258,47 +263,24 @@ const LoginPage = () => {
                     Continue
                   </Button>
                 </Box>
+                </div>
+                </div>
+                </div>
               </>
-            ) : (
-              <>
-                <Box
-                  sx={{
-                    mb: 8,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      ml: 3,
-                      lineHeight: 1,
-                      fontWeight: 600,
-                      textTransform: "uppercase",
-                      fontSize: "1.5rem !important",
-                    }}
-                  >
-                    LOGIN / SIGNUP
-                  </Typography>
-                </Box>
-                <Box sx={{ mb: 6 }}>
-                  <Typography
-                    variant="h6"
-                    sx={{ fontWeight: 600, marginBottom: 1.5 }}
-                  >
-                    Welcome to {themeConfig.templateName}
-                  </Typography>
-                  <Typography variant="body2">
-                    Please sign-in to your account and start the adventure
-                  </Typography>
-                </Box>
-                <form
-                  noValidate
-                  autoComplete="off"
-                  onSubmit={(e) => e.preventDefault()}
-                >
-                  {signupType == "email" ? (
+            
+            :
+            <>
+            <div className="col-md-7">
+        <div className="usr-login-form-wrapper">
+          <div className="usr-login-wrapper">
+            <div className="text-center mb-5">
+              <h3>Login / SignUp</h3>
+              <h6>Welcome to LOOKBOOK</h6>
+              <p>Please sign in to your account</p>
+            </div>
+            <form className="text-center">
+
+            {signupType == "email" ? (
                     <TextField
                       inputRef={emailRef}
                       autoFocus
@@ -334,7 +316,7 @@ const LoginPage = () => {
                     </Typography>
                   ) : null}
                   <Typography variant="body2" sx={{ marginBottom: 4 }}>
-                    Please sign-in to your account
+                    {/* Please sign-in to your account */}
                   </Typography>
                   <Button
                     fullWidth
@@ -346,7 +328,7 @@ const LoginPage = () => {
                   >
                     {isSubmitting ? "......" : "Continue "}
                   </Button>
-                  <Divider sx={{ my: 5 }}>or</Divider>
+                  <Divider sx={{ my: 5 }}>or sign in using</Divider>
                   <Box
                     sx={{
                       display: "flex",
@@ -356,12 +338,13 @@ const LoginPage = () => {
                   >
                     <SocialLogin redirectUrl={redirectUrl} />
                     {signupType == "email" ? (
-                      <IconButton
+                      <MdOutlinePhoneAndroid
                         component="a"
+                        style={{color:"#6d5d4c", fontSize:"28px"}}
                         onClick={() => ChangeSignupType()}
                       >
                         <Phone sx={{ color: "#8C6A54" }} />
-                      </IconButton>
+                      </MdOutlinePhoneAndroid>
                     ) : (
                       <IconButton
                         component="a"
@@ -371,13 +354,19 @@ const LoginPage = () => {
                       </IconButton>
                     )}
                   </Box>
-                </form>
-              </>
-            )}
-          </CardContent>
-        </Card>
-      </Box>
-    </BlankLayout>
+
+            </form>
+         
+          </div>
+        </div>
+      </div>
+      </>
+            }
+    </div>
+  </div>
+</section>
+</>
+
   );
 };
 
