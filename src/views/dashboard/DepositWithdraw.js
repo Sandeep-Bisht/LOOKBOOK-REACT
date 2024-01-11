@@ -6,92 +6,104 @@ import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import MuiDivider from '@mui/material/Divider'
+import Avatar from '@mui/material/Avatar'
 
-const depositData = [
-  {
-    logoWidth: 28,
-    logoHeight: 29,
-    amount: '+$4,650',
-    subtitle: 'Sell UI Kit',
-    title: 'Gumroad Account',
-    logo: '/images/logos/gumroad.png'
-  },
-  {
-    logoWidth: 38,
-    logoHeight: 38,
-    amount: '+$92,705',
-    title: 'Mastercard',
-    subtitle: 'Wallet deposit',
-    logo: '/images/logos/mastercard-label.png'
-  },
-  {
-    logoWidth: 20,
-    logoHeight: 28,
-    amount: '+$957',
-    title: 'Stripe Account',
-    subtitle: 'iOS Application',
-    logo: '/images/logos/stripe.png'
-  },
-  {
-    logoWidth: 34,
-    logoHeight: 32,
-    amount: '+$6,837',
-    title: 'American Bank',
-    subtitle: 'Bank Transfer',
-    logo: '/images/logos/american-bank.png'
-  },
-  {
-    logoWidth: 33,
-    logoHeight: 22,
-    amount: '+$446',
-    title: 'Bank Account',
-    subtitle: 'Wallet deposit',
-    logo: '/images/logos/citi-bank.png'
-  }
-]
+const renderFeaturedArtists = (featuredArtists) => {   
+  return featuredArtists.map((item, index) => {
+    return (
+      <Box
+        key={item.title}
+        sx={{ display: 'flex', alignItems: 'center', mb: index !== featuredArtists.length - 1 ? 6 : 0 }}
+      >
+        <Box sx={{ minWidth: 38, display: 'flex', justifyContent: 'center' }}>
+          {/* <img src={item.logo} alt= width={item.logoWidth} height={item.logoHeight} /> */}
+          <Avatar
+                sx={{
+                  width: 38,
+                  height: 38,
+                  marginRight: 3,
+                  fontSize: '1rem',
+                  color: 'common.white',
+                  backgroundColor: `primary.main`
+                }}
+              >
+                {item.profile_id.fullName.split(' ').map((name) => name[0]).join('').toUpperCase()}
+              </Avatar>
+          
+        </Box>
+        <Box
+          sx={{
+            ml: 4,
+            width: '100%',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}
+        >
+          <Box sx={{ marginRight: 2, display: 'flex', flexDirection: 'column' }}>
+            <Typography sx={{ fontWeight: 600, fontSize: '0.875rem' }}>{item.profile_id.fullName}</Typography>
+            <Typography variant='caption'>
+            {item.services?.map((service, i) => (i === item.services.length - 1 ? service.title : `${service.title}, `))}
+            </Typography>                         
+          </Box>
+          <Typography variant='subtitle2' sx={{ fontWeight: 600, color: 'success.main' }}>
+            {item.pricing.totalPrice}
+          </Typography>
+        </Box>
+      </Box>
+    )
+  })
+}
 
-const withdrawData = [
-  {
-    logoWidth: 29,
-    logoHeight: 30,
-    amount: '-$145',
-    title: 'Google Adsense',
-    subtitle: 'Paypal deposit',
-    logo: '/images/logos/google.png'
-  },
-  {
-    logoWidth: 34,
-    logoHeight: 34,
-    amount: '-$1870',
-    title: 'Github Enterprise',
-    logo: '/images/logos/github.png',
-    subtitle: 'Security & compliance'
-  },
-  {
-    logoWidth: 30,
-    logoHeight: 30,
-    amount: '-$450',
-    title: 'Upgrade Slack Plan',
-    subtitle: 'Debit card deposit',
-    logo: '/images/logos/slack.png'
-  },
-  {
-    logoWidth: 30,
-    logoHeight: 30,
-    amount: '-$540',
-    title: 'Digital Ocean',
-    subtitle: 'Cloud Hosting',
-    logo: '/images/logos/digital-ocean.png'
-  },
-  {
-    logoWidth: 36,
-    logoHeight: 21,
-    amount: '-$21',
-    title: 'AWS Account',
-    logo: '/images/logos/aws.png',
-    subtitle: 'Choosing a Cloud Platform'
-  }
-]
+const renderEmergingArtists = (emergingArtists) => {   
+  return emergingArtists.map((item, index) => {
+    return (
+      <Box
+        key={item.title}
+        sx={{ display: 'flex', alignItems: 'center', mb: index !== emergingArtists.length - 1 ? 6 : 0 }}
+      >
+        <Box sx={{ minWidth: 38, display: 'flex', justifyContent: 'center' }}>
+          {/* <img src={item.logo} alt={item.title} width={item.logoWidth} height={item.logoHeight} /> */}
+          <Avatar
+                sx={{
+                  width: 38,
+                  height: 38,
+                  marginRight: 3,
+                  fontSize: '1rem',
+                  color: 'common.white',
+                  backgroundColor: `primary.main`
+                }}
+              >
+                {item.profile_id.fullName.split(' ').map((name) => name[0]).join('').toUpperCase()}
+              </Avatar>
+        </Box>
+        <Box
+          sx={{
+            ml: 4,
+            width: '100%',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}
+        >
+          <Box sx={{ marginRight: 2, display: 'flex', flexDirection: 'column' }}>
+            <Typography sx={{ fontWeight: 600, fontSize: '0.875rem' }}>{item.profile_id.fullName}</Typography>
+            <Typography variant='caption'>
+            {item.services?.map((service, i) => (i === item.services.length - 1 ? service.title : `${service.title}, `))}
+            </Typography>                         
+          </Box>
+          <Typography variant='subtitle2' sx={{ fontWeight: 600, color: 'success.main' }}>
+            {item.pricing.totalPrice}
+          </Typography>
+        </Box>
+      </Box>
+    )
+  })
+}
+
+
 
 // Styled Divider component
 const Divider = styled(MuiDivider)(({ theme }) => ({
@@ -104,12 +116,13 @@ const Divider = styled(MuiDivider)(({ theme }) => ({
   }
 }))
 
-const DepositWithdraw = () => {
+const DepositWithdraw = ({featuredArtists , emergingArtists}) => {
+
   return (
     <Card sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: ['column', 'column', 'row'] }}>
       <Box sx={{ width: '100%' }}>
         <CardHeader
-          title='Deposit'
+          title='Featured Artist'
           sx={{ pt: 5.5, alignItems: 'center', '& .MuiCardHeader-action': { mt: 0.6 } }}
           action={<Typography variant='caption'>View All</Typography>}
           titleTypographyProps={{
@@ -118,36 +131,8 @@ const DepositWithdraw = () => {
           }}
         />
         <CardContent sx={{ pb: theme => `${theme.spacing(5.5)} !important` }}>
-          {depositData.map((item, index) => {
-            return (
-              <Box
-                key={item.title}
-                sx={{ display: 'flex', alignItems: 'center', mb: index !== depositData.length - 1 ? 6 : 0 }}
-              >
-                <Box sx={{ minWidth: 38, display: 'flex', justifyContent: 'center' }}>
-                  <img src={item.logo} alt={item.title} width={item.logoWidth} height={item.logoHeight} />
-                </Box>
-                <Box
-                  sx={{
-                    ml: 4,
-                    width: '100%',
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    alignItems: 'center',
-                    justifyContent: 'space-between'
-                  }}
-                >
-                  <Box sx={{ marginRight: 2, display: 'flex', flexDirection: 'column' }}>
-                    <Typography sx={{ fontWeight: 600, fontSize: '0.875rem' }}>{item.title}</Typography>
-                    <Typography variant='caption'>{item.subtitle}</Typography>
-                  </Box>
-                  <Typography variant='subtitle2' sx={{ fontWeight: 600, color: 'success.main' }}>
-                    {item.amount}
-                  </Typography>
-                </Box>
-              </Box>
-            )
-          })}
+          
+            {renderFeaturedArtists(featuredArtists)}
         </CardContent>
       </Box>
 
@@ -155,7 +140,7 @@ const DepositWithdraw = () => {
 
       <Box sx={{ width: '100%' }}>
         <CardHeader
-          title='Withdraw'
+          title='Emerging Artist'
           sx={{ pt: 5.5, alignItems: 'center', '& .MuiCardHeader-action': { mt: 0.6 } }}
           action={<Typography variant='caption'>View All</Typography>}
           titleTypographyProps={{
@@ -163,37 +148,8 @@ const DepositWithdraw = () => {
             sx: { lineHeight: '1.6 !important', letterSpacing: '0.15px !important' }
           }}
         />
-        <CardContent sx={{ pb: theme => `${theme.spacing(5.5)} !important` }}>
-          {withdrawData.map((item, index) => {
-            return (
-              <Box
-                key={item.title}
-                sx={{ display: 'flex', alignItems: 'center', mb: index !== depositData.length - 1 ? 6 : 0 }}
-              >
-                <Box sx={{ minWidth: 36, display: 'flex', justifyContent: 'center' }}>
-                  <img src={item.logo} alt={item.title} width={item.logoWidth} height={item.logoHeight} />
-                </Box>
-                <Box
-                  sx={{
-                    ml: 4,
-                    width: '100%',
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    alignItems: 'center',
-                    justifyContent: 'space-between'
-                  }}
-                >
-                  <Box sx={{ marginRight: 2, display: 'flex', flexDirection: 'column' }}>
-                    <Typography sx={{ fontWeight: 600, fontSize: '0.875rem' }}>{item.title}</Typography>
-                    <Typography variant='caption'>{item.subtitle}</Typography>
-                  </Box>
-                  <Typography variant='subtitle2' sx={{ fontWeight: 600, color: 'error.main' }}>
-                    {item.amount}
-                  </Typography>
-                </Box>
-              </Box>
-            )
-          })}
+        <CardContent sx={{ pb: theme => `${theme.spacing(5.5)} !important` }}>         
+          {renderEmergingArtists(emergingArtists)}
         </CardContent>
       </Box>
     </Card>

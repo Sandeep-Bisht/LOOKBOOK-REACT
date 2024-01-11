@@ -11,7 +11,7 @@ import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/user/Profile'
-import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogById, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogsAndCategory, getBlogByIdAndCategory } from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogById, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogsAndCategory, getBlogByIdAndCategory, getArtistByServiceId } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -199,7 +199,8 @@ const ApplicationRoutes = createBrowserRouter(
           <Route element={<WishlistContextProvider/>} loader={getUserWishlistByID}>
             <Route path='/artists' element={<AllArtists/>} loader={getAllArtists} />
             <Route path='/wishlist' element={<Wishlist /> } loader={getUserWishlist}/>
-            <Route path="/artists/:artist_id" element={<ArtistSingle/>}  loader={getArtistById}/>
+            <Route path="/artists/:service_id" element={<AllArtists/>}  loader={getArtistByServiceId}/>
+            <Route path="/artists/:service_id/:artist_id" element={<ArtistSingle/>}  loader={getArtistById}/>
             <Route path='/search' element={< Search />} />
           </Route>
           <Route path='/terms-conditions' element={<TermsPage/>}/>

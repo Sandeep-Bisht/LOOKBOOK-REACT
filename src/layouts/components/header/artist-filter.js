@@ -1,13 +1,12 @@
 import { axiosLocal } from "configs/axiosInstance";
-import { getAllArtists } from "configs/initialapis";
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 
-const BASE_URL = process.env.REACT_APP_APIURL;
 
-const ArtistFilter = ({ services, setAllArtists, allArtists }) => {
+const ArtistFilter = ({ services }) => {
 
-    const artists = useState([...allArtists])
+    let navigate = useNavigate()
 
   const settings = {
     dots: false,
@@ -17,28 +16,14 @@ const ArtistFilter = ({ services, setAllArtists, allArtists }) => {
     slidesToShow: 6,
     slidesToScroll: 1,
     // autoplay:true,
-    centerMode: true,
+    // centerMode: true,
     centerPadding: "0px",
     // autoplayTimeout:3000
   };
 
-  const getAllArtists= ()=> {
-    setAllArtists(artists[0])
-  }
 
-
-
-  const getArtistByServiceID = async (service_id) => {
-    try {
-      let response = await axiosLocal.get(`${BASE_URL}/search/findArtist`, {
-        params: { service: service_id },
-      });
-      if (response) {
-        setAllArtists(response.data)
-      }
-    } catch (error) {
-      console.log("this is error", error);
-    }
+  const getArtistByServiceID = async (service_id) => {    
+        navigate(`/artists/${service_id}`)
   };
 
   return (
@@ -48,18 +33,25 @@ const ArtistFilter = ({ services, setAllArtists, allArtists }) => {
           <div className="col-lg-12">            
             <Slider className="" {...settings}>
             <div
-            onClick={() => getAllArtists()}
+            onClick={()=>navigate("/artists")}
             >
                 All Artist
             </div>
-              {services &&
+              {services && services.length > 0 &&
                 services.map((item, index) => {
-                  return (
+                  return (                    
                     <div
                       key={index}
-                      onClick={() => getArtistByServiceID(item._id)}
+                       onClick={() => getArtistByServiceID(item._id)}
+                      className="d-flex"
                     >
+                      <div className="">
+                        <img src={item.icon.thumbnailUrl} className="img-fluid service-icons" />
+                      </div>
+                      <span>
                       {item.title}
+                      </span>
+                      
                     </div>
                   );
                 })}

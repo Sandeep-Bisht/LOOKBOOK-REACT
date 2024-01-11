@@ -26,7 +26,6 @@ import { useLoaderData } from 'react-router-dom'
 const Dashboard = () => {
 
   const countData = useLoaderData();
-  console.log("countData countData", countData)
   return (
     <ApexChartWrapper>
       <Grid container spacing={6}>
@@ -34,7 +33,7 @@ const Dashboard = () => {
           <Trophy />
         </Grid>
         <Grid item xs={12} md={8}>
-          <StatisticsCard />
+          <StatisticsCard  countData={countData}/>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <WeeklyOverview />
@@ -89,13 +88,13 @@ const Dashboard = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <SalesByCountries />
+          <SalesByCountries artistsByState={countData.artistsPerState} />
         </Grid>
         <Grid item xs={12} md={12} lg={8}>
-          <DepositWithdraw />
+          <DepositWithdraw  featuredArtists={countData.featuredArtists} emergingArtists={countData.emergingArtists} />
         </Grid>
         <Grid item xs={12}>
-          <Table />
+          <Table artistRequests={countData.pendingArtist} />
         </Grid>
       </Grid>
     </ApexChartWrapper>

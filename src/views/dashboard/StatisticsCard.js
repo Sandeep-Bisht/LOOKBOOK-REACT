@@ -15,34 +15,37 @@ import DotsVertical from 'mdi-material-ui/DotsVertical'
 import CellphoneLink from 'mdi-material-ui/CellphoneLink'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 
-const salesData = [
-  {
-    stats: '245k',
-    title: 'Sales',
-    color: 'primary',
-    icon: <TrendingUp sx={{ fontSize: '1.75rem' }} />
-  },
-  {
-    stats: '12.5k',
-    title: 'Customers',
-    color: 'success',
-    icon: <AccountOutline sx={{ fontSize: '1.75rem' }} />
-  },
-  {
-    stats: '1.54k',
-    color: 'warning',
-    title: 'Products',
-    icon: <CellphoneLink sx={{ fontSize: '1.75rem' }} />
-  },
-  {
-    stats: '$88k',
-    color: 'info',
-    title: 'Revenue',
-    icon: <CurrencyUsd sx={{ fontSize: '1.75rem' }} />
-  }
-]
 
-const renderStats = () => {
+
+const renderStats = (countData) => {
+
+  const salesData = [
+    {
+      stats: countData.totalArtistRequest,
+      title: 'All Artist',
+      color: 'primary',
+      icon: <TrendingUp sx={{ fontSize: '1.75rem' }} />
+    },
+    {
+      stats: countData.artistsCount,
+      title: 'Confirmed',
+      color: 'success',
+      icon: <AccountOutline sx={{ fontSize: '1.75rem' }} />
+    },
+    {
+      stats: countData.artistRequestCount,
+      color: 'warning',
+      title: 'Request',
+      icon: <CellphoneLink sx={{ fontSize: '1.75rem' }} />
+    },
+    {
+      stats: countData.artistRejectCount,
+      color: 'info',
+      title: 'Reject',
+      icon: <CurrencyUsd sx={{ fontSize: '1.75rem' }} />
+    }
+  ]
+ 
   return salesData.map((item, index) => (
     <Grid item xs={12} sm={3} key={index}>
       <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
@@ -68,11 +71,11 @@ const renderStats = () => {
   ))
 }
 
-const StatisticsCard = () => {
+const StatisticsCard = ({countData}) => {
   return (
     <Card>
       <CardHeader
-        title='Statistics Card'
+        title='Artist Card'
         action={
           <IconButton size='small' aria-label='settings' className='card-more-options' sx={{ color: 'text.secondary' }}>
             <DotsVertical />
@@ -96,7 +99,7 @@ const StatisticsCard = () => {
       />
       <CardContent sx={{ pt: theme => `${theme.spacing(3)} !important` }}>
         <Grid container spacing={[5, 0]}>
-          {renderStats()}
+          {renderStats(countData)}
         </Grid>
       </CardContent>
     </Card>

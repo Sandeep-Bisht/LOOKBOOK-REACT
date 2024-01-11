@@ -23,53 +23,16 @@ const data = [
     avatarColor: 'success',
     trend: <ChevronUp sx={{ color: 'success.main', fontWeight: 600 }} />
   },
-  {
-    sales: '645k',
-    subtitle: 'UK',
-    trendDir: 'down',
-    title: '$2,415k',
-    avatarText: 'UK',
-    trendNumber: '6.2%',
-    avatarColor: 'error',
-    trend: <ChevronDown sx={{ color: 'error.main', fontWeight: 600 }} />
-  },
-  {
-    sales: '148k',
-    title: '$865k',
-    trendDir: 'up',
-    avatarText: 'IN',
-    subtitle: 'India',
-    trendNumber: '12.4%',
-    avatarColor: 'warning',
-    trend: <ChevronUp sx={{ color: 'success.main', fontWeight: 600 }} />
-  },
-  {
-    sales: '86k',
-    title: '$745k',
-    trendDir: 'down',
-    avatarText: 'JA',
-    subtitle: 'Japan',
-    trendNumber: '11.9%',
-    avatarColor: 'secondary',
-    trend: <ChevronDown sx={{ color: 'error.main', fontWeight: 600 }} />
-  },
-  {
-    sales: '42k',
-    title: '$45k',
-    trendDir: 'up',
-    avatarText: 'KO',
-    subtitle: 'Korea',
-    trendNumber: '16.2%',
-    avatarColor: 'error',
-    trend: <ChevronUp sx={{ color: 'success.main', fontWeight: 600 }} />
-  }
+  
 ]
 
-const SalesByCountries = () => {
+const SalesByCountries = ({artistsByState}) => {
+
+  console.log("artistsByState artistsByState", artistsByState)
   return (
     <Card>
       <CardHeader
-        title='Sales by Countries'
+        title='Artits by State'
         titleTypographyProps={{ sx: { lineHeight: '1.2 !important', letterSpacing: '0.31px !important' } }}
         action={
           <IconButton size='small' aria-label='settings' className='card-more-options' sx={{ color: 'text.secondary' }}>
@@ -78,14 +41,14 @@ const SalesByCountries = () => {
         }
       />
       <CardContent sx={{ pt: theme => `${theme.spacing(2)} !important` }}>
-        {data.map((item, index) => {
+        {artistsByState && artistsByState.map((item, index) => {
           return (
             <Box
-              key={item.title}
+              key={item.stateName}
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                ...(index !== data.length - 1 ? { mb: 5.875 } : {})
+                ...(index !== artistsByState.length - 1 ? { mb: 5.875 } : {})
               }}
             >
               <Avatar
@@ -95,10 +58,10 @@ const SalesByCountries = () => {
                   marginRight: 3,
                   fontSize: '1rem',
                   color: 'common.white',
-                  backgroundColor: `${item.avatarColor}.main`
+                  backgroundColor: `primary.main`
                 }}
               >
-                {item.avatarText}
+                {item.stateName.substring(0, 2).toUpperCase()}
               </Avatar>
 
               <Box
@@ -114,8 +77,8 @@ const SalesByCountries = () => {
                   <Box sx={{ display: 'flex' }}>
                     <Typography sx={{ mr: 0.5, fontWeight: 600, letterSpacing: '0.25px' }}>{item.title}</Typography>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      {item.trend}
-                      <Typography
+                    {item.stateName}
+                      {/* <Typography
                         variant='caption'
                         sx={{
                           fontWeight: 600,
@@ -123,21 +86,21 @@ const SalesByCountries = () => {
                           color: item.trendDir === 'down' ? 'error.main' : 'success.main'
                         }}
                       >
-                        {item.trendNumber}
-                      </Typography>
+                        {item.stateName}
+                      </Typography> */}
                     </Box>
                   </Box>
                   <Typography variant='caption' sx={{ lineHeight: 1.5 }}>
-                    {item.subtitle}
+                    {item.country}
                   </Typography>
                 </Box>
 
                 <Box sx={{ display: 'flex', textAlign: 'end', flexDirection: 'column' }}>
                   <Typography sx={{ fontWeight: 600, fontSize: '0.875rem', lineHeight: 1.72, letterSpacing: '0.22px' }}>
-                    {item.sales}
+                    {item.count}
                   </Typography>
                   <Typography variant='caption' sx={{ lineHeight: 1.5 }}>
-                    Sales
+                    Artists
                   </Typography>
                 </Box>
               </Box>

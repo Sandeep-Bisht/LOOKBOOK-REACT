@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // ** MUI Imports
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -18,7 +18,6 @@ import { MdOutlinePreview } from "react-icons/md";
 import axios from "axios";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { MdAdd } from "react-icons/md";
 import Switch from "@mui/material/Switch";
@@ -36,9 +35,6 @@ const ViewArtists = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [rows, setRows] = useState([]);
 
-  
-  const navigate = useNavigate();
-
 
  const getAllArtists  = async () => {
   try {
@@ -54,8 +50,8 @@ const ViewArtists = () => {
     { id: "fullname", label: "Name", minWidth: 170 },
     { id: "experience", label: "Experience", minWidth: 170 },
     { id: "status", label: "Status", minWidth: 170 },
-    { id: "view", label: "View", minWidth: 170 },
     { id: "featured", label: "Featured", minWidth: 170 },
+    { id: "emerging", label: "Emerging", minWidth: 170 },
   ];
 
   const handleChangePage = (event, newPage) => {
@@ -66,11 +62,6 @@ const ViewArtists = () => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
-  const viewArtistHandler = (artistInformation) => {
-    navigate(`/management/artists-request/${artistInformation?._id}`);
-  };
-
 
   const handleFeaturedArtist = async (row) => {
     let payload = {}
@@ -85,12 +76,7 @@ const ViewArtists = () => {
       featuredTag : true
     }
   }
-   
-   
-
-   
-  
-    try {
+   try {
         const response = await axiosAuth.post(`${BASE_URL}/management/mark-featured-artist`, payload);
         if (response.statusText == "OK") {
           getAllArtists()         
@@ -102,6 +88,32 @@ const ViewArtists = () => {
         return error.message || "An error occured while trying to featured artist."
       }
   };
+
+  const handleEmergingArtist = async (row) => {
+    let payload = {}
+    if(row.emergingTag){
+      payload = {
+        request_id : row._id,
+        emergingTag : !row.emergingTag
+      }
+  }else{
+    payload = {
+      request_id : row._id,
+      emergingTag : true
+    }
+  }
+   try {
+        const response = await axiosAuth.post(`${BASE_URL}/management/mark-emerging-artist`, payload);
+        if (response.statusText == "OK") {
+          getAllArtists()         
+          
+        }
+      } catch (error) {
+        // setUpdating(false)
+        toast.warn('Failed to update artist!');
+        return error.message || "An error occured while trying to emerging artist."
+      }
+  }
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -149,27 +161,16 @@ const ViewArtists = () => {
                         <Chip label={row?.status} color="primary" />
                       </TableCell>
                       <TableCell>
-                        <div className="">
-                          <button
-                            className="btn"
-                            style={{
-                              background: "#8c6a54",
-                              border: "none",
-                              color: "#fff",
-                              fontSize: "12px",
-                            }}
-                            onClick={() => viewArtistHandler(row)}
-                          >
-                            <span>
-                              View <MdOutlinePreview />
-                            </span>
-                          </button>
-                        </div>
-                      </TableCell>
-                      <TableCell>
                         <Switch
                           checked={row?.featuredTag}
                           onChange={() => handleFeaturedArtist(row)}
+                          inputProps={{ "aria-label": "controlled" }}
+                        />
+                      </TableCell>
+                      <TableCell>
+                        <Switch
+                          checked={row?.emergingTag}
+                          onChange={() => handleEmergingArtist(row)}
                           inputProps={{ "aria-label": "controlled" }}
                         />
                       </TableCell>

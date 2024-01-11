@@ -99,6 +99,12 @@ border-radius: 20px;
 /* Css ends here of 6 jan */
 
 
+/* filer services css by sandeep  */
+
+.usr-artist-filter .service-icons {
+  height: 18px;
+  margin-right: 10px;
+}
 
 /* .header .main-logo h1 ul li{
   animation: lighting 4s linear infinite;
