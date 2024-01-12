@@ -71,6 +71,7 @@ import ViewArtists from 'pages/management/artistRequests/viewAllArtists'
 import { getAdminDashboardInitialData } from 'configs/initialapis'
 import NewProfile from 'pages/user/Profile/newProfile'
 import BlogsCategoryFilter from 'layouts/components/Filters/blogsCategoryFilter'
+import EditProfile from 'pages/user/Profile/editProfile'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -204,34 +205,36 @@ const ApplicationRoutes = createBrowserRouter(
             <Route path="/artists/:artist_id" element={<ArtistSingle />} loader={getArtistById} />
             <Route path='/search' element={< Search />} />
           </Route>
-          <Route path='/terms-conditions' element={<TermsPage/>}/>
-          <Route path='/privacy-policy' element={<PrivacyPage/>}/> 
-          <Route path='/contact-us' element={<ContactPage/>}/>
-          <Route element={<BlogsCategoryFilter/>} loader={getAllCategories}>
-            <Route path='/blogs' element={<AllBlogs/>} loader={getAllBlog}/>
-            <Route path='/blogs/:category_slug' element={<AllBlogs/>} loader={getBlogByCategorySlug}/>
+          <Route path='/terms-conditions' element={<TermsPage />} />
+          <Route path='/privacy-policy' element={<PrivacyPage />} />
+          <Route path='/contact-us' element={<ContactPage />} />
+          <Route element={<BlogsCategoryFilter />} loader={getAllCategories}>
+            <Route path='/blogs' element={<AllBlogs />} loader={getAllBlog} />
+            <Route path='/blogs/:category_slug' element={<AllBlogs />} loader={getBlogByCategorySlug} />
           </Route>
-          
-          <Route path='/blogs/:category_slug/:slug' element={<SingleBlog/>} loader={getBlogBySlug}/>
-          
-          <Route path='/about-us' element={<AboutUS/>}/>
-          <Route element={<CheckLoggedIn/>}>
+
+          <Route path='/blogs/:category_slug/:slug' element={<SingleBlog />} loader={getBlogBySlug} />
+
+          <Route path='/about-us' element={<AboutUS />} />
+          <Route element={<CheckLoggedIn />}>
             <Route path="/login" element={<LoginPage />} />
           </Route>
 
           <Route element={<RequireAuth allowedRoles={[roles.user, roles.artist]} />}>
-            <Route path="/user">
-              <Route
-                path="/user/profile"
-                element={<UserProfile />}
-                loader={getUserProfile}
-              />
-              <Route
-                path="/user/new-profile"
-                element={<NewProfile />}
-                loader={getUserProfile}
-              />
-            </Route>
+            <Route
+              path="/user/profile"
+              element={<UserProfile />}
+              loader={getUserProfile}
+            />
+            <Route
+              path="/user/new-profile"
+              element={<NewProfile />}
+              loader={getUserProfile}
+            />
+            <Route
+              path="/user/new-profile/edit"
+              element={<EditProfile />}
+            />
           </Route>
         </Route>
 
@@ -291,31 +294,31 @@ const ApplicationRoutes = createBrowserRouter(
             <Route path="/management/form-layouts" element={<FormLayouts />} />
             <Route path="/management/create-blog" element={<CreateBlog />} loader={getAllCategories} />
 
-         <Route path="/management/blogs" element={<BlogList/>} loader={getAllBlog}/>
-        <Route path="/management/services" element={<AllServicesDetails/>} loader={allServicesDetails}/>
-        <Route path="/management/categories" element={<Categories/>} loader={getAllCategories}/>
-        <Route path="/management/categories/create" element={<CategoriesForm/>} loader={getAllCategories}/>
-        <Route path="/management/services/create" element={<Services/>}/>
-        <Route path="/management/products" element={<AllProdutsDetails/>} loader={allProductsDetails}/>
-        <Route path="/management/products/create" element={<ProductForm/>}/>
-        <Route path="/management/categories/create/:category_id" element={<UpdateCategories/>} loader={getCategoryById}/>
-        <Route path="/management/services/:_id" element={<UpdateService/>} loader={({params})=>getServiceById(params)}/>
-        <Route path="/management/products/:_id" element={<UpdateProducts/>} loader={({params})=>getProductById(params)}/>
-        <Route path="/management/blogs/:_id" element={<UpdateBlog/>} loader={({params})=>getBlogByIdAndCategory(params)}/>
-        
-        <Route path='/management/view-artists' element={ <ViewArtists /> } loader={getAllArtists}/>
-        <Route path='/management/artists-request' element={<GetAllArtists/>} loader={()=>getAllArtistRequest()}/>
-        
-        <Route path='/management/artists-request/:request_id' element={<UseLoaderOutletContext/>} loader={getArtistRequestByID}>
-          <Route path='/management/artists-request/:request_id' element={<SingleArtistInformation/>}/>
-          <Route path='/management/artists-request/:request_id/certificates' element={<ArtistCertificates/>}/>
-          <Route path='/management/artists-request/:request_id/gallery' element={<ArtistRequestGallary/>}/>
-        </Route>
+            <Route path="/management/blogs" element={<BlogList />} loader={getAllBlog} />
+            <Route path="/management/services" element={<AllServicesDetails />} loader={allServicesDetails} />
+            <Route path="/management/categories" element={<Categories />} loader={getAllCategories} />
+            <Route path="/management/categories/create" element={<CategoriesForm />} loader={getAllCategories} />
+            <Route path="/management/services/create" element={<Services />} />
+            <Route path="/management/products" element={<AllProdutsDetails />} loader={allProductsDetails} />
+            <Route path="/management/products/create" element={<ProductForm />} />
+            <Route path="/management/categories/create/:category_id" element={<UpdateCategories />} loader={getCategoryById} />
+            <Route path="/management/services/:_id" element={<UpdateService />} loader={({ params }) => getServiceById(params)} />
+            <Route path="/management/products/:_id" element={<UpdateProducts />} loader={({ params }) => getProductById(params)} />
+            <Route path="/management/blogs/:_id" element={<UpdateBlog />} loader={({ params }) => getBlogByIdAndCategory(params)} />
 
+            <Route path='/management/view-artists' element={<ViewArtists />} loader={getAllArtists} />
+            <Route path='/management/artists-request' element={<GetAllArtists />} loader={() => getAllArtistRequest()} />
+
+            <Route path='/management/artists-request/:request_id' element={<UseLoaderOutletContext />} loader={getArtistRequestByID}>
+              <Route path='/management/artists-request/:request_id' element={<SingleArtistInformation />} />
+              <Route path='/management/artists-request/:request_id/certificates' element={<ArtistCertificates />} />
+              <Route path='/management/artists-request/:request_id/gallery' element={<ArtistRequestGallary />} />
+            </Route>
+
+          </Route>
+        </Route>
+        {/* end admin auth routes */}
       </Route>
-      </Route>
-      {/* end admin auth routes */}
-    </Route>
     </Route>
   )
 );
