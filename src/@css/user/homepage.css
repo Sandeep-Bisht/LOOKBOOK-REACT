@@ -752,7 +752,7 @@
 
     color: #6D5D4C;
     font-family: AvenirLTProBook;
-
+    min-height: 40px;
     font-size: 13px;
     letter-spacing: 1.3px;
 }

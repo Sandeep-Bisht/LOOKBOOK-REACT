@@ -88,6 +88,7 @@ const PriceSetup = () => {
                   intlConfig={{ locale: 'en-IN', currency: 'INR' }}
                   disabled={true}
                 />
+                <p>* Pricing to be displayed on the portal</p>
               </div>
             </div>
           </div>

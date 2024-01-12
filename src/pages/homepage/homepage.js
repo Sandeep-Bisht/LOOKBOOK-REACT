@@ -338,7 +338,7 @@ const Homepage = () => {
                     <div className="row">
                         <div className="col-lg-12">
                             <h2 className="usr-common-heading text-center">
-                                Featured Artist
+                                Artists on our Radar
                             </h2>
                         </div>
 
@@ -407,11 +407,11 @@ const Homepage = () => {
                             </div>
                             <div className="row mt-lg-5 mt-5 pt-lg-3">
                                 <div className="col-lg-12">
-                                    {allBlogs.length > 0 ?
+                                    {allBlogs && Array.isArray(allBlogs) && allBlogs.length > 0 ?
                                         <div className="blog-section-card ">
                                             <Slider {...settingsblog}>
                                                 {allBlogs.map((blog, ind) => {
-                                                    return (<div className="usr-blog-main-content-wrapper common-cursor-pointer" key={`blog${ind}`} onClick={() => navigate(`/blogs/${blog?.slug}`)}>
+                                                    return (<div className="usr-blog-main-content-wrapper common-cursor-pointer" key={`blog${ind}`} onClick={() => navigate(`/blogs/${blog?.category?.slug}/${blog?.slug}`)}>
                                                         <div className="usr-blog-main-content">
                                                             <img src={blog.featuredImage.url} className="img-fluid" />
                                                             <div className="usr-card-body">

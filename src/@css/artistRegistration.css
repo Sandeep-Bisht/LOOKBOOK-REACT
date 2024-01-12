@@ -1021,3 +1021,8 @@ img:hover .showbutton-image.drop-shadow-delete {
   font-weight: 500;
   
 }
+
+/*  Implement checkbox in multi select */
+.multi-language-select .MuiCheckbox-root{
+  display: none!important;
+}
