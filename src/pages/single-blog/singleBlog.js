@@ -173,7 +173,7 @@ const SingleBlog = ()=> {
         <div className="col-md-6">
           <div className="usr-recent-post-card">
             <div className="usr-card-image">
-              <img src={imageData.featuredImage} />
+              {/* <img src={imageData} /> */}
             </div>
             <div className="usr-recent-post-card-body">
               <h6 className="usr-recent-post-card-title">Makeup artist career</h6>

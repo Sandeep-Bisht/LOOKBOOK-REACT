@@ -13,20 +13,13 @@ import Divider from "@mui/material/Divider";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import CardContent from "@mui/material/CardContent";
 import { styled } from "@mui/material/styles";
 import MuiCard from "@mui/material/Card";
 import InputAdornment from "@mui/material/InputAdornment";
 
 // ** Icons Imports
-import Phone from "mdi-material-ui/Phone";
 import Email from "mdi-material-ui/Email";
 
-// ** Configs
-import themeConfig from "configs/themeConfig";
-
-// ** Layout Import
-import BlankLayout from "@core/layouts/BlankLayout";
 import SocialLogin from "configs/SocialLogin";
 import axios from "axios";
 import Cookies from "universal-cookie";
@@ -189,7 +182,7 @@ const LoginPage = () => {
     <>
     <section className="bg-color">
   <div className="container">
-    <div className="row bg-white">
+    <div className="row bg-white background_height">
       <div className="col-md-5 usr-login-bg-image d-md-block">
       </div>
       
@@ -197,7 +190,10 @@ const LoginPage = () => {
               <>
               <div className="col-md-7">
         <div className="usr-login-form-wrapper">
-          <div className="usr-login-wrapper">              
+          <div className="usr-login-wrapper"> 
+          <div className="text-center mb-5">
+            <h3>Enter otp</h3>
+            </div>             
                 <Typography
                   variant="h6"
                   sx={{
@@ -235,33 +231,41 @@ const LoginPage = () => {
                     </Typography>
                   ) : null}
                 </Box>
-                <Typography variant="h6" sx={{ textAlign: "center" }}>
-                  Otp will expire in {countdown} sec
-                </Typography>
                 <Divider sx={{ my: 5 }}></Divider>
                 <Box sx={{ textAlign: "end" }}>
-                  {countdown === 0 ? (
-                    <Button
+                      <Button
+                      size="large"
+                      variant="contained"
+                      fullWidth
+                      sx={{ marginBottom: 7 }}
+                      onClick={() => handleVerifyOTP()}
+                      disabled={isSubmitting}
+                    >
+                      verify
+                    </Button>
+                  <Typography
                       className="me-5"
                       size="large"
                       variant="contained"
                       sx={{ marginBottom: 7 }}
+                    >
+                      Not received your code? 
+                      <Typography
+                      className="me-5"
+                      size="large"
+                      variant="contained"
+                      sx={{ marginBottom: 7,fontWeight:500 }}
                       onClick={handleResendOTP}
                       disabled={isSubmitting}
                     >
-                      Resend Otp
-                    </Button>
-                  ) : null}
-
-                  <Button
-                    size="large"
-                    variant="contained"
-                    sx={{ marginBottom: 7 }}
-                    onClick={() => handleVerifyOTP()}
-                    disabled={isSubmitting}
-                  >
-                    Continue
-                  </Button>
+                      {
+                        countdown > 0 ? 
+                        countdown
+                        :
+                        'Resend code'
+                      }
+                      </Typography>
+                    </Typography>
                 </Box>
                 </div>
                 </div>
@@ -338,13 +342,12 @@ const LoginPage = () => {
                   >
                     <SocialLogin redirectUrl={redirectUrl} />
                     {signupType == "email" ? (
-                      <MdOutlinePhoneAndroid
-                        component="a"
-                        style={{color:"#6d5d4c", fontSize:"28px"}}
-                        onClick={() => ChangeSignupType()}
-                      >
-                        <Phone sx={{ color: "#8C6A54" }} />
-                      </MdOutlinePhoneAndroid>
+                      <IconButton
+                      component="a"
+                      onClick={() => ChangeSignupType()}
+                    >
+                        <MdOutlinePhoneAndroid sx={{ color: "#8C6A54" }} />
+                      </IconButton>
                     ) : (
                       <IconButton
                         component="a"
