@@ -245,3 +245,72 @@
         left: 88%!important;
     }
 }
+
+/* Edit Profile */
+
+.usr-new-profile-edit{
+    background-color: #fff;
+    padding: 30px 30px calc(30px - 16px) 30px;
+    height: 100%;
+}
+
+.usr-new-profile-edit .usr-new-profile-photo{
+    background-color: #fcf7f2;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.usr-new-profile-edit .usr-new-profile-photo .edit_image_button button{
+    top: 25px;
+    left: 25px;
+}
+
+.usr-new-profile-edit .usr-new-profile-photo .user-new-profile-update-details{
+    text-align: center;
+    color: #6D5D4C;
+    padding-top: 10px;
+}
+
+.usr-new-profile-edit .usr-new-profile-photo .user-new-profile-update-details h6{
+    font-size: 15px;
+    font-family:AvenirLTProHeavy;
+}
+
+.usr-new-profile-edit .usr-new-profile-photo .user-new-profile-update-details p{
+    font-size: 15px;
+    font-family:AvenirLTProBook;
+    margin-bottom: 0;
+}
+
+.usr-new-profile-edit .user-update-form{
+    padding: 20px;
+}
+
+.user-update-form .form-control,
+.user-update-form .form-select{
+    border-radius: 5px;
+    border: 1px solid #8C6A54;
+    padding: 10px 15px;
+    
+}
+
+.user-update-form .form-control::placeholder,
+.user-update-form .form-select::placeholder{
+    color: #6D5D4C;
+    font-size: 15px;
+    font-family: AvenirLTProBook;
+}
+
+.user-update-form .user-update-form-button{
+    background-color: #6D5D4C;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    color: #fefefe;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.user-update-form .user-update-form-button:hover{
+    background-color: #8C6A54;
+}
