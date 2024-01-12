@@ -16,15 +16,17 @@
 
 
 .usr-blog-date{
-    height: 60px;
-    width: 50px;
+    height: 50px;
+    width: 55px;
     background-color: #FCF7F2;
     top: 0px;
     position: absolute;
     left: 5px;
     color: #6D5D4C;
     font-size: 13px;
-    padding: 20px 3px 22px 3px 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .usr-all-blog .usr-blog-content .usr-all-blog-heading{
@@ -43,6 +45,7 @@
     font-family: AvenirLTProBook;
     font-size: 13px;
     letter-spacing:0;
+    min-height: 40px;
 }
 
 .usr-all-blog .usr-blog-section-card-content img{

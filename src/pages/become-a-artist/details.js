@@ -31,7 +31,11 @@ const Details = () => {
   const submitBtn = useRef(null);
 
 
-  const currentDate = new Date().toISOString().split("T")[0]; // Get the current date in 'YYYY-MM-DD' format
+  let currentDate = new Date();
+  currentDate.setFullYear(new Date().getFullYear() - 15);
+  currentDate = new Date(currentDate).toISOString().split("T")[0];
+   // Get the current date in 'YYYY-MM-DD' format
+   
 
   const  areValuesEqual = (obj1, obj2) => {
     // Get the keys of obj1
@@ -101,7 +105,6 @@ const Details = () => {
       setUpdating(false)
     }
   }
-
 
 
   return (

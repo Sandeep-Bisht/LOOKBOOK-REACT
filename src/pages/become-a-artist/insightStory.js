@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useForm } from "react-hook-form";
 import { axiosAuth } from "configs/axiosInstance";
+import {Checkbox,FormGroup,FormControlLabel} from '@mui/material';
 
 const BASE_URL = process.env.REACT_APP_APIURL
 
@@ -14,6 +15,7 @@ const InsightStory = () => {
   
   const { register, handleSubmit } = useForm();  
   const [artistPayload, setArtistPayload] = useOutletContext();
+  const [selectLanguages,setSelectLanguages] = useState(artistPayload?.languages ? artistPayload?.languages : []);
   const submitBtnRef = useRef(null)
   const { request_id } = useParams();
   let navigate = useNavigate();
@@ -48,11 +50,7 @@ const InsightStory = () => {
   }
 
   const handleNextClick = async ({education,languages}) =>{
-
-    if(!Array.isArray(languages)){
-      languages  = languages.split(',')
-    }
-
+    
     let payload = {
       currentStep:8,experience,education,languages
     }
@@ -85,6 +83,10 @@ const InsightStory = () => {
     }
   }
 
+  const handleLanguageChange = (event) => {
+    const selectedLanguagesCopy = event.target.value;
+    setSelectLanguages(selectedLanguagesCopy);
+  };
 
   const submitForm = (data) =>{
     handleNextClick(data);
@@ -109,7 +111,7 @@ const InsightStory = () => {
             <div className="row">
               <div className="col-md-8 mx-auto">
                 <div className="insight-card mb-5">
-                  <div>Year of experience ?</div>
+                  <div>Years of experience ?</div>
                   <div className="d-flex align-items-center">
                     <span
                       className="plus-button me-3"
@@ -156,34 +158,52 @@ const InsightStory = () => {
                 </div>
                 <hr className="" />
                 <div className="insight-card mb-5">
-                  <div>How many languages do you speak?</div>
-                  <div>
-                  <FormControl variant="standard" sx={{ m: 1, minWidth: 200 }}>
-                  <InputLabel id="demo-simple-select-standard-label">Languages</InputLabel>
-                  <Select
-                  labelId="demo-simple-select-standard-label"
-                  id="demo-simple-select-standard"
-                  name="languages"
-                  label="Languages"
-                  defaultValue={artistPayload?.languages ? artistPayload?.languages : []}
-                  {...register("languages")}
-                  multiple
-                  // onChange={handleLanguageChange}
-                  > 
-                  <MenuItem value="" >
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value="Hindi">Hindi</MenuItem>
-                  <MenuItem value="English">English</MenuItem>
-                  <MenuItem value="French">French</MenuItem>
-                  <MenuItem value="German">German</MenuItem>
-                  <MenuItem value="Italic">Italic</MenuItem>
-                  <MenuItem value="Japanese">Japanese</MenuItem>
-                  <MenuItem value="Other">Other</MenuItem>
-                </Select>
-                </FormControl>
-                  </div>
-                </div>
+      <div>How many languages do you speak?</div>
+      <div>
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 200 }}>
+          <InputLabel id="demo-simple-select-standard-label">
+            Languages
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-standard"
+            name="languages"
+            label="Languages"
+            className="multi-language-select"
+            defaultValue={artistPayload?.languages || []}
+            {...register("languages")}
+            multiple
+            onChange={handleLanguageChange}
+          >
+            <MenuItem value="Hindi">
+              <Checkbox
+                checked={selectLanguages.includes('Hindi') || false}
+              />
+              Hindi
+            </MenuItem>
+            <MenuItem value="English">
+              <Checkbox
+                checked={selectLanguages.includes('English') || false}
+              />
+              English
+            </MenuItem>
+            <MenuItem value="French">
+              <Checkbox
+                checked={selectLanguages.includes('French') || false}
+              />
+              French
+            </MenuItem>
+            <MenuItem value="German">
+              <Checkbox
+                checked={selectLanguages.includes('German') || false}
+              />
+              German
+            </MenuItem>
+            {/* Add more languages as needed */}
+          </Select>
+        </FormControl>
+      </div>
+    </div>
                 <hr className="" />
               </div>
             </div>
