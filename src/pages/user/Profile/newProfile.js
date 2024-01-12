@@ -9,6 +9,20 @@ const NewProfile = () => {
             infinite: true,
             slidesToShow: 3,
             slidesToScroll: 1,
+            responsive: [
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 2
+                  }
+                },
+                {
+                  breakpoint: 540,
+                  settings: {
+                    slidesToShow: 1
+                  }
+                }
+            ]
     };
     return (
         <div>
@@ -19,8 +33,8 @@ const NewProfile = () => {
                             <h1>About John Doe</h1>
                         </div>
                     </div>
-                    <div className='row mb-5'>
-                        <div className='col-md-4'>
+                    <div className='row'>
+                        <div className='col-md-12 col-lg-4 mb-3'>
                             <div className='usr-new-profile-photo'>
                                 <img src={profileImg} className='img-fluid' />
                                 <div className='rating_review'>
@@ -43,7 +57,7 @@ const NewProfile = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-md-4'>
+                        <div className='col-md-6 col-lg-4  mb-3'>
                             <div className='usr-user-details'>
                                 <div>
                                     <h1>Hi Mr. John Doe Welcome to your profile page</h1>
@@ -81,7 +95,7 @@ const NewProfile = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-md-4'>
+                        <div className='col-md-6 col-lg-4  mb-3'>
                             <div className='confirmation'>
                                 <div>
                                     <h4>Confirmed<br></br>Information</h4>
