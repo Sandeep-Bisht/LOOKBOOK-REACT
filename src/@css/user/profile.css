@@ -76,7 +76,7 @@
     margin-right: 3px;
 }
 
-.usr-new-profile .usr-new-profile-photo .edit_image_button button{
+.usr-new-profile .usr-new-profile-photo .edit_image_button label{
     background-color: #fff;
     padding: 6px 15px;
     border-radius: 40px;
@@ -85,6 +85,7 @@
     top: 10px;
     left: 10px;
     font-size: 12px;
+    cursor: pointer;
 }
 
 .usr-new-profile .usr-user-details,
@@ -260,7 +261,7 @@
     border-radius: 20px;
 }
 
-.usr-new-profile-edit .usr-new-profile-photo .edit_image_button button{
+.usr-new-profile-edit .usr-new-profile-photo .edit_image_button label{
     top: 25px;
     left: 25px;
 }

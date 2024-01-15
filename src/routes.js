@@ -234,6 +234,7 @@ const ApplicationRoutes = createBrowserRouter(
             <Route
               path="/user/new-profile/edit"
               element={<EditProfile />}
+              loader={getUserProfile}
             />
           </Route>
         </Route>

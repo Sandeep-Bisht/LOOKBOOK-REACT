@@ -3,11 +3,10 @@ import "@css/user/profile.css";
 import "@css/common.css";
 import profileImg from "@core/assets/5.jpg";
 import Slider from "react-slick";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const NewProfile = () => {
   const userData = useLoaderData();
-  console.log(userData, "userDattaaaa aa");
   var settings = {
     infinite: true,
     slidesToShow: 3,
@@ -39,7 +38,7 @@ const NewProfile = () => {
           <div className="row"> 
             <div className="col-md-12 col-lg-4 mb-3">
               <div className="usr-new-profile-photo">
-                <img src={profileImg} className="img-fluid" />
+                <img src={userData?.image ? userData?.image.thumbnailUrl :  profileImg} className="img-fluid" />
                 <div className="rating_review">
                   <div>
                     <h1>4.5</h1>
@@ -65,7 +64,7 @@ const NewProfile = () => {
                     <p>Reviews</p>
                   </div>
                 </div>
-                <div className="edit_image_button">
+                {/* <div className="edit_image_button">
                   <button>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +80,7 @@ const NewProfile = () => {
                     </svg>
                     Update Profile Picture
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="col-md-6 col-lg-4  mb-3">
@@ -254,7 +253,7 @@ const NewProfile = () => {
               <hr></hr>
               <div className="details">
                 <h6>Gender</h6>
-                <p>{userData?.email ? userData?.email :  "Male"}</p>
+                <p>{userData?.gender ? userData?.gender :  "Male"}</p>
               </div>
               <hr></hr>
               <div className="details">
@@ -267,7 +266,7 @@ const NewProfile = () => {
                 <p>{userData?.dob ? userData?.dob :  "28-08-1995"}</p>
               </div>
               <hr></hr>
-              <div className="details edit-button" type="button">
+              <Link className="details edit-button" type="button" to="/user/new-profile/edit" >
                 <h6>Edit Details</h6>
                 <p>
                   <svg
@@ -283,7 +282,7 @@ const NewProfile = () => {
                     />
                   </svg>
                 </p>
-              </div>
+              </Link>
             </div>
           </div>
         </div>
