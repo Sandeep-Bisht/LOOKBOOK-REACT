@@ -41,7 +41,7 @@ const UserMenu = ({props}) => {
               null
               }
         <li>
-           <Link to="/user/profile" className="dropdown-item">
+           <Link to="/user/new-profile" className="dropdown-item">
            <AccountOutline sx={{ marginRight: 2 }} />
             Profile
            </Link>
