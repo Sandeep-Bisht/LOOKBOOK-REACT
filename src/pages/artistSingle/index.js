@@ -1,7 +1,5 @@
 import React from "react";
 import "@css/user/artistSingle.css";
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Calendar from 'react-calendar';
 import { useLoaderData } from "react-router-dom";
 import NoDataFound from "pages/become-a-artist/common/noDataFound";
@@ -69,27 +67,8 @@ const ArtistSingle = () => {
                                 <div className="row">
                                     <div className="col-lg-8">
 
-                                        <Carousel
-                                            className="usr-artist-single-carousel d-none" showArrows={true}
-
-                                        >
-                                            {artistData?.gallery && Array.isArray(artistData?.gallery) ?
-                                                artistData?.gallery.map((item, ind) => {
-                                                    return (
-                                                        <div key={ind}>
-                                                            <img src={`${item.url}?tr=h-450,w-750,fo-auto`} className="img-fluid " />
-                                                        </div>
-                                                    )
-                                                })
-                                                :
-                                                null
-                                            }
-                                        </Carousel>
-
-
-
                                         {artistData?.gallery && Array.isArray(artistData?.gallery) ?
-                                            <ImageGallery items={galleryData(artistData?.gallery)} thumbnailPosition="left" showFullscreenButton={false} showPlayButton={false} autoPlay={true} swipingTransitionDuration={300} />
+                                            <ImageGallery items={galleryData(artistData?.gallery)} thumbnailPosition="left" showFullscreenButton={false} showPlayButton={false} autoPlay={false} swipingTransitionDuration={300} />
                                             : null}
 
 
@@ -198,7 +177,7 @@ const ArtistSingle = () => {
                                                     </div>
                                                     <div className="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab" tabIndex={0}>
                                                         <div className="usr-artist-single-tab-content position-relative review-tab">
-                                                    
+
                                                             <Slider {...settings}>
                                                                 <div className="usr-single-artist-review-card">
                                                                     <div className="usr-single-artist-review-card-content">
@@ -224,7 +203,7 @@ const ArtistSingle = () => {
                                                                 <div className="usr-single-artist-review-card">
                                                                     <div className="usr-single-artist-review-card-content">
                                                                         <p className="usr-common-para">
-                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                                                                         </p>
                                                                         <div className="usr-single-artist-review-card-pic">
                                                                             <div className="pic">
@@ -245,7 +224,7 @@ const ArtistSingle = () => {
                                                                 <div className="usr-single-artist-review-card">
                                                                     <div className="usr-single-artist-review-card-content">
                                                                         <p className="usr-common-para">
-                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                                                                         </p>
                                                                         <div className="usr-single-artist-review-card-pic">
                                                                             <div className="pic">
@@ -266,7 +245,7 @@ const ArtistSingle = () => {
                                                                 <div className="usr-single-artist-review-card">
                                                                     <div className="usr-single-artist-review-card-content">
                                                                         <p className="usr-common-para">
-                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                                                                         </p>
                                                                         <div className="usr-single-artist-review-card-pic">
                                                                             <div className="pic">
@@ -287,7 +266,7 @@ const ArtistSingle = () => {
                                                                 <div className="usr-single-artist-review-card">
                                                                     <div className="usr-single-artist-review-card-content">
                                                                         <p className="usr-common-para">
-                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                                                                         </p>
                                                                         <div className="usr-single-artist-review-card-pic">
                                                                             <div className="pic">
@@ -308,7 +287,7 @@ const ArtistSingle = () => {
                                                                 <div className="usr-single-artist-review-card">
                                                                     <div className="usr-single-artist-review-card-content">
                                                                         <p className="usr-common-para">
-                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                                                                         </p>
                                                                         <div className="usr-single-artist-review-card-pic">
                                                                             <div className="pic">
@@ -405,7 +384,10 @@ const ArtistSingle = () => {
                                                 <p>Bridal Makeup + One Party Makeup</p>
                                             </div>
                                             <div className="usr-card-booking-button">
-                                                <button className="usr-btn fw-300" data-bs-toggle="modal" data-bs-target="#exampleModal">Book Now</button>
+                                                {/* <button className="usr-btn fw-300" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Book Now</button> */}
+                                                <button className="usr-btn fw-300" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Book Now</button>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -414,7 +396,7 @@ const ArtistSingle = () => {
                             </div>
                         </section>
 
-                        <div className="modal-lg modal fade usr-artist-single-modal" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        {/* <div className="modal-lg modal fade usr-artist-single-modal" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div className="modal-dialog  modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-body py-4">
@@ -469,7 +451,123 @@ const ArtistSingle = () => {
 
                                 </div>
                             </div>
+                        </div> */}
+
+                        <div class="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header border-0">
+                                        <h1 class="usr-artist-booking-heading fw-700">Select Service you want</h1>
+                                      
+                                    </div>
+                                    <div class="modal-body usr-artist-single-modal-body">
+                                        <div className="usr-artist-single-modal-body-wrapper">
+                                        <button class="usr-common-action-btn " type="button">
+                                            Party Makeup
+                                        </button>
+                                        <button class="usr-common-action-btn " type="button">
+                                            Wedding Function
+                                        </button>
+                                        <button class="usr-common-action-btn" type="button">
+                                            Bridal Makeup
+                                        </button>
+                                        <button class="usr-common-action-btn usr-home-banner-action-btn" type="button">
+                                            Bridal Relatives
+                                        </button>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer border-0  py-xl-4 py-lg-4 justify-content-center">
+                                        <button class="usr-btn fw-300" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">next</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <div>
+                            <div className="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
+                                <div className="modal-dialog modal-dialog-centered">
+                                    <div className="modal-content">
+                                     
+                                        <div className="modal-body py-4">
+                                        <div className="row">
+                                            <div className="col-lg-6 usr-artist-single-modal-separator">
+
+                                                <Calendar
+
+                                                    className="common-calendor-si"
+                                                    minDate={new Date()}
+                                                />
+                                            </div>
+                                            <div className="col-lg-6">
+                                                <div className="usr-artist-single-modal-time-box">
+                                                    <div className="usr-artist-single-modal-time-box-upper">
+                                                       <div className="usr-artist-single-modal-time-box-upper-top">
+                                                            <p className="usr-artist-single-modal-time-box-heading">
+                                                            Select Number of Sessions:
+                                                            </p>
+                                                       </div>
+                                                       <div className="usr-artist-single-modal-time-box-upper-bottom">
+                                                       <button class="usr-session-btn">1</button>
+                                                       <button class="usr-session-btn">2</button>
+                                                       <button class="usr-session-btn">3</button>
+                                                       <button class="usr-session-btn">4</button>
+                                                       </div>
+                                                    </div>
+                                                    <div className="usr-artist-single-modal-time-box-lower">
+                                                    <p className="usr-artist-single-modal-time-box-heading">
+                                                            Select Number of Sessions:
+                                                            </p>
+                                                            <div className="usr-artist-single-modal-time-box-upper-bottom">
+                                                        <button className="usr-artist-single-modal-time-box-btn">
+                                                            <span>10:00 am</span>
+                                               
+                                                        </button>
+                                                        <button className="usr-artist-single-modal-time-box-btn">
+                                                            <span>11:00 am</span>
+                                                          
+                                                        </button>
+                                                        <button className="usr-artist-single-modal-time-box-btn">
+                                                            <span>12:00 pm</span>
+                                         
+                                                </button>
+                                                        <button className="usr-artist-single-modal-time-box-btn ">
+                                                            <span>01:00 pm</span>
+                                                        
+                                                        </button>
+                                                        <button className="usr-artist-single-modal-time-box-btn ">
+                                                            <span>02:00 pm</span>
+                                                
+                                                        </button>
+                                                        <button className="usr-artist-single-modal-time-box-btn ">
+                                                            <span>03:00 pm</span>
+                                                
+                                                        </button>
+                                                        <button className="usr-artist-single-modal-time-box-btn ">
+                                                            <span>04:00 pm</span>
+                                                
+                                                        </button>
+                                                        <button className="usr-artist-single-modal-time-box-btn ">
+                                                            <span>05:00 pm</span>
+                                                
+                                                        </button></div>
+                                                    </div>
+                                                    <div className="d-flex justify-content-center">
+                                                    <button className="usr-common-action-btn me-2" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Book more</button>
+                                                        <button class="usr-common-action-btn">Confirm</button>
+                                                    </div>
+                                                    <div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+
 
 
                     </>
