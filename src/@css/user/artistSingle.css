@@ -50,18 +50,82 @@
 
 }
 
-.image-gallery-slide.image-gallery-center.usr-single-img img{
+.usr-artist-single .image-gallery-slide.image-gallery-center.usr-single-img img{
     height: 70vh;
     object-fit: cover ;
     object-position: top;
 }
 
-.image-gallery-thumbnails-wrapper.image-gallery-thumbnails-left .image-gallery-thumbnails .image-gallery-thumbnail+.image-gallery-thumbnail.usr-single-thumbnail img{
-height: 75px;
-object-fit: cover;
-object-position: top;
+.usr-artist-single .image-gallery-thumbnails-wrapper.image-gallery-thumbnails-left .image-gallery-thumbnails .usr-single-thumbnail img{
+    height: 80px;
+    object-fit: cover;
+    object-position: top;
+    margin: 3px 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0px 0px 6.748px 0px rgba(0, 0, 0, 0.19);
+    border: 0;
+    border-radius: 10px;
+    padding: 5px;
+}
+.usr-artist-single .image-gallery-thumbnails-wrapper.image-gallery-thumbnails-left .image-gallery-thumbnails .usr-single-thumbnail.active img
+{
+  border:2px solid #6D5D4C!important;
+} 
+.usr-artist-single .image-gallery-thumbnail.active, .image-gallery-thumbnail:focus
+{
+    border: none;
 }
 
+.usr-artist-single .image-gallery-left-nav,.usr-artist-single .image-gallery-right-nav {
+
+    bottom: -64px;
+    border: 1px solid #88796b;
+    height: 33px;
+    width: 33px;
+    border-radius: 50%;
+    box-shadow: none!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top:unset;
+    padding: 0;
+
+}
+
+.usr-artist-single .image-gallery-left-nav svg,.usr-artist-single .image-gallery-right-nav svg
+{
+   height: 16px;
+   width: 16px;
+   color: #6D5D4C;
+}
+.usr-artist-single .image-gallery-left-nav svg path
+{
+
+}
+.usr-artist-single .image-gallery-right-nav svg path
+{
+
+}
+.usr-artist-single .image-gallery-left-nav
+{
+  left:43%;
+}
+.usr-artist-single .image-gallery-right-nav 
+{
+    right: 43%;
+}
+.usr-artist-single  .image-gallery-icon
+{
+   filter: none;
+}
+
+
+.image-gallery-thumbnail
+{
+
+    border: 0!important;
+}
 .usr-artist-single-carousel .carousel .thumbs-wrapper
 {
    margin: 0px 0;
@@ -156,7 +220,7 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
 /* -----------------------usr-artist-single-tab css---------------------- */
 .usr-artist-single-tab
 {
-    padding: 50px 0 0 0;
+    padding: 80px 0 0 0;
  
 }
 .usr-artist-single-tab-wrapper .nav
@@ -294,6 +358,8 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
     border-radius: 18px;
     padding: 25px;
     position: relative;
+    position: sticky;
+    top: 100px;
 }
 
 .usr-detail-card .usr-artist-details-tag {
@@ -427,7 +493,7 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
     padding: 30px 0 0 0;
 }
 
-.usr-detail-card .usr-card-booking-button .usr-btn {
+.usr-detail-card .usr-card-booking-button .usr-btn,.usr-artist-single-modal .usr-btn{
     background-color: #6D5D4C;
     border: none;
     color: #fcf7f2;
@@ -439,17 +505,50 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
     font-style: normal;
     font-weight: 300;
 }
+.usr-artist-single-modal .usr-btn
+{
+    padding: 10px 80px;
+   
+    letter-spacing: 1px;
+}
 
-.usr-detail-card .usr-card-booking-button .usr-btn:hover {
+.usr-detail-card .usr-card-booking-button .usr-btn:hover,.usr-artist-single-modal .usr-btn:hover {
     background-color: #8C6A54;
 }
 
 
 /* ---------------------usr-artist-single-modal------------- */
+.usr-artist-single-modal .usr-artist-booking-heading
+{
+    color: #6D5D4C;
+    font-size: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
 
+.usr-artist-single-modal .usr-artist-single-modal-body
+{
+    border-bottom: 1px solid #d2c9c1!important;
+    border-top:1px solid #d2c9c1!important;
+    padding: 45px 0;
+}
+.usr-artist-single-modal-body-wrapper
+{
+    display: flex;
+   
+    justify-content: center;
+}
+.usr-artist-single-modal-body-wrapper .usr-common-action-btn
+{
+  text-transform: capitalize!important;
+  margin: 0 4px;
+  letter-spacing: 1px;
+}
 .usr-artist-single-modal .modal-content
 {
    background: #fcf7f2;
+   padding: 20px;
 }
 .usr-artist-single-modal-separator
 {
@@ -462,45 +561,70 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
 }
 .usr-artist-single-modal-time-box-upper
 {
-    display: flex;
-    padding: 14px 17px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 14px;
-    background: #FEFEFE;
-    line-height: 1.3;
-    text-align: center;
+    padding: 20px 0px;
+    border-bottom: 1px solid #d2c9c1;
 
 }
-.usr-artist-single-modal-time-box-upper .usr-common-para
+.usr-artist-single-modal-time-box-upper-bottom
 {
+    width: 100%;
+}
+.usr-artist-single-modal-time-box-upper-bottom .usr-session-btn
+{
+    width: 23%;
+    margin: 0 2px;
+
+    background: #FCF7F2;
+    border-radius: 4px;
+    padding: 8px 8px;
+    font-family: AvenirLTProBook;
+    color: #6D5D4C;
+    border: 1px solid #6D5D4C;
     font-size: 12px;
-    letter-spacing: .2px;
-    margin-bottom: 0;
+}
+.usr-artist-single-modal-time-box-heading
+{
+    font-family:AvenirLTProHeavy;
+    color: #6D5D4C;
+    font-size: 12px;
+    margin-bottom: 5px;
 }
 .usr-artist-single-modal-time-box-lower
 {
-    margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 20px 0px;
+    border-bottom: 1px solid #d2c9c1;
+   
 }
 .usr-artist-single-modal-time-box-btn
 {
     background-color: transparent;
-    border: 0;
-    display: flex;
-    justify-content: space-between;
-    width: 200px;
-    margin: 7px 0;
+    letter-spacing: .2px;
+    color: #000;
+    font-family: AvenirLTProBook;
+    border-radius: 4px;
+    padding: 8px 8px;
+    font-family: AvenirLTProBook;
+    display: inline-block;
+    width: 23%;
+    margin: 3px 2px;
+    border: 1px solid #6D5D4C;
+    font-size: 12px;
 }
-
+.usr-artist-single-modal-time-box-btn:hover
+{
+    background:#8C6A54;
+    color: #fff;
+}
+.usr-artist-single-modal-time-box-btn:hover span
+{
+    color: #fff;
+}
 .usr-artist-single-modal-time-box-btn span
 {
     font-size: 12px;
     letter-spacing: .2px;
-    color: #000;
-    opacity: 0.3;
+    color: #6D5D4C;
+    
     font-family: AvenirLTProBook;
 }
 
