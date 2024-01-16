@@ -384,7 +384,7 @@ const ArtistSingle = () => {
                                                 <p>Bridal Makeup + One Party Makeup</p>
                                             </div>
                                             <div className="usr-card-booking-button">
-                                                {/* <button className="usr-btn fw-300" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Book Now</button> */}
+                                        
                                                 <button className="usr-btn fw-300" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Book Now</button>
 
 
@@ -395,64 +395,6 @@ const ArtistSingle = () => {
 
                             </div>
                         </section>
-
-                        {/* <div className="modal-lg modal fade usr-artist-single-modal" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div className="modal-dialog  modal-dialog-centered">
-                                <div className="modal-content">
-                                    <div className="modal-body py-4">
-                                        <div className="row">
-                                            <div className="col-lg-6 usr-artist-single-modal-separator">
-
-                                                <Calendar
-
-                                                    className="common-calendor-si"
-                                                    minDate={new Date()}
-                                                />
-                                            </div>
-                                            <div className="col-lg-6">
-                                                <div className="usr-artist-single-modal-time-box">
-                                                    <div className="usr-artist-single-modal-time-box-upper">
-                                                        <p className="usr-common-para">
-                                                            Only some sessions are still available for booking. Bookings close 1 day before the session starts.
-                                                        </p>
-                                                    </div>
-                                                    <div className="usr-artist-single-modal-time-box-lower">
-                                                        <button className="usr-artist-single-modal-time-box-btn">
-                                                            <span>10:00 am</span>
-                                                            <span>10:30 am</span>
-                                                        </button>
-                                                        <button className="usr-artist-single-modal-time-box-btn">
-                                                            <span>10:30 am</span>
-                                                            <span>11:00 am</span>
-                                                        </button>
-                                                        <button className="usr-artist-single-modal-time-box-btn">
-                                                            <span>11:00 am</span>
-                                                            <span>11:30 am</span>
-                                                        </button>
-                                                        <button className="usr-artist-single-modal-time-box-btn active">
-                                                            <span>11:30 am</span>
-                                                            <span>12:00 pm</span>
-                                                        </button>
-                                                        <button className="usr-artist-single-modal-time-box-btn active">
-                                                            <span>12:00 pm</span>
-                                                            <span>12:30 pm</span>
-                                                        </button>
-                                                    </div>
-                                                    <div className="d-flex justify-content-center">
-                                                        <button class="usr-common-action-btn">Confirm</button>
-                                                    </div>
-                                                    <div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div> */}
-
                         <div class="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
