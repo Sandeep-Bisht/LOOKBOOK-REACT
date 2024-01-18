@@ -79,6 +79,10 @@ const Header = ({ cities, services }) => {
     }
   }
 
+  const getArtistByServiceID = async (service_id) => {
+    navigate(`/artists/${service_id}`)
+  };
+
   return (
     <>
     <header className="header" id="header" ref={headerRef}>
@@ -134,18 +138,16 @@ const Header = ({ cities, services }) => {
                     </span>
                   </button>
                   <ul className="dropdown-menu">
-                    {services && Array.isArray(services) && services.map((service, index)=> {
-                      if(index < 3){
+                    {[...Array(services.length > 3 ? 3 : services.length)].map((service,index)=> {
                         return(
                           <li key={index}>
-                          <Link className="dropdown-item" to="#">
-                           {service.title}
+                          <Link className="dropdown-item" to={`/artists/${services[index]?._id}`}>
+                           {services[index]?.title}
                           </Link>
                         </li> 
                         )
                       }
-                      
-                    } )}                                       
+                      )}                                       
                     <li>
                       <Link className="dropdown-item" to="/artists">
                         All Artist
