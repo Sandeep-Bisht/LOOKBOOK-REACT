@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useLoaderData, useLocation, useOutletContext, useParams } from 'react-router-dom';
+import { useLoaderData,  useOutletContext } from 'react-router-dom';
 import NoDataFound from 'pages/become-a-artist/common/noDataFound';
 import '@css/user/allArtists.css'
 import { ArtistCard } from 'layouts/components/artistCard';
