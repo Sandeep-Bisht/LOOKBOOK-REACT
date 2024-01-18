@@ -25,7 +25,6 @@ const UpdateBlog = () => {
   const [imageUrl, setImageUrl] = useState(
     blogs?.featuredImage?.thumbnailUrl
   );
-  console.log(blogs,'blogs is this')
   const [tags, setTags] = useState(Array.isArray(blogs.tags) ? blogs.tags : null);
 
   const handleImageChange = (event) => {

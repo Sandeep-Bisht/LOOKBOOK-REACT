@@ -134,21 +134,18 @@ const Header = ({ cities, services }) => {
                     </span>
                   </button>
                   <ul className="dropdown-menu">
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Makeup Artist
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Hair Artist
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Emerging Artist
-                      </a>
-                    </li>
+                    {services && Array.isArray(services) && services.map((service, index)=> {
+                      if(index < 3){
+                        return(
+                          <li key={index}>
+                          <Link className="dropdown-item" to="#">
+                           {service.title}
+                          </Link>
+                        </li> 
+                        )
+                      }
+                      
+                    } )}                                       
                     <li>
                       <Link className="dropdown-item" to="/artists">
                         All Artist

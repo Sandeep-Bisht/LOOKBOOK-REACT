@@ -50,7 +50,6 @@ const InsightStory = () => {
   }
 
   const handleNextClick = async ({education,languages}) =>{
-    console.log(languages,'languages are these')
 
     let payload = {
       currentStep:8,experience,education,languages
@@ -102,7 +101,6 @@ const InsightStory = () => {
   };
 
   const submitForm = (data) =>{
-    console.log(data,'data are these')
     handleNextClick(data);
   }
 

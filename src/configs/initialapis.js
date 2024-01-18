@@ -168,7 +168,7 @@ export const getSearchParameters = async () => {
 export const getArtistById = async ({params}) => {
   try {
     const {artist_id} = params;
-    const response = await axiosAuth.get(`/artists/get-by-id//${artist_id}`);
+    const response = await axiosAuth.get(`/artists/get-by-id/${artist_id}`);
     return response.data
   } catch (error) {
       return error.message || "An error occured while trying to get artist by id."

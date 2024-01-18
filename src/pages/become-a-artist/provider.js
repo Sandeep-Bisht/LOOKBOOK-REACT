@@ -10,10 +10,6 @@ const ArtistRequestProvider = () => {
     const artistRequests = useLoaderData();
     const navigate = useNavigate();
 
-    console.log("artistRequestsartistRequests artistRequests", artistRequests)
-
-    console.log("openRequest openRequest", openRequest)
-
     if (!(artistRequests && Array.isArray(artistRequests))) {
         return (
             <Navigate to="/become-a-artist/get-started" replace={true} />

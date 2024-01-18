@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLoaderData, useLocation, useOutletContext } from 'react-router-dom';
+import { useLoaderData, useLocation, useOutletContext, useParams } from 'react-router-dom';
 import NoDataFound from 'pages/become-a-artist/common/noDataFound';
 import Cookies from 'universal-cookie';
 import '@css/user/allArtists.css'
@@ -12,6 +12,8 @@ const AllArtists = () => {
 
   const allArtists = useLoaderData()
   const [ wishlist ] = useOutletContext();
+
+  let param = useParams();
 
   return (
     <>  

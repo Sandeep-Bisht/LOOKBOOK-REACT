@@ -23,7 +23,7 @@ const ArtistFilter = ({ services }) => {
 
 
   const getArtistByServiceID = async (service_id) => {
-    navigate(`/artists/${service_id}`)
+    navigate(`/artists-by-service/${service_id}`)
   };
 
   return (
