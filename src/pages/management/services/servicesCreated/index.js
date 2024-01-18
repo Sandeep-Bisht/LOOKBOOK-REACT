@@ -81,6 +81,10 @@ const ServicesForm = () => {
               <TextField fullWidth
                 {...register('icon')}
                 type='file'
+                label="image"
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 //   placeholder='Icon' 
                  />
             </Grid>
@@ -91,6 +95,12 @@ const ServicesForm = () => {
                 fullWidth
                 type="file"
                 multiple
+                label="FeatureImage"
+                margin="normal"
+                variant="outlined"
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
 
             </Grid>
