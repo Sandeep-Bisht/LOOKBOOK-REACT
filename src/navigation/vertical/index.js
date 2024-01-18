@@ -47,6 +47,11 @@ const navigation = () => {
       icon: Application,
       path: '/management/view-artists'
     },
+    {
+      title: 'Comments',
+      icon: Application,
+      path: '/management/comments'
+    },
   ]
 }
 
