@@ -98,7 +98,7 @@ const ArtistRequestProvider = () => {
                                                                 </svg>
                                                             </span>
                                                             <span className="progress-component-action-btn-title d-flex align-items-center">
-                                                                Your request is {item.status}
+                                                                Your request started on {getFormatteddate(item.createdAt)} and currently {item.status}.
                                                             </span>
                                                         </div>
                                                         {

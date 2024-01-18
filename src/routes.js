@@ -11,7 +11,7 @@ import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/user/Profile'
-import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogsAndCategory, getBlogByIdAndCategory, getArtistByServiceId } from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogsAndCategory, getBlogByIdAndCategory, getArtistByServiceId, get_services_price_by_artist_id } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -72,6 +72,7 @@ import { getAdminDashboardInitialData } from 'configs/initialapis'
 import NewProfile from 'pages/user/Profile/newProfile'
 import BlogsCategoryFilter from 'layouts/components/Filters/blogsCategoryFilter'
 import EditProfile from 'pages/user/Profile/editProfile'
+import SetupPrice from 'pages/price-setup/price-setup'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -202,9 +203,11 @@ const ApplicationRoutes = createBrowserRouter(
           <Route element={<WishlistContextProvider />} loader={getUserWishlistByID}>
             <Route path='/artists' element={<AllArtists />} loader={getAllArtists} />
             <Route path='/wishlist' element={<Wishlist />} loader={getUserWishlist} />
-            <Route path="/artists/:artist_id" element={<ArtistSingle />} loader={getArtistById} />
+            <Route path="/artists/:service_id" element={<AllArtists/>}  loader={getArtistByServiceId}/>
+            <Route path="/artists/:service_id/:artist_id" element={<ArtistSingle/>}  loader={getArtistById}/>        
+            <Route path='/price-setup'  element={<SetupPrice />} loader={get_services_price_by_artist_id}  /> 
             <Route path='/search' element={< Search />} />
-          </Route>
+          </Route>         
           <Route path='/terms-conditions' element={<TermsPage />} />
           <Route path='/privacy-policy' element={<PrivacyPage />} />
           <Route path='/contact-us' element={<ContactPage />} />
@@ -213,8 +216,7 @@ const ApplicationRoutes = createBrowserRouter(
             <Route path='/blogs/:category_slug' element={<AllBlogs />} loader={getBlogByCategorySlug} />
           </Route>
 
-          <Route path='/blogs/:category_slug/:slug' element={<SingleBlog />} loader={getBlogBySlug} />
-
+          <Route path='/blogs/:category_slug/:slug' element={<SingleBlog />} loader={getBlogBySlug} />          
           <Route path='/about-us' element={<AboutUS />} />
           <Route element={<CheckLoggedIn />}>
             <Route path="/login" element={<LoginPage />} />
@@ -235,7 +237,7 @@ const ApplicationRoutes = createBrowserRouter(
               path="/user/new-profile/edit"
               element={<EditProfile />}
               loader={getUserProfile}
-            />
+            />                     
           </Route>
         </Route>
 

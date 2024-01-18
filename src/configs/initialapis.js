@@ -175,6 +175,16 @@ export const getArtistById = async ({params}) => {
   }
 };  
 
+export const get_services_price_by_artist_id = async () => {
+  try {
+    // const {artist_id} = params;
+    const response = await axiosAuth.get(`/artists/get-pricing`);
+    return response.data
+  } catch (error) {
+      return error.message || "An error occured while trying to get pricing."
+  }
+}; 
+
 
 export const getBlogBySlug = async ({params}) => {
   try {

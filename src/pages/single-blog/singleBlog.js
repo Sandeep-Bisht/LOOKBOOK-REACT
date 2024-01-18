@@ -54,8 +54,8 @@ const SingleBlog = ()=> {
                                 
                                 
                                 </div>
-                                <div class="usr-single-blogs-social-icons">
-                                    <div class="social-icons">
+                                <div className="usr-single-blogs-social-icons">
+                                    <div className="social-icons">
                                     <ul className="usr-icon-list px-0">
                                         <div className='social-link common-cursor-pointer'>
                                         <li><a><img src={instagram} alt='blog-social-icon' /></a></li>
@@ -77,10 +77,10 @@ const SingleBlog = ()=> {
                                         </div>
                                     </ul>
                                     </div>
-                                    <div class="reviews">
-                                        <a href="" class="views">50 Views</a>
-                                        <a href="" class="comments">2 Comments</a>
-                                        <a href="" class="likes">
+                                    <div className="reviews">
+                                        <a href="" className="views">50 Views</a>
+                                        <a href="" className="comments">2 Comments</a>
+                                        <a href="" className="likes">
                                             <svg xmlns="http://www.w3.org/2000/svg">
                                                 <path opacity="0.5"
                                                     d="M9.99984 18.2917L8.7915 17.1917C4.49984 13.3 1.6665 10.725 1.6665 7.58333C1.6665 5.00833 3.68317 3 6.24984 3C7.69984 3 9.0915 3.675 9.99984 4.73333C10.9082 3.675 12.2998 3 13.7498 3C16.3165 3 18.3332 5.00833 18.3332 7.58333C18.3332 10.725 15.4998 13.3 11.2082 17.1917L9.99984 18.2917Z" />

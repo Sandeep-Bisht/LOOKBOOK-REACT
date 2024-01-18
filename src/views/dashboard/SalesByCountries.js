@@ -27,8 +27,6 @@ const data = [
 ]
 
 const SalesByCountries = ({artistsByState}) => {
-
-  console.log("artistsByState artistsByState", artistsByState)
   return (
     <Card>
       <CardHeader

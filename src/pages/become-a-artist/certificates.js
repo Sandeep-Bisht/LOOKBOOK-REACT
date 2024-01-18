@@ -243,7 +243,7 @@ const Certificates = () => {
             </div>
           </div>
         </div>
-        <div class="horizontal-bar"></div>
+        <div className="horizontal-bar"></div>
       </section>
 
       <ArtistFooter
