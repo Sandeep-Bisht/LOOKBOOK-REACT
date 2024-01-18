@@ -32,15 +32,19 @@ const navigation = () => {
       icon: Bookmark,
       path: '/management/blogs'
     },
-    {
-      title: 'Artist Requests',
-      icon: Application,
-      path: '/management/artists-request'
-    },
+
     {
       title: 'Categories',
       icon: MdOutlineCategory,
       path: '/management/categories'
+    },
+    {
+      sectionTitle: 'Artist'
+    },
+    {
+      title: 'Artist Requests',
+      icon: Application,
+      path: '/management/artists-request'
     },
     {
       title: 'Approved Artists',

@@ -92,11 +92,11 @@ const AllServicesDetails = () => {
             alignItems: 'center',
             justifyContent: 'end',
             marginRight: "20px",
-            marginTop: "10px"
+            marginTop: "12px"
           }}
         >
-                    <Button type='submit' variant='contained' size='large' onClick={()=>navigate("/management/services/create")}>
-          <MdAdd className="me-2"/> Add
+                    <Button type='submit' variant='contained' size='large' className='mb-3' onClick={()=>navigate("/management/services/create")}>
+          <MdAdd className="me-3"/> Add
           </Button>
         </Box>
       </Grid>

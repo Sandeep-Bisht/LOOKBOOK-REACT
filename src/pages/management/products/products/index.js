@@ -67,6 +67,10 @@ const ProductForm = () => {
               {...register('icon')}
               type='file'
             //   placeholder='Icon' 
+            label="image"
+            InputLabelProps={{
+              shrink: true,
+            }}
               />
             </Grid>
             <Grid item xs={6}>
@@ -76,6 +80,10 @@ const ProductForm = () => {
         fullWidth
         type="file"
         multiple
+        label="FeatureImage"
+        InputLabelProps={{
+          shrink: true,
+        }}
     />
     
 </Grid>
