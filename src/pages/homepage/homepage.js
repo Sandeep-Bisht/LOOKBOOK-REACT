@@ -343,7 +343,7 @@ const Homepage = () => {
                         </div>
 
                     </div>
-                    <div className="row mt-lg-4">
+                    <div className="row mt-lg-4 justify-content-center">
                         {
                             allArtists?.length > 0 ?
                                 <>

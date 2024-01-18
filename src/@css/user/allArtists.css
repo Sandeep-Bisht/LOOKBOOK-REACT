@@ -152,6 +152,7 @@
 .usr-artist-filter .slick-slider .slick-track .slick-slide div div{
   justify-content: center;
   display: flex!important;
+  cursor: pointer;
 }
 .usr-artist-filter .slick-slider .slick-track .slick-slide .service-icons{
   margin-right: 5px;

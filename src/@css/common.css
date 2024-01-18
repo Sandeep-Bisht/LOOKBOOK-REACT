@@ -38,6 +38,16 @@
   {
     outline: none;
   }
+  .dropdown-item.active, .dropdown-item:active
+  {
+    color:inherit;
+    text-decoration: none;
+    background-color: inherit;
+  }
+  .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active
+  {
+    border-color: transparent;
+  }
   
  
 
