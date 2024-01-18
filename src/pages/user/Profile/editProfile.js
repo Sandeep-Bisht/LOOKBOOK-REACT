@@ -9,7 +9,7 @@ import { axiosAuth } from "configs/axiosInstance";
 
 const EditProfile = () => {
   const userProfile = useLoaderData();
-  const [imgSrc, setImgSrc] = useState(userProfile?.image.thumbnailUrl ? userProfile.image.thumbnailUrl : "/images/avatars/1.png");
+  const [imgSrc, setImgSrc] = useState(userProfile?.image?.thumbnailUrl ? userProfile.image.thumbnailUrl : "/images/avatars/1.png");
   const [userData, setUserData] = useState(userProfile);
   const [loading,setLoading] = useState(false);
   const [profileImage, setProfileImage] = useState(userProfile.image && userProfile.image);

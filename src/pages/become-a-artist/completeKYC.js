@@ -161,7 +161,7 @@ const CompleteKYC = () => {
             </div>
           </div>
       </div>
-      <div class="horizontal-bar"></div>
+      <div className="horizontal-bar"></div>
       </section>
       <ArtistFooter
         backClick={() => navigate(`/become-a-artist/${request_id}/pricing`)}

@@ -91,7 +91,7 @@ const BestServices = () => {
       </section>
 
       <ArtistFooter
-        backClick={() => navigate(`/become-a-artist/${request_id}/gallery`)}
+        backClick={() => navigate(`/become-a-artist/${request_id}/insight-your-work`)}
         nextClick={() => handleNextClick()}
       />
     </>

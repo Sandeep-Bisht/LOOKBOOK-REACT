@@ -10,6 +10,10 @@ const ArtistRequestProvider = () => {
     const artistRequests = useLoaderData();
     const navigate = useNavigate();
 
+    console.log("artistRequestsartistRequests artistRequests", artistRequests)
+
+    console.log("openRequest openRequest", openRequest)
+
     if (!(artistRequests && Array.isArray(artistRequests))) {
         return (
             <Navigate to="/become-a-artist/get-started" replace={true} />
@@ -98,7 +102,7 @@ const ArtistRequestProvider = () => {
                                                                 </svg>
                                                             </span>
                                                             <span className="progress-component-action-btn-title d-flex align-items-center">
-                                                                Your request is {item.status}
+                                                                Your request started on {getFormatteddate(item.createdAt)} and currently {item.status}.
                                                             </span>
                                                         </div>
                                                         {

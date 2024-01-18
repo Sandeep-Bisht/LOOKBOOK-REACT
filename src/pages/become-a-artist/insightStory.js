@@ -50,9 +50,14 @@ const InsightStory = () => {
   }
 
   const handleNextClick = async ({education,languages}) =>{
-    
+    console.log(languages,'languages are these')
+
     let payload = {
       currentStep:8,experience,education,languages
+    }
+
+    if(!Array.isArray(languages)){
+      delete payload.languages;
     }
 
     if(artistPayload?.currentStep > 7){
@@ -62,7 +67,15 @@ const InsightStory = () => {
     try{
         if(artistPayload?.experience || artistPayload?.education || artistPayload?.languages){
             if(artistPayload?.experience == experience && artistPayload?.education == education && Array.isArray(artistPayload?.languages)){
-              const areEqual = languages.every((element, index) => element === artistPayload?.languages[index]);
+              let areEqual = false;
+              
+              if(!Array.isArray(languages)){
+                areEqual = true
+              }
+              else{
+                areEqual = languages.every((element, index) => element === artistPayload?.languages[index]);
+              }
+
               if(areEqual){
                 return navigate(`/become-a-artist/${request_id}/you-are-best-in`)
               }
@@ -89,6 +102,7 @@ const InsightStory = () => {
   };
 
   const submitForm = (data) =>{
+    console.log(data,'data are these')
     handleNextClick(data);
   }
 

@@ -42,7 +42,7 @@ const StepFirst = () => {
 
         </div>
           </div>
-        <div class="horizontal-bar"></div>
+        <div className="horizontal-bar"></div>
       </section>
 
       <ArtistFooter

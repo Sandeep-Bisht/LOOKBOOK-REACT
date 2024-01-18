@@ -22,7 +22,7 @@ const Header = ({ cities, services }) => {
     // Function to handle clicks outside the header
     const handleOutsideClick = (event) => {
       if (headerRef.current && !headerRef.current.contains(event.target)) {
-        setIsClicked(false); // Remove the class when clicking outside the header
+        setIsClicked(false); // Remove the className when clicking outside the header
       }
     };
 
@@ -175,18 +175,18 @@ const Header = ({ cities, services }) => {
                                 fill="none"
                               >
                                 <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
+                                  fillRule="evenodd"
+                                  clipRule="evenodd"
                                   d="M3.70898 9.09222C3.72159 5.3817 6.73978 2.38396 10.4503 2.39652C14.1608 2.40917 17.1585 5.42735 17.146 9.13787V9.21395C17.1003 11.6259 15.7536 13.8553 14.1025 15.5977C13.1582 16.5782 12.1037 17.4463 10.9601 18.1846C10.6543 18.4491 10.2007 18.4491 9.89485 18.1846C8.18992 17.0749 6.69355 15.6738 5.4742 14.0455C4.38742 12.6255 3.77038 10.9021 3.70898 9.11504V9.09222Z"
                                   stroke="#6D5D4C"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
                                 />
                                 <path
                                   d="M10.4268 11.3751C11.6161 11.3751 12.5802 10.411 12.5802 9.22173C12.5802 8.03246 11.6161 7.06836 10.4268 7.06836C9.23754 7.06836 8.27344 8.03246 8.27344 9.22173C8.27344 10.411 9.23754 11.3751 10.4268 11.3751Z"
                                   stroke="#6D5D4C"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
                                 />
                               </svg>
                             </span>
@@ -205,7 +205,7 @@ const Header = ({ cities, services }) => {
                         </button>
                         
                         
-                        <div class="dropdown-menu">
+                        <div className="dropdown-menu">
                              <div className="dropdown-menu-wrapper">
                           {cities && Array.isArray(cities) && cities.length > 0 && cities.map((city, ind) => {
                             return <div onClick={() => setSelectedLocation(city)} className={`usr-dropdown-link ${selectedLocation == city ? 'active' : ''}`} key={`${city}${ind}`}>{city}</div>
@@ -240,36 +240,36 @@ const Header = ({ cities, services }) => {
                                     <path
                                       d="M15.8425 18H10.5H5.15745C3.96593 18 3 17.0985 3 15.9864V6.01362C3 4.90153 3.96593 4 5.15745 4H15.8425C17.0341 4 18 4.90153 18 6.01362V15.9864C18 17.0985 17.0341 18 15.8425 18Z"
                                       stroke="#6D5D4C"
-                                      stroke-miterlimit="10"
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
+                                      strokeMiterlimit="10"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
                                     />
                                     <path
                                       d="M3 9H18"
                                       stroke="#6D5D4C"
-                                      stroke-miterlimit="10"
-                                      stroke-linejoin="round"
+                                      strokeMiterlimit="10"
+                                      strokeLinejoin="round"
                                     />
                                     <path
                                       d="M10.5 3V5"
                                       stroke="#6D5D4C"
-                                      stroke-miterlimit="10"
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
+                                      strokeMiterlimit="10"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
                                     />
                                     <path
                                       d="M15 3V5"
                                       stroke="#6D5D4C"
-                                      stroke-miterlimit="10"
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
+                                      strokeMiterlimit="10"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
                                     />
                                     <path
                                       d="M6 3V5"
                                       stroke="#6D5D4C"
-                                      stroke-miterlimit="10"
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
+                                      strokeMiterlimit="10"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
                                     />
                                   </svg>
                                   </span>
@@ -307,7 +307,7 @@ const Header = ({ cities, services }) => {
                               viewBox="0 0 21 21"
                               fill="none"
                             >
-                              <g clip-path="url(#clip0_919_1365)">
+                              <g clipPath="url(#clip0_919_1365)">
                                 <path
                                   d="M12.4534 10.9616C13.8184 10.1216 14.7004 8.46257 14.7004 6.92957C14.7004 4.74557 12.9154 2.30957 10.5004 2.30957C8.08543 2.30957 6.30043 4.74557 6.30043 6.92957C6.30043 8.46257 7.18243 10.1216 8.54743 10.9616C5.31343 11.8226 2.94043 14.7836 2.94043 18.2696C2.94043 18.5006 3.12943 18.6896 3.36043 18.6896H17.6404C17.8714 18.6896 18.0604 18.5006 18.0604 18.2696C18.0604 14.7836 15.6874 11.8226 12.4534 10.9616ZM7.14043 6.92957C7.14043 4.76657 8.92543 3.14957 10.5004 3.14957C12.0754 3.14957 13.8604 4.76657 13.8604 6.92957C13.8604 9.09257 12.0754 10.7096 10.5004 10.7096C8.92543 10.7096 7.14043 9.09257 7.14043 6.92957ZM3.80143 17.8496C4.01143 14.3426 6.95143 11.5496 10.5004 11.5496C14.0494 11.5496 16.9894 14.3426 17.1994 17.8496H3.80143Z"
                                   fill="#6D5D4C"
@@ -338,7 +338,7 @@ const Header = ({ cities, services }) => {
                           </div>
                           
                         </button>
-                        <div class="dropdown-menu">
+                        <div className="dropdown-menu">
                              <div className="dropdown-menu-wrapper">
                           {services && Array.isArray(services) && services.length > 0 && services.map((service, ind) => {
                            

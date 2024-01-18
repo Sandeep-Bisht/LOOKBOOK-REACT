@@ -450,12 +450,12 @@
     width: 100%;
     height: 100%;
     background: #fff;
-    clip-path: circle(150px at 80% 20%);
+    clipPath: circle(150px at 80% 20%);
     transition: 0.5s ease-in-out;
 }
 
 .usr-featured-artist-card:hover:before {
-    clip-path: circle(400px at 50% 50%);
+    clipPath: circle(400px at 50% 50%);
 }
 
 .usr-featured-artist-card:after {

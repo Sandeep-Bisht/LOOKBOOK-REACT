@@ -39,36 +39,36 @@ const GetStarted = () => {
 
     return (
         <>
-            <section class="usr-join-us-intro">
-                <div class="container">
-                    <div class="usr-join-us-head">
-                        <div class="row">
-                            <div class="col-md-12 usr-join-us-tags">
+            <section className="usr-join-us-intro">
+                <div className="container">
+                    <div className="usr-join-us-head">
+                        <div className="row">
+                            <div className="col-md-12 usr-join-us-tags">
                                 <h1>BE DISCOVERED</h1>
-                                <div class="usr-join-us-cards">
-                                    <div class="usr-join-us-card">
-                                        <div class="usr-join-us-card-serial-number">
+                                <div className="usr-join-us-cards">
+                                    <div className="usr-join-us-card">
+                                        <div className="usr-join-us-card-serial-number">
                                             <h1>1</h1>
                                         </div>
-                                        <div class="usr-join-us-card-body">
+                                        <div className="usr-join-us-card-body">
                                             <h6>Tell us about yourself</h6>
                                             <p>Share some basic info, such as where it is and how many guests can stay.</p>
                                         </div>
                                     </div>
-                                    <div class="usr-join-us-card">
-                                        <div class="usr-join-us-card-serial-number">
+                                    <div className="usr-join-us-card">
+                                        <div className="usr-join-us-card-serial-number">
                                             <h1>2</h1>
                                         </div>
-                                        <div class="usr-join-us-card-body">
+                                        <div className="usr-join-us-card-body">
                                             <h6>Make it stand out</h6>
                                             <p>Add 5 or more photos plus a title and description – we’ll help you out.</p>
                                         </div>
                                     </div>
-                                    <div class="usr-join-us-card">
-                                        <div class="usr-join-us-card-serial-number">
+                                    <div className="usr-join-us-card">
+                                        <div className="usr-join-us-card-serial-number">
                                             <h1>3</h1>
                                         </div>
-                                        <div class="usr-join-us-card-body">
+                                        <div className="usr-join-us-card-body">
                                             <h6>Finish up and publish</h6>
                                             <p>Choose if you'd like to start with an experienced guest, set a starting price and
                                                 publish your listing.</p>
@@ -79,7 +79,7 @@ const GetStarted = () => {
                         </div>
                     </div>
                 </div>
-                <div class="horizontal-bar"></div>
+                <div className="horizontal-bar"></div>
             </section>
 
             <footer className="artist-footer-ar">
