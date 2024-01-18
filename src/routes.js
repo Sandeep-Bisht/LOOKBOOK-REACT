@@ -202,9 +202,9 @@ const ApplicationRoutes = createBrowserRouter(
           <Route index path="/" element={<Homepage />} loader={getHomepageData} />
           <Route element={<WishlistContextProvider />} loader={getUserWishlistByID}>
             <Route path='/artists' element={<AllArtists />} loader={getAllArtists} />
-            <Route path="/artists-by-service/:artist_id" element={<AllArtists />} loader={getAllArtists} />
             <Route path='/wishlist' element={<Wishlist />} loader={getUserWishlist} />
-            <Route path="/artists/:artist_id" element={<ArtistSingle />} loader={getArtistById} />           
+            <Route path="/artists/:service_id" element={<AllArtists/>}  loader={getArtistByServiceId}/>
+            <Route path="/artists/:service_id/:artist_id" element={<ArtistSingle/>}  loader={getArtistById}/>        
             <Route path='/price-setup'  element={<SetupPrice />} loader={get_services_price_by_artist_id}  /> 
             <Route path='/search' element={< Search />} />
           </Route>         

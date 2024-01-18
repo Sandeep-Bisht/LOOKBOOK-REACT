@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useLoaderData, useLocation, useOutletContext, useParams } from 'react-router-dom';
 import NoDataFound from 'pages/become-a-artist/common/noDataFound';
-import Cookies from 'universal-cookie';
 import '@css/user/allArtists.css'
 import { ArtistCard } from 'layouts/components/artistCard';
-import { axiosAuth } from 'configs/axiosInstance';
-import { axiosLocal } from 'configs/axiosInstance';
 
 
 const AllArtists = () => {
@@ -13,7 +10,6 @@ const AllArtists = () => {
   const allArtists = useLoaderData()
   const [ wishlist ] = useOutletContext();
 
-  let param = useParams();
 
   return (
     <>  
