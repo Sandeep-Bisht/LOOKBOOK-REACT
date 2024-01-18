@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableRow from '@mui/material/TableRow'
@@ -10,13 +10,8 @@ import TablePagination from '@mui/material/TablePagination'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import { useLoaderData } from 'react-router-dom'
-import { CiEdit } from "react-icons/ci";
-import { MdDeleteForever } from "react-icons/md";
-import { MdAdd } from "react-icons/md";
 import { Button } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
 import { axiosAuth } from 'configs/axiosInstance'
-import { axiosLocal } from 'configs/axiosInstance'
 
 const Comments = () => {
      
@@ -24,8 +19,7 @@ const Comments = () => {
     const [rowsPerPage, setRowsPerPage] = useState(10)
 
     const all_comments=useLoaderData()
-    const [allComments,setAllComments] = useState(all_comments && Array.isArray(all_comments) ? all_comments : "")
-    const navigate=useNavigate()
+    const [allComments,setAllComments] = useState(all_comments && Array.isArray(all_comments) ? all_comments : [])
   
     const columns = [
       { id: 'first_name', label: 'First Name', minWidth: 170 },
@@ -44,40 +38,51 @@ const Comments = () => {
       setPage(0)
     }
 
-    useEffect(()=>{
-
-    })
-
     const approvedHandler = async(_id)=>{
         const data = {
             _id:_id,
             status:"approved"
         }
-        const response = await axiosAuth.put('/comment/update_comments',data)
-        if(response.statusText === "OK")
-        {
-            getAllComment()
+        try{
+          const response = await axiosAuth.put('/comment/update_comments',data)
+          if(response.statusText === "OK")
+          {
+            let responseData = response.data.data;
+            let commentsCopy = [...allComments]
+            if(commentsCopy && Array.isArray(commentsCopy)){
+              let commentIndex = commentsCopy.findIndex(el => el._id == responseData._id);
+              if(commentIndex && commentIndex > -1){
+                commentsCopy[commentIndex] = responseData;
+                setAllComments(commentsCopy);
+              }
+            }
+          }
+          else{
+            console.log(response,'response not found ok.')
+          }
         }
+        catch(error){
+          console.log(error,'Error trying to update comment status.')
+        }
+        
     }
 
     const rejectHandler = async (_id) => {
         try {
             const response = await axiosAuth.delete(`comment/delete_comments_by_id/${_id}`);    
             if (response.statusText === "OK") {
-                getAllComment()
+              if(allComments && Array.isArray(allComments)){
+                let updatedComments = [...allComments].filter(el => el._id !== _id);
+                setAllComments(updatedComments);
+              }
+            }
+            else{
+              console.log(response,'response not found ok while deleting comment.')
             }
         } catch (error) {
             console.error("Error deleting comment or fetching updated comments", error);
         }
     };
-
-    const getAllComment = async()=>{
-        const commentsResponse = await axiosLocal.get('/comment/all_comments');    
-        if (commentsResponse.statusText === "OK") {
-            setAllComments(commentsResponse.data);
-        }
-    }
-    
   
     return (
       <Paper sx={{ width: '100%', overflow: 'hidden' }}>
