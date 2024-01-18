@@ -273,3 +273,12 @@ export const getBlogByCategorySlug  = async ({params}) => {
   return error.message || "An error occured while trying to get all categories."
    }
 };
+
+export const getAllComments  = async () => {
+  try {
+    const response = await axiosLocal.get('/comment/all_comments');
+      return response.data.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get all categories."
+   }
+};

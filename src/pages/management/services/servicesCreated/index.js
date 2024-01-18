@@ -77,6 +77,7 @@ const ServicesForm = () => {
                  />
             </Grid>
             <Grid item xs={6}>
+            <label className='ms-1'>Service Icon</label>
               <TextField fullWidth
                 {...register('icon')}
                 type='file'
@@ -84,6 +85,7 @@ const ServicesForm = () => {
                  />
             </Grid>
             <Grid item xs={6}>
+            <label className='ms-1'>Service Image</label>
               <TextField
                 {...register('image')}
                 fullWidth

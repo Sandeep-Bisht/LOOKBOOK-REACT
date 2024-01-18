@@ -62,6 +62,7 @@ const ProductForm = () => {
               />
             </Grid>
             <Grid item xs={6}>
+            <label className='ms-1'>Brand Icon</label>
               <TextField fullWidth
               {...register('icon')}
               type='file'
@@ -69,6 +70,7 @@ const ProductForm = () => {
               />
             </Grid>
             <Grid item xs={6}>
+            <label className='ms-1'>Brand Image</label>
             <TextField
         {...register('image')}
         fullWidth

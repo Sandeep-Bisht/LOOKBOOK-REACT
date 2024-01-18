@@ -11,7 +11,7 @@ import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
 import UserProfile from 'pages/user/Profile'
-import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogsAndCategory, getBlogByIdAndCategory, getArtistByServiceId, get_services_price_by_artist_id } from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogsAndCategory, getBlogByIdAndCategory, getArtistByServiceId, get_services_price_by_artist_id, getAllComments } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -73,6 +73,7 @@ import NewProfile from 'pages/user/Profile/newProfile'
 import BlogsCategoryFilter from 'layouts/components/Filters/blogsCategoryFilter'
 import EditProfile from 'pages/user/Profile/editProfile'
 import SetupPrice from 'pages/price-setup/price-setup'
+import Comments from 'pages/management/comments/allComments'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -308,6 +309,7 @@ const ApplicationRoutes = createBrowserRouter(
             <Route path="/management/services/:_id" element={<UpdateService />} loader={({ params }) => getServiceById(params)} />
             <Route path="/management/products/:_id" element={<UpdateProducts />} loader={({ params }) => getProductById(params)} />
             <Route path="/management/blogs/:_id" element={<UpdateBlog />} loader={({ params }) => getBlogByIdAndCategory(params)} />
+            <Route path="/management/comments" element={<Comments />} loader={getAllComments} />
 
             <Route path='/management/view-artists' element={<ViewArtists />} loader={getAllArtists} />
             <Route path='/management/artists-request' element={<GetAllArtists />} loader={() => getAllArtistRequest()} />

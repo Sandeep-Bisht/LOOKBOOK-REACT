@@ -111,6 +111,10 @@ function UpdateService() {
               />
             </Grid>
             <Grid item xs={6} container alignItems="center" className='d-flex justify-content-center'>
+              <div className='d-block'>
+              <div className='text-center'>
+              <label className='ms-1'>Service Icon</label>
+              </div>
               <div className='updateImg-wrapper'>
                 <img
                   src={iconUrl}
@@ -142,8 +146,13 @@ function UpdateService() {
                   </Button>
                 </div>
               </div>
+              </div>
             </Grid>
             <Grid item xs={6} container alignItems="center" className='d-flex justify-content-center'>
+            <div className='d-block'>
+              <div className='text-center'>
+              <label className='ms-1'>Service Image</label>
+              </div>
               <div className='updateImg-wrapper'>
                 <img
                   src={imageUrl}
@@ -172,6 +181,7 @@ function UpdateService() {
                     Reset
                   </Button>
                 </div>
+              </div>
               </div>
             </Grid>
             <Grid item xs={12}>
