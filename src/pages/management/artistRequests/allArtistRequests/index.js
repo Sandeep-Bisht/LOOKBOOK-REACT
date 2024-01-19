@@ -14,7 +14,7 @@ import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
 import { useLoaderData } from "react-router-dom";
 import Grid from '@mui/material/Grid'
-import { MdOutlinePreview } from "react-icons/md";
+import { IoEyeOutline } from "react-icons/io5";
 import axios from 'axios'
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
@@ -115,7 +115,7 @@ const AllArtist = () => {
                                             <div className=''>
                                                 <button className='btn' style={{background:"#8c6a54", border:"none", color:"#fff", fontSize:"12px"}} 
                                                     onClick={()=>viewArtistHandler(row)}>
-                                                        <span>View <MdOutlinePreview/></span>
+                                                        <span>View <IoEyeOutline style={{fontSize:"22px"}}/></span>
                                                 </button>
                                             </div>
                                         </TableCell>
