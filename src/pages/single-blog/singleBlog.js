@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link} from "react-router-dom";
 import { useLoaderData } from 'react-router-dom'
 import "@css/user/singleBlog.css"
 import { useForm } from "react-hook-form"
@@ -98,16 +99,18 @@ const SingleBlog = () => {
                     </ul>
                   </div>
                   <div class="reviews">
-                    <a href="" class="views">50 Views</a>
-                    <a href="" class="comments">2 Comments</a>
-                    <a href="" class="likes">
+                  <Link to="" className="views">50 Views</Link>
+                  <Link to="" className="comments">2 Comments</Link>
+                    {/* <a href="" class="views">50 Views</a>
+                    <a href="" class="comments">2 Comments</a> */}
+                    <Link  to="" class="likes d-none">
                       <svg xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.5"
                           d="M9.99984 18.2917L8.7915 17.1917C4.49984 13.3 1.6665 10.725 1.6665 7.58333C1.6665 5.00833 3.68317 3 6.24984 3C7.69984 3 9.0915 3.675 9.99984 4.73333C10.9082 3.675 12.2998 3 13.7498 3C16.3165 3 18.3332 5.00833 18.3332 7.58333C18.3332 10.725 15.4998 13.3 11.2082 17.1917L9.99984 18.2917Z" />
                         <path
                           d="M9.99984 18.2917L8.7915 17.1917C4.49984 13.3 1.6665 10.725 1.6665 7.58333C1.6665 5.00833 3.68317 3 6.24984 3C7.69984 3 9.0915 3.675 9.99984 4.73333C10.9082 3.675 12.2998 3 13.7498 3C16.3165 3 18.3332 5.00833 18.3332 7.58333C18.3332 10.725 15.4998 13.3 11.2082 17.1917L9.99984 18.2917Z" />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                 </div>
 
@@ -173,7 +176,7 @@ const SingleBlog = () => {
                   <div className="recents-posts">
                     <div className="recents-posts-heading">
                       <h3>Recent Posts</h3>
-                      <a herf>Load All</a>
+                      <Link to="/blogs" className='usr-single-blog-load-all'>Load All</Link>
                     </div>
                     <div className="row">
                       {allCategory && Array.isArray(allCategory) && allCategory.map((item, index) => {
@@ -209,7 +212,7 @@ const SingleBlog = () => {
                                         </svg></a>
                                     </div>
                                   </div>
-                                  <div className="favorite">
+                                  <div className="favorite d-none">
                                     <a href="#">
                                       <svg xmlns="http://www.w3.org/2000/svg" width={20} height={21} viewBox="0 0 20 21" fill="none">
                                         <path opacity="0.5" d="M9.91429 18.051L8.72806 16.9711C4.5149 13.1506 1.7334 10.6228 1.7334 7.53855C1.7334 5.01066 3.71318 3.03906 6.23289 3.03906C7.65637 3.03906 9.02258 3.70171 9.91429 4.74069C10.806 3.70171 12.1722 3.03906 13.5957 3.03906C16.1154 3.03906 18.0952 5.01066 18.0952 7.53855C18.0952 10.6228 15.3137 13.1506 11.1005 16.9711L9.91429 18.051Z" fill="#FCF7F2" stroke="#6D5D4C" strokeWidth="0.981707" />

@@ -182,3 +182,13 @@
 .usr-single-blogs .usr-single-blogs-tags-recents-posts .recents-posts .usr-recent-post-card .usr-recent-post-card-review .reviews .share {
     padding: 0 10px;
 }
+
+.usr-single-blogs .usr-single-blog-load-all
+{
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-family:AvenirLTProHeavy;
+    color:#6D5D4C;
+    font-size: 12px;
+    cursor: pointer;
+}
