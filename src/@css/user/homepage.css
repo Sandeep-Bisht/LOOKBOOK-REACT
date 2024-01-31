@@ -98,8 +98,23 @@
     padding-top: 100px;
     padding: 50px 0;
     background: #fcf7f2;
+    position: relative;
 }
-
+.usr-artist-area .heading-box-one,.usr-artist-area .heading-box-two
+{
+   position:sticky;
+}
+.usr-artist-area .heading-box-one
+{
+    top: 50%;
+}
+.usr-artist-area .heading-box-two
+{
+    bottom: 20%;
+    
+    display: flex;
+    justify-content: end;
+}
 .usr-artist-area-wrapper {
     background-color: #fff;
     padding: 50px;
@@ -157,7 +172,7 @@
 
 .usr-artist-area-card .usr-expert-pic-profile {
     font-family: AvenirLTProLight;
-    font-size: 12px;
+    font-size: 14px;
     color: #8C6A54;
     letter-spacing: -0.4px;
 }
@@ -168,12 +183,12 @@
     position: relative;
 }
 
-.usr-artist-area .expert-pic .usr-expert-certification {
+.usr-artist-area .expert-pic .usr-expert-certification,.usr-featured-artist .usr-expert-certification {
     font-family: AvenirLTProLight;
     position: absolute;
     bottom: 30px;
-    width: 165px;
-    height: 39px;
+    width: 48px;
+    height: 32px;
     left: 0;
     border-radius: 0px 19.5px 19.5px 0px;
     background: #FEFEFE;
@@ -182,6 +197,14 @@
     font-size: 10px;
     display: flex;
     align-items: center;
+}
+
+.usr-artist-area .expert-pic .usr-expert-certification img,.usr-featured-artist .usr-expert-certification img
+{
+    object-fit: unset;
+    object-position: unset;
+    width: unset;
+    height: 30px;
 }
 
 .usr-artist-area .usr-expert-pic-insta-box {
@@ -425,8 +448,15 @@
     padding: 60px 0;
 }
 
-
-
+.usr-featured-artist .usr-expert-certification
+{    opacity: 0;
+    transition: width 0.5s;
+    transition: opacity 0.5s;
+}
+.usr-featured-artist-card:hover .usr-expert-certification
+{
+  opacity: 1;
+}
 .usr-featured-artist-card {
     position: relative;
 
@@ -484,7 +514,7 @@
     transform: translateY(0%);
 }
 
-.usr-featured-artist-card .imgBx img {
+.usr-featured-artist-card .imgBx img.image {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -496,7 +526,7 @@
     object-fit: cover;
 }
 
-.usr-featured-artist-card:hover .imgBx img {
+.usr-featured-artist-card:hover .imgBx img.image {
     position: absolute;
     top: 50%;
     left: 50%;

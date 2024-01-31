@@ -11,7 +11,7 @@ import ArtistFilter from "./artist-filter";
 
 const Header = ({ cities, services }) => {
 
-  // Toggle Search container js
+  // Toggle Search container jsmainLogo
 
   const [isClicked, setIsClicked] = useState(false);
   const headerRef = useRef(null);
@@ -121,7 +121,7 @@ const Header = ({ cities, services }) => {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Artist
+                    Services
                     <span className="ms-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +161,7 @@ const Header = ({ cities, services }) => {
                                                          
                     <li>
                       <Link className="dropdown-item" to="/artists">
-                        All Artist
+                        All Services
                       </Link>
                     </li>
                   </ul>
@@ -339,7 +339,7 @@ const Header = ({ cities, services }) => {
                           <div>
                           {isClicked && (
                              <span className="clicked-text">
-                              {selectedService ? <>{services.find(item => item._id == selectedService)?.title}</> : 'Select Artist'}
+                              {selectedService ? <>{services.find(item => item._id == selectedService)?.title}</> : 'Select Service'}
                               </span>
                             )}
                               

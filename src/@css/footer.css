@@ -3,6 +3,7 @@ footer
 {
   background:  #FCF7F2;
   padding: 25px 0 25px 0;
+  border-top: 1px solid #d3cec9;
 }
 .usr-footer{
     display: flex;
