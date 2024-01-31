@@ -100,14 +100,14 @@ const Homepage = () => {
                                 {[...Array(allArtists.length > 6 ? 6 : allArtists.length)].map((_, index) => {
                                     return (
                                         <div className="item">
-                                            <img src={`${allArtists[index]?.gallery[0]?.url}?tr=h-500,w-400,fo-auto`} className="img-fluid owl-pic" />
+                                            <img src={`${allArtists[index]?.gallery[0]?.url}?tr=h-400,w-400,fo-auto`} className="img-fluid owl-pic" />
                                         </div>
                                     )
                                 })}
                             </Slider>
                     <div className="col-md-12 usr-content text-center">
-                        <h1 className="usr-home-banner-heading">Experience the Beauty of</h1>
-                        <span className="usr-home-banner-tag ">Professional Makeup</span>
+                        <h1 className="usr-home-banner-heading">Experience the Beauty of Professional Makeup</h1>
+                       
                     </div>
                     <div className="usr-button d-flex justify-content-center mt-lg-2">
                         <Link to="/artists" className="usr-common-action-btn usr-home-banner-action-btn btn">Consult A Professional</Link>
