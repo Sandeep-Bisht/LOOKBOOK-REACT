@@ -36,7 +36,7 @@ const Footer = () => {
                                 <div className="col-md-6 usr-footer-menu">
                                     <ul className="usr-footer-menu-list">
                                         <li><Link to="/" className="footer-link active">HOME</Link></li>
-                                        <li><Link to="/artists" className="footer-link">Services</Link></li>
+                                        <li><Link to="/services" className="footer-link">Services</Link></li>
                                         <li><Link to="/about-us" className="footer-link">ABOUT US</Link></li>
                                         <li><Link to="/contact-us" className="footer-link">CONTACT US</Link></li>
                                         <li><Link to="/become-a-artist" className="footer-link">JOIN US</Link></li>

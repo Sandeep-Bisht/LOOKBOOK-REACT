@@ -74,6 +74,7 @@ import BlogsCategoryFilter from 'layouts/components/Filters/blogsCategoryFilter'
 import EditProfile from 'pages/user/Profile/editProfile'
 import SetupPrice from 'pages/price-setup/price-setup'
 import Comments from 'pages/management/comments/allComments'
+import ArtistFilter from 'layouts/components/header/artist-filter'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -202,10 +203,12 @@ const ApplicationRoutes = createBrowserRouter(
         <Route element={<CommonLayout />} loader={getSearchParameters}>
           <Route index path="/" element={<Homepage />} loader={getHomepageData} />
           <Route element={<WishlistContextProvider />} loader={getUserWishlistByID}>
-            <Route path='/artists' element={<AllArtists />} loader={getAllArtists} />
             <Route path='/wishlist' element={<Wishlist />} loader={getUserWishlist} />
-            <Route path="/artists/:service_id" element={<AllArtists/>}  loader={getArtistByServiceId}/>
-            <Route path="/artists/:service_id/:artist_id" element={<ArtistSingle/>}  loader={getArtistById}/>        
+            <Route element={<ArtistFilter/>} loader={allServicesDetails}>
+              <Route path='/services' element={<AllArtists />} loader={getAllArtists} />
+              <Route path="/services/:service_id" element={<AllArtists/>}  loader={getArtistByServiceId}/>
+            </Route>
+            <Route path="/services/:service_id/:artist_id" element={<ArtistSingle/>}  loader={getArtistById}/>        
             <Route path='/price-setup'  element={<SetupPrice />} loader={get_services_price_by_artist_id}  /> 
             <Route path='/search' element={< Search />} />
           </Route>         

@@ -14,7 +14,7 @@ const AllArtists = () => {
     <>  
     {allArtists?.length > 0 ? 
     <section className="usr-all-artist">
-        <div className="container">          
+        <div className="container-fluid">          
           <div className="row my-5">
             {allArtists && Array.isArray(allArtists) && allArtists.map((artist,ind)=>{
               return (
