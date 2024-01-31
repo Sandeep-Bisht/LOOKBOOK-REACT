@@ -16,7 +16,6 @@ font-size: 90px;
 line-height: 60px;
 color: rgb(109,93,76);
 letter-spacing: 2px;
-font-weight: 700;
 }
 
 
@@ -57,10 +56,15 @@ font-weight: 700;
 }
 
 .usr-contact-form{
-    padding: 0 25px 0 50px;
+    padding: 0 25px 0 80px;
     position: relative;
 
 }
+
+.usr-contact-clendly-wrapper{
+    padding-bottom: 90px;
+}
+
 .usr-contact-form::before{
     content: '';
     position: absolute;
@@ -68,8 +72,8 @@ font-weight: 700;
     width: 1px;
     height: 72%;
     bottom: 64px;
-    left: 0;
-
+    left: -20px;
+   opacity: 30%;
 
 }
 /* .usr-contact-part{
@@ -97,7 +101,8 @@ font-weight: 700;
 
 .usr-contact-main-details span{
     color: #6D5D4C;
-    font-weight: 500;
+    font-family:AvenirLTProHeavy;
+
 }
 
 .usr-contact-main-details svg{
@@ -154,7 +159,10 @@ textarea::placeholder{
   color: #FCF7F2;
 }
 
-
+.usr-contact-form .error-mssg{
+    color: #6D5D4C;
+    font-size: 10px;
+}
 
 
 /*-----------media query---------*/

@@ -126,7 +126,7 @@ const ContactPage = () => {
                         margin="normal"
                         className="form-contact-control"
                       />
-                      {errors.name && (<span style={{color:"red"}}>This field is required</span>)}
+                      {errors.name && (<span className="error-mssg">This field is required</span>)}
                       <TextField
                         {...register("email", { required: true })}
                         label="Email*"
@@ -136,7 +136,7 @@ const ContactPage = () => {
                     
                         // className="form-contact-control"
                       />
-                      {errors.email && (<span style={{color:"red"}}>This feild is required</span>)}
+                      {errors.email && (<span className="error-mssg">This field  is required</span>)}
                       <TextField
                         { ...register("number", { required: true })}
                         label="Phone number"
@@ -145,7 +145,7 @@ const ContactPage = () => {
                         margin="normal"
                         // className="form-contact-control"
                       />
-                      {errors.number && (<span style={{color:"red"}}>This feild is required</span>)}
+                      {errors.number && (<span className="error-mssg">This field  is required</span>)}
                       <TextField
                         {...register("message", { required: true })}
                         fullWidth
@@ -156,9 +156,7 @@ const ContactPage = () => {
                         rows={4}
                         variant="outlined"
                       />
-                       {errors.message && (
-                        <p style={{color:"red"}}>This field is required</p>
-                      )} 
+                       
                        <div className="mt-3">
                       <button type="submit" className="usr-contact-btn btn">
                         SEND MESSAGE
@@ -174,7 +172,7 @@ const ContactPage = () => {
 
 
       <section className="usr-contact-clendly">
-        <div className="container bg-white">
+        <div className="container  bg-white usr-contact-clendly-wrapper">
             <div className="row">
                 <div className="col-md-12">
                     <div className="usr-contact-text text-center">
@@ -185,15 +183,12 @@ const ContactPage = () => {
                         <div className="usr-contact-date">
                             <Calendly/>
                         </div>
-                        <div className="mt-4 ps-4">
-                        <button type="submit" className="usr-contact-meeting-btn btn">
-                        SCHEDULE A MEETING
-                      </button></div>
+                        
                             
                         </div>
                         <div className="col-md-7 col-lg-8">
                         <div className="usr-contact-image">
-                                <img src="images/beauty.jpg" className="img-fluid"/>
+                                <img src="images/contact.jpg" className="img-fluid"/>
                             </div>
                         </div>
                     </div>
