@@ -1,6 +1,6 @@
 import React, { useEffect, useRef,useState } from 'react';
 import '@css/user/homepage.css'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const EmergingArtist = ({artists}) => {
   const [isNextSectionVisible, setNextSectionVisible] = useState(false);
@@ -166,12 +166,12 @@ const EmergingArtist = ({artists}) => {
                                     <div className="usr-emerging-artist-carousel">
                                       {artists && Array.isArray(artists) && artists.length > 0 && artists.map((item,ind)=>{
                                         return(
-                                          <div className="usr-emerging-artist-carousel-item common-cursor-pointer" key={ind} onClick={()=>navigate(`/artists/${item?._id}`)}>
+                                          <Link className="usr-emerging-artist-carousel-item common-cursor-pointer" key={ind} to={`/artists/${item?.featuredService ? item?.featuredService?._id : item?.services[0]}/${item?._id}`}>
                                             <div className="usr-emerging-artist-carousel-box">
                                                 <img className="img-fluid" src={item?.gallery[0] ? item?.gallery[0].url : null} />
                                                 <p>{item?.profile_id?.fullName ? item?.profile_id?.fullName : null }</p>
                                             </div>
-                                        </div>
+                                        </Link>
                                         )
                                       })}
                                     </div>
