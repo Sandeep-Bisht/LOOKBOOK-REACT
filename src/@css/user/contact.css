@@ -1,26 +1,26 @@
-
-.usr-contact-main{
+.usr-contact-main {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 40vh;
     width: 100%;
 }
+
 /* .contact-form .css-stc7tk-MuiInputBase-root-MuiOutlinedInput-root:hover:not(.Mui-focused) .MuiOutlinedInput-notchedOutline
 {
     border-color: #8C6A54;
 } */
-.usr-contact-heading{   
-font-family:AvenirLTProHeavy;
-font-size: 90px;
-line-height: 60px;
-color: rgb(109,93,76);
-letter-spacing: 2px;
+.usr-contact-heading {
+    font-family: AvenirLTProHeavy;
+    font-size: 90px;
+    line-height: 60px;
+    color: rgb(109, 93, 76);
+    letter-spacing: 2px;
 }
 
 
 
-.usr-contact-para{
+.usr-contact-para {
     color: #6D5D4C;
     font-size: 11px;
     font-weight: 400;
@@ -28,7 +28,8 @@ letter-spacing: 2px;
     letter-spacing: 1.3px;
     padding-top: 7px;
 }
-.usr-contact-main-para{
+
+.usr-contact-main-para {
     color: #6D5D4C;
     font-size: 30px;
     font-weight: 400;
@@ -36,36 +37,37 @@ letter-spacing: 2px;
     letter-spacing: 1.3px;
     padding-top: 27px;
 }
-.usr-contact-text-para{
+
+.usr-contact-text-para {
     color: #6D5D4C;
     font-size: 25px;
     font-weight: 400;
     font-family: AvenirLTProBook;
     letter-spacing: 1.3px;
-    
+
 }
 
-.usr-contact-list-menu{
+.usr-contact-list-menu {
     display: flex;
     list-style: none;
     padding: 0;
 }
 
-.usr-contact-list-menu li{
+.usr-contact-list-menu li {
     margin: 0 5px;
 }
 
-.usr-contact-form{
+.usr-contact-form {
     padding: 0 25px 0 80px;
     position: relative;
 
 }
 
-.usr-contact-clendly-wrapper{
+.usr-contact-clendly-wrapper {
     padding-bottom: 90px;
 }
 
-.usr-contact-form::before{
+.usr-contact-form::before {
     content: '';
     position: absolute;
     background-color: #8C6A54;
@@ -73,14 +75,15 @@ letter-spacing: 2px;
     height: 72%;
     bottom: 64px;
     left: -20px;
-   opacity: 30%;
+    opacity: 30%;
 
 }
+
 /* .usr-contact-part{
     border-right: 1px solid;
    
 } */
-.usr-contact-btn{
+.usr-contact-btn {
     border: 1px solid border #6D5D4C;
     border-radius: 6px;
     background: #6D5D4C;
@@ -90,38 +93,39 @@ letter-spacing: 2px;
     font-size: 11px;
 }
 
-.usr-contact-btn:hover{
+.usr-contact-btn:hover {
     background-color: #6D5D4C;
     color: #FCF7F2;
 }
-.usr-contact-main-details{
+
+.usr-contact-main-details {
     margin: 80px 60px 0 0;
     padding: 0 0 0 25px;
 }
 
-.usr-contact-main-details span{
+.usr-contact-main-details span {
     color: #6D5D4C;
-    font-family:AvenirLTProHeavy;
+    font-family: AvenirLTProHeavy;
 
 }
 
-.usr-contact-main-details svg{
-margin-right: 5px;
+.usr-contact-main-details svg {
+    margin-right: 5px;
 }
 
 
 
-label{
+label {
     color: #8C6A54;
 }
 
-textarea::placeholder{
+textarea::placeholder {
     color: #8C6A54;
 }
 
-.usr-contact-clendly{
+.usr-contact-clendly {
     margin-top: 90px;
-    
+
 }
 
 .usr-contact-meeting-btn {
@@ -134,17 +138,20 @@ textarea::placeholder{
     font-size: 11px;
     margin-bottom: 30px;
 }
-.usr-contact-date{
+
+.usr-contact-date {
     padding: 0 0 0 25px;
 }
-.usr-contact-image{
+
+.usr-contact-image {
     padding: 0 25px 0 50px;
 }
 
-.usr-contact-image img{
+.usr-contact-image img {
     border-radius: 16px;
 }
-.usr-contact-calendly-text-para{
+
+.usr-contact-calendly-text-para {
     color: #6D5D4C;
     font-size: 30px;
     font-weight: 400;
@@ -154,12 +161,12 @@ textarea::placeholder{
     margin-bottom: 50px;
 }
 
-.usr-contact-meeting-btn:hover{
-  background-color: #6D5D4C;
-  color: #FCF7F2;
+.usr-contact-meeting-btn:hover {
+    background-color: #6D5D4C;
+    color: #FCF7F2;
 }
 
-.usr-contact-form .error-mssg{
+.usr-contact-form .error-mssg {
     color: #6D5D4C;
     font-size: 10px;
 }
@@ -168,10 +175,10 @@ textarea::placeholder{
 
 @media screen and (max-width: 767.98px) {
 
-    .usr-contact-heading{
+    .usr-contact-heading {
         font-size: 40px;
         line-height: 73px;
-        color: rgb(109,93,76);
+        color: rgb(109, 93, 76);
         letter-spacing: 2px;
         font-weight: 700;
     }
@@ -183,14 +190,15 @@ textarea::placeholder{
         font-family: AvenirLTProBook;
         letter-spacing: 1.3px;
         padding-top: 15px;
-        margin-bottom: 0;
+        margin-bottom: 20px;
     }
+
     .usr-contact-date {
-        padding: 0 0 0 0px; 
+        padding: 0 0 0 0px;
     }
-    
+
     .usr-contact-image {
-         padding: 0 0px 0 0px; 
+        padding: 0 0px 0 0px;
     }
 
     .usr-contact-main-details {
@@ -198,4 +206,42 @@ textarea::placeholder{
         padding: 0 0 0 25px;
     }
 
+}
+
+
+@media screen and (max-width: 425px) {
+    .usr-contact-main {
+        height: auto;
+        padding-top: 20px;
+    }
+
+    .usr-contact-heading {
+        font-size: 40px;
+        line-height: 73px;
+        color: rgb(109, 93, 76);
+        letter-spacing: 2px;
+        font-weight: 700;
+    }
+
+    .usr-contact-main-details {
+        margin: 0 20px 44px 0;
+    }
+
+    .usr-contact-form {
+        padding: 0 20px;
+    }
+
+    .usr-contact-date {
+        padding: 0;
+    }
+
+    .usr-contact-image {
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    .usr-contact-clendly .row {
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
 }
