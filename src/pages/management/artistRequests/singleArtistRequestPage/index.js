@@ -9,6 +9,8 @@ import LocationAwareMap from 'pages/become-a-artist/common/googlemap';
 import NoDataFound from 'pages/become-a-artist/common/noDataFound';
 import { toast } from 'react-toastify';
 import { axiosAuth } from 'configs/axiosInstance';
+import { IoArrowBackOutline } from "react-icons/io5";
+
 
 const style = {
     position: 'absolute',
@@ -94,7 +96,10 @@ function SingleArtistInformation() {
                     <div className='container'>
                         <div className='row'>
                             <div className='col-12'>
+                                <div className='d-flex' style={{justifyContent:"space-between"}}>
                                 <h2>Artist Request Details</h2>
+                                <button className="btn" type='button' style={{ background: "#8c6a54", color: "#fff" ,width:"100px"}} ><IoArrowBackOutline style={{marginRight:"10px"}}/>
+Back</button></div>
                             </div>
                             <div className='mt-4'>
                                 <div className='row'>
@@ -277,7 +282,7 @@ function SingleArtistInformation() {
                               
                                 <div className='row mt-4 text-center'>
                                     <div className='col-4'>
-                                        <img src={artistInformation.adharFront.url} className="img-fluid" alt="adharFront" style={{ maxHeight: "200px" }} />
+                                        <img src={artistInformation.adharFront.url} className="img-fluid" alt="adharFront" style={{ maxHeight: "200px" , borderRadius:"20px"}} />
                                         <div>
                                             <span className="artists-detail-heading">
                                                 Adhar Front
@@ -285,7 +290,7 @@ function SingleArtistInformation() {
                                         </div>
                                     </div>
                                     <div className='col-4'>
-                                        <img src={artistInformation.adharBack.url} className="img-fluid" alt="adharBack" style={{ maxHeight: "200px" }} />
+                                        <img src={artistInformation.adharBack.url} className="img-fluid" alt="adharBack" style={{ maxHeight: "200px", borderRadius:"20px" }} />
                                         <div>
                                             <span className="artists-detail-heading">
                                                 Adhar Back
@@ -293,7 +298,7 @@ function SingleArtistInformation() {
                                         </div>
                                     </div>
                                     <div className='col-4'>
-                                        <img src={artistInformation.panCard.url} className="img-fluid" alt="panCard" style={{ maxHeight: "200px" }} />
+                                        <img src={artistInformation.panCard.url} className="img-fluid" alt="panCard" style={{ maxHeight: "200px", borderRadius:"20px"}} />
                                         <div>
                                             <span className="artists-detail-heading">
                                                 Pancard

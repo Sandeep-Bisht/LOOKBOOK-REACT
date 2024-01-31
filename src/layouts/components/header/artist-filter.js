@@ -1,12 +1,10 @@
-import { axiosLocal } from "configs/axiosInstance";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
 
 const ArtistFilter = ({ services }) => {
 
-  let navigate = useNavigate()
 
   const settings = {
     dots: false,
@@ -15,16 +13,9 @@ const ArtistFilter = ({ services }) => {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
-    // autoplay:true,
-    // centerMode: true,
     centerPadding: "0px",
-    // autoplayTimeout:3000
   };
 
-
-  const getArtistByServiceID = async (service_id) => {
-    navigate(`/artists/${service_id}`)
-  };
 
   return (
     <section className="usr-artist-filter">
@@ -32,18 +23,19 @@ const ArtistFilter = ({ services }) => {
         <div className="row">
           <div className="col-lg-12">
             <Slider className="" {...settings}>
-              <div
-                onClick={() => navigate("/artists")}
+              <Link
+                className="btn"
+                to={"/artists"}
               >
                 All Artist
-              </div>
+              </Link>
               {services && services.length > 0 &&
                 services.map((item, index) => {
                   return (
-                    <div
+                    <Link
                       key={index}
-                      onClick={() => getArtistByServiceID(item._id)}
-                      className="d-flex"
+                      to={`/artists/${item._id}`}
+                      className="d-flex btn"
                     >
                       <div className="">
                         <img src={item?.icon?.thumbnailUrl} className="img-fluid service-icons" />
@@ -52,7 +44,7 @@ const ArtistFilter = ({ services }) => {
                         {item.title}
                       </span>
 
-                    </div>
+                    </Link>
                   );
                 })}
             </Slider>

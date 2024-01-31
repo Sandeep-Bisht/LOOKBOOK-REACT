@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import { formatIndianRupee } from "configs/formatIndianRupee";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import { FaHeart, FaStar } from "react-icons/fa";
 import { axiosAuth } from "configs/axiosInstance";
@@ -83,12 +83,12 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
           {artistInfo?.gallery.map((item, index) => {
             return (
               <div key={`gallery${index}`}>
+                <Link to={`/artists/${artistInfo?.featuredService ? artistInfo?.featuredService?._id : artistInfo?.services[0]}/${artistInfo?._id}`}>
                 <img
                   src={`${item.url}?tr=h-400,w-400,fo-auto`}
                   alt={item.name}
-                  className="common-cursor-pointer"
-                  onClick={() => navigate(`/artists/${artistInfo?._id}`)}
                 />
+                </Link>
               </div>
             );
           })}

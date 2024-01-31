@@ -2,7 +2,7 @@ import EmergingArtist from "./emergingArtist/index.js"
 import '@css/user/homepage.css'
 import Slider from "react-slick";
 import checked from "@core/assets/images/checked.png";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { truncateDescription } from "configs/truncateDescription.js";
 import { formatIndianRupee } from "configs/formatIndianRupee.js";
 
@@ -11,8 +11,6 @@ import { formatIndianRupee } from "configs/formatIndianRupee.js";
 const Homepage = () => {
 
     const { allArtists, allBlogs } = useLoaderData()
-
-    const navigate = useNavigate();
 
     var settings = {
         dots: false,
@@ -94,10 +92,10 @@ const Homepage = () => {
 
     return (
         <>
+        {allArtists && Array.isArray(allArtists) && allArtists?.length > 0 ? <>
             <section className='usr-home-banner'>
                 <div className='container'>
-                    {
-                        allArtists?.length > 0 ?
+                    
                             <Slider {...settings}>
                                 {[...Array(allArtists.length > 6 ? 6 : allArtists.length)].map((_, index) => {
                                     return (
@@ -107,17 +105,12 @@ const Homepage = () => {
                                     )
                                 })}
                             </Slider>
-                            :
-                            <div className="p-5">
-                                No Data Found.
-                            </div>
-                    }
                     <div className="col-md-12 usr-content text-center">
                         <h1 className="usr-home-banner-heading">Experience the Beauty of</h1>
                         <span className="usr-home-banner-tag ">Professional Makeup</span>
                     </div>
                     <div className="usr-button d-flex justify-content-center mt-lg-2">
-                        <button className="usr-common-action-btn usr-home-banner-action-btn" type="button" onClick={() => navigate('/artists')}>Consult A Professional</button>
+                        <Link to="/artists" className="usr-common-action-btn usr-home-banner-action-btn btn">Consult A Professional</Link>
                     </div>
                 </div>
             </section>
@@ -141,10 +134,7 @@ const Homepage = () => {
 
                                     <div className="col-lg-5 mx-auto">
                                         <ul id="cards">
-                                            {
-                                                allArtists?.length > 0 ?
-                                                    <>
-                                                        {[...Array(allArtists.length > 5 ? 5 : allArtists.length)].map((_, index) => {
+                                            {[...Array(allArtists.length > 5 ? 5 : allArtists.length)].map((_, index) => {
                                                             return (
                                                                 <li className="card usr-artist-area-card" id={`card${index + 1}`}>
                                                                     <div className="card-body">
@@ -153,14 +143,14 @@ const Homepage = () => {
                                                                                 <div className="usr-expert-pic-expert-info">
                                                                                     <div className="row g-0">
                                                                                         <div className="col-lg-6 col-6">
-                                                                                            <div className="usr-expert-pic-name-box common-cursor-pointer" onClick={() => navigate(`/artists/${allArtists[index]?._id}`)}>
+                                                                                            <Link to={`/artists/${allArtists[index]?.featuredService ? allArtists[index]?.featuredService?._id : allArtists[index]?.services[0]}/${allArtists[index]?._id}`} className="usr-expert-pic-name-box common-cursor-pointer btn w-100 text-start h-100">
                                                                                                 <p className="usr-expert-pic-name">
                                                                                                     {allArtists[index]?.profile_id?.fullName}
                                                                                                 </p>
                                                                                                 <span className="usr-expert-pic-profile">
-                                                                                                    Make up Artist
+                                                                                                {allArtists[index]?.featuredService?.title}
                                                                                                 </span>
-                                                                                            </div>
+                                                                                            </Link>
                                                                                         </div>
                                                                                         <div className="col-lg-6 col-6">
                                                                                             <div className="usr-expert-pic-charges-box">
@@ -176,7 +166,9 @@ const Homepage = () => {
                                                                                     </div>
                                                                                 </div>
                                                                                 <div className="expert-pic">
-                                                                                    <img src={allArtists[index]?.gallery[0]?.url} className="img-fluid common-cursor-pointer" onClick={() => navigate(`/artists/${allArtists[index]?._id}`)} />
+                                                                                    <Link to={`/artists/${allArtists[index]?.featuredService ? allArtists[index]?.featuredService?._id : allArtists[index]?.services[0]}/${allArtists[index]?._id}`}>
+                                                                                    <img src={allArtists[index]?.gallery[0]?.url} className="img-fluid" />
+                                                                                    </Link>
                                                                                     <span className="usr-expert-certification">
 
                                                                                         <span className="ms-2">
@@ -221,12 +213,6 @@ const Homepage = () => {
                                                                 </li>
                                                             )
                                                         })}
-                                                    </>
-                                                    :
-                                                    <li className="p-5">
-                                                        No Data Found.
-                                                    </li>
-                                            }
                                         </ul>
                                     </div>
                                     <div className="heading-box-two">
@@ -239,6 +225,13 @@ const Homepage = () => {
                     </div>
                 </div>
             </section>
+            </>
+            :
+            <div className="p-5 text-center">
+                No Artist Registered Yet.
+            </div>
+        }
+
             <section className="user-select-package  usr-overlap-section">
                 <div className="container">
                     <div className="row">
@@ -330,6 +323,7 @@ const Homepage = () => {
                     </div>
                 </div>
             </section>
+            {allArtists && Array.isArray(allArtists) && allArtists?.length > 0 ? <>
             <EmergingArtist artists={allArtists} />
             <section className="usr-featured-artist usr-overlap-section" id="yourNextSectionId">
                 <div className="container">
@@ -342,13 +336,10 @@ const Homepage = () => {
 
                     </div>
                     <div className="row mt-lg-4 justify-content-center">
-                        {
-                            allArtists?.length > 0 ?
-                                <>
                                     {[...Array(allArtists.length > 4 ? 4 : allArtists.length)].map((_, index) => {
                                         return (
                                             <div className="col-lg-3 col-md-6 col-sm-6">
-                                                <div className="usr-featured-artist-card common-cursor-pointer" onClick={() => navigate(`/artists/${allArtists[index]?._id}`)}>
+                                                <div className="usr-featured-artist-card">
                                                     <div className="imgBx">
                                                         <img className="image"
                                                             src={`${allArtists[index]?.gallery[0]?.url}?tr=h-220,w-300,fo-auto`}
@@ -379,13 +370,13 @@ const Homepage = () => {
                                                                 <span className="usr-price">{formatIndianRupee(allArtists[index]?.pricing?.totalPrice)}</span>
                                                             </div>
                                                             <div className="reserveButton">
-                                                                <button className="rButton">
+                                                                <Link className="rButton btn" to={`/artists/${allArtists[index]?.featuredService ? allArtists[index]?.featuredService?._id : allArtists[index]?.services[0]}/${allArtists[index]?._id}`}>
                                                                     <span className="me-2">
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
                                                                             <path d="M7.05238 12.4713C6.9456 12.4719 6.8428 12.4308 6.76592 12.3567L3.69675 9.37752C3.65806 9.33991 3.62715 9.29503 3.6058 9.24547C3.58445 9.19591 3.57307 9.14263 3.57231 9.08867C3.57155 9.03471 3.58142 8.98113 3.60137 8.93099C3.62132 8.88084 3.65095 8.83512 3.68856 8.79643C3.72618 8.75773 3.77105 8.72683 3.82061 8.70548C3.87018 8.68413 3.92346 8.67274 3.97742 8.67198C4.03138 8.67122 4.08496 8.6811 4.1351 8.70105C4.18524 8.721 4.23097 8.75062 4.26966 8.78824L7.05238 11.4891L13.5181 5.21981C13.5963 5.14384 13.7014 5.10202 13.8104 5.10356C13.9193 5.10509 14.0232 5.14985 14.0992 5.228C14.1752 5.30614 14.217 5.41126 14.2155 5.52024C14.2139 5.62922 14.1692 5.73312 14.091 5.8091L7.33884 12.3567C7.26196 12.4308 7.15916 12.4719 7.05238 12.4713Z" fill="#FCF7F2" stroke="#FCF7F2" stroke-width="1.63689" />
                                                                         </svg>
                                                                     </span>
-                                                                    Reserve</button>
+                                                                    Reserve</Link>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -394,15 +385,16 @@ const Homepage = () => {
                                             </div>
                                         )
                                     })}
-                                </>
-                                :
-                                <div className="p-5">
-                                    No Data Found.
-                                </div>
-                        }
                     </div>
                 </div>
             </section>
+            </>
+            :
+            <div className="p-5 text-center">
+                No Artist Registered Yet.
+            </div>
+            }
+
             <section className="usr-recent-blog usr-overlap-section ">
                 <div className="container-fluid">
                     <div className="usr-blog-wrapper">
@@ -418,7 +410,7 @@ const Homepage = () => {
                                         <div className="blog-section-card ">
                                             <Slider {...settingsblog}>
                                                 {allBlogs.map((blog, ind) => {
-                                                    return (<div className="usr-blog-main-content-wrapper common-cursor-pointer" key={`blog${ind}`} onClick={() => navigate(`/blogs/${blog?.category?.slug}/${blog?.slug}`)}>
+                                                    return (<Link className="usr-blog-main-content-wrapper common-cursor-pointer btn" key={`blog${ind}`} to={`/blogs/${blog?.category?.slug}/${blog?.slug}`}>
                                                         <div className="usr-blog-main-content">
                                                             <img src={blog.featuredImage.url} className="img-fluid" />
                                                             <div className="usr-card-body">
@@ -451,14 +443,15 @@ const Homepage = () => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>)
+                                                    </Link>
+                                                    )
                                                 })}
                                             </Slider>
                                         </div>
                                         :
-                                        <div className="p-5">No Data Found.</div>}
+                                        <div className="p-5 text-center">No Data Found.</div>}
                                     <div className="recent-blog-main-btn text-center">
-                                        <button type="button" className="usr-common-action-btn" onClick={() => navigate(`/blogs`)}>LOAD ALL</button>
+                                        <Link type="button" className="usr-common-action-btn btn" to={`/blogs`}>LOAD ALL</Link>
                                     </div></div>
                             </div>
                         </div>
