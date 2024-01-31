@@ -83,7 +83,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
           {artistInfo?.gallery.map((item, index) => {
             return (
               <div key={`gallery${index}`}>
-                <Link to={`/artists/${artistInfo?.featuredService ? artistInfo?.featuredService?._id : artistInfo?.services[0]}/${artistInfo?._id}`}>
+                <Link to={`/services/${artistInfo?.featuredService ? artistInfo?.featuredService?._id : artistInfo?.services[0]}/${artistInfo?._id}`}>
                 <img
                   src={`${item.url}?tr=h-400,w-400,fo-auto`}
                   alt={item.name}
@@ -95,24 +95,30 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
         </Slider>
       </div>
       <div className="usr-all-artist-card-body">
+        <div className="d-flex justify-content-between">
+        <h4 className="usr-all-artist-card-name">
+          {artistInfo?.profile_id?.fullName}
+        </h4>
         <span className="usr-all-artist-card-rating">
           <FaStar />
           4.5
         </span>
-        <h4 className="usr-all-artist-card-name">
-          {artistInfo?.profile_id?.fullName}
-        </h4>
+        </div>
+        <div className="d-flex justify-content-between">
         <span className="usr-all-artist-card-date">
-          18-23 Dec | 5 kilometers away{" "}
+          18-23 Dec
         </span>
+        <span className="usr-all-artist-card-date">
+          5 Kms
+        </span>
+        </div>
         <div className="usr-all-artist-prize-list">
-          <span className="usr-all-artist-card-tag">Charges</span>
           <span className="usr-all-artist-card-prize">
             {formatIndianRupee(
               artistInfo?.pricing?.totalPrice
                 ? artistInfo?.pricing?.totalPrice
                 : 0
-            )}
+            )}/-Onwards
           </span>
         </div>
       </div>

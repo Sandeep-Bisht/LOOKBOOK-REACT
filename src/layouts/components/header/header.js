@@ -6,7 +6,6 @@ import UserMenu from "./userMenu";
 import { AccountOutline } from "mdi-material-ui";
 import mainLogo from "@core/assets/header/main-logo.png";
 import DatePicker from "react-multi-date-picker";
-import ArtistFilter from "./artist-filter";
 
 
 const Header = ({ cities, services }) => {
@@ -43,7 +42,8 @@ const Header = ({ cities, services }) => {
   const [searchQuery,setSearchQuery] = useState({})
   const [selectedLocation,setSelectedLocation] = useState()
   const [selectedService,setSelectedService] = useState()
-  const [selectedDates,setSelectedDates] = useState()
+  const [selectedStartDate,setSelectedStartDate] = useState()
+  const [selectedEndDate,setSelectedEndDate] = useState()
 
   useEffect(() => {
     setCurrentUser(checkAuth());
@@ -61,26 +61,31 @@ const Header = ({ cities, services }) => {
 
   }, [location.pathname]);
 
-  const handleSearch = () =>{
-    if(selectedLocation || selectedService || selectedDates){
+  const handleSearch = () => {
+    if (selectedLocation || selectedService || (selectedStartDate && selectedEndDate)) {
       let payload = {};
-      if(selectedLocation){
+  
+      if (selectedLocation) {
         payload['location'] = selectedLocation;
       }
-      if(selectedService){
+  
+      if (selectedService) {
         payload['service'] = selectedService;
       }
-      if(selectedDates){
-        payload['dates'] = selectedDates.format('DD/MM/YYYY');
+  
+      if (selectedStartDate && selectedEndDate) {
+        payload['startDate'] = selectedStartDate.format('DD/MM/YYYY');
+        payload['endDate'] = selectedEndDate.format('DD/MM/YYYY');
       }
-
+  
       const redirectUrl = `/search?${new URLSearchParams(payload).toString()}`;
       navigate(redirectUrl);
     }
-  }
+  };
+  
 
   const getArtistByServiceID = async (service_id) => {
-    navigate(`/artists/${service_id}`)
+    navigate(`/services/${service_id}`)
   };
 
   return (
@@ -143,7 +148,7 @@ const Header = ({ cities, services }) => {
                       {[...Array(services.length > 3 ? 3 : services.length)].map((_,index)=> {
                         return(
                           <li key={index}>
-                          <Link className="dropdown-item" to={`/artists/${services[index]?._id}`}>
+                          <Link className="dropdown-item" to={`/services/${services[index]?._id}`}>
                            {services[index]?.title}
                           </Link>
                         </li> 
@@ -160,7 +165,7 @@ const Header = ({ cities, services }) => {
                     }
                                                          
                     <li>
-                      <Link className="dropdown-item" to="/artists">
+                      <Link className="dropdown-item" to="/services">
                         All Services
                       </Link>
                     </li>
@@ -231,10 +236,14 @@ const Header = ({ cities, services }) => {
                         <DatePicker 
                         className="new-date"
                           minDate={new Date()}
-                          value={selectedDates}
-                          onChange={setSelectedDates}
+                          value={[selectedStartDate, selectedEndDate]}
+                            onChange={(value) => {
+                            setSelectedStartDate(value && value[0]);
+                            setSelectedEndDate(value && value[1]);
+                          }}                          
                           format="DD/MM/YYYY"
-                         
+                          range
+                          dateSeparator=" to " 
                           render={(value, openCalendar) => {
                             return (
                               <button className="custom-drodown-btn" type="button" onClick={openCalendar}>
@@ -471,9 +480,6 @@ const Header = ({ cities, services }) => {
       </nav>
       
     </header>
-    {location.pathname.startsWith("/artists") &&
-    <ArtistFilter services={services} />
-  }
     </>
   );
 };

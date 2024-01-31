@@ -1,8 +1,13 @@
+.usr-all-artist{
+  padding: 0px 35px;
+}
 .usr-all-artist .usr-all-artist-card {
     height: 450px;
     width: 100%;
     margin-bottom: 30px;
-    padding: 10px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
     cursor: pointer;
   }
   
@@ -25,7 +30,6 @@
   }
   
   .usr-all-artist .usr-all-artist-card .usr-all-artist-card-carsouel .slick-list .slick-track .slick-slide img {
-    height: 300px;
     width: 100%;
     border-radius: 10px;
   }
@@ -132,16 +136,15 @@
   /* --------------------separate artist filter css----------- */
 .usr-artist-filter
 {
+  position: sticky;
+  top: 78px;
+  z-index: 99;
   background: #fff;
     padding: 4px 10px 10px 10px;
     z-index: 10000;
-    /* bottom: 10px; */
-    left: 0;
-    position: fixed;
     width: 100%;
     box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.03);
     font-size: 11px;
-    z-index: 40;
 }
 .usr-artist-filter .slick-prev:before, .usr-artist-filter .slick-next:before 
 {
@@ -160,4 +163,8 @@
 
 .usr-artist-filter .slick-slider .slick-track .slick-slide span{
   text-transform: capitalize;
+}
+
+.usr-artist-filter .btn.active {
+  color: #6d5d4c;
 }
