@@ -422,7 +422,7 @@
 .user-select-package .usr-book-now {
     font-family: AvenirLTProLight;
     display: flex;
-    padding: 12px 30px 12px 30px;
+    padding: 12px 50px 12px 50px;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
@@ -681,6 +681,7 @@
     position: absolute;
     bottom: 10px;
     width: 100%;
+    align-items: center;
 }
 
 .usr-featured-artist-card .prizeButton .prize span.usr-charges,

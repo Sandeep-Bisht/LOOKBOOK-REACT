@@ -46,18 +46,8 @@ const UserMenu = ({props}) => {
             Profile
            </Link>
         </li>
-        <li>
-           <Link to="/" className="dropdown-item">
-           <EmailOutline sx={{ marginRight: 2 }} />
-            Inbox
-           </Link>
-        </li>
-        <li>
-           <Link to="/" className="dropdown-item">
-           <MessageOutline sx={{ marginRight: 2 }} />
-            Chat
-           </Link>
-        </li>
+        
+        
         <li>
            <Link to="/wishlist" className="dropdown-item">
            <MessageOutline sx={{ marginRight: 2 }} />

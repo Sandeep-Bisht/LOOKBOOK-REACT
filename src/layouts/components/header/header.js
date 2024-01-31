@@ -111,10 +111,10 @@ const Header = ({ cities, services }) => {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse  align-items-start" id="navbarSupportedContent">
+          <div className="collapse navbar-collapse  align-items-center" id="navbarSupportedContent">
             <ul className="navbar-nav flex-wrap mx-auto mb-2 mb-lg-0 w-100 d-flex justify-content-center align-items-center ">
               <li className="nav-item">
-                <Link className="nav-link " to="/">
+                <Link className="nav-link active" to="/">
                   Home
                 </Link>
               </li>
@@ -142,7 +142,7 @@ const Header = ({ cities, services }) => {
                       </svg>
                     </span>
                   </button>
-                  <ul className="dropdown-menu">
+                  <ul className="dropdown-menu menu-service-single-dropdown">
                     {services && Array.isArray(services) ? 
                     <>
                       {[...Array(services.length > 3 ? 3 : services.length)].map((_,index)=> {
@@ -414,7 +414,7 @@ const Header = ({ cities, services }) => {
               <>
                 <div className="dropdown user-dropdown">
                   <button
-                    className="common-action btn dropdown-toggle"
+                    className=" border-0 dropdown-toggle header-usr-login-menu"
                     type="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
