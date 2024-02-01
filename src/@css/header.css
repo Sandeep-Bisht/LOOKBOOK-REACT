@@ -479,7 +479,22 @@ background:  #FEFEFE;
 {
   background: #FCF7F2;
 }
-
+.rmdp-ep-shadow:after
+{
+  height: auto;
+  width: auto;
+  border-top: 5px solid #FCF7F2;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #FCF7F2;
+  border-right: 5px solid transparent;
+  box-shadow: 0 0 2px #8798ad;
+}
+.rmdp-ep-arrow {
+  overflow: visible!important;
+  height: auto!important;
+  will-change: transform;
+  z-index: 1!important;
+}
 /* ------------------------media query------------------ */
 
 
