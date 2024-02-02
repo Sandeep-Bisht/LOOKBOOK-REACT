@@ -234,7 +234,7 @@ const Header = ({ cities, services }) => {
                     <div className="col-lg-4 px-0">
                         <div className="usr-header-datePicker">
 
-                        <DatePicker 
+                        {/* <DatePicker 
                         className="new-date"
                         minDate={new Date()}
                             value={[selectedStartDate, selectedEndDate]}
@@ -293,7 +293,10 @@ const Header = ({ cities, services }) => {
                                     />
                                   </svg>
                                   </span>
-                                  <span className="nav-link">{value ? value : 'Date'}</span>
+                                  <span className="nav-link ">
+                                    {value ? value : 'Date'}
+                                    
+                                    </span>
                               
                                 </div>
                                  <div>
@@ -306,7 +309,107 @@ const Header = ({ cities, services }) => {
                               </button>
                             )
                           }}
-                        />
+                        /> */}
+                      <DatePicker 
+  className="new-date"
+  minDate={new Date()}
+  value={[selectedStartDate, selectedEndDate]}
+  onChange={(value) => {
+    console.log("Selected value:", value);  // Add this line for debugging
+    setSelectedStartDate(value && value[0]);
+    setSelectedEndDate(value && value[1]);
+  }}                          
+  format="DD/MM/YYYY"
+  range
+  dateSeparator=" to " 
+  render={(value, openCalendar) => {
+
+    return (
+      <button className="custom-drodown-btn" type="button" onClick={openCalendar}>
+        <div className="left d-flex align-items-center">
+    
+        <span>
+                                  <svg
+                                    width="21"
+                                    height="21"
+                                    viewBox="0 0 21 21"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M15.8425 18H10.5H5.15745C3.96593 18 3 17.0985 3 15.9864V6.01362C3 4.90153 3.96593 4 5.15745 4H15.8425C17.0341 4 18 4.90153 18 6.01362V15.9864C18 17.0985 17.0341 18 15.8425 18Z"
+                                      stroke="#6D5D4C"
+                                      strokeMiterlimit="10"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                    <path
+                                      d="M3 9H18"
+                                      stroke="#6D5D4C"
+                                      strokeMiterlimit="10"
+                                      strokeLinejoin="round"
+                                    />
+                                    <path
+                                      d="M10.5 3V5"
+                                      stroke="#6D5D4C"
+                                      strokeMiterlimit="10"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                    <path
+                                      d="M15 3V5"
+                                      stroke="#6D5D4C"
+                                      strokeMiterlimit="10"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                    <path
+                                      d="M6 3V5"
+                                      stroke="#6D5D4C"
+                                      strokeMiterlimit="10"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                  </svg>
+        </span>
+          <div>
+            {isClicked ?
+              <>
+              
+              <span className="nav-link d-block text-start">Dates</span>
+              <span className="clicked-text">
+                Select Available Date
+              </span>
+              </>
+            :
+            <>
+              
+            {selectedStartDate || selectedEndDate ? <>
+             
+              <span className="nav-link mb-2">
+              {selectedStartDate ? selectedStartDate.format("DD/MM/YYYY") : 'Start Date'}
+            </span>
+          
+            <span className="nav-link">
+              {selectedEndDate ? selectedEndDate.format("DD/MM/YYYY") : 'End Date'}
+            </span>
+            </>
+            :
+            <span className="nav-link">
+              Dates
+            </span>
+            }
+            </>
+            }
+            
+          </div>
+        </div>
+      </button>
+    )
+  }}
+/>
+
+
                       </div>
                     </div>
 

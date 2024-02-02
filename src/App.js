@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
+
 // ** React Perfect Scrollbar Style
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import { RouterProvider } from "react-router-dom";
