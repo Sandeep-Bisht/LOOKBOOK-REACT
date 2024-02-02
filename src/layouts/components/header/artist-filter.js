@@ -35,7 +35,7 @@ const ArtistFilter = () => {
     >
       All Services
     </Link>
-    {services &&
+    {services && Array.isArray(services) &&
       services.map((item, index) => (
         <Link
           key={index}

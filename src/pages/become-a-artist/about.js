@@ -96,7 +96,7 @@ const AboutYou = () => {
                 {
                   allServices.length > 0 ?
                   <>
-                  {allServices.map((service, index) => (
+                  {Array.isArray(allServices) && allServices.map((service, index) => (
                    <div key={index} className={`col-md-6 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
                       <div
                         className={`${
