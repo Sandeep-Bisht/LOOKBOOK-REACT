@@ -1,5 +1,5 @@
 
-import React,{useEffect} from 'react' 
+import React, { useEffect } from 'react'
 import EmergingArtist from "./emergingArtist/index.js"
 import '@css/user/homepage.css'
 // Import aos animation
@@ -15,12 +15,12 @@ import Aos from 'aos';
 
 const Homepage = () => {
 
-    useEffect(() =>{
-    
-       Aos.init();
+    useEffect(() => {
 
-    },[])
-    
+        Aos.init();
+
+    }, [])
+
 
     const { allArtists, allBlogs } = useLoaderData()
 
@@ -122,28 +122,28 @@ const Homepage = () => {
 
                         </div>
                         <div className="usr-button d-flex justify-content-center mt-lg-2">
-                            <Link to="/artists" className="usr-common-action-btn usr-home-banner-action-btn btn">Explore artists</Link>
+                            <Link to="/services" className="usr-common-action-btn usr-home-banner-action-btn btn">Explore artists</Link>
                         </div>
                     </div>
                 </section>
                 <section className="usr-artist-area usr-overlap-section">
                     <div className="container-fluid">
-                       
+
                         <div className="row">
                             <div className="col-lg-12 mx-auto">
                                 <div className="usr-artist-area-wrapper">
 
                                     <div className="row">
                                         <div className="heading-box-one">
-                                            <h2 className="common-heading fw-400"  data-aos="fade-up" data-aos-delay="100">The Experts</h2>
+                                            <h2 className="common-heading fw-400" data-aos="fade-up" data-aos-delay="100">The Experts</h2>
                                         </div>
 
                                         <div className="col-lg-5 mx-auto">
                                             <ul id="cards">
-                                                {console.log(allArtists,"allArtists ka data")}
+                                                {console.log(allArtists, "allArtists ka data")}
                                                 {[...Array(allArtists.length > 5 ? 5 : allArtists.length)].map((_, index) => {
                                                     return (
-                                                      
+
                                                         <li className="card usr-artist-area-card" id={`card${index + 1}`}>
                                                             <div className="card-body">
                                                                 <div className="row align-items-center ">
@@ -167,16 +167,16 @@ const Homepage = () => {
                                                                                     <div className="usr-expert-pic-charges-box">
                                                                                         <p className="usr-expert-pic-name ">
                                                                                             {formatIndianRupee(
-  allArtists[index]?.featuredService
-    ? allArtists[index]?.pricing.find(
-        (price) => price.service === allArtists[index]?.featuredService?._id
-      )?.totalPrice
-    : allArtists[index]?.pricing.find(
-        (price) => price.service === allArtists[index]?.services[0]
-      )?.totalPrice
-)}
+                                                                                                allArtists[index]?.featuredService
+                                                                                                    ? allArtists[index]?.pricing.find(
+                                                                                                        (price) => price.service === allArtists[index]?.featuredService?._id
+                                                                                                    )?.totalPrice
+                                                                                                    : allArtists[index]?.pricing.find(
+                                                                                                        (price) => price.service === allArtists[index]?.services[0]
+                                                                                                    )?.totalPrice
+                                                                                            )}
                                                                                             <span className="ms-1">/-</span>
-  
+
                                                                                         </p>
                                                                                         <span className="usr-expert-pic-profile">
                                                                                             onwards
@@ -237,7 +237,7 @@ const Homepage = () => {
                                             </ul>
                                         </div>
                                         <div className="heading-box-two">
-                                            <h2 className="common-heading fw-400"  data-aos="fade-up" data-aos-delay="100">at LookBook</h2>
+                                            <h2 className="common-heading fw-400" data-aos="fade-up" data-aos-delay="100">at LookBook</h2>
                                         </div>
                                     </div>
 
@@ -396,7 +396,15 @@ const Homepage = () => {
                                                 <div className="prizeButton">
                                                     <div className="prize">
 
-                                                        <span className="usr-price">{formatIndianRupee(allArtists[index]?.pricing?.totalPrice)}</span>
+                                                        <span className="usr-price">{formatIndianRupee(
+  allArtists[index]?.featuredService
+    ? allArtists[index]?.pricing.find(
+        (price) => price.service === allArtists[index]?.featuredService?._id
+      )?.totalPrice
+    : allArtists[index]?.pricing.find(
+        (price) => price.service === allArtists[index]?.services[0]
+      )?.totalPrice
+)}</span>
                                                         <span className="usr-price">Onwards</span>
                                                     </div>
                                                     <div className="reserveButton">
@@ -420,7 +428,7 @@ const Homepage = () => {
                             <div className="col-lg-12">
 
                                 <div className="usr-button d-flex justify-content-center mt-lg-5">
-                                    <Link to="/" className="usr-common-action-btn usr-home-banner-action-btn btn d-inline">
+                                    <Link to="/services" className="usr-common-action-btn usr-home-banner-action-btn btn d-inline">
                                         View All Artist
                                     </Link></div>
                             </div>
@@ -453,7 +461,7 @@ const Homepage = () => {
                                                         <div className="usr-blog-main-content">
                                                             <img src={blog.featuredImage.url} className="img-fluid" />
                                                             <div className="usr-card-body">
-                                                                <h4 className="usr-blog-heading">{blog.title}</h4>
+                                                                <h4 className="usr-blog-heading">{truncateDescription(blog.title, 30)}</h4>
                                                                 <p className="usr-blog-para">
                                                                     {truncateDescription(blog.description, 75)}
                                                                 </p>
