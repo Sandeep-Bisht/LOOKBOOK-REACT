@@ -324,6 +324,10 @@ border-radius: 20px;
   text-align: left;
   padding-top: 6px;
 }
+.header .usr-search-container .custom-drodown-btn .clicked-text span.nav-link{
+  opacity: 1!important;
+  color: #6D5D4C!important;
+}
 .usr-search-container .home-selction-form
 {
   padding: 2px;
