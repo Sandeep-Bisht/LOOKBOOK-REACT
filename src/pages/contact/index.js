@@ -20,6 +20,11 @@ const ContactPage = () => {
     formState: { errors },
   } = useForm();
 
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const mobileRegex = /^[0-9]{0,10}$/;
+
   const onSubmit = async (data) => {
     console.log(data, "checkthe data");
     const payLoad = {
@@ -32,7 +37,7 @@ const ContactPage = () => {
       const response = await axiosAuth.post("queries/submit-query", payLoad);
       if (response.statusText == "OK") {
         reset();
-        toast.success("Your Query Sumbited Sucessfully");
+        toast.success("Your Query Sumbitted Successfully", {autoClose:3000});
       }
     } catch (error) {
       console.log(error);
@@ -169,22 +174,33 @@ const ContactPage = () => {
                     className="form-contact-control"
                   />
                   {errors.name && (
-                    <span className="error-mssg">This field is required</span>
+                     <span className="error-mssg">This field is required</span>
                   )}
                   <TextField
-                    {...register("email", { required: true })}
+                    {...register("email", {
+                      required: true,
+                      pattern: emailRegex,
+                    })}
                     label="Email*"
                     variant="outlined"
                     fullWidth
                     margin="normal"
-
-                    // className="form-contact-control"
+                    className="form-contact-control"
+                    // className="form-contact-control"8
                   />
                   {errors.email && (
-                    <span className="error-mssg">This field is required</span>
+                    <span className="error-mssg">
+                      {errors.email.type === "required" &&
+                        "This field is required"}
+                      {errors.email.type === "pattern" &&
+                        "Invalid email format"}
+                    </span>
                   )}
                   <TextField
-                    {...register("mobile", { required: true })}
+                    {...register("mobile", {
+                      required: true,
+                      pattern: mobileRegex,
+                    })}
                     label="Phone number"
                     variant="outlined"
                     fullWidth
@@ -192,7 +208,12 @@ const ContactPage = () => {
                     // className="form-contact-control"
                   />
                   {errors.mobile && (
-                    <span className="error-mssg">This field is required</span>
+                    <span className="error-mssg">
+                      {errors.mobile.type === "required" &&
+                        "This field is required"}
+                      {errors.mobile.type === "pattern" &&
+                        "Invalid mobile number format"}
+                    </span>
                   )}
                   <TextField
                     {...register("message", { required: true })}
