@@ -135,7 +135,7 @@ const ArtistSingle = () => {
                                                                 {artistData?.products && Array.isArray(artistData?.products) && artistData?.products.length > 0 ?
                                                                     artistData?.products.map((product, ind) => {
                                                                         return (
-                                                                            <img src={`${product?.image?.url ? product?.image?.url : null}?tr=h-50,w-100,fo-auto`} key={product._id + ind} className="me-2" />
+                                                                            <img src={`${product?.image?.url ? product?.image?.url : null}`} key={product._id + ind} className="me-2 usr-artist-single-brand-logo" />
                                                                         )
                                                                     })
                                                                     :
