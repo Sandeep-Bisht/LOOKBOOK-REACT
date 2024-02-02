@@ -141,7 +141,7 @@ const Certificates = () => {
                 {(certificates && certificates.length > 0) ||
                 (binaryFiles && binaryFiles.length > 0) ? (
                   <>
-                    {certificates.map((item, index) => {
+                    {Array.isArray(certificates) && certificates.map((item, index) => {
                       return (
                         <div className="col-md-6 p-3">
                           <div className="custom-kyc-img-wrapper">
@@ -183,7 +183,7 @@ const Certificates = () => {
                         </div>
                       );
                     })}
-                    {binaryFiles.map((item) => {
+                    {Array.isArray(binaryFiles) && binaryFiles.map((item) => {
                       let src =
                         item.type == "application/pdf"
                           ? PdfIcon

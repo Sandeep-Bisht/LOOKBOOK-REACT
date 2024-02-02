@@ -27,7 +27,7 @@ const SetupPrice = () => {
 
   const gstPerc = 18;
   const serviceChargePer = 5;
-  const initialRows = artistServices && artistServices?.pricing.map((service, index) => ({
+  const initialRows = artistServices && Array.isArray(artistServices) && artistServices?.pricing.map((service, index) => ({
     id: index + 1,
     service: service.service.title,
     sessionTime: service.sessionTime,
@@ -95,7 +95,7 @@ const SetupPrice = () => {
     if(newRow.price >= 5000){
       updateArtistPricing(newRow);
       const updatedRow = { ...newRow, isNew: false };
-      setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
+      setRows(rows && Array.isArray(rows) && rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
       return updatedRow;
     }   
   };

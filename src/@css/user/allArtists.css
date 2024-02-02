@@ -2,7 +2,6 @@
   padding: 0px 35px;
 }
 .usr-all-artist .usr-all-artist-card {
-    height: 450px;
     width: 100%;
     margin-bottom: 30px;
     background-color: #fff;
@@ -94,11 +93,11 @@
   .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-card-name {
     color: #6D5D4C;
     font-family: Forum;
-    font-size: 30px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     text-transform: capitalize;
   }
   
@@ -146,6 +145,7 @@
     box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.03);
     font-size: 11px;
 }
+
 .usr-artist-filter .slick-prev:before, .usr-artist-filter .slick-next:before 
 {
    color: #6D5D4C;
@@ -167,4 +167,7 @@
 
 .usr-artist-filter .btn.active {
   color: #6d5d4c;
+}
+.usr-all-artist .All-artist-card-main{
+  padding: 0px 8px;
 }

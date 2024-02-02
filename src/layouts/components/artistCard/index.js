@@ -80,7 +80,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
             }
         </div>
         <Slider className="usr-all-artist-card-carsouel" {...settings}>
-          {artistInfo?.gallery.map((item, index) => {
+          {Array.isArray(artistInfo?.gallery) && artistInfo?.gallery.map((item, index) => {
             return (
               <div key={`gallery${index}`}>
                 <Link to={`/services/${artistInfo?.featuredService ? artistInfo?.featuredService?._id : artistInfo?.services[0]}/${artistInfo?._id}`}>
@@ -112,7 +112,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
           5 Kms
         </span>
         </div>
-        <div className="usr-all-artist-prize-list">
+        <div className="usr-all-artist-prize-list mt-2">
           <span className="usr-all-artist-card-prize">
             {formatIndianRupee(
               artistInfo?.pricing?.totalPrice

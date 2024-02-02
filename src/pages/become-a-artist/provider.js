@@ -78,7 +78,7 @@ const ArtistRequestProvider = () => {
                                     null}
 
                                 {
-                                    artistRequests.map((item) => {
+                                   Array.isArray(artistRequests) &&  artistRequests.map((item) => {
                                         if (item.status !== 'progress') {
                                             return (
                                                 <div key={item.createdAt}>

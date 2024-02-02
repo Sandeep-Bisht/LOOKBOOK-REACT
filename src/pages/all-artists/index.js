@@ -18,7 +18,7 @@ const AllArtists = () => {
           <div className="row my-5">
             {allArtists && Array.isArray(allArtists) && allArtists.map((artist,ind)=>{
               return (
-                <div className="col-md-3" key={`artist${ind}`}>
+                <div className="col-md-3 All-artist-card-main" key={`artist${ind}`}>
                   <ArtistCard artistInfo={artist} wishlist={wishlist} />
             </div>
               )

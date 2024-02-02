@@ -53,7 +53,7 @@ const ArtistSingle = () => {
     const galleryData = (data) => {
         let newData = [];
 
-        data.map((item) => newData.push({ original: item.url, thumbnail: item.url, originalClass: "usr-single-img", thumbnailClass: "usr-single-thumbnail", originalAlt: "Featured Image", thumbnailAlt: "Thumbnail Image" }))
+        Array.isArray(data) && data.map((item) => newData.push({ original: item.url, thumbnail: item.url, originalClass: "usr-single-img", thumbnailClass: "usr-single-thumbnail", originalAlt: "Featured Image", thumbnailAlt: "Thumbnail Image" }))
         return newData;
     }
 
@@ -372,9 +372,22 @@ const ArtistSingle = () => {
                                             </div>
                                             <div className="usr-artist-charges">
                                                 <h6 className="fw-700">Charges:</h6>
-                                                {/* <p>
-                                        <span>{artistData?.pricing?.totalPrice ? formatIndianRupee(artistData?.pricing?.totalPrice) : null}</span></p> */}
-                                                <p>Party Makeup:<span className="font-style-italic">25000/-</span></p>
+                                                {
+                                                    Array.isArray(artistData.pricing) && artistData.pricing.map((item, index) => {
+                                                        const foundService = Array.isArray(artistData.services) && artistData.services.find(service => service._id === item.service);
+
+                                                        if (foundService) {
+                                                            return (
+                                                                <p key={index}>
+                                                                    {foundService.title}:
+                                                                    <span className="font-style-italic">{item.price}/-</span>
+                                                                </p>
+                                                            );
+                                                        }
+
+                                                        return null; // You may want to handle the case where the service is not found.
+                                                    })
+                                                }
                                                 <p>Wedding Function:<span className="font-style-italic">35000/-</span></p>
                                                 <p>Bridal Makeup:<span className="font-style-italic">45000/-</span></p>
                                                 <p>Bridal Relatives:<span className="font-style-italic">20000/-</span></p>
@@ -384,7 +397,7 @@ const ArtistSingle = () => {
                                                 <p>Bridal Makeup + One Party Makeup</p>
                                             </div>
                                             <div className="usr-card-booking-button">
-                                        
+
                                                 <button className="usr-btn fw-300" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Book Now</button>
 
 
@@ -400,22 +413,22 @@ const ArtistSingle = () => {
                                 <div class="modal-content">
                                     <div class="modal-header border-0">
                                         <h1 class="usr-artist-booking-heading fw-700">Select Service you want</h1>
-                                      
+
                                     </div>
                                     <div class="modal-body usr-artist-single-modal-body">
                                         <div className="usr-artist-single-modal-body-wrapper">
-                                        <button class="usr-common-action-btn " type="button">
-                                            Party Makeup
-                                        </button>
-                                        <button class="usr-common-action-btn " type="button">
-                                            Wedding Function
-                                        </button>
-                                        <button class="usr-common-action-btn" type="button">
-                                            Bridal Makeup
-                                        </button>
-                                        <button class="usr-common-action-btn usr-home-banner-action-btn" type="button">
-                                            Bridal Relatives
-                                        </button>
+                                            <button class="usr-common-action-btn " type="button">
+                                                Party Makeup
+                                            </button>
+                                            <button class="usr-common-action-btn " type="button">
+                                                Wedding Function
+                                            </button>
+                                            <button class="usr-common-action-btn" type="button">
+                                                Bridal Makeup
+                                            </button>
+                                            <button class="usr-common-action-btn usr-home-banner-action-btn" type="button">
+                                                Bridal Relatives
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="modal-footer border-0  py-xl-4 py-lg-4 justify-content-center">
@@ -428,86 +441,86 @@ const ArtistSingle = () => {
                             <div className="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
                                 <div className="modal-dialog modal-dialog-centered">
                                     <div className="modal-content">
-                                     
+
                                         <div className="modal-body py-4">
-                                        <div className="row">
-                                            <div className="col-lg-6 usr-artist-single-modal-separator">
+                                            <div className="row">
+                                                <div className="col-lg-6 usr-artist-single-modal-separator">
 
-                                                <Calendar
+                                                    <Calendar
 
-                                                    className="common-calendor-si"
-                                                    minDate={new Date()}
-                                                />
-                                            </div>
-                                            <div className="col-lg-6">
-                                                <div className="usr-artist-single-modal-time-box">
-                                                    <div className="usr-artist-single-modal-time-box-upper">
-                                                       <div className="usr-artist-single-modal-time-box-upper-top">
+                                                        className="common-calendor-si"
+                                                        minDate={new Date()}
+                                                    />
+                                                </div>
+                                                <div className="col-lg-6">
+                                                    <div className="usr-artist-single-modal-time-box">
+                                                        <div className="usr-artist-single-modal-time-box-upper">
+                                                            <div className="usr-artist-single-modal-time-box-upper-top">
+                                                                <p className="usr-artist-single-modal-time-box-heading">
+                                                                    Select Number of Sessions:
+                                                                </p>
+                                                            </div>
+                                                            <div className="usr-artist-single-modal-time-box-upper-bottom">
+                                                                <button class="usr-session-btn">1</button>
+                                                                <button class="usr-session-btn">2</button>
+                                                                <button class="usr-session-btn">3</button>
+                                                                <button class="usr-session-btn">4</button>
+                                                            </div>
+                                                        </div>
+                                                        <div className="usr-artist-single-modal-time-box-lower">
                                                             <p className="usr-artist-single-modal-time-box-heading">
-                                                            Select Number of Sessions:
-                                                            </p>
-                                                       </div>
-                                                       <div className="usr-artist-single-modal-time-box-upper-bottom">
-                                                       <button class="usr-session-btn">1</button>
-                                                       <button class="usr-session-btn">2</button>
-                                                       <button class="usr-session-btn">3</button>
-                                                       <button class="usr-session-btn">4</button>
-                                                       </div>
-                                                    </div>
-                                                    <div className="usr-artist-single-modal-time-box-lower">
-                                                    <p className="usr-artist-single-modal-time-box-heading">
-                                                            Select Number of Sessions:
+                                                                Select Number of Sessions:
                                                             </p>
                                                             <div className="usr-artist-single-modal-time-box-upper-bottom">
-                                                        <button className="usr-artist-single-modal-time-box-btn">
-                                                            <span>10:00 am</span>
-                                               
-                                                        </button>
-                                                        <button className="usr-artist-single-modal-time-box-btn">
-                                                            <span>11:00 am</span>
-                                                          
-                                                        </button>
-                                                        <button className="usr-artist-single-modal-time-box-btn">
-                                                            <span>12:00 pm</span>
-                                         
-                                                </button>
-                                                        <button className="usr-artist-single-modal-time-box-btn ">
-                                                            <span>01:00 pm</span>
-                                                        
-                                                        </button>
-                                                        <button className="usr-artist-single-modal-time-box-btn ">
-                                                            <span>02:00 pm</span>
-                                                
-                                                        </button>
-                                                        <button className="usr-artist-single-modal-time-box-btn ">
-                                                            <span>03:00 pm</span>
-                                                
-                                                        </button>
-                                                        <button className="usr-artist-single-modal-time-box-btn ">
-                                                            <span>04:00 pm</span>
-                                                
-                                                        </button>
-                                                        <button className="usr-artist-single-modal-time-box-btn ">
-                                                            <span>05:00 pm</span>
-                                                
-                                                        </button></div>
-                                                    </div>
-                                                    <div className="d-flex justify-content-center">
-                                                    <button className="usr-common-action-btn me-2" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Book more</button>
-                                                        <button class="usr-common-action-btn">Confirm</button>
-                                                    </div>
-                                                    <div>
+                                                                <button className="usr-artist-single-modal-time-box-btn">
+                                                                    <span>10:00 am</span>
 
+                                                                </button>
+                                                                <button className="usr-artist-single-modal-time-box-btn">
+                                                                    <span>11:00 am</span>
+
+                                                                </button>
+                                                                <button className="usr-artist-single-modal-time-box-btn">
+                                                                    <span>12:00 pm</span>
+
+                                                                </button>
+                                                                <button className="usr-artist-single-modal-time-box-btn ">
+                                                                    <span>01:00 pm</span>
+
+                                                                </button>
+                                                                <button className="usr-artist-single-modal-time-box-btn ">
+                                                                    <span>02:00 pm</span>
+
+                                                                </button>
+                                                                <button className="usr-artist-single-modal-time-box-btn ">
+                                                                    <span>03:00 pm</span>
+
+                                                                </button>
+                                                                <button className="usr-artist-single-modal-time-box-btn ">
+                                                                    <span>04:00 pm</span>
+
+                                                                </button>
+                                                                <button className="usr-artist-single-modal-time-box-btn ">
+                                                                    <span>05:00 pm</span>
+
+                                                                </button></div>
+                                                        </div>
+                                                        <div className="d-flex justify-content-center">
+                                                            <button className="usr-common-action-btn me-2" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Book more</button>
+                                                            <button class="usr-common-action-btn">Confirm</button>
+                                                        </div>
+                                                        <div>
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                     
+
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
 
 

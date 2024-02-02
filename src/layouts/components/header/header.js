@@ -42,8 +42,9 @@ const Header = ({ cities, services }) => {
   const [searchQuery,setSearchQuery] = useState({})
   const [selectedLocation,setSelectedLocation] = useState()
   const [selectedService,setSelectedService] = useState()
-  const [selectedStartDate,setSelectedStartDate] = useState()
   const [selectedEndDate,setSelectedEndDate] = useState()
+  const [selectedStartDate,setSelectedStartDate] = useState()
+
 
   useEffect(() => {
     setCurrentUser(checkAuth());
@@ -235,8 +236,8 @@ const Header = ({ cities, services }) => {
 
                         <DatePicker 
                         className="new-date"
-                          minDate={new Date()}
-                          value={[selectedStartDate, selectedEndDate]}
+                        minDate={new Date()}
+                            value={[selectedStartDate, selectedEndDate]}
                             onChange={(value) => {
                             setSelectedStartDate(value && value[0]);
                             setSelectedEndDate(value && value[1]);
