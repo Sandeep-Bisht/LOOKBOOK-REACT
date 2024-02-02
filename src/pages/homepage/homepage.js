@@ -399,6 +399,15 @@ const Homepage = () => {
                                         )
                                     })}
                     </div>
+                    <div className="row">
+                      <div className="col-lg-12">
+                             
+                    <div className="usr-button d-flex justify-content-center mt-lg-5">
+                            <Link to="/" className="usr-common-action-btn usr-home-banner-action-btn btn d-inline">
+                               View All Artist
+                             </Link></div>
+                      </div>
+                    </div>
                 </div>
             </section>
             </>
