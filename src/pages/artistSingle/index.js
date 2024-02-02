@@ -388,9 +388,9 @@ const ArtistSingle = () => {
                                                         return null; // You may want to handle the case where the service is not found.
                                                     })
                                                 }
-                                                <p>Wedding Function:<span className="font-style-italic">35000/-</span></p>
+                                                {/* <p>Wedding Function:<span className="font-style-italic">35000/-</span></p>
                                                 <p>Bridal Makeup:<span className="font-style-italic">45000/-</span></p>
-                                                <p>Bridal Relatives:<span className="font-style-italic">20000/-</span></p>
+                                                <p>Bridal Relatives:<span className="font-style-italic">20000/-</span></p> */}
                                             </div>
                                             <div className="usr-artist-order">
                                                 <h6 className="fw-700">Minimum Order:</h6>

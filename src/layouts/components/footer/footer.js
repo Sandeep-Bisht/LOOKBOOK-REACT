@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import '@css/footer.css'
 import instagram from "@core/assets/footer/instagram.png"
@@ -8,11 +8,8 @@ import twitter from "@core/assets/footer/twitter.png"
 import linkedin from "@core/assets/footer/LinkedIn.png"
 import youtube from "@core/assets/footer/youtube.png"
 const Footer = () => {
-    const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
-    useEffect(() => {
-      setCurrentYear(new Date().getFullYear());
-    }, []);
+    const currentYear = new Date().getFullYear();
   
     return (
         <>

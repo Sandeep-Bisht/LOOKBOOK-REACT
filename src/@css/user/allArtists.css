@@ -139,11 +139,10 @@
   top: 78px;
   z-index: 99;
   background: #fff;
-    padding: 4px 10px 10px 10px;
-    z-index: 10000;
-    width: 100%;
-    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.03);
-    font-size: 11px;
+  padding: 4px 10px 10px 10px;
+  width: 100%;
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.03);
+  font-size: 11px;
 }
 
 .usr-artist-filter .slick-prev:before, .usr-artist-filter .slick-next:before 
