@@ -94,9 +94,9 @@ const DescribeYourself = () => {
               <div className="row describe-yourself-allProducts">
                 {allProducts && Array.isArray(allProducts) ? (
                   <>
-                    {allProducts.length > 0 ? (
+                    {allProducts.length > 0  && Array.isArray(allProducts) ? (
                       <>
-                        {Array.isArray(allProducts) && allProducts.map((product, index) => (
+                        { allProducts.map((product, index) => (
                           <div key={index} className={`col-md-3 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
                             <div
                               className={`artist-card ${

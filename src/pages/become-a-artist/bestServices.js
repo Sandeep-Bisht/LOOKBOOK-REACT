@@ -52,9 +52,9 @@ const BestServices = () => {
                 {(options && Array.isArray(options)) ?
                 <>
                 {
-                  options.length > 0 ?
+                  options.length > 0 && Array.isArray(options) ?
                   <>
-                  {Array.isArray(options) && options.map((service, index) => (
+                  {options.map((service, index) => (
                    <div key={index} className={`col-md-6 ${attemptedNextWithoutSelection && (!selectedService || selectedService == '') ? 'border-highlight' : ''}`}>
                       <div
                         className={`${

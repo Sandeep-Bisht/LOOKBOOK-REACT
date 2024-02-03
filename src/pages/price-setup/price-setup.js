@@ -5,12 +5,12 @@ import { useLoaderData } from "react-router-dom";
 
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/DeleteOutlined";
-import SaveIcon from "@mui/icons-material/Save";
-import CancelIcon from "@mui/icons-material/Close";
+// import Button from "@mui/material/Button";
+// import AddIcon from "@mui/icons-material/Add";
+// import EditIcon from "@mui/icons-material/Edit";
+// import DeleteIcon from "@mui/icons-material/DeleteOutlined";
+// import SaveIcon from "@mui/icons-material/Save";
+// import CancelIcon from "@mui/icons-material/Close";
 import {
   GridRowModes,
   DataGrid,
@@ -95,7 +95,7 @@ const SetupPrice = () => {
     if(newRow.price >= 5000){
       updateArtistPricing(newRow);
       const updatedRow = { ...newRow, isNew: false };
-      setRows(rows && Array.isArray(rows) && rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
+      setRows(rows && rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
       return updatedRow;
     }   
   };
@@ -152,7 +152,7 @@ const SetupPrice = () => {
         if (isInEditMode) {
           return [
             <GridActionsCellItem
-              icon={<SaveIcon />}
+              // icon={<SaveIcon />}
               label="Save"
               sx={{
                 color: "primary.main",
@@ -160,7 +160,7 @@ const SetupPrice = () => {
               onClick={handleSaveClick(id)}
             />,
             <GridActionsCellItem
-              icon={<CancelIcon />}
+              // icon={<CancelIcon />}
               label="Cancel"
               className="textPrimary"
               onClick={handleCancelClick(id)}
@@ -171,7 +171,7 @@ const SetupPrice = () => {
 
         return [
           <GridActionsCellItem
-            icon={<EditIcon />}
+            // icon={<EditIcon />}
             label="Edit"
             className="textPrimary"
             onClick={handleEditClick(id)}

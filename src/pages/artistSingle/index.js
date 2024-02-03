@@ -53,7 +53,7 @@ const ArtistSingle = () => {
     const galleryData = (data) => {
         let newData = [];
 
-        Array.isArray(data) && data.map((item) => newData.push({ original: item.url, thumbnail: item.url, originalClass: "usr-single-img", thumbnailClass: "usr-single-thumbnail", originalAlt: "Featured Image", thumbnailAlt: "Thumbnail Image" }))
+        data.map((item) => newData.push({ original: item.url, thumbnail: item.url, originalClass: "usr-single-img", thumbnailClass: "usr-single-thumbnail", originalAlt: "Featured Image", thumbnailAlt: "Thumbnail Image" }))
         return newData;
     }
 
@@ -373,7 +373,7 @@ const ArtistSingle = () => {
                                             <div className="usr-artist-charges">
                                                 <h6 className="fw-700">Charges:</h6>
                                                 {
-                                                    Array.isArray(artistData.pricing) && artistData.pricing.map((item, index) => {
+                                                        artistData.pricing.map((item, index) => {
                                                         const foundService = Array.isArray(artistData.services) && artistData.services.find(service => service._id === item.service);
 
                                                         if (foundService) {

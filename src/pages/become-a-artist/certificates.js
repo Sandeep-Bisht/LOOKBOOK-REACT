@@ -138,10 +138,10 @@ const Certificates = () => {
           <div className="container">
             <div className="row gallery-row g-3">
               <>
-                {(certificates && certificates.length > 0) ||
-                (binaryFiles && binaryFiles.length > 0) ? (
+                {(certificates && certificates.length > 0) && Array.isArray(certificates) ||
+                (binaryFiles && binaryFiles.length > 0) && Array.isArray(binaryFiles) ? (
                   <>
-                    {Array.isArray(certificates) && certificates.map((item, index) => {
+                    { certificates.map((item, index) => {
                       return (
                         <div className="col-md-6 p-3">
                           <div className="custom-kyc-img-wrapper">
@@ -183,7 +183,7 @@ const Certificates = () => {
                         </div>
                       );
                     })}
-                    {Array.isArray(binaryFiles) && binaryFiles.map((item) => {
+                    {binaryFiles.map((item) => {
                       let src =
                         item.type == "application/pdf"
                           ? PdfIcon
