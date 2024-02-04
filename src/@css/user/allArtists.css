@@ -137,7 +137,7 @@
 {
   position: sticky;
   top: 78px;
-  z-index: 99;
+  z-index: 95;
   background: #fff;
   padding: 4px 10px 10px 10px;
   width: 100%;
@@ -169,4 +169,9 @@
 }
 .usr-all-artist .All-artist-card-main{
   padding: 0px 8px;
+}
+
+.usr-artist-filter .service-title-filter {
+  font-size: 12px;
+  font-weight: 500;
 }
