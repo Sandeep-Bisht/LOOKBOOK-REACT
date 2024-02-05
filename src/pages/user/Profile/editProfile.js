@@ -3,13 +3,16 @@ import "@css/user/profile.css";
 import { useForm } from "react-hook-form";
 import { TextField, Select, Button } from "@mui/material";
 import { MenuItem, InputLabel, FormControl } from "@mui/material";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import boyProfile from "@core/assets/contact/boyImage.png";
+import commenProfile from "@core/assets/contact/withoutGender.jpg"
+import girlProfile from "@core/assets/contact/girlImageIcon.jpg"
 import { axiosAuth } from "configs/axiosInstance";
 
 const EditProfile = () => {
   const userProfile = useLoaderData();
-  const [imgSrc, setImgSrc] = useState(userProfile?.image?.thumbnailUrl ? userProfile.image.thumbnailUrl : "/images/avatars/1.png");
+  const [imgSrc, setImgSrc] = useState(userProfile?.image ? userProfile?.image.thumbnailUrl :  userProfile?.gender=="male" ? boyProfile : userProfile?.gender=="female" ? girlProfile : commenProfile);
   const [userData, setUserData] = useState(userProfile);
   const [loading,setLoading] = useState(false);
   const [profileImage, setProfileImage] = useState(userProfile.image && userProfile.image);
@@ -21,6 +24,8 @@ const EditProfile = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    setError,
+    clearErrors,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -48,14 +53,22 @@ const EditProfile = () => {
       {
         toast.success('Profile updated Successfully!');
         setLoading(false)
-        navigate("/user/new-profile")
+        navigate("/user/profile")
       }
+        if(response.duplicateKey=="email"){
+          setError('email',{
+            type:"manual",
+            message:"This email is already exits"
+          })
+        }
+        else if(response.duplicateKey=="alias"){
+          setError('email',{
+            type:"manual",
+            message:"This alias is already exits"
+          })
+        }
     } catch (error) {
       toast.warn('Failed to update profile!');
-      console.log(
-        error.message ||
-        "An error occured while submiting the  user  profile data."
-      );
     }
   };
 
@@ -74,6 +87,19 @@ const EditProfile = () => {
 
     }
   };
+
+
+const handleAliasChange = (newValue) => {
+  const regex =/^[a-z_-]*$/;
+  if (regex.test(newValue)) {
+    clearErrors("")
+    } else {
+    setError("alias", {
+      type: "manual",
+      message: "Invalid alias. Please use only lowercase letters, underscores, and hyphens."
+    });
+  }
+};
 
   return (
     <div>
@@ -127,7 +153,9 @@ const EditProfile = () => {
               <div className="user-update-form">
                 {/* ================== Form start here ========================  */}
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <TextField
+                  <div className="row">
+                    <div className="col-6">
+                    <TextField
                     {...register("fullName", {
                       required: "FullName is required",
                     })}
@@ -138,30 +166,7 @@ const EditProfile = () => {
                     margin="normal"
                     defaultValue={userData?.fullName || ""}
                   />
-
-                  <TextField
-                    {...register("email", {
-                      required: "Email is required",
-                      pattern: {
-                        value: /^\S+@\S+$/i,
-                        message: "Please enter a valid email address",
-                      },
-                    })}
-                    type="email"
-                    label="Enter your Email"
-                    variant="outlined"
-                    name="email"
-                    fullWidth
-                    margin="normal"
-                    defaultValue={userData?.email || ""}
-                    InputProps={{
-                      readOnly:
-                        userData?.usertype == "google" ||
-                        userData?.usertype == "email",
-                    }}
-                  />
-
-                  <TextField
+                    <TextField
                     {...register("mobile", {
                       required: "Mobile number is required",
                       pattern: {
@@ -180,8 +185,7 @@ const EditProfile = () => {
                       readOnly: userData?.usertype === "mobile",
                     }}
                   />
-
-                  <FormControl fullWidth variant="outlined" margin="normal">
+                    <FormControl fullWidth variant="outlined" margin="normal">
                     <InputLabel id="gender-label">Select a Gender</InputLabel>
                     <Select
                       labelId="gender-label"
@@ -204,23 +208,76 @@ const EditProfile = () => {
                       </span>
                     )} */}
                   </FormControl>
-
-                  <TextField
-                    {...register("dob", {
-                      required: "Please select your DOB",
-                    })}
-                    variant="outlined"
-                    name="dob"
-                    fullWidth
-                    type="date"
-                    margin="normal"
-                    placeholder="DD/MM/YYYY"
-                    defaultValue={userData?.dob || ""}
-                  />
-
-                  <button className="user-update-form-button mt-2">
-                    Update Changes
+                  <div className="row">
+                      <div className="col-6">
+                      <button className="user-update-form-button mt-2">
+                    Update
                   </button>
+                      </div>
+                      <div className="col-6">
+                      <Link to="/user/profile" type="button" className="user-update-form-button text-center link-cancle-button mt-2">
+                    Cancle
+                  </Link>
+                      </div>
+                    </div>
+                    </div>
+                    <div className="col-6">
+                    <TextField
+                    {...register("alias")}
+                    name="alias"
+                    label="Alias"
+                    variant="outlined"
+                    fullWidth
+                    margin="normal"
+                    defaultValue={userData?.alias || ""}
+                    onChange={(e) => handleAliasChange(e.target.value)}
+                    error={Boolean(errors.alias)}
+                    helperText={errors.alias?.message}
+                  />  
+                    <TextField
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value: /^\S+@\S+$/i,
+                        message: "Please enter a valid email address",
+                      },
+                    })}
+                    type="email"
+                    label="Enter your Email"
+                    variant="outlined"
+                    name="email"
+                    fullWidth
+                    margin="normal"
+                    defaultValue={userData?.email || ""}
+                    InputProps={{
+                      readOnly:
+                        userData?.usertype == "google" ||
+                        userData?.usertype == "email",
+                    }}
+                    error={Boolean(errors.email)}
+                    helperText={errors.email?.message}
+                  />
+      <FormControl fullWidth variant="outlined" margin="normal">
+        <TextField
+        className="my-0"
+          {...register("dob")}
+          labelId="dob"
+          label="Date of Birth"
+          variant="outlined"
+          name="dob"
+          fullWidth
+          type="date"
+          margin="normal"
+          // placeholder="Date of Birth"
+          defaultValue={userData?.dob || ""}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+
+      </FormControl>
+                      </div>
+                  </div>
                 </form>
 
                 {/* =================Form ends ======================= */}

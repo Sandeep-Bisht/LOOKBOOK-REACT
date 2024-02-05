@@ -1,7 +1,9 @@
 import React from "react";
 import "@css/user/profile.css";
 import "@css/common.css";
-import profileImg from "@core/assets/5.jpg";
+import boyProfile from "@core/assets/contact/boyImage.png";
+import commenProfile from "@core/assets/contact/withoutGender.jpg"
+import girlProfile from "@core/assets/contact/girlImageIcon.jpg"
 import Slider from "react-slick";
 import { Link, useLoaderData } from "react-router-dom";
 
@@ -38,7 +40,7 @@ const NewProfile = () => {
           <div className="row"> 
             <div className="col-md-12 col-lg-4 mb-3">
               <div className="usr-new-profile-photo">
-                <img src={userData?.image ? userData?.image.thumbnailUrl :  profileImg} className="img-fluid" />
+                <img src={userData?.image ? userData?.image.thumbnailUrl :  userData?.gender=="male" ? boyProfile : userData?.gender=="female" ? girlProfile : commenProfile} className="img-fluid" />
                 <div className="rating_review">
                   <div>
                     <h1>4.5</h1>
@@ -124,8 +126,8 @@ const NewProfile = () => {
                         </clipPath>
                       </defs>
                     </svg>
-                    example@mail.com
-                  </p>
+                    {userData?.email ? userData?.email :  "name@example.com"}   
+                                   </p>
                   <p>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -239,34 +241,40 @@ const NewProfile = () => {
               </div>
             </div>
           </div>
-          <div className="usr-user-other-details">
-            <div className="other-details">
-              <div className="details">
+          <div className="row user-contact-information">
+            <div className="col-2 text-center pt-2">
+            <div className="details user-contact-box">
                 <h6>Name</h6>
                 <p>{userData?.fullName ? userData?.fullName :  "User Name"}</p>
               </div>
-              <hr></hr>
-              <div className="details">
+              </div>
+              <div className="col-3 text-center pt-2">
+              <div className="details user-contact-box">
                 <h6>Email</h6>
                 <p>{userData?.email ? userData?.email :  "name@example.com"}</p>
               </div>
-              <hr></hr>
-              <div className="details">
+              </div>
+              <div className="col-1 text-center pt-2">
+              <div className="details user-contact-box">
                 <h6>Gender</h6>
                 <p>{userData?.gender ? userData?.gender :  "Male"}</p>
               </div>
-              <hr></hr>
-              <div className="details">
+              </div>
+              <div className="col-2 text-center pt-2">
+              <div className="details user-contact-box">
                 <h6>Phone Number</h6>
                 {userData?.mobile ? <p>+91 {userData?.mobile}</p> : <p>+91 1234567890</p> }
               </div>
-              <hr></hr>
+              </div>
+              <div className="col-2 text-center pt-2">
               <div className="details">
                 <h6>Data of Birth</h6>
                 <p>{userData?.dob ? userData?.dob :  "28-08-1995"}</p>
               </div>
-              <hr></hr>
-              <Link className="details edit-button" type="button" to="/user/new-profile/edit" >
+              </div>
+              <div className="col-2 text-center pt-2 user-contact-edit-button">
+              <div className="details">
+              <Link className="details edit-button" type="button" to="/user/profile/edit" >
                 <h6>Edit Details</h6>
                 <p>
                   <svg
@@ -283,7 +291,8 @@ const NewProfile = () => {
                   </svg>
                 </p>
               </Link>
-            </div>
+              </div>
+              </div>
           </div>
         </div>
         <div className="container review-section">
