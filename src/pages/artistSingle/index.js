@@ -371,7 +371,7 @@ const ArtistSingle = () => {
                                                 </div>
                                             </div>
                                             {
-                                                artistData.pricing && Array.isArray(artistData.pricing) &&
+                                                artistData.pricing && Array.isArray(artistData.pricing) && artistData.pricing.length>0 &&
                                                 <div className="usr-artist-charges">
                                                 <h6 className="fw-700">Charges:</h6>
                                                 {

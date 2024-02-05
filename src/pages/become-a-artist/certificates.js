@@ -139,7 +139,7 @@ const Certificates = () => {
             <div className="row gallery-row g-3">
               <>
                 {(certificates && Array.isArray(certificates) && certificates.length > 0) ||
-                (binaryFiles && binaryFiles.length > 0) && Array.isArray(binaryFiles) ? (
+                (binaryFiles && Array.isArray(binaryFiles) && binaryFiles.length > 0) ? (
                   <>
                     { certificates.map((item, index) => {
                       return (
