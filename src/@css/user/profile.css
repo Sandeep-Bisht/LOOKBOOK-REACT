@@ -25,8 +25,9 @@
 
 .usr-new-profile .usr-new-profile-photo img{
     border-radius: 20px;
-    height: 350px;
+    height: 300px;
     width: 100%;
+    object-fit: cover;
 }
 
 .usr-new-profile .usr-new-profile-photo .rating_review{
@@ -239,6 +240,30 @@
 .usr-new-profile .more-review-button:hover{
     background-color: #6D5D4C;
     color: #fff;
+}
+
+.usr-new-profile .user-contact-information{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+.usr-new-profile .user-contact-information p{
+   font-size: 14px;
+}
+.usr-new-profile .user-contact-edit-button{
+    background-color: #fcf7f2;
+    border-radius: 10px;
+}
+.usr-new-profile .user-contact-box{
+    border-right: 1px solid #6D5D4C;
+}
+.usr-new-profile .edit-button{
+    color: #6d5d4c;
+    text-decoration: none;
+}
+.link-cancle-button{
+    text-decoration: none;
+    background-color: #e2e2e4;
 }
 
 @media only screen and (max-width: 800px){

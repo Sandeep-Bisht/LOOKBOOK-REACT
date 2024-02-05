@@ -10,7 +10,6 @@ import Services from 'pages/management/services/servicesCreated'
 import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
-import UserProfile from 'pages/user/Profile'
 import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogsAndCategory, getBlogByIdAndCategory, getArtistByServiceId, get_services_price_by_artist_id, getAllComments } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
@@ -229,16 +228,11 @@ const ApplicationRoutes = createBrowserRouter(
           <Route element={<RequireAuth allowedRoles={[roles.user, roles.artist]} />}>
             <Route
               path="/user/profile"
-              element={<UserProfile />}
-              loader={getUserProfile}
-            />
-            <Route
-              path="/user/new-profile"
               element={<NewProfile />}
               loader={getUserProfile}
             />
             <Route
-              path="/user/new-profile/edit"
+              path="/user/profile/edit"
               element={<EditProfile />}
               loader={getUserProfile}
             />                     
