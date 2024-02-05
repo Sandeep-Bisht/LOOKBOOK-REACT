@@ -1,19 +1,23 @@
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import EmergingArtist from "./emergingArtist/index.js"
 import '@css/user/homepage.css'
 // Import aos animation
 import 'aos/dist/aos.css'
 import Slider from "react-slick";
 import checked from "@core/assets/images/checked.png";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { truncateDescription } from "configs/truncateDescription.js";
 import { formatIndianRupee } from "configs/formatIndianRupee.js";
 import Aos from 'aos';
 
 
-
 const Homepage = () => {
+    const { allArtists, allBlogs } = useLoaderData()
+
+    const sectionRef = useRef(null);
+    const lastCardRef = useRef(null);
+    const [showPlaceholder, setShowPlaceholder] = useState(false);
 
     useEffect(() => {
 
@@ -21,8 +25,26 @@ const Homepage = () => {
 
     }, [])
 
+    useEffect(() => {
+        if(sectionRef && sectionRef.current){
 
-    const { allArtists, allBlogs } = useLoaderData()
+        
+        const handleScroll = () => {
+          const sectionTop = sectionRef.current.getBoundingClientRect().top;
+          const lastCardTop = lastCardRef.current.getBoundingClientRect().top;
+          const shouldShowPlaceholder = sectionTop <= 150 && lastCardTop >= -50; 
+          setShowPlaceholder(shouldShowPlaceholder);
+        };
+        
+        // Attach scroll event listener to handle scrolling
+        window.addEventListener('scroll', handleScroll);
+    
+        // Cleanup event listener when the component unmounts
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+        }
+      }, []);
 
     var settings = {
         dots: false,
@@ -126,7 +148,7 @@ const Homepage = () => {
                         </div>
                     </div>
                 </section>
-                <section className="usr-artist-area usr-overlap-section">
+                <section className="usr-artist-area usr-overlap-section" ref={sectionRef}>
                     <div className="container-fluid">
 
                         <div className="row">
@@ -134,16 +156,18 @@ const Homepage = () => {
                                 <div className="usr-artist-area-wrapper">
 
                                     <div className="row">
-                                        <div className="heading-box-one">
-                                            <h2 className="common-heading fw-400" data-aos="fade-up" data-aos-delay="100">The Experts</h2>
+                                        {showPlaceholder &&
+                                        <div className="heading-box-one" data-aos="fade-up" data-aos-delay="100">
+                                            <h2 className="common-heading fw-400">The Experts</h2>
                                         </div>
+                                        }
 
                                         <div className="col-lg-5 mx-auto">
                                             <ul id="cards">
                                                 {[...Array(allArtists.length > 5 ? 5 : allArtists.length)].map((_, index) => {
                                                     return (
 
-                                                        <li className="card usr-artist-area-card" id={`card${index + 1}`}>
+                                                        <li className="card usr-artist-area-card" id={`card${index + 1}`} ref={((allArtists.length > 5 ? 5 : allArtists.length) - 1) === index ? lastCardRef : null}>
                                                             <div className="card-body">
                                                                 <div className="row align-items-center ">
                                                                     <div className="col-lg-12 mx-auto">
@@ -235,9 +259,11 @@ const Homepage = () => {
                                                 })}
                                             </ul>
                                         </div>
-                                        <div className="heading-box-two">
-                                            <h2 className="common-heading fw-400" data-aos="fade-up" data-aos-delay="100">at LookBook</h2>
+                                        {showPlaceholder &&
+                                        <div className="heading-box-two" data-aos="fade-up" data-aos-delay="100">
+                                            <h2 className="common-heading fw-400">at LookBook</h2>
                                         </div>
+                                        }
                                     </div>
 
                                 </div>
@@ -367,7 +393,7 @@ const Homepage = () => {
                             {[...Array(allArtists.length > 4 ? 4 : allArtists.length)].map((_, index) => {
                                 return (
                                     <div className="col-lg-3 col-md-6 col-sm-6">
-                                        <div className="usr-featured-artist-card" data-aos="fade-left">
+                                        <div className="usr-featured-artist-card">
                                             <div className="imgBx">
                                                 <img className="image"
                                                     src={`${allArtists[index]?.gallery[0]?.url}?tr=h-220,w-300,fo-auto`}

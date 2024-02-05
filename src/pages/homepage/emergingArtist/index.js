@@ -1,22 +1,19 @@
-import React, { useEffect, useRef,useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '@css/user/homepage.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const EmergingArtist = ({artists}) => {
-  const [isNextSectionVisible, setNextSectionVisible] = useState(false);
-  const [isSticky, setSticky] = useState(false);
-
-  const navigate = useNavigate()
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     let progress = 7;
     let startX = 0;
     let active = 0;
     let isDown = false;
+    let loading = true;
 
     const speedWheel = 0.07;
     const speedDrag = -0.15;
-    const thresholdToShowNextSection = 90;
 
     const getZindex = (array, index) =>
       array.map((_, i) => (index === i ? array.length : array.length - Math.abs(index - i)));
@@ -31,24 +28,12 @@ const EmergingArtist = ({artists}) => {
     };
 
     const animate = () => {
-      progress = Math.max(0, Math.min(progress, 90));
-      active = Math.floor((progress / 100) * $items.length);
+        progress = Math.max(0, Math.min(progress, 90));
+        active = Math.floor((progress / 100) * $items.length);
+        console.log(active,'active slide is this')
 
-      $items.forEach((item, index) => displayItems(item, index, active));
-
-      // Check if progress has reached the threshold to show the next section
-      if (progress >= thresholdToShowNextSection && !isNextSectionVisible) {
-        setNextSectionVisible(true);
-      } else if (progress < thresholdToShowNextSection && isNextSectionVisible) {
-        setNextSectionVisible(false);
-      }
-
-      // Check if all slides are scrolled, and set sticky accordingly
-      if (progress >= 100) {
-        setSticky(true);
-      } else {
-        setSticky(false);
-      }
+        $items.forEach((item, index) => displayItems(item, index, active));
+        loading = false;
     };
 
     animate();
@@ -61,9 +46,14 @@ const EmergingArtist = ({artists}) => {
     });
 
     const handleWheel = (e) => {
-      const wheelProgress = e.deltaY * speedWheel;
-      progress = progress + wheelProgress;
-      animate();
+      const sectionTop = sectionRef.current.getBoundingClientRect().top;
+      let runCarousel = sectionTop <= 0 && sectionTop >= -1200
+
+      if(runCarousel){
+        const wheelProgress = e.deltaY * speedWheel;
+        progress = progress + wheelProgress;
+        animate();
+      }
     };
 
     const handleMouseMove = (e) => {
@@ -89,63 +79,47 @@ const EmergingArtist = ({artists}) => {
     };
 
     const handleArrowKeys = (e) => {
+      const sectionTop = sectionRef.current.getBoundingClientRect().top;
+      console.log(sectionTop,'top is this')
+      let runCarousel = sectionTop <= 0 && sectionTop >= -1200
+
+      if(runCarousel){
       if (e.key === "ArrowLeft") {
         progress -= 10;
       } else if (e.key === "ArrowRight") {
         progress += 10;
       }
       animate();
+    }
     };
 
     document.addEventListener("wheel", handleWheel);
-    document.addEventListener("mousedown", handleMouseDown);
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
-    document.addEventListener("touchstart", handleMouseDown);
-    document.addEventListener("touchmove", handleMouseMove);
-    document.addEventListener("touchend", handleMouseUp);
-    document.addEventListener('keydown', handleArrowKeys);
-
-    // Use Intersection Observer to detect when the section is in view
-    const sectionRef = document.querySelector(".usr-emerging-artist");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setSticky(false);
-          }
-        });
-      },
-      { threshold: 0 } // Change threshold as needed
-    );
-
-    if (sectionRef) {
-      observer.observe(sectionRef);
-    }
+    // window.addEventListener('scroll', handleWheel);
+    // document.addEventListener("mousedown", handleMouseDown);
+    // document.addEventListener("mousemove", handleMouseMove);
+    // document.addEventListener("mouseup", handleMouseUp);
+    // document.addEventListener("touchstart", handleMouseDown);
+    // document.addEventListener("touchmove", handleMouseMove);
+    // document.addEventListener("touchend", handleMouseUp);
+    // document.addEventListener('keydown', handleArrowKeys);
 
     return () => {
       document.removeEventListener("wheel", handleWheel);
-      document.removeEventListener("mousedown", handleMouseDown);
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("touchstart", handleMouseDown);
-      document.removeEventListener("touchmove", handleMouseMove);
-      document.removeEventListener("touchend", handleMouseUp);
-      document.removeEventListener('keydown', handleArrowKeys);
-      if (sectionRef) {
-        observer.unobserve(sectionRef);
-      }
+      // window.removeEventListener('scroll', handleWheel);
+      // document.removeEventListener("mousedown", handleMouseDown);
+      // document.removeEventListener("mousemove", handleMouseMove);
+      // document.removeEventListener("mouseup", handleMouseUp);
+      // document.removeEventListener("touchstart", handleMouseDown);
+      // document.removeEventListener("touchmove", handleMouseMove);
+      // document.removeEventListener("touchend", handleMouseUp);
+      // document.removeEventListener('keydown', handleArrowKeys);
     };
-  }, [isNextSectionVisible]);
+  }, []);
 
-      
-     
     return (
         <>
-                
-        
-                <section className={`usr-emerging-artist usr-overlap-section ${isSticky ? 'sticky' : ''}`}>
-
+        {/* <section className='custom-section'></section> */}
+                <section className={`usr-emerging-artist usr-overlap-section`} ref={sectionRef}>
                     <div className="container-fluid">
                         <div className="row d-none">
                             <div className="col-lg-12">
@@ -176,14 +150,12 @@ const EmergingArtist = ({artists}) => {
                                       })}
                                     </div>
                                 </div>
-
-
                                 {/* ------------------paste------------------------ */}
                             </div>
                         </div>
                     </div>
                 </section>
-
+        {/* <section className='custom-section'></section> */}
         </>
 
     );
