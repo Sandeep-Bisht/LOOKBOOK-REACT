@@ -1,4 +1,3 @@
-import { BlackMesa } from 'mdi-material-ui';
 import React, { useRef, useState } from 'react';
 import { Link, Outlet, useLoaderData, useOutletContext } from "react-router-dom";
 import Slider from "react-slick";

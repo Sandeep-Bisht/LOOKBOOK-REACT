@@ -138,7 +138,7 @@ const Certificates = () => {
           <div className="container">
             <div className="row gallery-row g-3">
               <>
-                {(certificates && certificates.length > 0) && Array.isArray(certificates) ||
+                {(certificates && Array.isArray(certificates) && certificates.length > 0) ||
                 (binaryFiles && binaryFiles.length > 0) && Array.isArray(binaryFiles) ? (
                   <>
                     { certificates.map((item, index) => {
@@ -183,7 +183,7 @@ const Certificates = () => {
                         </div>
                       );
                     })}
-                    {binaryFiles.map((item) => {
+                    {binaryFiles && Array.isArray(binaryFiles) && binaryFiles.length>0 && binaryFiles.map((item) => {
                       let src =
                         item.type == "application/pdf"
                           ? PdfIcon

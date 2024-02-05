@@ -49,11 +49,8 @@ const BestServices = () => {
           <div className="row my-5 w-75 mx-auto">
             <div className="col-md-10 mx-auto">
               <div className="row g-3">
-                {(options && Array.isArray(options)) ?
+                {(options && Array.isArray(options)) &&  options.length > 0?
                 <>
-                {
-                  options.length > 0 && Array.isArray(options) ?
-                  <>
                   {options.map((service, index) => (
                    <div key={index} className={`col-md-6 ${attemptedNextWithoutSelection && (!selectedService || selectedService == '') ? 'border-highlight' : ''}`}>
                       <div
@@ -80,9 +77,7 @@ const BestServices = () => {
                   ))}
                   </> : 
                   <NoDataFound/>
-                }
-                </> : <NoDataFound/>}
-               
+                }               
               </div>
             </div>
           </div>

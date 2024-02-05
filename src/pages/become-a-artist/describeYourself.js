@@ -92,10 +92,8 @@ const DescribeYourself = () => {
           <div className="row my-5">
             <div className="col-md-10 mx-auto">
               <div className="row describe-yourself-allProducts">
-                {allProducts && Array.isArray(allProducts) ? (
+                {allProducts && Array.isArray(allProducts) && allProducts.length > 0? (
                   <>
-                    {allProducts.length > 0  && Array.isArray(allProducts) ? (
-                      <>
                         { allProducts.map((product, index) => (
                           <div key={index} className={`col-md-3 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
                             <div
@@ -126,10 +124,6 @@ const DescribeYourself = () => {
                     ) : (
                       <NoDataFound />
                     )}
-                  </>
-                ) : (
-                  <NoDataFound />
-                )}
               </div>
             </div>
           </div>

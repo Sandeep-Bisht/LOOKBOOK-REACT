@@ -55,7 +55,6 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
       );
     }
   };
-
   return (
     <div className={`usr-all-artist-card`}>
       <div className="usr-all-artist-card-wrapper">
@@ -82,7 +81,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
           {Array.isArray(artistInfo?.gallery) && artistInfo?.gallery.map((item, index) => {
             return (
               <div key={`gallery${index}`}>
-                <Link to={`/services/${service_id ? `${service_id}/` : `${artistInfo?.services[0]}/`}${artistInfo?._id}`}>
+                <Link to={`/services/${service_id ? `${service_id}/` : `${artistInfo?.featuredService?._id}/` ? `${artistInfo?.featuredService._id}/` : `${artistInfo?.services[0]}/`}${artistInfo?._id}`}>
                 <img
                   src={`${item.url}?tr=h-400,w-400,fo-auto`}
                   alt={item.name}

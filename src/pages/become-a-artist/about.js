@@ -91,10 +91,7 @@ const AboutYou = () => {
           <div className="row my-5 w-75 mx-auto">
             <div className="col-md-10 mx-auto">
               <div className="row g-3">
-                {(allServices && Array.isArray(allServices)) ?
-                <>
-                {
-                  allServices.length > 0 && Array.isArray(allServices)?
+                {(allServices && Array.isArray(allServices)) && allServices.length > 0?
                   <>
                   { allServices.map((service, index) => (
                    <div key={index} className={`col-md-6 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
@@ -122,9 +119,7 @@ const AboutYou = () => {
                   ))}
                   </> : 
                   <NoDataFound/>
-                }
-                </> : <NoDataFound/>}
-               
+                }               
               </div>
             </div>
           </div>

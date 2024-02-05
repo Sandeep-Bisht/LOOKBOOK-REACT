@@ -53,7 +53,7 @@ const ArtistSingle = () => {
     const galleryData = (data) => {
         let newData = [];
 
-        data.map((item) => newData.push({ original: item.url, thumbnail: item.url, originalClass: "usr-single-img", thumbnailClass: "usr-single-thumbnail", originalAlt: "Featured Image", thumbnailAlt: "Thumbnail Image" }))
+        data && Array.isArray(data) && data.length>0 && data.map((item) => newData.push({ original: item.url, thumbnail: item.url, originalClass: "usr-single-img", thumbnailClass: "usr-single-thumbnail", originalAlt: "Featured Image", thumbnailAlt: "Thumbnail Image" }))
         return newData;
     }
 
