@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import { formatIndianRupee } from "configs/formatIndianRupee";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import Slider from "react-slick";
 import { FaHeart, FaStar } from "react-icons/fa";
 import { axiosAuth } from "configs/axiosInstance";
@@ -16,6 +16,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  const {service_id} = useParams();
   const navigate = useNavigate();
   let cookies = new Cookies();
   const [userWishlist, setUserWishlist] = useState(wishlist ? wishlist : []);
@@ -27,7 +28,6 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
       wishListCB(artist);
     }
   };
-
   const wishlistHandler = async (artist_id) => {
     const token = cookies.get("LOOKBOOK_TOKEN");
     if (token) {
@@ -55,8 +55,6 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
       );
     }
   };
-
-
   return (
     <div className={`usr-all-artist-card`}>
       <div className="usr-all-artist-card-wrapper">
@@ -83,7 +81,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
           {Array.isArray(artistInfo?.gallery) && artistInfo?.gallery.map((item, index) => {
             return (
               <div key={`gallery${index}`}>
-                <Link to={`/services/${artistInfo?.featuredService ? artistInfo?.featuredService?._id : artistInfo?.services[0]}/${artistInfo?._id}`}>
+                <Link to={`/services/${service_id ? `${service_id}/` : `${artistInfo?.featuredService?._id}/` ? `${artistInfo?.featuredService._id}/` : `${artistInfo?.services[0]}/`}${artistInfo?._id}`}>
                 <img
                   src={`${item.url}?tr=h-400,w-400,fo-auto`}
                   alt={item.name}

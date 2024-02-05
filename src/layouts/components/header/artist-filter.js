@@ -25,11 +25,11 @@ const ArtistFilter = () => {
     <section className="usr-artist-filter">
       <div className="container">
         <div className="row">
-        <div className="col-lg-12">
+        <div className="col-lg-8 m-auto">
   <Slider className="" {...settings}>
     <Link
       ref={(el) => (linkRefs.current[0] = el)}
-      className={`btn ${activeIndex === 0 ? 'active' : ""}`}
+      className={`btn service-title-filter ${activeIndex === 0 ? 'active' : ""}`}
       to="/services"
       onClick={() => setActiveIndex(0)}
     >
@@ -47,7 +47,7 @@ const ArtistFilter = () => {
           <div className="">
             <img src={item?.icon?.thumbnailUrl} className="img-fluid service-icons" alt={item.title} />
           </div>
-          <span>{item.title}</span>
+          <span className='service-title-filter'>{item.title}</span>
         </Link>
       ))}
   </Slider>

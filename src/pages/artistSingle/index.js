@@ -53,7 +53,7 @@ const ArtistSingle = () => {
     const galleryData = (data) => {
         let newData = [];
 
-        Array.isArray(data) && data.map((item) => newData.push({ original: item.url, thumbnail: item.url, originalClass: "usr-single-img", thumbnailClass: "usr-single-thumbnail", originalAlt: "Featured Image", thumbnailAlt: "Thumbnail Image" }))
+        data && Array.isArray(data) && data.length>0 && data.map((item) => newData.push({ original: item.url, thumbnail: item.url, originalClass: "usr-single-img", thumbnailClass: "usr-single-thumbnail", originalAlt: "Featured Image", thumbnailAlt: "Thumbnail Image" }))
         return newData;
     }
 
@@ -370,10 +370,12 @@ const ArtistSingle = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="usr-artist-charges">
+                                            {
+                                                artistData.pricing && Array.isArray(artistData.pricing) && artistData.pricing.length>0 &&
+                                                <div className="usr-artist-charges">
                                                 <h6 className="fw-700">Charges:</h6>
                                                 {
-                                                    Array.isArray(artistData.pricing) && artistData.pricing.map((item, index) => {
+                                                        artistData.pricing.map((item, index) => {
                                                         const foundService = Array.isArray(artistData.services) && artistData.services.find(service => service._id === item.service);
 
                                                         if (foundService) {
@@ -385,13 +387,11 @@ const ArtistSingle = () => {
                                                             );
                                                         }
 
-                                                        return null; // You may want to handle the case where the service is not found.
+                                                        return null;
                                                     })
                                                 }
-                                                {/* <p>Wedding Function:<span className="font-style-italic">35000/-</span></p>
-                                                <p>Bridal Makeup:<span className="font-style-italic">45000/-</span></p>
-                                                <p>Bridal Relatives:<span className="font-style-italic">20000/-</span></p> */}
                                             </div>
+                                            }
                                             <div className="usr-artist-order">
                                                 <h6 className="fw-700">Minimum Order:</h6>
                                                 <p>Bridal Makeup + One Party Makeup</p>

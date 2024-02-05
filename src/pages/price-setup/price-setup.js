@@ -95,7 +95,7 @@ const SetupPrice = () => {
     if(newRow.price >= 5000){
       updateArtistPricing(newRow);
       const updatedRow = { ...newRow, isNew: false };
-      setRows(rows && Array.isArray(rows) && rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
+      setRows(rows && rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
       return updatedRow;
     }   
   };
