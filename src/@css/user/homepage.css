@@ -974,6 +974,23 @@
   
 }
 
+@media (max-width: 1299.98px) {
+    .usr-home-banner .usr-home-banner-heading{
+        font-size: 28px;
+    }
+    .usr-artist-area-card .usr-expert-pic-name
+    {
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+    .usr-artist-area-card .usr-expert-pic-profile
+    {
+        font-size: 13px;
+        letter-spacing: .2px;
+    }
+
+}
+
 
 @media (max-width: 1199.98px) {
   
