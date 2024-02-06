@@ -55,7 +55,7 @@ const ArtistFilter = () => {
               key={index}
               ref={(el) => (linkRefs.current[index + 1] = el)}
               onClick={() => setActiveIndex(index + 1)}
-              to={`/services/${item._id}`}
+              to={`/services/${item?.slug}`}
               className={`d-flex btn ${activeIndex === index + 1 ? 'active' : ''}`}
             >
           <span>

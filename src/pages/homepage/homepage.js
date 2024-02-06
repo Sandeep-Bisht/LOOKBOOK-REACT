@@ -174,7 +174,7 @@ const Homepage = () => {
                                                                         <div className="usr-expert-pic-expert-info">
                                                                             <div className="row g-0">
                                                                                 <div className="col-lg-6 col-6">
-                                                                                    <Link to={`/services/${allArtists[index]?.featuredService ? allArtists[index]?.featuredService?._id : allArtists[index]?.services[0]}/${allArtists[index]?._id}`} className="usr-expert-pic-name-box common-cursor-pointer btn w-100 text-start h-100">
+                                                                                    <Link to={`/services/${allArtists[index]?.featuredService ? allArtists[index]?.featuredService?.slug : allArtists[index]?.services[0]?.slug}/${allArtists[index]?.profile_id?.alias}`} className="usr-expert-pic-name-box common-cursor-pointer btn w-100 text-start h-100">
 
                                                                                         <div className="text-layer">
                                                                                             <p className="usr-expert-pic-name">
@@ -195,7 +195,7 @@ const Homepage = () => {
                                                                                                         (price) => price.service === allArtists[index]?.featuredService?._id
                                                                                                     )?.totalPrice
                                                                                                     : allArtists[index]?.pricing.find(
-                                                                                                        (price) => price.service === allArtists[index]?.services[0]
+                                                                                                        (price) => price.service === allArtists[index]?.services[0]?._id
                                                                                                     )?.totalPrice
                                                                                             )}
                                                                                             <span className="ms-1">/-</span>
@@ -210,7 +210,7 @@ const Homepage = () => {
                                                                             </div>
                                                                         </div>
                                                                         <div className="expert-pic">
-                                                                            <Link to={`/services/${allArtists[index]?.featuredService ? allArtists[index]?.featuredService?._id : allArtists[index]?.services[0]}/${allArtists[index]?._id}`}>
+                                                                            <Link to={`/services/${allArtists[index]?.featuredService ? allArtists[index]?.featuredService?.slug : allArtists[index]?.services[0]?.slug}/${allArtists[index]?.profile_id?.alias}`}>
                                                                                 <img src={allArtists[index]?.gallery[0]?.url} className="img-fluid" />
                                                                             </Link>
                                                                             <span className="usr-expert-certification">
@@ -427,13 +427,13 @@ const Homepage = () => {
         (price) => price.service === allArtists[index]?.featuredService?._id
       )?.totalPrice
     : allArtists[index]?.pricing.find(
-        (price) => price.service === allArtists[index]?.services[0]
+        (price) => price.service === allArtists[index]?.services[0]?._id
       )?.totalPrice
 )}</span>
                                                         <span className="usr-price">Onwards</span>
                                                     </div>
                                                     <div className="reserveButton">
-                                                        <Link className="rButton btn" to={`/services/${allArtists[index]?.featuredService ? allArtists[index]?.featuredService?._id : allArtists[index]?.services[0]}/${allArtists[index]?._id}`}>
+                                                        <Link className="rButton btn" to={`/services/${allArtists[index]?.featuredService ? allArtists[index]?.featuredService?.slug : allArtists[index]?.services[0]?.slug}/${allArtists[index]?.profile_id?.alias}`}>
                                                             <span className="me-2">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
                                                                     <path d="M7.05238 12.4713C6.9456 12.4719 6.8428 12.4308 6.76592 12.3567L3.69675 9.37752C3.65806 9.33991 3.62715 9.29503 3.6058 9.24547C3.58445 9.19591 3.57307 9.14263 3.57231 9.08867C3.57155 9.03471 3.58142 8.98113 3.60137 8.93099C3.62132 8.88084 3.65095 8.83512 3.68856 8.79643C3.72618 8.75773 3.77105 8.72683 3.82061 8.70548C3.87018 8.68413 3.92346 8.67274 3.97742 8.67198C4.03138 8.67122 4.08496 8.6811 4.1351 8.70105C4.18524 8.721 4.23097 8.75062 4.26966 8.78824L7.05238 11.4891L13.5181 5.21981C13.5963 5.14384 13.7014 5.10202 13.8104 5.10356C13.9193 5.10509 14.0232 5.14985 14.0992 5.228C14.1752 5.30614 14.217 5.41126 14.2155 5.52024C14.2139 5.62922 14.1692 5.73312 14.091 5.8091L7.33884 12.3567C7.26196 12.4308 7.15916 12.4719 7.05238 12.4713Z" fill="#FCF7F2" stroke="#FCF7F2" stroke-width="1.63689" />

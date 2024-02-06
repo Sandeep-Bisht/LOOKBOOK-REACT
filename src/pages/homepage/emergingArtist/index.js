@@ -138,7 +138,7 @@ const EmergingArtist = ({artists}) => {
                                     <div className="usr-emerging-artist-carousel">
                                       {artists && Array.isArray(artists) && artists.length > 0 && artists.map((item,ind)=>{
                                         return(
-                                          <Link className="usr-emerging-artist-carousel-item common-cursor-pointer" key={ind} to={`/services/${item?.featuredService ? item?.featuredService?._id : item?.services[0]}/${item?._id}`}>
+                                          <Link className="usr-emerging-artist-carousel-item common-cursor-pointer" key={ind} to={`/services/${item?.featuredService ? item?.featuredService?.slug : item?.services[0]?.slug}/${item?.profile_id?.alias}`}>
                                             <div className="usr-emerging-artist-carousel-box">
                                                 <img className="img-fluid" src={item?.gallery[0] ? item?.gallery[0].url : null} />
                                                 <p>{item?.profile_id?.fullName ? item?.profile_id?.fullName : null }</p>
