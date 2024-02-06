@@ -1,9 +1,11 @@
 import React from 'react'
-import { Outlet, useLoaderData, useNavigate } from 'react-router-dom'
+import "@css/user/blogCategory.css"
+import { Link, Outlet, useLoaderData, useNavigate, useParams } from 'react-router-dom'
 
 const BlogsCategoryFilter = () => {
-    const navigate = useNavigate();
-    const allCategories = useLoaderData()
+  const {category_slug} = useParams();
+  const navigate = useNavigate();
+  const allCategories = useLoaderData()
   return (
     <section className='usr-all-blog'>
       <div className='container'>
@@ -12,16 +14,21 @@ const BlogsCategoryFilter = () => {
             <h2 className='all-blog-top-heading .usr-common-heading'>ALL BLOGS</h2>
           </div>
           <div className='col-md-12 mt-5 text-center'>
-            <button className='btn blog-type-btn' onClick={()=>navigate('/blogs')}>All Post |</button>
+          <Link type='buttton' to={'/blogs/'} className={`btn blog-type-btn ${!category_slug ? "category-active-button fw-700" : ""}`}>
+            All Post |
+          </Link>
             {
-              allCategories && Array.isArray(allCategories) && allCategories.map((category,index)=>{
-                return(
-                  <button className='btn blog-type-btn' key={index} onClick={()=>navigate('/blogs/'+category.slug)}>{category.title} |</button>
+              allCategories && Array.isArray(allCategories) && allCategories.map((category, index) => {
+                return (
+                  <Link type='buttton' to={'/blogs/' + category.slug} className={`btn blog-type-btn ${category_slug == category.slug ? "category-active-button fw-700" : ""}`} key={index}>
+                    {category.title} |
+                  </Link>
                 )
               })
             }
           </div>
-          <Outlet/>
+
+          <Outlet />
         </div>
       </div>
     </section>
