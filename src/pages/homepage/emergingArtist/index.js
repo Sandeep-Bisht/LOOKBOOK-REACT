@@ -30,7 +30,6 @@ const EmergingArtist = ({artists}) => {
     const animate = () => {
         progress = Math.max(0, Math.min(progress, 90));
         active = Math.floor((progress / 100) * $items.length);
-        console.log(active,'active slide is this')
 
         $items.forEach((item, index) => displayItems(item, index, active));
         loading = false;
@@ -80,7 +79,6 @@ const EmergingArtist = ({artists}) => {
 
     const handleArrowKeys = (e) => {
       const sectionTop = sectionRef.current.getBoundingClientRect().top;
-      console.log(sectionTop,'top is this')
       let runCarousel = sectionTop <= 0 && sectionTop >= -1200
 
       if(runCarousel){

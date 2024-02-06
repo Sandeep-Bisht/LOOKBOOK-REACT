@@ -26,14 +26,14 @@ const Homepage = () => {
     }, [])
 
     useEffect(() => {
-        if(sectionRef && sectionRef.current){
-
         
         const handleScroll = () => {
-          const sectionTop = sectionRef.current.getBoundingClientRect().top;
-          const lastCardTop = lastCardRef.current.getBoundingClientRect().top;
-          const shouldShowPlaceholder = sectionTop <= 150 && lastCardTop >= -50; 
-          setShowPlaceholder(shouldShowPlaceholder);
+            if(sectionRef && sectionRef.current){
+                const sectionTop = sectionRef.current.getBoundingClientRect().top;
+                const lastCardTop = lastCardRef.current.getBoundingClientRect().top;
+                const shouldShowPlaceholder = sectionTop <= 150 && lastCardTop >= -50; 
+                setShowPlaceholder(shouldShowPlaceholder);
+            }
         };
         
         // Attach scroll event listener to handle scrolling
@@ -43,7 +43,7 @@ const Homepage = () => {
         return () => {
           window.removeEventListener('scroll', handleScroll);
         };
-        }
+        
       }, []);
 
     var settings = {
@@ -282,7 +282,7 @@ const Homepage = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <h2 className="usr-common-heading text-center">
+                            <h2 className="usr-common-heading text-center mb-5">
                                 Choose Your Artist
                             </h2>
                         </div>

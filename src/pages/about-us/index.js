@@ -89,7 +89,7 @@ const AboutUS = () => {
                     </div>
                     
                 </div>
-                <div className='col-md-12 '>
+                <div className='col-md-12 mb-5'>
                     <div className='text-center'>
                     <div className='usr-about-text-para'><p className='usr-about-para'>Lorem ipsum dolor sit amet consectetur.</p>
                         <p className='usr-common-para ps-4 pe-4'>Lorem ipsum dolor sit amet consectetur. Etiam sem placerat 
