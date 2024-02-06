@@ -80,13 +80,6 @@
     margin: 40px 0;
 }
 
-/* .slick-slider.owl-carousel .owl-item img {
-    display: block;
-    width: 100%;
-    height: 300px!important;
-    object-fit: cover!important;
-} */
-
 
 
 
@@ -98,12 +91,14 @@
 .usr-artist-area {
     padding-top: 100px;
     padding: 50px 0;
+    padding-bottom: 0px;
     background: #fcf7f2;
     position: relative;
 }
 .usr-artist-area .heading-box-one,.usr-artist-area .heading-box-two
 {
-   position:sticky;
+   position:fixed;
+   width: fit-content;
 }
 .usr-artist-area .heading-box-one
 {
@@ -112,7 +107,7 @@
 .usr-artist-area .heading-box-two
 {
     bottom: 20%;
-    
+    right: 10%;
     display: flex;
     justify-content: end;
 }
@@ -121,6 +116,7 @@
     padding: 50px;
     width: 95%;
     margin: auto;
+    height: 95%;
 }
 
 :root {
@@ -240,7 +236,7 @@
     grid-template-rows: repeat(var(--cards), var(--cardHeight));
     gap: var(--cardMargin);
     padding-bottom: calc(var(--cards) * var(--cardTopPadding));
-    margin-bottom: var(--cardMargin);
+    /* margin-bottom: var(--cardMargin); */
 
 }
 
@@ -266,7 +262,7 @@
 
 .usr-artist-area .card {
     position: sticky;
-    top: 25vh;
+    top: 15vh;
     border: 0;
     background: transparent;
     margin-bottom: 25vh;
@@ -340,6 +336,7 @@
 /* --------------user-select-package ------------------- */
 .user-select-package {
     padding: 60px 0;
+    padding-top: 0px;
 }
 
 .user-select-package .usr-package-card {
@@ -578,12 +575,6 @@
     visibility: hidden;
 }
 
-/* .container .card:hover .name .profession {
-    opacity: 1;
-    visibility: visible;
-    transition-delay: 0.5s;
-} */
-
 .usr-featured-artist-card:hover .name .desc {
     opacity: 1;
     visibility: visible;
@@ -678,7 +669,7 @@
 .usr-featured-artist-card .prizeButton {
     display: flex;
     justify-content: space-around;
-    z-index: 9;
+    z-index: 11;
     position: absolute;
     bottom: 10px;
     width: 100%;
@@ -706,13 +697,16 @@
     background-color: #6D5D4C;
     padding: 5px 10px;
     border: 0px;
-    color: #fff;
     letter-spacing: .35px;
     color: #FEFEFE;
     font-family: AvenirLTProLight;
     font-size: 12px;
     text-transform: uppercase;
+    transition: all ease-in-out 300ms;
+}
 
+.usr-featured-artist-card .prizeButton .reserveButton .rButton:hover{
+    transform: scale(0.9);
 }
 
 
@@ -825,16 +819,18 @@
 
 /* -------------------------------------circular carosel css------------------- */
 .usr-emerging-artist-carousel {
-    position: relative;
+    position: sticky;
+    top:100px;
     z-index: 1;
     height: 100vh;
     overflow: hidden;
     pointer-events: none;
+
 }
 
 .usr-emerging-artist-carousel-item {
     --items: 7;
-    --width: clamp(240px, 20vw, 380px);
+    --width: clamp(240px, 25vw, 380px);
     --height: clamp(338.8px, 30vw, 520px);
     --x: calc(var(--active) * 400%);
     --y: calc(var(--active) * 100%);
@@ -847,7 +843,7 @@
     height: var(--height);
     margin: calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
     border-radius: 20px;
-    top: clamp(45%, 50vw, 50%);
+    top: clamp(45%, 50vw, 40%);
     left: 50%;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -868,7 +864,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 340px;
     transition: opacity 0.8s cubic-bezier(0, 0.02, 0, 1);
     border-radius: 12px;
     background: #F5EEEA;
@@ -903,7 +898,7 @@
 }
 
 .usr-emerging-artist-carousel-item .usr-emerging-artist-carousel-box img {
-    height: 300px !important;
+    height: 350px !important;
     width: 100% !important;
     border-radius: 20px;
     object-fit: cover;
@@ -944,12 +939,14 @@
 .usr-emerging-artist {
     background-color: #fcf7f2;
     padding: 60px 0;
+    position: relative;
 
 }
 
 .usr-emerging-artist-wrapper {
     background: #fff;
     width: 95%;
+    height: 2200px;
 }
 .usr-emerging-artist .usr-common-heading
 {

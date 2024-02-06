@@ -131,7 +131,7 @@ const ArtistSingle = () => {
                                                             <p className="usr-artist-single-tab-content-heading">
                                                                 Brands Used
                                                             </p>
-                                                            <div className="d-flex flex-wrap">
+                                                            <div className="d-flex flex-wrap gap-3">
                                                                 {artistData?.products && Array.isArray(artistData?.products) && artistData?.products.length > 0 ?
                                                                     artistData?.products.map((product, ind) => {
                                                                         return (

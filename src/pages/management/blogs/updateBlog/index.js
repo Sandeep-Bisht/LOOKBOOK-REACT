@@ -161,7 +161,6 @@ const UpdateBlog = () => {
           </Grid>
           <Grid item xs={12} md={6} className="tags-input">
             <InputLabel id="demo-simple-select-label">Tags</InputLabel>
-            {console.log(tags, "tagggg")}
             <TagsInput
               {...register("tags")}
               value={tags}

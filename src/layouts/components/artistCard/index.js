@@ -113,9 +113,13 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
         <div className="usr-all-artist-prize-list mt-2">
           <span className="usr-all-artist-card-prize">
             {formatIndianRupee(
-              artistInfo?.pricing?.totalPrice
-                ? artistInfo?.pricing?.totalPrice
-                : 0
+              artistInfo?.featuredService
+                ? artistInfo?.pricing.find(
+                  (price) => price.service === artistInfo?.featuredService?._id
+                )?.totalPrice
+                : artistInfo?.pricing.find(
+                  (price) => price.service === artistInfo?.services[0]
+                )?.totalPrice
             )}/-Onwards
           </span>
         </div>

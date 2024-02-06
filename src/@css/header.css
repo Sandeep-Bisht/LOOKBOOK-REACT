@@ -3,27 +3,19 @@
  position: sticky;
  width: 100%;
  top:0;
- z-index: 99;
+ z-index: 999;
  background-color:#fff;
  padding: 5px 10px;
+ box-shadow: 0px 1px 15px 0px #00000008;
 
 }
 .header .dropdown-toggle::after
 {
   display: none;
 }
-.header .main-logo svg
+.header .main-logo img, .artist-header .main-logo img
 {
-  height: 30px;
-}
-.header .main-logo h1  ul
-{
-  list-style-type: none;
-    padding-left: 0;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0;
-    align-items: center;
+  height: 42px;
 }
 
 .navbar-toggler:focus{
@@ -105,70 +97,11 @@ border-radius: 20px;
   margin-right: 10px;
 }
 
-/* .header .main-logo h1 ul li{
-  animation: lighting 4s linear infinite;
-} */
-@keyframes lighting {
-	0% {
-    color: rgba(255,255,255,0.15);
-		text-shadow: none;
-	}
-
-	90% {
-    color: rgba(255,255,255,0.15);
-		text-shadow: none;
-	}
-
-	100% {
-		color: red;
-		text-shadow: 0 0 2px #000, 0 0 10px #000;
-	}
-}
-
-.header .main-logo h1 ul li:nth-child(1) {
-  animation-delay: 0s; /* Adjust animation delay as needed */
-}
-
-.header .main-logo h1 ul li:nth-child(2) {
-  animation-delay: 0.4s; /* Adjust animation delay as needed */
-}
-
-.header .main-logo h1 ul li:nth-child(3) {
-  animation-delay: 0.8s; /* Adjust animation delay as needed */
-}
-
-.header .main-logo h1 ul li:nth-child(4) {
-  animation-delay: 1.2s; /* Adjust animation delay as needed */
-}
-
-.header .main-logo h1 ul li:nth-child(5) {
-  animation-delay: 1.6s; /* Adjust animation delay as needed */
-}
-
-.header .main-logo h1 ul li:nth-child(6) {
-  animation-delay: 2.0s; /* Adjust animation delay as needed */
-}
-
-.header .main-logo h1 ul li:nth-child(7) {
-  animation-delay: 2.4s; /* Adjust animation delay as needed */
-}
 
 .footer-logo-box ul li:nth-child(8) {
   animation-delay: 2.8s; /* Adjust animation delay as needed */
 }
 
-
-.header .main-logo h1 
-{
-  color: #6D5D4C;
-    font-size: 50px;
-    text-transform: uppercase;
-    font-family: AvenirLTProHeavy;
-    margin-bottom: 0;
-    line-height: 0;
-    font-size: 38px;
-
-}
 
 .header .nav-link
 {
@@ -532,7 +465,7 @@ header .rmdp-ep-arrow {
 
 @media (max-width: 991.98px) {
 
-header .main-logo img{
+header .main-logo img, .artist-header .main-logo img{
   height: 33px;
 }
 

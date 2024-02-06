@@ -73,7 +73,7 @@ import BlogsCategoryFilter from 'layouts/components/Filters/blogsCategoryFilter'
 import EditProfile from 'pages/user/Profile/editProfile'
 import SetupPrice from 'pages/price-setup/price-setup'
 import Comments from 'pages/management/comments/allComments'
-import ArtistFilter from 'layouts/components/header/artist-filter'
+import ArtistFilter from 'layouts/components/Filters/artist-filter'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>

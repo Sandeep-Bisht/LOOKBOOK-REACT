@@ -26,7 +26,6 @@ const ContactPage = () => {
   const mobileRegex = /^[0-9]{0,10}$/;
 
   const onSubmit = async (data) => {
-    console.log(data, "checkthe data");
     const payLoad = {
       name: data.name,
       email: data.email,
