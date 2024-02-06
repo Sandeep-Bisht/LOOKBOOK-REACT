@@ -16,7 +16,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  const {service_id} = useParams();
+  const {service_slug, artist_slug} = useParams();
   const navigate = useNavigate();
   let cookies = new Cookies();
   const [userWishlist, setUserWishlist] = useState(wishlist ? wishlist : []);
@@ -28,6 +28,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
       wishListCB(artist);
     }
   };
+
   const wishlistHandler = async (artist_id) => {
     const token = cookies.get("LOOKBOOK_TOKEN");
     if (token) {
@@ -55,6 +56,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
       );
     }
   };
+  
   return (
     <div className={`usr-all-artist-card`}>
       <div className="usr-all-artist-card-wrapper">
@@ -77,20 +79,20 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
           </button>
             }
         </div>
+        <Link to={`/services/${service_slug ? service_slug : `${artistInfo?.featuredService ? artistInfo?.featuredService?.slug : artistInfo?.services[0]?.slug}`}/${artist_slug ? artist_slug : `${artistInfo?.profile_id?.alias}`}`}>
         <Slider className="usr-all-artist-card-carsouel" {...settings}>
           {Array.isArray(artistInfo?.gallery) && artistInfo?.gallery.map((item, index) => {
             return (
               <div key={`gallery${index}`}>
-                <Link to={`/services/${service_id ? `${service_id}/` : `${artistInfo?.featuredService?._id}/` ? `${artistInfo?.featuredService._id}/` : `${artistInfo?.services[0]}/`}${artistInfo?._id}`}>
                 <img
                   src={`${item.url}?tr=h-400,w-400,fo-auto`}
                   alt={item.name}
                 />
-                </Link>
               </div>
             );
           })}
         </Slider>
+        </Link>
       </div>
       <div className="usr-all-artist-card-body">
         <div className="d-flex justify-content-between">

@@ -10,7 +10,7 @@ import Services from 'pages/management/services/servicesCreated'
 import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
-import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogsAndCategory, getBlogByIdAndCategory, getArtistByServiceId, get_services_price_by_artist_id, getAllComments } from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getArtistById, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogsAndCategory, getBlogByIdAndCategory, getArtistByServiceId, get_services_price_by_artist_id, getAllComments, getArtistsByServiceSlug, getArtistByAlias } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -205,9 +205,9 @@ const ApplicationRoutes = createBrowserRouter(
             <Route path='/wishlist' element={<Wishlist />} loader={getUserWishlist} />
             <Route element={<ArtistFilter/>} loader={allServicesDetails}>
               <Route path='/services' element={<AllArtists />} loader={getAllArtists} />
-              <Route path="/services/:service_id" element={<AllArtists/>}  loader={getArtistByServiceId}/>
+              <Route path="/services/:service_slug" element={<AllArtists/>}  loader={getArtistsByServiceSlug}/>
             </Route>
-            <Route path="/services/:service_id/:artist_id" element={<ArtistSingle/>}  loader={getArtistById}/>        
+            <Route path="/services/:service_slug/:artist_slug" element={<ArtistSingle/>}  loader={getArtistByAlias}/>        
             <Route path='/price-setup'  element={<SetupPrice />} loader={get_services_price_by_artist_id}  /> 
             <Route path='/search' element={< Search />} />
           </Route>         

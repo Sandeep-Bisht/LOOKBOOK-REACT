@@ -147,7 +147,7 @@ const Header = ({ cities, services }) => {
                           {[...Array(services.length > 3 ? 3 : services.length)].map((_, index) => {
                             return (
                               <li key={index}>
-                                <Link className="dropdown-item" to={`/services/${services[index]?._id}`}>
+                                <Link className="dropdown-item" to={`/services/${services[index]?.slug}`}>
                                   {services[index]?.title}
                                 </Link>
                               </li>
