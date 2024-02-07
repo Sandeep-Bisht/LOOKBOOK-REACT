@@ -124,6 +124,23 @@ const Homepage = () => {
         ],
     };
 
+    var getPrice = ( artist ) =>{
+
+        if(artist && artist.pricing && Array.isArray(artist.pricing) && artist.pricing.length > 0){
+
+            return artist?.featuredService ? 
+            artist.pricing.find(
+                (price) => price.service === artist?.featuredService?._id
+              )?.totalPrice 
+              :
+              artist.pricing.find(
+                (price) => price.service === artist?.services[0]?._id
+              )?.totalPrice
+        }
+
+        return 0;
+    }
+
     return (
         <>
             {allArtists && Array.isArray(allArtists) && allArtists?.length > 0 ? <>
@@ -189,15 +206,7 @@ const Homepage = () => {
                                                                                 <div className="col-lg-6 col-6">
                                                                                     <div className="usr-expert-pic-charges-box">
                                                                                         <p className="usr-expert-pic-name ">
-                                                                                            {formatIndianRupee(
-                                                                                                allArtists[index]?.featuredService
-                                                                                                    ? allArtists[index]?.pricing.find(
-                                                                                                        (price) => price.service === allArtists[index]?.featuredService?._id
-                                                                                                    )?.totalPrice
-                                                                                                    : allArtists[index]?.pricing.find(
-                                                                                                        (price) => price.service === allArtists[index]?.services[0]?._id
-                                                                                                    )?.totalPrice
-                                                                                            )}
+                                                                                            {formatIndianRupee(getPrice(allArtists[index]))}
                                                                                             <span className="ms-1">/-</span>
 
                                                                                         </p>
@@ -421,15 +430,7 @@ const Homepage = () => {
                                                 <div className="prizeButton">
                                                     <div className="prize">
 
-                                                        <span className="usr-price">{formatIndianRupee(
-  allArtists[index]?.featuredService
-    ? allArtists[index]?.pricing.find(
-        (price) => price.service === allArtists[index]?.featuredService?._id
-      )?.totalPrice
-    : allArtists[index]?.pricing.find(
-        (price) => price.service === allArtists[index]?.services[0]?._id
-      )?.totalPrice
-)}</span>
+                                                        <span className="usr-price">{formatIndianRupee(getPrice(allArtists[index]))}</span>
                                                         <span className="usr-price">Onwards</span>
                                                     </div>
                                                     <div className="reserveButton">

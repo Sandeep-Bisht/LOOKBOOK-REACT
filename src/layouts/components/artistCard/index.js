@@ -56,6 +56,23 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
       );
     }
   };
+
+  var getPrice = ( artist ) =>{
+
+    if(artist && artist.pricing && Array.isArray(artist.pricing) && artist.pricing.length > 0){
+
+        return artist?.featuredService ? 
+        artist.pricing.find(
+            (price) => price.service === artist?.featuredService?._id
+          )?.totalPrice 
+          :
+          artist.pricing.find(
+            (price) => price.service === artist?.services[0]?._id
+          )?.totalPrice
+    }
+
+    return 0;
+}
   
   return (
     <div className={`usr-all-artist-card`}>
@@ -114,15 +131,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
         </div>
         <div className="usr-all-artist-prize-list mt-2">
           <span className="usr-all-artist-card-prize">
-            {formatIndianRupee(
-              artistInfo?.featuredService
-                ? artistInfo?.pricing.find(
-                  (price) => price.service === artistInfo?.featuredService?._id
-                )?.totalPrice
-                : artistInfo?.pricing.find(
-                  (price) => price.service === artistInfo?.services[0]
-                )?.totalPrice
-            )}/-Onwards
+            {formatIndianRupee(getPrice(artistInfo))}/-Onwards
           </span>
         </div>
       </div>
