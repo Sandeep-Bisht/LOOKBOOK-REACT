@@ -179,7 +179,7 @@ const Homepage = () => {
                                         </div>
                                         }
 
-                                        <div className="col-lg-5 mx-auto">
+                                        <div className="col-lg-6  col-xl-5 col-xxl-5 mx-auto">
                                             <ul id="cards">
                                                 {[...Array(allArtists.length > 5 ? 5 : allArtists.length)].map((_, index) => {
                                                     return (

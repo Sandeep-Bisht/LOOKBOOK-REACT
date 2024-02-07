@@ -13,7 +13,7 @@ const ArtistFilter = () => {
     infinite: true,
     arrows: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     centerPadding: "0px",
     afterChange: (index) => setActiveIndex(index),
