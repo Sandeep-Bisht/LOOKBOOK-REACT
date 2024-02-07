@@ -143,12 +143,51 @@
   width: 100%;
   box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.03);
   font-size: 11px;
+
+}
+.usr-artist-filter-row-custom-padding{
+  padding: 0 40px;
 }
 
-.usr-artist-filter .slick-prev:before, .usr-artist-filter .slick-next:before 
+
+
+.usr-artist-filter .slick-prev, .usr-artist-filter .slick-next
 {
    color: #6D5D4C;
    opacity: 1;
+   background-color: #fff;
+   align-items: center;
+   border: 1px solid #88796b;
+   border-radius: 50%;
+
+   box-shadow: none!important;
+   display: flex;
+   height: 33px;
+   justify-content: center;
+   padding: 0;
+ 
+   width: 33px;
+}
+
+
+.usr-artist-filter .slick-prev:before{
+
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px; 
+  background-image: url('../../@core/assets/images/prev.png');
+  background-size: cover; 
+  
+  
+}
+.usr-artist-filter .slick-next:before{
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px; 
+  background-image: url('../../@core/assets/images/next.png');
+  background-size: cover; 
 }
 
 .usr-artist-filter .slick-slider .slick-track .slick-slide div div{

@@ -24,11 +24,11 @@ const ArtistFilter = () => {
     <>
     <section className="usr-artist-filter">
       <div className="container">
-        <div className="row position-relative g-0">
+        <div className="row position-relative g-0 usr-artist-filter-row-custom-padding ">
         <div className="col-lg-2"> 
         <Link
         ref={(el) => (linkRefs.current[0] = el)}
-        className={`btn service-title-filter ${activeIndex === 0 ? 'active' : ""}`}
+        className={`btn service-title-filter justify-content-center w-100 ${activeIndex === 0 ? 'active' : ""}`}
         to="/services"
         onClick={() => setActiveIndex(0)}
       >
@@ -45,10 +45,10 @@ const ArtistFilter = () => {
       </svg>
       </span>
       <span className='service-title-filter'>All Services</span>
-      </Link>
+        </Link>
         </div>
         <div className="col-lg-10"> 
-        <Slider className="" {...settings}>
+          <Slider className="" {...settings}>
         {services && Array.isArray(services) &&
           services.map((item, index) => (
             <Link
@@ -56,7 +56,7 @@ const ArtistFilter = () => {
               ref={(el) => (linkRefs.current[index + 1] = el)}
               onClick={() => setActiveIndex(index + 1)}
               to={`/services/${item?.slug}`}
-              className={`d-flex btn ${activeIndex === index + 1 ? 'active' : ''}`}
+              className={`d-flex btn justify-content-center ${activeIndex === index + 1 ? 'active' : ''}`}
             >
           <span>
             <img src={item?.icon?.thumbnailUrl} className="img-fluid service-icons" alt={item.title} />
@@ -64,8 +64,8 @@ const ArtistFilter = () => {
           <span className='service-title-filter'>{item.title}</span>
         </Link>
       ))}
-  </Slider>
-</div>
+          </Slider>
+      </div>
 
         </div>
       </div>
