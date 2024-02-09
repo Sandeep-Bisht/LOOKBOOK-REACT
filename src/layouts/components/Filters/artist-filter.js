@@ -17,6 +17,38 @@ const ArtistFilter = () => {
     slidesToScroll: 1,
     centerPadding: "0px",
     afterChange: (index) => setActiveIndex(index),
+    responsive: [
+      {
+          breakpoint: 1200, // Adjust the number of slides for screens larger than 1200 pixels
+          settings: {
+              slidesToShow: 3,
+          },
+      },
+      {
+          breakpoint: 991, // Adjust the number of slides for screens larger than 992 pixels
+          settings: {
+              slidesToShow: 2,
+          },
+      },
+      {
+          breakpoint: 767, // Adjust the number of slides for screens larger than 768 pixels
+          settings: {
+              slidesToShow: 2,
+          },
+      },
+      {
+          breakpoint: 575, // Adjust the number of slides for screens larger than 768 pixels
+          settings: {
+              slidesToShow: 1,
+          },
+      },
+      {
+          breakpoint: 481, // Adjust the number of slides for screens larger than 768 pixels
+          settings: {
+              slidesToShow: 1,
+          },
+      },
+  ],
   };
 
 
@@ -25,7 +57,7 @@ const ArtistFilter = () => {
     <section className="usr-artist-filter">
       <div className="container">
         <div className="row position-relative g-0 usr-artist-filter-row-custom-padding ">
-        <div className="col-lg-2"> 
+        <div className="col-lg-2 col-md-2  col-sm-3 col-6"> 
         <Link
         ref={(el) => (linkRefs.current[0] = el)}
         className={`btn service-title-filter justify-content-center w-100 ${activeIndex === 0 ? 'active' : ""}`}
@@ -47,7 +79,7 @@ const ArtistFilter = () => {
       <span className='service-title-filter'>All Services</span>
         </Link>
         </div>
-        <div className="col-lg-10"> 
+        <div className="col-lg-10 col-md-10  col-sm-9 col-6"> 
           <Slider className="" {...settings}>
         {services && Array.isArray(services) &&
           services.map((item, index) => (
