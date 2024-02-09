@@ -7,7 +7,6 @@ import LocationAwareMap from "pages/become-a-artist/common/googlemap";
 import PdfIcon from '@core/assets/images/pdfIcon-removebg.png'
 import Review1 from '@core/assets/1.jpg'
 import Verified from '@core/assets/images/verified.png'
-import { formatIndianRupee } from "configs/formatIndianRupee";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Slider from "react-slick";

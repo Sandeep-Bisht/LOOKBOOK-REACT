@@ -209,13 +209,14 @@ export const get_services_price_by_artist_id = async () => {
 
 export const getBlogBySlug = async ({params}) => {
   try {
-    const {slug} = params;
-    const response = await axiosAuth.get(`/blog/get_blog_by_slug/${slug}`);
+    const {category_slug, slug} = params;
+    const response = await axiosAuth.get(`/blog/get_blog_by_slug/${category_slug}/${slug}`);
     return response.data
   } catch (error) {
       return error.message || "An error occured while trying to get Blog by slug."
   }
 }; 
+
 export const getUserWishlistByID = async() =>{
   try {
     const response = await axiosAuth.get(`/wishlist/get_user_wishlist_by_id`);

@@ -27,7 +27,7 @@ const SetupPrice = () => {
 
   const gstPerc = 18;
   const serviceChargePer = 5;
-  const initialRows = artistServices && Array.isArray(artistServices) && artistServices?.pricing.map((service, index) => ({
+  const initialRows = artistServices && artistServices?.pricing && Array.isArray(artistServices?.pricing) && artistServices?.pricing.length > 0  && artistServices?.pricing.map((service, index) => ({
     id: index + 1,
     service: service.service.title,
     sessionTime: service.sessionTime,

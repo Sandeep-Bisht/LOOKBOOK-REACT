@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link} from "react-router-dom";
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, useParams, useNavigate } from 'react-router-dom'
 import "@css/user/singleBlog.css"
 import { useForm } from "react-hook-form"
 import TextField from "@mui/material/TextField";
@@ -25,25 +25,14 @@ const SingleBlog = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const blogData = useLoaderData()
 
-  const [allCategory, setAllCategory] = useState();
-  const [comments, setComments] = useState(blogData?.comments && Array.isArray(blogData.comments) ? blogData.comments : "")
+  const {currentBlog, similarBlogs} = useLoaderData()
+  const {category_slug, slug} = useParams();
+  const blogData = currentBlog;
+  const allCategory = similarBlogs;
+  const [copySuccess, setCopySuccess] = useState('');
 
-  useEffect(() => {
-    if (blogData?.data.category) {
-      getBlogByCategoryId(blogData.data.category);
-    }
-  }, [blogData?.data.category]);
-
-
-  const getBlogByCategoryId = async (categoryId) => {
-    const response = await axiosLocal.get(`blog/get_blog_by_category_id/${categoryId}`)
-    if (response) {
-      setAllCategory(response.data);
-    }
-  }
-
+  const navigate = useNavigate();
 
   const onSubmit = async(data) => {
 
@@ -51,7 +40,7 @@ const SingleBlog = () => {
       first_name:data.first_name,
       last_name:data.last_name,
       comment:data.comment,
-      blog:blogData.data._id
+      blog:blogData._id
     }
     const response = await axiosLocal.post('/comment/comments-create',payload)
     {
@@ -62,16 +51,29 @@ const SingleBlog = () => {
       }
     }
   }
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopySuccess('Copied!');
+      setTimeout(()=>{
+        setCopySuccess('');
+      },2000)
+    } catch (err) {
+      setCopySuccess('Failed to copy');
+    }
+  };
+
   return (
     <>
-      {blogData?.data && blogData?.data._id
+      {blogData && blogData?._id
         ?
         <section class="usr-single-blogs">
           <div class="container">
             <div class="row">
               <div class="col-md-6 usr-single-blogs-image">
                 <div class="background-image">
-                  <img src={blogData?.data?.featuredImage.url} class="img-fluid w-100" />
+                  <img src={blogData?.featuredImage.url} class="img-fluid w-100" />
 
 
                 </div>
@@ -79,28 +81,35 @@ const SingleBlog = () => {
                   <div class="social-icons">
                     <ul className="usr-icon-list px-0">
                       <div className='social-link common-cursor-pointer'>
-                        <li><a><img src={instagram} alt='blog-social-icon' /></a></li>
+                        <li><a href='https://www.instagram.com/' target="_blank"><img src={instagram} alt='blog-social-icon' /></a></li>
                       </div>
                       <div className='social-link common-cursor-pointer'>
-                        <li><a><img src={facebook} alt='blog-social-icon' /></a></li>
+                        <li><a href='https://www.facebook.com/' target="_blank"><img src={facebook} alt='blog-social-icon' /></a></li>
                       </div>
                       <div className='social-link common-cursor-pointer'>
-                        <li><a><img src={twitter} alt='blog-social-icon' /></a></li>
+                        <li><a href='https://www.twitter.com/' target="_blank"><img src={twitter} alt='blog-social-icon' /></a></li>
                       </div>
                       <div className='social-link common-cursor-pointer'>
-                        <li><a><img src={linkedin} alt='blog-social-icon' /></a></li>
+                        <li><a href='https://www.linkedin.com/' target="_blank"><img src={linkedin} alt='blog-social-icon' /></a></li>
                       </div>
                       <div className='social-link common-cursor-pointer'>
-                        <li><a><img src={youtube} alt='blog-social-icon' /></a></li>
+                        <li><a href='https://www.youtube.com/' target="_blank"><img src={youtube} alt='blog-social-icon' /></a></li>
                       </div>
+                      {copySuccess ? 
+                      <div className='d-flex align-items-center'>
+                      <h6 className='my-0'>Coppied</h6>
+                      </div>
+                      :
                       <div className='social-link common-cursor-pointer'>
-                        <li><a><img src={copyurl} alt='blog-social-icon' /></a></li>
+                      <li><a onClick={copyToClipboard}><img src={copyurl} alt='blog-social-icon' /></a>
+                      </li>
                       </div>
+                      }
                     </ul>
                   </div>
                   <div class="reviews">
                   <Link to="" className="views">50 Views</Link>
-                  <Link to="" className="comments">2 Comments</Link>
+                  <Link to="" className="comments">{blogData.comments && Array.isArray(blogData.comments) ? blogData.comments.length : '0'} Comments</Link>
                     {/* <a href="" class="views">50 Views</a>
                     <a href="" class="comments">2 Comments</a> */}
                     <Link  to="" class="likes d-none">
@@ -116,10 +125,10 @@ const SingleBlog = () => {
 
                 <div className="usr-single-blogs-comments ">
                   {
-                    comments && comments.length > 0 && (
+                    blogData.comments && Array.isArray(blogData.comments) && blogData.comments.length > 0 && (
                       <>
                         <h3>Comments</h3>
-                        {comments.map((comment, index) => {
+                        {blogData.comments.map((comment, index) => {
                           if (index < 2) {
                             return (
                               <div className="comments" key={index}>
@@ -152,17 +161,18 @@ const SingleBlog = () => {
 
               </div>
               <div className="col-md-6 usr-single-blogs-content">
-                <h3>{blogData?.data?.title}</h3>
-                <p dangerouslySetInnerHTML={{ __html: blogData?.data?.content }}></p>
-
-                <div className="usr-single-blogs-tags-recents-posts">
+                <div className='bg-white p-4'>
+                <h3>{blogData?.title}</h3>
+                <p dangerouslySetInnerHTML={{ __html: blogData?.content }}></p>
+                </div>
+                <div className="usr-single-blogs-tags-recents-posts mt-3">
                   {
-                    Array.isArray(blogData.data.tags) && blogData.data.tags.length > 0 ?
+                    Array.isArray(blogData.tags) && blogData.tags.length > 0 ?
 
                       <div className="tags mb-5">
                         <h3>Tags</h3>
                         {
-                          blogData.data.tags.map((item, index) => {
+                          blogData.tags.map((item, index) => {
                             return (
                               <a href>{item}</a>
                             )
@@ -180,10 +190,10 @@ const SingleBlog = () => {
                     </div>
                     <div className="row">
                       {allCategory && Array.isArray(allCategory) && allCategory.map((item, index) => {
-                        if (index > 0 && index < 3)
+                        if (index < 3)
                           return (
                             <div className="col-md-6">
-                              <div className="usr-recent-post-card">
+                              <div className="usr-recent-post-card common-cursor-pointer" onClick={()=>navigate(`/blogs/${item?.category?.slug}/${item?.slug}`)}>
                                 <div className="usr-card-image">
                                   <img src={item.featuredImage.url} alt="image" />
                                 </div>
@@ -203,7 +213,7 @@ const SingleBlog = () => {
                                       <a href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width={16} height={14} viewBox="0 0 16 14" fill="none">
                                           <path d="M15.3486 0.922852H1.21202C0.996043 0.922852 0.819336 1.09956 0.819336 1.31553V10.7399C0.819336 10.9559 0.996043 11.1326 1.21202 11.1326H4.35348V13.4887C4.35348 13.8421 4.7658 14.0188 5.02104 13.7636L7.69129 11.1326H15.3486C15.5646 11.1326 15.7413 10.9559 15.7413 10.7399V1.31553C15.7413 1.09956 15.5646 0.922852 15.3486 0.922852ZM14.9559 10.3472H7.53421C7.43604 10.3472 7.33787 10.3865 7.25934 10.465L5.13885 12.5463V10.7399C5.13885 10.5239 4.96214 10.3472 4.74617 10.3472H1.6047V1.70822H14.9559V10.3472Z" fill="#6D5D4C" />
-                                        </svg>0</a>
+                                        </svg>{item.comments && Array.isArray(item.comments) ? item.comments.length : '0'}</a>
                                     </div>
                                     <div className="share">
                                       <a href="#">
