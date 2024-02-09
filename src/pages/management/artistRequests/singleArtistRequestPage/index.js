@@ -1,6 +1,6 @@
 import { ViewGallery } from 'mdi-material-ui';
 import React, { useState } from 'react'
-import { useLocation, useNavigate, useOutletContext, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useOutletContext, useParams, Link } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -96,10 +96,10 @@ function SingleArtistInformation() {
                     <div className='container'>
                         <div className='row'>
                             <div className='col-12'>
-                                <div className='d-flex' style={{justifyContent:"space-between"}}>
-                                <h2>Artist Request Details</h2>
-                                <button className="btn" type='button' style={{ background: "#8c6a54", color: "#fff" ,width:"100px"}} ><IoArrowBackOutline style={{marginRight:"10px"}}/>
-Back</button></div>
+                                <div className='d-flex' style={{ justifyContent: "space-between" }}>
+                                    <h2>Artist Request Details</h2>
+                                    <Link to="/management/artists-request" className="btn" type='button' style={{ background: "#8c6a54", color: "#fff", width: "100px" }} ><IoArrowBackOutline style={{ marginRight: "10px" }} />
+                                        Back</Link></div>
                             </div>
                             <div className='mt-4'>
                                 <div className='row'>
@@ -181,108 +181,108 @@ Back</button></div>
                                     </div>
                                     <div className='col-6'>
                                         <div className='rounded-3 bg-white h-100 p-4'>
-                                        <div className='row'>
-                                            <div className='col-3'>
-                                                <span className="artists-detail-heading">Alias</span>
-                                            </div>
-                                            <div className='col-9 text-end'>
-                                                <p className='ms-4 artists-detail-para'>{artistInformation?.alias}</p>
-                                            </div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-3'>
-                                                <span className="artists-detail-heading">Language</span>
-                                            </div>
-                                            <div className='col-9 text-end'>
-                                                <p className='ms-4 artists-detail-para'>
-                                                    {artistInformation?.languages  && Array.isArray(artistInformation?.languages) ? artistInformation?.languages?.join(', ') : null}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-3'>
-                                                <span className="artists-detail-heading">Travel</span>
-                                            </div>
-                                            <div className='col-9 text-end'>
-                                                <p className='ms-4 artists-detail-para'>{artistInformation.travel ? "Yes" : "No"}</p>
-                                            </div>
-                                        </div>
-                                        {
-                                            artistInformation && Array.isArray(artistInformation.services) && artistInformation.services.length > 0 && (
-                                                <div className='row'>
-                                                    <div className='col-3'>
-                                                        <span className="artists-detail-heading">Services</span>
-                                                    </div>
-                                                    <div className='col-9 text-end'>
-                                                        <p className='ms-4 artists-detail-para'>
-                                                            {artistInformation.services.map((item, index) => (
-                                                                <span key={item.title}>
-                                                                    {index > 0 ? ', ' : ''}
-                                                                    {item.title}
-                                                                </span>
-                                                            ))}
-                                                        </p>
-                                                    </div>
+                                            <div className='row'>
+                                                <div className='col-3'>
+                                                    <span className="artists-detail-heading">Alias</span>
                                                 </div>
-                                            )
-                                        }
-                                        {
-                                            artistInformation && Array.isArray(artistInformation.products) && artistInformation.products.length > 0 && (
-                                                <div className='row'>
-                                                    <div className='col-3'>
-                                                        <span className="artists-detail-heading">Products</span>
-                                                    </div>
-                                                    <div className='col-9 text-end'>
-                                                        <p className='ms-4 artists-detail-para'>
-                                                            {artistInformation.products.map((item, index) => (
-                                                                <span key={item.title}>
-                                                                    {index > 0 ? ', ' : ''}
-                                                                    {item.title}
-                                                                </span>
-                                                            ))}
-                                                        </p>
-                                                    </div>
+                                                <div className='col-9 text-end'>
+                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.alias}</p>
                                                 </div>
-                                            )
-                                        }
+                                            </div>
+                                            <div className='row'>
+                                                <div className='col-3'>
+                                                    <span className="artists-detail-heading">Language</span>
+                                                </div>
+                                                <div className='col-9 text-end'>
+                                                    <p className='ms-4 artists-detail-para'>
+                                                        {artistInformation?.languages && Array.isArray(artistInformation?.languages) ? artistInformation?.languages?.join(', ') : null}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className='row'>
+                                                <div className='col-3'>
+                                                    <span className="artists-detail-heading">Travel</span>
+                                                </div>
+                                                <div className='col-9 text-end'>
+                                                    <p className='ms-4 artists-detail-para'>{artistInformation.travel ? "Yes" : "No"}</p>
+                                                </div>
+                                            </div>
+                                            {
+                                                artistInformation && Array.isArray(artistInformation.services) && artistInformation.services.length > 0 && (
+                                                    <div className='row'>
+                                                        <div className='col-3'>
+                                                            <span className="artists-detail-heading">Services</span>
+                                                        </div>
+                                                        <div className='col-9 text-end'>
+                                                            <p className='ms-4 artists-detail-para'>
+                                                                {artistInformation.services.map((item, index) => (
+                                                                    <span key={item.title}>
+                                                                        {index > 0 ? ', ' : ''}
+                                                                        {item.title}
+                                                                    </span>
+                                                                ))}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            }
+                                            {
+                                                artistInformation && Array.isArray(artistInformation.products) && artistInformation.products.length > 0 && (
+                                                    <div className='row'>
+                                                        <div className='col-3'>
+                                                            <span className="artists-detail-heading">Products</span>
+                                                        </div>
+                                                        <div className='col-9 text-end'>
+                                                            <p className='ms-4 artists-detail-para'>
+                                                                {artistInformation.products.map((item, index) => (
+                                                                    <span key={item.title}>
+                                                                        {index > 0 ? ', ' : ''}
+                                                                        {item.title}
+                                                                    </span>
+                                                                ))}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            }
 
-                                        <div className='row'>
-                                            <div className='col-3'>
-                                                <span className="artists-detail-heading">Price</span>
+                                            <div className='row'>
+                                                <div className='col-3'>
+                                                    <span className="artists-detail-heading">Price</span>
+                                                </div>
+                                                <div className='col-9 text-end'>
+                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.pricing?.price}</p>
+                                                </div>
                                             </div>
-                                            <div className='col-9 text-end'>
-                                                <p className='ms-4 artists-detail-para'>{artistInformation?.pricing?.price}</p>
+                                            <div className='row'>
+                                                <div className='col-3'>
+                                                    <span className="artists-detail-heading">Insta-Id</span>
+                                                </div>
+                                                <div className='col-9 text-end'>
+                                                    <p className='ms-4 artists-detail-para'><a target='blank' href={`https://www.instagram.com/${artistInformation?.profile_id?.instaId}`} style={{ textDecoration: "none" }}>{artistInformation?.profile_id?.instaId}</a></p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-3'>
-                                                <span className="artists-detail-heading">Insta-Id</span>
+                                            <div className='row'>
+                                                <div className='col-3'>
+                                                    <span className="artists-detail-heading">Gallery</span>
+                                                </div>
+                                                <div className='col-9 text-end'>
+                                                    <button className='btn ms-3' style={{ background: "#8c6a54", border: "none", color: "#fff", fontSize: "12px" }} onClick={() => ViewGalleryHandler()}>View</button>
+                                                </div>
                                             </div>
-                                            <div className='col-9 text-end'>
-                                                <p className='ms-4 artists-detail-para'><a target='blank' href={`https://www.instagram.com/${artistInformation?.profile_id?.instaId}`} style={{ textDecoration: "none" }}>{artistInformation?.profile_id?.instaId}</a></p>
-                                            </div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-3'>
-                                                <span className="artists-detail-heading">Gallery</span>
-                                            </div>
-                                            <div className='col-9 text-end'>
-                                                <button className='btn ms-3' style={{ background: "#8c6a54", border: "none", color: "#fff", fontSize: "12px" }} onClick={() => ViewGalleryHandler()}>View</button>
-                                            </div>
-                                        </div>
                                         </div>
                                     </div>
                                     <div className='col-12 mt-4'>
-                                    <label className="artists-detail-heading">Description</label>
-                                    <div>
-                                        {artistInformation?.description}
+                                        <label className="artists-detail-heading">Description</label>
+                                        <div>
+                                            {artistInformation?.description}
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
-                              
+
                                 <div className='row mt-4 text-center'>
                                     <div className='col-4'>
-                                        <img src={artistInformation?.adharFront?.url} className="img-fluid" alt="adharFront" style={{ maxHeight: "200px" , borderRadius:"20px"}} />
+                                        <img src={artistInformation?.adharFront?.url} className="img-fluid" alt="adharFront" style={{ maxHeight: "200px", borderRadius: "20px" }} />
                                         <div>
                                             <span className="artists-detail-heading">
                                                 Adhar Front
@@ -290,7 +290,7 @@ Back</button></div>
                                         </div>
                                     </div>
                                     <div className='col-4'>
-                                        <img src={artistInformation?.adharBack?.url} className="img-fluid" alt="adharBack" style={{ maxHeight: "200px", borderRadius:"20px" }} />
+                                        <img src={artistInformation?.adharBack?.url} className="img-fluid" alt="adharBack" style={{ maxHeight: "200px", borderRadius: "20px" }} />
                                         <div>
                                             <span className="artists-detail-heading">
                                                 Adhar Back
@@ -298,7 +298,7 @@ Back</button></div>
                                         </div>
                                     </div>
                                     <div className='col-4'>
-                                        <img src={artistInformation?.panCard?.url} className="img-fluid" alt="panCard" style={{ maxHeight: "200px", borderRadius:"20px"}} />
+                                        <img src={artistInformation?.panCard?.url} className="img-fluid" alt="panCard" style={{ maxHeight: "200px", borderRadius: "20px" }} />
                                         <div>
                                             <span className="artists-detail-heading">
                                                 Pancard

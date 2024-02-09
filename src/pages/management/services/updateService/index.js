@@ -56,7 +56,6 @@ function UpdateService() {
       setSelectFileImage(file);
     }
   };
-
   const ServicesFormHandler = async (data) => {
     setLoading(true)
     const formData = new FormData();
@@ -141,7 +140,11 @@ function UpdateService() {
                     />
                   </Button>
 
-                  <Button variant="contained" className="ms-2 mt-2" color="secondary" onClick={() => setIconUrl(getServiceDataById?.icon.thumbnailUrl)}>
+                  <Button variant="contained" className="ms-2 mt-2" color="secondary" onClick={() =>
+                     { 
+                      setIconUrl(getServiceDataById?.icon.thumbnailUrl)
+                      setSelectFileIcon("")}}
+                      >
                     Reset
                   </Button>
                 </div>
@@ -177,7 +180,12 @@ function UpdateService() {
                       accept="image/*"
                     />
                   </Button>
-                  <Button className="ms-2 mt-2" variant="contained" color="secondary" onClick={() => setImageUrl(getServiceDataById?.image.thumbnailUrl)}>
+                  <Button className="ms-2 mt-2" variant="contained" color="secondary" onClick={() =>
+                    {
+                      setImageUrl(getServiceDataById?.image.thumbnailUrl)
+                      setSelectFileImage("")
+                    }}
+                    >
                     Reset
                   </Button>
                 </div>
