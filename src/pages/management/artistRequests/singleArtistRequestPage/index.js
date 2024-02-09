@@ -186,7 +186,7 @@ Back</button></div>
                                                 <span className="artists-detail-heading">Alias</span>
                                             </div>
                                             <div className='col-9 text-end'>
-                                                <p className='ms-4 artists-detail-para'>{artistInformation.alias}</p>
+                                                <p className='ms-4 artists-detail-para'>{artistInformation?.alias}</p>
                                             </div>
                                         </div>
                                         <div className='row'>
@@ -195,7 +195,7 @@ Back</button></div>
                                             </div>
                                             <div className='col-9 text-end'>
                                                 <p className='ms-4 artists-detail-para'>
-                                                    {artistInformation.languages.join(', ')}
+                                                    {artistInformation?.languages  && Array.isArray(artistInformation?.languages) ? artistInformation?.languages?.join(', ') : null}
                                                 </p>
                                             </div>
                                         </div>
@@ -208,7 +208,7 @@ Back</button></div>
                                             </div>
                                         </div>
                                         {
-                                            artistInformation && artistInformation.services.length > 0 && (
+                                            artistInformation && Array.isArray(artistInformation.services) && artistInformation.services.length > 0 && (
                                                 <div className='row'>
                                                     <div className='col-3'>
                                                         <span className="artists-detail-heading">Services</span>
@@ -227,7 +227,7 @@ Back</button></div>
                                             )
                                         }
                                         {
-                                            artistInformation && artistInformation.products.length > 0 && (
+                                            artistInformation && Array.isArray(artistInformation.products) && artistInformation.products.length > 0 && (
                                                 <div className='row'>
                                                     <div className='col-3'>
                                                         <span className="artists-detail-heading">Products</span>
@@ -251,7 +251,7 @@ Back</button></div>
                                                 <span className="artists-detail-heading">Price</span>
                                             </div>
                                             <div className='col-9 text-end'>
-                                                <p className='ms-4 artists-detail-para'>{artistInformation.pricing.price}</p>
+                                                <p className='ms-4 artists-detail-para'>{artistInformation?.pricing?.price}</p>
                                             </div>
                                         </div>
                                         <div className='row'>
@@ -275,14 +275,14 @@ Back</button></div>
                                     <div className='col-12 mt-4'>
                                     <label className="artists-detail-heading">Description</label>
                                     <div>
-                                        {artistInformation.description}
+                                        {artistInformation?.description}
                                     </div>
                                 </div>
                                 </div>
                               
                                 <div className='row mt-4 text-center'>
                                     <div className='col-4'>
-                                        <img src={artistInformation.adharFront.url} className="img-fluid" alt="adharFront" style={{ maxHeight: "200px" , borderRadius:"20px"}} />
+                                        <img src={artistInformation?.adharFront?.url} className="img-fluid" alt="adharFront" style={{ maxHeight: "200px" , borderRadius:"20px"}} />
                                         <div>
                                             <span className="artists-detail-heading">
                                                 Adhar Front
@@ -290,7 +290,7 @@ Back</button></div>
                                         </div>
                                     </div>
                                     <div className='col-4'>
-                                        <img src={artistInformation.adharBack.url} className="img-fluid" alt="adharBack" style={{ maxHeight: "200px", borderRadius:"20px" }} />
+                                        <img src={artistInformation?.adharBack?.url} className="img-fluid" alt="adharBack" style={{ maxHeight: "200px", borderRadius:"20px" }} />
                                         <div>
                                             <span className="artists-detail-heading">
                                                 Adhar Back
@@ -298,7 +298,7 @@ Back</button></div>
                                         </div>
                                     </div>
                                     <div className='col-4'>
-                                        <img src={artistInformation.panCard.url} className="img-fluid" alt="panCard" style={{ maxHeight: "200px", borderRadius:"20px"}} />
+                                        <img src={artistInformation?.panCard?.url} className="img-fluid" alt="panCard" style={{ maxHeight: "200px", borderRadius:"20px"}} />
                                         <div>
                                             <span className="artists-detail-heading">
                                                 Pancard
