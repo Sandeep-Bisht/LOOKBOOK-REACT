@@ -13,10 +13,42 @@ const ArtistFilter = () => {
     infinite: true,
     arrows: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     centerPadding: "0px",
     afterChange: (index) => setActiveIndex(index),
+    responsive: [
+      {
+          breakpoint: 1200, // Adjust the number of slides for screens larger than 1200 pixels
+          settings: {
+              slidesToShow: 3,
+          },
+      },
+      {
+          breakpoint: 991, // Adjust the number of slides for screens larger than 992 pixels
+          settings: {
+              slidesToShow: 2,
+          },
+      },
+      {
+          breakpoint: 767, // Adjust the number of slides for screens larger than 768 pixels
+          settings: {
+              slidesToShow: 2,
+          },
+      },
+      {
+          breakpoint: 575, // Adjust the number of slides for screens larger than 768 pixels
+          settings: {
+              slidesToShow: 1,
+          },
+      },
+      {
+          breakpoint: 481, // Adjust the number of slides for screens larger than 768 pixels
+          settings: {
+              slidesToShow: 1,
+          },
+      },
+  ],
   };
 
 
@@ -24,11 +56,11 @@ const ArtistFilter = () => {
     <>
     <section className="usr-artist-filter">
       <div className="container">
-        <div className="row position-relative g-0">
-        <div className="col-lg-2"> 
+        <div className="row position-relative g-0 usr-artist-filter-row-custom-padding ">
+        <div className="col-lg-2 col-md-2  col-sm-3 col-6"> 
         <Link
         ref={(el) => (linkRefs.current[0] = el)}
-        className={`btn service-title-filter ${activeIndex === 0 ? 'active' : ""}`}
+        className={`btn service-title-filter justify-content-center w-100 ${activeIndex === 0 ? 'active' : ""}`}
         to="/services"
         onClick={() => setActiveIndex(0)}
       >
@@ -45,10 +77,10 @@ const ArtistFilter = () => {
       </svg>
       </span>
       <span className='service-title-filter'>All Services</span>
-      </Link>
+        </Link>
         </div>
-        <div className="col-lg-10"> 
-        <Slider className="" {...settings}>
+        <div className="col-lg-10 col-md-10  col-sm-9 col-6"> 
+          <Slider className="" {...settings}>
         {services && Array.isArray(services) &&
           services.map((item, index) => (
             <Link
@@ -56,7 +88,7 @@ const ArtistFilter = () => {
               ref={(el) => (linkRefs.current[index + 1] = el)}
               onClick={() => setActiveIndex(index + 1)}
               to={`/services/${item?.slug}`}
-              className={`d-flex btn ${activeIndex === index + 1 ? 'active' : ''}`}
+              className={`d-flex btn justify-content-center ${activeIndex === index + 1 ? 'active' : ''}`}
             >
           <span>
             <img src={item?.icon?.thumbnailUrl} className="img-fluid service-icons" alt={item.title} />
@@ -64,8 +96,8 @@ const ArtistFilter = () => {
           <span className='service-title-filter'>{item.title}</span>
         </Link>
       ))}
-  </Slider>
-</div>
+          </Slider>
+      </div>
 
         </div>
       </div>

@@ -149,6 +149,7 @@
     border-left: 0;
     border-bottom-right-radius: 10px;
     padding: 0 0 12px 0;
+    height: 100%;
 }
 
 .usr-expert-pic-charges-box {
@@ -974,15 +975,33 @@
   
 }
 
-
-@media (max-width: 1199.98px) {
-  
+@media (max-width: 1299.98px) {
+    .usr-home-banner .usr-home-banner-heading{
+        font-size: 28px;
+    }
+    .usr-artist-area-card .usr-expert-pic-name
+    {
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+    .usr-artist-area-card .usr-expert-pic-profile
+    {
+        font-size: 13px;
+        letter-spacing: .2px;
+    }
 
 }
 
 
-@media (max-width: 1024.98px) {
+@media (max-width: 1199.98px) {
+    
+}
 
+
+@media (max-width: 1024.98px) {
+    .usr-artist-area-card{
+        padding: 20px 20px;
+    }
 }
 
 @media (max-width: 991.98px) {
@@ -1013,11 +1032,7 @@
     {
         font-size: 11px;
     }
-    .usr-artist-area .expert-pic .usr-expert-certification
-    {
-        width: 160px;
-        height: 40px;
-    }
+   
     .usr-artist-area .card
     {
         margin-bottom: 0;
@@ -1111,6 +1126,12 @@
     text-transform: capitalize;
 
 }
+.usr-artist-area.usr-overlap-section .usr-artist-area-wrapper .heading-box-one,
+    .usr-artist-area.usr-overlap-section .usr-artist-area-wrapper .heading-box-two
+    {
+     display:none;
+    }
+
 
 }
 
@@ -1148,7 +1169,15 @@
     }
     .usr-artist-area-wrapper
     {
-        width: 85%;
+        width: 70%;
+    }
+    .usr-artist-area .card img
+    {
+        height: 300px;
+    }
+    .usr-artist-area-card .usr-expert-pic-name
+    {
+        font-size: 16px;
     }
     .user-select-package .usr-package-card-price
     {
@@ -1170,7 +1199,14 @@
 
   }
 
-  /* -------------------footer----- */
+
+  @media (max-width: 675.98px)
+  {
+    .usr-artist-area-wrapper
+    {
+        width: 80%;
+    }
+  }
   
 
 
