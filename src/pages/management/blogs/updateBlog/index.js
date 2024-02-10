@@ -134,7 +134,11 @@ const UpdateBlog = () => {
                   />
                 </Button>
 
-                <Button variant="contained" className="ms-2 mt-2" color="secondary" onClick={() => setImageUrl(blogs?.featuredImage.thumbnailUrl)}>
+                <Button variant="contained" className="ms-2 mt-2" color="secondary" onClick={() =>
+                  {
+                    setImageUrl(blogs?.featuredImage.thumbnailUrl)
+                    setSelectFileImage("")
+                  }}>
                   Reset
                 </Button>
               </div>

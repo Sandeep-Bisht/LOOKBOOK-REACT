@@ -145,7 +145,12 @@ function UpdateProducts() {
                     />
                   </Button>
 
-                  <Button variant="contained" className="ms-2 mt-2" color="secondary" onClick={() => setIconUrl(getProductDataById?.icon.thumbnailUrl)}>
+                  <Button variant="contained" className="ms-2 mt-2" color="secondary" onClick={() =>
+                    {
+                      setIconUrl(getProductDataById?.icon?.thumbnailUrl)
+                      setSelectFileIcon("")
+                    }} 
+                    >
                     Reset
                   </Button>
                 </div>
@@ -181,7 +186,11 @@ function UpdateProducts() {
                       accept="image/*"
                     />
                   </Button>
-                  <Button className="ms-2 mt-2" variant="contained" color="secondary" onClick={() => setImageUrl(getProductDataById?.image.thumbnailUrl)}>
+                  <Button className="ms-2 mt-2" variant="contained" color="secondary" onClick={() => 
+                    {
+                      setImageUrl(getProductDataById?.image.thumbnailUrl)
+                      setSelectFileImage("")
+                    }}>
                     Reset
                   </Button>
                 </div>
