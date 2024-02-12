@@ -61,7 +61,7 @@ const AllBlogs = () => {
 
                         </span>
                         <span className="usr-blog-card-view-comment-box-number">
-                          0 |
+                        {item.comments && Array.isArray(item.comments) && item.comments.length>0 ? item.comments.length : 0} |
                         </span>
 
                       </div>

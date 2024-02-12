@@ -290,7 +290,7 @@ export const getBlogByCategorySlug  = async ({params}) => {
   const {category_slug} = params;
   try {
     const response = await axiosLocal.get(`/blog/get_blog_by_category_slug/${category_slug}`);
-      return response.data
+      return response.data.data
  } catch (error) {
   return error.message || "An error occured while trying to get all categories."
    }
