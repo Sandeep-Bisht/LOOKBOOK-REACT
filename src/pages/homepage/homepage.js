@@ -487,9 +487,9 @@ const Homepage = () => {
                                                         <div className="usr-blog-main-content">
                                                             <img src={blog.featuredImage.url} className="img-fluid" />
                                                             <div className="usr-card-body">
-                                                                <h4 className="usr-blog-heading">{truncateDescription(blog.title, 30)}</h4>
+                                                                <h4 className="usr-blog-heading">{truncateDescription(blog.title, 20)}</h4>
                                                                 <p className="usr-blog-para">
-                                                                    {truncateDescription(blog.description, 75)}
+                                                                    {truncateDescription(blog.description, 70)}
                                                                 </p>
                                                             </div>
                                                             <div className="blog-card-icon">
@@ -511,7 +511,7 @@ const Homepage = () => {
                                                                         </svg>
                                                                     </span>
                                                                     <span className="usr-blog-card-view-comment-box-number">
-                                                                        0
+                                                                        {blog.comments && Array.isArray(blog.comments) && blog.comments.length>0 ? blog.comments.length : 0}
                                                                     </span>
                                                                 </div>
                                                             </div>
