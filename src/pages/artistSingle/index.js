@@ -90,7 +90,7 @@ const ArtistSingle = () => {
                                                             aria-selected="false">Certification</button>
                                                     </li>
 
-                                                    <li className="nav-item" role="presentation">
+                                                    <li className="nav-item d-none" role="presentation">
                                                         <button className="nav-link" id="pills-review-tab"
                                                             data-bs-toggle="pill" data-bs-target="#pills-review" type="button" role="tab" aria-controls="pills-review"
                                                             aria-selected="false">Reviews</button>
@@ -364,7 +364,8 @@ const ArtistSingle = () => {
                                                     <div className="usr-verifed-svg">
                                                         <p>
 
-                                                            <img src={Verified} className="img-fluid " />
+                                                            <img src={Verified} className="img-fluid " /> 
+                                                            
                                                         </p>
                                                     </div>
                                                 </div>
@@ -379,9 +380,11 @@ const ArtistSingle = () => {
 
                                                         if (foundService) {
                                                             return (
-                                                                <p key={index}>
+                                                                <p key={index} className="d-flex justify-content-between">
+                                                                    <img src={foundService?.icon?.thumbnailUrl} alt={foundService.title} width="20"/>
+
                                                                     {foundService.title}:
-                                                                    <span className="font-style-italic">{item.price}/-</span>
+                                                                    <span>₹{item.price}/-</span>
                                                                 </p>
                                                             );
                                                         }
