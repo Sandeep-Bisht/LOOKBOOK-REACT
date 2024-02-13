@@ -52,8 +52,16 @@
 
 .usr-artist-single .image-gallery-slide.image-gallery-center.usr-single-img img{
     height: 70vh;
-    object-fit: cover ;
+    object-fit: contain;
     object-position: top;
+
+}
+.usr-artist-single .image-gallery-slide-wrapper
+{
+  
+    border-radius: 18px;
+    padding: 20px;
+    border:1px solid  #6D5D4C;
 }
 
 .usr-artist-single .image-gallery-thumbnails-wrapper.image-gallery-thumbnails-left .image-gallery-thumbnails .usr-single-thumbnail img{
