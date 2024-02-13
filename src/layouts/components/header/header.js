@@ -88,7 +88,6 @@ const Header = ({ cities, services }) => {
   const getArtistByServiceID = async (service_id) => {
     navigate(`/services/${service_id}`)
   };
-
   return (
     <>
       <header className="header" id="header" ref={headerRef}>
@@ -113,14 +112,14 @@ const Header = ({ cities, services }) => {
             <div className="collapse navbar-collapse  align-items-center" id="navbarSupportedContent">
               <ul className="navbar-nav flex-wrap mx-auto mb-2 mb-lg-0 w-100 d-flex justify-content-center align-items-center ">
                 <li className="nav-item">
-                  <Link className="nav-link active" to="/">
+                <Link className={`nav-link ${location?.pathname == "/" ? "active" : ""}`} to="/">
                     Home
                   </Link>
                 </li>
                 <li className="nav-item">
                   <div className="dropdown">
                     <button
-                      className="btn  dropdown-toggle nav-link border-0"
+                      className={`btn  dropdown-toggle nav-link border-0 ${location?.pathname.startsWith("/services") ? "active" : ""}`}
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
@@ -421,7 +420,7 @@ const Header = ({ cities, services }) => {
                 </li>
                 {/* End Search Container */}
                 <li className="nav-item">
-                  <Link className="nav-link " to="/contact-us">
+                  <Link className={`nav-link ${location?.pathname == "/contact-us" ? "active" : ""}`} to="/contact-us">
                     Contact us
                   </Link>
                 </li>
