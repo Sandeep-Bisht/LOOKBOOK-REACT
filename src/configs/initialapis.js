@@ -140,7 +140,7 @@ export const getArtistsByServiceSlug = async ({params}) =>{
 }
 
 export const getHomepageData  = async () => {
-  const urls = [`/artists/get-all-artists`, `/blog/all_blogs`];
+  const urls = [`/artists/get-all`, `/blog/all_blogs`, `/slider/all_sliders`];
 
   try {
     const responses = await Promise.all(urls.map(url => axiosAuth.get(url)));
@@ -148,7 +148,8 @@ export const getHomepageData  = async () => {
     // Initialize an object with keys representing the source of the data
     let data = {
       allArtists: responses[0].data,   // assuming the first API is for artist requests
-      allBlogs: responses[1].data.data
+      allBlogs: responses[1].data.data,
+      allSliders: responses[2].data.data
     };
 
     return data;
@@ -303,4 +304,25 @@ export const getAllComments  = async () => {
  } catch (error) {
   return error.message || "An error occured while trying to get all categories."
    }
+};
+
+export const allSliders = async () => {
+  try {
+    const response = await axiosAuth.get('/slider/all_sliders');
+    return response.data.data
+  } catch (error) {
+      return error.message || "An error occured while trying to get all sliders."
+    // Handle the error appropriately
+  }
+};
+
+
+export const getSliderById = async ({params}) => {
+  const {_id} = params
+  try {
+    const response = await axiosAuth.post('/slider/get_slider_by_id', { _id:_id });
+      return response.data.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get slider by ID."
+}
 };

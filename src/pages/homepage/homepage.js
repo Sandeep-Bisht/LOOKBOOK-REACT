@@ -13,7 +13,7 @@ import Aos from 'aos';
 
 
 const Homepage = () => {
-    const { allArtists, allBlogs } = useLoaderData()
+    const { allArtists, allBlogs, allSliders } = useLoaderData()
 
     const sectionRef = useRef(null);
     const lastCardRef = useRef(null);
@@ -143,15 +143,15 @@ const Homepage = () => {
 
     return (
         <>
-            {allArtists && Array.isArray(allArtists) && allArtists?.length > 0 ? <>
+            {allSliders && Array.isArray(allSliders) && allSliders?.length > 0 && 
                 <section className='usr-home-banner'>
                     <div className='container'>
 
                         <Slider {...settings}>
-                            {[...Array(allArtists.length > 6 ? 6 : allArtists.length)].map((_, index) => {
+                            {[...Array(allSliders.length > 6 ? 6 : allSliders.length)].map((_, index) => {
                                 return (
                                     <div className="item">
-                                        <img src={`${allArtists[index]?.gallery[0]?.url}?tr=h-400,w-400,fo-auto`} className="img-fluid owl-pic" />
+                                        <img src={`${allSliders[index]?.image?.url}?tr=h-400,w-400,fo-auto`} className="img-fluid w-100 owl-pic" />
                                     </div>
                                 )
                             })}
@@ -165,6 +165,8 @@ const Homepage = () => {
                         </div>
                     </div>
                 </section>
+            }
+                {allArtists && Array.isArray(allArtists) && allArtists?.length > 0 ? <>
                 <section className="usr-artist-area usr-overlap-section" ref={sectionRef}>
                     <div className="container-fluid">
 
