@@ -109,7 +109,7 @@ export const getWizardData  = async () => {
 
 export const getAllArtists  = async () => {
   try {
-    const response = await axiosLocal.get('/artists/get-all');
+    const response = await axiosLocal.get('/artists/get-all-artists');
       return response.data
  } catch (error) {
   return error.message || "An error occured while trying to get all artists."
@@ -140,7 +140,7 @@ export const getArtistsByServiceSlug = async ({params}) =>{
 }
 
 export const getHomepageData  = async () => {
-  const urls = [`/artists/get-all`, `/blog/all_blogs`];
+  const urls = [`/artists/get-all-artists`, `/blog/all_blogs`];
 
   try {
     const responses = await Promise.all(urls.map(url => axiosAuth.get(url)));
@@ -179,7 +179,7 @@ export const getSearchParameters = async () => {
 export const getArtistById = async ({params}) => {
   try {
     const {artist_id} = params;
-    const response = await axiosAuth.get(`/artists/get-by-id/${artist_id}`);
+    const response = await axiosAuth.get(`/artists/get-artist-by-id/${artist_id}`);
     return response.data
   } catch (error) {
       return error.message || "An error occured while trying to get artist by id."
@@ -199,7 +199,7 @@ export const getArtistByAlias = async ({params}) => {
 export const get_services_price_by_artist_id = async () => {
   try {
     // const {artist_id} = params;
-    const response = await axiosAuth.get(`/artists/get-pricing`);
+    const response = await axiosAuth.get(`/artists/get-artist-pricing`);
     return response.data
   } catch (error) {
       return error.message || "An error occured while trying to get pricing."

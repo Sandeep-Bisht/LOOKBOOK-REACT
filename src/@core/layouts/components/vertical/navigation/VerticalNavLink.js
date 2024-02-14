@@ -17,7 +17,6 @@ import themeConfig from 'configs/themeConfig'
 import UserIcon from 'layouts/components/UserIcon'
 
 // ** Utils
-import { handleURLQueries } from '@core/layouts/utils'
 import { Link } from 'react-router-dom'
 
 // ** Styled Components
@@ -57,7 +56,7 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }) => {
   }
 
   const isNavLinkActive = () => {
-    if (router.pathname === item.path || handleURLQueries(router, item.path)) {
+    if (router.pathname === item.path || router.pathname.startsWith(item.path)) {
       return true
     } else {
       return false

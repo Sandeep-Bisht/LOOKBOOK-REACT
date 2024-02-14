@@ -38,7 +38,7 @@ const ViewArtists = () => {
 
  const getAllArtists  = async () => {
   try {
-    const response = await axiosLocal.get('/artists/get-all');
+    const response = await axiosLocal.get('/artists/get-all-artists');
     setAllArtist(response.data);
     toast.success('Request updated Successfully!');
  } catch (error) {

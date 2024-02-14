@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "@css/user/artistSingle.css";
 import Calendar from 'react-calendar';
 import { useLoaderData } from "react-router-dom";
@@ -10,7 +10,6 @@ import Verified from '@core/assets/images/verified.png'
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Slider from "react-slick";
-import { SpeakerMessage } from "mdi-material-ui";
 
 
 const ArtistSingle = () => {
@@ -48,6 +47,10 @@ const ArtistSingle = () => {
     };
 
     const artistData = useLoaderData();
+    const [selectedServices,setSelectedServices] = useState();
+    const [currentService,setCurrentService] = useState();
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    console.log(selectedDate,'selected date is this');
 
     const galleryData = (data) => {
         let newData = [];
@@ -89,25 +92,26 @@ const ArtistSingle = () => {
                                                             data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled"
                                                             aria-selected="false">Certification</button>
                                                     </li>
-
+                                                    {/* hidden */}
                                                     <li className="nav-item d-none" role="presentation">
                                                         <button className="nav-link" id="pills-review-tab"
                                                             data-bs-toggle="pill" data-bs-target="#pills-review" type="button" role="tab" aria-controls="pills-review"
                                                             aria-selected="false">Reviews</button>
                                                     </li>
+                                                    {/* end hidden */}
                                                 </ul>
                                                 <div className="tab-content" id="pills-tabContent">
                                                     <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex={0}>
 
                                                         <div className="usr-artist-single-tab-content">
                                                             <p className="usr-artist-single-tab-content-heading">
-                                                                About the Artist:
+                                                                About {artistData?.profile_id?.fullName ? artistData?.profile_id?.fullName : 'Artist'}
                                                             </p>
                                                             <p className="usr-common-para">
                                                                 {artistData?.description ? artistData?.description : null}
                                                             </p>
                                                             <p className="usr-artist-single-tab-content-follow">
-                                                                Follow the Artist:
+                                                                Follow {artistData?.profile_id?.fullName ? artistData?.profile_id?.fullName : 'Artist'}
                                                             </p>
                                                             <div className="usr-artist-single-tab-content-social-box">
                                                                 <div className="usr-artist-single-tab-content-social-box-upper">
@@ -127,7 +131,7 @@ const ArtistSingle = () => {
                                                     </div>
                                                     <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex={0}>
                                                         <div className="usr-artist-single-tab-content">
-                                                            <p className="usr-artist-single-tab-content-heading">
+                                                            <p className="usr-artist-single-tab-content-heading d-none">
                                                                 Brands Used
                                                             </p>
                                                             <div className="d-flex flex-wrap gap-3">
@@ -144,7 +148,7 @@ const ArtistSingle = () => {
                                                     </div>
                                                     <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabIndex={0}>
                                                         <div className="usr-artist-single-tab-content">
-                                                            <p className="usr-artist-single-tab-content-heading">
+                                                            <p className="usr-artist-single-tab-content-heading d-none">
                                                                 Artist Location
                                                             </p>
                                                             <div>
@@ -174,6 +178,7 @@ const ArtistSingle = () => {
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    {/* hidden */}
                                                     <div className="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab" tabIndex={0}>
                                                         <div className="usr-artist-single-tab-content position-relative review-tab">
 
@@ -307,6 +312,7 @@ const ArtistSingle = () => {
                                                             </Slider>
                                                         </div>
                                                     </div>
+                                                    {/* end hidden */}
                                                 </div>
                                             </div>
 
@@ -330,7 +336,7 @@ const ArtistSingle = () => {
                                                                     <path d="M10.8333 9.91712V14.1671C10.8333 14.3881 10.7455 14.6001 10.5893 14.7564C10.433 14.9127 10.221 15.0005 10 15.0005C9.77899 15.0005 9.56703 14.9127 9.41074 14.7564C9.25446 14.6001 9.16667 14.3881 9.16667 14.1671V9.91712C8.15496 9.7106 7.25598 9.1358 6.644 8.30413C6.03202 7.47246 5.75065 6.44318 5.85443 5.41585C5.95822 4.38851 6.43976 3.43631 7.20571 2.74384C7.97165 2.05137 8.96744 1.66797 10 1.66797C11.0326 1.66797 12.0283 2.05137 12.7943 2.74384C13.5602 3.43631 14.0418 4.38851 14.1456 5.41585C14.2493 6.44318 13.968 7.47246 13.356 8.30413C12.744 9.1358 11.845 9.7106 10.8333 9.91712ZM10 3.33379C9.50555 3.33379 9.0222 3.48041 8.61107 3.75511C8.19995 4.02981 7.87952 4.42026 7.6903 4.87708C7.50108 5.33389 7.45157 5.83656 7.54804 6.32151C7.6445 6.80646 7.8826 7.25192 8.23223 7.60155C8.58186 7.95118 9.02732 8.18929 9.51227 8.28575C9.99723 8.38221 10.4999 8.3327 10.9567 8.14348C11.4135 7.95427 11.804 7.63383 12.0787 7.22271C12.3534 6.81159 12.5 6.32824 12.5 5.83379C12.5 5.17074 12.2366 4.53486 11.7678 4.06602C11.2989 3.59718 10.663 3.33379 10 3.33379ZM6.49167 12.0171C6.6011 11.9941 6.71399 11.9929 6.82389 12.0136C6.93379 12.0342 7.03855 12.0763 7.13218 12.1375C7.22581 12.1986 7.30649 12.2776 7.3696 12.3699C7.43271 12.4622 7.47702 12.566 7.5 12.6755C7.52298 12.7849 7.52418 12.8978 7.50354 13.0077C7.48289 13.1176 7.4408 13.2223 7.37967 13.316C7.31853 13.4096 7.23956 13.4903 7.14725 13.5534C7.05494 13.6165 6.9511 13.6608 6.84167 13.6838C4.95 14.0588 4.16667 14.7338 4.16667 15.0005C4.16667 15.4838 6.20833 16.6671 10 16.6671C13.7917 16.6671 15.8333 15.4838 15.8333 15.0005C15.8333 14.7338 15.05 14.0588 13.1583 13.6505C13.0489 13.6275 12.9451 13.5832 12.8528 13.52C12.7604 13.4569 12.6815 13.3763 12.6203 13.2826C12.5592 13.189 12.5171 13.0842 12.4965 12.9743C12.4758 12.8644 12.477 12.7516 12.5 12.6421C12.523 12.5327 12.5673 12.4288 12.6304 12.3365C12.6935 12.2442 12.7742 12.1653 12.8678 12.1041C12.9615 12.043 13.0662 12.0009 13.1761 11.9802C13.286 11.9596 13.3989 11.9608 13.5083 11.9838C16.0417 12.5671 17.5 13.6588 17.5 15.0005C17.5 17.1921 13.725 18.3338 10 18.3338C6.275 18.3338 2.5 17.1921 2.5 15.0005C2.5 13.6588 3.95833 12.5671 6.49167 12.0171Z" fill="#6D5D4C" />
                                                                 </svg>
                                                                 </span>
-                                                                {artistData?.address?.city ? artistData?.address?.city : null},{artistData?.address?.country ? artistData?.address?.country : null}</p>
+                                                                {artistData?.address?.city ? artistData?.address?.city : null}, {artistData?.address?.country ? artistData?.address?.country : null}</p>
                                                         </div>
                                                         {artistData?.travel ?
                                                             <div className="usr-globally">
@@ -371,12 +377,12 @@ const ArtistSingle = () => {
                                                 </div>
                                             </div>
                                             {
-                                                artistData.pricing && Array.isArray(artistData.pricing) && artistData.pricing.length>0 &&
+                                                artistData.pricing && artistData.services && Array.isArray(artistData.pricing) && Array.isArray(artistData.services) && artistData.pricing.length > 0 && artistData.services.length > 0 &&
+                                                <>
                                                 <div className="usr-artist-charges">
                                                 <h6 className="fw-700">Charges:</h6>
-                                                {
-                                                        artistData.pricing.map((item, index) => {
-                                                        const foundService = Array.isArray(artistData.services) && artistData.services.find(service => service._id === item.service);
+                                                { artistData.pricing.map((item, index) => {
+                                                        const foundService = artistData.services.find(service => service._id === item.service);
 
                                                         if (foundService) {
                                                             return (
@@ -384,7 +390,8 @@ const ArtistSingle = () => {
                                                                     <img src={foundService?.icon?.thumbnailUrl} alt={foundService.title} width="20"/>
 
                                                                     {foundService.title}:
-                                                                    <span>₹{item.price}/-</span>
+                                                                    <span>₹{item.totalPrice}/-</span>
+                                                                    {/* Put onward here too */}
                                                                 </p>
                                                             );
                                                         }
@@ -393,24 +400,23 @@ const ArtistSingle = () => {
                                                     })
                                                 }
                                             </div>
-                                            }
                                             <div className="usr-artist-order">
                                                 <h6 className="fw-700">Minimum Order:</h6>
                                                 <p>Bridal Makeup + One Party Makeup</p>
                                             </div>
                                             <div className="usr-card-booking-button">
 
-                                                <button className="usr-btn fw-300" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Book Now</button>
-
-
+                                                <button type="button" className="usr-btn fw-300" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Book Now</button>
                                             </div>
+                                            </>
+                                            }
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
                         </section>
-                        <div class="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalToggleLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header border-0">
@@ -419,28 +425,22 @@ const ArtistSingle = () => {
                                     </div>
                                     <div class="modal-body usr-artist-single-modal-body">
                                         <div className="usr-artist-single-modal-body-wrapper">
-                                            <button class="usr-common-action-btn " type="button">
-                                                Party Makeup
-                                            </button>
-                                            <button class="usr-common-action-btn " type="button">
-                                                Wedding Function
-                                            </button>
-                                            <button class="usr-common-action-btn" type="button">
-                                                Bridal Makeup
-                                            </button>
-                                            <button class="usr-common-action-btn usr-home-banner-action-btn" type="button">
-                                                Bridal Relatives
-                                            </button>
+                                            { artistData.services && Array.isArray(artistData.services) && artistData.services.length > 0 && artistData.services.map((service,ind)=>{
+                                                return (<button class={`usr-common-action-btn ${currentService === service?._id ? 'active' : null}`}  type="button" key={ind} onClick={()=>setCurrentService(prev => prev === service?._id ? null : service?._id )}>
+                                                        {service.title}
+                                                        </button>);
+                                            })
+                                            }
                                         </div>
                                     </div>
                                     <div class="modal-footer border-0  py-xl-4 py-lg-4 justify-content-center">
-                                        <button class="usr-btn fw-300" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">next</button>
+                                        <button type="button" className="usr-btn fw-300" data-bs-dismiss="modal" onClick={()=>{setCurrentService(null);setSelectedServices(null)}}>Cancel</button>
+                                        <button type="button" className="usr-btn fw-300 me-2" data-bs-toggle="modal" data-bs-target="#exampleModalToggle2" disabled={currentService ? false : true}>next</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div className="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
+                        <div className="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalToggleLabel2" aria-hidden="true">
                                 <div className="modal-dialog modal-dialog-centered">
                                     <div className="modal-content">
 
@@ -449,7 +449,8 @@ const ArtistSingle = () => {
                                                 <div className="col-lg-6 usr-artist-single-modal-separator">
 
                                                     <Calendar
-
+                                                        onChange={setSelectedDate} 
+                                                        value={selectedDate}
                                                         className="common-calendor-si"
                                                         minDate={new Date()}
                                                     />
@@ -463,15 +464,14 @@ const ArtistSingle = () => {
                                                                 </p>
                                                             </div>
                                                             <div className="usr-artist-single-modal-time-box-upper-bottom">
-                                                                <button class="usr-session-btn">1</button>
-                                                                <button class="usr-session-btn">2</button>
-                                                                <button class="usr-session-btn">3</button>
-                                                                <button class="usr-session-btn">4</button>
+                                                                {currentService && [...Array(artistData && Array.isArray(artistData?.pricing) && artistData?.pricing?.find(el => el.service == currentService).sessionTime ? (24 / artistData?.pricing?.find(el => el.service == currentService)?.sessionTime.toFixed()) : 24)].map((_,index)=>{
+                                                                    return(<button class="usr-session-btn">{index + 1}</button>)
+                                                                }) }
                                                             </div>
                                                         </div>
                                                         <div className="usr-artist-single-modal-time-box-lower">
                                                             <p className="usr-artist-single-modal-time-box-heading">
-                                                                Select Number of Sessions:
+                                                                Select Session Time:
                                                             </p>
                                                             <div className="usr-artist-single-modal-time-box-upper-bottom">
                                                                 <button className="usr-artist-single-modal-time-box-btn">
@@ -508,8 +508,8 @@ const ArtistSingle = () => {
                                                                 </button></div>
                                                         </div>
                                                         <div className="d-flex justify-content-center">
-                                                            <button className="usr-common-action-btn me-2" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Book more</button>
-                                                            <button class="usr-common-action-btn">Confirm</button>
+                                                            <button type="button" className="usr-common-action-btn me-2" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Book more</button>
+                                                            <button type="button" class="usr-common-action-btn" data-bs-dismiss="modal">Confirm</button>
                                                         </div>
                                                         <div>
 
@@ -521,12 +521,7 @@ const ArtistSingle = () => {
 
                                     </div>
                                 </div>
-                            </div>
-
-                        </div>
-
-
-
+                         </div>
                     </>
                     :
                     <NoDataFound />

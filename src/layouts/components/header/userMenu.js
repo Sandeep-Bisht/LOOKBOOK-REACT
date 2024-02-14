@@ -54,33 +54,35 @@ const UserMenu = ({props}) => {
             Wishlist
            </Link>
         </li>
+        {(currentUser?.role == process.env.REACT_APP_ARTIST) ? 
         <li>
            <Link to="/price-setup" className="dropdown-item">
            <MessageOutline sx={{ marginRight: 2 }} />
             Price-Setup
            </Link>
         </li>
+        : null}
         <li>
         <Divider />
-           <Link to="/" className="dropdown-item">
+           <Link to="/" className="dropdown-item d-none">
            <CogOutline sx={{ marginRight: 2 }} />
             Settings
            </Link>
         </li>
         <li>
-           <Link to="/" className="dropdown-item">
+           <Link to="/" className="dropdown-item d-none">
            <CurrencyUsd sx={{ marginRight: 2 }} />
             Pricing
            </Link>
         </li>
         <li>
-           <Link to="/" className="dropdown-item">
+           <Link to="/" className="dropdown-item d-none">
            <HelpCircleOutline sx={{ marginRight: 2 }} />
             FAQ
            </Link>
         </li>
         <li>
-            <Divider />
+            {/* <Divider /> */}
            <button type="button" className="btn dropdown-item" onClick={handleLogout}>
            <LogoutVariant sx={{ marginRight: 2, fontSize: '1.375rem', }} />
             Logout
