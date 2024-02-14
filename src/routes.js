@@ -10,7 +10,7 @@ import Services from 'pages/management/services/servicesCreated'
 import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
-import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogByIdAndCategory, get_services_price_by_artist_id, getAllComments, getArtistsByServiceSlug, getArtistByAlias } from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogByIdAndCategory, get_services_price_by_artist_id, getAllComments, getArtistsByServiceSlug, getArtistByAlias, allSliders, getSliderById } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -74,6 +74,9 @@ import EditProfile from 'pages/user/Profile/editProfile'
 import SetupPrice from 'pages/price-setup/price-setup'
 import Comments from 'pages/management/comments/allComments'
 import ArtistFilter from 'layouts/components/Filters/artist-filter'
+import SlidersForm from 'pages/management/sliders/createSliders'
+import AllSlidersDetails from 'pages/management/sliders/allSliders'
+import UpdateSlider from 'pages/management/sliders/updateSliders'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -307,7 +310,9 @@ const ApplicationRoutes = createBrowserRouter(
             <Route path="/management/products/:_id" element={<UpdateProducts />} loader={({ params }) => getProductById(params)} />
             <Route path="/management/blogs/:_id" element={<UpdateBlog />} loader={({ params }) => getBlogByIdAndCategory(params)} />
             <Route path="/management/comments" element={<Comments />} loader={getAllComments} />
-
+            <Route path='/management/sliders/create' element={<SlidersForm />} />
+              <Route path='/management/sliders' element={<AllSlidersDetails />} loader={allSliders}/>
+              <Route path='/management/sliders/:_id' element={<UpdateSlider />} loader={getSliderById}/>
             <Route path='/management/view-artists' element={<ViewArtists />} loader={getAllArtists} />
             <Route path='/management/artists-request' element={<GetAllArtists />} loader={() => getAllArtistRequest()} />
 
