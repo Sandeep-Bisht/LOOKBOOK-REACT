@@ -184,7 +184,7 @@
 }
 
 .common-calendor-si .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days .react-calendar__month-view__days__day:disabled{
-    color: grey;
+    color: rgba(128, 128, 128, 0.3);
     font-weight: 400;
     cursor: not-allowed;
 }
