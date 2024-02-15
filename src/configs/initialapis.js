@@ -140,7 +140,7 @@ export const getArtistsByServiceSlug = async ({params}) =>{
 }
 
 export const getHomepageData  = async () => {
-  const urls = [`/artists/get-all`, `/blog/all_blogs`, `/slider/all_sliders`];
+  const urls = [`/artists/get-all-artists`, `/blog/all_blogs`, `/slides/all_slides`];
 
   try {
     const responses = await Promise.all(urls.map(url => axiosAuth.get(url)));
@@ -149,7 +149,7 @@ export const getHomepageData  = async () => {
     let data = {
       allArtists: responses[0].data,   // assuming the first API is for artist requests
       allBlogs: responses[1].data.data,
-      allSliders: responses[2].data.data
+      allSlides: responses[2].data.data
     };
 
     return data;
@@ -306,23 +306,23 @@ export const getAllComments  = async () => {
    }
 };
 
-export const allSliders = async () => {
+export const getAllSlides = async () => {
   try {
-    const response = await axiosAuth.get('/slider/all_sliders');
+    const response = await axiosAuth.get('/slides/all_slides');
     return response.data.data
   } catch (error) {
-      return error.message || "An error occured while trying to get all sliders."
+      return error.message || "An error occured while trying to get all slides."
     // Handle the error appropriately
   }
 };
 
 
-export const getSliderById = async ({params}) => {
+export const getSlidesById = async ({params}) => {
   const {_id} = params
   try {
-    const response = await axiosAuth.post('/slider/get_slider_by_id', { _id:_id });
+    const response = await axiosAuth.post(`/slides/get_slides_by_id/${_id}`);
       return response.data.data
  } catch (error) {
-  return error.message || "An error occured while trying to get slider by ID."
+  return error.message || "An error occured while trying to get slides by ID."
 }
 };

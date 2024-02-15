@@ -20,12 +20,12 @@ import { Button } from '@mui/material'
 import { MdAdd } from "react-icons/md";
 
 
-const AllSlidersDetails = () => {
+const AllSlidesDetails = () => {
   // ** States
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const [rows, setRows] = useState([])
-  const allSliders = useLoaderData()
+  const allSlides = useLoaderData()
 
   const baseURL = process.env.REACT_APP_APIURL
 
@@ -63,7 +63,7 @@ const AllSlidersDetails = () => {
             marginTop: "12px"
           }}
         >
-          <Button type='submit' variant='contained' size='large' className='mb-3' onClick={()=>navigate("/management/sliders/create")}>
+          <Button type='submit' variant='contained' size='large' className='mb-3' onClick={()=>navigate("/management/slides/create")}>
           <MdAdd className="me-3"/> Add
           </Button>
         </Box>
@@ -80,7 +80,7 @@ const AllSlidersDetails = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-  {allSliders && Array.isArray(allSliders) && allSliders.length>0 && allSliders.map(row =>
+  {allSlides && Array.isArray(allSlides) && allSlides.length>0 && allSlides.map(row =>
   {
     return (
     <TableRow hover role='checkbox' tabIndex={-1} key={row._id}>
@@ -94,7 +94,7 @@ const AllSlidersDetails = () => {
             row.title
           ) : column.id === "action" ? (
             <div className='d-flex'>
-              <Link to={`/management/sliders/${row?._id}`} className="fs-4 text-black reset-edit-btn">
+              <Link to={`/management/slides/${row?._id}`} className="fs-4 text-black reset-edit-btn">
                 <CiEdit />
               </Link>
               <div className='ms-3 fs-4 text-black reset-edit-btn'>
@@ -126,4 +126,4 @@ const AllSlidersDetails = () => {
   )
 }
 
-export default AllSlidersDetails
+export default AllSlidesDetails

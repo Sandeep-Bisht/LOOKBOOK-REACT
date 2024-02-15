@@ -18,9 +18,9 @@ const navigation = () => {
       sectionTitle: 'Configuration'
     },
     {
-      title: 'Sliders',
+      title: 'Slides',
       icon: Settings,
-      path: '/management/sliders'
+      path: '/management/slides'
     },
     {
       title: 'Services',

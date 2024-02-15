@@ -16,10 +16,10 @@ import { InputLabel, Select, MenuItem } from '@mui/material'
 const BASE_URL = process.env.REACT_APP_APIURL;
 
 function UpdateSlider() {
-  const getSliderDataById = useLoaderData()
+  const getSlidesDataById = useLoaderData()
   const { register, handleSubmit } = useForm();
   const [selectFileImage, setSelectFileImage] = useState()
-  const [imageUrl, setImageUrl] = useState(getSliderDataById?.image.thumbnailUrl)
+  const [imageUrl, setImageUrl] = useState(getSlidesDataById?.image.thumbnailUrl)
   const [loading, setLoading] = useState(false);
 
 
@@ -41,10 +41,10 @@ function UpdateSlider() {
       setSelectFileImage(file);
     }
   };
-  const SlidersFormHandler = async (data) => {
+  const SlidesFormHandler = async (data) => {
     setLoading(true)
     const formData = new FormData();
-    formData.append("_id", getSliderDataById?._id);
+    formData.append("_id", getSlidesDataById?._id);
     if (selectFileImage) {
       formData.append("updatedImage", selectFileImage);
     }
@@ -52,15 +52,15 @@ function UpdateSlider() {
       formData.append(key, data[key]);
     })
     try {
-      const response = await axiosAuth.put(`${BASE_URL}/slider/sliders_update`, formData);
+      const response = await axiosAuth.put(`${BASE_URL}/slides/slides_update`, formData);
       if (response.statusText == "OK") {
-        toast.success('Slider updated Successfully!');
+        toast.success('Slides updated Successfully!');
         setLoading(false)
-        navigate("/management/sliders")
+        navigate("/management/slides")
       }
     } catch (error) {
-      toast.warn('Failed to update Slider!');
-      return error.message || "An error occured while trying to update Sliders."
+      toast.warn('Failed to update Slides!');
+      return error.message || "An error occured while trying to update Slides."
     }
   };
 
@@ -81,13 +81,13 @@ function UpdateSlider() {
         </Box>
       </Grid>
       <CardContent>
-        <form onSubmit={handleSubmit(SlidersFormHandler)}>
+        <form onSubmit={handleSubmit(SlidesFormHandler)}>
           <Grid container spacing={5}>
             <Grid item xs={6}>
-              <TextField fullWidth label='Slider Name'
+              <TextField fullWidth label='Slides Name'
                 {...register('title')}
-                placeholder='Slider title'
-                defaultValue={getSliderDataById?.title ? getSliderDataById.title : ""}
+                placeholder='Slides title'
+                defaultValue={getSlidesDataById?.title ? getSlidesDataById.title : ""}
               />
               <Grid item xs={12}>
                 <InputLabel id="demo-simple-select-label" className='ps-3 mt-2'>Status</InputLabel>
@@ -95,7 +95,7 @@ function UpdateSlider() {
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   {...register("status")}
-                  defaultValue={getSliderDataById?.status}
+                  defaultValue={getSlidesDataById?.status}
                   className='w-100'
                 >
                   <MenuItem value={'active'}>Active</MenuItem>
@@ -134,7 +134,7 @@ function UpdateSlider() {
                       />
                     </Button>
                     <Button className="ms-2 mt-2" variant="contained" color="secondary" onClick={() => {
-                      setImageUrl(getSliderDataById?.image.thumbnailUrl)
+                      setImageUrl(getSlidesDataById?.image.thumbnailUrl)
                       setSelectFileImage("")
                     }}
                     >

@@ -16,7 +16,7 @@ const BASE_URL = process.env.REACT_APP_APIURL;
 
 // ** Icons Imports
 
-const SlidersForm = () => {
+const SlidesForm = () => {
   // ** States
 
   const {register, handleSubmit} = useForm();
@@ -24,7 +24,7 @@ const SlidersForm = () => {
 
   const navigate = useNavigate();
 
-  const SlidersFormHandler = async (data) => {
+  const SlidesFormHandler = async (data) => {
     setLoading(true)
     const formData=new FormData();
    Object.keys(data).map((item) => {
@@ -35,17 +35,17 @@ const SlidersForm = () => {
       }
   }) 
   try {
-    const response = await axiosAuth.post(`${BASE_URL}/slider/sliders-create`,formData)
+    const response = await axiosAuth.post(`${BASE_URL}/slides/slides-create`,formData)
     if(response.statusText=="OK")
     {
-      toast.success('Slider Created Successfully!');
+      toast.success('Slides Created Successfully!');
       setLoading(false)
-      navigate("/management/sliders")
+      navigate("/management/slides")
     }
   }
   catch(error)
   {
-    toast.warn('Failed to create slider!');
+    toast.warn('Failed to create slides!');
   }
   }
 
@@ -67,7 +67,7 @@ const SlidersForm = () => {
         </Box>
       </Grid>
       <CardContent>
-        <form onSubmit={handleSubmit(SlidersFormHandler)}>
+        <form onSubmit={handleSubmit(SlidesFormHandler)}>
           <Grid container spacing={5}>
             <Grid item xs={6}>
               <TextField fullWidth label='Title'
@@ -81,7 +81,7 @@ const SlidersForm = () => {
                 fullWidth
                 type="file"
                 multiple
-                label="SliderImage"
+                label="SlidesImage"
                 margin="normal"
                 variant="outlined"
                 InputLabelProps={{
@@ -114,4 +114,4 @@ const SlidersForm = () => {
   )
 }
 
-export default SlidersForm
+export default SlidesForm

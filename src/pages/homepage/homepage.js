@@ -13,7 +13,7 @@ import Aos from 'aos';
 
 
 const Homepage = () => {
-    const { allArtists, allBlogs, allSliders } = useLoaderData()
+    const { allArtists, allBlogs, allSlides } = useLoaderData()
 
     const sectionRef = useRef(null);
     const lastCardRef = useRef(null);
@@ -143,15 +143,15 @@ const Homepage = () => {
 
     return (
         <>
-            {allSliders && Array.isArray(allSliders) && allSliders?.length > 0 && 
+            {allSlides && Array.isArray(allSlides) && allSlides?.length > 0 && 
                 <section className='usr-home-banner'>
                     <div className='container'>
 
                         <Slider {...settings}>
-                            {[...Array(allSliders.length > 6 ? 6 : allSliders.length)].map((_, index) => {
+                            {[...Array(allSlides.length > 6 ? 6 : allSlides.length)].map((_, index) => {
                                 return (
                                     <div className="item">
-                                        <img src={`${allSliders[index]?.image?.url}?tr=h-400,w-400,fo-auto`} className="img-fluid w-100 owl-pic" />
+                                        <img src={`${allSlides[index]?.image?.url}?tr=h-400,w-400,fo-auto`} className="img-fluid w-100 owl-pic" />
                                     </div>
                                 )
                             })}
