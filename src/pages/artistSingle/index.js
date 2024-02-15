@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "@css/user/artistSingle.css";
 import Calendar from 'react-calendar';
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import NoDataFound from "pages/become-a-artist/common/noDataFound";
 import LocationAwareMap from "pages/become-a-artist/common/googlemap";
 import PdfIcon from '@core/assets/images/pdfIcon-removebg.png'
@@ -10,6 +10,10 @@ import Verified from '@core/assets/images/verified.png'
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Slider from "react-slick";
+import Slots from 'configs/slots.json'
+import { checkAuth } from "configs/auth";
+import { axiosAuth } from "configs/axiosInstance";
+import { toast } from "react-toastify";
 
 
 const ArtistSingle = () => {
@@ -46,17 +50,122 @@ const ArtistSingle = () => {
         ],
     };
 
+    const location = useLocation()
     const artistData = useLoaderData();
-    const [selectedServices,setSelectedServices] = useState();
     const [currentService,setCurrentService] = useState();
     const [selectedDate, setSelectedDate] = useState(new Date());
-    console.log(selectedDate,'selected date is this');
+    const [selectedSession,setSelectedSession] = useState();
+    const [selectedTime,setSelectedTime] = useState();
+    const [errors,setErrors] = useState();
+    const [submiting,setSubmiting] = useState(false);
 
+    const ModalNextBtn = useRef();
+    const ModalBookMoreBtn = useRef();
+    const ModalConfirmBtn = useRef();
+    const ModalCloseBtn = useRef();
+    const navigate = useNavigate();
+
+    const currentUser = checkAuth()
     const galleryData = (data) => {
         let newData = [];
 
         data && Array.isArray(data) && data.length>0 && data.map((item) => newData.push({ original: item.url, thumbnail: item.url, originalClass: "usr-single-img", thumbnailClass: "usr-single-thumbnail", originalAlt: "Featured Image", thumbnailAlt: "Thumbnail Image" }))
         return newData;
+    }
+
+    const handleNextClick = () =>{
+        if(ModalNextBtn.current && currentService){
+            ModalNextBtn.current.click();
+            setSelectedDate(new Date());
+            setSelectedSession();
+            setSelectedTime();
+        }
+    }
+
+    const handleDateChange = (value) =>{
+        setSelectedDate(value);
+        setSelectedSession();
+        setSelectedTime();
+    }
+
+    const handleSessionChange = (value) =>{
+        setSelectedSession(value);
+        setSelectedTime();
+    }
+
+    const handleTimeChange = (value) =>{
+        setSelectedTime(value);
+    }
+
+    const handleBookMore = async() =>{
+        if(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedTime){
+            return alert('Bad Request.');
+        }
+
+        const formData = {
+            artist:artistData?._id,
+            service:currentService,
+            date:selectedDate,
+            sessions:selectedSession,
+            time:selectedTime
+        };
+
+        setSubmiting('book-more');
+
+        try {
+            const response = await axiosAuth.post("/cart/add-cart", formData);
+            if(response.statusText=="OK")
+            {
+              toast.success('Added to cart!');
+              if(ModalBookMoreBtn.current){
+                setCurrentService()
+                setSelectedDate(new Date());
+                setSelectedSession();
+                setSelectedTime();
+                ModalBookMoreBtn.current.click();
+                setSubmiting(false);
+              }
+            }
+          } catch (error) {
+            toast.warn('Failed to add cart!');
+            setSubmiting(false);
+          }
+    }
+
+    const handleConfirm = async() =>{
+        if(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedTime){
+            return alert('Bad Request.');
+        }
+
+        const formData = {
+            artist:artistData?._id,
+            service:currentService,
+            date:selectedDate,
+            sessions:selectedSession,
+            time:selectedTime
+        };
+
+        setSubmiting('confirm');
+
+        try {
+            const response = await axiosAuth.post("/cart/add-cart", formData);
+            if(response.statusText=="OK")
+            {
+              toast.success('Added to cart!');
+              if(ModalConfirmBtn.current){
+                setCurrentService()
+                setSelectedDate(new Date());
+                setSelectedSession();
+                setSelectedTime();
+                ModalConfirmBtn.current.click();
+                setSubmiting(false);
+              }
+            }
+          } catch (error) {
+            toast.warn('Failed to add cart!');
+            setSubmiting(false);
+          }
+
     }
 
     return (
@@ -405,8 +514,11 @@ const ArtistSingle = () => {
                                                 <p>Bridal Makeup + One Party Makeup</p>
                                             </div>
                                             <div className="usr-card-booking-button">
-
+                                                {currentUser && (currentUser.role === process.env.REACT_APP_USER || currentUser.role === process.env.REACT_APP_ARTIST) ?  
                                                 <button type="button" className="usr-btn fw-300" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Book Now</button>
+                                                : 
+                                                <Link to={`/login?redirectUrl=${location.pathname}`} type="button" className="usr-btn fw-300 text-decoration-none">Book Now</Link>
+                                                }
                                             </div>
                                             </>
                                             }
@@ -416,6 +528,11 @@ const ArtistSingle = () => {
 
                             </div>
                         </section>
+                        
+                        <button ref={ModalNextBtn} type="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle2" className="d-none"></button>
+                        <button ref={ModalBookMoreBtn} type="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" className="d-none"></button>
+                        <button ref={ModalConfirmBtn} type="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle3" className="d-none"></button>
+                        
                         <div class="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalToggleLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
@@ -426,7 +543,7 @@ const ArtistSingle = () => {
                                     <div class="modal-body usr-artist-single-modal-body">
                                         <div className="usr-artist-single-modal-body-wrapper">
                                             { artistData.services && Array.isArray(artistData.services) && artistData.services.length > 0 && artistData.services.map((service,ind)=>{
-                                                return (<button class={`usr-common-action-btn ${currentService === service?._id ? 'active' : null}`}  type="button" key={ind} onClick={()=>setCurrentService(prev => prev === service?._id ? null : service?._id )}>
+                                                return (<button class={`usr-common-action-btn ${currentService === service?._id ? 'active' : null}`}  type="button" key={ind} onClick={()=>setCurrentService(service?._id )}>
                                                         {service.title}
                                                         </button>);
                                             })
@@ -434,8 +551,8 @@ const ArtistSingle = () => {
                                         </div>
                                     </div>
                                     <div class="modal-footer border-0  py-xl-4 py-lg-4 justify-content-center">
-                                        <button type="button" className="usr-btn fw-300" data-bs-dismiss="modal" onClick={()=>{setCurrentService(null);setSelectedServices(null)}}>Cancel</button>
-                                        <button type="button" className="usr-btn fw-300 me-2" data-bs-toggle="modal" data-bs-target="#exampleModalToggle2" disabled={currentService ? false : true}>next</button>
+                                        <button type="button" className="usr-btn fw-300" data-bs-dismiss="modal" onClick={()=>setCurrentService(null)} >Cancel</button>
+                                        <button type="button" className="usr-btn fw-300 me-2" disabled={currentService ? false : true}  onClick={()=>handleNextClick()} >next</button>
                                     </div>
                                 </div>
                             </div>
@@ -443,13 +560,13 @@ const ArtistSingle = () => {
                         <div className="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalToggleLabel2" aria-hidden="true">
                                 <div className="modal-dialog modal-dialog-centered">
                                     <div className="modal-content">
-
+                                    {currentService && 
                                         <div className="modal-body py-4">
                                             <div className="row">
                                                 <div className="col-lg-6 usr-artist-single-modal-separator">
 
                                                     <Calendar
-                                                        onChange={setSelectedDate} 
+                                                        onChange={(e)=>handleDateChange(e)} 
                                                         value={selectedDate}
                                                         className="common-calendor-si"
                                                         minDate={new Date()}
@@ -464,64 +581,61 @@ const ArtistSingle = () => {
                                                                 </p>
                                                             </div>
                                                             <div className="usr-artist-single-modal-time-box-upper-bottom">
-                                                                {currentService && [...Array(artistData && Array.isArray(artistData?.pricing) && artistData?.pricing?.find(el => el.service == currentService).sessionTime ? (24 / artistData?.pricing?.find(el => el.service == currentService)?.sessionTime.toFixed()) : 24)].map((_,index)=>{
-                                                                    return(<button class="usr-session-btn">{index + 1}</button>)
+                                                                {currentService && [...Array(artistData && Array.isArray(artistData?.pricing) && artistData?.pricing?.find(el => el.service == currentService).sessionTime ? Number((24 / artistData?.pricing?.find(el => el.service == currentService)?.sessionTime).toFixed()) : 24)].map((_,index)=>{
+                                                                    return(<button type="button" class={`usr-session-btn ${selectedSession === (index + 1 )? 'active' : ''}`} onClick={()=>handleSessionChange(index + 1)} >{index + 1}</button>)
                                                                 }) }
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <div className="col-lg-12">
                                                         <div className="usr-artist-single-modal-time-box-lower">
                                                             <p className="usr-artist-single-modal-time-box-heading">
                                                                 Select Session Time:
                                                             </p>
                                                             <div className="usr-artist-single-modal-time-box-upper-bottom">
-                                                                <button className="usr-artist-single-modal-time-box-btn">
-                                                                    <span>10:00 am</span>
+                                                                {Array.isArray(Slots) && Slots.map((slot,ind)=>{
+                                                                    let slotDate = new Date("2000-01-01 " + slot);
+                                                                    let sixAM = new Date("2000-01-01 06:00 AM");
 
-                                                                </button>
-                                                                <button className="usr-artist-single-modal-time-box-btn">
-                                                                    <span>11:00 am</span>
+                                                                    if(slotDate < sixAM) {
+                                                                        return null;
+                                                                    }
+                                                                    
+                                                                    let activeIndex = Slots.findIndex((el) => el === selectedTime);
+                                                                    let isActive = ind < (activeIndex + selectedSession * artistData?.pricing?.find(el => el.service == currentService).sessionTime ) && ind >= activeIndex && selectedTime;
 
-                                                                </button>
-                                                                <button className="usr-artist-single-modal-time-box-btn">
-                                                                    <span>12:00 pm</span>
-
-                                                                </button>
-                                                                <button className="usr-artist-single-modal-time-box-btn ">
-                                                                    <span>01:00 pm</span>
-
-                                                                </button>
-                                                                <button className="usr-artist-single-modal-time-box-btn ">
-                                                                    <span>02:00 pm</span>
-
-                                                                </button>
-                                                                <button className="usr-artist-single-modal-time-box-btn ">
-                                                                    <span>03:00 pm</span>
-
-                                                                </button>
-                                                                <button className="usr-artist-single-modal-time-box-btn ">
-                                                                    <span>04:00 pm</span>
-
-                                                                </button>
-                                                                <button className="usr-artist-single-modal-time-box-btn ">
-                                                                    <span>05:00 pm</span>
-
-                                                                </button></div>
+                                                                    return (<button type="button"  className={`usr-artist-single-modal-time-box-btn ${isActive ? 'active' : '' }`} onClick={()=>handleTimeChange(slot)} disabled={selectedSession ? false : true}>
+                                                                    <span>{slot}</span>
+                                                                    </button>)
+                                                                })}
+                                                            </div>
                                                         </div>
-                                                        <div className="d-flex justify-content-center">
-                                                            <button type="button" className="usr-common-action-btn me-2" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Book more</button>
-                                                            <button type="button" class="usr-common-action-btn" data-bs-dismiss="modal">Confirm</button>
-                                                        </div>
-                                                        <div>
-
-                                                        </div>
+                                                    <div className="d-flex justify-content-center">
+                                                        <button type="button" className="usr-common-action-btn me-2" onClick={()=>handleBookMore()} disabled={(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedTime) ? true : false}>{submiting && submiting === 'book-more' ? "Booking..." : "Book more"}</button>
+                                                        <button type="button" class="usr-common-action-btn" onClick={()=>handleConfirm()} disabled={(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedTime) ? true : false}>{submiting && submiting === 'confirm' ? "Wait..." : 'Confirm'}</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
+                                    }
                                     </div>
                                 </div>
                          </div>
+                         <div class="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalToggleLabel3" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <h3 className="text-center text-uppercase mt-4">Thank You!</h3>
+                                    <p className="text-center fw-500">Your Cart has been created</p>
+                                    <div class="modal-body usr-artist-single-modal-body py-4">
+                                        <p className="text-center" >While your cart has been created <br/> you can update your cart from cart page.</p>
+                                    </div>
+                                    <div class="modal-footer border-0  py-xl-4 py-lg-4 justify-content-center">
+                                        <button type="button" className="usr-btn fw-300 me-2" onClick={()=>navigate('/user/cart')} data-bs-dismiss="modal">Go To Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </>
                     :
                     <NoDataFound />

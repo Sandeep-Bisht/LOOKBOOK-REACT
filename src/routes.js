@@ -10,7 +10,7 @@ import Services from 'pages/management/services/servicesCreated'
 import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
-import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogByIdAndCategory, get_services_price_by_artist_id, getAllComments, getArtistsByServiceSlug, getArtistByAlias, getAllSlides, getSlidesById } from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogByIdAndCategory, get_services_price_by_artist_id, getAllComments, getArtistsByServiceSlug, getArtistByAlias, getAllSlides, getSlidesById, getCartData } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -77,6 +77,7 @@ import ArtistFilter from 'layouts/components/Filters/artist-filter'
 import SlidesForm from 'pages/management/slides/createSlides'
 import AllSlidesDetails from 'pages/management/slides/allSlides'
 import UpdateSlide from 'pages/management/slides/updateSlides'
+import Cart from 'pages/Cart'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -229,6 +230,12 @@ const ApplicationRoutes = createBrowserRouter(
           </Route>
 
           <Route element={<RequireAuth allowedRoles={[roles.user, roles.artist]} />}>
+          
+            <Route
+              path="/user/cart"
+              element={<Cart />}
+              loader={getCartData}
+            />
             <Route
               path="/user/profile"
               element={<NewProfile />}
