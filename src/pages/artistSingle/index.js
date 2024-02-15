@@ -495,13 +495,21 @@ const ArtistSingle = () => {
 
                                                         if (foundService) {
                                                             return (
+                                                                
                                                                 <p key={index} className="d-flex justify-content-between">
-                                                                    <img src={foundService?.icon?.thumbnailUrl} alt={foundService.title} width="20"/>
-
+                                                                    
+                                                                    
+                                                                    <span className="icon-plus-title fw-400">
+                                                                        <img src={foundService?.icon?.thumbnailUrl} alt={foundService.title} width="20" className="me-2"/>
                                                                     {foundService.title}:
-                                                                    <span>₹{item.totalPrice}/-</span>
+                                                                
+                                                                    </span>
+                                                                    <span className="fw-700 fw-bold">₹{item.totalPrice}/-</span>
+                                                                 
                                                                     {/* Put onward here too */}
                                                                 </p>
+                                                               
+                                                                
                                                             );
                                                         }
 
