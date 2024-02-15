@@ -204,7 +204,7 @@ const NewProfile = () => {
                         fill="#6D5D4C"
                       />
                     </svg>
-                    Identity
+                    KYC
                   </p>
                   <p>
                     <svg
