@@ -18,6 +18,11 @@ const navigation = () => {
       sectionTitle: 'Configuration'
     },
     {
+      title: 'Slides',
+      icon: Settings,
+      path: '/management/slides'
+    },
+    {
       title: 'Services',
       icon: Settings,
       path: '/management/services'
