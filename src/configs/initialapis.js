@@ -308,7 +308,7 @@ export const getAllComments  = async () => {
 
 export const getAllSlides = async () => {
   try {
-    const response = await axiosAuth.get('/slides/all_slides');
+    const response = await axiosLocal.get('/slides/all_slides');
     return response.data.data
   } catch (error) {
       return error.message || "An error occured while trying to get all slides."
@@ -320,7 +320,7 @@ export const getAllSlides = async () => {
 export const getSlidesById = async ({params}) => {
   const {_id} = params
   try {
-    const response = await axiosAuth.post(`/slides/get_slides_by_id/${_id}`);
+    const response = await axiosAuth.get(`/slides/get_slides_by_id/${_id}`);
       return response.data.data
  } catch (error) {
   return error.message || "An error occured while trying to get slides by ID."
