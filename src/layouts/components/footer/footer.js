@@ -42,7 +42,7 @@ const Footer = () => {
                                 </div>
                                 <div className="col-md-4 usr-footer-last-icon">
                                     <div>
-                                        <a className="footer-link" href="">
+                                        <a className="footer-link text-decoration-underline" href="">
                                             <span className="me-1">
                                                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M16.5331 6.05339L9.99981 10.8617L3.46647 6.05339M2.69564 4.46172C2.47462 4.46172 2.26266 4.54952 2.10638 4.7058C1.9501 4.86208 1.8623 5.07404 1.8623 5.29505V14.7159C1.8623 14.9369 1.9501 15.1489 2.10638 15.3051C2.26266 15.4614 2.47462 15.5492 2.69564 15.5492H17.304C17.525 15.5492 17.7369 15.4614 17.8932 15.3051C18.0495 15.1489 18.1373 14.9369 18.1373 14.7159V5.28255C18.1373 5.06154 18.0495 4.84958 17.8932 4.6933C17.7369 4.53702 17.525 4.44922 17.304 4.44922H2.69564V4.46172Z" stroke="#6D5D4C" strokeLinecap="round" strokeLinejoin="round" />
