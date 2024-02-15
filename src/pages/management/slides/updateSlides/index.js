@@ -15,7 +15,7 @@ import { InputLabel, Select, MenuItem } from '@mui/material'
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
-function UpdateSlider() {
+function UpdateSlides() {
   const getSlidesDataById = useLoaderData()
   const { register, handleSubmit } = useForm();
   const [selectFileImage, setSelectFileImage] = useState()
@@ -167,4 +167,4 @@ function UpdateSlider() {
   )
 }
 
-export default UpdateSlider
+export default UpdateSlides
