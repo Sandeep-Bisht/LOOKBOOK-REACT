@@ -470,12 +470,9 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
 .usr-detail-card .usr-artist-charges p span,
 .usr-detail-card .usr-artist-details-tag .usr-rating .usr-access-details .usr-experience p span {
     color: #6D5D4C;
-    font-family: Avenir LT Pro;
     font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
     line-height: normal;
-    text-transform: uppercase;
+ 
 }
 
 .usr-detail-card .usr-artist-charges p span,
@@ -495,7 +492,12 @@ box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.19);
     font-size: 15px;
    
 }
-
+.usr-detail-card .usr-artist-charges p .icon-plus-title
+{
+    color: #6D5D4C;
+    font-family:AvenirLTProBook;
+    font-size: 15px;
+}
 .usr-detail-card .usr-card-booking-button {
     border-top: 1px solid #d3cec9;
     padding: 30px 0 0 0;

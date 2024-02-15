@@ -161,7 +161,7 @@ const Homepage = () => {
 
                         </div>
                         <div className="usr-button d-flex justify-content-center mt-lg-2">
-                            <Link to="/services" className="usr-common-action-btn usr-home-banner-action-btn btn">Explore artists</Link>
+                            <Link to="/services" className="usr-common-action-btn usr-home-banner-action-btn text-decoration-none">Explore artists</Link>
                         </div>
                     </div>
                 </section>
@@ -448,7 +448,7 @@ const Homepage = () => {
                             <div className="col-lg-12">
 
                                 <div className="usr-button d-flex justify-content-center mt-lg-5">
-                                    <Link to="/services" className="usr-common-action-btn usr-home-banner-action-btn btn d-inline">
+                                    <Link to="/services" className="usr-common-action-btn usr-home-banner-action-btn text-decoration-none d-inline">
                                         View All Artists
                                     </Link></div>
                             </div>
@@ -518,7 +518,7 @@ const Homepage = () => {
                                         :
                                         <div className="p-5 text-center">No Data Found.</div>}
                                     <div className="recent-blog-main-btn text-center">
-                                        <Link type="button" className="usr-common-action-btn btn" to={`/blogs`}>LOAD ALL</Link>
+                                        <Link type="button" className="usr-common-action-btn text-decoration-none" to={`/blogs`}>LOAD ALL</Link>
                                     </div></div>
                             </div>
                         </div>

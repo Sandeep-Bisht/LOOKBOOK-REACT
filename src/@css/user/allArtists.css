@@ -9,6 +9,10 @@
     border-radius: 10px;
     cursor: pointer;
   }
+  .usr-all-artist  .usr-all-artist-card-body
+  {
+    padding-top: 10px;
+  }
   
   .usr-all-artist .usr-all-artist-card-wrapper {
     position: relative;
@@ -80,22 +84,18 @@
     display: flex;
     align-items: center;
     font-size: 14px;
-    font-family: Avenir LT Pro;
-    font-style: normal;
-    font-weight: 400;
+    font-family:AvenirLTProBook;
     margin-bottom: 10px;
   }
   
   .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-card-rating svg {
-    margin-right: 10px;
+    margin-right: 7px;
   }
   
   .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-card-name {
     color: #6D5D4C;
-    font-family: Forum;
     font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
+     font-family:AvenirLTProBook;
     line-height: normal;
     margin-bottom: 0px;
     text-transform: capitalize;
@@ -103,14 +103,12 @@
   
   .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-card-date,
   .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-prize-list .usr-all-artist-card-tag {
-    color: #949393;
-    font-family: Avenir LT Pro;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 1.5px;
+    font-family: AvenirLTProLight!important;
+    color: #6D5D4C;
+     font-size: 13px;
+     letter-spacing: 1.5px;
     margin-bottom: 10px;
+    
   }
   
   .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-prize-list span {
@@ -119,12 +117,9 @@
   
   .usr-all-artist .usr-all-artist-card .usr-all-artist-card-body .usr-all-artist-prize-list .usr-all-artist-card-prize {
     color: #6D5D4C;
-    font-family: Avenir Next LT Pro;
-    font-size: 12.277px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    margin-bottom: 10px;
+    font-family: AvenirLTProBook!important;
+    font-size: 13px;
+    letter-spacing: .3px;
   }
 
   .usr-all-artist .usr-all-artist-card .usr-whishlist-icon svg path
