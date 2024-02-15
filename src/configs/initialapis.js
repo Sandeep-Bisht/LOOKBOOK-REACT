@@ -326,3 +326,12 @@ export const getSlidesById = async ({params}) => {
   return error.message || "An error occured while trying to get slides by ID."
 }
 };
+
+export const getCartData = async () => {
+  try {
+    const response = await axiosAuth.get('/cart/get-cart-data');
+      return response.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get cart data."
+   }
+}

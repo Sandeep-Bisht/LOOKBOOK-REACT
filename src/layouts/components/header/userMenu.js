@@ -46,6 +46,12 @@ const UserMenu = ({props}) => {
             Profile
            </Link>
         </li>
+        <li>
+           <Link to="/user/cart" className="dropdown-item">
+           <AccountOutline sx={{ marginRight: 2 }} />
+            Cart
+           </Link>
+        </li>
         
         
         <li>
