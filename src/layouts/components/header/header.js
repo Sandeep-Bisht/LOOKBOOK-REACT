@@ -8,7 +8,7 @@ import mainLogo from "@core/assets/header/main-logo.png";
 import DatePicker from "react-multi-date-picker";
 
 
-const Header = ({ cities, services }) => {
+const Header = ({ cities, categories }) => {
 
   // Toggle Search container jsmainLogo
 
@@ -41,7 +41,7 @@ const Header = ({ cities, services }) => {
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState({})
   const [selectedLocation, setSelectedLocation] = useState()
-  const [selectedService, setSelectedService] = useState()
+  const [selectedCategories, setSelectedCategories] = useState()
   const [selectedEndDate, setSelectedEndDate] = useState()
   const [selectedStartDate, setSelectedStartDate] = useState()
 
@@ -63,15 +63,15 @@ const Header = ({ cities, services }) => {
   }, [location.pathname]);
 
   const handleSearch = () => {
-    if (selectedLocation || selectedService || (selectedStartDate && selectedEndDate)) {
+    if (selectedLocation || selectedCategories || (selectedStartDate && selectedEndDate)) {
       let payload = {};
 
       if (selectedLocation) {
         payload['location'] = selectedLocation;
       }
 
-      if (selectedService) {
-        payload['service'] = selectedService;
+      if (selectedCategories) {
+        payload['category'] = selectedCategories;
       }
 
       if (selectedStartDate && selectedEndDate) {
@@ -84,10 +84,6 @@ const Header = ({ cities, services }) => {
     }
   };
 
-
-  const getArtistByServiceID = async (service_id) => {
-    navigate(`/services/${service_id}`)
-  };
   return (
     <>
       <header className="header" id="header" ref={headerRef}>
@@ -141,13 +137,13 @@ const Header = ({ cities, services }) => {
                       </span>
                     </button>
                     <ul className="dropdown-menu menu-service-single-dropdown">
-                      {services && Array.isArray(services) ?
+                      {categories && Array.isArray(categories) ?
                         <>
-                          {[...Array(services.length > 3 ? 3 : services.length)].map((_, index) => {
+                          {[...Array(categories.length > 3 ? 3 : categories.length)].map((_, index) => {
                             return (
                               <li key={index}>
-                                <Link className="dropdown-item" to={`/services/${services[index]?.slug}`}>
-                                  {services[index]?.title}
+                                <Link className="dropdown-item" to={`/services/${categories[index]?.slug}`}>
+                                  {categories[index]?.title}
                                 </Link>
                               </li>
                             )
@@ -366,13 +362,13 @@ const Header = ({ cities, services }) => {
                                     </clipPath>
                                   </defs>
                                 </svg></span>
-                              <span className="nav-link">{isClicked ? 'Services' : <>{selectedService ? <>{services.find(item => item._id == selectedService)?.title}</> : 'Services'}</>}</span>
+                              <span className="nav-link">{isClicked ? 'Services' : <>{selectedCategories ? <>{categories.find(item => item._id == selectedCategories)?.title}</> : 'Services'}</>}</span>
                             </div>
 
                             <div>
                               {isClicked && (
                                 <span className="clicked-text">
-                                  {selectedService ? <>{services.find(item => item._id == selectedService)?.title}</> : 'Select Service'}
+                                  {selectedCategories ? <>{categories.find(item => item._id == selectedCategories)?.title}</> : 'Select Service'}
                                 </span>
                               )}
 
@@ -383,12 +379,12 @@ const Header = ({ cities, services }) => {
                           </button>
                           <div className="dropdown-menu">
                             <div className="dropdown-menu-wrapper">
-                              {services && Array.isArray(services) && services.length > 0 && services.map((service, ind) => {
+                              {categories && Array.isArray(categories) && categories.length > 0 && categories.map((category, ind) => {
 
-                                return <div onClick={() => setSelectedService(service._id)} className={`usr-dropdown-link ${selectedService === service._id ? 'active' : ''}`}
-                                  key={`${service._id}${ind}`}
+                                return <div onClick={() => setSelectedCategories(category._id)} className={`usr-dropdown-link ${selectedCategories === category._id ? 'active' : ''}`}
+                                  key={`${category._id}${ind}`}
                                 >
-                                  {service.title}
+                                  {category.title}
                                 </div>
                               })}
                             </div>

@@ -165,10 +165,10 @@ const CheckLoggedIn = () => {
 
 const CommonLayout = () => {
 
-  const { cities, services } = useLoaderData()
+  const { cities, categories } = useLoaderData()
   return (
     <>
-      <Header cities={cities} services={services} />
+      <Header cities={cities} categories={categories} />
       <Outlet />
       <Footer />
     </>)
