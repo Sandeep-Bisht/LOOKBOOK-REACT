@@ -50,14 +50,24 @@ export const getArtistRequests = async () =>{
   }
 } 
 
-export const getServiceById = async (_id) => {
+export const getServiceUpdateData = async ({params}) =>{
+  const {_id} = params;
+  const urls = [`/service/get_service_by_id/${_id}`, `/artist-categories/all-artist-categories`];
+
   try {
-    const response = await axiosAuth.post('/service/get_service_by_id', { _id:_id });
-      return response.data.data
- } catch (error) {
-  return error.message || "An error occured while trying to get service by ID."
-}
-};
+    const responses = await Promise.all(urls.map(url => axiosAuth.get(url)));
+
+    // Initialize an object with keys representing the source of the data
+    let data = {
+      getServiceDataById: responses[0].data.data,   // assuming the first API is for artist requests
+      allArtistCategories: responses[1].data.data,
+    };
+    
+    return data;
+  } catch (error) {
+    return error.message || "An error occurred while trying to get artist homepage initialdata.";
+  }
+} 
 
 export const getProductById = async (_id) => {
   try {
@@ -87,8 +97,27 @@ export const getAllArtistRequest = async () => {
    }
 };
 
+export const getAllArtistCategories = async () => {
+  try {
+    const response = await axiosLocal.get('/artist-categories/all-artist-categories');
+      return response.data.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get all artists request."
+   }
+};
+
+export const getArtistCategoryById = async ({params}) => {
+  const {_id} = params;
+  try {
+    const response = await axiosAuth.get(`/artist-categories/get_artist_category_by_id/${_id}`);
+      return response.data.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get all artists request."
+   }
+};
+
 export const getWizardData  = async () => {
-  const urls = [`/users/getArtistRequests`, `/service/all_services`, `/product/all_products`];
+  const urls = [`/users/getArtistRequests`, `/artist-categories/all-artist-categories`, `/product/all_products`];
 
   try {
     const responses = await Promise.all(urls.map(url => axiosAuth.get(url)));
@@ -96,7 +125,7 @@ export const getWizardData  = async () => {
     // Initialize an object with keys representing the source of the data
     let data = {
       artistRequests: responses[0].data,   // assuming the first API is for artist requests
-      allServices: responses[1].data.data,
+      allCategories: responses[1].data.data,
       allProducts: responses[2].data.data
     };
 
@@ -105,7 +134,6 @@ export const getWizardData  = async () => {
     return error.message || "An error occurred while trying to get artist requests.";
   }
 };
-
 
 export const getAllArtists  = async () => {
   try {
@@ -207,7 +235,6 @@ export const get_services_price_by_artist_id = async () => {
   }
 }; 
 
-
 export const getBlogBySlug = async ({params}) => {
   try {
     const {category_slug, slug} = params;
@@ -235,6 +262,7 @@ export const getUserWishlist = async() =>{
   return error.message || "An error occured while trying to get user wishlist."
    }
 }
+
 export const getAllCategories  = async () => {
   try {
     const response = await axiosLocal.get('/category/all_categories');
@@ -253,6 +281,7 @@ export const getCategoryById = async ({params}) => {
       return error.message || "An error occured while trying to get artist by id."
   }
 }; 
+
 export const getAdminDashboardInitialData = async() =>{
   try {
     const response = await axiosAuth.get(`/management/get-admin-dashboard-initial-data`);
@@ -261,8 +290,6 @@ export const getAdminDashboardInitialData = async() =>{
   return error.message || "An error occured while trying to get dashboard data."
    }
 }
-
-
 
 export const getBlogsAndCategory = async()=>{
   const allBlogs=getAllBlog();
@@ -315,7 +342,6 @@ export const getAllSlides = async () => {
     // Handle the error appropriately
   }
 };
-
 
 export const getSlidesById = async ({params}) => {
   const {_id} = params

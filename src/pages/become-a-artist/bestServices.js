@@ -7,28 +7,28 @@ import { axiosAuth } from "configs/axiosInstance";
 const BASE_URL = process.env.REACT_APP_APIURL
 
 const BestServices = () => {
-  const [artistPayload, setArtistPayload, allServices] = useOutletContext();
+  const [artistPayload, setArtistPayload, allCategories] = useOutletContext();
   const { request_id } = useParams();
 
   const navigate = useNavigate();
 
-  const [selectedService, setSelectedService] = useState(artistPayload.featuredService ? artistPayload.featuredService : null);
+  const [selectedCategory, setSelectedCategory] = useState(artistPayload.featuredCategory ? artistPayload.featuredCategory : null);
   const [attemptedNextWithoutSelection, setAttemptedNextWithoutSelection] = useState(false);
-  const options = allServices.filter((item) => artistPayload?.services?.includes(item._id));
+  const options = allCategories.filter((item) => artistPayload?.categories?.includes(item._id));
   
   const handleNextClick = async () =>{
-    if(!selectedService || selectedService == ''){
+    if(!selectedCategory || selectedCategory == ''){
       return setAttemptedNextWithoutSelection(true);
     }
 
     setAttemptedNextWithoutSelection(false)
 
     try{
-      if(artistPayload.currentStep > 8 && artistPayload.featuredService == selectedService){
+      if(artistPayload.currentStep > 8 && artistPayload.featuredCategory == selectedCategory){
        return  navigate(`/become-a-artist/${request_id}/description`)
       }
-        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:9,featuredService:selectedService});
-        setArtistPayload((prev) => {return {...prev,currentStep:9,featuredService:selectedService}})
+        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:9,featuredCategory:selectedCategory});
+        setArtistPayload((prev) => {return {...prev,currentStep:9,featuredCategory:selectedCategory}})
         navigate(`/become-a-artist/${request_id}/description`)
     }
     catch(error){
@@ -51,26 +51,26 @@ const BestServices = () => {
               <div className="row g-3">
                 {(options && Array.isArray(options)) &&  options.length > 0?
                 <>
-                  {options.map((service, index) => (
-                   <div key={index} className={`col-md-6 ${attemptedNextWithoutSelection && (!selectedService || selectedService == '') ? 'border-highlight' : ''}`}>
+                  {options.map((category, index) => (
+                   <div key={index} className={`col-md-6 ${attemptedNextWithoutSelection && (!selectedCategory || selectedCategory == '') ? 'border-highlight' : ''}`}>
                       <div
                         className={`${
-                          service._id == selectedService
+                          category._id == selectedCategory
                             ? "selected"
                             : "artist-card"
                         }`}
                         
-                        onClick={() => setSelectedService(service._id)}
+                        onClick={() => setSelectedCategory(category._id)}
                       >
                         <div  >
                           <img 
-                            src={service.icon.thumbnailUrl}
-                            alt={service.title}
+                            src={category.icon.thumbnailUrl}
+                            alt={category.title}
                             className="img-fluid about-images"
                           />
                         </div>
                         <div className="card-title">
-                          <span>{service.title}</span>
+                          <span>{category.title}</span>
                         </div>
                       </div>
                     </div>

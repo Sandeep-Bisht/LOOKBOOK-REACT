@@ -97,13 +97,13 @@ const AllArtist = () => {
                                 return (
                                     <TableRow hover role='checkbox' tabIndex={-1} key={row._id}>
                                         <TableCell>
-                                            {row.profile_id?.fullName}
+                                            {row.profile?.fullName}
                                         </TableCell>
                                         <TableCell>
                                             {row?.education}
                                         </TableCell>
                                         <TableCell>
-                                            {row?.experience}
+                                            {row?.experience ? row?.experience + ' Years' : null}
                                         </TableCell>
                                         <TableCell>
                                             {row && row.languages ? row.languages.join(', ') : ""}

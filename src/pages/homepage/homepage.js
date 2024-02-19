@@ -415,7 +415,7 @@ const Homepage = () => {
                                                 <div className="name">
                                                     <h2>{allArtists[index]?.profile_id?.fullName}</h2>
                                                     <div className="profession">
-                                                        <h3>{allArtists[index]?.featuredService?.slug}</h3>
+                                                        <h3>{allArtists[index]?.featuredService?.title}</h3>
                                                     </div>
                                                     <div className="desc">
                                                         <p>{truncateDescription(allArtists[index]?.description, 45)}</p>

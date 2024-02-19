@@ -3,14 +3,18 @@
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
-import Link from '@mui/material/Link'
+import Select from '@mui/material/Select';
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import CardContent from '@mui/material/CardContent'
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import {Checkbox} from '@mui/material';
 import {useForm} from 'react-hook-form'
 import { axiosAuth } from 'configs/axiosInstance'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLoaderData, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 const BASE_URL = process.env.REACT_APP_APIURL;
@@ -19,8 +23,10 @@ const BASE_URL = process.env.REACT_APP_APIURL;
 
 const ServicesForm = () => {
   // ** States
+  const allArtistCategories = useLoaderData();
 
   const {register, handleSubmit} = useForm();
+  const [selectedCategories,setSelectedCategories] = useState()
   const [loading,setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -50,6 +56,12 @@ const ServicesForm = () => {
   }
   }
 
+  
+  const handleCategoryChange = (event) => {
+    const selectedCategoriesCopy = event.target.value;
+    setSelectedCategories(selectedCategoriesCopy);
+  };
+
   return (
     <>
     <Card>
@@ -72,16 +84,49 @@ const ServicesForm = () => {
           <Grid container spacing={5}>
             <Grid item xs={6}>
               <TextField fullWidth label='Service Name'
-              {...register('title')}
+              {...register('title',{required:true})}
                 placeholder='Service'
                  />
             </Grid>
             <Grid item xs={6}>
+            <div>
+              <FormControl fullWidth sx={{ m: 1, minWidth: 200 }}>
+                <InputLabel id="demo-simple-select-standard-label">
+                  Artist Categories
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  name="artist_category"
+                  label="Artist categories"
+                  className="multi-language-select"
+                  defaultValue={[]}
+                  {...register("artist_category",{required:true})}
+                  multiple
+                  onChange={handleCategoryChange}
+                >
+                  {allArtistCategories && Array.isArray(allArtistCategories) && allArtistCategories.length > 0 && allArtistCategories.map((item,ind)=>{
+                    return (<MenuItem value={item._id}>
+                    <Checkbox
+                      checked={selectedCategories && Array.isArray(selectedCategories) && selectedCategories.includes(item._id) ? true : false}
+                    />
+                    {item.title}
+                  </MenuItem>)
+                  })}
+                </Select>
+              </FormControl>
+            </div>
+
+            </Grid>
+            <Grid item xs={6}>
             <label className='ms-1'>Service Icon</label>
-              <TextField fullWidth
+              <TextField 
+                fullWidth
                 {...register('icon')}
                 type='file'
                 label="image"
+                margin="normal"
+                variant="outlined"
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -94,7 +139,6 @@ const ServicesForm = () => {
                 {...register('image')}
                 fullWidth
                 type="file"
-                multiple
                 label="FeatureImage"
                 margin="normal"
                 variant="outlined"
