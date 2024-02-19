@@ -87,6 +87,8 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
                 <img
                   src={`${item.url}?tr=h-400,w-400,fo-auto`}
                   alt={item.name}
+                  className="common-cursor-pointer"
+                  onClick={() => navigate(`/artists/${artistInfo?.featuredService}/${artistInfo?._id}`)}
                 />
               </div>
             );
