@@ -104,12 +104,6 @@ const DescribeYourself = () => {
                               }`}
                               onClick={(e) => handleChange(product._id)}
                             >
-                              {/* <div className="card-body">
-                                <h5 className="_6pu6cc">{product.title}</h5>
-                                <div>
-                                  <span>{product.description}</span>
-                                </div>
-                              </div> */}
                               <div className="card-icon ">
                                 <img
                                   src={product.icon.thumbnailUrl}

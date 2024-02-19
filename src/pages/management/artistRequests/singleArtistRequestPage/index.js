@@ -110,7 +110,7 @@ function SingleArtistInformation() {
                                                     <span className="artists-detail-heading">Full Name</span>
                                                 </div>
                                                 <div className='col-9 text-end'>
-                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile_id?.fullName}</p>
+                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile?.fullName}</p>
                                                 </div>
                                             </div>
                                             <div className='row'>
@@ -118,7 +118,7 @@ function SingleArtistInformation() {
                                                     <span className="artists-detail-heading">Emai</span>
                                                 </div>
                                                 <div className='col-9 text-end'>
-                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile_id?.email}</p>
+                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile?.email}</p>
                                                 </div>
                                             </div>
                                             <div className='row'>
@@ -126,7 +126,7 @@ function SingleArtistInformation() {
                                                     <span className="artists-detail-heading">Mobile</span>
                                                 </div>
                                                 <div className='col-9 text-end'>
-                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile_id?.mobile}</p>
+                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile?.mobile}</p>
                                                 </div>
                                             </div>
                                             <div className='row'>
@@ -134,7 +134,7 @@ function SingleArtistInformation() {
                                                     <span className="artists-detail-heading">DOB</span>
                                                 </div>
                                                 <div className='col-9 text-end'>
-                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile_id?.dob}</p>
+                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile?.dob}</p>
                                                 </div>
                                             </div>
                                             <div className='row'>
@@ -142,7 +142,7 @@ function SingleArtistInformation() {
                                                     <span className="artists-detail-heading">Experience</span>
                                                 </div>
                                                 <div className='col-9 text-end'>
-                                                    <p className='ms-4 artists-detail-para'>{artistInformation.experience}</p>
+                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.experience} Years</p>
                                                 </div>
                                             </div>
                                             <div className='row'>
@@ -158,7 +158,7 @@ function SingleArtistInformation() {
                                                     <span className="artists-detail-heading">Gender</span>
                                                 </div>
                                                 <div className='col-9 text-end'>
-                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile_id?.gender}</p>
+                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.profile?.gender}</p>
                                                 </div>
                                             </div>
                                             <div className='row'>
@@ -183,10 +183,10 @@ function SingleArtistInformation() {
                                         <div className='rounded-3 bg-white h-100 p-4'>
                                             <div className='row'>
                                                 <div className='col-3'>
-                                                    <span className="artists-detail-heading">Alias</span>
+                                                    <span className="artists-detail-heading">UserName</span>
                                                 </div>
                                                 <div className='col-9 text-end'>
-                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.alias}</p>
+                                                    <p className='ms-4 artists-detail-para'>{artistInformation?.userName}</p>
                                                 </div>
                                             </div>
                                             <div className='row'>
@@ -208,14 +208,14 @@ function SingleArtistInformation() {
                                                 </div>
                                             </div>
                                             {
-                                                artistInformation && Array.isArray(artistInformation.services) && artistInformation.services.length > 0 && (
+                                                artistInformation && Array.isArray(artistInformation.categories) && artistInformation.categories.length > 0 && (
                                                     <div className='row'>
                                                         <div className='col-3'>
-                                                            <span className="artists-detail-heading">Services</span>
+                                                            <span className="artists-detail-heading">Categories</span>
                                                         </div>
                                                         <div className='col-9 text-end'>
                                                             <p className='ms-4 artists-detail-para'>
-                                                                {artistInformation.services.map((item, index) => (
+                                                                {artistInformation.categories.map((item, index) => (
                                                                     <span key={item.title}>
                                                                         {index > 0 ? ', ' : ''}
                                                                         {item.title}
@@ -259,7 +259,7 @@ function SingleArtistInformation() {
                                                     <span className="artists-detail-heading">Insta-Id</span>
                                                 </div>
                                                 <div className='col-9 text-end'>
-                                                    <p className='ms-4 artists-detail-para'><a target='blank' href={`https://www.instagram.com/${artistInformation?.profile_id?.instaId}`} style={{ textDecoration: "none" }}>{artistInformation?.profile_id?.instaId}</a></p>
+                                                    <p className='ms-4 artists-detail-para'><a target='blank' href={`https://www.instagram.com/${artistInformation?.instagram}`} style={{ textDecoration: "none" }}>{artistInformation?.instagram}</a></p>
                                                 </div>
                                             </div>
                                             <div className='row'>

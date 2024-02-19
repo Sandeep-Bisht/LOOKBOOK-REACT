@@ -1,16 +1,12 @@
 import UserLayout from 'layouts/UserLayout'
-import AccountSettings from 'pages/Demo/accountSetting'
-import CardBasic from 'pages/Demo/cards'
 import Dashboard from 'pages/management/dashboard'
 import Error404 from 'pages/error/404'
-import FormLayouts from 'pages/Demo/form-layouts'
 import LoginPage from 'pages/login'
-import MUITable from 'pages/Demo/tables'
 import Services from 'pages/management/services/servicesCreated'
 import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
-import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getServiceById, getProductById, getBlogByCategorySlug, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogByIdAndCategory, get_services_price_by_artist_id, getAllComments, getArtistsByServiceSlug, getArtistByAlias, getAllSlides, getSlidesById, getCartData } from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getProductById, getBlogByCategorySlug, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogByIdAndCategory, get_services_price_by_artist_id, getAllComments, getArtistsByServiceSlug, getArtistByAlias, getAllSlides, getSlidesById, getCartData } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -38,7 +34,6 @@ import ArtistGlobalState from 'pages/become-a-artist/globalState'
 import ArtistLocation from 'pages/become-a-artist/location'
 import StepFirst from 'pages/become-a-artist/stepFirst'
 import StepThird from 'pages/become-a-artist/stepThird'
-import Icons from 'pages/Demo/icons'
 import GetAllArtists from 'pages/management/artistRequests/allArtistRequests'
 import BecomeAristHeader from 'pages/become-a-artist/common/header'
 import Review from 'pages/become-a-artist/review'
@@ -78,6 +73,12 @@ import SlidesForm from 'pages/management/slides/createSlides'
 import AllSlidesDetails from 'pages/management/slides/allSlides'
 import UpdateSlide from 'pages/management/slides/updateSlides'
 import Cart from 'pages/Cart'
+import AllArtistCategories from 'pages/management/artist_categories/allCategories'
+import { getAllArtistCategories } from 'configs/initialapis'
+import AddArtistCategories from 'pages/management/artist_categories/addNew'
+import ArtistCategoryUpdate from 'pages/management/artist_categories/edit'
+import { getArtistCategoryById } from 'configs/initialapis'
+import { getServiceUpdateData } from 'configs/initialapis'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -298,22 +299,26 @@ const ApplicationRoutes = createBrowserRouter(
         <Route element={<DashboardComponents />}>
           <Route path="/management" element={<UserLayout />}>
             <Route path='/management/dashboard' element={<Dashboard />} loader={getAdminDashboardInitialData} />
-            <Route path="/management/account-settings" element={<AccountSettings />} />
-            <Route path="/management/cards" element={<CardBasic />} />
-            <Route path="/management/icons" element={<Icons />} />
-            <Route path="/management/tables" element={<MUITable />} />
-            <Route path="/management/form-layouts" element={<FormLayouts />} />
-            <Route path="/management/create-blog" element={<CreateBlog />} loader={getAllCategories} />
+            
+            <Route path='/management/artist-categories' element={<AllArtistCategories/>} loader={getAllArtistCategories}/>
+            <Route path='/management/artist-categories/create' element={<AddArtistCategories/>}/>
+            <Route path='/management/artist-categories/:_id' element={<ArtistCategoryUpdate/>} loader={getArtistCategoryById}/>
+
+            <Route path="/management/services" element={<AllServicesDetails />} loader={allServicesDetails} />
+            <Route path="/management/services/create" element={<Services />}  loader={getAllArtistCategories}/>
+            <Route path="/management/services/:_id" element={<UpdateService />} loader={getServiceUpdateData} />
 
             <Route path="/management/blogs" element={<BlogList />} loader={getAllBlog} />
-            <Route path="/management/services" element={<AllServicesDetails />} loader={allServicesDetails} />
+            <Route path="/management/create-blog" element={<CreateBlog />} loader={getAllCategories} />
+
+
             <Route path="/management/categories" element={<Categories />} loader={getAllCategories} />
             <Route path="/management/categories/create" element={<CategoriesForm />} loader={getAllCategories} />
-            <Route path="/management/services/create" element={<Services />} />
+
+            
             <Route path="/management/products" element={<AllProdutsDetails />} loader={allProductsDetails} />
             <Route path="/management/products/create" element={<ProductForm />} />
             <Route path="/management/categories/create/:category_id" element={<UpdateCategories />} loader={getCategoryById} />
-            <Route path="/management/services/:_id" element={<UpdateService />} loader={({ params }) => getServiceById(params)} />
             <Route path="/management/products/:_id" element={<UpdateProducts />} loader={({ params }) => getProductById(params)} />
             <Route path="/management/blogs/:_id" element={<UpdateBlog />} loader={({ params }) => getBlogByIdAndCategory(params)} />
             <Route path="/management/comments" element={<Comments />} loader={getAllComments} />

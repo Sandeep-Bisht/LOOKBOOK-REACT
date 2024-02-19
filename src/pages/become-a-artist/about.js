@@ -7,50 +7,50 @@ import { axiosAuth } from "configs/axiosInstance";
 const BASE_URL = process.env.REACT_APP_APIURL
 
 const AboutYou = () => {
-  const [artistPayload, setArtistPayload, allServices] = useOutletContext();
+  const [artistPayload, setArtistPayload, allCategories] = useOutletContext();
   const { request_id } = useParams();
 
   const navigate = useNavigate();
 
-  const [selectedServices, setSelectedServices] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [attemptedNextWithoutSelection, setAttemptedNextWithoutSelection] = useState(false);
 
   useEffect(()=>{
     if(artistPayload){
-      if(artistPayload.services && Array.isArray(artistPayload.services)){
-        setSelectedServices(artistPayload.services);
+      if(artistPayload.categories && Array.isArray(artistPayload.categories)){
+        setSelectedCategories(artistPayload.categories);
       }
     }
   },[artistPayload])
 
-  const handleChange = (service) => {
+  const handleChange = (category) => {
     // Check if the service is already selected
-    const isSelected = selectedServices.includes(service);
+    const isSelected = selectedCategories.includes(category);
     setAttemptedNextWithoutSelection(false);
 
     if (isSelected) {
       // If selected, remove it from the list
-      setSelectedServices((prevSelected) =>
-        prevSelected.filter((item) => item !== service)
+      setSelectedCategories((prevSelected) =>
+        prevSelected.filter((item) => item !== category)
       );
     } else {
       // If not selected, add it to the list
-      setSelectedServices((prevSelected) => [...prevSelected, service]);
+      setSelectedCategories((prevSelected) => [...prevSelected, category]);
     }
   };
   
   const handleNextClick = async () =>{
 
-    if(selectedServices.length > 0){
+    if(selectedCategories.length > 0){
     try{       
-      let payload = {currentStep:3,services:selectedServices}
+      let payload = {currentStep:3,categories:selectedCategories}
 
         if(artistPayload.currentStep > 2){
             delete payload.currentStep;
         }
 
-        if(artistPayload.services && Array.isArray(artistPayload.services)){
-          const areEqual = selectedServices.every((element, index) => element === artistPayload.services[index]);
+        if(artistPayload.categories && Array.isArray(artistPayload.categories)){
+          const areEqual = selectedCategories.every((element, index) => element === artistPayload.categories[index]);
          
 
           if(areEqual){
@@ -91,28 +91,28 @@ const AboutYou = () => {
           <div className="row my-5 w-75 mx-auto">
             <div className="col-md-10 mx-auto">
               <div className="row g-3">
-                {(allServices && Array.isArray(allServices)) && allServices.length > 0?
+                {(allCategories && Array.isArray(allCategories)) && allCategories.length > 0?
                   <>
-                  { allServices.map((service, index) => (
+                  { allCategories.map((category, index) => (
                    <div key={index} className={`col-md-6 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
                       <div
                         className={`${
-                          selectedServices.includes(service._id)
+                          selectedCategories.includes(category._id)
                             ? "selected"
                             : "artist-card"
                         }`}
                         
-                        onClick={() => handleChange(service._id)}
+                        onClick={() => handleChange(category._id)}
                       >
                         <div  >
                           <img 
-                            src={service.icon.thumbnailUrl}
-                            alt={service.title}
+                            src={category.icon.thumbnailUrl}
+                            alt={category.title}
                             className="img-fluid about-images"
                           />
                         </div>
                         <div className="card-title">
-                          <span>{service.title}</span>
+                          <span>{category.title}</span>
                         </div>
                       </div>
                     </div>

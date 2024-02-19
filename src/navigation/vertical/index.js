@@ -15,17 +15,25 @@ const navigation = () => {
       path: '/management/dashboard'
     },
     {
+      sectionTitle: 'Artists'
+    },
+    {
+      title: 'Categories',
+      icon: Settings,
+      path: '/management/artist-categories'
+    },
+    {
+      title: 'Services',
+      icon: Settings,
+      path: '/management/services'
+    },
+    {
       sectionTitle: 'Configuration'
     },
     {
       title: 'Slides',
       icon: Settings,
       path: '/management/slides'
-    },
-    {
-      title: 'Services',
-      icon: Settings,
-      path: '/management/services'
     },
     {
       title: 'Brands',

@@ -26,6 +26,8 @@ const Details = () => {
     formState: { errors },
   } = useForm();
 
+  console.log(errors,'error found')
+
   let navigate = useNavigate();
   const { request_id } = useParams();
   const submitBtn = useRef(null);
@@ -60,6 +62,7 @@ const Details = () => {
 
 
   const submitForm = async (data) => {
+    console.log('form submit is called.')
     setUpdating(true)
     try {
       const profileSame = areValuesEqual(data, userProfile);
@@ -71,7 +74,7 @@ const Details = () => {
       const response = await axiosAuth.post("/users/setProfile", data);
       if(response.statusText=="OK")
       {
-        nextClick()
+        nextClick(data)
 
       }
     } catch (error) {
@@ -86,15 +89,16 @@ const Details = () => {
 
   }
 
-  const nextClick = async () =>{
+  const nextClick = async (data) =>{
     setUpdating(true)
+    var isUsernameAndInstaSame = artistPayload?.userName === data?.userName && artistPayload.instagram === data?.instagram;
     try{
-      if(artistPayload.currentStep > 14){
+      if(artistPayload.currentStep > 14 && isUsernameAndInstaSame){
        return  navigate(`/become-a-artist/${request_id}/review-request`)
       }
       else{
-        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:15});
-        setArtistPayload((prev) => {return {...prev,currentStep:15}})
+        await axiosAuth.post(`${BASE_URL}/users/updateArtistRequest`,{currentStep:15, userName:data?.userName, instagram:data?.instagram});
+        setArtistPayload((prev) => {return {...prev,currentStep:15, userName:data?.userName, instagram:data?.instagram}})
         navigate(`/become-a-artist/${request_id}/review-request`)
       }
     }
@@ -136,17 +140,17 @@ const Details = () => {
                   </div>
                   <div className="col-md-6">
                     <TextField
-                        {...register("alias", { required: "Alias is required." })}
-                        name="alias"
-                        label="Alias"
+                        {...register("userName", { required: "UserName is required." })}
+                        name="userName"
+                        label="UserName"
                         variant="outlined"
                         fullWidth
                         margin="normal"
-                        defaultValue={userProfile.alias || ""}
+                        defaultValue={artistPayload.userName || ""}
                       />
-                      {errors.alias && (
+                      {errors.userName && (
                       <div className="invalid-feedback">
-                        {errors.alias.message}
+                        {errors.userName.message}
                       </div>)}
                   </div>
                   <div className="col-md-6">
@@ -162,7 +166,10 @@ const Details = () => {
                         variant="outlined"
                         fullWidth
                         margin="normal"
-                        defaultValue={userProfile.mobile || ""}
+                        defaultValue={userProfile?.mobile || ""}
+                        inputProps={{
+                          readOnly: userProfile?.mobile ? true : false, 
+                        }}
                       />
                       {errors.mobile && (
                       <div className="invalid-feedback">
@@ -183,6 +190,9 @@ const Details = () => {
                       fullWidth
                       margin="normal"
                       defaultValue={userProfile.email || ""}
+                      inputProps={{
+                        readOnly: userProfile?.email ? true : false, 
+                      }}
                     />
                     {errors.email && (
                     <div className="invalid-feedback">
@@ -238,17 +248,17 @@ const Details = () => {
                   </div>
                    <div className="col-md-6">
                    <TextField
-                      {...register("instaId", { required: "Instagram ID is required." })}
-                      name="instaId"
+                      {...register("instagram", { required: "Instagram ID is required." })}
+                      name="instagram"
                       label="Instagram ID"
                       variant="outlined"
                       fullWidth
                       margin="normal"
-                      defaultValue={userProfile.instaId || ""}
+                      defaultValue={artistPayload.instagram || ""}
                     />
-                    {errors.instaId && (
+                    {errors.instagram && (
                     <div className="invalid-feedback">
-                      {errors.instaId.message}
+                      {errors.instagram.message}
                     </div>)}
                   </div>
                 </div>
