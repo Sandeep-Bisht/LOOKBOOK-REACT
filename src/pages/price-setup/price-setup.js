@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import "@css/user/cart.css"
 
 const SetupPrice = () => {
   const artist = useLoaderData();
@@ -38,12 +39,13 @@ const SetupPrice = () => {
     }
   }
   return(
-    <section className="artist-set-price-wrapper">
+    <section className="artist-set-price-wrapper user-cart-section">
       <div className="container">
         <div className="row justify-content-center">
           {artistData?.services && Array.isArray(artistData?.services) && artistData?.services.length > 0 && 
-          <div className="col-8">
-          <Table>
+          <div className="col-lg-9">
+            <div className="user-cart-table">
+              <Table>
                 <Thead>
                   <Tr>
                     <Th>Service</Th>
@@ -51,7 +53,7 @@ const SetupPrice = () => {
                     <Th>Price</Th>
                     <Th>Platform Fee</Th>
                     <Th>GST</Th>
-                    <Th>TOtal Price</Th>
+                    <Th>Total Price</Th>
                     <Th>Actions</Th>
                   </Tr>
                 </Thead>
@@ -82,16 +84,20 @@ const SetupPrice = () => {
                     </Tr>
                   ))}
                 </Tbody>
-              </Table>
+              </Table></div>
           </div>
           }
-          <div className="col-4">
-            <form onSubmit={handleSubmit(submitForm)}>
+          <div className="col-lg-3">
+            <form onSubmit={handleSubmit(submitForm)} className="artist-set-price-form">
+              <div className="form-group mb-3">
               <label htmlFor="title">Title</label>
               <input type="text" name="title" id="title" className="form-control" {...register("title", {required:"Title is required."})}/>
+              </div>
+              <div className="form-group ">
               <label htmlFor="icon">Icon</label>
               <input type="file" name="icon" id="icon" className="form-control" {...register("icon", {required:"Icon is required."})} />
-              <button type="submit" className="btn btn-success">Submit</button>
+              </div>
+              <button type="submit" className=" btn-success usr-common-action-btn mt-5">Submit</button>
             </form>
           </div>
         </div>

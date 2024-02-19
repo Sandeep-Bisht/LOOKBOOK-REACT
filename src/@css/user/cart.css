@@ -83,3 +83,17 @@
 .user-responsive-table-total-amount{
     padding: 10px 70px 0 0px;
 }
+
+/* ----------------price setup css-------- */
+.artist-set-price-wrapper .artist-set-price-form
+{
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+}
+.artist-set-price-wrapper.user-cart-section .user-cart-table
+{
+    padding-top: 0;
+} 
