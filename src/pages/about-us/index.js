@@ -1,18 +1,20 @@
 import React from 'react'
 import '@css/user/about.css'
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 const AboutUS = () => {
   return (
     <>
       <section>
-        <div className='container'>
+        <div className='container bg-white'>
             <div className='row'>
                 <div className='col-md-12'>
                     <div className='usr-about-main'>
                     <div className='usr-about-part'>
                         <h1 className='usr-about-heading'>Welcome to Lookbook!</h1>
                         <p className='usr-about-para'>Where beauty meets talent.</p>
-                        <p className='usr-common-para ps-4 pe-4'>We're passionate about connecting makeup artists with clients to create unforgettable beauty experiences. 
+                        <p className='usr-common-para  pe-4'>We're passionate about connecting makeup artists with clients to create unforgettable beauty experiences. 
                           We believe that beauty is a form of art, and every individual deserves to feel confident and empowered. Our platform serves as the bridge between skilled makeup artists and clients seeking professional beauty services. Whether you're a makeup enthusiast or a seasoned artist, we're here to make beauty accessible and enjoyable for everyone.
 
                        </p>
@@ -24,30 +26,23 @@ const AboutUS = () => {
       </section>
 
        <section>
-        <div className='container bg-white'>
+        <div className='container'>
             <div className='row'>
                 <div className='col-md-4'>
                    <div className='usr-about-content'>
-                    <img src='images/Snapinsta 2.jpg' className='img-fluid'/>
+                    <img src='images/Snapinsta.jpg' className='img-fluid'/>
+                    
+                    </div> 
+                </div>
+                <div className='col-md-4'>
+                    <div className='usr-about-us-text'>
+                    <div className='usr-about-para-text'>
                     <p className='usr-about-main-para'>Our story</p>
                     <p className='usr-common-para'>Founded in 2024, Lookbook was born out of a desire 
                         to simplify the process of finding and booking talented makeup artists.
                          Exasperated by the lack of a centralised platform, our founder 
                          envisioned a space where artists could showcase their skills, 
                          and clients could discover the perfect match for their beauty needs</p>
-                    </div> 
-                </div>
-                <div className='col-md-4'>
-                    <div className='usr-about-us-text'>
-                    <div className='usr-about-para-text'>
-                        <p className='usr-about-main-para'>Where beauty meets talent. </p>
-                        <p className='usr-common-para'>We're passionate about connecting 
-                        makeup artists with clients to createunforgettable beauty experiences.
-                        We believe that beauty is a form of art, and every individual deserves 
-                        to feelconfident and empowered. Our platform serves as the bridge between 
-                        skilledmakeup artists and clients seeking professional beauty services.
-                         Whether you're amakeup enthusiast or a seasoned artist, we're here to 
-                         make beauty accessible andenjoyable for everyone</p>
                          <p className='usr-about-main-para'>Mission </p>
                          <p className='usr-common-para'>At Lookbook, our mission is to 
                          empower makeup artists and beauty enthusiasts byproviding a seamless 
@@ -66,33 +61,35 @@ const AboutUS = () => {
        </section>
 
 
-       <section className='usr-meet-team-section'>
+       {/* <section className='usr-meet-team-section pt-5'>
         <div className='container'>
-            <div className='row usr-team-member-meet'>
+            <div className='row'>
+                <div className='col-md-8 mx-auto'>
             <p className='usr-about-main-para text-center'>Meet the Team</p>
             <p className='usr-common-para'>Meet the faces behind Lookbook. 
             Our team brings together a diverse blend oftalents, from seasoned 
             professionals in the beauty industry to tech enthusiasts dedicated 
-            to creating a cutting-edge platform.</p>
+            to creating a cutting-edge platform.</p></div></div>
 
+            <div className='row usr-team-member-meet'>
             <div className='col-md-3'>
                
                     <img src='images/aboutTeam.jpg' className='img-fluid' alt='image'/>
-                    <p className='usr-common-para text-center'>Member 1</p>
+                    <p className='usr-common-para text-center pt-3'>Member 1</p>
                 
             </div>
             <div className='col-md-3'><img src='images/meetTeam.jpg' className='img-fluid' alt='image'/>
-            <p className='usr-common-para text-center'>Member 2</p>
+            <p className='usr-common-para text-center pt-3'>Member 2</p>
             </div>
             <div className='col-md-3'><img src='images/meetAbout.jpg' className='img-fluid' alt='image'/>
-            <p className='usr-common-para text-center'>Member 3</p>
+            <p className='usr-common-para text-center pt-3'>Member 3</p>
             </div>
             <div className='col-md-3'><img src='images/teamMeet.jpg' className='img-fluid' alt='image'/>
-            <p className='usr-common-para text-center'>Member 4</p>
+            <p className='usr-common-para text-center pt-3'>Member 4</p>
             </div>
                 </div>
                 </div>
-       </section>
+       </section> */}
 
        <section className='pt-5'>
         <div className='container bg-white'>
@@ -129,36 +126,54 @@ const AboutUS = () => {
         </div>
        </section>
 
-       <section>
+       <section className='pt-5'>
         <div className='container'>
-            <div className='row usr-testimonials-path'>
+            <div className='row'>
+                <div className='col-md-6 mx-auto'>
             <p className='usr-about-main-para text-center'>Testimonials</p>
             <p className='usr-common-para'>Discover what makeup artists and 
             clients are saying about their experiences with Lookbook. Our
-             community thrives on positive connections, and we're proud to share their stories</p>  
+             community thrives on positive connections, and we're proud to share their stories</p> </div> </div>
+             <div className='row usr-testimonials-path'>
              <div className='col-md-4'><div className='testimonial-text'>
-                <img src='images/Frame 139.png'/>
+                <img src='images/Frame 139.png' className='img-fluid testframe'/>
                 <p className='usr-common-para'>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
                      euismod. Facilisis tristique elementum fermentum non sed 
                      interdum auctor malesuada quis. Ut venenatis tellus tellus 
                      pharetra et at. Lobortis.</p>
-                     <img src='images/Frame 140.png'/>
+                     <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Customer</span></p>
+                     <img src='images/Frame 140.png' className='img-fluid testframetwo'/>
                      </div></div>
              <div className='col-md-4'>
              <div className='testimonial-text'>
+             <img src='images/Frame 139.png' className='img-fluid testframe'/>
                 <p className='usr-common-para'>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
                      euismod. Facilisis tristique elementum fermentum non sed 
                      interdum auctor malesuada quis. Ut venenatis tellus tellus 
-                     pharetra et at. Lobortis.</p></div>
+                     pharetra et at. Lobortis.</p>
+                     <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2' >Makeup Artist</span></p>
+                     <img src='images/Frame 140.png' className='img-fluid testframetwo'/></div>
              </div>
              <div className='col-md-4'>
              <div className='testimonial-text'>
+             <img src='images/Frame 139.png' className='img-fluid testframe'/>
                 <p className='usr-common-para'>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
                      euismod. Facilisis tristique elementum fermentum non sed 
                      interdum auctor malesuada quis. Ut venenatis tellus tellus 
-                     pharetra et at. Lobortis.</p></div>
+                     pharetra et at. Lobortis.</p>
+                     <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Customer</span></p>
+                     <img src='images/Frame 140.png' className='img-fluid testframetwo'/></div>
              </div>
+
+
             </div>
+            <div className='row'>
+                <div className='col-12 text-center'>
+                <button type='button' className='usr-testimonials-btn-left me-3'><span className='left-part'><MdKeyboardArrowLeft /></span></button>
+                <button type='button' className='usr-testimonials-btn-right ms-3'><span className='right-part'><MdKeyboardArrowRight /></span></button>
+                </div>
+           
+           </div>
         </div>
        </section>
 
