@@ -54,7 +54,61 @@ font-weight: 700;
     padding: 50px;
 }
 
+.usr-about-image-section{
+    padding: 50px;
+}
+.usr-about-value-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.usr-about-value-part{
+    padding: 50px;
+}
+
+.testimonial-text{
+    background: #ffffff;
+    padding: 50px;
+}
+
+.usr-beauty-journey-text{
+    padding: 50px;
+}
+.usr-beauty-journey-text-right{
+    padding: 50px;
+    position: relative;
+}
+
+.usr-meet-team-section img{
+    border-radius: 13px;
+}
+
+.usr-team-member-meet{
+    padding: 0 50px;
+}
+
+.usr-testimonials-path{
+    padding: 0 50px;
+}
+
+  .usr-common-para-last{
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+    font-size: 27px;
+    letter-spacing: 1.3px;
+}
+
+.usr-beauty-journey-text-right::before{
+    content: '';
+    position: absolute;
+    background-color: #8C6A54;
+    width: 1px;
+    height: 72%;
+    bottom: 31px;
+    left: -20px;
+    opacity: 30%;
+}
 /*----------- media query ---------*/
 
 @media screen and (max-width: 1280.98px){
