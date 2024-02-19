@@ -56,23 +56,6 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
       );
     }
   };
-
-  var getPrice = ( artist ) =>{
-
-    if(artist && artist.pricing && Array.isArray(artist.pricing) && artist.pricing.length > 0){
-
-        return artist?.featuredService ? 
-        artist.pricing.find(
-            (price) => price.service === artist?.featuredService?._id
-          )?.totalPrice 
-          :
-          artist.pricing.find(
-            (price) => price.service === artist?.services[0]?._id
-          )?.totalPrice
-    }
-
-    return 0;
-}
   
   return (
     <div className={`usr-all-artist-card`}>
@@ -96,7 +79,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
           </button>
             }
         </div>
-        <Link to={`/services/${service_slug ? service_slug : `${artistInfo?.featuredService ? artistInfo?.featuredService?.slug : artistInfo?.services[0]?.slug}`}/${artist_slug ? artist_slug : `${artistInfo?.profile_id?.alias}`}`}>
+        <Link to={`/services/${service_slug ? service_slug : `${artistInfo?.featuredCategory ? artistInfo?.featuredCategory?.slug : artistInfo?.categories[0]?.slug}`}/${artist_slug ? artist_slug : `${artistInfo?.userName}`}`}>
         <Slider className="usr-all-artist-card-carsouel" {...settings}>
           {Array.isArray(artistInfo?.gallery) && artistInfo?.gallery.map((item, index) => {
             return (
@@ -114,7 +97,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
       <div className="usr-all-artist-card-body">
         <div className="d-flex justify-content-between">
         <h4 className="usr-all-artist-card-name">
-          {artistInfo?.profile_id?.fullName}
+          {artistInfo?.profile?.fullName}
         </h4>
         <span className="usr-all-artist-card-rating">
           <FaStar />
@@ -131,7 +114,7 @@ export const ArtistCard = ({ artistInfo, wishlist, wishListCB }) => {
         </div>
         <div className="usr-all-artist-prize-list mt-2">
           <span className="usr-all-artist-card-prize">
-            {formatIndianRupee(getPrice(artistInfo))}/-Onwards
+            {formatIndianRupee(artistInfo?.pricing?.totalPrice)}/-Onwards
           </span>
         </div>
       </div>
