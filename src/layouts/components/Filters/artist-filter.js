@@ -3,7 +3,7 @@ import { Link, Outlet, useLoaderData, useOutletContext } from "react-router-dom"
 import Slider from "react-slick";
 
 const ArtistFilter = () => {
-  const services = useLoaderData()
+  const categories = useLoaderData()
   const [ wishlist ] = useOutletContext();
   const [activeIndex, setActiveIndex] = useState(0);
   const linkRefs = useRef([]);
@@ -81,8 +81,8 @@ const ArtistFilter = () => {
         </div>
         <div className="col-lg-10 col-md-10  col-sm-9 col-6"> 
           <Slider className="" {...settings}>
-        {services && Array.isArray(services) &&
-          services.map((item, index) => (
+        {categories && Array.isArray(categories) &&
+          categories.map((item, index) => (
             <Link
               key={index}
               ref={(el) => (linkRefs.current[index + 1] = el)}
