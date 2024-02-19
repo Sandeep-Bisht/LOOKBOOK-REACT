@@ -72,13 +72,13 @@ import ArtistFilter from 'layouts/components/Filters/artist-filter'
 import SlidesForm from 'pages/management/slides/createSlides'
 import AllSlidesDetails from 'pages/management/slides/allSlides'
 import UpdateSlide from 'pages/management/slides/updateSlides'
-import Cart from 'pages/Cart'
 import AllArtistCategories from 'pages/management/artist_categories/allCategories'
 import { getAllArtistCategories } from 'configs/initialapis'
 import AddArtistCategories from 'pages/management/artist_categories/addNew'
 import ArtistCategoryUpdate from 'pages/management/artist_categories/edit'
 import { getArtistCategoryById } from 'configs/initialapis'
 import { getServiceUpdateData } from 'configs/initialapis'
+import Cart from 'pages/user/cart'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
