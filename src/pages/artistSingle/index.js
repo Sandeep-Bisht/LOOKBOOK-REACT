@@ -502,7 +502,7 @@ const ArtistSingle = () => {
                                                                     {item.title}:
                                                                 
                                                                     </span>
-                                                                    <span className="fw-700 fw-bold">₹{item.totalPrice}/-</span>
+                                                                    <span className="fw-700 fw-bold">₹{item.pricing?.totalPrice}/-</span>
                                                                  
                                                                     {/* Put onward here too */}
                                                                 </p>
@@ -547,7 +547,7 @@ const ArtistSingle = () => {
                                     <div class="modal-body usr-artist-single-modal-body">
                                         <div className="usr-artist-single-modal-body-wrapper">
                                             { artistData.services && Array.isArray(artistData.services) && artistData.services.length > 0 && artistData.services.map((service,ind)=>{
-                                                return (<button class={`usr-common-action-btn ${currentService === service?._id ? 'active' : null}`}  type="button" key={ind} onClick={()=>setCurrentService(service?._id )}>
+                                                return (<button class={`usr-common-action-btn ${currentService === service?.title ? 'active' : null}`}  type="button" key={ind} onClick={()=>setCurrentService(service?.title )}>
                                                         {service.title}
                                                         </button>);
                                             })
