@@ -79,6 +79,9 @@ function UpdateService() {
       const artistCategoriesString = selectedCategories.join(',');
       formData.append("artist_category", artistCategoriesString);
     }
+    else{
+      return null;
+    }
      
 
     try {
