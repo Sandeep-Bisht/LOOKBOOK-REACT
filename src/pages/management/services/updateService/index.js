@@ -26,8 +26,8 @@ function UpdateService() {
   const { register, handleSubmit } = useForm();
   const [selectFileIcon, setSelectFileIcon] = useState()
   const [selectFileImage, setSelectFileImage] = useState()
-  const [iconUrl, setIconUrl] = useState(getServiceDataById?.icon.thumbnailUrl)
-  const [imageUrl, setImageUrl] = useState(getServiceDataById?.image.thumbnailUrl)
+  const [iconUrl, setIconUrl] = useState(getServiceDataById?.icon?.thumbnailUrl)
+  const [imageUrl, setImageUrl] = useState(getServiceDataById?.image?.thumbnailUrl)
   const [loading,setLoading] = useState(false);
 
   const navigate = useNavigate()
@@ -66,9 +66,7 @@ function UpdateService() {
     setLoading(true)
     const formData = new FormData();
     formData.append("_id", getServiceDataById?._id);
-    formData.append("title", data?.title);
-    formData.append("artist_category", data?.artist_category);
-
+    formData.append("title",data?.title)
     if (selectFileIcon) {
       formData.append("updatedIcon", selectFileIcon);
     }
@@ -76,6 +74,12 @@ function UpdateService() {
     if (selectFileImage) {
       formData.append("updatedImage", selectFileImage);
     } 
+ 
+    if (selectedCategories && Array.isArray(selectedCategories) && selectedCategories.length > 0) {
+      const artistCategoriesString = selectedCategories.join(',');
+      formData.append("artist_category", artistCategoriesString);
+    }
+     
 
     try {
       const response = await axiosAuth.put(`${BASE_URL}/service/services_update`, formData);
