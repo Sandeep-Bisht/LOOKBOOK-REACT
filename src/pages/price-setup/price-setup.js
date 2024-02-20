@@ -67,7 +67,7 @@ const SetupPrice = () => {
                           {item.pricing?.sessionTime} Hrs
                       </Td>
                       <Td className="text-capitalize">
-                          {formatIndianRupee(item.pricing?.amount)}
+                          {formatIndianRupee(item.pricing?.price)}
                       </Td>
                       <Td className="text-capitalize">
                           {formatIndianRupee(item.pricing?.platformFee)} 
