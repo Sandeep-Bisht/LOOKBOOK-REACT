@@ -341,7 +341,7 @@
 }
 
 .user-select-package .usr-package-card {
-    padding: 70px 30px 70px 30px;
+    padding: 30px 30px 30px 30px;
     background: #FCF7F2;
     box-shadow: -9px 9.5px 30px 0px rgba(0, 0, 0, 0.05);
     position: relative;
@@ -392,21 +392,22 @@
 }
 
 .user-select-package .usr-package-card-title {
-    font-family:AvenirLTProBook;
+    font-family:AvenirLTProHeavy;
     color: #6D5D4C;
-    font-size: 30px;
+    font-size: 26px;
+    text-align: center;
 }
 
 .user-select-package .usr-package-card-price {
     display: flex;
     padding: 6px 10px 6px 20px;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    background: #8C6A54;
-    color: #FEFEFE;
+    color:#6D5D4C;
     font-family: AvenirLTProBook;
-    font-size: 12px;
-    width: 55%;
+   font-size: 13px;
+    margin-bottom: 0;
+
 }
 
 
