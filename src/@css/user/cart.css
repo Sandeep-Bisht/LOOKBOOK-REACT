@@ -97,3 +97,19 @@
 {
     padding-top: 0;
 } 
+.artist-set-price-wrapper.user-cart-section tbody tr td:last-child
+{
+   background-color: #fff!important;
+
+}
+.artist-set-price-wrapper.user-cart-section tbody .action-btn-wrapper
+{
+    display: flex;
+}
+.artist-set-price-wrapper.user-cart-section .action-btn
+{
+    background: #6d5d4c;
+    color: #fff;
+    font-size: 19px;
+    border-radius: 6px;
+}
