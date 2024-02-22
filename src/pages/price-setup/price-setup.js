@@ -3,6 +3,8 @@ import { formatIndianRupee } from "configs/formatIndianRupee";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
+import { CiEdit } from "react-icons/ci";
+import { RxTrash } from "react-icons/rx";
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import "@css/user/cart.css"
@@ -79,7 +81,14 @@ const SetupPrice = () => {
                           {formatIndianRupee(item.pricing?.totalPrice)} 
                       </Td>
                       <Td className="text-capitalize">
-                        update, remove
+                         <div className="action-btn-wrapper">
+                        <button className="action-btn">
+                        <CiEdit />
+                        </button>
+                        <button className="action-btn">
+                        <RxTrash />
+                        </button></div>
+                        
                       </Td>
                     </Tr>
                   ))}
