@@ -25,7 +25,7 @@ const AboutUS = () => {
         </div>
       </section>
 
-       <section>
+       <section className='usr-our-story'>
         <div className='container'>
             <div className='row'>
                 <div className='col-md-4'>
@@ -59,38 +59,7 @@ const AboutUS = () => {
             </div>
         </div>
        </section>
-
-
-       {/* <section className='usr-meet-team-section pt-5'>
-        <div className='container'>
-            <div className='row'>
-                <div className='col-md-8 mx-auto'>
-            <p className='usr-about-main-para text-center'>Meet the Team</p>
-            <p className='usr-common-para'>Meet the faces behind Lookbook. 
-            Our team brings together a diverse blend oftalents, from seasoned 
-            professionals in the beauty industry to tech enthusiasts dedicated 
-            to creating a cutting-edge platform.</p></div></div>
-
-            <div className='row usr-team-member-meet'>
-            <div className='col-md-3'>
-               
-                    <img src='images/aboutTeam.jpg' className='img-fluid' alt='image'/>
-                    <p className='usr-common-para text-center pt-3'>Member 1</p>
-                
-            </div>
-            <div className='col-md-3'><img src='images/meetTeam.jpg' className='img-fluid' alt='image'/>
-            <p className='usr-common-para text-center pt-3'>Member 2</p>
-            </div>
-            <div className='col-md-3'><img src='images/meetAbout.jpg' className='img-fluid' alt='image'/>
-            <p className='usr-common-para text-center pt-3'>Member 3</p>
-            </div>
-            <div className='col-md-3'><img src='images/teamMeet.jpg' className='img-fluid' alt='image'/>
-            <p className='usr-common-para text-center pt-3'>Member 4</p>
-            </div>
-                </div>
-                </div>
-       </section> */}
-
+      
        <section className='pt-5'>
         <div className='container bg-white'>
             <div className='row'>
