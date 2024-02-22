@@ -31,7 +31,7 @@ const PriceSetup = () => {
 
     const handleNext = async() =>{
       let payload = {
-        currentStep:12,pricing:{price,pricing}
+        currentStep:12,pricing
       }
   
       if(artistPayload?.currentStep > 11){

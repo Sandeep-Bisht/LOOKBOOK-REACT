@@ -182,7 +182,7 @@ const handleAliasChange = (newValue) => {
                     margin="normal"
                     defaultValue={userData?.mobile || ""}
                     InputProps={{
-                      readOnly: userData?.usertype === "mobile",
+                      readOnly: userData?.mobile ? true : false,
                     }}
                   />
                     <FormControl fullWidth variant="outlined" margin="normal">
@@ -223,18 +223,6 @@ const handleAliasChange = (newValue) => {
                     </div>
                     <div className="col-6">
                     <TextField
-                    {...register("alias")}
-                    name="alias"
-                    label="Alias"
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                    defaultValue={userData?.alias || ""}
-                    onChange={(e) => handleAliasChange(e.target.value)}
-                    error={Boolean(errors.alias)}
-                    helperText={errors.alias?.message}
-                  />  
-                    <TextField
                     {...register("email", {
                       required: "Email is required",
                       pattern: {
@@ -250,9 +238,7 @@ const handleAliasChange = (newValue) => {
                     margin="normal"
                     defaultValue={userData?.email || ""}
                     InputProps={{
-                      readOnly:
-                        userData?.usertype == "google" ||
-                        userData?.usertype == "email",
+                      readOnly: userData?.email ? true : false,
                     }}
                     error={Boolean(errors.email)}
                     helperText={errors.email?.message}
