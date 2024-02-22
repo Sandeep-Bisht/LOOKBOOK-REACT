@@ -16,7 +16,6 @@ const AboutUS = () => {
                         <p className='usr-about-para'>Where beauty meets talent.</p>
                         <p className='usr-common-para  pe-4'>We're passionate about connecting makeup artists with clients to create unforgettable beauty experiences. 
                           We believe that beauty is a form of art, and every individual deserves to feel confident and empowered. Our platform serves as the bridge between skilled makeup artists and clients seeking professional beauty services. Whether you're a makeup enthusiast or a seasoned artist, we're here to make beauty accessible and enjoyable for everyone.
-
                        </p>
                     </div>
                     </div>
@@ -31,7 +30,6 @@ const AboutUS = () => {
                 <div className='col-md-4'>
                    <div className='usr-about-content'>
                     <img src='images/Snapinsta.jpg' className='img-fluid'/>
-                    
                     </div> 
                 </div>
                 <div className='col-md-4'>
@@ -64,17 +62,12 @@ const AboutUS = () => {
         <div className='container bg-white'>
             <div className='row'>
                 <div className='col-md-6'>
-                
                     <div className='usr-about-image-section'>
-                       
                         <img src='images/image (3).jpg' className='img-fluid'/>
-                    </div>
-                    
+                    </div>   
                 </div>
                 <div className='col-md-6 usr-about-value-section'>
-                
-                    <div className='usr-about-value-part'>
-                       
+                    <div className='usr-about-value-part'>  
                     <p className='usr-about-main-para'>Values</p>
                     <p className='usr-common-para'>We are committed to 
                     fostering a community built on trust, inclusivity, 
@@ -87,10 +80,8 @@ const AboutUS = () => {
                      hassle-free booking, and a platform designed with your convenience 
                      in mind.We prioritise quality, reliability, and personalization
                       in every beauty experience</p>
-                    </div>
-                    
+                    </div>   
                 </div>
-             
             </div>
         </div>
        </section>
@@ -141,7 +132,6 @@ const AboutUS = () => {
                 <button type='button' className='usr-testimonials-btn-left me-3'><span className='left-part'><MdKeyboardArrowLeft /></span></button>
                 <button type='button' className='usr-testimonials-btn-right ms-3'><span className='right-part'><MdKeyboardArrowRight /></span></button>
                 </div>
-           
            </div>
         </div>
        </section>
@@ -166,9 +156,7 @@ const AboutUS = () => {
                     <p className='usr-common-para'>Have questions or want to learn more? Reach out to
                      us at info@mylookbook.in or follow us on Instagram. We're here to make
                       your beauty journey exceptional</p>
-                </div></div>
-                
-                    
+                </div></div>      
             </div>
         </div>
        </section>
