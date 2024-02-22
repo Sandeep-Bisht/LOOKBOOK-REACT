@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import "@css/user/artistSingle.css";
 import Calendar from 'react-calendar';
 import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
@@ -52,17 +52,18 @@ const ArtistSingle = () => {
 
     const location = useLocation()
     const artistData = useLoaderData();
+    
     const [currentService,setCurrentService] = useState();
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedSession,setSelectedSession] = useState();
-    const [selectedTime,setSelectedTime] = useState();
-    const [errors,setErrors] = useState();
+
+    const [selectedSlots, setSelectedSlots] = useState([]);
+
     const [submiting,setSubmiting] = useState(false);
 
     const ModalNextBtn = useRef();
     const ModalBookMoreBtn = useRef();
     const ModalConfirmBtn = useRef();
-    const ModalCloseBtn = useRef();
     const navigate = useNavigate();
 
     const currentUser = checkAuth()
@@ -78,36 +79,63 @@ const ArtistSingle = () => {
             ModalNextBtn.current.click();
             setSelectedDate(new Date());
             setSelectedSession();
-            setSelectedTime();
+            setSelectedSlots([]);
         }
     }
 
     const handleDateChange = (value) =>{
         setSelectedDate(value);
         setSelectedSession();
-        setSelectedTime();
+        setSelectedSlots([]);
     }
 
     const handleSessionChange = (value) =>{
         setSelectedSession(value);
-        setSelectedTime();
+        setSelectedSlots([]);
     }
 
-    const handleTimeChange = (value) =>{
-        setSelectedTime(value);
-    }
+    const currentServiceData = useMemo(() => {
+        if (currentService && artistData) {
+          return artistData?.services.find(el => el._id === currentService);
+        }
+        return null;
+      }, [currentService, artistData]);
 
+    const toggleSlotSelection = (slot) => {
+        if (selectedSlots.includes(slot)) {
+          setSelectedSlots(selectedSlots.filter(selectedSlot => selectedSlot !== slot));
+        } else {
+          setSelectedSlots([...selectedSlots, slot]);
+        }
+      };
+    
+    const getDisabledSlots = () => {
+          const sessionTime = currentServiceData?.pricing?.sessionTime ? currentServiceData?.pricing?.sessionTime : 1
+        const disabledSlots = Array(Slots.length).fill(false);
+        selectedSlots.forEach(selectedSlot => {
+          const slotIndex = Slots.indexOf(selectedSlot);
+          const disabledStartIndex = Math.max(0, slotIndex - sessionTime);
+          const disabledEndIndex = Math.min(Slots.length - 1, slotIndex + sessionTime);
+          for (let i = disabledStartIndex; i <= disabledEndIndex; i++) {
+            disabledSlots[i] = true;
+          }
+        });
+        return disabledSlots;
+      };
+    
+    const disabledSlots = getDisabledSlots();
+    
     const handleBookMore = async() =>{
-        if(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedTime){
+        if(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedSlots || !Array.isArray(selectedSlots) || !selectedSlots.length > 0){
             return alert('Bad Request.');
         }
 
         const formData = {
             artist:artistData?._id,
-            service:currentService,
+            service:currentServiceData,
             date:selectedDate,
             sessions:selectedSession,
-            time:selectedTime
+            time:selectedSlots
         };
 
         setSubmiting('book-more');
@@ -121,7 +149,7 @@ const ArtistSingle = () => {
                 setCurrentService()
                 setSelectedDate(new Date());
                 setSelectedSession();
-                setSelectedTime();
+                setSelectedSlots([])
                 ModalBookMoreBtn.current.click();
                 setSubmiting(false);
               }
@@ -132,17 +160,18 @@ const ArtistSingle = () => {
           }
     }
 
+    
     const handleConfirm = async() =>{
-        if(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedTime){
+        if(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedSlots || !Array.isArray(selectedSlots) || !selectedSlots.length > 0){
             return alert('Bad Request.');
         }
 
         const formData = {
             artist:artistData?._id,
-            service:currentService,
+            service:currentServiceData,
             date:selectedDate,
             sessions:selectedSession,
-            time:selectedTime
+            time:selectedSlots
         };
 
         setSubmiting('confirm');
@@ -156,7 +185,7 @@ const ArtistSingle = () => {
                 setCurrentService()
                 setSelectedDate(new Date());
                 setSelectedSession();
-                setSelectedTime();
+                setSelectedSlots([])
                 ModalConfirmBtn.current.click();
                 setSubmiting(false);
               }
@@ -485,8 +514,7 @@ const ArtistSingle = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {
-                                                artistData.pricing && artistData.services && Array.isArray(artistData.services) && artistData.services.length > 0 &&
+                                            {artistData?.services && Array.isArray(artistData.services) && artistData.services.length > 0 &&
                                                 <>
                                                 <div className="usr-artist-charges">
                                                 <h6 className="fw-700">Charges:</h6>
@@ -547,7 +575,7 @@ const ArtistSingle = () => {
                                     <div class="modal-body usr-artist-single-modal-body">
                                         <div className="usr-artist-single-modal-body-wrapper">
                                             { artistData.services && Array.isArray(artistData.services) && artistData.services.length > 0 && artistData.services.map((service,ind)=>{
-                                                return (<button class={`usr-common-action-btn ${currentService === service?.title ? 'active' : null}`}  type="button" key={ind} onClick={()=>setCurrentService(service?.title )}>
+                                                return (<button class={`usr-common-action-btn ${service?._id && currentService === service?._id ? 'active' : null}`}  type="button" key={ind} onClick={()=>setCurrentService(service?._id )}>
                                                         {service.title}
                                                         </button>);
                                             })
@@ -561,6 +589,7 @@ const ArtistSingle = () => {
                                 </div>
                             </div>
                         </div>
+
                         <div className="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalToggleLabel2" aria-hidden="true">
                                 <div className="modal-dialog modal-dialog-centered">
                                     <div className="modal-content">
@@ -585,9 +614,10 @@ const ArtistSingle = () => {
                                                                 </p>
                                                             </div>
                                                             <div className="usr-artist-single-modal-time-box-upper-bottom">
-                                                                {currentService && [...Array(artistData && Array.isArray(artistData?.pricing) && artistData?.pricing?.find(el => el.service == currentService).sessionTime ? Number((24 / artistData?.pricing?.find(el => el.service == currentService)?.sessionTime).toFixed()) : 24)].map((_,index)=>{
+                                                                
+                                                                {currentService && currentServiceData && currentServiceData?.pricing && currentServiceData?.pricing?.sessionTime && currentServiceData?.pricing?.sessionTime > 0  && [...Array(currentServiceData?.pricing?.sessionTime ? Number((24 / (Number(currentServiceData?.pricing?.sessionTime) + 1)).toFixed()) : 24)].map((_,index)=>{
                                                                     return(<button type="button" class={`usr-session-btn ${selectedSession === (index + 1 )? 'active' : ''}`} onClick={()=>handleSessionChange(index + 1)} >{index + 1}</button>)
-                                                                }) }
+                                                                })}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -598,26 +628,44 @@ const ArtistSingle = () => {
                                                                 Select Session Time:
                                                             </p>
                                                             <div className="usr-artist-single-modal-time-box-upper-bottom">
-                                                                {Array.isArray(Slots) && Slots.map((slot,ind)=>{
-                                                                    let slotDate = new Date("2000-01-01 " + slot);
-                                                                    let sixAM = new Date("2000-01-01 06:00 AM");
+                                                                {Array.isArray(Slots) && Slots.map((slot,index)=>{
+                                                                   
+                                                                    let isActive = selectedSlots.includes(slot);
 
-                                                                    if(slotDate < sixAM) {
-                                                                        return null;
-                                                                    }
+                                                                    // Calculate the minimum distance from any of the active elements
+                                                                    const minDistance = selectedSlots.reduce((min, activeElement) => {
+                                                                        const activeIndex = Slots.indexOf(activeElement);
+                                                                        const distance = (index - activeIndex + Slots.length) % Slots.length;
+                                                                        return Math.min(min, Math.abs(distance));
+                                                                    }, Infinity);
                                                                     
-                                                                    let activeIndex = Slots.findIndex((el) => el === selectedTime);
-                                                                    let isActive = ind < (activeIndex + selectedSession * artistData?.pricing?.find(el => el.service == currentService).sessionTime ) && ind >= activeIndex && selectedTime;
+                                                                    // Check if the minimum distance is within the range of 2
+                                                                    const withinRange = minDistance <= (currentServiceData?.pricing?.sessionTime - 1);
 
-                                                                    return (<button type="button"  className={`usr-artist-single-modal-time-box-btn ${isActive ? 'active' : '' }`} onClick={()=>handleTimeChange(slot)} disabled={selectedSession ? false : true}>
+                                                                    const disabledIndexRange = Slots.length - currentServiceData?.pricing?.sessionTime;
+
+                                                                    return (<button type="button"  className={`usr-artist-single-modal-time-box-btn ${isActive || withinRange ? 'active' : '' }`} 
+                                                                    onClick={()=>toggleSlotSelection(slot)} 
+                                                                    disabled={!selectedSession || disabledSlots[index] || selectedSlots.length >= selectedSession || index >= disabledIndexRange ? true : false}
+                                                                    >
                                                                     <span>{slot}</span>
                                                                     </button>)
                                                                 })}
                                                             </div>
                                                         </div>
                                                     <div className="d-flex justify-content-center">
-                                                        <button type="button" className="usr-common-action-btn me-2" onClick={()=>handleBookMore()} disabled={(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedTime) ? true : false}>{submiting && submiting === 'book-more' ? "Booking..." : "Book more"}</button>
-                                                        <button type="button" class="usr-common-action-btn" onClick={()=>handleConfirm()} disabled={(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedTime) ? true : false}>{submiting && submiting === 'confirm' ? "Wait..." : 'Confirm'}</button>
+                                                        <button type="button" className="usr-common-action-btn me-2" 
+                                                        onClick={()=>handleBookMore()} 
+                                                        disabled={(!currentService || !selectedDate || !selectedSession || !selectedSlots || !Array.isArray(selectedSlots) || !selectedSlots.length > 0) ? true : false}
+                                                        >
+                                                            {submiting && submiting === 'book-more' ? "Booking..." : "Book more"}
+                                                        </button>
+                                                        <button type="button" class="usr-common-action-btn" 
+                                                        onClick={()=>handleConfirm()} 
+                                                        disabled={(!currentService || !selectedDate || !selectedSession || !selectedSlots || !Array.isArray(selectedSlots) || !selectedSlots.length > 0) ? true : false}
+                                                        >
+                                                            {submiting && submiting === 'confirm' ? "Wait..." : 'Confirm'}
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
