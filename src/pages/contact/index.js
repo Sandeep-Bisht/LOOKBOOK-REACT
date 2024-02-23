@@ -74,7 +74,7 @@ const ContactPage = () => {
                     </svg>
                     Phone
                   </span>
-                  <p className="usr-contact-para">123-456-7890</p>
+                  <p className="usr-contact-para">8218833534</p>
                 </div>
                 <div className="usr-contact-place">
                   <span className="me-2">
@@ -93,7 +93,7 @@ const ContactPage = () => {
                     Address
                   </span>
                   <p className="usr-contact-para">
-                    500 TERRY FRANCOIS STREETSAN FRANCISCO, CA 94158
+                    New Delhi, India
                   </p>
                 </div>
                 <div className="usr-contact-mail">
@@ -120,7 +120,7 @@ const ContactPage = () => {
                     </svg>
                     Mail
                   </span>
-                  <p className="usr-contact-para">example@email.com</p>
+                  <p className="usr-contact-para">info@mylookbook.in</p>
                 </div>
                 <div className="usr-contact-follow">
                   <p className="usr-contact-text-para">Follow us</p>
