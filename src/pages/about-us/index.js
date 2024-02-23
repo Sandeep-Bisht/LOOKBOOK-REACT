@@ -2,6 +2,8 @@ import React from 'react'
 import '@css/user/about.css'
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { ImQuotesLeft } from "react-icons/im";
+import { ImQuotesRight } from "react-icons/im";
 
 const AboutUS = () => {
   return (
@@ -96,33 +98,33 @@ const AboutUS = () => {
              community thrives on positive connections, and we're proud to share their stories</p> </div> </div>
              <div className='row usr-testimonials-path'>
              <div className='col-md-4'><div className='testimonial-text'>
-                <img src='images/Frame 139.png' className='img-fluid testframe'/>
-                <p className='usr-common-para'>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
+             
+                <p className='usr-common-para'><sup><ImQuotesLeft /> </sup> Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
                      euismod. Facilisis tristique elementum fermentum non sed 
                      interdum auctor malesuada quis. Ut venenatis tellus tellus 
-                     pharetra et at. Lobortis.</p>
+                     pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
                      <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Customer</span></p>
-                     <img src='images/Frame 140.png' className='img-fluid testframetwo'/>
+                    
                      </div></div>
              <div className='col-md-4'>
              <div className='testimonial-text'>
-             <img src='images/Frame 139.png' className='img-fluid testframe'/>
-                <p className='usr-common-para'>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
+             
+                <p className='usr-common-para'><sup><ImQuotesLeft /> </sup>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
                      euismod. Facilisis tristique elementum fermentum non sed 
                      interdum auctor malesuada quis. Ut venenatis tellus tellus 
-                     pharetra et at. Lobortis.</p>
+                     pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
                      <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2' >Makeup Artist</span></p>
-                     <img src='images/Frame 140.png' className='img-fluid testframetwo'/></div>
+                    </div>
              </div>
              <div className='col-md-4'>
              <div className='testimonial-text'>
-             <img src='images/Frame 139.png' className='img-fluid testframe'/>
-                <p className='usr-common-para'>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
+             
+                <p className='usr-common-para'><sup><ImQuotesLeft /> </sup>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
                      euismod. Facilisis tristique elementum fermentum non sed 
                      interdum auctor malesuada quis. Ut venenatis tellus tellus 
-                     pharetra et at. Lobortis.</p>
+                     pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
                      <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Customer</span></p>
-                     <img src='images/Frame 140.png' className='img-fluid testframetwo'/></div>
+                    </div>
              </div>
 
 
