@@ -103,14 +103,14 @@ const NewProfile = () => {
                           clipRule="evenodd"
                           d="M2.72736 1.09277H17.2728C18.2728 1.09277 19.091 1.92611 19.091 2.94463V14.0557C19.091 15.0743 18.2728 15.9076 17.2728 15.9076H2.72736C1.72736 15.9076 0.90918 15.0743 0.90918 14.0557V2.94463C0.90918 1.92611 1.72736 1.09277 2.72736 1.09277Z"
                           stroke="#6D5D4C"
-                          strokeWidth="2"
+                          stroke-width="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
                         <path
                           d="M19.091 2.94434L10.0001 9.42582L0.90918 2.94434"
                           stroke="#6D5D4C"
-                          strokeWidth="2"
+                          stroke-width="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
@@ -126,36 +126,36 @@ const NewProfile = () => {
                         </clipPath>
                       </defs>
                     </svg>
-                    example@mail.com
-                  </p>
-                  <p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="21"
-                      viewBox="0 0 20 21"
-                      fill="none"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M2.86133 9.02958C2.87459 5.1254 6.05031 1.97119 9.95449 1.98442C13.8587 1.99772 17.0129 5.17344 16.9997 9.07762V9.15768C16.9516 11.6955 15.5346 14.0412 13.7973 15.8746C12.8037 16.9063 11.6942 17.8197 10.4909 18.5965C10.1691 18.8749 9.69183 18.8749 9.37006 18.5965C7.57614 17.4289 6.00167 15.9547 4.71868 14.2414C3.57517 12.7473 2.92593 10.9339 2.86133 9.0536V9.02958Z"
-                        stroke="#6D5D4C"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M9.93081 11.431C11.1822 11.431 12.1966 10.4165 12.1966 9.16518C12.1966 7.91383 11.1822 6.89941 9.93081 6.89941C8.67946 6.89941 7.66504 7.91383 7.66504 9.16518C7.66504 10.4165 8.67946 11.431 9.93081 11.431Z"
-                        stroke="#6D5D4C"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    From- Dehradun, India
-                  </p>
-                  <p>
+                    {userData?.email ? userData?.email :  "name@example.com"}   
+                                   </p>
+                                    <p className="d-none">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="20"
+                                      height="21"
+                                      viewBox="0 0 20 21"
+                                      fill="none"
+                                    >
+                                      <path
+                                        fillRule="evenodd"
+                                        clipRule="evenodd"
+                                        d="M2.86133 9.02958C2.87459 5.1254 6.05031 1.97119 9.95449 1.98442C13.8587 1.99772 17.0129 5.17344 16.9997 9.07762V9.15768C16.9516 11.6955 15.5346 14.0412 13.7973 15.8746C12.8037 16.9063 11.6942 17.8197 10.4909 18.5965C10.1691 18.8749 9.69183 18.8749 9.37006 18.5965C7.57614 17.4289 6.00167 15.9547 4.71868 14.2414C3.57517 12.7473 2.92593 10.9339 2.86133 9.0536V9.02958Z"
+                                        stroke="#6D5D4C"
+                                        stroke-width="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                      />
+                                      <path
+                                        d="M9.93081 11.431C11.1822 11.431 12.1966 10.4165 12.1966 9.16518C12.1966 7.91383 11.1822 6.89941 9.93081 6.89941C8.67946 6.89941 7.66504 7.91383 7.66504 9.16518C7.66504 10.4165 8.67946 11.431 9.93081 11.431Z"
+                                        stroke="#6D5D4C"
+                                        stroke-width="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                      />
+                                    </svg>
+                                    userData?.address[0]  
+                                  </p>
+                  <p className="d-none">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
