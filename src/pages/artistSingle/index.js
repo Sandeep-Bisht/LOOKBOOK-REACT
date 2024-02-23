@@ -126,7 +126,7 @@ const ArtistSingle = () => {
     const disabledSlots = getDisabledSlots();
     
     const handleBookMore = async() =>{
-        if(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedSlots || !Array.isArray(selectedSlots) || !selectedSlots.length > 0){
+        if(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedSlots || !Array.isArray(selectedSlots) || !selectedSlots.length > 0 || selectedSlots.length !== selectedSession){
             return alert('Bad Request.');
         }
 
@@ -162,7 +162,7 @@ const ArtistSingle = () => {
 
     
     const handleConfirm = async() =>{
-        if(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedSlots || !Array.isArray(selectedSlots) || !selectedSlots.length > 0){
+        if(!artistData?._id || !currentService || !selectedDate || !selectedSession || !selectedSlots || !Array.isArray(selectedSlots) || !selectedSlots.length > 0 || selectedSlots.length !== selectedSession){
             return alert('Bad Request.');
         }
 

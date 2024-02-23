@@ -79,6 +79,8 @@ import ArtistCategoryUpdate from 'pages/management/artist_categories/edit'
 import { getArtistCategoryById } from 'configs/initialapis'
 import { getServiceUpdateData } from 'configs/initialapis'
 import Cart from 'pages/user/cart'
+import { getAllBookings } from 'configs/initialapis'
+import AllBookings from 'pages/user/bookings/allBookings'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -236,6 +238,11 @@ const ApplicationRoutes = createBrowserRouter(
               path="/user/cart"
               element={<Cart />}
               loader={getCartData}
+            />
+            <Route
+              path="/user/bookings"
+              element={<AllBookings />}
+              loader={getAllBookings}
             />
             <Route
               path="/user/profile"

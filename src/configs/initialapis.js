@@ -40,6 +40,17 @@ export const getAllBlog = async () =>{
     }
 }
 
+export const getAllBookings = async () =>{
+  try{
+      const response = await axiosAuth.get('/bookings/get-all-bookings');
+      return response.data;
+  }
+  catch(error){
+      return error.message || "An error occured while trying to get All Bookings."
+  }
+}
+
+
 export const getArtistRequests = async () =>{
   try{
       const response = await axiosAuth.get('/users/getArtistRequests');
