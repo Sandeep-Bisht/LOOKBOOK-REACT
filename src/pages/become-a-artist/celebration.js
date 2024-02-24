@@ -16,8 +16,9 @@ const Celebration = () => {
                 <div className='col-6 h-100 d-flex align-items-center'>
                     <div className='px-5'>
                         <h1>Congratulations!</h1>
-                        <p>From one Host to another – welcome aboard. <br/>
-                        Thank you for sharing your interest and helping to create incredible experiences for our users.</p>
+                        <p>Thank You for showing your interest in LOOKBOOK. 
+                        We are excited to welcome you on board.  Let's create incredible beauty experiences together!
+                        </p>
                         <img src={Logo} alt="publish celebration" width={180}/>
                         <div className='mt-4'>
                         <CommonButton label="Get started" onClick={()=>navigate('/become-a-artist')}/>

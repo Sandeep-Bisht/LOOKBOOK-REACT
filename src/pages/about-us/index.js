@@ -42,12 +42,12 @@ const AboutUS = () => {
                         to simplify the process of finding and booking talented makeup artists.
                          Exasperated by the lack of a centralised platform, our founder 
                          envisioned a space where artists could showcase their skills, 
-                         and clients could discover the perfect match for their beauty needs</p>
+                         and clients could discover the perfect match for their beauty needs.</p>
                          <p className='usr-about-main-para'>Mission </p>
                          <p className='usr-common-para'>At Lookbook, our mission is to 
-                         empower makeup artists and beauty enthusiasts byproviding a seamless 
-                         platform for connecting talent with individuals seekingprofessional 
-                         makeup services. We believe that everyone deserves to look and feeltheir best</p>
+                         empower makeup artists and beauty enthusiasts by providing a seamless 
+                         platform for connecting talent with individuals seeking professional 
+                         makeup services. We believe that everyone deserves to look and feel their best</p>
                     </div>
                     </div>
                 </div>
@@ -73,15 +73,15 @@ const AboutUS = () => {
                     <p className='usr-about-main-para'>Values</p>
                     <p className='usr-common-para'>We are committed to 
                     fostering a community built on trust, inclusivity, 
-                    and creativity.Our values drive every decision we 
-                    make, ensuring that both makeup artists andclients 
+                    and creativity. Our values drive every decision we 
+                    make, ensuring that both makeup artists and clients 
                     have a positive and empowering experience.</p>
                     <p className='usr-about-main-para'>Why Choose Us</p>
                     <p className='usr-common-para'>Choosing Lookbook means
-                     gaining access to a curated selection of top-tier makeupartists, 
+                     gaining access to a curated selection of top-tier makeup artists, 
                      hassle-free booking, and a platform designed with your convenience 
-                     in mind.We prioritise quality, reliability, and personalization
-                      in every beauty experience</p>
+                     in mind. We prioritise quality, reliability, and personalization
+                      in every beauty experience.</p>
                     </div>   
                 </div>
             </div>
@@ -91,9 +91,9 @@ const AboutUS = () => {
        <section className='pt-5'>
         <div className='container'>
             <div className='row'>
-                <div className='col-md-6 mx-auto'>
+                <div className='col-md-8 mx-auto'>
             <p className='usr-about-main-para text-center'>Testimonials</p>
-            <p className='usr-common-para'>Discover what makeup artists and 
+            <p className='usr-common-para text-center'>Discover what makeup artists and 
             clients are saying about their experiences with Lookbook. Our
              community thrives on positive connections, and we're proud to share their stories</p> </div> </div>
              <div className='row usr-testimonials-path'>
@@ -145,19 +145,25 @@ const AboutUS = () => {
                     <div className='usr-beauty-journey-text'>
                 <p className='usr-about-main-para'>Join Us on the Beauty Journey</p>
                     <p className='usr-common-para'>Whether you're a makeup artist ready
-                     to showcase your skills or a client looking forthe perfect beauty 
+                     to showcase your skills or a client looking for the perfect beauty 
                      experience, we invite you to join us on this exciting beauty journey.
                      At Lookbook, beauty knows no bounds, and every face tells a unique story.
-                     Ready to elevate your beauty experience? Join Lookbook today! Makeup 
-                     artists,showcase your talent to a broader audience. Clients, discover
-                      the perfect artist for your next beauty transformation. Let's create beauty together!</p>
+                     <br/>
+                     Ready to elevate your beauty experience? Join Lookbook today!
+                     <br/> Makeup 
+                     artists, showcase your talent to a broader audience. Clients, discover
+                      the perfect artist for your next beauty transformation.
+                      <br/>
+                       Let's create beauty together!</p>
                 </div></div>
                 <div className='col-md-4'>
                     <div className='usr-beauty-journey-text-right'>
                 <p className='usr-about-main-para'>Contact Info</p>
                     <p className='usr-common-para'>Have questions or want to learn more? Reach out to
-                     us at info@mylookbook.in or follow us on Instagram. We're here to make
-                      your beauty journey exceptional</p>
+                     us at info@mylookbook.in or follow us on Instagram. 
+                     <br/>
+                     We're here to make
+                      your beauty journey exceptional.</p>
                 </div></div>      
             </div>
         </div>
@@ -171,7 +177,8 @@ const AboutUS = () => {
                     <div className='usr-about-text-para'>
                         <p className='usr-common-para-last ps-4 pe-4'>Ready to discover the 
                         perfect makeup artist or showcase your talent? 
-                        Let's embark on this beauty adventure together!</p></div></div>
+                        </p>
+                        <p className='usr-common-para-last ps-4 pe-4'>Let's embark on this beauty adventure together!</p></div></div>
             </div>
             </div>
         </div>

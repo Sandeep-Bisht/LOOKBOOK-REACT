@@ -291,7 +291,7 @@ const Homepage = () => {
                                 <div className="usr-package-card-content">
                                   
                                     <p className="usr-package-card-price">
-                                    Artist Under 
+                                    Artists Under 
                                     </p>
                                     <p className="usr-package-card-title">
                                     ₹ 10,000/-
@@ -313,7 +313,7 @@ const Homepage = () => {
                                 <div className="usr-package-card-content">
                                   
                                   <p className="usr-package-card-price">
-                                  Artist Under 
+                                  Artists Under 
 
                                   </p>
                                   <p className="usr-package-card-title">
@@ -335,7 +335,7 @@ const Homepage = () => {
                                 <div className="usr-package-card-content">
                                   
                                     <p className="usr-package-card-price">
-                                    Artist Above
+                                    Artists Above
                                     </p>
                                     <p className="usr-package-card-title">
                                      ₹ 50,000/-
@@ -382,9 +382,9 @@ const Homepage = () => {
                                             </div>
                                             <div className="content">
                                                 <div className="name">
-                                                    <h2>{allArtists[index]?.profile_id?.fullName}</h2>
+                                                    <h2>{allArtists[index]?.profile?.fullName}</h2>
                                                     <div className="profession">
-                                                        <h3>{allArtists[index]?.featuredService?.title}</h3>
+                                                        <h3>{allArtists[index]?.featuredCategory?.title}</h3>
                                                     </div>
                                                     <div className="desc">
                                                         <p>{truncateDescription(allArtists[index]?.description, 45)}</p>
@@ -437,7 +437,7 @@ const Homepage = () => {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-12">
-                                    <h1 className="usr-common-heading text-center">Recent Blog</h1>
+                                    <h1 className="usr-common-heading text-center">Recent Blogs</h1>
                                 </div>
                             </div>
                             <div className="row mt-lg-5 mt-5 pt-lg-3">

@@ -122,7 +122,7 @@ const EmergingArtist = ({artists}) => {
                         <div className="row d-none">
                             <div className="col-lg-12">
                                 <h2 className="usr-common-heading text-center">
-                                    Emerging Artist
+                                    Emerging Artists
                                 </h2>
                             </div>
 
@@ -132,7 +132,7 @@ const EmergingArtist = ({artists}) => {
                                 {/* -----------------------copy------------------ */}
                                 <div className="usr-emerging-artist-wrapper mt-lg-4">
                                 <h2 className="usr-common-heading text-center">
-                                    Emerging Artist
+                                    Emerging Artists
                                 </h2>
                                     <div className="usr-emerging-artist-custom-cursor" />
                                     <div className="usr-emerging-artist-carousel">

@@ -127,9 +127,11 @@ const Certificates = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 achivements-ar-heading">
-                <h4 className="text-center">Share your achievements</h4>
+                <h4 className="text-center">Share Your Certification</h4>
                 <p className="text-center">
                   You can add more or make changes later.
+                  <br/>
+                  Please mention where you received the certification from.
                 </p>
             </div>
           </div>
