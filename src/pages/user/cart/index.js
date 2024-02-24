@@ -22,6 +22,7 @@ function Cart() {
   const {register, handleSubmit, reset, formState: { errors }} = useForm();
   const [userAddress,setUserAddress] = useState({})
   const [formError,setFormError] = useState({})
+  const [orderId,setOrderId] = useState("");
   const navigate = useNavigate();
   const ModalConfirmBtn = useRef();
   // Function to handle location change
@@ -133,7 +134,7 @@ function Cart() {
             if (apiResponse.statusText == "OK") {
               // setModalData({...apiResponse?.data?.data, amount : data.order.amount / 100})
               // modalBtn.current.click()
-
+              setOrderId(apiResponse?.data?.orderId)
               if(ModalConfirmBtn.current){
                 ModalConfirmBtn.current.click();
               }
@@ -360,7 +361,7 @@ function Cart() {
                                     <h3 className="text-center text-uppercase mt-4">Thank You!</h3>
                                     <p className="text-center fw-500">Your service has been booked successfully.</p>
                                     <div class="modal-body usr-artist-single-modal-body py-4">
-                                        <p className="text-center" >Your booking ID is #12345 <br/> you can modify your booking from the bookings page in your account.</p>
+                                        <p className="text-center" >{`Your booking ID is ${orderId ? orderId : null}`} <br/> you can modify your booking from the bookings page in your account.</p>
                                     </div>
                                     <div class="modal-footer border-0  py-xl-4 py-lg-4 justify-content-center">
                                         <button type="button" className="usr-btn fw-300 me-2" onClick={()=>navigate('/user/bookings')} data-bs-dismiss="modal">All Bookings</button>
