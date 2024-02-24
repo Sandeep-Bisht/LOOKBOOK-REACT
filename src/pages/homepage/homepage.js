@@ -217,7 +217,7 @@ const Homepage = () => {
                                                                             <span className="usr-expert-certification">
 
                                                                                 <span className="ms-2">
- 
+                                                                                <img src={checked } className='img-fluid'/>
 
                                                                                 </span>
                                                                             </span>
