@@ -113,7 +113,15 @@ font-weight: 700;
     opacity: 30%;
 }
 
-
+.usr-common-about-para
+  {
+     
+    color: #6D5D4C;
+    font-family: AvenirLTProBook;
+    font-size: 14px;
+    letter-spacing: 1.3px;
+      
+  }
 
 .test-demo-text{
     text-align: center;

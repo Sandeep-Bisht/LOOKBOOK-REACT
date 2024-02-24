@@ -16,7 +16,7 @@ const AboutUS = () => {
                     <div className='usr-about-part'>
                         <h1 className='usr-about-heading'>Welcome to Lookbook!</h1>
                         <p className='usr-about-para'>Where beauty meets talent.</p>
-                        <p className='usr-common-para  pe-4'>We're passionate about connecting makeup artists with clients to create unforgettable beauty experiences. 
+                        <p className='usr-common-about-para  pe-4'>We're passionate about connecting makeup artists with clients to create unforgettable beauty experiences. 
                           We believe that beauty is a form of art, and every individual deserves to feel confident and empowered. Our platform serves as the bridge between skilled makeup artists and clients seeking professional beauty services. Whether you're a makeup enthusiast or a seasoned artist, we're here to make beauty accessible and enjoyable for everyone.
                        </p>
                     </div>
@@ -38,13 +38,13 @@ const AboutUS = () => {
                     <div className='usr-about-us-text'>
                     <div className='usr-about-para-text'>
                     <p className='usr-about-main-para'>Our story</p>
-                    <p className='usr-common-para'>Founded in 2024, Lookbook was born out of a desire 
+                    <p className='usr-common-about-para'>Founded in 2024, Lookbook was born out of a desire 
                         to simplify the process of finding and booking talented makeup artists.
                          Exasperated by the lack of a centralised platform, our founder 
                          envisioned a space where artists could showcase their skills, 
                          and clients could discover the perfect match for their beauty needs</p>
                          <p className='usr-about-main-para'>Mission </p>
-                         <p className='usr-common-para'>At Lookbook, our mission is to 
+                         <p className='usr-common-about-para'>At Lookbook, our mission is to 
                          empower makeup artists and beauty enthusiasts byproviding a seamless 
                          platform for connecting talent with individuals seekingprofessional 
                          makeup services. We believe that everyone deserves to look and feeltheir best</p>
@@ -71,13 +71,13 @@ const AboutUS = () => {
                 <div className='col-md-6 usr-about-value-section'>
                     <div className='usr-about-value-part'>  
                     <p className='usr-about-main-para'>Values</p>
-                    <p className='usr-common-para'>We are committed to 
+                    <p className='usr-common-about-para'>We are committed to 
                     fostering a community built on trust, inclusivity, 
                     and creativity.Our values drive every decision we 
                     make, ensuring that both makeup artists andclients 
                     have a positive and empowering experience.</p>
                     <p className='usr-about-main-para'>Why Choose Us</p>
-                    <p className='usr-common-para'>Choosing Lookbook means
+                    <p className='usr-common-about-para'>Choosing Lookbook means
                      gaining access to a curated selection of top-tier makeupartists, 
                      hassle-free booking, and a platform designed with your convenience 
                      in mind.We prioritise quality, reliability, and personalization
@@ -93,13 +93,13 @@ const AboutUS = () => {
             <div className='row'>
                 <div className='col-md-6 mx-auto'>
             <p className='usr-about-main-para text-center'>Testimonials</p>
-            <p className='usr-common-para'>Discover what makeup artists and 
+            <p className='usr-common-about-para'>Discover what makeup artists and 
             clients are saying about their experiences with Lookbook. Our
              community thrives on positive connections, and we're proud to share their stories</p> </div> </div>
              <div className='row usr-testimonials-path'>
              <div className='col-md-4'><div className='testimonial-text'>
              
-                <p className='usr-common-para'><sup><ImQuotesLeft /> </sup> Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
+                <p className='usr-common-about-para'><sup><ImQuotesLeft /> </sup> Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
                      euismod. Facilisis tristique elementum fermentum non sed 
                      interdum auctor malesuada quis. Ut venenatis tellus tellus 
                      pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
@@ -109,7 +109,7 @@ const AboutUS = () => {
              <div className='col-md-4'>
              <div className='testimonial-text'>
              
-                <p className='usr-common-para'><sup><ImQuotesLeft /> </sup>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
+                <p className='usr-common-about-para'><sup><ImQuotesLeft /> </sup>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
                      euismod. Facilisis tristique elementum fermentum non sed 
                      interdum auctor malesuada quis. Ut venenatis tellus tellus 
                      pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
@@ -119,7 +119,7 @@ const AboutUS = () => {
              <div className='col-md-4'>
              <div className='testimonial-text'>
              
-                <p className='usr-common-para'><sup><ImQuotesLeft /> </sup>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
+                <p className='usr-common-about-para'><sup><ImQuotesLeft /> </sup>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
                      euismod. Facilisis tristique elementum fermentum non sed 
                      interdum auctor malesuada quis. Ut venenatis tellus tellus 
                      pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
