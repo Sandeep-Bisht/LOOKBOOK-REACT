@@ -20,6 +20,8 @@ const Certificates = () => {
   const [uploading, setUploading] = useState(false);
   const [binaryFiles, setBinaryFiles] = useState([]);
   const [progress, setProgress] = useState(0);
+  const [formData, setFormData] = useState({});
+  const [userDocuments, setUserDocuments] = useState([]);
 
   const handleDrop = async (files) => {
     setBinaryFiles(files);
@@ -54,7 +56,6 @@ const Certificates = () => {
       setBinaryFiles([]);
       setProgress(0);
       setUploading(false);
-      console.error(error, "file upload error");
     }
   };
 
@@ -121,128 +122,261 @@ const Certificates = () => {
     }
   };
 
+  const documentSubmitHandler = (e) => {
+    e.preventDefault();
+      const formDataCopy = { ...formData };
+      for (let key in formDataCopy) {
+      if (formDataCopy[key]?.file instanceof File) {
+        formDataCopy[key] = {
+          name: formDataCopy[key].file.name,
+          size: formDataCopy[key].file.size,
+          type: formDataCopy[key].file.type,
+        };
+      }
+    }
+      setUserDocuments(prev => ([...prev, formDataCopy]));
+      setFormData({});
+  };
+  
+
+
+  const documentChangeHandler = (e) => {
+    const { name, value, files } = e.target;
+    if (files && files.length > 0) {
+      const selectedFile = files[0];
+      setFormData((prev) => ({
+        ...prev,
+        [name]: {
+          file: selectedFile,
+          name: selectedFile.name,
+          size: selectedFile.size,
+          type: selectedFile.type,
+        },
+      }));
+    } else {
+      // Handle other inputs like text inputs
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  };
+  
+  
+
+  const upadateDocumentHandler = (e) => {
+
+  }
+
+
   return (
     <>
-       <section className="achivements-ar">
+      <section className="achivements-ar">
         <div className="container">
           <div className="row">
             <div className="col-md-12 achivements-ar-heading">
-                <h4 className="text-center">Share Your Certification</h4>
-                <p className="text-center">
-                  You can add more or make changes later.
-                  <br/>
-                  Please mention where you received the certification from.
-                </p>
+              <h4 className="text-center">Share Your Certification</h4>
+              <p className="text-center">
+                You can add more or make changes later.
+                <br />
+              </p>
             </div>
           </div>
         </div>
         <div className="customized-gallery my-5">
           <div className="container">
-            <div className="row gallery-row g-3">
-              <>
-                {(certificates && Array.isArray(certificates) && certificates.length > 0) ||
-                (binaryFiles && Array.isArray(binaryFiles) && binaryFiles.length > 0) ? (
-                  <>
-                    { certificates.map((item, index) => {
-                      return (
-                        <div className="col-md-6 p-3">
-                          <div className="custom-kyc-img-wrapper">
-                            {getExtension(item.name).toLowerCase() === "pdf" ? (
-                              <>
-                                <img
-                                  src={PdfIcon}
-                                  alt={item.name}
-                                  className="img-fluid w-100"
-                                />
-                                <div className="custom-kyc-update-dropshadow-box">
-                                  <div>
-                                    <MdDeleteForever
-                                      onClick={() => removeDocument(index)}
-                                      className="me-3"
-                                    />
-                                    <a href={item.url} target="_blank">
-                                      <IoEye />
-                                    </a>
+            {
+              userDocuments && Array.isArray(userDocuments) && userDocuments.length > 0 ?
+                <div className="row">
+                  <div className="col-6 text-center m-auto">
+                  <div className="row">
+                    {
+                      userDocuments.map((item, index) => {
+                        return (
+                          <>
+                              <div className="col-6">
+                                <form onSubmit={(e) => upadateDocumentHandler(e)}>
+                                  <div className="text-start m-auto">
+                                    <label htmlFor="title">
+                                      Please mention where you received the certification from.
+                                    </label>
+                                    <div>
+                                      <input className="" type="text" name="title" id="title" value={item?.title} onChange={(e) => documentChangeHandler(e)} />
+                                    </div>
                                   </div>
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                <img
-                                  src={item.url}
-                                  alt={item.name}
-                                  className="img-fluid w-100"
-                                />
-                                <div
-                                  className="custom-kyc-update-dropshadow-box"
-                                  onClick={() => removeDocument(index)}
-                                >
-                                  <MdDeleteForever />
-                                </div>
-                              </>
-                            )}
+                                  <div className="text-start m-auto mt-2">
+                                    <label id="certificate">
+                                      Upload Certificate
+                                    </label>
+                                    <div>
+                                      <input className="" type="file" id="certificate" name="certificate"  onChange={(e) => documentChangeHandler(e)} />
+                                    </div>
+                                  </div>
+                                  <div className="text-start m-auto mt-3">
+                                    <button className="btn usr-common-action-btn" type="submit">Update</button>
+                                  </div>
+                                </form>
+                              </div>
+                          </>
+                        )
+                      })
+                    }
+                    <div className="col-6">
+                      <form onSubmit={(e) => documentSubmitHandler(e)}>
+                        <div className=" text-start m-auto">
+                          <label htmlFor="title">
+                            Please mention where you received the certification from.
+                          </label>
+                          <div>
+                            <input className="" type="text" name="title" id="title" value={formData?.title} onChange={(e) => documentChangeHandler(e)} />
                           </div>
                         </div>
-                      );
-                    })}
-                    {binaryFiles && Array.isArray(binaryFiles) && binaryFiles.length>0 && binaryFiles.map((item) => {
-                      let src =
-                        item.type == "application/pdf"
-                          ? PdfIcon
-                          : URL.createObjectURL(item);
-                      return (
-                        <div className="col-md-6 p-3">
-                          <div className="custom-kyc-img-wrapper">
-                            <img
-                              src={src}
-                              alt="binary File"
-                              className="img-fluid w-100"
-                            />
-                            <div className="circular-progressbar">
-                              <CircularProgressbar
-                                value={progress}
-                                strokeWidth={50}
-                                styles={buildStyles({
-                                  strokeLinecap: "butt",
-                                  trailColor: "#FCF7F2",
-                                  pathColor: "#8C6A54",
-                                })}
-                              />
-                            </div>
+                        <div className="text-start m-auto mt-2">
+                          <label id="certificate">
+                            Upload Certificate
+                          </label>
+                          <div>
+                            <input className="" type="file" id="certificate" name="certificate" onChange={(e) => documentChangeHandler(e)} />
                           </div>
                         </div>
-                      );
-                    })}
-                    <div className="col-6 p-3">
-                      <div
-                        {...getRootProps({
-                          className: "custom-add-more-files-card",
-                        })}
-                      >
-                        <input {...getInputProps()} />
-                        <IoAdd className="fs-1 mb-2" />
-                        <h6>Add more</h6>
+                        <div className="text-start m-auto mt-3">
+                          <button className="btn usr-common-action-btn" type="submit">Add More</button>
+                        </div>
+                      </form>
+                    </div>
+                    </div>
+                  </div>
+                </div> :
+                <div className="row">
+                  <form onSubmit={(e) => documentSubmitHandler(e)}>
+                    <div className="col-6 m-auto d-block" style={{ border: "1px dotted", padding: "40px" }}>
+                      <div className="col-6 text-start m-auto">
+                        <label htmlFor="title">
+                          Please mention where you received the certification from.
+                        </label>
+                        <div>
+                          <input className="" type="text" name="title" id="title" value={formData?.title} onChange={(e) => documentChangeHandler(e)} />
+                        </div>
+                      </div>
+                      <div className="col-6 text-start m-auto mt-2">
+                        <label id="certificate">
+                          Upload Certificate
+                        </label>
+                        <div>
+                          <input className="" type="file" id="certificate" name="certificate" onChange={(e) => documentChangeHandler(e)} />
+                        </div>
+                      </div>
+                      <div className="col-6 text-start m-auto mt-3">
+                        <button className="btn usr-common-action-btn" type="submit">Add More</button>
                       </div>
                     </div>
-                  </>
-                ) : (
-                  <div
-                  {...getRootProps({
-                    className: `dropzone col-12 custom-index-dropzone `
-                  })}
-                  
-                  >
-                    <input {...getInputProps()} />
-                    <h4>Drag your photos or documents here</h4>
-                    <p>
-                      <b>
-                        <u>Upload from your device</u>
-                      </b>
-                    </p>
-                  </div>
-                )}
-              </>
-            </div>
+                  </form>
+                </div>
+            }
+            {/* <div className="row gallery-row g-3">
+                <>
+                  {(certificates && Array.isArray(certificates) && certificates.length > 0) ||
+                    (binaryFiles && Array.isArray(binaryFiles) && binaryFiles.length > 0) ? (
+                    <>
+                      {certificates.map((item, index) => {
+                        return (
+                          <div className="col-md-6 p-3">
+                            <div className="custom-kyc-img-wrapper">
+                              {getExtension(item.name).toLowerCase() === "pdf" ? (
+                                <>
+                                  <img
+                                    src={PdfIcon}
+                                    alt={item.name}
+                                    className="img-fluid w-100"
+                                  />
+                                  <div className="custom-kyc-update-dropshadow-box">
+                                    <div>
+                                      <MdDeleteForever
+                                        onClick={() => removeDocument(index)}
+                                        className="me-3"
+                                      />
+                                      <a href={item.url} target="_blank">
+                                        <IoEye />
+                                      </a>
+                                    </div>
+                                  </div>
+                                </>
+                              ) : (
+                                <>
+                                  <img
+                                    src={item.url}
+                                    alt={item.name}
+                                    className="img-fluid w-100"
+                                  />
+                                  <div
+                                    className="custom-kyc-update-dropshadow-box"
+                                    onClick={() => removeDocument(index)}
+                                  >
+                                    <MdDeleteForever />
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                      {binaryFiles && Array.isArray(binaryFiles) && binaryFiles.length > 0 && binaryFiles.map((item) => {
+                        let src =
+                          item.type == "application/pdf"
+                            ? PdfIcon
+                            : URL.createObjectURL(item);
+                        return (
+                          <div className="col-md-6 p-3">
+                            <div className="custom-kyc-img-wrapper">
+                              <img
+                                src={src}
+                                alt="binary File"
+                                className="img-fluid w-100"
+                              />
+                              <div className="circular-progressbar">
+                                <CircularProgressbar
+                                  value={progress}
+                                  strokeWidth={50}
+                                  styles={buildStyles({
+                                    strokeLinecap: "butt",
+                                    trailColor: "#FCF7F2",
+                                    pathColor: "#8C6A54",
+                                  })}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                      <div className="col-6 p-3">
+                        <div
+                          {...getRootProps({
+                            className: "custom-add-more-files-card",
+                          })}
+                        >
+                          <input {...getInputProps()} />
+                          <IoAdd className="fs-1 mb-2" />
+                          <h6>Add more</h6>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div
+                      {...getRootProps({
+                        className: `dropzone col-12 custom-index-dropzone `
+                      })}
+
+                    >
+                      <label>Drag your photos or documents here</label>
+                      <input {...getInputProps()} />
+                      <p>
+                        <b>
+                          <div>
+                            <u>Upload from your device</u>
+                          </div>
+                        </b>
+                      </p>
+                    </div>
+                  )}
+                </>
+              </div> */}
           </div>
         </div>
         <div className="horizontal-bar"></div>
