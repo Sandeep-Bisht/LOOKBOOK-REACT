@@ -302,7 +302,6 @@ const ArtistSingle = () => {
                                                     <div className="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabIndex={0}>
                                                         <div className="usr-artist-single-tab-content">
                                                             <p className="usr-artist-single-tab-content-heading">
-                                                                Certified By
                                                             </p>
                                                             <div className='row'>
                                                                 {artistData?.certificates && Array.isArray(artistData?.certificates) && artistData?.certificates.length > 0 && artistData?.certificates.map((item, index) => (
@@ -517,7 +516,7 @@ const ArtistSingle = () => {
                                             {artistData?.services && Array.isArray(artistData.services) && artistData.services.length > 0 &&
                                                 <>
                                                 <div className="usr-artist-charges">
-                                                <h6 className="fw-700">Charges:</h6>
+                                                <h6 className="fw-700">Charges</h6>
                                                 { artistData.services.map((item, index) => {
                                                         
                                                             return (
@@ -527,7 +526,7 @@ const ArtistSingle = () => {
                                                                     
                                                                     <span className="icon-plus-title fw-400">
                                                                         <img src={item?.icon?.thumbnailUrl} alt={item.title} width="20" className="me-2"/>
-                                                                    {item.title}:
+                                                                    {item.title}
                                                                 
                                                                     </span>
                                                                     <span className="fw-700 fw-bold">₹{item.pricing?.totalPrice}/-</span>
@@ -542,7 +541,7 @@ const ArtistSingle = () => {
                                                 }
                                             </div>
                                             <div className="usr-artist-order">
-                                                <h6 className="fw-700">Minimum Order:</h6>
+                                                <h6 className="fw-700">Minimum Order</h6>
                                                 <p>Bridal Makeup + One Party Makeup</p>
                                             </div>
                                             <div className="usr-card-booking-button">

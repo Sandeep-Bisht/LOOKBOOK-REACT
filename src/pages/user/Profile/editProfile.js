@@ -216,7 +216,7 @@ const handleAliasChange = (newValue) => {
                       </div>
                       <div className="col-6">
                       <Link to="/user/profile" type="button" className="user-update-form-button text-center link-cancle-button mt-2">
-                    Cancle
+                    Cancel
                   </Link>
                       </div>
                     </div>

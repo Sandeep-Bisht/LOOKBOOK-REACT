@@ -52,6 +52,12 @@ const UserMenu = ({props}) => {
             Cart
            </Link>
         </li>
+        <li>
+           <Link to="/user/bookings" className="dropdown-item">
+           <AccountOutline sx={{ marginRight: 2 }} />
+            Bookings
+           </Link>
+        </li>
         
         
         <li>

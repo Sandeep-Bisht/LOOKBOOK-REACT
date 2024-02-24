@@ -44,21 +44,21 @@ const Review = () => {
                 <FaCalendarCheck className='fs-1 me-3'/>
                 <div>
                   <h4>Confirm a few details and publish</h4>
-                  <p>We’ll let you know if you need to verify your identity or register with the local government.</p>
+                  <p>We’ll let you know if you need to verify your identity.</p>
                 </div>
             </div>
             <div className='d-flex mt-3'>
                 <FaCalendar  className='fs-1 me-3'/>
                 <div>
                   <h4>Set up your calendar</h4>
-                  <p>Choose which dates your services is available. It will be visible 24 hours after you publish.</p>
+                  <p>Choose which dates your services are available. It will be visible 24 hours after you publish.</p>
                 </div>
             </div>
             <div className='d-flex mt-3'>
                 <HiMiniPencil   className='fs-1 me-3'/>
                 <div>
                   <h4>Adjust your settings</h4>
-                  <p>Set house rules, select a cancellation policy, choose how guests book and more.</p>
+                  <p>Set your pricing, mention your minimum order requirement, choose how clients book and more.</p>
                 </div>
             </div>
           </div>

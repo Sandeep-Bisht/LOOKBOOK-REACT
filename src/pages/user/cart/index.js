@@ -255,8 +255,12 @@ function Cart() {
             <Td className="text-capitalize table-items">{item?.sessions} Sessions</Td>
             <Td className="text-capitalize table-items">{item?.time.join(', ')}</Td>
             <Td className="text-capitalize table-items">
-              {item?.service?.title} {" "}
+              <div className='d-flex justify-content-between'>
+                <span>{item?.service?.title}</span>
+                <span>
               {formatIndianRupee(item?.service?.pricing?.totalPrice * item?.sessions)}
+              </span>
+              </div>
             </Td>
             <Td className="text-capitalize">
               <button type='button' className='btn' onClick={()=>handleCartDelete(item?._id)}>
@@ -271,7 +275,7 @@ function Cart() {
         <Td  className="text-capitalize table-items"></Td>
         <Td  className="text-capitalize table-items"></Td>
         <Td  className="text-capitalize table-items"></Td>
-        <Td  className="text-capitalize table-items">{formatIndianRupee(totalPrice)} /-</Td>
+        <Td  className="text-capitalize table-items"><b>{formatIndianRupee(totalPrice)} /-</b></Td>
         </Tr>
       </Tbody>
     </Table>
@@ -354,9 +358,9 @@ function Cart() {
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <h3 className="text-center text-uppercase mt-4">Thank You!</h3>
-                                    <p className="text-center fw-500">Your Order has been placed successfully.</p>
+                                    <p className="text-center fw-500">Your service has been booked successfully.</p>
                                     <div class="modal-body usr-artist-single-modal-body py-4">
-                                        <p className="text-center" >While your order has been created <br/> you can update your order from bookings page.</p>
+                                        <p className="text-center" >Your booking ID is #12345 <br/> you can modify your booking from the bookings page in your account.</p>
                                     </div>
                                     <div class="modal-footer border-0  py-xl-4 py-lg-4 justify-content-center">
                                         <button type="button" className="usr-btn fw-300 me-2" onClick={()=>navigate('/user/bookings')} data-bs-dismiss="modal">All Bookings</button>
