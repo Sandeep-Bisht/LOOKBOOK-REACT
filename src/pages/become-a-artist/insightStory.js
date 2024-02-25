@@ -210,23 +210,23 @@ const InsightStory = () => {
               />
               German
             </MenuItem>
-            <MenuItem value="German">
+            <MenuItem value="Spanish">
               <Checkbox
-                checked={selectLanguages.includes('German') || false}
+                checked={selectLanguages.includes('Spanish') || false}
               />
               Spanish
             </MenuItem>
-            <MenuItem value="German">
+            <MenuItem value="IndoKannadnesian">
               <Checkbox
-                checked={selectLanguages.includes('German') || false}
+                checked={selectLanguages.includes('Kannad') || false}
               />
-              Indonesian
+              Kannad
             </MenuItem>
-            <MenuItem value="German">
+            <MenuItem value="Telgu">
               <Checkbox
-                checked={selectLanguages.includes('German') || false}
+                checked={selectLanguages.includes('Telgu') || false}
               />
-              Japanese
+              Telgu
             </MenuItem>
             {/* Add more languages as needed */}
           </Select>
