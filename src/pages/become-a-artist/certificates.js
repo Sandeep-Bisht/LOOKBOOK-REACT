@@ -4,6 +4,7 @@ import ArtistFooter from "./common/artistFooter";
 import { axiosAuth } from "configs/axiosInstance";
 import { useDropzone } from "react-dropzone";
 import { MdDeleteForever } from "react-icons/md";
+import "@css/user/certificate.css"
 import { IoAdd, IoEye } from "react-icons/io5";
 import PdfIcon from "@core/assets/images/pdfIcon-removebg.png";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
@@ -165,7 +166,6 @@ const Certificates = () => {
 
   }
 
-
   return (
     <>
       <section className="achivements-ar">
@@ -191,14 +191,14 @@ const Certificates = () => {
                       userDocuments.map((item, index) => {
                         return (
                           <>
-                              <div className="col-6">
+                              <div className="col-5 ms-2 user-certificate-form">
                                 <form onSubmit={(e) => upadateDocumentHandler(e)}>
                                   <div className="text-start m-auto">
                                     <label htmlFor="title">
                                       Please mention where you received the certification from.
                                     </label>
                                     <div>
-                                      <input className="" type="text" name="title" id="title" value={item?.title} onChange={(e) => documentChangeHandler(e)} />
+                                      <input className="user-certificate-form-input" type="text" name="title" id="title" value={item?.title} onChange={(e) => documentChangeHandler(e)} />
                                     </div>
                                   </div>
                                   <div className="text-start m-auto mt-2">
@@ -206,7 +206,7 @@ const Certificates = () => {
                                       Upload Certificate
                                     </label>
                                     <div>
-                                      <input className="" type="file" id="certificate" name="certificate"  onChange={(e) => documentChangeHandler(e)} />
+                                      <input className="user-certificate-form-input" type="file" id="certificate" name="certificate"  onChange={(e) => documentChangeHandler(e)} />
                                     </div>
                                   </div>
                                   <div className="text-start m-auto mt-3">
@@ -218,14 +218,14 @@ const Certificates = () => {
                         )
                       })
                     }
-                    <div className="col-6">
+                    <div className="col-5 ms-2 user-certificate-form">
                       <form onSubmit={(e) => documentSubmitHandler(e)}>
                         <div className=" text-start m-auto">
                           <label htmlFor="title">
                             Please mention where you received the certification from.
                           </label>
                           <div>
-                            <input className="" type="text" name="title" id="title" value={formData?.title} onChange={(e) => documentChangeHandler(e)} />
+                            <input className="user-certificate-form-input" type="text" name="title" id="title" value={formData?.title} onChange={(e) => documentChangeHandler(e)} />
                           </div>
                         </div>
                         <div className="text-start m-auto mt-2">
@@ -233,7 +233,7 @@ const Certificates = () => {
                             Upload Certificate
                           </label>
                           <div>
-                            <input className="" type="file" id="certificate" name="certificate" onChange={(e) => documentChangeHandler(e)} />
+                            <input className="user-certificate-form-input" type="file" id="certificate" name="certificate" onChange={(e) => documentChangeHandler(e)} />
                           </div>
                         </div>
                         <div className="text-start m-auto mt-3">
