@@ -79,7 +79,8 @@ import ArtistCategoryUpdate from 'pages/management/artist_categories/edit'
 import { getArtistCategoryById } from 'configs/initialapis'
 import { getServiceUpdateData } from 'configs/initialapis'
 import Cart from 'pages/user/cart'
-import CongratulationPage from 'pages/become-a-artist/congratulation'
+import { getAllBookings } from 'configs/initialapis'
+import AllBookings from 'pages/user/bookings/allBookings'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -239,6 +240,11 @@ const ApplicationRoutes = createBrowserRouter(
               loader={getCartData}
             />
             <Route
+              path="/user/bookings"
+              element={<AllBookings />}
+              loader={getAllBookings}
+            />
+            <Route
               path="/user/profile"
               element={<NewProfile />}
               loader={getUserProfile}
@@ -295,7 +301,6 @@ const ApplicationRoutes = createBrowserRouter(
         {/* End auth routes for user */}
         <Route path="/*" element={<Error404 />} />
       </Route>
-      <Route path="/congratulation" element={<CongratulationPage/>}/>
       {/* Dashboard component and admin auth routes*/}
       <Route element={<RequireAuth allowedRoles={[roles.admin, roles.super_admin]} />}>
         <Route element={<DashboardComponents />}>

@@ -86,11 +86,35 @@
 
     transition: .2s;
 }
+
 .usr-common-action-btn:hover
 
 {
   background-color: #6D5D4C!important;
     color: #fefefe;
+}
+
+.usr-common-filled-btn{
+    background-color: #6D5D4C!important;
+    font-family: AvenirLTProLight;
+    display: flex;
+    padding: 12px 30px 12px 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #6D5D4C;
+    color: #FFFF;
+    font-size: 13px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    margin-top: 10px;
+
+    transition: .2s;
+}
+
+.usr-common-filled-btn:hover{
+  background-color: #8C6A54 !important;
 }
   
   .form-select:focus,.form-control:focus
@@ -270,7 +294,7 @@
 
 @media (max-width: 991.98px) {
    
-  .usr-common-action-btn
+  .usr-common-action-btn, .usr-common-filled-btn
   {
     padding: 8px 25px 8px 25px;
     font-size: 11px;
@@ -290,7 +314,7 @@
 
   @media (max-width: 767.98px) {
    
-    .usr-common-action-btn
+    .usr-common-action-btn, .usr-common-filled-btn
     {
       padding: 8px 25px 8px 25px;
       font-size: 10px;

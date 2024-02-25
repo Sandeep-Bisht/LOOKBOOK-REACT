@@ -112,9 +112,8 @@ const InsightStory = () => {
             <div className="col-md-12">
               <div className="insight-wrapper-heading text-center">
                 <h4 className="">
-                  Share some insights of your work
+                  Share Some More Details
                 </h4>
-                <p>Lorem ipsum dolor sit amet consectetur. Turpis viverra porttitor elit ipsum.</p>
               </div>
             </div>
           </div>

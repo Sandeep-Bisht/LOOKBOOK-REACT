@@ -13,7 +13,7 @@
 {
   display: none;
 }
-.header .main-logo img, .artist-header .main-logo img
+.header .main-logo img
 {
   height: 42px;
 }
@@ -465,7 +465,7 @@ header .rmdp-ep-arrow {
 
 @media (max-width: 991.98px) {
 
-header .main-logo img, .artist-header .main-logo img{
+header .main-logo img{
   height: 33px;
 }
 

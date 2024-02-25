@@ -119,20 +119,12 @@ const EmergingArtist = ({artists}) => {
         {/* <section className='custom-section'></section> */}
                 <section className={`usr-emerging-artist usr-overlap-section`} ref={sectionRef}>
                     <div className="container-fluid">
-                        <div className="row d-none">
-                            <div className="col-lg-12">
-                                <h2 className="usr-common-heading text-center">
-                                    Emerging Artist
-                                </h2>
-                            </div>
-
-                        </div>
                         <div className="row">
                             <div className="col-lg-12">
                                 {/* -----------------------copy------------------ */}
                                 <div className="usr-emerging-artist-wrapper mt-lg-4">
                                 <h2 className="usr-common-heading text-center">
-                                    Emerging Artist
+                                    Emerging Artists
                                 </h2>
                                     <div className="usr-emerging-artist-custom-cursor" />
                                     <div className="usr-emerging-artist-carousel">
@@ -141,7 +133,7 @@ const EmergingArtist = ({artists}) => {
                                           <Link className="usr-emerging-artist-carousel-item common-cursor-pointer" key={ind} to={`/services/${item?.featuredCategory ? item?.featuredCategory?.slug : item?.categories[0]?.slug}/${item?.userName}`}>
                                             <div className="usr-emerging-artist-carousel-box">
                                                 <img className="img-fluid" src={item?.gallery[0] ? item?.gallery[0].url : null} />
-                                                <p>{item?.profile_id?.fullName ? item?.profile_id?.fullName : null }</p>
+                                                <p>{item?.profile?.fullName ? item?.profile?.fullName : null }</p>
                                             </div>
                                         </Link>
                                         )

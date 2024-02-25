@@ -74,7 +74,7 @@ const ContactPage = () => {
                     </svg>
                     Phone
                   </span>
-                  <p className="usr-contact-para">8218833534</p>
+                  <p className="usr-contact-para">+91 8218833534</p>
                 </div>
                 <div className="usr-contact-place">
                   <span className="me-2">
