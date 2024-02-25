@@ -294,13 +294,13 @@ const ApplicationRoutes = createBrowserRouter(
             <Route path="/become-a-artist/:request_id/upload-cerificates" element={< Certificates />} />
             <Route path="/become-a-artist/:request_id/personal-details" element={< Details />} loader={getUserProfile} />
             <Route path="/become-a-artist/:request_id/review-request" element={< Review />} />
+            
           </Route>
           <Route path="/become-a-artist/publish-celebration" element={<Celebration />} />
         </Route>
         {/* End auth routes for user */}
         <Route path="/*" element={<Error404 />} />
       </Route>
-
       {/* Dashboard component and admin auth routes*/}
       <Route element={<RequireAuth allowedRoles={[roles.admin, roles.super_admin]} />}>
         <Route element={<DashboardComponents />}>
