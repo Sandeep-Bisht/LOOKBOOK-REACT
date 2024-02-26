@@ -82,6 +82,7 @@ import Cart from 'pages/user/cart'
 import { getAllBookings } from 'configs/initialapis'
 import AllBookings from 'pages/user/bookings/allBookings'
 import CopyRights from 'pages/copy-right'
+import ArtistBookings from 'pages/artist/Bookings'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -299,6 +300,9 @@ const ApplicationRoutes = createBrowserRouter(
             
           </Route>
           <Route path="/become-a-artist/publish-celebration" element={<Celebration />} />
+        </Route>
+        <Route element={<RequireAuth allowedRoles={[roles.user]} />}>
+          <Route path='/artist/bookings' element={<ArtistBookings/>}/>
         </Route>
         {/* End auth routes for user */}
         <Route path="/*" element={<Error404 />} />
