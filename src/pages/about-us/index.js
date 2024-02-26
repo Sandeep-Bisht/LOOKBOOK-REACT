@@ -192,7 +192,7 @@ const AboutUS = () => {
                   euismod. Facilisis tristique elementum fermentum non sed 
                   interdum auctor malesuada quis. Ut venenatis tellus tellus 
                   pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
-                  <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Customer</span></p>
+                  <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Makeup Artist</span></p>
                  
           </div>
 
@@ -211,7 +211,7 @@ const AboutUS = () => {
                   euismod. Facilisis tristique elementum fermentum non sed 
                   interdum auctor malesuada quis. Ut venenatis tellus tellus 
                   pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
-                  <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Customer</span></p>
+                  <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Makeup Artist</span></p>
                  
           </div>
             </Slider>
@@ -231,7 +231,7 @@ const AboutUS = () => {
                 <div className='col-md-8'>
                     <div className='usr-beauty-journey-text'>
                 <p className='usr-about-main-para'>Join Us on the Beauty Journey</p>
-                    <p className='usr-common-para'>Whether you're a makeup artist ready
+                    <p className='usr-common-about-para'>Whether you're a makeup artist ready
                      to showcase your skills or a client looking for the perfect beauty 
                      experience, we invite you to join us on this exciting beauty journey.
                      At Lookbook, beauty knows no bounds, and every face tells a unique story.
@@ -246,7 +246,7 @@ const AboutUS = () => {
                 <div className='col-md-4'>
                     <div className='usr-beauty-journey-text-right'>
                 <p className='usr-about-main-para'>Contact Info</p>
-                    <p className='usr-common-para'>Have questions or want to learn more? Reach out to
+                    <p className='usr-common-about-para'>Have questions or want to learn more? Reach out to
                      us at info@mylookbook.in or follow us on Instagram. 
                      <br/>
                      We're here to make

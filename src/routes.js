@@ -81,6 +81,7 @@ import { getServiceUpdateData } from 'configs/initialapis'
 import Cart from 'pages/user/cart'
 import { getAllBookings } from 'configs/initialapis'
 import AllBookings from 'pages/user/bookings/allBookings'
+import CopyRights from 'pages/copy-right'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -220,6 +221,7 @@ const ApplicationRoutes = createBrowserRouter(
           </Route>         
           <Route path='/terms-conditions' element={<TermsPage />} />
           <Route path='/privacy-policy' element={<PrivacyPage />} />
+          <Route path='copy-rights' element={<CopyRights/>}/>
           <Route path='/contact-us' element={<ContactPage />} />
           <Route element={<BlogsCategoryFilter />} loader={getAllCategories}>
             <Route path='/blogs' element={<AllBlogs />} loader={getAllBlog} />
