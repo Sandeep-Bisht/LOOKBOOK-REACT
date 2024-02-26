@@ -34,10 +34,10 @@ const StepSecond = () => {
               <h4 className="artist-inner-subheading mb-lg-3">
                                Step 2
                             </h4>
-              <h1 className="artist-inner-heading mb-lg-4">
+              <h1 className="artist-inner-heading mb-lg-4 text-uppercase">
                                  Make your work stand out
                             </h1>
-                    <p className="">
+                    <p className="about-skills-ar-para">
 
                     Show wherein form yielding whala gathered wherein moved. Behold may yod winged created that Won't theya are not second god give best
                     Show wherein form yielding whala gathered wherein moved.

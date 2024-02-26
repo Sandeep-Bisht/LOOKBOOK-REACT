@@ -85,7 +85,7 @@ const GetStarted = () => {
             <footer className="artist-footer-ar">
                 <div className="col-md-12 p-2">
                     <div
-                        className="get-started-div text-center"
+                        className="d-flex justify-content-center"
 
                     >
                         {
