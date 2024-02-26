@@ -1,11 +1,69 @@
-import React from 'react'
+import React ,{useRef } from 'react'
 import '@css/user/about.css'
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { ImQuotesLeft } from "react-icons/im";
 import { ImQuotesRight } from "react-icons/im";
+import Slider from "react-slick";
 
 const AboutUS = () => {
+   
+    const sliderRef = useRef();
+
+    var settings = {
+        dots: false,
+        infinite: true,
+        arrows: false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        centerMode: true,
+        centerPadding: "0px",
+        autoplayTimeout: 3000,
+
+        responsive: [
+            {
+                breakpoint: 1200, 
+                settings: {
+                  slidesToShow: 3,
+                },
+              },
+              {
+                breakpoint: 992, // Adjust the number of slides for screens larger than 992 pixels
+                settings: {
+                  slidesToShow: 2,
+                },
+              },
+              {
+                breakpoint: 767, // Adjust the number of slides for screens larger than 768 pixels
+                settings: {
+                  slidesToShow: 1,
+                },
+              },
+              {
+                breakpoint: 575, // Adjust the number of slides for screens larger than 768 pixels
+                settings: {
+                  slidesToShow: 1,
+                },
+              },
+              {
+                breakpoint: 481, // Adjust the number of slides for screens larger than 768 pixels
+                settings: {
+                  slidesToShow: 1,
+                },
+              },
+            ],
+      };
+
+      const handleNext = () => {
+        sliderRef.current.slickNext();
+      };
+    
+      const handlePrev = () => {
+        sliderRef.current.slickPrev();
+      };
+
   return (
     <>
       <section>
@@ -16,7 +74,7 @@ const AboutUS = () => {
                     <div className='usr-about-part'>
                         <h1 className='usr-about-heading'>Welcome to Lookbook!</h1>
                         <p className='usr-about-para'>Where beauty meets talent.</p>
-                        <p className='usr-common-about-para  pe-4'>We're passionate about connecting makeup artists with clients to create unforgettable beauty experiences. 
+                        <p className='usr-common-about-para  pe-3'>We're passionate about connecting makeup artists with clients to create unforgettable beauty experiences. 
                           We believe that beauty is a form of art, and every individual deserves to feel confident and empowered. Our platform serves as the bridge between skilled makeup artists and clients seeking professional beauty services. Whether you're a makeup enthusiast or a seasoned artist, we're here to make beauty accessible and enjoyable for everyone.
                        </p>
                     </div>
@@ -97,7 +155,8 @@ const AboutUS = () => {
             clients are saying about their experiences with Lookbook. Our
              community thrives on positive connections, and we're proud to share their stories</p> </div> </div>
              <div className='row usr-testimonials-path'>
-             <div className='col-md-4'><div className='testimonial-text'>
+             <Slider ref={sliderRef}  {...settings}>
+             <div className='testimonial-text'>
              
                 <p className='usr-common-about-para'><sup><ImQuotesLeft /> </sup> Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
                      euismod. Facilisis tristique elementum fermentum non sed 
@@ -105,8 +164,8 @@ const AboutUS = () => {
                      pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
                      <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Customer</span></p>
                     
-                     </div></div>
-             <div className='col-md-4'>
+                     </div>
+             
              <div className='testimonial-text'>
              
                 <p className='usr-common-about-para'><sup><ImQuotesLeft /> </sup>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
@@ -115,8 +174,8 @@ const AboutUS = () => {
                      pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
                      <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2' >Makeup Artist</span></p>
                     </div>
-             </div>
-             <div className='col-md-4'>
+             
+             
              <div className='testimonial-text'>
              
                 <p className='usr-common-about-para'><sup><ImQuotesLeft /> </sup>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
@@ -124,15 +183,43 @@ const AboutUS = () => {
                      interdum auctor malesuada quis. Ut venenatis tellus tellus 
                      pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
                      <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Customer</span></p>
-                    </div>
+                    
              </div>
+               
+             <div className='testimonial-text'>
+             
+             <p className='usr-common-about-para'><sup><ImQuotesLeft /> </sup>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
+                  euismod. Facilisis tristique elementum fermentum non sed 
+                  interdum auctor malesuada quis. Ut venenatis tellus tellus 
+                  pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
+                  <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Customer</span></p>
+                 
+          </div>
 
-
+          <div className='testimonial-text'>
+             
+             <p className='usr-common-about-para'><sup><ImQuotesLeft /> </sup>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
+                  euismod. Facilisis tristique elementum fermentum non sed 
+                  interdum auctor malesuada quis. Ut venenatis tellus tellus 
+                  pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
+                  <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Customer</span></p>
+                 
+          </div>
+          <div className='testimonial-text'>
+             
+             <p className='usr-common-about-para'><sup><ImQuotesLeft /> </sup>Lorem ipsum dolor sit amet consectetur. Id magna amet egestas sit
+                  euismod. Facilisis tristique elementum fermentum non sed 
+                  interdum auctor malesuada quis. Ut venenatis tellus tellus 
+                  pharetra et at. Lobortis.<sup> <ImQuotesRight /></sup></p>
+                  <p className='test-demo-text '>Jone Doe <span className='testimonial-taxt-demo ps-2'>Customer</span></p>
+                 
+          </div>
+            </Slider>
             </div>
             <div className='row'>
                 <div className='col-12 text-center'>
-                <button type='button' className='usr-testimonials-btn-left me-3'><span className='left-part'><MdKeyboardArrowLeft /></span></button>
-                <button type='button' className='usr-testimonials-btn-right ms-3'><span className='right-part'><MdKeyboardArrowRight /></span></button>
+                <button type='button' className='usr-testimonials-btn-left me-3' onClick={handlePrev}><span className='left-part'><MdKeyboardArrowLeft /></span></button>
+                <button type='button' className='usr-testimonials-btn-right ms-3' onClick={handleNext}><span className='right-part'><MdKeyboardArrowRight /></span></button>
                 </div>
            </div>
         </div>

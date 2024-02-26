@@ -72,6 +72,7 @@ font-weight: 700;
     background: #ffffff;
     padding: 50px;
     margin-bottom: 20px;
+    width: 300px!important;
 }
 
 .usr-beauty-journey-text{
@@ -162,6 +163,9 @@ font-weight: 700;
     width: 15px;
 }
 
+.usr-testimonials-btn-right {
+    margin-right: 30px;
+}
 
 
 
@@ -201,6 +205,20 @@ font-weight: 700;
     .usr-about-heading{
         font-size: 59px;
     }
+
+    .testimonial-text{
+        padding: 40px;
+        width: 260px!important;
+    }
+
+    .usr-common-about-para{
+        font-size: 12px;
+    }
+
+    .testimonial-taxt-demo{
+          
+        font-size: 12px;
+    }
 }
 
 
@@ -214,6 +232,10 @@ font-weight: 700;
         color: rgb(109,93,76);
         letter-spacing: 2px;
         font-weight: 700;
+    }
+     
+    .usr-testimonials-btn-right {
+        margin-right: 0px;
     }
 
     .usr-about-para {
@@ -245,8 +267,57 @@ font-weight: 700;
         text-align: center;
         margin: 50px 0 0 0;
     }
+    .slick-slider {
+        text-align: center;
+    }
 
     
+    
+}
+
+@media screen and (max-width:991px) {
+
+    .usr-about-content {
+        padding: 30px;
+    }
+
+    .usr-about-image {
+        padding: 30px;
+    }
+
+    .usr-about-us-text {
+        
+        padding: 20px;
+    }
+    
+}
+
+
+@media screen and (max-width:767px) {
+
+    .usr-our-story img {
+        height: 530px;
+        
+    }
+    
+}
+
+@media screen and  (max-width:467px) {
+    .usr-about-main{
+        padding: 50px;
+    }
+    .usr-common-about-para {
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width:437px) {
+    .usr-about-main {
+        padding: 38px;
+    }
+    .usr-common-about-para {
+        font-size: 10px;
+    }
 }
 
 
