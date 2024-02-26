@@ -8,6 +8,7 @@ import "@css/user/certificate.css"
 import { IoAdd, IoEye } from "react-icons/io5";
 import PdfIcon from "@core/assets/images/pdfIcon-removebg.png";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { useForm } from "react-hook-form";
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
@@ -19,46 +20,44 @@ const Certificates = () => {
     artistPayload.certificates ? artistPayload.certificates : []
   );
   const [uploading, setUploading] = useState(false);
-  const [binaryFiles, setBinaryFiles] = useState([]);
-  const [progress, setProgress] = useState(0);
-  const [formData, setFormData] = useState({});
-  const [userDocuments, setUserDocuments] = useState([]);
+  const {register, handleSubmit, formState:{errors},reset} = useForm();
+  // const [userDocuments, setUserDocuments] = useState([]);
 
-  const handleDrop = async (files) => {
-    setBinaryFiles(files);
+  // const handleDrop = async (files) => {
+  //   setBinaryFiles(files);
 
-    const formData = new FormData();
-    files.forEach((file) => {
-      formData.append("certificates", file);
-    });
+  //   const formData = new FormData();
+  //   files.forEach((file) => {
+  //     formData.append("certificates", file);
+  //   });
 
-    try {
-      setUploading(true);
-      const response = await axiosAuth.post(
-        `${BASE_URL}/users/updateArtistRequest`,
-        formData,
-        {
-          onUploadProgress: (progressEvent) => {
-            const { loaded, total } = progressEvent;
-            const percentCompleted = Math.round((loaded * 100) / total);
-            setProgress(percentCompleted);
-          },
-        }
-      );
+  //   try {
+  //     setUploading(true);
+  //     const response = await axiosAuth.post(
+  //       `${BASE_URL}/users/updateArtistRequest`,
+  //       formData,
+  //       {
+  //         onUploadProgress: (progressEvent) => {
+  //           const { loaded, total } = progressEvent;
+  //           const percentCompleted = Math.round((loaded * 100) / total);
+  //           setProgress(percentCompleted);
+  //         },
+  //       }
+  //     );
 
-      setBinaryFiles([]);
-      setProgress(0);
-      setUploading(false);
-      setArtistPayload(response?.data?.data);
-      setCertificates(response?.data?.data?.certificates);
-      // Handle response if needed
-    } catch (error) {
-      // Handle error
-      setBinaryFiles([]);
-      setProgress(0);
-      setUploading(false);
-    }
-  };
+  //     setBinaryFiles([]);
+  //     setProgress(0);
+  //     setUploading(false);
+  //     setArtistPayload(response?.data?.data);
+  //     setCertificates(response?.data?.data?.certificates);
+  //     // Handle response if needed
+  //   } catch (error) {
+  //     // Handle error
+  //     setBinaryFiles([]);
+  //     setProgress(0);
+  //     setUploading(false);
+  //   }
+  // };
 
   const removeDocument = async (index) => {
     // Create a copy of the array
@@ -83,27 +82,27 @@ const Certificates = () => {
     }
   };
 
-  function getExtension(filename) {
-    return filename.split(".").pop();
-  }
+  // function getExtension(filename) {
+  //   return filename.split(".").pop();
+  // }
 
-  const { getRootProps, getInputProps } = useDropzone({
-    disabled: uploading,
-    onDrop: handleDrop,
-    accept: {
-      "image/*": [
-        ".jpeg",
-        ".png",
-        ".jpg",
-        ".gif",
-        ".avif",
-        ".svg",
-        ".tiff",
-        ".webp",
-      ],
-      "application/pdf": [".pdf"],
-    },
-  });
+  // const { getRootProps, getInputProps } = useDropzone({
+  //   disabled: uploading,
+  //   onDrop: handleDrop,
+  //   accept: {
+  //     "image/*": [
+  //       ".jpeg",
+  //       ".png",
+  //       ".jpg",
+  //       ".gif",
+  //       ".avif",
+  //       ".svg",
+  //       ".tiff",
+  //       ".webp",
+  //     ],
+  //     "application/pdf": [".pdf"],
+  //   },
+  // });
 
 
   const handleNextClick = async () => {
@@ -123,48 +122,53 @@ const Certificates = () => {
     }
   };
 
-  const documentSubmitHandler = (e) => {
-    e.preventDefault();
-      const formDataCopy = { ...formData };
-      for (let key in formDataCopy) {
-      if (formDataCopy[key]?.file instanceof File) {
-        formDataCopy[key] = {
-          name: formDataCopy[key].file.name,
-          size: formDataCopy[key].file.size,
-          type: formDataCopy[key].file.type,
-        };
+  const documentSubmitHandler = async(data) => {
+    const formData = new FormData();
+
+     Object.keys(data).forEach((item)=>{
+      if(item=="certificate")
+      {
+        formData.append(item,data.certificate[0])
       }
-    }
-      setUserDocuments(prev => ([...prev, formDataCopy]));
-      setFormData({});
+      else{
+        formData.append(item,data[item])
+      }
+     })
+     try{      
+     const response = await axiosAuth.post("/users/artist-request/addCertificates",formData);
+     if(response.statusText="OK"){
+      reset();
+     }
+
+     }catch(error){
+      console.log(error,"check the error");
+     }
   };
   
 
 
-  const documentChangeHandler = (e) => {
-    const { name, value, files } = e.target;
-    if (files && files.length > 0) {
-      const selectedFile = files[0];
-      setFormData((prev) => ({
-        ...prev,
-        [name]: {
-          file: selectedFile,
-          name: selectedFile.name,
-          size: selectedFile.size,
-          type: selectedFile.type,
-        },
-      }));
-    } else {
-      // Handle other inputs like text inputs
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
-  };
-  
-  
+  // const documentChangeHandler = (e) => {
+  //   const { name, value, files } = e.target;
+  //   if (files && files.length > 0) {
+  //     const selectedFile = files[0];
+  //     setFormData((prev) => ({
+  //       ...prev,
+  //       [name]: {
+  //         file: selectedFile,
+  //         name: selectedFile.name,
+  //         size: selectedFile.size,
+  //         type: selectedFile.type,
+  //       },
+  //     }));
+  //   } else {
+  //     // Handle other inputs like text inputs
+  //     setFormData((prev) => ({ ...prev, [name]: value }));
+  //   }
+  // };
 
-  const upadateDocumentHandler = (e) => {
+  // const upadateDocumentHandler = (e) => {
 
-  }
+  // }
 
   return (
     <>
@@ -183,16 +187,17 @@ const Certificates = () => {
         <div className="customized-gallery my-5">
           <div className="container">
             {
-              userDocuments && Array.isArray(userDocuments) && userDocuments.length > 0 ?
+              certificates && Array.isArray(certificates) && certificates.length > 0 ?
                 <div className="row">
                   <div className="col-6 text-center m-auto">
                   <div className="row">
                     {
-                      userDocuments.map((item, index) => {
+                      certificates.map((item, index) => {
                         return (
                           <>
                               <div className="col-5 ms-2 user-certificate-form">
-                                <form onSubmit={(e) => upadateDocumentHandler(e)}>
+                                {item.title}
+                                {/* <form onSubmit={(e) => upadateDocumentHandler(e)}>
                                   <div className="text-start m-auto">
                                     <label htmlFor="title">
                                       Please mention where you received the certification from.
@@ -212,20 +217,20 @@ const Certificates = () => {
                                   <div className="text-start m-auto mt-3">
                                     <button className="btn usr-common-action-btn" type="submit">Update</button>
                                   </div>
-                                </form>
+                                </form> */}
                               </div>
                           </>
                         )
                       })
                     }
                     <div className="col-5 ms-2 user-certificate-form">
-                      <form onSubmit={(e) => documentSubmitHandler(e)}>
+                      <form onSubmit={handleSubmit(documentSubmitHandler)}>
                         <div className=" text-start m-auto">
                           <label htmlFor="title">
                             Please mention where you received the certification from.
                           </label>
                           <div>
-                            <input className="user-certificate-form-input" type="text" name="title" id="title" value={formData?.title} onChange={(e) => documentChangeHandler(e)} />
+                            <input className="user-certificate-form-input" type="text" name="title" id="title" />
                           </div>
                         </div>
                         <div className="text-start m-auto mt-2">
@@ -233,7 +238,7 @@ const Certificates = () => {
                             Upload Certificate
                           </label>
                           <div>
-                            <input className="user-certificate-form-input" type="file" id="certificate" name="certificate" onChange={(e) => documentChangeHandler(e)} />
+                            <input className="user-certificate-form-input" type="file" id="certificate" name="certificate" />
                           </div>
                         </div>
                         <div className="text-start m-auto mt-3">
@@ -243,16 +248,17 @@ const Certificates = () => {
                     </div>
                     </div>
                   </div>
-                </div> :
+                </div> 
+                :
                 <div className="row">
-                  <form onSubmit={(e) => documentSubmitHandler(e)}>
+                  <form onSubmit={handleSubmit(documentSubmitHandler)}>
                     <div className="col-6 m-auto d-block" style={{ border: "1px dotted", padding: "40px" }}>
                       <div className="col-6 text-start m-auto">
                         <label htmlFor="title">
                           Please mention where you received the certification from.
                         </label>
                         <div>
-                          <input className="" type="text" name="title" id="title" value={formData?.title} onChange={(e) => documentChangeHandler(e)} />
+                          <input className="" type="text" id="title" {...register("title")} />
                         </div>
                       </div>
                       <div className="col-6 text-start m-auto mt-2">
@@ -260,7 +266,7 @@ const Certificates = () => {
                           Upload Certificate
                         </label>
                         <div>
-                          <input className="" type="file" id="certificate" name="certificate" onChange={(e) => documentChangeHandler(e)} />
+                          <input className="" type="file" id="certificate" {...register("certificate")}/>
                         </div>
                       </div>
                       <div className="col-6 text-start m-auto mt-3">
