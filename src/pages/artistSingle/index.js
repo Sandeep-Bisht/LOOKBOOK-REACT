@@ -645,7 +645,7 @@ const ArtistSingle = () => {
 
                                                                     return (<button type="button"  className={`usr-artist-single-modal-time-box-btn ${isActive || withinRange ? 'active' : '' }`} 
                                                                     onClick={()=>toggleSlotSelection(slot)} 
-                                                                    disabled={!selectedSession || disabledSlots[index] || selectedSlots.length >= selectedSession || index >= disabledIndexRange ? true : false}
+                                                                    disabled={(!isActive && (!selectedSession || disabledSlots[index] || selectedSlots.length >= selectedSession || index >= disabledIndexRange)) ? true : false}
                                                                     >
                                                                     <span>{slot}</span>
                                                                     </button>)
