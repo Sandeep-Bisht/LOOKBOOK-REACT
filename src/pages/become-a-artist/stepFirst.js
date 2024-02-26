@@ -31,7 +31,7 @@ const StepFirst = () => {
           <h4 className="artist-inner-subheading mb-lg-3">
             Step 1
           </h4>
-          <h1 className="artist-inner-heading mb-lg-4">
+          <h1 className="artist-inner-heading mb-lg-4 text-uppercase">
             Tell us about yourself
           </h1>
           <p className="about-skills-ar-para">

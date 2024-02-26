@@ -2,11 +2,9 @@ import React from 'react'
 
 const CommonButton = ({ onClick, label, disabled}) => {
     return (
-      <div className="my-componenet-button">
-        <button className="get-started-button mb-3" onClick={onClick} disabled={disabled}>
+        <button className={`${label == "Back" ? "usr-common-action-btn": "usr-common-filled-btn"} mb-3 me-3 px-5`} onClick={onClick} disabled={disabled}>
           {label}
         </button>
-      </div>
     );
   }
 
