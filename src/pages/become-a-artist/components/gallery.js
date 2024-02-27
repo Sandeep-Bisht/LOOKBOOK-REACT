@@ -9,14 +9,9 @@ import { MdDeleteForever } from "react-icons/md";
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
-const acceptedImages =  {
-  "image/*": [
-    ".jpeg",
-    ".png",
-    ".jpg",
-    ".webp",
-  ],
-}
+const acceptedImages = {
+  "image/*": [".jpeg", ".png", ".jpg", ".webp"],
+};
 
 function DropzoneWithoutClick({ children, onUpload, handleUpload, disabled }) {
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
@@ -225,11 +220,44 @@ const Gallery = (props) => {
                         index={index}
                         moveImage={moveImage}
                       />
-                      <div
-                        className="custom-kyc-update-dropshadow-box"
-                        onClick={() => removeImage(index)}
-                      >
-                        <MdDeleteForever />
+
+                      <div class="custom-kyc-update-dropshadow-box">
+                        <div class="dropstart">
+                          <button
+                            class="btn btn-secondary dropdown-toggle usr-gallary-dropdown"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            ...
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a
+                                class="dropdown-item "
+                                href="#"
+                                onClick={() => removeImage(index)}
+                              >
+                                Remove
+                              </a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#">
+                                Move Up
+                              </a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#">
+                                Move Down
+                              </a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#">
+                                Make Cover Photo
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
