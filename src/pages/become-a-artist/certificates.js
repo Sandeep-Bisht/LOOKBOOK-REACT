@@ -6,9 +6,11 @@ import { useDropzone } from "react-dropzone";
 import { MdDeleteForever } from "react-icons/md";
 import "@css/user/certificate.css"
 import { IoAdd, IoEye } from "react-icons/io5";
-import PdfIcon from "@core/assets/images/pdfIcon-removebg.png";
+import PdfIcon from "@core/assets/images/pdfIcon.png";
+import DocIcon from "@core/assets/images/docIcon.png";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { useForm } from "react-hook-form";
+
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
@@ -137,6 +139,7 @@ const Certificates = () => {
      try{      
      const response = await axiosAuth.post("/users/artist-request/addCertificates",formData);
      if(response.statusText="OK"){
+      setCertificates(response?.data?.data?.certificates)
       reset();
      }
 
@@ -144,31 +147,6 @@ const Certificates = () => {
       console.log(error,"check the error");
      }
   };
-  
-
-
-  // const documentChangeHandler = (e) => {
-  //   const { name, value, files } = e.target;
-  //   if (files && files.length > 0) {
-  //     const selectedFile = files[0];
-  //     setFormData((prev) => ({
-  //       ...prev,
-  //       [name]: {
-  //         file: selectedFile,
-  //         name: selectedFile.name,
-  //         size: selectedFile.size,
-  //         type: selectedFile.type,
-  //       },
-  //     }));
-  //   } else {
-  //     // Handle other inputs like text inputs
-  //     setFormData((prev) => ({ ...prev, [name]: value }));
-  //   }
-  // };
-
-  // const upadateDocumentHandler = (e) => {
-
-  // }
 
   return (
     <>
@@ -193,44 +171,53 @@ const Certificates = () => {
                   <div className="row">
                     {
                       certificates.map((item, index) => {
+                        if(!item.title || !item.certificate) return null;
                         return (
                           <>
-                              <div className="col-5 ms-2 user-certificate-form">
-                                {item.title}
-                                {/* <form onSubmit={(e) => upadateDocumentHandler(e)}>
-                                  <div className="text-start m-auto">
-                                    <label htmlFor="title">
-                                      Please mention where you received the certification from.
-                                    </label>
-                                    <div>
-                                      <input className="user-certificate-form-input" type="text" name="title" id="title" value={item?.title} onChange={(e) => documentChangeHandler(e)} />
-                                    </div>
-                                  </div>
-                                  <div className="text-start m-auto mt-2">
-                                    <label id="certificate">
-                                      Upload Certificate
-                                    </label>
-                                    <div>
-                                      <input className="user-certificate-form-input" type="file" id="certificate" name="certificate"  onChange={(e) => documentChangeHandler(e)} />
-                                    </div>
-                                  </div>
-                                  <div className="text-start m-auto mt-3">
-                                    <button className="btn usr-common-action-btn" type="submit">Update</button>
-                                  </div>
-                                </form> */}
+                              <div className="col-md-5 ms-2 mt-3">
+                                <div className="usr-certificate">
+                                  <div className="user-certificate-form">
+                                  {
+                                    item.certificate?.mimetype=="application/pdf"  ? 
+                                    // <a href={item.url} target="_blank" rel="noopener noreferrer">
+                                    <img src={PdfIcon} alt='certificate' className="img-fluid w-100 usr-certificate-pdf-icon" />
+                                    :
+                                    item.certificate?.mimetype?.startsWith('image/') || item.certificate?.fileType === "image" 
+                                    ?
+                                    <img src={item.certificate?.url} alt="certificates" className="img-fluid usr-certificate-image-icon"/>
+                                    :
+                                    <img src={DocIcon} alt="certificates" className="img-fluid usr-certificate-image-icon"/>
+                                  }
+                                <p className="usr-certificate-title">{item.title}</p>
+                                <div className="usr-certificate-actions-wrapper text-center">
+                                <div class="dropstart">
+                                  <button class="dropdown-toggle bg-white usr-join-action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                     ...
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                   <li><a class="dropdown-item" href="#">Action</a></li>
+                                   <li><a class="dropdown-item" href="#">Another action</a></li>
+                                   <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
                               </div>
                           </>
                         )
                       })
                     }
-                    <div className="col-5 ms-2 user-certificate-form">
+                    <div className="col-md-5 ms-2 mt-3">
+                    <div className="usr-certificate">
+                      <div className="user-certificate-form">
                       <form onSubmit={handleSubmit(documentSubmitHandler)}>
                         <div className=" text-start m-auto">
                           <label htmlFor="title">
                             Please mention where you received the certification from.
                           </label>
                           <div>
-                            <input className="user-certificate-form-input" type="text" name="title" id="title" />
+                            <input className="user-certificate-form-input" type="text" {...register("title")} id="title" />
                           </div>
                         </div>
                         <div className="text-start m-auto mt-2">
@@ -238,13 +225,15 @@ const Certificates = () => {
                             Upload Certificate
                           </label>
                           <div>
-                            <input className="user-certificate-form-input" type="file" id="certificate" name="certificate" />
+                            <input className="user-certificate-form-input" type="file" id="certificate" {...register("certificate")} />
                           </div>
                         </div>
                         <div className="text-start m-auto mt-3">
                           <button className="btn usr-common-action-btn" type="submit">Add More</button>
                         </div>
                       </form>
+                      </div>
+                      </div>
                     </div>
                     </div>
                   </div>
