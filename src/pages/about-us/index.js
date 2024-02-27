@@ -123,7 +123,7 @@ const AboutUS = () => {
             <div className='row'>
                 <div className='col-md-6'>
                     <div className='usr-about-image-section'>
-                        <img src='images/image (3).jpg' className='img-fluid'/>
+                        <img src='images/image(3).jpg' className='img-fluid'/>
                     </div>   
                 </div>
                 <div className='col-md-6 usr-about-value-section'>

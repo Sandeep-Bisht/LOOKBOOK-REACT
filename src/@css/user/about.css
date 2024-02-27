@@ -101,6 +101,7 @@ font-weight: 700;
     font-family: AvenirLTProBook;
     font-size: 27px;
     letter-spacing: 1.3px;
+    margin-bottom: 0;
 }
 
 .usr-beauty-journey-text-right::before{
