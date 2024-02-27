@@ -4,7 +4,7 @@ import Calendar from 'react-calendar';
 import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import NoDataFound from "pages/become-a-artist/common/noDataFound";
 import LocationAwareMap from "pages/become-a-artist/common/googlemap";
-import PdfIcon from '@core/assets/images/pdfIcon-removebg.png'
+import PdfIcon from '@core/assets/images/pdfIcon.png'
 import Review1 from '@core/assets/1.jpg'
 import Verified from '@core/assets/images/verified.png'
 import ImageGallery from "react-image-gallery";

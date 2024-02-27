@@ -1,6 +1,6 @@
 import React from 'react'
 import {  useOutletContext, useParams } from 'react-router-dom'
-import PdfIcon from '@core/assets/images/pdfIcon-removebg.png'
+import PdfIcon from '@core/assets/images/pdfIcon.png'
 
 
 function Certificates() {
