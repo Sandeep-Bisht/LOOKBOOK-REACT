@@ -9,14 +9,9 @@ import { MdDeleteForever } from "react-icons/md";
 
 const BASE_URL = process.env.REACT_APP_APIURL;
 
-const acceptedImages =  {
-  "image/*": [
-    ".jpeg",
-    ".png",
-    ".jpg",
-    ".webp",
-  ],
-}
+const acceptedImages = {
+  "image/*": [".jpeg", ".png", ".jpg", ".webp"],
+};
 
 function DropzoneWithoutClick({ children, onUpload, handleUpload, disabled }) {
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
@@ -204,6 +199,71 @@ const Gallery = (props) => {
     }
   };
 
+  const handleCoverPhoto = async (index) => {
+    const newData = images.find((item, ind) => ind == index);
+    images.splice(index, 1);
+    let oldData = [...images];
+    oldData.unshift(newData);
+    setImages(oldData);
+    try {
+      const response = await axiosAuth.post(
+        `${BASE_URL}/users/updateArtistRequest`,
+        { gallery: oldData }
+      );
+      setArtistPayload(response?.data?.data);
+      setImages(response?.data?.data?.gallery);
+    } catch (error) {
+      console.error(error, "file upload error");
+    }
+  };
+
+  const downWoardImage = async (index) => {
+    const imageData = images[index];
+    const nextImageData = images[index + 1];
+    if (!nextImageData) return;
+
+    const newImages = [...images];
+    newImages[index] = nextImageData;
+    newImages[index + 1] = imageData;
+
+    setImages(newImages);
+
+    try {
+      const response = await axiosAuth.post(
+        `${BASE_URL}/users/updateArtistRequest`,
+        { gallery: newImages }
+      );
+      setArtistPayload(response?.data?.data);
+      setImages(response?.data?.data?.gallery);
+    } catch (error) {
+      console.error(error, "file upload error");
+    }
+  };
+
+  const moveUpwardImage = async (index) => {
+    if (index <= 0 || index >= images.length) return;
+
+    const imageData = images[index];
+    const previousImageData = images[index - 1];
+
+    const newImages = [...images];
+    newImages[index] = previousImageData;
+    newImages[index - 1] = imageData;
+
+    setImages(newImages);
+
+    try {
+      const response = await axiosAuth.post(
+        `${BASE_URL}/users/updateArtistRequest`,
+        { gallery: newImages }
+      );
+      setArtistPayload(response?.data?.data);
+      setImages(response?.data?.data?.gallery);
+    } catch (error) {
+      console.error(error, "file upload error");
+    }
+  };
+
   return (
     <>
       {images.length > 0 || binaryFiles.length > 0 ? (
@@ -225,11 +285,58 @@ const Gallery = (props) => {
                         index={index}
                         moveImage={moveImage}
                       />
-                      <div
-                        className="custom-kyc-update-dropshadow-box"
-                        onClick={() => removeImage(index)}
-                      >
-                        <MdDeleteForever />
+
+                      <div class="custom-kyc-update-dropshadow-box">
+                        <div class="dropstart">
+                          <button
+                            class="btn btn-secondary dropdown-toggle usr-gallary-dropdown"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            ...
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <span
+                                class="dropdown-item "
+                                onClick={() => removeImage(index)}
+                              >
+                                Remove
+                              </span>
+                            </li>
+                            {index > 0 && (
+                              <li>
+                                <span
+                                  class="dropdown-item"
+                                  onClick={() => moveUpwardImage(index)}
+                                >
+                                  Move Up
+                                </span>
+                              </li>
+                            )}
+                            {index < images.length - 1 && (
+                              <li>
+                                <span
+                                  class="dropdown-item"
+                                  onClick={() => downWoardImage(index)}
+                                >
+                                  Move Down
+                                </span>
+                              </li>
+                            )}
+                            {index > 0 && (
+                              <li>
+                                <span
+                                  class="dropdown-item"
+                                  onClick={() => handleCoverPhoto(index)}
+                                >
+                                  Make Cover Photo
+                                </span>
+                              </li>
+                            )}
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
