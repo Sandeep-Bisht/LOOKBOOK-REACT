@@ -31,17 +31,17 @@ const StepThird = () => {
     <>
     <section className="about-skills-ar-3">
          <div className="about-skills-ar-col-3">
-           <div className="about-skills-ar-wrapper-3" >
+           <div className="" >
                <h4 className="artist-inner-subheading mb-lg-3">
                                 Step 3
                              </h4>
-               <h1 className="artist-inner-heading mb-lg-4">
+               <h1 className="artist-inner-heading mb-lg-4 text-uppercase">
                You are about to finish your registration
                              </h1>
-                     <p className="">
+                     <p className="about-skills-ar-para">
  
-                     Show wherein form yielding whala gathered wherein moved. Behold may yod winged created that Won't theya are not second god give best
-                     Show wherein form yielding whala gathered wherein moved.
+                     Show wherein form yielding whala gathered wherein moved. Behold may yod <br/>winged created that Won't theya are not second god give best
+                     Show wherein<br/> form yielding whala gathered wherein moved.
                      </p>
            </div>
          </div>

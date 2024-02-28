@@ -1,9 +1,11 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from '@core/assets/images/main-logo.png'
 
 const BecomeAristHeader = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <section className="artist-header">
       <div className="container-fluid">
@@ -17,9 +19,11 @@ const BecomeAristHeader = () => {
             </span>
           </Link>
           </div>
+          {location.pathname.includes('/get-started') ? null : 
           <div className="col-md-6 save-exit-button">
             <button className="btn px-3" type="button" onClick={()=>navigate('/')}>Save & Exit</button>
           </div>
+          }
         </div>
       </div>
     </section>

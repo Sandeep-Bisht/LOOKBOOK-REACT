@@ -35,7 +35,9 @@ const InsightStory = () => {
   };
 
   const increaseExperience = () => {
-    setExperience( 1 + + experience);
+    if (experience < 40) {
+      setExperience( 1 + + experience);
+    }
   };
 
   const updatePayload = async (payload)=>{
@@ -216,7 +218,7 @@ const InsightStory = () => {
               />
               Spanish
             </MenuItem>
-            <MenuItem value="IndoKannadnesian">
+            <MenuItem value="Kannad">
               <Checkbox
                 checked={selectLanguages.includes('Kannad') || false}
               />

@@ -72,14 +72,14 @@
   padding: 10px 20px;
 }
 
-.about-images {
-  height: 80px;
+.about .about-images {
+  height: 50px;
 }
 
 .card-title {
   padding: 10px 0px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .about .horizontal-bar {
@@ -232,6 +232,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.describe-yourself .artist-card img{
+  height: 50px;
+  object-fit: contain;
 }
 
 .describe-yourself .artist-card:hover {
@@ -752,7 +757,7 @@ img:hover .showbutton-image.drop-shadow-delete {
 }
 
 .customized-gallery .gallery-row {
-  width: 50%;
+  width: 45%;
   margin: auto;
 }
 
@@ -763,12 +768,13 @@ img:hover .showbutton-image.drop-shadow-delete {
   justify-content: center;
   align-items: center;
   padding: 100px 50px;
-  border: 1px dotted #8C6A54;
+  border: 1px dashed #8C6A54;
   cursor: pointer;
+  border-radius: 3px;
 }
 
 .gallary-no-error {
-  border: 1px dotted #8C6A54;
+  border: 1px dashed #8C6A54;
 }
 
 .gallary-error {
@@ -791,7 +797,7 @@ img:hover .showbutton-image.drop-shadow-delete {
   width: 100%;
   height: 100%;
   max-height: 60vh;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .circular-progressbar {
@@ -800,6 +806,10 @@ img:hover .showbutton-image.drop-shadow-delete {
   left: 16px;
   width: 36px;
   z-index: 1;
+}
+
+.CircularProgressbar .CircularProgressbar-text{
+  fill: #8C6A54;
 }
 
 .customized-gallery-ar .horizontal-bar {
@@ -979,34 +989,40 @@ img:hover .showbutton-image.drop-shadow-delete {
 
 .custom-kyc-img-wrapper {
   position: relative;
+  transition: visibility ease-in-out 200ms;
 }
 
-.custom-kyc-img-wrapper:hover .custom-kyc-update-dropshadow-box {
+.custom-kyc-img-wrapper:hover .ar-action-btn-wrapper{
+  visibility: inherit;
+}
+
+
+/* .custom-kyc-img-wrapper:hover .custom-kyc-update-dropshadow-box {
   display: flex;
   font-size: 50px;
   color: #8C6A54;
   cursor: pointer;
-}
+} */
 
-.custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box {
+/* .custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 1;
   display: none;
-}
+} */
 
-.usr-gallary-dropdown::before {
+/* .usr-gallary-dropdown::before {
   content: none !important;
-}
+} */
 
-.custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box a {
+/* .custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box a {
   color: inherit;
-}
+} */
 
-.custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box svg:hover {
+/* .custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box svg:hover {
   filter: brightness(1.2);
-}
+} */
 
 /* celebration page css */
 
@@ -1102,12 +1118,7 @@ img:hover .showbutton-image.drop-shadow-delete {
 }
 
 
-.custom-kyc-update-dropshadow-box {
-  position: relative;
-  display: inline-block;
-}
-
-.custom-kyc-update-dropshadow-box .dropdown-menu {
+/* .custom-kyc-update-dropshadow-box .dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -1191,4 +1202,85 @@ img:hover .showbutton-image.drop-shadow-delete {
 .custom-kyc-update-dropshadow-box .dropdown-toggle {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
+} */
+
+/* Add style in action button in gallery, KYC and Certificates */
+
+.ar-action-btn-wrapper:has(> button[aria-expanded="true"]) {
+  visibility: visible;
+}
+
+.ar-action-btn-wrapper{
+  width: fit-content;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  visibility: hidden;
+}
+
+.ar-action-btn-wrapper button.ar-action-dropdown-btn{
+  background-color: white;
+  border: 1px solid #8C6A54;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ar-action-btn-wrapper button.ar-action-dropdown-btn svg{
+  font-size: 14px;
+  color: #8C6A54;
+}
+.ar-action-btn-wrapper .dropdown-menu{
+  right: 0!important;
+  left: unset!important;
+}
+
+.ar-action-btn-wrapper .dropdown-menu li .dropdown-item:hover{
+  background-color: #fcf7f2;
+  color: #8C6A54;
+}
+
+
+/* Add Kyc cards css */
+
+.kyc-doc-cards{
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  display: flex;
+}
+
+.kyc-doc-cards .custom-kyc-update-dropshadow-box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  cursor: pointer;
+}
+.kyc-doc-cards:hover .custom-kyc-update-dropshadow-box{
+visibility: visible;
+}
+
+.kyc-doc-cards .custom-kyc-update-dropshadow-box svg{
+  font-size: 54px;
+  color: #fcf7f2;
+  filter: drop-shadow(0px 0px 18px #8C6A54);
+}
+
+.achivements-ar .usr-certificate-form-wrapper{
+  border: 1px dashed #8C6A54;
+  padding: 50px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.achivements-ar .usr-certificate-form-wrapper label, .achivements-ar .usr-certificate-form-wrapper span{
+  font-size: 13px;
 }

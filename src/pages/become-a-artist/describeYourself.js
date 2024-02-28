@@ -97,16 +97,16 @@ const DescribeYourself = () => {
                         { allProducts.map((product, index) => (
                           <div key={index} className={`col-md-3 ${attemptedNextWithoutSelection ? 'border-highlight' : ''}`}>
                             <div
-                              className={`artist-card ${
+                              className={`artist-card w-100 px-5 py-4 ${
                                 selectedProducts.includes(product._id)
                                   ? "selected"
                                   : ""
                               }`}
                               onClick={(e) => handleChange(product._id)}
                             >
-                              <div className="card-icon ">
+                              <div className="">
                                 <img
-                                  src={product.icon.thumbnailUrl}
+                                  src={product.icon.url}
                                   alt={product.title}
                                   className="img-fluid"
                                 />

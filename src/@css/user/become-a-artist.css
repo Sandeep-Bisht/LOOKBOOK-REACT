@@ -40,7 +40,6 @@
 
 .usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards {
     display: flex;
-    width: 1000px;
 }
 
 .usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards .usr-join-us-card {
@@ -51,6 +50,7 @@
 .usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards .usr-join-us-card:not(:last-child) {
     border-right: 1px solid rgba(109, 93, 76, .3);
     padding: 0 30px 0 10px;
+    margin-right: 30px;
 }
 
 .usr-join-us-intro .usr-join-us-head .usr-join-us-tags .usr-join-us-cards .usr-join-us-card:last-child {

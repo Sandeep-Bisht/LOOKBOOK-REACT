@@ -23,32 +23,33 @@ const ImageCard = ({handleDrop, kycDocuments, uploading, name, title, binaryFile
 
   return (<>
           {binaryFiles && binaryFiles[name] ?
-          <div className='uploading card  h-100'>
-          <img alt='Binary Image' src={URL.createObjectURL(binaryFiles[name])}/>
+          <div className='uploading card kyc-doc-cards'>
+          <img alt='Binary Image' src={URL.createObjectURL(binaryFiles[name])} className='img-fluid h-100'/>
           <div className='circular-progressbar'>
           <CircularProgressbar
-            value={progress}
-            strokeWidth={50}
-            styles={buildStyles({
-              strokeLinecap: "butt",
-              trailColor: '#FCF7F2',
-              pathColor:"#8C6A54"
-            })}
-          />
+                          value={progress}
+                          strokeWidth={10}
+                          text={`${progress}%`} 
+                          styles={buildStyles({
+                            strokeLinecap: "round",
+                            trailColor: "#FCF7F2",
+                            pathColor: "#8C6A54",
+                          })}
+                        />
           </div>
           </div>  
           :
           <>
           {kycDocuments && kycDocuments[name] ? 
-           <div {...getRootProps({className: 'dropzone custom-kyc-img-wrapper'})}>
+           <div {...getRootProps({className: 'dropzone kyc-doc-cards custom-kyc-img-wrapper'})}>
             <input {...getInputProps()} />
-              <img src={kycDocuments[name]?.url} alt={title} className='img-fluid w-100'/>
+              <img src={kycDocuments[name]?.url} alt={title} className='img-fluid h-100'/>
             <div className='custom-kyc-update-dropshadow-box'>
             <IoMdCloudUpload />
             </div>
           </div>
           :
-          <div {...getRootProps({className: 'dropzone custom-add-more-files-card'})}>
+          <div {...getRootProps({className: 'dropzone kyc-doc-cards custom-add-more-files-card'})}>
             <input {...getInputProps()} />
             <IoAdd className='fs-1 mb-2'/>
             <h6>{title}</h6>
@@ -108,7 +109,7 @@ const CompleteKYC = () => {
   }
 
   const handleNextClick = async () =>{
-    if(kycDocuments.adharFront && kycDocuments.adharBack && kycDocuments.panCard){
+    if(kycDocuments.adharFront && kycDocuments.adharBack){
     try{
       if(artistPayload.currentStep > 12){
        return  navigate(`/become-a-artist/${request_id}/upload-cerificates`)
@@ -155,9 +156,9 @@ const CompleteKYC = () => {
             <div className={`${!kycDocuments.panCard && attemptedNextWithoutSelection ? 'gallary-error ' : 'gallary-no-error' }`}
             onClick={()=>setAttemptedNextWithoutSelection(false)}
             >
-            <ImageCard  handleDrop={handleDrop} uploading={uploading} name="panCard" title="Pan Card" kycDocuments={kycDocuments} binaryFiles={binaryFiles} progress={progress}/>
+            <ImageCard  handleDrop={handleDrop} uploading={uploading} name="panCard" title="Pan Card Or Any other address proof (optional)" kycDocuments={kycDocuments} binaryFiles={binaryFiles} progress={progress}/>
              </div>
-             <h6 className='text-center mt-3'>Pan Card</h6>
+             <h6 className='text-center mt-3'>Pan Card Or Any other address proof (optional)</h6>
             </div>
           </div>
       </div>
