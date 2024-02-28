@@ -54,6 +54,7 @@ const SearchLocation = ({cb, className, setAttemptedNextWithoutSelection}) => {
         },
         (error) => {
           if (error.code === error.PERMISSION_DENIED) {
+            alert('Location permission blocked. Please allow access to your location to use this feature.');
             console.error("Allow access to location.");
           } else if (error.code === error.POSITION_UNAVAILABLE) {
             console.error("Location information is unavailable.");

@@ -54,7 +54,7 @@ const LocationAwareMap = ({height, styles,  coords, onMarkerDragEnd, markerDragg
             }}
   >
     
-    {location  ?
+    {location || coords  ?
       <>
       <MarkerF
           key={'currentLocation'}

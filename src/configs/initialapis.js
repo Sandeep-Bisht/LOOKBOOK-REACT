@@ -365,10 +365,19 @@ export const getSlidesById = async ({params}) => {
 };
 
 export const getCartData = async () => {
+  const urls = [`/users/addresses`, `/cart/get-cart-data`];
+
   try {
-    const response = await axiosAuth.get('/cart/get-cart-data');
-      return response.data
- } catch (error) {
-  return error.message || "An error occured while trying to get cart data."
-   }
+    const responses = await Promise.all(urls.map(url => axiosAuth.get(url)));
+
+    // Initialize an object with keys representing the source of the data
+    let data = {
+      addresses: responses[0].data,   // assuming the first API is for artist requests
+      cartData: responses[1].data,
+    };
+
+    return data;
+  } catch (error) {
+    return error.message || "An error occurred while trying to get artist requests.";
+  }
 }
