@@ -381,3 +381,13 @@ export const getCartData = async () => {
     return error.message || "An error occurred while trying to get artist requests.";
   }
 }
+
+
+export const getMyAddresses  = async () => {
+  try {
+    const response = await axiosAuth.get('/users/addresses');
+      return response.data
+ } catch (error) {
+  return error.message || "An error occured while trying to get all categories."
+   }
+};

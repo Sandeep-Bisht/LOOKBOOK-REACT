@@ -6,7 +6,7 @@ import Services from 'pages/management/services/servicesCreated'
 import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
-import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getProductById, getBlogByCategorySlug, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogByIdAndCategory, get_services_price_by_artist_id, getAllComments, getArtistsByServiceSlug, getArtistByAlias, getAllSlides, getSlidesById, getCartData } from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getProductById, getBlogByCategorySlug, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogByIdAndCategory, get_services_price_by_artist_id, getAllComments, getArtistsByServiceSlug, getArtistByAlias, getAllSlides, getSlidesById, getCartData,getMyAddresses } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -83,6 +83,7 @@ import { getAllBookings } from 'configs/initialapis'
 import AllBookings from 'pages/user/bookings/allBookings'
 import CopyRights from 'pages/copy-right'
 import ArtistBookings from 'pages/artist/Bookings'
+import UserAddress from 'pages/user/address'
 
 const DashboardComponents = () => {
   return (<SettingsProvider>
@@ -256,7 +257,13 @@ const ApplicationRoutes = createBrowserRouter(
               path="/user/profile/edit"
               element={<EditProfile />}
               loader={getUserProfile}
-            />                     
+            />   
+            <Route
+            path="/user/addresses"
+            element={<UserAddress/>}
+            loader={getMyAddresses}
+            
+            />                  
           </Route>
         </Route>
 
@@ -306,6 +313,7 @@ const ApplicationRoutes = createBrowserRouter(
         </Route>
         {/* End auth routes for user */}
         <Route path="/*" element={<Error404 />} />
+
       </Route>
       {/* Dashboard component and admin auth routes*/}
       <Route element={<RequireAuth allowedRoles={[roles.admin, roles.super_admin]} />}>

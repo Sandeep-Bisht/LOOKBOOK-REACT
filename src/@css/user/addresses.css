@@ -1,0 +1,38 @@
+.user-addresses-managment
+{
+   padding: 60px 0;
+}
+.user-addresses-managment .address-managment-card-wrapper
+{
+    padding: 30px 0;
+    border-top:1px  solid #d3cec9;
+    border-bottom: 1px solid #d3cec9;
+    margin: 40px 0 0 0;
+
+}
+.user-addresses-managment .address-managment-card
+{
+    background-color: #FEFEFE;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: .1s ease;
+}
+.user-addresses-managment .address-managment-card:hover{
+    border: 1px solid #6d5d4c;
+}
+.user-addresses-managment .address-managment-card svg{
+    height: 25px;
+    width: 25px;
+    color: #6d5d4c;
+}
+.user-addresses-managment .address-managment-card .address-managment-card-heading
+{
+    color: #6D5D4C;
+    margin-bottom: 0;
+    font-size: 15px;
+}

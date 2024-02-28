@@ -13,7 +13,8 @@ const Toggler = () => {
            <div className='container'>
                <div className='row'>
                    <div className='col-lg-12'>
-                          <ul className='toggler-section-btns-wrapper'> 
+                    <div className='toggler-section-btns-wrapper'>
+                          <ul > 
                              <li>
                                  <Link to='/' className="toggler-section-btns-wrapper-link">
                                      Booking
@@ -30,6 +31,7 @@ const Toggler = () => {
                                  </Link>
                              </li>
                           </ul>
+                  </div>
                    </div>
                </div>
            </div>
