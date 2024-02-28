@@ -48,3 +48,9 @@
     width: 100%;
     object-fit: cover;
 }
+.achivements-ar .modal-dialog-centered{
+    justify-content: center;
+}
+.achivements-ar .modal-content{
+    width: auto;
+}
