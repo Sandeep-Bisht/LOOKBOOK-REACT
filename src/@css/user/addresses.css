@@ -22,9 +22,11 @@
     cursor: pointer;
     transition: .1s ease;
 }
-.user-addresses-managment .address-managment-card:hover{
+.user-addresses-managment .address-managment-card.custom-hover:hover,.user-addresses-managment .address-managment-card.active{
     border: 1px solid #6d5d4c;
 }
+
+
 .user-addresses-managment .address-managment-card svg{
     height: 25px;
     width: 25px;
@@ -35,4 +37,21 @@
     color: #6D5D4C;
     margin-bottom: 0;
     font-size: 15px;
+}
+.address-managment-card-user-name
+{
+    font-family:AvenirLTProHeavy;
+    color: #6D5D4C;
+    font-size: 14px;
+    text-transform: capitalize;
+    letter-spacing: .2px;
+    margin-bottom: 10px;
+}
+.address-managment-card .address-managment-card-para
+{
+    font-family: AvenirLTProBook;
+    color: #6D5D4C;
+    font-size: 14px;
+    margin-bottom: 0px;
+    line-height: unset;
 }

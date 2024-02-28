@@ -26,6 +26,27 @@ const UserAddress = () => {
                   <div className='col-lg-12'>
                      <div className='address-managment-card-wrapper'>
                         <div className='row justify-content-center'>
+                         {allAddresses && Array.isArray(allAddresses) && allAddresses.length > 0 && allAddresses.map((item,index) =>{
+                             return(
+
+                              <div className='col-lg-4'>
+                              <div className='address-managment-card'>
+                                
+                                 <div>
+                                   <p className='address-managment-card-user-name fw-700'>{item.fullName}</p>
+                                    <p className='address-managment-card-para'>{item.address}</p>
+                                    <span className='address-managment-card-para text-uppercase'>{item.city}</span>,
+                                    <span className='address-managment-card-para text-uppercase'>{item.state}</span>,
+                                    <p className='address-managment-card-para'>{item.postalCode}</p>
+                                    <p className='address-managment-card-para'>{item.country}.</p>
+                                    <p  className='address-managment-card-para'>Phone number:{item.mobile}</p>
+                                 </div>
+                                 
+                              </div>
+                               </div>
+                             )
+                             
+                         }) }
                            <div className='col-lg-4'>
                               <div className='address-managment-card'>
                                 
