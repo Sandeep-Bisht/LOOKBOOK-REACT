@@ -261,7 +261,21 @@
 .h-min-75vh{
   min-height: 75vh;
 }
-
+.common-modal-dismiss-btn
+{
+  background-color:#6D5D4C;
+  height: 33px;
+  width: 33px;
+  opacity: 1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:0;
+}
+.common-modal-dismiss-btn svg{
+  color: #fff;
+}
 /* ------------------------media query------------------ */
 
 

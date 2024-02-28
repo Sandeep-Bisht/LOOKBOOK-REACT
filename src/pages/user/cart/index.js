@@ -19,12 +19,13 @@ const BASE_URL = process.env.REACT_APP_APIURL
 function Cart() {
   
   const [markerPosition, setMarkerPosition] = useState(null);
-  const {register, handleSubmit, reset, formState: { errors }} = useForm();
+  const {register, handleSubmit, reset, formState: { errors }, setValue} = useForm();
   const [userAddress,setUserAddress] = useState({})
   const [formError,setFormError] = useState({})
   const [orderId,setOrderId] = useState("");
   const navigate = useNavigate();
   const ModalConfirmBtn = useRef();
+  const ModalAddAddressBtn = useRef();
   // Function to handle location change
   const handleLocationUpdate = (position) => {
     setMarkerPosition({ lat: position.coords.latitude, lng: position.coords.longitude });
@@ -38,7 +39,7 @@ function Cart() {
       if (addressResult.length > 0) {
          const addressComponents = addressResult[0].address_components;
 
-         let city, state, country, postalCode ;
+         let city, state, country, postalCode;
 
          for (const component of addressComponents) {
              if (component.types.includes('locality')) {
@@ -87,16 +88,17 @@ function Cart() {
 
   },[markerPosition])
 
-  const UserCartData = useLoaderData();
+  const {cartData:UserCartData, addresses} = useLoaderData();
 
-  const [CartData,setCartData] = useState(UserCartData)
+  const [CartData,setCartData] = useState(UserCartData ? UserCartData : [])
+  const [allAddresses,setAllAddresses] = useState(addresses ? addresses : []);
 
   if(!CartData || !Array.isArray(CartData) || !CartData.length > 0){
-        return <NoDataFound/>
-    }
+      return <NoDataFound/>
+  }
   
-    const dateOption = { day: '2-digit', month: 'short'};
-    var totalPrice = 0;
+  const dateOption = { day: '2-digit', month: 'short'};
+  var totalPrice = 0;
   
     for(let i =0; i < CartData.length; i++){
   
@@ -216,10 +218,76 @@ function Cart() {
     }
     
     const formHandlerChange = (e)=>{
-      const {name, value} = e.target;
+      let {name, value} = e.target;
+      if(name === 'postalCode'){
+        value = value.replace(/\D/g, '');
+        value = value.slice(0, 6); // Limit to maximum 6 digits
+      }
       setFormError(prev => ({...prev,[name] : value && value !== '' ? '' : 'This field is required.'}))
       setUserAddress(prev => ({...prev,[name]: value}))
     }
+
+    const handleConfirmLocation = () =>{
+      if(markerPosition && markerPosition.lat && markerPosition.lng){
+        if(ModalAddAddressBtn.current){
+          ModalAddAddressBtn.current.click();
+        }
+      }
+      else{
+        alert("Your location is not set yet. Please select your location first.")
+      }
+
+    }
+
+    const handleFormInputChange = (e) =>{
+
+      if(e.target.name === "mobile"){
+        let phoneNumber = e.target.value.replace(/\D/g, '');
+        phoneNumber = phoneNumber.slice(0, 10); // Limit to maximum 10 digits
+        setValue('mobile', phoneNumber);
+      }
+
+    }
+
+    const handleAddAddress = async(data) =>{
+
+      if(!markerPosition || !markerPosition?.lat || !markerPosition?.lng){
+        return alert("Your Location not found.");
+      }
+
+      const keys = Object.keys(userAddress);
+      
+
+      for (let i = 0; i < keys.length; i++) {
+        const item = keys[i];
+        if (!userAddress[item] || userAddress[item] == '') {
+          setFormError(prev => ({...prev, [item]: "This field is required."}));
+          return; // Stop execution of the function
+        }
+      }
+
+      
+      const sixDigitNumberRegex = /^\d{6}$/;
+
+      if(!sixDigitNumberRegex.test(userAddress.postalCode)){
+        setFormError(prev => ({...prev, postalCode: "Postal Code must be 6 digits."}));
+        return; // Stop execution of the function
+      }
+
+
+      const formData = {...data,...userAddress,coords:markerPosition };
+
+      try{
+        const result = await axiosAuth.post('/users/add-address',formData);
+
+        console.log(result,'result after the api called');
+      }
+      catch(error){
+        console.log(error.message,'Error found while trying to add address.')
+      }
+
+    }
+
 
   return (
     <section className='user-cart-section'>
@@ -284,77 +352,132 @@ function Cart() {
             <hr className='mt-5'/>
             <div className='d-flex gap-3 align-items-center justify-content-center mt-5'>
               <Link to="/services" className="usr-common-action-btn text-decoration-none">BOOK MORE</Link>
-              <button type="button" className='usr-common-filled-btn' data-bs-toggle="modal" data-bs-target="#exampleModalToggle">PAY NOW</button>
+              <button type="button" className='usr-common-filled-btn' data-bs-toggle="modal" data-bs-target="#locationModalToggle">Proceed To Pay</button>
             </div>
           </div>
         </div>
       </div>
 
+      <button ref={ModalAddAddressBtn} type="button" data-bs-toggle="modal" data-bs-target="#addAddressModalToggle" className="d-none"></button>
       <button ref={ModalConfirmBtn} type="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle3" className="d-none"></button>
-      <div class="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalToggleLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                      <div className='user-address-location-wrapper'>
 
-                                      <SearchLocation cb={selectSearch} className="w-50" setAttemptedNextWithoutSelection={console.log}/>
-                                      <LocationAwareMap
-                                        coords={markerPosition}
-                                        onMarkerDragEnd={handleMarkerDrag} //function
-                                        markerDraggable={true}
-                                        markerTitle="Your location"
-                                        height="30vh"
-                                      />
-                                      </div>
-                                      <div className='user-address-form-wrapper'>
-                                        <form onSubmit={handleSubmit(confirmPayment)}>
-                                          <h2 className='text-center mt-3'>Location</h2>
-                                          <hr/>
-                                          <div className='row'>
-                                            <div className='col-md-6 my-2'>
-                                              <label htmlFor='streetAddress'>Street Address<sup>*</sup></label>
-                                              <input type='text' name='streetAddress' className='form-control' id='streetAddress' {...register('streetAddress',{required:"This field is required."})}/>
-                                              {errors && errors.streetAddress && <span>{errors.streetAddress.message}</span>}
-                                            </div>
-                                            <div className='col-md-6 my-2'>
-                                              <label htmlFor='landmark'>Landmark<sup>*</sup></label>
-                                              <input type='text' name='landmark' className='form-control' id='landmark' {...register('landmark',{required:"This field is required."})}/>
-                                              {errors && errors.landmark && <span>{errors.landmark.message}</span>}
-                                            </div>
-                                            <div className='col-md-6 my-2'>
-                                              <label htmlFor='city'>City<sup>*</sup></label>
-                                              <input type='text' name='city' className='form-control' id='city' value={userAddress?.city} onChange={(e)=>formHandlerChange(e)}/>
-                                              {formError.city && <span>{formError.city}</span>}
-                                            </div>
-                                            <div className='col-md-6 my-2'>
-                                              <label htmlFor='state'>State<sup>*</sup></label>
-                                              <input type='text' name='state' className='form-control' id='state' value={userAddress?.state} onChange={(e)=>formHandlerChange(e)}/>
-                                              {formError.state && <span>{formError.state}</span>}
-                                            </div>
-                                            <div className='col-6 my-2'>
-                                            <label htmlFor='postalCode'>Postal code<sup>*</sup></label>
-                                              <input type="number" className='form-control' id="postalCode" value={userAddress?.postalCode} name="postalCode" onChange={(e)=>formHandlerChange(e)}/>
-                                              {formError.postalCode && <span>{formError.postalCode}</span>}
-                                              </div>
-                                              <div className='col-6 my-2'>
-                                            <label htmlFor='country'>Country<sup>*</sup></label>
-                                              <input type="text" className='form-control' id="country" value={userAddress?.country} name="country" onChange={(e)=>formHandlerChange(e)}/>
-                                              {formError.country && <span>{formError.country}</span>}
-                                              </div>
-                                            <div className='col-12'>
-                                              <hr/>
-                                            </div>
-                                            <div className='col-12 d-flex justify-content-center align-items-center gap-3'>
-                                              <button type="button" className="usr-common-action-btn fw-300" data-bs-dismiss="modal" >Cancel</button>
-                                              <button type='submit' className='usr-common-filled-btn'>Confirm Location</button>
-                                            </div>
-                                          </div>
-                                        </form>
-                                      </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        
+
+      {/* location modal */}
+      <div class="modal modal-lg fade usr-artist-single-modal" id="locationModalToggle" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="locationModalToggleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+                <div className='modal-btn-wrapper justify-content-end d-flex'>
+                <button type="button" class=" common-modal-dismiss-btn" data-bs-dismiss="modal" aria-label="Close">
+                <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 15 15" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z" fill="currentColor"></path></svg>
+                </button>
+                </div>
+               
+
+                <h3 className='text-center mt-3 text-uppercase'>Confirm Your Location</h3>
+                <hr className='mb-4'/>
+              <div className='user-address-location-wrapper'>
+                <SearchLocation cb={selectSearch} className="w-50" setAttemptedNextWithoutSelection={console.log} />
+                <LocationAwareMap
+                  coords={markerPosition}
+                  onMarkerDragEnd={handleMarkerDrag} //function
+                  markerDraggable={true}
+                  markerTitle="Your location"
+                  height="50vh"
+                />
+              </div>
+              <hr className='mb-4'/>
+              <div className='d-flex justify-content-center'>
+                <button type='button' className='usr-common-filled-btn' onClick={handleConfirmLocation}>Confirm Location</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* end location modal */}
+
+      {/* Add new address modal */}
+      <div class="modal modal-lg fade usr-artist-single-modal" id="addAddressModalToggle" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addAddressModalToggleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div className='user-address-form-wrapper'>
+                <form onSubmit={handleSubmit(handleAddAddress)}>
+                  <h2 className='text-center mt-3'>Enter Your Address</h2>
+                  <hr />
+                  <div className='row'>
+                    <div className='col-md-6 my-2'>
+                      <label htmlFor='fullName'>Full Name<sup>*</sup></label>
+                      <input type='text' name='fullName' className='form-control' id='fullName' {...register('fullName', { required: "This field is required." })} />
+                      {errors && errors.fullName && <span>{errors.fullName.message}</span>}
+                    </div>
+                    <div className='col-md-6 my-2'>
+                      <label htmlFor='mobile'>Mobile<sup>*</sup></label>
+                      <input 
+                        type='text' 
+                        name='mobile' 
+                        className='form-control' 
+                        id='mobile' 
+                        {...register('mobile', 
+                        { required: "This field is required.",
+                        pattern: {
+                          value: /^\d{10}$/,
+                          message: 'Mobile must be 10 digits Number only.',
+                        } 
+                        })} 
+                        onChange={(e)=>handleFormInputChange(e)}
+                      />
+                      {errors && errors.mobile && <span>{errors.mobile.message}</span>}
+                    </div>
+                    <div className='col-md-6 my-2'>
+                      <label htmlFor='address'>Flat, House no., Building, Company, Apartment<sup>*</sup></label>
+                      <input type='text' name='address' className='form-control' id='address' {...register('address', { required: "This field is required." })} />
+                      {errors && errors.address && <span>{errors.address.message}</span>}
+                    </div>
+                    <div className='col-6 my-2'>
+                      <label htmlFor='street'>Area, Street, Sector, Village<sup>*</sup></label>
+                      <input type='text' name='street' className='form-control' id='street' {...register('street', { required: "This field is required." })} />
+                      {errors && errors.street && <span>{errors.street.message}</span>}
+                    </div>
+                    <div className='col-6 my-2'>
+                      <label htmlFor='landmark'>Landmark<sup>*</sup></label>
+                      <input type='text' name='landmark' className='form-control' id='landmark' {...register('landmark', { required: "This field is required." })} />
+                      {errors && errors.landmark && <span>{errors.landmark.message}</span>}
+                    </div>
+                    <div className='col-6 my-2'>
+                      <label htmlFor='postalCode'>Pincode<sup>*</sup></label>
+                      <input type="text" className='form-control' id="postalCode" value={userAddress?.postalCode} name="postalCode" onChange={(e) => formHandlerChange(e)} />
+                      {formError.postalCode && <span>{formError.postalCode}</span>}
+                    </div>
+                    <div className='col-md-6 my-2'>
+                      <label htmlFor='city'>Town/City<sup>*</sup></label>
+                      <input type='text' name='city' className='form-control' id='city' value={userAddress?.city} onChange={(e) => formHandlerChange(e)} />
+                      {formError.city && <span>{formError.city}</span>}
+                    </div>
+                    <div className='col-md-6 my-2'>
+                      <label htmlFor='state'>State<sup>*</sup></label>
+                      <input type='text' name='state' className='form-control' id='state' value={userAddress?.state} onChange={(e) => formHandlerChange(e)} />
+                      {formError.state && <span>{formError.state}</span>}
+                    </div>
+                    <div className='col-12'>
+                      <hr />
+                    </div>
+                    <div className='col-12 d-flex justify-content-center align-items-center gap-3'>
+                      <button type="button" className="usr-common-action-btn fw-300"  data-bs-toggle="modal" data-bs-target="#locationModalToggle">Go Back</button>
+                      <button type='submit' className='usr-common-filled-btn'>Use This Address</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* End modal add address */}
+
+
                         <div class="modal modal-lg fade usr-artist-single-modal" id="exampleModalToggle3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalToggleLabel3" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
