@@ -17,15 +17,15 @@ const PriceSetup = () => {
     const gstPerc = 18;
     const serviceChargePer = 5;
     const [price,setPrice] = useState(artistPayload.pricing ? artistPayload.pricing.price : minPrice)
-    var totalPriceWithServiceChargePer = price > 0 ?  ((price * serviceChargePer) / 100) + price : 0
-    var totalPrice = totalPriceWithServiceChargePer > 0 ? ((totalPriceWithServiceChargePer * gstPerc) / 100) + totalPriceWithServiceChargePer : 0;
-    totalPrice = totalPrice.toFixed(2)
+
+    var totalPriceWithServiceChargePer = price > 0 ?  Number(((price * serviceChargePer) / 100).toFixed()) + price : 0
+    var totalPrice = totalPriceWithServiceChargePer > 0 ? Number(((totalPriceWithServiceChargePer * gstPerc) / 100).toFixed()) + totalPriceWithServiceChargePer : 0;
 
     var pricing = {
-      price:price>0 ? price : 0,
-      gstAmount:(totalPriceWithServiceChargePer * gstPerc) / 100,
-      platformFee:(price * serviceChargePer) / 100,
-      totalPrice:totalPrice,
+      price:price > 0 ? price : 0,
+      gstAmount: Number(((totalPriceWithServiceChargePer * gstPerc) / 100).toFixed()),
+      platformFee: Number(((price * serviceChargePer) / 100).toFixed()),
+      totalPrice: totalPrice,
       sessionTime:3
     }
 

@@ -1,56 +1,22 @@
-.user-certificate-form {
-    padding: 10px;
-    position: relative;
-    height: 90%;
-}
-.achivements-ar .usr-certificate
-{
-    border: 1px dotted;
-    height: 100%;
-}
-.achivements-ar .user-certificate-form .user-certificate-form-input{
-    width:90%!important;
-}
-.usr-join-action-btn{
-    border: 1px solid;
-    border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    right: 8px;
-    padding: 0px 0px 10px 0px;
-    width: 35px;
-}
-.usr-join-action-btn::after{
-    border-top: none;
-    content: none;
-    padding-top: 0px;
-}
-.usr-join-action-btn::before{
-    content: none!important;
-}
-
-.usr-join-action-btn:hover, .usr-join-action-btn:focus{
-    border: 1px solid black;
-}
-.usr-certificate-actions-wrapper{
-    position: absolute;
-    top:0px;
-    right: 2px;
-
-}
-.usr-certificate-pdf-icon{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-.usr-certificate-image-icon{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-.achivements-ar .modal-dialog-centered{
+.usr-certificate{
+    height: 300px;
+    overflow: hidden;
+    border: 1px dashed #8C6A54;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    position: relative;
 }
-.achivements-ar .modal-content{
-    width: auto;
+.usr-certificate img{
+    object-fit: contain;
+    height: 100%;
 }
+
+.usr-certificate-title{
+    font-size: 14px;
+}
+
+.usr-certificate:hover .ar-action-btn-wrapper{
+    visibility: inherit;
+  }
