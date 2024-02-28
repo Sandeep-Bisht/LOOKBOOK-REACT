@@ -199,6 +199,71 @@ const Gallery = (props) => {
     }
   };
 
+  const handleCoverPhoto = async (index) => {
+    const newData = images.find((item, ind) => ind == index);
+    images.splice(index, 1);
+    let oldData = [...images];
+    oldData.unshift(newData);
+    setImages(oldData);
+    try {
+      const response = await axiosAuth.post(
+        `${BASE_URL}/users/updateArtistRequest`,
+        { gallery: oldData }
+      );
+      setArtistPayload(response?.data?.data);
+      setImages(response?.data?.data?.gallery);
+    } catch (error) {
+      console.error(error, "file upload error");
+    }
+  };
+
+  const downWoardImage = async (index) => {
+    const imageData = images[index];
+    const nextImageData = images[index + 1];
+    if (!nextImageData) return;
+
+    const newImages = [...images];
+    newImages[index] = nextImageData;
+    newImages[index + 1] = imageData;
+
+    setImages(newImages);
+
+    try {
+      const response = await axiosAuth.post(
+        `${BASE_URL}/users/updateArtistRequest`,
+        { gallery: newImages }
+      );
+      setArtistPayload(response?.data?.data);
+      setImages(response?.data?.data?.gallery);
+    } catch (error) {
+      console.error(error, "file upload error");
+    }
+  };
+
+  const moveUpwardImage = async (index) => {
+    if (index <= 0 || index >= images.length) return;
+
+    const imageData = images[index];
+    const previousImageData = images[index - 1];
+
+    const newImages = [...images];
+    newImages[index] = previousImageData;
+    newImages[index - 1] = imageData;
+
+    setImages(newImages);
+
+    try {
+      const response = await axiosAuth.post(
+        `${BASE_URL}/users/updateArtistRequest`,
+        { gallery: newImages }
+      );
+      setArtistPayload(response?.data?.data);
+      setImages(response?.data?.data?.gallery);
+    } catch (error) {
+      console.error(error, "file upload error");
+    }
+  };
+
   return (
     <>
       {images.length > 0 || binaryFiles.length > 0 ? (
@@ -233,29 +298,43 @@ const Gallery = (props) => {
                           </button>
                           <ul class="dropdown-menu">
                             <li>
-                              <a
+                              <span
                                 class="dropdown-item "
-                                href="#"
                                 onClick={() => removeImage(index)}
                               >
                                 Remove
-                              </a>
+                              </span>
                             </li>
-                            <li>
-                              <a class="dropdown-item" href="#">
-                                Move Up
-                              </a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="#">
-                                Move Down
-                              </a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="#">
-                                Make Cover Photo
-                              </a>
-                            </li>
+                            {index > 0 && (
+                              <li>
+                                <span
+                                  class="dropdown-item"
+                                  onClick={() => moveUpwardImage(index)}
+                                >
+                                  Move Up
+                                </span>
+                              </li>
+                            )}
+                            {index < images.length - 1 && (
+                              <li>
+                                <span
+                                  class="dropdown-item"
+                                  onClick={() => downWoardImage(index)}
+                                >
+                                  Move Down
+                                </span>
+                              </li>
+                            )}
+                            {index > 0 && (
+                              <li>
+                                <span
+                                  class="dropdown-item"
+                                  onClick={() => handleCoverPhoto(index)}
+                                >
+                                  Make Cover Photo
+                                </span>
+                              </li>
+                            )}
                           </ul>
                         </div>
                       </div>

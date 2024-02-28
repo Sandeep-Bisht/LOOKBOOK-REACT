@@ -1082,7 +1082,7 @@ img:hover .showbutton-image.drop-shadow-delete {
   border-bottom: 1px solid rgba(109, 93, 76, .3);
 }
 
-/* New css */
+                   /* New css */
 
 .artist-inner-heading {
   color: #6D5D4C;
@@ -1107,7 +1107,7 @@ img:hover .showbutton-image.drop-shadow-delete {
   display: inline-block;
 }
 
-.dropdown-menu {
+.custom-kyc-update-dropshadow-box .dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -1127,11 +1127,11 @@ img:hover .showbutton-image.drop-shadow-delete {
   border-radius: 0.25rem;
 }
 
-.dropdown-menu.show {
+.custom-kyc-update-dropshadow-box .dropdown-menu.show {
   display: block;
 }
 
-.dropdown-item {
+.custom-kyc-update-dropshadow-box .dropdown-item {
   display: block;
   width: 100%;
   padding: 0.25rem 1.5rem;
@@ -1144,13 +1144,13 @@ img:hover .showbutton-image.drop-shadow-delete {
   border: 0;
 }
 
-.dropdown-item:focus,
+.custom-kyc-update-dropshadow-box .dropdown-item:focus,
 .dropdown-item:hover {
   color: #fff;
   background-color: #6D5D4C;
 }
 
-.btn-secondary {
+.custom-kyc-update-dropshadow-box .btn-secondary {
   color: #fff;
   background-color: #6D5D4C;
   border-color: #6D5D4C;
@@ -1158,7 +1158,7 @@ img:hover .showbutton-image.drop-shadow-delete {
   padding-bottom: 14px;
 }
 
-.btn-secondary:hover {
+.custom-kyc-update-dropshadow-box .btn-secondary:hover {
   color: #fff;
   background-color: #6D5D4C;
   border-color: #6D5D4C;
@@ -1166,7 +1166,7 @@ img:hover .showbutton-image.drop-shadow-delete {
 
 
 .custom-kyc-update-dropshadow-box .dropdown-toggle {
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: #fff;
   color: #6D5D4C;
 }
