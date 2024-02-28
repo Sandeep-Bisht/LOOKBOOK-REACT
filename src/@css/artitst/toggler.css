@@ -1,0 +1,31 @@
+.toggler-section
+{
+   padding:10px;
+   background-color: #FCF7F2;
+}
+
+.toggler-section .toggler-section-btns-wrapper
+{
+  display: flex;
+  justify-content: center;
+}
+.toggler-section .toggler-section-btns-wrapper ul
+{
+   background-color: #fff;
+   padding: 8px 20px;
+   border-radius: 30px; 
+   display: flex;
+   align-items: center;
+   list-style-type: none;
+}
+.toggler-section .toggler-section-btns-wrapper ul .toggler-section-btns-wrapper-link
+{
+   width: 160px;
+   display: flex;
+   justify-content: center;
+   color: #6D5D4C;
+   text-decoration: none;
+   font-family:AvenirLTProLight;
+   text-transform: uppercase;
+   font-size: 14px;
+} 

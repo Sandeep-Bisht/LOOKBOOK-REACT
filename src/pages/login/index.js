@@ -262,7 +262,7 @@ const LoginPage = () => {
                         countdown > 0 ? 
                         countdown
                         :
-                        'Resend code'
+                        ' Resend code'
                       }
                       </Typography>
                     </Typography>

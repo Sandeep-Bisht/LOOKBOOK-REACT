@@ -168,7 +168,7 @@ const Header = ({ cities, categories }) => {
                 </li>
                 {/* Search Container */}
                 <li className={`nav-item ${isClicked ? 'usr-search-container' : ''}`} onClick={() => setIsClicked(true)}>
-                  <div className="home-selction-form">
+                  <div className="home-selction-form " >
 
                     <div className="row m-0 w-100 align-items-center">
                       <div className="col-lg-4 px-0">
