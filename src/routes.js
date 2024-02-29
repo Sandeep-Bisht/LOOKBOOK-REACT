@@ -6,7 +6,7 @@ import Services from 'pages/management/services/servicesCreated'
 import React, { useEffect } from 'react'
 import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements, useLoaderData, useLocation } from 'react-router-dom'
 import Homepage from 'pages/homepage/homepage'
-import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getProductById, getBlogByCategorySlug, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogByIdAndCategory, get_services_price_by_artist_id, getAllComments, getArtistsByServiceSlug, getArtistByAlias, getAllSlides, getSlidesById, getCartData,getMyAddresses } from 'configs/initialapis'
+import { getSearchParameters, getArtistRequestByID, getHomepageData, getAllArtistRequest, getWizardData, getAllArtists, getArtistRequests, getAllBlog, getUserProfile, allServicesDetails, allProductsDetails, getProductById, getBlogByCategorySlug, getBlogBySlug, getUserWishlistByID, getAllCategories, getCategoryById, getBlogByIdAndCategory, get_services_price_by_artist_id, getAllComments, getArtistsByServiceSlug, getArtistByAlias, getAllSlides, getSlidesById, getCartData,getMyAddresses, getAllBlogForAdmin } from 'configs/initialapis'
 import CreateBlog from 'pages/management/blogs/blogCreate'
 import { SettingsConsumer, SettingsProvider } from '@core/context/settingsContext'
 import ThemeComponent from '@core/theme/ThemeComponent'
@@ -329,7 +329,7 @@ const ApplicationRoutes = createBrowserRouter(
             <Route path="/management/services/create" element={<Services />}  loader={getAllArtistCategories}/>
             <Route path="/management/services/:_id" element={<UpdateService />} loader={getServiceUpdateData} />
 
-            <Route path="/management/blogs" element={<BlogList />} loader={getAllBlog} />
+            <Route path="/management/blogs" element={<BlogList />} loader={getAllBlogForAdmin} />
             <Route path="/management/create-blog" element={<CreateBlog />} loader={getAllCategories} />
 
 
