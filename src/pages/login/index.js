@@ -31,6 +31,7 @@ const Card = styled(MuiCard)(({ theme }) => ({
   [theme.breakpoints.up("sm")]: { width: "28rem" },
 }));
 
+
 const LoginPage = () => {
   const navigate = useNavigate();
 
@@ -178,6 +179,7 @@ const LoginPage = () => {
     setOtp(newValue);
   };
 
+  
   return (
     <>
     <section className="bg-color">
@@ -207,7 +209,20 @@ const LoginPage = () => {
                   Enter the code we've send via{" "}
                   {signupType == "email" ? "EMAIL" : "SMS"} to{" "}
                   {signupType == "email" ? value : `+91 ${value}`}
+
+                  <Typography
+                          className="me-5 ms-2 common-cursor-pointer"
+                          size="large"
+                          variant="contained"
+                          sx={{ marginBottom: 7, fontWeight: 500 }}
+                          
+                          onClick={()=>setOtpView(false)}
+                        >
+                          Change
+                        </Typography>
+
                 </Typography>
+                
                 <Box sx={{ my: 6 }}>
                   <OtpInput
                     value={otp}
@@ -232,7 +247,7 @@ const LoginPage = () => {
                   ) : null}
                 </Box>
                 <Divider sx={{ my: 5 }}></Divider>
-                <Box sx={{ textAlign: "end" }}>
+                <Box sx={{ textAlign: "center" }}>
                       <Button
                       size="large"
                       variant="contained"
@@ -244,27 +259,38 @@ const LoginPage = () => {
                       verify
                     </Button>
                   <Typography
-                      className="me-5"
+                      className=""
                       size="large"
                       variant="contained"
                       sx={{ marginBottom: 7 }}
                     >
                       Not received your code? 
+                      {countdown > 0 ? (
                       <Typography
-                      className="me-5"
+                      className="me-5 ms-2 common-cursor-pointer"
+
                       size="large"
                       variant="contained"
                       sx={{ marginBottom: 7,fontWeight:500 }}
                       onClick={handleResendOTP}
                       disabled={isSubmitting}
                     >
-                      {
-                        countdown > 0 ? 
-                        countdown
-                        :
-                        ' Resend code'
-                      }
+                      
+                       00:{countdown > 9 ? countdown : "0" + countdown}
+                      
                       </Typography>
+                       ) : (
+                        <Typography
+                          className="me-5 ms-2 common-cursor-pointer"
+                          size="large"
+                          variant="contained"
+                          sx={{ marginBottom: 7, fontWeight: 500 }}
+                          onClick={handleResendOTP}
+                          disabled={isSubmitting}
+                        >
+                          Resend code
+                        </Typography>
+                      )}
                     </Typography>
                 </Box>
                 </div>
