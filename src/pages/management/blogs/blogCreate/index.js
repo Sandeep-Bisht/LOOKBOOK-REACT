@@ -8,24 +8,35 @@ import { useNavigate, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { TagsInput } from "react-tag-input-component";
 import "@css/dashboardBlog.css"
+import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
 const BASE_URL = process.env.REACT_APP_APIURL;
 
 const CreateBlog = () => {
   const allCategory = useLoaderData()
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const editor = useRef(null);
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(false);
   const [tags, setTags] = useState([]);
+  const [contentError, setContentError] = useState(false);
 
   const navigate = useNavigate()
 
   const onSubmit = async (data) => {
     setLoading(true);
-    data['content'] = JSON.stringify(content);
-  
+    if(!content){
+      setContentError(true)
+      setLoading(false);
+      return;
+    }
+    else{
+      data['content'] = JSON.stringify(content);
+      setContentError(false);
+    }  
     // Ensure 'tags' exist and is an array before proceeding
-    if (Array.isArray(tags) && tags.length > 0) {
+    if (tags && Array.isArray(tags) && tags.length > 0) {
       data.tags = tags; // Add tags to 'data' if it exists
     }
     const formData = new FormData();
@@ -37,7 +48,7 @@ const CreateBlog = () => {
       if (item === 'featuredImage') {
         formData.append(item, data.featuredImage[0]);
       }
-      if(item == 'tags')
+      if(item == 'tags' && data.tags && Array.isArray(data.tags) && data.tags.length>0)
       {
         for (let item of data.tags) {
            formData.append("tags", item);
@@ -49,38 +60,55 @@ const CreateBlog = () => {
     });
   
     try {
-      const response = await axiosAuth.post(`${BASE_URL}/blog/blog-create`, formData);
-  
+      const response = await axiosAuth.post(`${BASE_URL}/blog/blog-create`, formData);  
       if (response.statusText === "OK") {
         toast.success('Blog Created Successfully!');
         setLoading(false);
         navigate("/management/blogs");
       }
     } catch (error) {
+      setLoading(false);
       toast.warn('Failed to create Blog!');
     }
   };
-  
   return (
     <>
       {/* <section>
       
     </section> */}
+    <Card>
+        <Grid item xs={12}>
+        <Box
+          sx={{
+            gap: 5,
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'end',
+            marginRight: "20px",
+            marginTop: "12px"
+          }}
+        >
+        </Box>
+      </Grid>
+      <CardContent>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
             <TextField
-              {...register('title')}
+              {...register('title' , { required: true })}
               label="Title"
               variant="outlined"
               fullWidth
               margin="normal"
             />
-
+              {
+                errors && errors.title && <span className='common-form-error-msg'>This field is required</span>
+              }
           </Grid>
           <Grid item xs={12} md={6}>
             <TextField
-              {...register("featuredImage")}
+              {...register("featuredImage", {required:true})}
               type="file"
               label="Image"
               variant="outlined"
@@ -90,13 +118,16 @@ const CreateBlog = () => {
                 shrink: true,
               }}
             />
+            {
+                errors && errors.featuredImage && <span className='common-form-error-msg'>This field is required</span>
+              }
           </Grid>
           <Grid item xs={12} md={6}>
             <InputLabel id="demo-simple-select-label">Category</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              {...register("category")}
+              {...register("category", {required:true})}
               label="Category"
               className='w-100'
             >
@@ -108,9 +139,12 @@ const CreateBlog = () => {
                 })
               }
             </Select>
+            {
+              errors && errors.category && <span className='common-form-error-msg'>This field is required</span>
+            }
           </Grid>
           <Grid item xs={12} md={6} className="tags-input">
-            <InputLabel id="demo-simple-select-label">Tags</InputLabel>
+            <InputLabel id="demo-simple-select-label" className='bg-white'>Tags</InputLabel>
             <TagsInput
               {...register("tags")}
               value={tags}
@@ -166,14 +200,19 @@ const CreateBlog = () => {
               ref={editor}
               value={content}
               tabIndex={1}
-              onChange={newContent => setContent(newContent)}
+              onChange={newContent => {setContent(newContent); content ? setContentError(false) : setContentError(true) }}
             />
+             {
+                contentError && <span className='common-form-error-msg'>This field is required</span>
+              }
           </Grid>
         </Grid>
         <Button type="submit" variant="contained" color="primary" className="mt-3">
           {loading ? "Submiting..." : "Submit"}
         </Button>
       </form>
+      </CardContent>
+    </Card>
     </>
   )
 }

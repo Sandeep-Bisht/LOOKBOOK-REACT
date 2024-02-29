@@ -39,6 +39,15 @@ export const getAllBlog = async () =>{
         return error.message || "An error occured while trying to get All Blogs."
     }
 }
+export const getAllBlogForAdmin = async () =>{
+  try{
+      const response = await axiosAuth.get('/management/get-all-blog');
+      return response.data.data;
+  }
+  catch(error){
+      return error.message || "An error occured while trying to get All Blogs."
+  }
+}
 
 export const getAllBookings = async () =>{
   try{
