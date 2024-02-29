@@ -5,10 +5,16 @@ import "@css/user/cart.css"
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { CiUser } from "react-icons/ci";
+import NoDataFound from 'pages/become-a-artist/common/noDataFound';
 
 const AllBookings = () => {
 
     const allBookings = useLoaderData();
+
+    if(!allBookings || !Array.isArray(allBookings) || !allBookings.length > 0){
+      return <NoDataFound/>;
+    }
+    
     const dateOption = { day: '2-digit', month: 'short'};
 
   return (
