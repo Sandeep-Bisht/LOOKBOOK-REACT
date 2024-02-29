@@ -6,7 +6,6 @@ import "@css/user/certificate.css"
 import PdfIcon from "@core/assets/images/pdfIcon.png";
 import DocIcon from "@core/assets/images/docIcon.png";
 import { IoMdAdd } from "react-icons/io";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { useForm } from "react-hook-form";
 import { BsThreeDots } from "react-icons/bs";
 
@@ -22,139 +21,6 @@ const Certificates = () => {
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [uploading,setUploading] = useState(false)
-
-  // const [editableCertificate,setEditableCertificate] = useState();
-  // const [editableIndex,setEditableIndex] = useState();
-  // const [progress, setProgress] = useState(0);
-  // const [uploading, setUploading] = useState(false);
-
-
-
-  // const [selectFileImage, setSelectFileImage] = useState()
-  // const [imageUrl, setImageUrl] = useState(editableCertificate?.certificate?.mimetype == "application/pdf" ? PdfIcon :  editableCertificate?.certificate?.mimetype?.startsWith('image/') || editableCertificate?.certificate?.fileType === "image" ? editableCertificate?.certificate?.url : DocIcon);  // const [userDocuments, setUserDocuments] = useState([]);
-
-  // const handleDrop = async (files) => {
-  //   setBinaryFiles(files);
-
-  //   const formData = new FormData();
-  //   files.forEach((file) => {
-  //     formData.append("certificates", file);
-  //   });
-
-  //   try {
-  //     setUploading(true);
-  //     const response = await axiosAuth.post(
-  //       `${BASE_URL}/users/updateArtistRequest`,
-  //       formData,
-  //       {
-  //         onUploadProgress: (progressEvent) => {
-  //           const { loaded, total } = progressEvent;
-  //           const percentCompleted = Math.round((loaded * 100) / total);
-  //           setProgress(percentCompleted);
-  //         },
-  //       }
-  //     );
-
-  //     setBinaryFiles([]);
-  //     setProgress(0);
-  //     setUploading(false);
-  //     setArtistPayload(response?.data?.data);
-  //     setCertificates(response?.data?.data?.certificates);
-  //     // Handle response if needed
-  //   } catch (error) {
-  //     // Handle error
-  //     setBinaryFiles([]);
-  //     setProgress(0);
-  //     setUploading(false);
-  //   }
-  // };
-
-  // const handleFileChangeImage = async(e) => {
-
-  //   const copyEditableCertificate = {...editableCertificate['certificate']}
-  //   const reader = new FileReader();
-  //   const file = e.target.files[0];
-
-  //   reader.onload = function (event) {
-  //     const imageUrl = event.target.result;
-  //     const formData = new FormData()
-  //     formData.append("certificate",file)
-  //     try{
-  //       setUploading(true);
-  //       const response =  axiosAuth.post(
-  //         "/users/uploadDocument",
-  //         formData,
-  //         {
-  //           onUploadProgress: (progressEvent) => {
-  //             const { loaded, total } = progressEvent;
-  //             const percentCompleted = Math.round((loaded * 100) / total);
-  //             setProgress(percentCompleted);
-  //           },
-  //         }
-  //       );
-  //       if(response){
-  //         copyEditableCertificate['mimetype'] = file.type; 
-  //         copyEditableCertificate['url'] = imageUrl;
-  //         setEditableCertificate(prev => ({...prev,certificate:copyEditableCertificate}));
-  //       }
-  //     }catch(error){
-  //        console.log(error,"error")
-  //     }
-  //   };
-
-  //   if (file) {
-  //     reader.readAsDataURL(file);
-  //     setValue("updatedCertificate",file)
-  //   }
-
-  // };
-  // console.log(editableCertificate,'editable certificate is this ')
-
-  // const removeDocument = async (index) => {
-  //   // Create a copy of the array
-  //   const updatedCertificates = [...certificates];
-
-  //   // Use splice to remove the item at the specified index
-  //   updatedCertificates.splice(index, 1);
-
-  //   // Update the state with the new array
-  //   setCertificates(updatedCertificates);
-
-  //   try {
-  //     const response = await axiosAuth.post(
-  //       `${BASE_URL}/users/updateArtistRequest`,
-  //       { certificates: updatedCertificates }
-  //     );
-  //     setArtistPayload(response?.data?.data);
-  //     setCertificates(response?.data?.data?.certificates);
-  //     // Handle response if needed
-  //   } catch (error) {
-  //     console.error(error, "file upload error");
-  //   }
-  // };
-
-  // function getExtension(filename) {
-  //   return filename.split(".").pop();
-  // }
-
-  // const { getRootProps, getInputProps } = useDropzone({
-  //   disabled: uploading,
-  //   onDrop: handleDrop,
-  //   accept: {
-  //     "image/*": [
-  //       ".jpeg",
-  //       ".png",
-  //       ".jpg",
-  //       ".gif",
-  //       ".avif",
-  //       ".svg",
-  //       ".tiff",
-  //       ".webp",
-  //     ],
-  //     "application/pdf": [".pdf"],
-  //   },
-  // });
-  // console.log(editableCertificate,"editableCertificate editableCertificate editableCertificate",imageUrl)
 
   const handleNextClick = async () => {
     try {
@@ -172,32 +38,6 @@ const Certificates = () => {
       throw error;
     }
   };
-
-  // const documentSubmitHandler = async (data) => {
-  //   const formData = new FormData();
-
-  //   Object.keys(data).forEach((item) => {
-  //     if (item == "certificate") {
-  //       formData.append(item, data.certificate[0])
-  //     }
-  //     else {
-  //       formData.append(item, data[item])
-  //     }
-  //   })
-  //   try {
-  //     const response = await axiosAuth.post("/users/artist-request/addCertificates", formData);
-  //     if (response.statusText = "OK") {
-  //       setCertificates(response?.data?.data?.certificates)
-  //       reset();
-  //     }
-
-  //   } catch (error) {
-  //     console.log(error, "check the error");
-  //   }
-  // };
-
-  // const updateCertificate = (data)=>{
-  // }
 
   const updateArtistRequest = async(payload) =>{
     try{
@@ -289,13 +129,14 @@ const Certificates = () => {
                                       </button>
                                       <ul class="dropdown-menu">
                                         <li>
-                                          <span
-                                            class="dropdown-item "
-                                            // type="button" data-bs-toggle="modal" data-bs-target="#editModalToggle"
-                                          >
-                                            Update
-                                          </span>
-                                        </li>
+                                            <a
+                                              class="dropdown-item"
+                                              href={item.certificate?.url}
+                                              target="_blank"
+                                            >
+                                              View
+                                            </a>
+                                          </li>
                                           <li>
                                             <span
                                               class="dropdown-item"
@@ -331,44 +172,17 @@ const Certificates = () => {
                           <label htmlFor="certificate">
                             Certificate *
                           </label>
-                            <input type="file" id="certificate" className="form-control" {...register("certificate",{required:'This Field is required.'})} />
+                            <input type="file" id="certificate" className="form-control" {...register("certificate",{required:'This Field is required.'})} accept=".pdf,.png,.jpg,.jpeg,.webp"/>
                             {errors && errors.certificate && <span>{errors.certificate.message}</span>}
                         </div>
                         <div className="d-flex align-items-center justify-content-center mt-3">
                           <button className="usr-common-action-btn" type="submit" disabled={uploading ? true : false}>
                             {uploading ? 'Uploading...' : <>
-                            <IoMdAdd  className="me-2"/>Add
+                            <IoMdAdd  className="me-2"/>Add {certificates && Array.isArray(certificates) && certificates.length > 0 && 'More'}
                             </>}
                             </button>
                         </div>
                       </form>
-
-                      {/* <div className="user-certificate-form">
-                        {
-                          item.certificate?.mimetype == "application/pdf" ?
-                            // <a href={item.url} target="_blank" rel="noopener noreferrer">
-                            <img src={PdfIcon} alt='certificate' className="img-fluid w-100 usr-certificate-pdf-icon" />
-                            :
-                            item.certificate?.mimetype?.startsWith('image/') || item.certificate?.fileType === "image"
-                              ?
-                              <img src={item.certificate?.url} alt="certificates" className="img-fluid usr-certificate-image-icon" />
-                              :
-                              <img src={DocIcon} alt="certificates" className="img-fluid usr-certificate-image-icon" />
-                        }
-                        <p className="usr-certificate-title">{item.title}</p>
-                        <div className="usr-certificate-actions-wrapper text-center">
-                          <div class="dropstart">
-                            <button class="dropdown-toggle bg-white usr-join-action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              ...
-                            </button>
-                            <ul class="dropdown-menu">
-                              <li><button class="dropdown-item" href="#" >Edit</button></li>
-                              <li><button class="dropdown-item" href="#">View</button></li>
-                              <li><button class="dropdown-item" href="#">Remove</button></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div> */}
 
                     </div>
                   </div>

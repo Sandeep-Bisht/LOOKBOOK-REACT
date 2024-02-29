@@ -687,7 +687,7 @@ img:hover .showbutton-image.drop-shadow-delete {
   background-color: #fefefe;
   border: none;
   color: #8C6A54;
-  padding: 15px 5px;
+  padding: 15px;
   margin-bottom: 20px;
 }
 
@@ -997,33 +997,6 @@ img:hover .showbutton-image.drop-shadow-delete {
 }
 
 
-/* .custom-kyc-img-wrapper:hover .custom-kyc-update-dropshadow-box {
-  display: flex;
-  font-size: 50px;
-  color: #8C6A54;
-  cursor: pointer;
-} */
-
-/* .custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 1;
-  display: none;
-} */
-
-/* .usr-gallary-dropdown::before {
-  content: none !important;
-} */
-
-/* .custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box a {
-  color: inherit;
-} */
-
-/* .custom-kyc-img-wrapper .custom-kyc-update-dropshadow-box svg:hover {
-  filter: brightness(1.2);
-} */
-
 /* celebration page css */
 
 .celebration-page-wrapper {
@@ -1122,92 +1095,6 @@ img:hover .showbutton-image.drop-shadow-delete {
 }
 
 
-/* .custom-kyc-update-dropshadow-box .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  display: none;
-  float: left;
-  min-width: 10rem;
-  padding: 0.5rem 0;
-  margin: 0.125rem 0 0;
-  font-size: 1rem;
-  color: #212529;
-  text-align: left;
-  list-style: none;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
-}
-
-.custom-kyc-update-dropshadow-box .dropdown-menu.show {
-  display: block;
-}
-
-.custom-kyc-update-dropshadow-box .dropdown-item {
-  display: block;
-  width: 100%;
-  padding: 0.25rem 1.5rem;
-  clear: both;
-  font-weight: 400;
-  color: #212529;
-  text-align: inherit;
-  white-space: nowrap;
-  background-color: transparent;
-  border: 0;
-}
-
-.custom-kyc-update-dropshadow-box .dropdown-item:focus,
-.dropdown-item:hover {
-  color: #fff;
-  background-color: #6D5D4C;
-}
-
-.custom-kyc-update-dropshadow-box .btn-secondary {
-  color: #fff;
-  background-color: #6D5D4C;
-  border-color: #6D5D4C;
-  margin: 5px;
-  padding-bottom: 14px;
-}
-
-.custom-kyc-update-dropshadow-box .btn-secondary:hover {
-  color: #fff;
-  background-color: #6D5D4C;
-  border-color: #6D5D4C;
-}
-
-
-.custom-kyc-update-dropshadow-box .dropdown-toggle {
-  border-radius: 30px;
-  background-color: #fff;
-  color: #6D5D4C;
-}
-
-.custom-kyc-update-dropshadow-box .dropdown-toggle:hover,
-.custom-kyc-update-dropshadow-box .dropdown-toggle:focus {
-  background-color: #fff;
-  color: #6D5D4C;
-  border-color: #6D5D4C;
-}
-
-
-.custom-kyc-update-dropshadow-box .dropdown-toggle::after {
-  display: none;
-}
-
-.custom-kyc-update-dropshadow-box .dropstart::after {
-  display: none;
-
-}
-
-.custom-kyc-update-dropshadow-box .dropdown-toggle {
-  padding-right: 0.75rem;
-  padding-left: 0.75rem;
-} */
-
 /* Add style in action button in gallery, KYC and Certificates */
 
 .ar-action-btn-wrapper:has(> button[aria-expanded="true"]) {
@@ -1288,3 +1175,4 @@ visibility: visible;
 .achivements-ar .usr-certificate-form-wrapper label, .achivements-ar .usr-certificate-form-wrapper span{
   font-size: 13px;
 }
+
